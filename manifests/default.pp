@@ -167,3 +167,8 @@ exec { 'zlog':
 package { 'libmnl-dev': }
 package { 'libnetfilter-queue-dev': }
 
+# Activate ECN
+exec { 'ecn':
+  command => "if ! cat /etc/sysctl.conf | grep net.ipv4.tcp_ecn=1; then echo \"net.ipv4.tcp_ecn=1\" >> /etc/sysctl.conf; fi;",
+}
+
