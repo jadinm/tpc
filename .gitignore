@@ -1,0 +1,13 @@
+.idea/
+*.o
+*.log
+*~
+[._]*.s[a-v][a-z]
+[._]*.sw[a-p]
+[._]s[a-v][a-z]
+[._]sw[a-p]
+
+.vagrant/
+
+# Executables
+router/nf_queue
