@@ -32,7 +32,7 @@ Vagrant.configure("2") do |config|
     # Customize the amount of memory on the VM and the number of CPUs:
     v.memory = "4096"
     v.cpus = 4
-    v.name = "srv6"
+    v.name = "srv6-rerouting"
   end
 end
 
