@@ -5,8 +5,11 @@ clean_BINDIRS=$(addprefix clean_,$(BINDIRS))
 
 all: $(BINDIRS)
 
-$(BINDIRS):
+$(BINDIRS): bin
 	$(MAKE) -C $@
+
+bin:
+	mkdir bin
 
 clean: $(clean_BINDIRS)
 
