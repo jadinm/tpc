@@ -1,9 +1,7 @@
 #include <arpa/inet.h>
 #include <errno.h>
-#include <signal.h>
 #include <stdlib.h>
 #include <string.h>
-
 #include <zlog.h>
 
 #include <libmnl/libmnl.h>
@@ -12,26 +10,18 @@
 #include <linux/netfilter/nfnetlink_queue.h>
 #include <libnetfilter_queue/libnetfilter_queue.h>
 
-#include "nf_queue.h"
+#include "sr-rerouted.h"
 
 
 #define SIZEOF_BUF 0xffff + MNL_SOCKET_BUFFER_SIZE
 #define SIZEOF_ERR_BUF 256
 #define DEFAULT_QUEUE 0
 #define MAX_PATH 255
-#define TIMEOUT_LOOP 1
 
 static struct mnl_socket *nl;
 static zlog_category_t *zc;
-
 static char err_buf[SIZEOF_ERR_BUF];
-volatile int stop;
 
-
-void sig_handler(int signal_number _unused)
-{
-	stop = 1;
-}
 
 /* This function is inspired from https://www.netfilter.org/projects/libnetfilter_queue/doxygen/nf-queue_8c_source.html */
 static struct nlmsghdr *nfq_hdr_put(char *buf, int type, uint32_t queue_num)
@@ -64,7 +54,7 @@ static void nfq_send_verdict(int queue_num, uint32_t id)
 }
 
 /* This function is inspired from https://www.netfilter.org/projects/libnetfilter_queue/doxygen/nf-queue_8c_source.html */
-static int nf_queue_callback(const struct nlmsghdr *nlh, void *data _unused)
+static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 {
 	struct nfqnl_msg_packet_hdr *ph = NULL;
 	struct nlattr *attr[NFQA_MAX+1] = {};
@@ -92,6 +82,8 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data _unused)
 		? ntohl(mnl_attr_get_u32(attr[NFQA_SKB_INFO]))
 		: 0;
 	/* void *payload = mnl_attr_get_payload(attr[NFQA_PAYLOAD]); */
+	struct connection *conn = (struct connection *) data;
+	// TODO Extract the 5-tuple
 
 	if (attr[NFQA_CAP_LEN]) {
 		uint32_t orig_len = ntohl(mnl_attr_get_u32(attr[NFQA_CAP_LEN]));
@@ -120,7 +112,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data _unused)
 	return MNL_CB_OK;
 }
 
-int main(int argc _unused, char *argv[] _unused)
+int nf_queue_init()
 {
 	struct nlmsghdr *nlh;
 	int ret = 0;
@@ -130,33 +122,14 @@ int main(int argc _unused, char *argv[] _unused)
 	char buf[SIZEOF_BUF];
 	memset(buf, 0, SIZEOF_BUF);
 
-	/* Logs setup */
-	char *path = getcwd(NULL, MAX_PATH);
-	if (!path) {
-		perror("Cannot get current working directory");
+	zc = zlog_get_category("nf_queue");
+	if (!zc) {
+		fprintf(stderr, "Initiating logs for the nf_queue failed\n");
 		ret = -1;
 		goto out;
 	}
-	int len = strlen(path);
-	snprintf(path + len, MAX_PATH - len, "/%s", "zlog.conf");
-	int rc = zlog_init(path);
-	if (rc) {
-		fprintf(stderr, "Initiating logs failed\n");
-		ret = -1;
-		goto out_path;
-	}
-	zc = zlog_get_category("router_nfqueue");
-	if (!zc) {
-		fprintf(stderr, "Initiating logs failed\n");
-		ret = -1;
-		goto out_logs;
-	}
-	zlog_info(zc, "Netfilter initialization");
 
-	/* Catching signals */
-	if (signal(SIGINT, sig_handler) == SIG_ERR) {
-		zlog_warn(zc, "Cannot catch SIG_INT");
-	}
+	zlog_info(zc, "Netfilter initialization");
 
 	/* Netlink setup - This code is inspired from https://www.netfilter.org/projects/libnetfilter_queue/doxygen/nf-queue_8c_source.html */
 	nl = mnl_socket_open(NETLINK_NETFILTER);
@@ -164,14 +137,13 @@ int main(int argc _unused, char *argv[] _unused)
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
 		zlog_error(zc, "mnl_socket_open %s", err_buf);
 		ret = -1;
-		goto out_logs;
+		goto out;
 	}
 
 	if (mnl_socket_bind(nl, 0, MNL_SOCKET_AUTOPID) < 0) {
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
 		zlog_error(zc, "mnl_socket_bind %s", err_buf);
-		ret = -1;
-		goto out_netlink;
+		goto err_netlink;
 	}
 	portid = mnl_socket_get_portid(nl);
 
@@ -181,8 +153,7 @@ int main(int argc _unused, char *argv[] _unused)
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
 		zlog_error(zc, "mnl_socket_send NFQNL_CFG_CMD_BIND %s",
 			   err_buf);
-		ret = -1;
-		goto out_netlink;
+		goto err_netlink;
 	}
 
 	nlh = nfq_hdr_put(buf, NFQNL_MSG_CONFIG, queue_num);
@@ -194,8 +165,7 @@ int main(int argc _unused, char *argv[] _unused)
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
 		zlog_error(zc, "mnl_socket_send NFQA_CFG_F_GSO "
 			       "and NFQNL_COPY_PACKET %s", err_buf);
-		ret = -1;
-		goto out_netlink;
+		goto err_netlink;
 	}
 
 	/* ENOBUFS is signalled to userspace when packets were lost
@@ -207,51 +177,61 @@ int main(int argc _unused, char *argv[] _unused)
 
 	zlog_info(zc, "nf_queue started");
 
-	fd_set read_fds;
-	struct timeval timeout;
-	for (;!stop;) {
-		FD_ZERO(&read_fds);
-		FD_SET(mnl_socket_get_fd(nl), &read_fds);
-		timeout.tv_sec = TIMEOUT_LOOP;
-		timeout.tv_usec = 0;
-		err = select(mnl_socket_get_fd(nl) + 1, &read_fds, NULL, NULL, &timeout);
-		if (err < 0) {
-			if (errno != EINTR) {
-				strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
-				zlog_error(zc, "Select failed %s", err_buf);
-				ret = -1;
-			} else {
-				zlog_warn(zc, "Program interrupted");
-			}
-			goto out_netlink;
-		}
-		if (FD_ISSET(mnl_socket_get_fd(nl), &read_fds)) {
-			err = mnl_socket_recvfrom(nl, buf, SIZEOF_BUF);
-			if (err == -1) {
-				strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
-				zlog_error(zc, "mnl_socket_recvfrom %s", err_buf);
-				ret = -1;
-				goto out_netlink;
-			}
-			err = mnl_cb_run(buf, err, 0, portid, nf_queue_callback,
-					 NULL);
-			if (err < 0) {
-				strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
-				zlog_error(zc, "mnl_cb_run %s", err_buf);
-				ret = -1;
-				goto out_netlink;
-			}
-		}
-	}
-
-out_netlink:
-	mnl_socket_close(nl);
-	zlog_info(zc, "Program exiting with error code %d", ret);
-out_logs:
-	zlog_fini();
-out_path:
-	free(path);
+	
 out:
 	return ret;
+err_netlink:
+	ret = -1;
+	mnl_socket_close(nl);
+	goto out;
+}
+
+int nf_queue_recv(struct connection *conn)
+{
+	int err = 0;
+	int ret = 0;
+	fd_set read_fds;
+
+	FD_ZERO(&read_fds);
+	FD_SET(mnl_socket_get_fd(nl), &read_fds);
+	err = select(mnl_socket_get_fd(nl) + 1, &read_fds, NULL, NULL, NULL);
+	if (err < 0) {
+		if (errno != EINTR) {
+			strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
+			zlog_error(zc, "Select failed %s", err_buf);
+			ret = -1;
+		} else {
+			ret = 0;
+			zlog_warn(zc, "Program interrupted");
+		}
+		return ret;
+	}
+
+	if (FD_ISSET(mnl_socket_get_fd(nl), &read_fds)) {
+		err = mnl_socket_recvfrom(nl, buf, SIZEOF_BUF);
+		if (err == -1) {
+			strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
+			zlog_error(zc, "mnl_socket_recvfrom %s", err_buf);
+			return -1;
+		}
+		err = mnl_cb_run(buf, err, 0, portid, nf_queue_callback, conn);
+		if (err < 0) {
+			strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
+			zlog_error(zc, "mnl_cb_run %s", err_buf);
+			return -1;
+		}
+		return 1;
+	}
+	return 0;
+}
+
+int nf_queue_free()
+{
+	if (mnl_socket_close(nl)) {
+		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
+		zlog_error(zc, "Error while closing netlink %s", err_buf);
+		return -1;
+	}
+	return 0;
 }
 
