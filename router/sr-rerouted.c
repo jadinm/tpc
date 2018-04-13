@@ -3,6 +3,7 @@
 #include <signal.h>
 #include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 #include <zlog.h>
 
 #include "sr-rerouted.h"
@@ -10,10 +11,8 @@
 
 #define MAX_PATH 255
 #define SIZEOF_ERR_BUF 256
-#define SRH_MAX_SIZE sizeof(struct ipv6_sr_hdr) + 2 * sizeof(struct in6_addr)
 
 static zlog_category_t *zc;
-static char err_buf[SIZEOF_ERR_BUF];
 volatile int stop;
 
 
@@ -23,19 +22,21 @@ void sig_handler(int signal_number _unused)
 }
 
 static int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh,
-		     size_t srh_len)
+		     size_t *srh_len)
 {
-	memset(&srh, 0, srh_len);
+	memset(srh, 0, sizeof(*srh));
 	srh->hdrlen = 4;
 	srh->type = 4;
-	srh->segment_left = 1;
+	srh->segments_left = 1;
 	srh->first_segment = 1;
 
 	struct in6_addr segment;
 	inet_pton(AF_INET6, "fc00::2", &segment); // TODO Do not hardcode segment
 
-	memset(&srh->segments[0], conn->dst, sizeof(struct in6_addr));
+	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
 	memcpy(&srh->segments[1], &segment, sizeof(struct in6_addr));
+
+	*srh_len = sizeof(*srh) + 2 * sizeof(struct in6_addr);
 	return 0;
 }
 
@@ -43,8 +44,6 @@ int main(int argc _unused, char *argv[] _unused)
 {
 	int ret = 0;
 	int err = 0;
-	char buf[SIZEOF_BUF];
-	memset(buf, 0, SIZEOF_BUF);
 
 	/* Logs setup */
 	char *path = getcwd(NULL, MAX_PATH);
@@ -89,7 +88,8 @@ int main(int argc _unused, char *argv[] _unused)
 
 	/* Main Processing */
 	struct connection conn;
-	struct ipv6_sr_hdr *srh = malloc(SRH_MAX_SIZE);
+	size_t srh_len = notification_alloc_size();
+	struct ipv6_sr_hdr *srh = malloc(srh_len);
 	if (!srh) {
 		zlog_error(zc, "Cannot allocate memory for the SRH");
 	}
@@ -100,14 +100,13 @@ int main(int argc _unused, char *argv[] _unused)
 		else if (!err)
 			continue;
 
-		if (conn_processing(&conn, &srh, SRH_MAX_SIZE))
+		if (build_srh(&conn, srh, &srh_len))
 			zlog_warn(zc, "Cannot produce an SRH for a connection");
 
-		if (notify_endhost(&conn, &srh, SRH_MAX_SIZE))
+		if (notify_endhost(&conn, srh, srh_len))
 			zlog_warn(zc, "Cannot notify the endhost");
 	}
 
-out_notifier:
 	notifier_free();
 out_nf_queue:
 	nf_queue_free();

@@ -1,4 +1,4 @@
-BINDIRS=router
+BINDIRS=router endhost
 clean_BINDIRS=$(addprefix clean_,$(BINDIRS))
 
 .PHONY: $(BINDIRS)

@@ -1,5 +1,11 @@
 #include <arpa/inet.h>
 #include <errno.h>
+#include <netinet/in.h>
+#include <netinet/ip.h>
+#include <netinet/ip6.h>
+#include <netinet/tcp.h>
+#include <netinet/udp.h>
+#include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
 #include <zlog.h>
@@ -13,14 +19,16 @@
 #include "sr-rerouted.h"
 
 
-#define SIZEOF_BUF 0xffff + MNL_SOCKET_BUFFER_SIZE
+#define SIZEOF_BUF IP_MAXPACKET + MNL_SOCKET_BUFFER_SIZE/2 // Max packet size with netlink metadata
 #define SIZEOF_ERR_BUF 256
 #define DEFAULT_QUEUE 0
 #define MAX_PATH 255
+#define NEXTHDR_ROUTING 43
 
 static struct mnl_socket *nl;
 static zlog_category_t *zc;
 static char err_buf[SIZEOF_ERR_BUF];
+static uint32_t portid;
 
 
 /* This function is inspired from https://www.netfilter.org/projects/libnetfilter_queue/doxygen/nf-queue_8c_source.html */
@@ -56,12 +64,9 @@ static void nfq_send_verdict(int queue_num, uint32_t id)
 /* This function is inspired from https://www.netfilter.org/projects/libnetfilter_queue/doxygen/nf-queue_8c_source.html */
 static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 {
-	struct nfqnl_msg_packet_hdr *ph = NULL;
 	struct nlattr *attr[NFQA_MAX+1] = {};
 	uint32_t id = 0;
-	uint32_t skbinfo;
 	struct nfgenmsg *nfg;
-	uint16_t plen;
 
 	if (nfq_nlmsg_parse(nlh, attr) < 0) {
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
@@ -76,37 +81,47 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		return MNL_CB_ERROR;
 	}
 
-	ph = mnl_attr_get_payload(attr[NFQA_PACKET_HDR]);
-	plen = mnl_attr_get_payload_len(attr[NFQA_PAYLOAD]);
-	skbinfo = attr[NFQA_SKB_INFO]
-		? ntohl(mnl_attr_get_u32(attr[NFQA_SKB_INFO]))
-		: 0;
-	/* void *payload = mnl_attr_get_payload(attr[NFQA_PAYLOAD]); */
+	void *payload = mnl_attr_get_payload(attr[NFQA_PAYLOAD]);
 	struct connection *conn = (struct connection *) data;
-	// TODO Extract the 5-tuple
 
-	if (attr[NFQA_CAP_LEN]) {
-		uint32_t orig_len = ntohl(mnl_attr_get_u32(attr[NFQA_CAP_LEN]));
-		if (orig_len != plen)
-			zlog_debug(zc, "Packet trucated");
+	/* XXX We assume that only IPv6 packets with TCP or UDP pacload are received here */
+	struct ip6_hdr *iphdr = payload;
+	char *ptr = ((char *) payload) + sizeof(*iphdr);
+	uint8_t next_header = iphdr->ip6_nxt;
+	if (next_header == NEXTHDR_ROUTING) {
+		/* Already an SRH */
+		struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) ptr;
+		// TODO Insert your Segment inside instead of skipping it ?
+		ptr = ptr + (1 + srh->hdrlen)*8;
+		next_header = srh->nexthdr;
+		return MNL_CB_ERROR;// TODO At the moment we don't reroute rerouted connections
+	}
+	conn->src = iphdr->ip6_src;
+	conn->dst = iphdr->ip6_dst;
+	struct tcphdr *tcphdr;
+	struct udphdr *udphdr;
+	switch (next_header) {
+	case IPPROTO_TCP:
+		tcphdr = (struct tcphdr *) ptr;
+		conn->src_port = tcphdr->source;
+		conn->dst_port = tcphdr->dest;
+		break;
+	case IPPROTO_UDP:
+		udphdr = (struct udphdr *) ptr;
+		conn->src_port = udphdr->source;
+		conn->dst_port = udphdr->dest;
+		break;
+	default:
+		zlog_error(zc, "Cannot identify the Next Header field !");
+		return MNL_CB_ERROR;
 	}
 
-	if (skbinfo & NFQA_SKB_GSO)
-		zlog_debug(zc, "GSO is used");
-
-	id = ntohl(ph->packet_id);
-	zlog_debug(zc, "packet received id=%u hw=0x%04x hook=%u payload len %u",
-		   id, ntohs(ph->hw_protocol), ph->hook, plen);
-
-	/*
-	 * ip/tcp checksums are not yet valid, e.g. due to GRO/GSO.
-	 * The application should behave as if the checksums are correct.
-	 *
-	 * If these packets are later forwarded/sent out, the checksums will
-	 * be corrected by kernel/hardware.
-	 */
-	if (skbinfo & NFQA_SKB_CSUMNOTREADY)
-		zlog_debug(zc, "The checksum is not ready");
+	char src_str[INET6_ADDRSTRLEN];
+	char dst_str[INET6_ADDRSTRLEN];
+	inet_ntop(AF_INET6, &conn->src, src_str, sizeof(conn->src));
+	inet_ntop(AF_INET6, &conn->dst, dst_str, sizeof(conn->dst));
+	zlog_debug(zc, "Connection src=%s dst=%s src_port=%u dst_port=%u",
+		   src_str, dst_str, conn->src_port, conn->dst_port);
 
 	nfq_send_verdict(ntohs(nfg->res_id), id);
 	return MNL_CB_OK;
@@ -117,7 +132,6 @@ int nf_queue_init()
 	struct nlmsghdr *nlh;
 	int ret = 0;
 	int err = 0;
-	uint32_t portid;
 	uint32_t queue_num = DEFAULT_QUEUE;
 	char buf[SIZEOF_BUF];
 	memset(buf, 0, SIZEOF_BUF);
@@ -191,6 +205,7 @@ int nf_queue_recv(struct connection *conn)
 	int err = 0;
 	int ret = 0;
 	fd_set read_fds;
+	char buf[SIZEOF_BUF];
 
 	FD_ZERO(&read_fds);
 	FD_SET(mnl_socket_get_fd(nl), &read_fds);
