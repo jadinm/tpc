@@ -17,6 +17,7 @@ volatile int stop;
 void sig_handler(int signal_number _unused)
 {
 	stop = 1;
+	zlog_warn(zc, "SIGINT was received");
 }
 
 int install_srh(struct connection *conn _unused,
@@ -55,7 +56,10 @@ int main (int argc _unused, char *argv[] _unused)
 	}
 
 	/* Catching signals */
-	if (signal(SIGINT, sig_handler) == SIG_ERR) {
+	struct sigaction sa;
+	sa.sa_handler = sig_handler;
+	sa.sa_flags = 0;
+	if (sigaction(SIGINT, &sa, NULL) == -1) {
 		zlog_warn(zc, "Cannot catch SIG_INT");
 	}
 

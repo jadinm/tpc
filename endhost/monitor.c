@@ -51,7 +51,8 @@ int monitor_init()
 	}
 
 	for (rp = result; rp != NULL; rp = rp->ai_next) {
-		sfd = socket(rp->ai_family, rp->ai_socktype | SOCK_CLOEXEC, rp->ai_protocol);
+		sfd = socket(rp->ai_family, rp->ai_socktype | SOCK_CLOEXEC,
+			     rp->ai_protocol);
 		if (sfd == -1)
 			continue;
 		if (bind(sfd, rp->ai_addr, rp->ai_addrlen) == 0)
