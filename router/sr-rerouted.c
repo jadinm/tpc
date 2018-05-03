@@ -25,7 +25,7 @@ static int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh,
 		     size_t *srh_len)
 {
 	memset(srh, 0, sizeof(*srh));
-	srh->hdrlen = 4;
+	srh->hdrlen = (2 * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
 	srh->type = 4;
 	srh->segments_left = 1;
 	srh->first_segment = 1;
@@ -36,29 +36,28 @@ static int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh,
 	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
 	memcpy(&srh->segments[1], &segment, sizeof(struct in6_addr));
 
-	*srh_len = sizeof(*srh) + 2 * sizeof(struct in6_addr);
+	*srh_len = sizeof(*srh) + 8 * srh->hdrlen;
+	printf("Test %zd\n", *srh_len);
 	return 0;
 }
 
-int main(int argc _unused, char *argv[] _unused)
+int main(int argc, char *argv[])
 {
 	int ret = 0;
 	int err = 0;
 
-	/* Logs setup */
-	char *path = getcwd(NULL, MAX_PATH);
-	if (!path) {
-		perror("Cannot get current working directory");
+	if (argc < 1) {
+		fprintf(stderr, "Usage: %s zlog-config\n", argv[0]);
 		ret = -1;
 		goto out;
 	}
-	int len = strlen(path);
-	snprintf(path + len, MAX_PATH - len, "/%s", "zlog.conf");
-	int rc = zlog_init(path);
+
+	/* Logs setup */
+	int rc = zlog_init(argv[1]);
 	if (rc) {
 		fprintf(stderr, "Initiating logs failed\n");
 		ret = -1;
-		goto out_path;
+		goto out;
 	}
 	zc = zlog_get_category("sr-rerouted");
 	if (!zc) {
@@ -98,10 +97,13 @@ int main(int argc _unused, char *argv[] _unused)
 	}
 	while (!stop) {
 		memset(&conn, 0, sizeof(conn));
-		if ((err = nf_queue_recv(&conn)) < 0)
-			zlog_warn(zc, "No connection was retrieved");
-		else if (!err)
+		if ((err = nf_queue_recv(&conn)) < 0) {
+			zlog_error(zc, "No connection was retrieved");
 			continue;
+		} else if (!err) {
+			zlog_warn(zc, "Queue polling was interrupted");
+			continue;
+		}
 
 		if (build_srh(&conn, srh, &srh_len))
 			zlog_warn(zc, "Cannot produce an SRH for a connection");
@@ -115,8 +117,6 @@ out_nf_queue:
 	nf_queue_free();
 out_logs:
 	zlog_fini();
-out_path:
-	free(path);
 out:
 	return ret;
 }

@@ -28,25 +28,23 @@ int install_srh(struct connection *conn _unused,
 	return 0;
 }
 
-int main (int argc _unused, char *argv[] _unused)
+int main (int argc, char *argv[])
 {
 	int ret;
 	int err = 0;
 
-	/* Logs setup */
-	char *path = getcwd(NULL, MAX_PATH);
-	if (!path) {
-		perror("Cannot get current working directory");
+	if (argc < 1) {
+		fprintf(stderr, "Usage: %s zlog-config\n", argv[0]);
 		ret = -1;
 		goto out;
 	}
-	int len = strlen(path);
-	snprintf(path + len, MAX_PATH - len, "/%s", "zlog.conf");
-	int rc = zlog_init(path);
+
+	/* Logs setup */
+	int rc = zlog_init(argv[1]);
 	if (rc) {
 		fprintf(stderr, "Initiating logs failed\n");
 		ret = -1;
-		goto out_path;
+		goto out;
 	}
 	zc = zlog_get_category("sr-endhostd");
 	if (!zc) {
@@ -88,8 +86,6 @@ int main (int argc _unused, char *argv[] _unused)
 	monitor_free();
 out_logs:
 	zlog_fini();
-out_path:
-	free(path);
 out:
 	return ret;
 }

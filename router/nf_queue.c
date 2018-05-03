@@ -67,6 +67,8 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 	struct nlattr *attr[NFQA_MAX+1] = {};
 	uint32_t id = 0;
 	struct nfgenmsg *nfg;
+	
+	zlog_debug(zc, "Starting callback function"); // TODO
 
 	if (nfq_nlmsg_parse(nlh, attr) < 0) {
 		strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
@@ -81,8 +83,14 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		return MNL_CB_ERROR;
 	}
 
+	uint16_t attr_len = mnl_attr_get_payload_len(attr[NFQA_PAYLOAD]);
+	if (attr_len <= 0) {
+		zlog_error(zc, "Empty payload");
+		return MNL_CB_ERROR;
+	}
 	void *payload = mnl_attr_get_payload(attr[NFQA_PAYLOAD]);
 	struct connection *conn = (struct connection *) data;
+	memset(conn, 0, sizeof(*conn));
 
 	/* XXX We assume that only IPv6 packets with TCP or UDP pacload are received here */
 	struct ip6_hdr *iphdr = payload;
@@ -94,6 +102,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		// TODO Insert your Segment inside instead of skipping it ?
 		ptr = ptr + (1 + srh->hdrlen)*8;
 		next_header = srh->nexthdr;
+		zlog_warn(zc, "Packets with a SRH are not rerouted again");
 		return MNL_CB_ERROR;// TODO At the moment we don't reroute rerouted connections
 	}
 	conn->src = iphdr->ip6_src;
@@ -115,13 +124,6 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		zlog_error(zc, "Cannot identify the Next Header field !");
 		return MNL_CB_ERROR;
 	}
-
-	char src_str[INET6_ADDRSTRLEN];
-	char dst_str[INET6_ADDRSTRLEN];
-	inet_ntop(AF_INET6, &conn->src, src_str, sizeof(conn->src));
-	inet_ntop(AF_INET6, &conn->dst, dst_str, sizeof(conn->dst));
-	zlog_debug(zc, "Connection src=%s dst=%s src_port=%u dst_port=%u",
-		   src_str, dst_str, conn->src_port, conn->dst_port);
 
 	nfq_send_verdict(ntohs(nfg->res_id), id);
 	return MNL_CB_OK;
@@ -229,12 +231,13 @@ int nf_queue_recv(struct connection *conn)
 			zlog_error(zc, "mnl_socket_recvfrom %s", err_buf);
 			return -1;
 		}
+		zlog_error(zc, "ret value %d", err); // TODO
 		err = mnl_cb_run(buf, err, 0, portid, nf_queue_callback, conn);
-		if (err < 0) {
+		if (err == MNL_CB_ERROR) {
 			strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
-			zlog_error(zc, "mnl_cb_run %s", err_buf);
+			zlog_error(zc, "mnl_cb_run %s - %d", err_buf, errno);
 			return -1;
-		}
+		} // TODO MNL_CB_STOP Not interpreted
 		return 1;
 	}
 	return 0;
