@@ -1,6 +1,8 @@
 #ifndef SR_NOTIFICATION_H
 #define SR_NOTIFICATION_H
 
+#include <linux/icmpv6.h>
+#include <linux/ipv6.h>
 #include <linux/seg6.h>
 
 struct conn_tlv {
@@ -15,8 +17,8 @@ struct conn_tlv {
 } __attribute__((__packed__));
 
 #define SRH_MAX_SIZE sizeof(struct ipv6_sr_hdr) + 2 * sizeof(struct in6_addr)
-#define CONN_TUPLE_SIZE sizeof(struct conn_tlv)
-#define CONN_TLV_TYPE 7
+#define PACKET_CONTEXT sizeof(struct ipv6hdr) + 8
+#define ICMPv6_MIN_SIZE sizeof(struct icmp6hdr) + PACKET_CONTEXT
 
 
 const int SR_ENDHOSTD_PORT = 5000; // XXX Might change

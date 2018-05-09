@@ -15,14 +15,16 @@
 static zlog_category_t *zc;
 volatile int stop;
 
+size_t icmp_len;
+void *icmp;
+
 
 void sig_handler(int signal_number _unused)
 {
 	stop = 1;
 }
 
-static int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh,
-		     size_t *srh_len)
+int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 {
 	memset(srh, 0, sizeof(*srh));
 	srh->hdrlen = (2 * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
@@ -35,9 +37,6 @@ static int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh,
 
 	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
 	memcpy(&srh->segments[1], &segment, sizeof(struct in6_addr));
-
-	*srh_len = sizeof(*srh) + 8 * srh->hdrlen;
-	printf("Test %zd\n", *srh_len);
 	return 0;
 }
 
@@ -68,6 +67,7 @@ int main(int argc, char *argv[])
 
 	/* Catching signals */
 	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = sig_handler;
 	sa.sa_flags = 0;
 	if (sigaction(SIGINT, &sa, NULL) == -1) {
@@ -90,10 +90,10 @@ int main(int argc, char *argv[])
 
 	/* Main Processing */
 	struct connection conn;
-	size_t srh_len = notification_alloc_size();
-	struct ipv6_sr_hdr *srh = malloc(srh_len);
-	if (!srh) {
-		zlog_error(zc, "Cannot allocate memory for the SRH");
+	icmp_len = notification_alloc_size();
+	icmp = malloc(icmp_len);
+	if (!icmp) {
+		zlog_error(zc, "Cannot allocate memory for the ICMP");
 	}
 	while (!stop) {
 		memset(&conn, 0, sizeof(conn));
@@ -104,14 +104,9 @@ int main(int argc, char *argv[])
 			zlog_warn(zc, "Queue polling was interrupted");
 			continue;
 		}
-
-		if (build_srh(&conn, srh, &srh_len))
-			zlog_warn(zc, "Cannot produce an SRH for a connection");
-
-		if (notify_endhost(&conn, srh, srh_len))
-			zlog_warn(zc, "Cannot notify the endhost");
 	}
 
+	free(icmp);
 	notifier_free();
 out_nf_queue:
 	nf_queue_free();

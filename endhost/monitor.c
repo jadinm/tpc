@@ -19,7 +19,7 @@ static int sfd = -1;
 static zlog_category_t *zc;
 static char err_buf[SIZEOF_ERR_BUF];
 
-static char buf[SRH_MAX_SIZE + CONN_TUPLE_SIZE];
+static char buf[SRH_MAX_SIZE + ICMPv6_MIN_SIZE];
 
 
 int monitor_init()
@@ -53,7 +53,7 @@ int monitor_init()
 
 int monitor(struct connection *conn, struct ipv6_sr_hdr **srh, size_t *srh_len)
 {
-	ssize_t err = recvfrom(sfd, buf, SRH_MAX_SIZE + CONN_TUPLE_SIZE,
+	ssize_t err = recvfrom(sfd, buf, SRH_MAX_SIZE + ICMPv6_MIN_SIZE,
 			       0, NULL, NULL);
 	if (err < 0) {
 		zlog_warn(zc, "Could not receive the notification");
@@ -71,10 +71,6 @@ int monitor(struct connection *conn, struct ipv6_sr_hdr **srh, size_t *srh_len)
 	}
 
 	struct conn_tlv *tlv = (struct conn_tlv *) (buf + *srh_len);
-	if (tlv->type != CONN_TLV_TYPE) {
-		zlog_warn(zc, "Unknown type of TLV");
-		return -1;
-	}
 	if (tlv->length != sizeof(*tlv)) {
 		zlog_warn(zc, "Malformed notification");
 		return -1;

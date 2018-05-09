@@ -12,10 +12,12 @@ struct connection {
 	__u16 dst_port;
 };
 
+int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh);
+
 int notifier_init();
 size_t notification_alloc_size();
-int notify_endhost(struct connection *conn, struct ipv6_sr_hdr *srh,
-		   size_t srh_len);
+void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn);
+int notify_endhost(struct connection *conn, void *icmp, size_t icmp_len);
 int notifier_free();
 
 int nf_queue_init();

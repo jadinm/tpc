@@ -92,7 +92,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 	struct connection *conn = (struct connection *) data;
 	memset(conn, 0, sizeof(*conn));
 
-	/* XXX We assume that only IPv6 packets with TCP or UDP pacload are received here */
+	/* XXX We assume that only IPv6 packets with TCP or UDP payload are received here */
 	struct ip6_hdr *iphdr = payload;
 	char *ptr = ((char *) payload) + sizeof(*iphdr);
 	uint8_t next_header = iphdr->ip6_nxt;
@@ -122,6 +122,20 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		break;
 	default:
 		zlog_error(zc, "Cannot identify the Next Header field !");
+		return MNL_CB_ERROR;
+	}
+
+	/* Produce the ICMP */
+	size_t icmp_len = 0;
+	void *icmp = create_icmp(payload, &icmp_len, conn);
+	if (!icmp) {
+		zlog_warn(zc, "Cannot produce an ICMP for a connection");
+		return MNL_CB_ERROR;
+	}
+
+	/* Send it to the host */
+	if (notify_endhost(conn, icmp, icmp_len)) {
+		zlog_warn(zc, "Cannot notify the endhost");
 		return MNL_CB_ERROR;
 	}
 
