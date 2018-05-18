@@ -29,7 +29,7 @@ package { 'git': }
 exec { 'srnmininet-download':
   require => Package['git'],
   creates => $srnmininet_path,
-  command => "git clone ${srnmininet_repo} ${srnmininet_path}",
+  command => "git clone ${srnmininet_repo} ${srnmininet_path} && chown -R vagrant:vagrant ${srnmininet_path}",
 }
 exec { 'srnmininet-provision':
   require => [ Exec['srnmininet-download'] ],
