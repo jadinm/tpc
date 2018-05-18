@@ -33,7 +33,7 @@ int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 	srh->first_segment = 1;
 
 	struct in6_addr segment;
-	inet_pton(AF_INET6, "fc00::2", &segment); // TODO Do not hardcode segment
+	inet_pton(AF_INET6, "::1", &segment); // TODO Do not hardcode segment
 
 	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
 	memcpy(&srh->segments[1], &segment, sizeof(struct in6_addr));
