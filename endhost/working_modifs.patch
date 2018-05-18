@@ -1,0 +1,179 @@
+diff --git a/include/uapi/linux/icmpv6.h b/include/uapi/linux/icmpv6.h
+index caf8dc0..ced9855 100644
+--- a/include/uapi/linux/icmpv6.h
++++ b/include/uapi/linux/icmpv6.h
+@@ -89,6 +89,7 @@ struct icmp6hdr {
+ #define ICMPV6_PKT_TOOBIG		2
+ #define ICMPV6_TIME_EXCEED		3
+ #define ICMPV6_PARAMPROB		4
++#define ICMPV6_CHANGE_PATH		5
+ 
+ #define ICMPV6_INFOMSG_MASK		0x80
+ 
+@@ -133,6 +134,11 @@ struct icmp6hdr {
+ #define ICMPV6_UNK_OPTION		2
+ 
+ /*
++ *	Codes for Change Path
++ */
++#define ICMPV6_SRH_OFFER		0
++
++/*
+  *	constants for (set|get)sockopt
+  */
+ 
+diff --git a/net/ipv6/icmp.c b/net/ipv6/icmp.c
+index d8c4b63..d45a55a 100644
+--- a/net/ipv6/icmp.c
++++ b/net/ipv6/icmp.c
+@@ -760,6 +760,8 @@ void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
+ 	if (!pskb_may_pull(skb, sizeof(struct ipv6hdr)))
+ 		goto out;
+ 
++	printk("%s: ICMPv6 checksum success for type %d\n", __func__, type);
++
+ 	nexthdr = ((struct ipv6hdr *)skb->data)->nexthdr;
+ 	if (ipv6_ext_hdr(nexthdr)) {
+ 		/* now skip over extension headers */
+@@ -782,6 +784,8 @@ void icmpv6_notify(struct sk_buff *skb, u8 type, u8 code, __be32 info)
+ 	   --ANK (980726)
+ 	 */
+ 
++	printk("%s: ICMPv6 inner offset found at %d\n", __func__, inner_offset);
++
+ 	ipprot = rcu_dereference(inet6_protos[nexthdr]);
+ 	if (ipprot && ipprot->err_handler)
+ 		ipprot->err_handler(skb, NULL, type, code, inner_offset, info);
+@@ -846,6 +850,8 @@ static int icmpv6_rcv(struct sk_buff *skb)
+ 
+ 	ICMP6MSGIN_INC_STATS(dev_net(dev), idev, type);
+ 
++	printk("%s: ICMPv6 checksum success for type %d", __func__, type);
++
+ 	switch (type) {
+ 	case ICMPV6_ECHO_REQUEST:
+ 		icmpv6_echo_reply(skb);
+@@ -870,6 +876,7 @@ static int icmpv6_rcv(struct sk_buff *skb)
+ 	case ICMPV6_DEST_UNREACH:
+ 	case ICMPV6_TIME_EXCEED:
+ 	case ICMPV6_PARAMPROB:
++	case ICMPV6_CHANGE_PATH:
+ 		icmpv6_notify(skb, type, hdr->icmp6_code, hdr->icmp6_mtu);
+ 		break;
+ 
+diff --git a/net/ipv6/tcp_ipv6.c b/net/ipv6/tcp_ipv6.c
+index 6d664d8..8472e5d 100644
+--- a/net/ipv6/tcp_ipv6.c
++++ b/net/ipv6/tcp_ipv6.c
+@@ -62,6 +62,7 @@
+ #include <net/inet_common.h>
+ #include <net/secure_seq.h>
+ #include <net/busy_poll.h>
++#include <net/seg6.h>
+ 
+ #include <linux/proc_fs.h>
+ #include <linux/seq_file.h>
+@@ -374,6 +375,10 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
+ 		return;
+ 	}
+ 
++	printk("%s: Found an established TCP socket matching"
++	       "the ICMP type %d - code %d - src_port %u - dst_port %u\n",
++	       __func__, type, code, ntohs(th->source), ntohs(th->dest));
++
+ 	if (sk->sk_state == TCP_TIME_WAIT) {
+ 		inet_twsk_put(inet_twsk(sk));
+ 		return;
+@@ -437,6 +442,64 @@ static void tcp_v6_err(struct sk_buff *skb, struct inet6_skb_parm *opt,
+ 		goto out;
+ 	}
+ 
++	if (type == ICMPV6_CHANGE_PATH) {
++		struct ipv6_txoptions *opt;
++		struct ipv6_opt_hdr *optval;
++		unsigned int optlen;
++		if (code != ICMPV6_SRH_OFFER)
++			goto out; /* Ignore unknown codes */
++
++		/* Set the SRH in the socket */
++
++		if (!pskb_may_pull(skb, offset + 8 +
++				   sizeof(struct ipv6_opt_hdr)))
++			goto out;
++
++		/* Additional checks for the length */
++		optval = (struct ipv6_opt_hdr *) (skb->data+offset+8);
++		optlen = (optval->hdrlen + 1) << 3;
++
++		if (!pskb_may_pull(skb, offset + optlen))
++			goto out;
++
++		opt = rcu_dereference(np->opt); // TODO insufficient protection ? Ask Fab
++		opt = ipv6_renew_options_kern(sk, opt, IPV6_RTHDR, optval,
++					      optlen);
++		if (IS_ERR(opt)) {
++			long retv = PTR_ERR(opt);
++			printk("%s: Cannot renew options - error %ld\n",
++			       __func__, retv);
++			goto out;
++		}
++
++		if (opt && opt->srcrt) {
++			struct ipv6_rt_hdr *rthdr = opt->srcrt;
++			switch (rthdr->type) {
++			case IPV6_SRCRT_TYPE_4:
++			{
++				struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *)
++							  opt->srcrt;
++
++				if (!seg6_validate_srh(srh, optlen)) {
++					printk("%s: Invalid IPv6"
++					       "SRH received\n", __func__);
++					goto sticky_done;
++				}
++				printk("%s: SRH validated !\n", __func__); // TODO Remove
++				break;
++			}
++			default:
++				goto sticky_done;
++			}
++		}
++
++		opt = ipv6_update_options(sk, opt);
++sticky_done:
++		if (opt) {
++			atomic_sub(opt->tot_len, &sk->sk_omem_alloc);
++			txopt_put(opt);
++		}
++	}
+ 
+ 	/* Might be for an request_sock */
+ 	switch (sk->sk_state) {
+diff --git a/scripts/package/Makefile b/scripts/package/Makefile
+index 73503eb..147750a 100644
+--- a/scripts/package/Makefile
++++ b/scripts/package/Makefile
+@@ -68,7 +68,7 @@ binrpm-pkg: FORCE
+ clean-files += $(objtree)/*.spec
+ 
+ deb-pkg: FORCE
+-	$(MAKE) clean
++	#$(MAKE) clean # TODO remove
+ 	$(CONFIG_SHELL) $(srctree)/scripts/package/mkdebian
+ 	$(call cmd,src_tar,$(KDEB_SOURCENAME))
+ 	origversion=$$(dpkg-parsechangelog -SVersion |sed 's/-[^-]*$$//');\
+diff --git a/scripts/package/mkdebian b/scripts/package/mkdebian
+index 6adb3a1..05e41db 100755
+--- a/scripts/package/mkdebian
++++ b/scripts/package/mkdebian
+@@ -180,8 +180,8 @@ binary-arch:
+ 	\$(MAKE) KERNELRELEASE=${version} ARCH=${ARCH} KBUILD_SRC= intdeb-pkg
+ 
+ clean:
+-	rm -rf debian/*tmp debian/files
+-	\$(MAKE) clean
++	rm -rf debian/*tmp debian/files # TODO Remove
++	#\$(MAKE) clean # TODO Remove
+ 
+ binary: binary-arch
+ EOF
