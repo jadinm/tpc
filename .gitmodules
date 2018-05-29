@@ -1,3 +1,4 @@
 [submodule "endhost/kernel"]
 	path = endhost/kernel
-	url = git@bitbucket.org:jadinm/sr-icmp-linux.git
+	url = git@github.com:jadinm/sr-icmp-kernel.git
+	branch = v4.16-sr-icmp
