@@ -149,31 +149,3 @@ index 6d664d8..8472e5d 100644
  
  	/* Might be for an request_sock */
  	switch (sk->sk_state) {
-diff --git a/scripts/package/Makefile b/scripts/package/Makefile
-index 73503eb..147750a 100644
---- a/scripts/package/Makefile
-+++ b/scripts/package/Makefile
-@@ -68,7 +68,7 @@ binrpm-pkg: FORCE
- clean-files += $(objtree)/*.spec
- 
- deb-pkg: FORCE
--	$(MAKE) clean
-+	#$(MAKE) clean # TODO remove
- 	$(CONFIG_SHELL) $(srctree)/scripts/package/mkdebian
- 	$(call cmd,src_tar,$(KDEB_SOURCENAME))
- 	origversion=$$(dpkg-parsechangelog -SVersion |sed 's/-[^-]*$$//');\
-diff --git a/scripts/package/mkdebian b/scripts/package/mkdebian
-index 6adb3a1..05e41db 100755
---- a/scripts/package/mkdebian
-+++ b/scripts/package/mkdebian
-@@ -180,8 +180,8 @@ binary-arch:
- 	\$(MAKE) KERNELRELEASE=${version} ARCH=${ARCH} KBUILD_SRC= intdeb-pkg
- 
- clean:
--	rm -rf debian/*tmp debian/files
--	\$(MAKE) clean
-+	rm -rf debian/*tmp debian/files # TODO Remove
-+	#\$(MAKE) clean # TODO Remove
- 
- binary: binary-arch
- EOF
