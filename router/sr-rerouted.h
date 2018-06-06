@@ -12,6 +12,12 @@ struct connection {
 	__u16 dst_port;
 };
 
+struct config {
+	const char *zlog_conf_file;
+};
+
+extern struct config cfg;
+
 int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh);
 
 int notifier_init();
