@@ -7,7 +7,7 @@ EXEC=sr-rerouted
 
 all:
 	$(MAKE) $(EXEC)
-	ln -fs $(EXEC) ../bin/$(EXEC)
+	ln -fs ../bin/$(EXEC) $(EXEC)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
