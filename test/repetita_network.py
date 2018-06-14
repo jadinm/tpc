@@ -1,7 +1,7 @@
 
+import os
+
 from ipmininet.iptopo import IPTopo
-from ipmininet.iptopo import Overlay
-from networkx import topological_sort, DiGraph
 from sr6mininet.sr6router import SR6Config
 
 from config import SRRerouted, IPerf
@@ -15,7 +15,7 @@ class RepetitaEdge:
         self.dest = int(dest)
 
         self.weight_src = int(weight)
-        self.bw_src = int(bw)/10**6  # MB
+        self.bw_src = min(int(bw)/10**6, 10)  # MB
         self.delay_src = int(delay)
 
         self.weight_dst = -1
@@ -48,8 +48,8 @@ class RepetitaEdge:
         if not self.complete_edge():
             raise Exception("Only partial information: " + str(self))
         return topo.addLink(node_index[self.src], node_index[self.dest],
-                            params1={"bw": self.bw_src, "delay": self.delay_src, "igp_weight": self.weight_src},
-                            params2={"bw": self.bw_dst, "delay": self.delay_dst, "igp_weight": self.weight_dst})
+                            params1={"bw": self.bw_src, "delay": str(self.delay_src) + "ms", "igp_weight": self.weight_src},
+                            params2={"bw": self.bw_dst, "delay": str(self.delay_dst) + "ms", "igp_weight": self.weight_dst})
 
     def __str__(self):
         return "<Edge %s (%s to %s) params_src (%s %s %s) params_dest (%s %s %s)>" %\
@@ -58,39 +58,12 @@ class RepetitaEdge:
                 self.weight_dst, self.bw_dst, self.delay_dst)
 
 
-class IPerfOverlay(Overlay):
-
-    def __init__(self, client, server, server_port):  # TODO Add marker for access router
-
-        super(IPerfOverlay, self).__init__(nodes=[client, server])
-        self.client = client
-        self.server = server
-        self.server_port = server_port
-
-    # TODO This is not working !!!!!
-    def append_to_daemon_list(self, topo, host, params):
-        attrs = topo.nodeInfo(host)
-        config = attrs.get("config", None)
-        if not config:
-            config = (SR6Config, {})
-        if 'additional_daemons' not in config[1]:
-            config[1]['additional_daemons'] = []
-        daemon_list = config[1]['additional_daemons']
-
-        daemon_list.append(params)
-        self.set_node_property(host, "config", config)
-
-    def apply(self, topo):
-        self.append_to_daemon_list(topo, self.client, (IPerf, {"server_port": self.server_port, "server": self.server}))
-        self.append_to_daemon_list(topo, self.server, (IPerf, {"server_port": self.server_port, "server": None}))
-        super(IPerfOverlay, self).apply(topo)
-
-
 class RepetitaNet(IPTopo):
 
     def __init__(self, *args, **kwargs):
         self.icmp_rerouting = True
         self.routers_order = None
+        self.repetita_graph = None
         super(RepetitaNet, self).__init__(*args, **kwargs)
 
     def build(self, repetita_graph, icmp_rerouting=True, *args, **kwargs):
@@ -101,6 +74,7 @@ class RepetitaNet(IPTopo):
         self.icmp_rerouting = icmp_rerouting
         node_index = []
         edge_dict = {}
+        self.repetita_graph = repetita_graph
         with open(repetita_graph) as fileobj:
             nbr_nodes = int(fileobj.readline().split(" ")[1]) # NODES XXX
             fileobj.readline()  # label x y
@@ -122,18 +96,6 @@ class RepetitaNet(IPTopo):
             for edge in edge_dict.keys():
                 edge.add_to_topo(self, node_index)
 
-        # TODO Pair nodes linked to the next one
-        dependency_graph = DiGraph()
-        start_port = 5000
-        for i in range(0, nbr_nodes, 2):
-            dependency_graph.add_node(node_index[i])
-            dependency_graph.add_node(node_index[i+1])
-            if i + 1 < nbr_nodes:
-                self.addOverlay(IPerfOverlay(client=node_index[i], server=node_index[i+1], server_port=start_port+i))
-                dependency_graph.add_edge(node_index[i+1], node_index[i])  # Server must be started before client
-
-        self.routers_order = list(topological_sort(dependency_graph))
-
         super(RepetitaNet, self).build(*args, **kwargs)
 
     def addRouter(self, name, config=None, **kwargs):
@@ -144,5 +106,9 @@ class RepetitaNet(IPTopo):
         daemon_list = config[1]['additional_daemons']
         if self.icmp_rerouting:
             daemon_list.append(SRRerouted)
+        daemon_list.append(IPerf)
 
         return super(RepetitaNet, self).addRouter(name, config=config, **kwargs)
+
+    def __str__(self):
+        return "RepetitaNetwork %s" % os.path.basename(self.repetita_graph)

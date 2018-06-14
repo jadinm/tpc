@@ -1,5 +1,4 @@
 
-import heapq
 import os
 from mininet.log import lg
 
@@ -134,8 +133,10 @@ class IPerf(Daemon):
     def build(self):
         cfg = super(IPerf, self).build()
 
-        self.options.mode = "-s" if not self.options.server else "-c"
-        self.options.server = "" if not self.options.server else self.get_addr(self._node, self.options.server)
+        if not self.options.logobj:
+            self.options.logobj = open(self.options.logfile, "a+")
+
+        return cfg
 
     def set_defaults(self, defaults):
         """:param duration: Length of the iperf3
@@ -146,38 +147,13 @@ class IPerf(Daemon):
 
     @property
     def startup_line(self):
-        return 'iperf3 -6 {mode} {server}'.format(duration=self.options.duration,
-                                                  mode=self.options.mode,
-                                                  server=self.options.server)
+        return 'iperf3 -s  -V -J'
 
     @property
     def dry_run(self):
         return 'true'
 
-    @staticmethod
-    def get_addr(base, node_name):
-        if base.name == node_name:
-            return (base.intf("lo").ip6 or "::1")
-
-        visited = set()
-        to_visit = [(1, intf) for intf in realIntfList(base)]
-        heapq.heapify(to_visit)
-
-        # Explore all interfaces in base ASN recursively, until we find one
-        # connected to the SRN controller.
-        while to_visit:
-            cost, intf = heapq.heappop(to_visit)
-            if intf in visited:
-                continue
-            visited.add(intf)
-            for peer_intf in intf.broadcast_domain.routers:
-                if peer_intf.node.name == node_name:
-                    ip6s = peer_intf.node.intf("lo").ip6s(exclude_lls=True)
-                    for ip6 in ip6s:
-                        if ip6.ip.compressed != "::1":
-                            return ip6.ip
-                    return peer_intf.ip6
-                elif peer_intf.node.asn == base.asn or not peer_intf.node.asn:
-                    for x in realIntfList(peer_intf.node):
-                        heapq.heappush(to_visit, (cost + 1, x))
-        return None
+    def cleanup(self):
+        if self.options.logobj:
+            self.options.logobj.close()
+        super(IPerf, self).cleanup()

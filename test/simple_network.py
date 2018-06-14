@@ -2,7 +2,7 @@
 from ipmininet.iptopo import IPTopo
 from sr6mininet.sr6router import SR6Config
 
-from config import SRRerouted
+from config import SRRerouted, IPerf
 
 
 class SimpleNet(IPTopo):
@@ -45,5 +45,9 @@ class SimpleNet(IPTopo):
             config[1]['additional_daemons'] = []
         daemon_list = config[1]['additional_daemons']
         daemon_list.append(SRRerouted)
+        daemon_list.append(IPerf)
 
         return super(SimpleNet, self).addRouter(name, config=config, **kwargs)
+
+    def __str__(self):
+        return "SimpleNetwork"
