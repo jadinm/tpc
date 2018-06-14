@@ -25,10 +25,12 @@ exec { 'apt-update':
 # Miscellaneous
 package { 'git': }
 package { 'python-pip': }
-package { 'networkx':
+package { 'iperf3': }
+package { 'matplotlib':
   require => Package['python-pip'],
-  provider => 'pip',
+  provider => 'pip'
 }
+package { 'python-tk': }
 
 # SRN and SRNMininet
 exec { 'srnmininet-download':
