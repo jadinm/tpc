@@ -24,6 +24,11 @@ exec { 'apt-update':
 
 # Miscellaneous
 package { 'git': }
+package { 'python-pip': }
+package { 'networkx':
+  require => Package['python-pip'],
+  provider => 'pip',
+}
 
 # SRN and SRNMininet
 exec { 'srnmininet-download':

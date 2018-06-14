@@ -1,4 +1,5 @@
 
+import heapq
 import os
 from mininet.log import lg
 
@@ -54,7 +55,7 @@ class SRRerouted(Daemon):
         for itf in realIntfList(self._node):
             cmd = 'tc qdisc del dev {itf} root handle 4:'.format(itf=itf.name)
             self._node.pexec(cmd)
-        self._node.pexec('ip6tables -D INPUT -m ecn --ecn-ip-ect 3 -j NFQUEUE --queue-num 0 -j DROP')
+        self._node.pexec('ip6tables -D INPUT -m ecn --ecn-ip-ect 3 -j NFQUEUE --queue-num 0')
 
         try:
             with open(self._file('pid'), 'r') as f:
@@ -99,6 +100,7 @@ class SRRerouted(Daemon):
 
         # ECN marking through red
         for itf in realIntfList(self._node):
+            print("Test - " + self._node.cmd('tc qdisc show dev {itf}'.format(itf=itf.name)))  # TODO Remove !! tc must be parent or chile of the other
             cmd = 'tc qdisc add dev {itf} root handle 4: red limit {limit} ' \
                   'avpkt {avpkt} probability {probability} min {min} max {max} ecn'\
                 .format(itf=itf.name, limit=cfg[self.NAME].red_limit, avpkt=cfg[self.NAME].red_avpkt,
@@ -116,3 +118,66 @@ class SRRerouted(Daemon):
         super(SRRerouted, self).write(cfg[0])
         with open(self.zlog_cfg_filename, 'w') as f:
             f.write(cfg[1])
+
+
+class IPerf(Daemon):
+    """Class to laucnh iperf in daemon mode"""
+
+    NAME = "iperf"
+
+    def render(self, cfg, **kwargs):
+        return None
+
+    def write(self, cfg):
+        return None
+
+    def build(self):
+        cfg = super(IPerf, self).build()
+
+        self.options.mode = "-s" if not self.options.server else "-c"
+        self.options.server = "" if not self.options.server else self.get_addr(self._node, self.options.server)
+
+    def set_defaults(self, defaults):
+        """:param duration: Length of the iperf3
+           :param server: Name of the server node (or None if this is the server-side iperf)"""
+        defaults.duration = 300
+        defaults.server = None
+        super(IPerf, self).set_defaults(defaults)
+
+    @property
+    def startup_line(self):
+        return 'iperf3 -6 {mode} {server}'.format(duration=self.options.duration,
+                                                  mode=self.options.mode,
+                                                  server=self.options.server)
+
+    @property
+    def dry_run(self):
+        return 'true'
+
+    @staticmethod
+    def get_addr(base, node_name):
+        if base.name == node_name:
+            return (base.intf("lo").ip6 or "::1")
+
+        visited = set()
+        to_visit = [(1, intf) for intf in realIntfList(base)]
+        heapq.heapify(to_visit)
+
+        # Explore all interfaces in base ASN recursively, until we find one
+        # connected to the SRN controller.
+        while to_visit:
+            cost, intf = heapq.heappop(to_visit)
+            if intf in visited:
+                continue
+            visited.add(intf)
+            for peer_intf in intf.broadcast_domain.routers:
+                if peer_intf.node.name == node_name:
+                    ip6s = peer_intf.node.intf("lo").ip6s(exclude_lls=True)
+                    for ip6 in ip6s:
+                        if ip6.ip.compressed != "::1":
+                            return ip6.ip
+                    return peer_intf.ip6
+                elif peer_intf.node.asn == base.asn or not peer_intf.node.asn:
+                    for x in realIntfList(peer_intf.node):
+                        heapq.heappush(to_visit, (cost + 1, x))
+        return None
