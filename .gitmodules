@@ -2,3 +2,7 @@
 	path = endhost/kernel
 	url = git@github.com:jadinm/sr-icmp-kernel.git
 	branch = v4.16-sr-icmp
+[submodule "srn-dev"]
+	path = srn-dev
+	url = git@bitbucket.org:jadinm/srn-dev.git
+	branch = dev
