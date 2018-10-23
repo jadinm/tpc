@@ -7,7 +7,7 @@ EXEC=sr-endhostd
 
 all:
 	$(MAKE) $(EXEC)
-	ln -fs ../bin/$(EXEC) $(EXEC)
+	ln -fs $(CURDIR)/$(EXEC) ../bin/$(EXEC)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c -o $@ $<
