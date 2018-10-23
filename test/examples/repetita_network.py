@@ -1,10 +1,10 @@
 
 import os
 
-from ipmininet.iptopo import IPTopo
 from sr6mininet.sr6router import SR6Config
 
-from config import SRRerouted, IPerf
+from reroutemininet import SRRerouted, IPerf
+from reroutemininet.topo import IPTCTopo
 
 
 class RepetitaEdge:
@@ -15,7 +15,7 @@ class RepetitaEdge:
         self.dest = int(dest)
 
         self.weight_src = int(weight)
-        self.bw_src = min(int(bw)/10**6, 10)  # MB
+        self.bw_src = int(min(int(bw)/10**6, 10))  # MB
         self.delay_src = int(delay)
 
         self.weight_dst = -1
@@ -44,12 +44,21 @@ class RepetitaEdge:
         return self.weight_src > 0 and self.bw_src > 0 and self.delay_src > 0 and self.weight_dst > 0 and \
                self.bw_dst > 0 and self.delay_dst > 0
 
-    def add_to_topo(self, topo, node_index):
+    def add_to_topo(self, topo, node_index, enable_ecn=True):
         if not self.complete_edge():
             raise Exception("Only partial information: " + str(self))
         return topo.addLink(node_index[self.src], node_index[self.dest],
-                            params1={"bw": self.bw_src, "delay": str(self.delay_src) + "ms", "igp_weight": self.weight_src},
-                            params2={"bw": self.bw_dst, "delay": str(self.delay_dst) + "ms", "igp_weight": self.weight_dst})
+                            params1={"bw": self.bw_src,
+                                     "delay": str(self.delay_src) + "ms",
+                                     "igp_weight": self.weight_src,
+                                     "enable_ecn": enable_ecn},
+                            params2={"bw": self.bw_dst,
+                                     "delay": str(self.delay_dst) + "ms",
+                                     "igp_weight": self.weight_dst,
+                                     "enable_ecn": enable_ecn})
+
+        # TODO Remove
+        # return examples.addLink(node_index[self.src], node_index[self.dest])
 
     def __str__(self):
         return "<Edge %s (%s to %s) params_src (%s %s %s) params_dest (%s %s %s)>" %\
@@ -58,7 +67,7 @@ class RepetitaEdge:
                 self.weight_dst, self.bw_dst, self.delay_dst)
 
 
-class RepetitaNet(IPTopo):
+class RepetitaNet(IPTCTopo):
 
     def __init__(self, *args, **kwargs):
         self.icmp_rerouting = True
@@ -94,7 +103,7 @@ class RepetitaNet(IPTopo):
                     edge_dict[edge] = edge
 
             for edge in edge_dict.keys():
-                edge.add_to_topo(self, node_index)
+                edge.add_to_topo(self, node_index, enable_ecn=kwargs.get("enable_ecn", True))
 
         super(RepetitaNet, self).build(*args, **kwargs)
 
