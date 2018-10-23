@@ -28,9 +28,13 @@ package { 'python-pip': }
 package { 'iperf3': }
 package { 'matplotlib':
   require => Package['python-pip'],
-  provider => 'pip'
+  provider => 'pip',
 }
 package { 'python-tk': }
+package { 'scapy':
+  require  => Package['python-pip'],
+  provider => 'pip',
+}
 
 # SRN and SRNMininet
 exec { 'srnmininet-download':
