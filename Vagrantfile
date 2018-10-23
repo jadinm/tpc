@@ -11,9 +11,9 @@ Vagrant.configure("2") do |config|
 	config.vm.box = "segment-routing/ubuntu-16.04"
 	config.ssh.forward_x11 = true
 
-	config.vm.network "private_network", ip: "192.168.121.43"
+	config.vm.network :private_network, ip: "192.167.0.140"
 
-	config.vm.synced_folder ".", "/home/vagrant/SR-ICMP-router", rsync__exclude: ["kernel/", "sr-rerouted", "sr-endhostd", "*.o", "linux-*"]
+	config.vm.synced_folder ".", "/home/vagrant/SR-ICMP-router"
 
 	config.vm.provision "shell", inline: <<-SHELL
 		if ! which puppet; then
@@ -26,17 +26,11 @@ Vagrant.configure("2") do |config|
 		puppet.options = "--verbose --debug --parser future"
 	end
 
-	config.ssh.forward_x11 = true
-
 	config.vm.provider "virtualbox" do |v|
-		v.memory = 4096
-		v.cpus = 4
 		v.name = "srv6-rerouting"
-	end
-	config.vm.provider "libvirt" do |libvirt|
-		libvirt.memory = 4096
-		libvirt.cpus = 4
-		libvirt.qemuargs :value => '-s' # XXX You have to turn off KASLR if necessary by adding “nokaslr” to the kernel command line to use gdb to debug the linux kernel
+		v.customize ["modifyvm", :id, "--cpuexecutioncap", "50"]
+		v.customize ["modifyvm", :id, "--cpus", "2"]
+		v.customize ["modifyvm", :id, "--memory", "2048"]
 	end
 end
 
