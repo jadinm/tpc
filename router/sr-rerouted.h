@@ -2,6 +2,9 @@
 #define SR_REROUTED_H
 
 #include <linux/seg6.h>
+#include <srdb.h>
+#include <hashmap.h>
+#include <lpm.h>
 
 #define _unused __attribute__((unused))
 
@@ -12,8 +15,30 @@ struct connection {
 	__u16 dst_port;
 };
 
+struct prefix {
+	struct in6_addr addr;
+	int len;
+};
+
 struct config {
-	const char *zlog_conf_file;
+	struct ovsdb_config ovsdb_conf;
+	char *zlog_conf_file;
+
+	struct srdb *srdb;
+	struct hashmap *path_cache;
+	struct lpm_tree *prefixes; // Maps an host address to its access router address
+};
+
+struct path {
+	struct in6_addr *segments;
+	size_t nb_segments;
+};
+
+struct flow {
+	struct in6_addr *addrs;
+	struct path *paths;
+	size_t nb_paths;
+	struct prefix *prefixes;
 };
 
 extern struct config cfg;

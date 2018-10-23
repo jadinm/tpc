@@ -46,7 +46,7 @@ int notifier_init()
 
 size_t notification_alloc_size()
 {
-	return ICMPv6_MIN_SIZE + SRH_MAX_SIZE;
+	return ICMPv6_MIN_SIZE + 2 * SRH_MAX_SIZE;
 }
 
 void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
@@ -58,7 +58,7 @@ void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
 	/* ICMP header */
 	icmp_hdr->icmp6_type = ICMPV6_CHANGE_PATH;
 	icmp_hdr->icmp6_code = ICMPV6_SRH_OFFER;
-	void *ptr = ((char *) icmp) + sizeof(icmp_hdr);
+	void *ptr = ((char *) icmp) + 4;
 
 	/* Packet causing the ICMP - TODO Asuming no IPv6 Extension Header for the moment */
 	memcpy(ptr, packet, PACKET_CONTEXT);
@@ -68,10 +68,14 @@ void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
 	printf("Third word of copied packet in icmp %x\n", ((uint32_t *) icmp_hdr)[2]);
 
 	/* SRH */
-	struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) (ptr + PACKET_CONTEXT);
-	if (build_srh(conn, srh)) {
+	struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) (((char *) ptr) + PACKET_CONTEXT);
+	zlog_debug(zc, "pointer %p - after increment %p - size %zd\n", // TODO Remove
+		   ptr, srh, PACKET_CONTEXT);  // TODO remove
+	int err = build_srh(conn, srh);
+	if (err < 0) {
 		zlog_warn(zc, "Cannot produce an SRH for a connection");
 	}
+	*icmp_len = 4 + PACKET_CONTEXT + err;
 
 	return icmp;
 }

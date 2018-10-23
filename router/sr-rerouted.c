@@ -21,7 +21,6 @@ size_t icmp_len;
 void *icmp;
 
 struct config cfg;
-static json_t *root_cfg;
 
 void sig_handler(int signal_number _unused)
 {
@@ -35,51 +34,412 @@ static void help(char *argv[])
 	printf("-h to print this message\n");
 }
 
+/* The hash is the same whatever the order of addresses in the pair */
+static unsigned int hash_addr_pair(void *key)
+{
+	struct in6_addr *in6 = key;
+	return hashint(hashint(in6->s6_addr32[0]) ^ hashint(in6->s6_addr32[1]) ^
+		       hashint(in6->s6_addr32[2]) ^ hashint(in6->s6_addr32[3]) ^
+		       hashint(in6[1].s6_addr32[0]) ^ hashint(in6[1].s6_addr32[1]) ^
+		       hashint(in6[1].s6_addr32[2]) ^ hashint(in6[1].s6_addr32[3]));
+}
+
+static int compare_addr_pair(void *k1, void *k2)
+{
+	struct in6_addr *k1_in6 = k1;
+	struct in6_addr *k2_in6 = k2;
+
+	return !((!compare_in6(k1, k2)
+		  && !compare_in6(&k1_in6[1], &k2_in6[1]))
+		 || (!compare_in6(k1, &k2_in6[1])
+		     && !compare_in6(&k1_in6[1], k2)));
+}
+
 static void clean_config()
 {
-	if (root_cfg) {
-		json_decref(root_cfg);
-		root_cfg = NULL;
+	if (cfg.zlog_conf_file) {
+		free(cfg.zlog_conf_file);
+		cfg.zlog_conf_file = NULL;
 	}
+}
+
+static void default_config()
+{
+	cfg.zlog_conf_file = NULL;
+	strncpy(cfg.ovsdb_conf.ovsdb_client, "ovsdb-client", SLEN + 1);
+	strncpy(cfg.ovsdb_conf.ovsdb_server, "tcp:[::1]:6640", SLEN + 1);
+	strncpy(cfg.ovsdb_conf.ovsdb_database, "SR_test", SLEN + 1);
+	cfg.ovsdb_conf.ntransacts = 1;
+}
+
+static int load_var_string(json_t *root_cfg, json_error_t *json_err,
+			   const char *name, char **value)
+{
+	char *tmp = NULL;
+	int err = json_unpack_ex(root_cfg, json_err, 0, "{s?:s}", name, &tmp);
+	if (err < 0) {
+		return -1;
+	} else if (tmp) {
+		*value = malloc((strlen(tmp) + 1) * sizeof(char));
+		if (!*value) {
+			fprintf(stderr, "Cannot allocate parameter\n");
+			return -1;
+		}
+		strcpy(*value, tmp);
+	}
+	return 0;
+}
+
+static int load_string(json_t *root_cfg, json_error_t *json_err,
+		       const char *name, char *value)
+{
+	char *tmp = NULL;
+	int err = json_unpack_ex(root_cfg, json_err, 0, "{s?:s}", name, &tmp);
+	if (err < 0) {
+		return -1;
+	} else if (tmp) {
+		strncpy(value, tmp, SLEN + 1);
+	}
+	return 0;
+}
+
+static int load_int(json_t *root_cfg, json_error_t *json_err,
+		    const char *name, int *value)
+{
+	int tmp = -1;
+	int err = json_unpack_ex(root_cfg, json_err, 0, "{s?:i}", name, &tmp);
+	if (err < 0) {
+		return -1;
+	} else if (tmp > 0) {
+		*value = tmp;
+	}
+	return 0;
 }
 
 static int load_config(const char *config_file)
 {
-	int err = 0;
+	json_t *root_cfg;
 	json_error_t json_err;
+
 	root_cfg = json_load_file(config_file, 0, &json_err);
-	if (!root_cfg) {
-		fprintf(stderr, "Cannot load config file: %s\nCause: %s\n",
-			config_file, json_err.text);
-		return -1;
-	}
+	if (!root_cfg)
+		goto err;
 
-	err = json_unpack_ex(root_cfg, &json_err, 0, "{s?s}",
-			     "zlogfile", &cfg.zlog_conf_file); // Config file path for zlog (optional)
-	if (err < 0) {
-		fprintf(stderr, "Cannot parse config file: %s\nCause: %s\n",
-			config_file, json_err.text);
+	/* Load default values */
+	default_config();
+
+	/* Config file path for zlog */
+	if (load_var_string(root_cfg, &json_err, "zlogfile",
+			    &cfg.zlog_conf_file))
+		goto err;
+
+	/* ovsdb-client binary location */
+	if (load_string(root_cfg, &json_err, "ovsdb-client",
+			cfg.ovsdb_conf.ovsdb_client))
+		goto err;
+
+	/* Parameter describing the remote server (see ovsdb-client(1) for formatting) */
+	if (load_string(root_cfg, &json_err, "ovsdb-server",
+			cfg.ovsdb_conf.ovsdb_server))
+		goto err;
+
+	/* Name of the OVSDB database */
+	if (load_string(root_cfg, &json_err, "ovsdb-database",
+			cfg.ovsdb_conf.ovsdb_database))
+		goto err;
+
+	/* Number of threads of transactions for OVSDB */
+	if (load_int(root_cfg, &json_err, "ntransacts",
+		     &cfg.ovsdb_conf.ntransacts))
+		goto err;
+
+	json_decref(root_cfg);
+	return 0;
+err:
+	fprintf(stderr, "Cannot parse config file: %s\nCause: %s\n",
+		config_file, json_err.text);
+	if (root_cfg)
 		json_decref(root_cfg);
-		return -1;
+	clean_config();
+	return -1;
+}
+
+static void free_flow(struct flow *fl)
+{
+	if (fl) {
+		for (size_t i = 0; i < fl->nb_paths; i++) {
+			if (fl->paths[i].segments)
+				free(fl->paths[i].segments);
+		}
+		if (fl->paths)
+			free(fl->paths);
+		if (fl->prefixes)
+			free(fl->prefixes);
+		if (fl->addrs)
+			free(fl->addrs);
+		free(fl);
+	}
+}
+
+static int json_to_in6(json_t *array, struct in6_addr **addrs)
+{
+	bool allocated = false;
+	int index, length;
+	json_t *value;
+	const char *buf;
+
+	length = json_array_size(array);
+	if (length <= 0)
+		goto out;
+
+	/* Allocate memory if needed */
+	if (!*addrs) {
+		allocated = true;
+		*addrs = malloc(sizeof(struct in6_addr) * length);
+		if (!*addrs) {
+			length = -1;
+			goto out;
+		}
 	}
 
+	/* Convert json list of IPv6 addresses to an IPv6 list */
+	json_array_foreach(array, index, value) {
+		buf = json_string_value(value);
+		if (!buf || !inet_pton(AF_INET6, buf, &(*addrs)[index])) {
+			length = -1;
+			goto err_addr_table;
+		}
+	}
+out:
+	return length;
+err_addr_table:
+	if (allocated)
+		free(*addrs);
+	goto out;
+}
+
+static struct prefix *parse_host_prefixes(const char *jbuf,
+					  struct in6_addr *rt_addrs)
+{
+	json_t *array, *value, *sub_array;
+	const char *ip;
+	size_t index;
+	int length;
+
+	array = json_loads(jbuf, 0, NULL);
+	length = json_array_size(array);
+	if (length != 2)
+		return NULL;
+
+	length = json_array_size(json_array_get(array, 0))
+		+ json_array_size(json_array_get(array, 1));
+	if (length < 2) {
+		json_decref(array);
+		return NULL;
+	}
+
+	// TODO Allocate space for all prefixes
+	struct prefix *prefixes = malloc(sizeof(struct prefix)*length);
+	if (!prefixes) {
+		json_decref(array);
+		return NULL;
+	}
+
+	int j = 0;
+	for (int i = 0; i < 2; i++) {
+		sub_array = json_array_get(array, i);
+		json_array_foreach(sub_array, index, value) {
+			json_unpack(value, "{s:s, s:i}", "address", &ip,
+				    "prefixlen", &prefixes[j].len);
+			inet_pton(AF_INET6, ip, &prefixes[j].addr);
+			lpm_insert(cfg.prefixes, &prefixes[j].addr,
+				   prefixes[j].len, &rt_addrs[i]);
+			j++;
+		}
+	}
+
+	json_decref(array);
+	return prefixes;
+}
+
+static int jsonchar_to_in6(const char *json_array, struct in6_addr **addrs)
+{
+	json_t *array;
+	int length;
+
+	array = json_loads(json_array, 0, NULL);
+	length = json_to_in6(array, addrs);
+
+	json_decref(array);
+	return length;
+}
+
+static int json_to_paths(const char *json_array, struct path **paths)
+{
+	bool allocated = false;
+	json_t *array, *value;
+	struct path *current;
+	int index, length;
+
+	array = json_loads(json_array, 0, NULL);
+	length = json_array_size(array);
+	if (length <= 0)
+		goto out;
+
+	/* Allocate memory if needed */
+	if (!*paths) {
+		allocated = true;
+		*paths = calloc(length, sizeof(struct path));
+		if (!*paths) {
+			length = 0;
+			goto out_json_decref;
+		}
+	}
+
+	/* Convert json list of list of segments to a list of segments */
+	json_array_foreach(array, index, value) {
+		current = &(*paths)[index];
+		int err = json_to_in6(value, &current->segments);
+		if (err < 0) {
+			length = -1;
+			goto err_path_table;
+		}
+		current->nb_segments = (size_t) err;
+	}
+
+out_json_decref:
+	json_decref(array);
+out:
+	return length;
+err_path_table:
+	if (allocated)
+		free(*paths);
+	goto out_json_decref;
+}
+
+static int paths_read(struct srdb_entry *entry)
+{
+	struct srdb_path_entry *path_entry = (struct srdb_path_entry *) entry;
+	struct flow *fl;
+
+	fl = calloc(1, sizeof(*fl));
+	if (!fl) {
+		zlog_warn(zc, "Cannot allocate memory for flow");
+		goto out;
+	}
+
+	int nb = jsonchar_to_in6(path_entry->flow,
+				 (struct in6_addr **) &fl->addrs);
+	if (nb != 2) {
+		zlog_warn(zc, "Cannot find flow information");
+		goto free_fl;
+	}
+
+	fl->prefixes = parse_host_prefixes(path_entry->prefixes,
+					   (struct in6_addr *) fl->addrs);
+	if (!fl->prefixes) {
+		zlog_warn(zc, "Cannot set host prefixes for flow");
+		goto free_fl;
+	}
+
+	fl->nb_paths = json_to_paths(path_entry->segments, &fl->paths);
+	if (fl->nb_paths < 1) {
+		zlog_warn(zc, "Cannot find any path with the flow");
+		goto free_fl;
+	}
+
+	/* TODO Not the best strategy since all paths are not interesting to keep */
+	hmap_set(cfg.path_cache, fl->addrs, fl);
+
+out:
+	return 0;
+free_fl:
+	free_flow(fl);
+	goto out;
+}
+
+static int paths_delete(struct srdb_entry *entry)
+{
+	struct srdb_path_entry *path_entry = (struct srdb_path_entry *) entry;
+	struct in6_addr addrs[2];
+
+	jsonchar_to_in6(path_entry->flow, (struct in6_addr **) &addrs);
+
+	struct flow *fl = hmap_get(cfg.path_cache, addrs);
+	if (fl) {
+		hmap_delete(cfg.path_cache, addrs);
+		free_flow(fl);
+	}
+
+	return 0;
+}
+
+static void destroy_path_cache()
+{
+	struct hmap_entry *he;
+
+	if (cfg.path_cache) {
+		while (!llist_empty(&cfg.path_cache->keys)) {
+			he = llist_first_entry(&cfg.path_cache->keys,
+					       struct hmap_entry, key_head);
+			llist_remove(&he->key_head);
+			llist_remove(&he->map_head);
+			cfg.path_cache->elems--;
+			free_flow((struct flow *) he->elem);
+			free(he);
+		}
+		hmap_destroy(cfg.path_cache);
+	}
+}
+
+static int launch_srdb()
+{
+	unsigned int mon_flags;
+
+	mon_flags = MON_INITIAL | MON_INSERT | MON_DELETE;
+	if (srdb_monitor(cfg.srdb, "Paths", mon_flags, paths_read,
+			 NULL, paths_delete, false, true) < 0)
+		return -1;
 	return 0;
 }
 
 int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 {
 	memset(srh, 0, sizeof(*srh));
-	srh->hdrlen = (2 * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
 	srh->type = 4;
-	srh->segments_left = 1;
-	srh->first_segment = 1;
 
-	struct in6_addr segment;
-	inet_pton(AF_INET6, "::1", &segment); // TODO Do not hardcode segment
+	struct in6_addr addr_pair[2];
+	addr_pair[0] = *(struct in6_addr *) lpm_lookup(cfg.prefixes, &conn->src);
+	addr_pair[1] = *(struct in6_addr *) lpm_lookup(cfg.prefixes, &conn->dst);
 
+	char buf_tmp [1024];
+	inet_ntop(AF_INET6, addr_pair, buf_tmp, 1024);
+	printf("lpm_lookup 1 - %s\n", buf_tmp);
+	inet_ntop(AF_INET6, &addr_pair[1], buf_tmp, 1024);
+	printf("lpm_lookup 2 - %s\n", buf_tmp);
+
+	struct flow *fl = hmap_get(cfg.path_cache, addr_pair);
+	if (!fl) {
+		zlog_warn(zc, "Flow not found\n");
+		return -1;
+	}
+
+	// TODO Check on malloced size
+
+	// TODO Always take the first path
+	struct path *path = &fl->paths[0];
+
+	srh->hdrlen = ((path->nb_segments + 1) * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
+	srh->segments_left = path->nb_segments;
+	srh->first_segment = path->nb_segments;
+
+	for (size_t i = 0; i < path->nb_segments; i++) {
+		memcpy(&srh->segments[1 + i],
+		       &path->segments[path->nb_segments - i - 1],
+		       sizeof(struct in6_addr));
+	}
 	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
-	memcpy(&srh->segments[1], &segment, sizeof(struct in6_addr));
-	return 0;
+	return sizeof(struct ipv6_sr_hdr) + srh->hdrlen * 8;
 }
 
 int main(int argc, char *argv[])
@@ -140,6 +500,27 @@ int main(int argc, char *argv[])
 		goto out_logs;
 	}
 
+	cfg.path_cache = hmap_new(hash_addr_pair, compare_addr_pair);
+	if (!cfg.path_cache) {
+		zlog_error(zc, "Cannot create hashmap for path cache\n");
+		ret = -1;
+		goto out_logs;
+	}
+
+	cfg.prefixes = lpm_new();
+	if (!cfg.prefixes) {
+		zlog_error(zc, "Cannot create LPM tree\n");
+		ret = -1;
+		goto out_path_cache;
+	}
+
+	cfg.srdb = srdb_new(&cfg.ovsdb_conf);
+	if (!cfg.srdb) {
+		zlog_error(zc, "Cannot initialize SRDB\n");
+		ret = -1;
+		goto out_lpm;
+	}
+
 	/* Catching signals */
 	struct sigaction sa;
 	memset(&sa, 0, sizeof(sa));
@@ -152,13 +533,19 @@ int main(int argc, char *argv[])
 	/* Netfilter setup */
 	if (nf_queue_init()) {
 		ret = -1;
-		goto out_logs;
+		goto out_srdb;
 	}
 
 	/* Notifier setup */
 	if (notifier_init()) {
 		ret = -1;
 		goto out_nf_queue;
+	}
+
+	if (launch_srdb() < 0) {
+		zlog_error(zc, "Cannot start srdb monitors\n");
+		ret = -1;
+		goto out_notifier;
 	}
 
 	zlog_notice(zc, "SRv6 rerouting daemon has started");
@@ -182,9 +569,16 @@ int main(int argc, char *argv[])
 	}
 
 	free(icmp);
+out_notifier:
 	notifier_free();
 out_nf_queue:
 	nf_queue_free();
+out_srdb:
+	srdb_destroy(cfg.srdb);
+out_lpm:
+	lpm_destroy(cfg.prefixes);
+out_path_cache:
+	destroy_path_cache();
 out_logs:
 	zlog_fini();
 out_config:
