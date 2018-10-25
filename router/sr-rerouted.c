@@ -434,7 +434,7 @@ int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 	srh->first_segment = path->nb_segments;
 
 	for (size_t i = 0; i < path->nb_segments; i++) {
-		memcpy(&srh->segments[1 + i],
+		memcpy(&srh->segments[i + 1],
 		       &path->segments[path->nb_segments - i - 1],
 		       sizeof(struct in6_addr));
 	}

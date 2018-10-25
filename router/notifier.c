@@ -58,24 +58,29 @@ void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
 	/* ICMP header */
 	icmp_hdr->icmp6_type = ICMPV6_CHANGE_PATH;
 	icmp_hdr->icmp6_code = ICMPV6_SRH_OFFER;
-	void *ptr = ((char *) icmp) + 4;
+	icmp_hdr->icmp6_dataun.un_data16[0] = htons(PACKET_CONTEXT); // TODO Asuming no IPv6 Extension Header
 
-	/* Packet causing the ICMP - TODO Asuming no IPv6 Extension Header for the moment */
+	*icmp_len = sizeof(struct icmp6hdr);
+	void *ptr = ((char *) icmp) + *icmp_len;
+
+	/* Packet causing the ICMP - TODO Asuming no IPv6 Extension Header */
 	memcpy(ptr, packet, PACKET_CONTEXT);
-	printf("First byte of packet %x\n", ((uint32_t *) packet)[0]);
-	printf("First word of copied packet in icmp %x\n", ((uint32_t *) icmp_hdr)[0]);
-	printf("Second word of copied packet in icmp %x\n", ((uint32_t *) icmp_hdr)[1]);
-	printf("Third word of copied packet in icmp %x\n", ((uint32_t *) icmp_hdr)[2]);
+	zlog_debug(zc, "First word of copied packet in icmp %x",
+		   ((uint32_t *) icmp_hdr)[0]);
+	zlog_debug(zc, "Second word of copied packet in icmp %x",
+		   ((uint32_t *) icmp_hdr)[1]);
+	zlog_debug(zc, "Third word of copied packet in icmp %x",
+		   ((uint32_t *) icmp_hdr)[2]);
 
 	/* SRH */
-	struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) (((char *) ptr) + PACKET_CONTEXT);
-	zlog_debug(zc, "pointer %p - after increment %p - size %zd\n", // TODO Remove
-		   ptr, srh, PACKET_CONTEXT);  // TODO remove
+	*icmp_len += PACKET_CONTEXT;
+	struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) (((char *) icmp) + *icmp_len);
 	int err = build_srh(conn, srh);
 	if (err < 0) {
 		zlog_warn(zc, "Cannot produce an SRH for a connection");
+		return NULL;
 	}
-	*icmp_len = 4 + PACKET_CONTEXT + err;
+	*icmp_len += err;
 
 	return icmp;
 }
