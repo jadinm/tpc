@@ -11,6 +11,9 @@ $srnmininet_repo = "https://bitbucket.org/jadinm/srnmininet.git"
 $srnmininet_path = "/home/vagrant/srnmininet"
 $srn_bin_path = "/home/vagrant/srn/bin"
 
+$scapy_repo = "https://github.com/segment-routing/scapy.git"
+$scapy_path = "/home/vagrant/scapy"
+
 Package {
   allow_virtual => true,
   ensure        => installed,
@@ -31,9 +34,14 @@ package { 'matplotlib':
   provider => 'pip',
 }
 package { 'python-tk': }
-package { 'scapy':
+exec { 'download-scapy':
+  require => Package['git'],
+  creates => $scapy_path,
+  command => "git clone ${scapy_repo} ${scapy_path} && chown -R vagrant:vagrant ${scapy_path}"
+}
+exec { 'scapy':
   require  => Package['python-pip'],
-  provider => 'pip',
+  command => "pip install -e ${scapy_path}",
 }
 
 # SRN and SRNMininet

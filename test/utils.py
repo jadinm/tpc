@@ -31,6 +31,23 @@ class Sniffer(Thread):
         time.sleep(Sniffer.WAIT_TIMER)  # Wait for sniffing to start
 
 
+def tcp_ecn_pkt(src, dst, src_port, dst_port):
+    """
+    Generate one ECN-marked TCP ACK packet
+
+    :param src: source ipv6 address of the packet
+    :param dst: destination ipv6 address of the packet
+    :param src_port: source port of the packet
+    :param dst_port: destination port of the packet
+
+    :type src: str
+    :type dst: str
+    :type src_port: str
+    :type dst_port: str
+    """
+    return IPv6(src=src, dst=dst, tc=3) / TCP(sport=int(src_port), dport=int(dst_port), flags='A')
+
+
 def send_tcp_ecn_pkt(src, dst, src_port, dst_port, timeout):
     """
     Send one ECN-marked TCP ACK packet and print the answer
@@ -54,13 +71,14 @@ def send_tcp_ecn_pkt(src, dst, src_port, dst_port, timeout):
                 count=1, timeout=timeout)
     t.start()
 
-    send(IPv6(src=src, dst=dst, tc=3) / TCP(sport=int(src_port), dport=int(dst_port), flags='A'), verbose=False)
+    send(tcp_ecn_pkt(src, dst, src_port, dst_port), verbose=False)
     t.join()
 
     if len(t.packets) == 0:
         print("Cannot find any answer")
         sys.exit(-1)
     sys.stdout.write(str(t.packets[0][IPv6]).encode("hex"))
+
 
 def send_pkt(packet):
     """
