@@ -5,17 +5,18 @@
 
 #define _unused __attribute__((unused))
 
-struct connection {
-	struct in6_addr src;
-	struct in6_addr dst;
-	__u16 src_port;
-	__u16 dst_port;
+struct hash_sfd {
+	int sfd;
+	struct ipv6_sr_hdr *srh;
+	UT_hash_handle hh;
 };
 
-int monitor_init();
-int monitor(struct connection *conn, struct ipv6_sr_hdr **srh,
-	    size_t *srh_len);
-int monitor_free();
+struct config {
+	char *zlog_conf_file;
+	struct in6_addr server_addr;
+	int server_port;
+	struct hash_sfd *sockets;
+};
 
 #endif /* SR_ENDHOSTD_H */
 

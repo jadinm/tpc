@@ -1,7 +1,7 @@
 CC=gcc
 CFLAGS=-I../lib -O2 -Wall -Werror -Wextra -g # TODO Remove -g for performance
-LDFLAGS=-lzlog
-SRC=sr-endhostd.c monitor.c
+LDFLAGS=-lzlog -ljansson
+SRC=sr-endhostd.c
 OBJ=$(SRC:.c=.o)
 EXEC=sr-endhostd
 
