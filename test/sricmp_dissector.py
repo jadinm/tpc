@@ -88,7 +88,7 @@ class SRICMPv6(ICMPv6Unknown):
     fields_desc = [ByteEnumField("type", TYPE, {TYPE: TYPE_STR}),
                    ByteField("code", CODE),
                    XShortField("cksum", None),
-                   XShortField("srhidx", None),
+                   ShortField("srhidx", None),
                    XShortField("reserved", 0),
                    PacketLenField("trigger", SRICMPIPerror6() / TCPerror(), SRICMPIPerror6,
                                   length_from=lambda pkt: pkt.srhidx)]
@@ -104,6 +104,10 @@ class SRICMPv6(ICMPv6Unknown):
 
     def guess_payload_class(self, p):
         return IPv6ExtHdrSegmentRouting
+
+    def is_valid_checksum(self):
+        """Checks the Checksum computation for built packets"""
+        return in6_chksum(58, self.underlayer, str(self)) == 0
 
 
 # Binding IPv6 and SRICMPv6

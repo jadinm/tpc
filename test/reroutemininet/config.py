@@ -35,8 +35,9 @@ class SRRerouted(SRNDaemon):
                              (or 10M if there is no link bandwidth)
            :param red_avpkt: avpkt for red (see tc-red(1))
            :param red_probability: probability for red (see tc-red(1))
-           :param red_min: min for red (see tc-red(1)) expressed as a multiplier of red_limit
-           :param red_max: max for red (see tc-red(1)) expressed as a multiplier of red_limit
+           :param red_min: min for red (see tc-red(1)) expressed as a multiplier of red_limit (multiplied by link bandwidth)
+                           This value must be '> 0'
+           :param red_max: max for red (see tc-red(1)) expressed as a multiplier of red_limit (multiplied by link bandwidth)
            :param red_burst: function computing the burst for red (see tc-red(1))"""
 
         defaults.red_limit = 1
@@ -53,7 +54,10 @@ class SRRerouted(SRNDaemon):
            :param itf_bw: Bandwidth of the interface (in bytes)
            All the other parameters are the same as those of set_defaults()
         """
-        return ((2. * red_min + 1. * red_max) / (3. * red_avpkt)) * red_limit * itf_bw + 1
+        # Man pages say ((2. * red_min + 1. * red_max) / (3. * red_avpkt)) * red_limit * itf_bw + 1
+        # but it seems new version of iproute prefers
+        # return red_min * red_limit * itf_bw / float(red_avpkt) + 1
+        return red_min * red_limit * itf_bw / float(red_avpkt) + 1
 
     def cleanup(self):
         # Clean firewall

@@ -68,7 +68,7 @@ class Albilene(SRNTopo):
         # SRN overlay
         opts = {}
         if self.always_redirect:  # Force marking of all packets
-            opts = {"red_min": 0., "red_max": 1., "red_probability": 1.}
+            opts = {"red_min": 1.0 / self.link_bandwidth, "red_max": 1., "red_probability": 1.}
         self.addOverlay(SRReroutedCtrlDomain(access_routers=(a, f), sr_controller=controller,
                                              schema_tables=self.schema_tables, rerouting_routers=(b, c, d, e),
                                              rerouted_opts=opts))
