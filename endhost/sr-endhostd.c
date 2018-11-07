@@ -56,7 +56,7 @@ static struct ipv6_sr_hdr *get_srh(char *segments[], size_t segment_number)
 	srh->first_segment = srh->segments_left;
 	srh->flags = 0;
 	srh->tag = 0;
-	memset(&srh->segments[0], 0, sizeof(struct in6_addr)); // Final destination segment
+	memcpy(&srh->segments[0], &cfg.server_addr, sizeof(struct in6_addr)); // Final destination segment
 
 	for (size_t i = 0; i < segment_number; i++) {
 		if (inet_pton(AF_INET6, segments[i],
@@ -119,7 +119,10 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 	}
 
 	if (connect(sfd, (struct sockaddr *) &sin6, sizeof(sin6)) < 0) {
-		zlog_error(zc, "Cannot connect to server: errno = %d\n", errno);
+		char tmp [INET6_ADDRSTRLEN + 1];
+		inet_ntop(AF_INET6, &sin6.sin6_addr, tmp, sizeof(tmp));
+		zlog_error(zc, "Cannot connect to server ([%s]:%d): errno = %d\n",
+			   tmp, ntohs(sin6.sin6_port), errno);
 		ret = -1;
 		goto err_srh;
 	}
@@ -179,7 +182,7 @@ static struct ipv6_sr_hdr *send_traffic(int sfd)
 	pfd.events = POLLOUT; // POLLERR will be set on revent
 
 	while (true) {
-		if (poll(&pfd, 1, 0) < 1) {
+		if (poll(&pfd, 1, -1) < 1) {
 			zlog_error(zc, "poll failed on socket %d - errno %d\n",
 				   sfd, errno);
 			return NULL;
