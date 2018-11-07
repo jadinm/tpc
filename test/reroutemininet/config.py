@@ -1,4 +1,5 @@
 
+import heapq
 import os
 from mininet.log import lg
 
@@ -11,7 +12,50 @@ from srnmininet.config.config import SRNDaemon
 template_lookup.directories.append(os.path.join(os.path.dirname(__file__), 'templates'))
 
 
-class SRRerouted(SRNDaemon):
+class ZlogDaemon(SRNDaemon):
+    """
+    Class for daemons using zlog
+    """
+
+    def build(self):
+        cfg = super(ZlogDaemon, self).build()
+        cfg.zlog_cfg_filename = self.zlog_cfg_filename
+        return cfg
+
+    @property
+    def zlog_cfg_filename(self):
+        """Return the filename in which this daemon log rules should be stored"""
+        return self._filepath("%s-zlog.cfg" % self.NAME)
+
+    @property
+    def zlog_template_filename(self):
+        return "zlog.mako"
+
+    def render(self, cfg, **kwargs):
+
+        cfg_content = [super(ZlogDaemon, self).render(cfg, **kwargs)]
+
+        self.files.append(self.zlog_cfg_filename)
+        lg.debug('Generating %s\n' % self.zlog_cfg_filename)
+        try:
+            cfg["zlog"] = cfg[self.NAME]
+            cfg_content.append(template_lookup.get_template(self.zlog_template_filename).render(node=cfg, **kwargs))
+        except:
+            # Display template errors in a less cryptic way
+            lg.error('Couldn''t render a reroutemininet file(',
+                     self.zlog_template_filename, ')')
+            lg.error(mako_exceptions.text_error_template().render())
+            raise ValueError('Cannot render the rules configuration [%s: %s]' % (
+                self._node.name, self.NAME))
+        return cfg_content
+
+    def write(self, cfg):
+        super(ZlogDaemon, self).write(cfg[0])
+        with open(self.zlog_cfg_filename, 'w') as f:
+            f.write(cfg[1])
+
+
+class SRRerouted(ZlogDaemon):
     """The class representing the sr-rerouted daemon,
     used for redirection via ICMPv6"""
 
@@ -20,7 +64,6 @@ class SRRerouted(SRNDaemon):
     def build(self):
         cfg = super(SRRerouted, self).build()
         self._node.sysctl = "net.ipv4.tcp_ecn=1"
-        cfg.zlog_cfg_filename = self.zlog_cfg_filename
 
         cfg.red_limit = self.options.red_limit
         cfg.red_avpkt = self.options.red_avpkt
@@ -71,15 +114,6 @@ class SRRerouted(SRNDaemon):
             pass
         super(SRRerouted, self).cleanup()
 
-    @property
-    def zlog_cfg_filename(self):
-        """Return the filename in which this daemon log rules should be stored"""
-        return self._filepath("%s-zlog.cfg" % self.NAME)
-
-    @property
-    def zlog_template_filename(self):
-        return "zlog.mako"
-
     @staticmethod
     def reconfigure_itf(itf, bw=None, delay=None, jitter=None, loss=None,
                         speedup=0, use_hfsc=False, use_tbf=False,
@@ -126,21 +160,7 @@ class SRRerouted(SRNDaemon):
         return parent
 
     def render(self, cfg, **kwargs):
-
-        cfg_content = [super(SRRerouted, self).render(cfg, **kwargs)]
-
-        self.files.append(self.zlog_cfg_filename)
-        lg.debug('Generating %s\n' % self.zlog_cfg_filename)
-        try:
-            cfg["zlog"] = cfg[self.NAME]
-            cfg_content.append(template_lookup.get_template(self.zlog_template_filename).render(node=cfg, **kwargs))
-        except:
-            # Display template errors in a less cryptic way
-            lg.error('Couldn''t render a reroutemininet file(',
-                     self.zlog_template_filename, ')')
-            lg.error(mako_exceptions.text_error_template().render())
-            raise ValueError('Cannot render the rules configuration [%s: %s]' % (
-                self._node.name, self.NAME))
+        cfg_content = super(SRRerouted, self).render(cfg, **kwargs)
 
         # Firewall rule for netfilter queues
         cmd = 'ip6tables -A FORWARD -m ecn --ecn-ip-ect 3 -j NFQUEUE --queue-num 0'
@@ -171,12 +191,6 @@ class SRRerouted(SRNDaemon):
                                  (self._node.name, self.NAME, cmd, err))
 
         return cfg_content
-
-    def write(self, cfg):
-
-        super(SRRerouted, self).write(cfg[0])
-        with open(self.zlog_cfg_filename, 'w') as f:
-            f.write(cfg[1])
 
 
 class IPerf(Daemon):
@@ -217,3 +231,150 @@ class IPerf(Daemon):
         if self.options.logobj:
             self.options.logobj.close()
         super(IPerf, self).cleanup()
+
+
+class ZlogHostDaemon(Daemon):
+    """
+    Class for daemons using zlog
+    """
+
+    def build(self):
+        cfg = super(ZlogHostDaemon, self).build()
+        cfg.zlog_cfg_filename = self.zlog_cfg_filename
+        return cfg
+
+    @property
+    def startup_line(self):
+        return '{name} {cfg}' \
+            .format(name=self.NAME,
+                    cfg=self.cfg_filename)
+
+    @property
+    def dry_run(self):
+        return '{name} -d {cfg}' \
+            .format(name=self.NAME,
+                    cfg=self.cfg_filename)
+
+    @property
+    def zlog_cfg_filename(self):
+        """Return the filename in which this daemon log rules should be stored"""
+        return self._filepath("%s-zlog.cfg" % self.NAME)
+
+    @property
+    def zlog_template_filename(self):
+        return "zlog.mako"
+
+    def render(self, cfg, **kwargs):
+
+        cfg_content = [super(ZlogHostDaemon, self).render(cfg, **kwargs)]
+
+        self.files.append(self.zlog_cfg_filename)
+        lg.debug('Generating %s\n' % self.zlog_cfg_filename)
+        try:
+            cfg["zlog"] = cfg[self.NAME]
+            cfg_content.append(template_lookup.get_template(self.zlog_template_filename).render(node=cfg, **kwargs))
+        except:
+            # Display template errors in a less cryptic way
+            lg.error('Couldn''t render a reroutemininet file(',
+                     self.zlog_template_filename, ')')
+            lg.error(mako_exceptions.text_error_template().render())
+            raise ValueError('Cannot render the rules configuration [%s: %s]' % (
+                self._node.name, self.NAME))
+        return cfg_content
+
+    def write(self, cfg):
+        super(ZlogHostDaemon, self).write(cfg[0])
+        with open(self.zlog_cfg_filename, 'w') as f:
+            f.write(cfg[1])
+
+
+class SREndhostd(ZlogHostDaemon):
+    NAME = "sr-endhostd"
+
+    def __init__(self, *args, **kwargs):
+        self.cwd = kwargs.pop("cwd", os.curdir)
+        super(SREndhostd, self).__init__(*args, **kwargs)
+
+    def build(self):
+        cfg = super(SREndhostd, self).build()
+
+        cfg.server_addr = "::1"
+        server, server_itf = find_node(self._node, self.options.server, lambda x: 1)
+        ip6s = server_itf.ip6s(exclude_lls=True)
+        for ip6 in ip6s:
+            if ip6.ip.compressed != "::1":
+                cfg.server_addr = ip6.ip.compressed
+
+        cfg.server_port = self.options.server_port
+        return cfg
+
+    def set_defaults(self, defaults):
+        """:param server: Server node name
+           :param server_port: Server port"""
+        defaults.server = "server"
+        defaults.server_port = 80
+        defaults.routerid = 1
+        super(SREndhostd, self).set_defaults(defaults)
+
+    def _filepath(self, f):
+        return os.path.join(self.cwd, f)
+
+
+class SRServerd(ZlogHostDaemon):
+    NAME = "sr-serverd"
+
+    def __init__(self, *args, **kwargs):
+        self.cwd = kwargs.pop("cwd", os.curdir)
+        super(SRServerd, self).__init__(*args, **kwargs)
+
+    def build(self):
+        cfg = super(SRServerd, self).build()
+        cfg.server_port = self.options.server_port
+        return cfg
+
+    def set_defaults(self, defaults):
+        """:param server_port: Listening port"""
+        defaults.server_port = 80
+        defaults.cwd = os.curdir
+        defaults.routerid = 1
+        super(SRServerd, self).set_defaults(defaults)
+
+    def _filepath(self, f):
+        return os.path.join(self.cwd, f)
+
+
+def find_node(start, to_find, cost_intf):
+    """
+    Find a node by name
+
+    :param start: the start node
+    :type start: mininet.node.Node
+    :param to_find: the name of the node to find
+    :type to_find: str
+    :param cost_intf: a function giving the cost of an interface
+    :type cost_intf: (mininet.node.IPIntf) -> int
+
+    :return: The node that was found
+    :rtype: (mininet.node.Node, mininet.node.IPIntf)
+    """
+    if start.name == to_find:
+        return start, start.intf("lo")
+
+    visited = set()
+    to_visit = [(cost_intf(intf), intf) for intf in realIntfList(start)]
+    heapq.heapify(to_visit)
+
+    # Explore all interfaces recursively, until we find one
+    # connected to the to_find node.
+    while to_visit:
+        cost, intf = heapq.heappop(to_visit)
+        if intf in visited:
+            continue
+        visited.add(intf)
+        for peer_intf in intf.broadcast_domain.interfaces:
+            if peer_intf.node.name == to_find:
+                return peer_intf.node, peer_intf
+            else:
+                for x in realIntfList(peer_intf.node):
+                    heapq.heappush(to_visit, (cost + cost_intf(x), x))
+    return None, None

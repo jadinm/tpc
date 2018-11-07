@@ -10,6 +10,7 @@ from sr6mininet.cli import SR6CLI
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
+from eval import launch_eval
 
 
 def mininet_cli(args, ovsschema):
@@ -24,7 +25,8 @@ def mininet_cli(args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
-    "all": launch_all_tests
+    "all": launch_all_tests,
+    "eval": launch_eval
 }
 
 
