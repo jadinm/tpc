@@ -25,7 +25,7 @@ def mininet_cli(args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
-    "all": launch_all_tests,
+    "unit": launch_all_tests,
     "eval": launch_eval
 }
 

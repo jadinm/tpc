@@ -49,22 +49,24 @@ size_t notification_alloc_size()
 	return ICMPv6_MIN_SIZE + 2 * SRH_MAX_SIZE;
 }
 
-void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
+void *create_icmp(void *packet, uint16_t nextheader_len, size_t *icmp_len, struct connection *conn)
 {
 	struct icmp6hdr *icmp_hdr = icmp;
 	*icmp_len = notification_alloc_size();
 	memset(icmp_hdr, 0, *icmp_len);
 
+	uint16_t payloadlen = PACKET_CONTEXT + nextheader_len;
+
 	/* ICMP header */
 	icmp_hdr->icmp6_type = ICMPV6_CHANGE_PATH;
 	icmp_hdr->icmp6_code = ICMPV6_SRH_OFFER;
-	icmp_hdr->icmp6_dataun.un_data16[0] = htons(PACKET_CONTEXT); // TODO Asuming no IPv6 Extension Header
+	icmp_hdr->icmp6_dataun.un_data16[0] = htons(payloadlen);
 
 	*icmp_len = sizeof(struct icmp6hdr);
 	void *ptr = ((char *) icmp) + *icmp_len;
 
-	/* Packet causing the ICMP - TODO Asuming no IPv6 Extension Header */
-	memcpy(ptr, packet, PACKET_CONTEXT);
+	/* Packet causing the ICMP */
+	memcpy(ptr, packet, payloadlen);
 	zlog_debug(zc, "First word of copied packet in icmp %x",
 		   ((uint32_t *) icmp_hdr)[0]);
 	zlog_debug(zc, "Second word of copied packet in icmp %x",
@@ -73,7 +75,7 @@ void *create_icmp(void *packet, size_t *icmp_len, struct connection *conn)
 		   ((uint32_t *) icmp_hdr)[2]);
 
 	/* SRH */
-	*icmp_len += PACKET_CONTEXT;
+	*icmp_len += payloadlen;
 	struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) (((char *) icmp) + *icmp_len);
 	int err = build_srh(conn, srh);
 	if (err < 0) {

@@ -33,47 +33,26 @@ class Sniffer(Thread):
         time.sleep(Sniffer.WAIT_TIMER)  # Wait for sniffing to start
 
 
-def tcp_ecn_pkt(src, dst, src_port, dst_port):
-    """
-    Generate one ECN-marked TCP ACK packet
-
-    :param src: source ipv6 address of the packet
-    :param dst: destination ipv6 address of the packet
-    :param src_port: source port of the packet
-    :param dst_port: destination port of the packet
-
-    :type src: str
-    :type dst: str
-    :type src_port: str
-    :type dst_port: str
-    """
-    return IPv6(src=src, dst=dst, tc=3) / TCP(sport=int(src_port), dport=int(dst_port), flags='A')
-
-
-def send_tcp_ecn_pkt(src, dst, src_port, dst_port, timeout):
+def send_tcp_ecn_pkt(timeout, pkt):
     """
     Send one ECN-marked TCP ACK packet and print the answer
 
-    :param src: source ipv6 address of the packet
-    :param dst: destination ipv6 address of the packet
-    :param src_port: source port of the packet
-    :param dst_port: destination port of the packet
     :param timeout: timeout after which we stop waiting for the reply (-1 means no timeout)
+    :param pkt: hexadecimal string representing the TCP ECN packet
 
-    :type src: str
-    :type dst: str
-    :type src_port: str
-    :type dst_port: str
     :type timeout: str
+    :type pkt: str
     """
+
+    ip6 = IPv6(pkt.decode("hex"))
 
     timeout = int(timeout)
     timeout = timeout if timeout >= 0 else None
-    t = Sniffer(filter_bpf="dst %s and not (icmp6 && ip6[40] == 135) and not (icmp6 && ip6[40] == 136)" % src,
+    t = Sniffer(filter_bpf="dst %s and not (icmp6 && ip6[40] == 135) and not (icmp6 && ip6[40] == 136)" % ip6.src,
                 count=1, timeout=timeout)
     t.start()
 
-    send(tcp_ecn_pkt(src, dst, src_port, dst_port), verbose=False)
+    send(ip6, verbose=False)
     t.join()
 
     if len(t.packets) == 0:
@@ -119,19 +98,25 @@ def sniff_trigger_icmp(src, dst, src_port, dst_port, redirect_ip, timeout, iface
 
     trigger_packets = []
     def analyze(pkt):
-        if pkt[IPv6].src == src and pkt[IPv6].dst == dst and pkt[TCP].sport == int(src_port)\
+        if pkt[IPv6].src == src and TCP in pkt and pkt[TCP].sport == int(src_port)\
                 and pkt[TCP].dport == int(dst_port) and len(pkt[TCP].payload) > 0:
             trigger_packets.append(pkt)
             return "The chosen packet:\n%s" % str(pkt.show(dump=True))
         else:
             return "Useless packet:\n%s" % str(pkt.show(dump=True))
 
-    sniff(filter="tcp", timeout=timeout, prn=analyze, stop_filter=lambda pkt: len(trigger_packets) > 0, iface=iface)
+    sniff(filter="ip6", timeout=timeout, prn=analyze, stop_filter=lambda pkt: len(trigger_packets) > 0, iface=iface)
     if len(trigger_packets) == 0:
         print("Cannot find any packet connection")
         sys.exit(1)
     trigger_packet = trigger_packets[0]
-    packet = SRICMPIPerror6(str(trigger_packet[IPv6])[:48])
+
+    keep_len = 48
+    if IPv6ExtHdrSegmentRouting in trigger_packet:
+        keep_len = keep_len + len(trigger_packet[IPv6ExtHdrSegmentRouting]) - len(trigger_packet[TCP])
+        trigger_packet[IPv6].dst = dst  # This field might have changed because of Segment Routing
+
+    packet = SRICMPIPerror6(str(trigger_packet[IPv6])[:keep_len])
 
     icmp = IPv6(src=dst, dst=src) / SRICMPv6(trigger=packet) / IPv6ExtHdrSegmentRouting(addresses=[dst, redirect_ip])
     send(icmp)
@@ -160,7 +145,7 @@ def tcp_server(port):
     print("Connection closed")
 
 
-def tcp_client(src, dst, src_port, dst_port, timeout):
+def tcp_client(src, dst, src_port, dst_port, timeout, ip_list):
     """
     This function performs three actions with a waiting time after each step
       1. Establish a connection
@@ -172,12 +157,14 @@ def tcp_client(src, dst, src_port, dst_port, timeout):
     :param src_port: source port of the connection
     :param dst_port: destination port of the connection
     :param timeout: waiting time in seconds after each step (-1 means no timeout)
+    :param ip_list: list of segments to set in the SRH (in SRH Segment List order) as a json
 
     :type src: str
     :type dst: str
     :type src_port: str
     :type dst_port: str
     :type timeout: str
+    :type ip_list: str
     """
     timeout = int(timeout)
     timeout = timeout if timeout >= 0 else None
@@ -187,9 +174,15 @@ def tcp_client(src, dst, src_port, dst_port, timeout):
     s.bind((src, int(src_port)))
     s.connect((dst, int(dst_port)))
 
+    # Set an initial SRH to the socket
+    ip_list = json.loads(ip_list)
+    if len(ip_list) > 0:
+        srh = IPv6ExtHdrSegmentRouting(addresses=ip_list).build()
+        s.setsockopt(socket.IPPROTO_IPV6, socket.IPV6_RTHDR, srh)
+
     t = Sniffer(filter_bpf="ip6", count=0, timeout=4*timeout)
     debug_thread = Sniffer(filter_bpf="dst %s and (icmp6 && ip6[40] == 5)" % src,
-                           count=1, timeout=3 * timeout)
+                           count=1, timeout=3*timeout)
     t.start()
     debug_thread.start()
 

@@ -96,17 +96,31 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 	struct ip6_hdr *iphdr = payload;
 	char *ptr = ((char *) payload) + sizeof(*iphdr);
 	uint8_t next_header = iphdr->ip6_nxt;
+	uint16_t nextheader_len = 0;
 	if (next_header == NEXTHDR_ROUTING) {
-		/* Already an SRH */
+		/* Already an SRH -> extract the final destination */
 		struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) ptr;
-		// TODO Insert your Segment inside instead of skipping it ?
-		ptr = ptr + (1 + srh->hdrlen)*8;
+		struct in6_addr *final_dst = (struct in6_addr *)
+			(ptr + sizeof(struct ipv6_sr_hdr));
+		conn->dst = *final_dst;
+		uint16_t srh_len = (1 + srh->hdrlen)*8;
+		nextheader_len += srh_len;
+		ptr = ptr + srh_len;
 		next_header = srh->nexthdr;
-		zlog_warn(zc, "Packets with a SRH are not rerouted again");
-		return MNL_CB_ERROR;// TODO At the moment we don't reroute rerouted connections
+
+		/* We set the destination of the IPv6 packet to the final
+		 * destination so that the endhost can find which connection
+		 * the ICMP targets.
+		 */
+		iphdr->ip6_dst = conn->dst;
+
+		zlog_debug(zc, "Packets with a SRH is being rerouted");
+		// TODO At the moment we don't consider the case of multiple
+		// extension headers or stacked SRHs
+	} else {
+		conn->dst = iphdr->ip6_dst;
 	}
 	conn->src = iphdr->ip6_src;
-	conn->dst = iphdr->ip6_dst;
 	struct tcphdr *tcphdr;
 	struct udphdr *udphdr;
 	switch (next_header) {
@@ -127,7 +141,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 
 	/* Produce the ICMP */
 	size_t icmp_len = 0;
-	void *icmp = create_icmp(payload, &icmp_len, conn);
+	void *icmp = create_icmp(payload, nextheader_len, &icmp_len, conn);
 	if (!icmp) {
 		zlog_warn(zc, "Cannot produce an ICMP for a connection");
 		return MNL_CB_ERROR;

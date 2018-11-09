@@ -65,7 +65,7 @@ class TestSRRouted(SRNMininetTest):
         :param dst_port: destination port
         :type dst_port: int
 
-        :param inner_srh: SRH that should be in the trigger packet
+        :param inner_srh: the SRH of the trigger packet
         :type inner_srh: IPv6ExtHdrSegmentRouting
 
         :param srh_list: List of possible intermediate node lists that can be in the proposed SRH of the SRICMPv6
@@ -79,10 +79,11 @@ class TestSRRouted(SRNMininetTest):
                                                            (sricmpv6.type, SRICMPv6.TYPE))
         self.assertEqual(sricmpv6.code, 0, msg="Incorrect SR-ICMPv6 code: actual %s - expected %s" %
                                                (sricmpv6.code, 0))
-        expected_srhidx = 48 + (len(inner_srh) if inner_srh is not None else 0)
-        self.assertEqual(sricmpv6.srhidx, expected_srhidx,
-                         msg="Incorrect index for the inner packet: actual %d - expected %d"
-                             % (sricmpv6.srhidx, expected_srhidx))
+        self.assertEqual(sricmpv6.srhidx, len(sricmpv6.trigger),
+                         msg="Incorrect index for the inner packet: actual %d - expected %d -"
+                             " full icmp:\n%s\nhex of trigger packet: %s"
+                             % (sricmpv6.srhidx, len(sricmpv6.trigger), sricmpv6.show(dump=True),
+                                str(sricmpv6.trigger).encode("hex")))
         self.assertTrue(sricmpv6.is_valid_checksum(), msg="Invalid checksum %s" % sricmpv6.cksum)
 
         # IP6 packet
@@ -93,18 +94,30 @@ class TestSRRouted(SRNMininetTest):
         self.assertEqual(ip6_trigger_packet.dst, dst_ip,
                          msg="Incorrect destination IP address: actual %s - expected %s"
                              % (ip6_trigger_packet.dst, dst_ip))
-        self.assertEqual(ip6_trigger_packet.nh, 6, msg="Next header is not TCP: actual %d - expected %d"
-                                                       % (ip6_trigger_packet.nh, 6))
 
         # Inner SRH
         if inner_srh is None:
+            self.assertEqual(ip6_trigger_packet.nh, 6, msg="Next header is not TCP: actual %d - expected %d"
+                                                           % (ip6_trigger_packet.nh, 6))
             self.assertNotIn(IPv6ExtHdrSegmentRouting, ip6_trigger_packet,
                              msg="No SRH was sent in the packet so no SRH should be in the copy inside the ICMP")
+            tcp_trigger_packet = ip6_trigger_packet[TCPerror]
         else:
-            pass  # TODO Check that addresses are matching
+            self.assertEqual(ip6_trigger_packet.nh, 43, msg="Next header is not Routing Header: actual %d - expected %d"
+                                                           % (ip6_trigger_packet.nh, 43))
+            self.assertIn(IPv6ExtHdrSegmentRouting, ip6_trigger_packet,
+                          msg="An SRH was sent in the packet so an SRH should be in the copy inside the ICMP."
+                              "\nIP6 packet in ICMP:\n%s" % ip6_trigger_packet.show(dump=True))
+            srh = ip6_trigger_packet[IPv6ExtHdrSegmentRouting]
+            self.assertEqual(srh.addresses, inner_srh.addresses,
+                             msg="The list of addresses between the SRH sent (%s)"
+                                 "and the srh in the copy of the trigger packet (%s) is not the same"
+                                 % (inner_srh, srh.addresses))
+            self.assertEqual(srh.nh, 6, msg="Next header is not TCP: actual %d - expected %d"
+                                            % (srh.nh, 6))
+            tcp_trigger_packet = ip6_trigger_packet[TCP]
 
         # TCP first 8-bytes
-        tcp_trigger_packet = ip6_trigger_packet[TCPerror]
         self.assertEqual(tcp_trigger_packet.sport, src_port,
                          msg="Incorrect source port: actual %s - expected %s"
                              % (tcp_trigger_packet.sport, src_port))
@@ -151,13 +164,17 @@ class TestSRRouted(SRNMininetTest):
         self.assertTrue(matching_srh, msg="The Segment List %s is not matching any possible SRH %s"
                                           % (srh.addresses, srh_list))
 
-    def test_trigger_ecn_marking(self):
+    def trigger_ecn_marking(self, test_name, initial_srh):
         """
         This function tests that packets ecn marked will trigger the SRRouted daemon
         and it will reply with a well-formed ICMP.
+        :param test_name: The name of test (for logs)
+        :type test_name: str
+        :param initial_srh: SRH to set in the trigger packet (only routers are accepted)
+        :type initial_srh: Optional[list[str]]
         """
         topo_args = {"schema_tables": self.ovsschema["tables"],
-                     "cwd": os.path.join(self.log_dir, type(self).__name__, self.test_trigger_ecn_marking.__name__)}
+                     "cwd": os.path.join(self.log_dir, type(self).__name__, test_name)}
         net = ReroutingNet(topo=Albilene(always_redirect=True, **topo_args), static_routing=True)
         try:
             net.start()
@@ -171,8 +188,22 @@ class TestSRRouted(SRNMininetTest):
             src_port = 6000
             dst_ip = realIntfList(net["server"])[0].ip6
             dst_port = 80
+
+            pkt = IPv6(src=src_ip, dst=dst_ip, tc=3)
+            if initial_srh is not None:
+                ip_list = []
+                for intermediate in initial_srh:
+                    node = net[intermediate]
+                    for ip6 in node.intf("lo").ip6s(exclude_lls=False):
+                        if ip6.ip.compressed != "::1":
+                            ip_list.append(ip6.ip.compressed)
+                            break
+                ip_list.insert(0, dst_ip)
+                pkt = pkt / IPv6ExtHdrSegmentRouting(addresses=ip_list)
+            pkt = pkt / TCP(sport=src_port, dport=dst_port, flags='A')
+
             cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
-                   "--name", send_tcp_ecn_pkt.__name__, "--args", src_ip, dst_ip, str(src_port), str(dst_port), "10"]
+                   "--name", send_tcp_ecn_pkt.__name__, "--args", "10", str(pkt).encode("hex")]
             out, err, exitcode = net["client"].pexec(cmd)
             self.assertEqual(exitcode, 0, msg="The triggering of an ICMP failed:\nCommand '%s' returned %d\n"
                                               "Output: %s\nError: %s" % (" ".join(cmd), exitcode, out, err))
@@ -190,12 +221,20 @@ class TestSRRouted(SRNMininetTest):
             packet = IPv6(packet_bytes)
             self.assertEqual(packet.nh, 58, msg="We did not received an ICMPv6 message from SRRouting\n"
                                                 "binary=%s\nipv6 packet=%s" % (out, packet.show(dump=True)))
-            self.check_icmp(packet, src_ip, dst_ip, src_port, dst_port, None,
+            self.check_icmp(packet, src_ip, dst_ip, src_port, dst_port,
+                            pkt[IPv6ExtHdrSegmentRouting] if IPv6ExtHdrSegmentRouting in pkt else None,
                             [[net["server"]],
                              [net["server"], net["B"]]])
             lg.info("Correct ICMP packet received\n")
         except ValueError as e:
             self.assertFalse(True, msg="Packet received could not be parsed: %s" % str(e))
+
+    def test_trigger_ecn_marking(self):
+        """
+        This function tests that packets ecn marked will trigger the SRRouted daemon
+        and it will reply with a well-formed ICMP.
+        """
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__, None)
 
     def test_trigger_ecn_marking_with_initial_srh(self):
         """
@@ -203,7 +242,14 @@ class TestSRRouted(SRNMininetTest):
         and it will reply with a well-formed ICMP. The trigger packet contains an SRH
         and so, this SRH should be present in the ICMP.
         """
-        # TODO
+        lg.info("Testing trigger packet with an SRH with only the destination\n")
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_EmptySRH", [])
+
+        lg.info("Testing trigger packet with an SRH with only one intermediate segment\n")
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_B", ["B"])
+
+        lg.info("Testing trigger packet with an SRH with only two intermediate segments\n")
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_F_B", ["F", "B"])
 
 
 class TestSRICMP(SRNMininetTest):
@@ -229,12 +275,16 @@ class TestSRICMP(SRNMininetTest):
         except Exception as e:
             self.assertFalse(True, msg="Cannot dissect a generated ICMP packet:\n%s" % str(e))
 
-    def test_kernel_receive(self):
+    def kernel_receive(self, test_name, initial_srh):
         """
         Check that the kernel can parse the ICMP and change set the SRH of the connection socket
+        :param test_name: The name of test (for logs)
+        :type test_name: str
+        :param initial_srh: SRH to set in the trigger packet (only routers are accepted)
+        :type initial_srh: Optional[list[str]]
         """
         topo_args = {"schema_tables": self.ovsschema["tables"],
-                     "cwd": os.path.join(self.log_dir, type(self).__name__, self.test_kernel_receive.__name__)}
+                     "cwd": os.path.join(self.log_dir, type(self).__name__, test_name)}
         net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
         try:
             net.start()
@@ -252,6 +302,16 @@ class TestSRICMP(SRNMininetTest):
                     capture_itf = otherIntf(itf)
                     break
             self.assertIsNotNone(capture_itf, msg="Cannot find an interface to capture to")
+
+            ip_list = []
+            if initial_srh is not None:
+                for intermediate in initial_srh:
+                    node = net[intermediate]
+                    for ip6 in node.intf("lo").ip6s(exclude_lls=False):
+                        if ip6.ip.compressed != "::1":
+                            ip_list.append(ip6.ip.compressed)
+                            break
+                ip_list.insert(0, dst_ip)
 
             # Drop packets on the shortest path so that we wait for the redirection before success of the sending
 
@@ -271,7 +331,8 @@ class TestSRICMP(SRNMininetTest):
 
                 time.sleep(10)  # Wait for the server to start
                 client_cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
-                              "--name", tcp_client.__name__, "--args", src_ip, dst_ip, str(src_port), str(dst_port), "10"]
+                              "--name", tcp_client.__name__, "--args", src_ip, dst_ip, str(src_port), str(dst_port),
+                              "10", json.dumps(ip_list, separators=(',', ':'))]
                 client_popen = net["client"].popen(client_cmd)
 
                 listen_out = listen_popen.stdout.readline()  # Wait for the client to connect to the server
@@ -286,6 +347,9 @@ class TestSRICMP(SRNMininetTest):
                 self.assertEqual(exitcode, 0, msg="The TCP client that should have been rerouted failed:\n"
                                                   "Command '%s' returned %d\nOutput: %s\nError: %s"
                                                   % (" ".join(client_cmd), exitcode, client_out, client_err))
+                lg.debug("\nClient '%s' returned %d\noutput:\n%s\nerror:\n%s\n",
+                         " ".join(client_cmd), exitcode, client_out, client_err)
+
             finally:
                 cmd = "ip6tables -A FORWARD -p tcp --destination-port {dstport} --source-port {srcport}" \
                       " --tcp-flags SYN,ACK,FIN,RST ACK -m length ! --length 0:100 -j DROP".format(dstport=dst_port,
@@ -303,6 +367,8 @@ class TestSRICMP(SRNMininetTest):
                                               "if the TCP client has finished without error\n"
                                               "Command '%s' returned %s\nOutput: %s\nError: %s"
                                               % (" ".join(sniff_cmd), exitcode, sniff_out, sniff_err))
+            lg.debug("\nSniffer '%s' returned %d\noutput:\n%s\nerror:\n%s\n",
+                     " ".join(sniff_cmd), exitcode, sniff_out, sniff_err)
 
             exitcode = listen_popen.poll()
             if exitcode is None:
@@ -314,6 +380,8 @@ class TestSRICMP(SRNMininetTest):
                                               "if the TCP client has closed the connection\n"
                                               "Command '%s' returned %s\nOutput: %s\nError: %s"
                                               % (" ".join(listen_cmd), exitcode, listen_out, listen_err))
+            lg.debug("\nServer '%s' returned %d\noutput:\n%s\nerror:\n%s\n",
+                     " ".join(listen_cmd), exitcode, listen_out, listen_err)
         finally:
             net.stop()
 
@@ -338,6 +406,26 @@ class TestSRICMP(SRNMininetTest):
                          msg="The SRH has unexpected addresses: actual %s - expected %s"
                              % (srh.addresses, [dst_ip, redirect_ip]))
         lg.info("Redirection of the connection was successful\n")
+
+    def test_kernel_receive(self):
+        """
+        Check that the kernel can parse the ICMP and change set the SRH of the connection socket
+        """
+        self.kernel_receive(self.kernel_receive.__name__, None)
+
+    def test_kernel_receive_with_srh(self):
+        """
+        Check that the kernel can parse the ICMP (with an SRH in the trigger packet)
+        and change set the SRH of the connection socket
+        """
+        lg.info("Testing ICMP with trigger packet with an SRH with only the destination\n")
+        self.kernel_receive(self.kernel_receive.__name__ + "_EmptySRH", [])
+
+        lg.info("Testing ICMP with trigger packet with an SRH with one intermediate segment\n")
+        self.kernel_receive(self.kernel_receive.__name__ + "_SRH_B", ["B"])
+
+        lg.info("Testing ICMP with trigger packet with an SRH with two intermediate segments\n")
+        self.kernel_receive(self.kernel_receive.__name__ + "_SRH_F_B", ["F", "B"])
 
 
 def launch_all_tests(args, ovsschema):
