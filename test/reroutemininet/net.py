@@ -48,15 +48,37 @@ class ReroutingNet(SRNNet):
             time.sleep(.001)
         self._additional_daemons.append((daemon, p))
 
+    def activate_ecn(self):
+        cmd = "sysctl -w net.ipv4.tcp_ecn=1"
+        cmd = cmd.split(" ")
+        cmd2 = "sysctl -w net.ipv4.tcp_ecn_fallback=0"
+        cmd2 = cmd2.split(" ")
+        for host in self.hosts:
+            host.cmd(cmd)
+            host.cmd(cmd2)
+        for router in self.routers:
+            router.cmd(cmd)
+            router.cmd(cmd2)
+
     def start(self):
         super(ReroutingNet, self).start()
+        self.activate_ecn()
+
+        time.sleep(10)
 
         port = 50000
         for client in self.clients:
             for server in self.servers:
-                self.start_additional_daemon(SREndhostd, self[client], server_port=port, cwd=os.path.join(self.topo.cwd, client, str(port)))
-                self.start_additional_daemon(SRServerd, self[server], server_port=port, cwd=os.path.join(self.topo.cwd, server, str(port)))
+                path = os.path.join(self.topo.cwd, client, str(port))
+                os.makedirs(path)
+                self.start_additional_daemon(SREndhostd, self[client], server_port=port, cwd=path)
+                path = os.path.join(self.topo.cwd, server, str(port))
+                os.makedirs(path)
+                self.start_additional_daemon(SRServerd, self[server], server_port=port, cwd=path)
                 port += 1
+
+    def eval_files(self):
+        return [daemon.evalfile() for daemon, _ in self._additional_daemons if daemon.NAME == SRServerd.NAME]
 
     def stop(self):
         for d, p in self._additional_daemons:

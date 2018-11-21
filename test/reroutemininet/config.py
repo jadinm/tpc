@@ -20,6 +20,7 @@ class SRRerouted(SRNDaemon):
     def build(self):
         cfg = super(SRRerouted, self).build()
         self._node.sysctl = "net.ipv4.tcp_ecn=1"
+        self._node.sysctl = "tcp_ecn_fallback=0"
 
         cfg.red_limit = self.options.red_limit
         cfg.red_avpkt = self.options.red_avpkt
@@ -255,7 +256,11 @@ class SRServerd(ZlogDaemon):
     def build(self):
         cfg = super(SRServerd, self).build()
         cfg.server_port = self.options.server_port
+        cfg.evalfile = self.evalfile()
         return cfg
+
+    def evalfile(self):
+        return self._filepath(self._filename("%s.%s" % (self.options.server_port, "eval")))
 
     def set_defaults(self, defaults):
         """:param server_port: Listening port"""

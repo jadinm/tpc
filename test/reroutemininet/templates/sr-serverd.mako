@@ -1,4 +1,5 @@
 {
-	"zlogfile": "${node["sr-serverd"].zlog_cfg_filename}",
-	"server_port": ${node["sr-serverd"].server_port}
+    "zlogfile": "${node["sr-serverd"].zlog_cfg_filename}",
+    "server_port": ${node["sr-serverd"].server_port},
+    "evalfile": "${node["sr-serverd"].evalfile}"
 }
