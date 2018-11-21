@@ -3,7 +3,9 @@ import unittest
 from mininet.log import lg
 from random import randint
 
+from ipaddress import ip_address
 from ipmininet.utils import realIntfList, otherIntf
+from sr6mininet.sr6host import SR6Host
 
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
@@ -428,19 +430,115 @@ class TestSRICMP(SRNMininetTest):
         self.kernel_receive(self.kernel_receive.__name__ + "_SRH_F_B", ["F", "B"])
 
 
-def launch_all_tests(args, ovsschema):
-    lg.info("Starting testing of SRRouted daemon\n")
-    TestSRRouted.log_dir = args.log_dir
-    TestSRRouted.ovsschema = ovsschema
+class TestController(SRNMininetTest):
+    """
+    Test the controller path computation
+    """
 
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestSRRouted)
+    def test_controller_precomputed_paths(self):
+        """
+        Check that the controller computes correctly disjoint paths for Albilene
+        """
+        topo_args = {"schema_tables": self.ovsschema["tables"],
+                     "cwd": os.path.join(self.log_dir, type(self).__name__, "albilene_precompute")}
+        net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
+
+        try:
+            net.start()
+
+            lg.info("Waiting for the controller to start\n")
+            time.sleep(10)
+
+            cmd = "ovsdb-client --format=json dump tcp:[::1]:6640 SR_test Paths"
+            output = net["controller"].cmd(cmd.split(" "))
+        finally:
+            net.stop()
+
+        try:
+            output = json.loads(output)
+        except ValueError:
+            self.assertFalse(True, msg="Cannot parse output %s as JSON" % output)
+
+        header = output["headings"]
+        paths = output["data"]
+        self.assertEqual(len(paths), 1, msg="We expect only one path because there are two access routers"
+                                            " but we found %d path: %s" % (len(paths), paths))
+        for path in paths:
+            # Check flow info
+            flow = path[header.index("flow")]
+            try:
+                flow = json.loads(flow)
+            except ValueError:
+                self.assertFalse(True, msg="Cannot parse flow info %s as JSON" % flow)
+
+            access_routers = [net["A"], net["F"]]
+            lo_addrs = []
+            for node in access_routers:
+                for ip in node.intf("lo").ip6s(exclude_lls=True):
+                    if ip.ip.compressed != "::1":
+                        lo_addrs.append(ip.ip.compressed)
+                        break
+
+            sorted_addrs = sorted(lo_addrs, key=lambda x: ip_address(x))
+            if sorted_addrs != lo_addrs:
+                access_routers.reverse()
+
+            self.assertEqual(flow, sorted_addrs, msg="Invalid flow specs: actual %s - expected %s" % (flow, sorted_addrs))
+
+            # Check associated prefixes
+            prefixes = path[header.index("prefixes")]
+            try:
+                prefixes = json.loads(prefixes)
+            except ValueError:
+                self.assertFalse(True, msg="Cannot parse prefixes info %s as JSON" % prefixes)
+
+            for i in range(len(access_routers)):
+                node = access_routers[i]
+                for itf in node.intfList():
+                    for ip in itf.ip6s(exclude_lls=True):
+                        if ip.ip.compressed != "::1" and \
+                                (itf.name == "lo" or isinstance(otherIntf(itf).node, SR6Host)):
+                            prefix = {u"address": ip.network.network_address.compressed,
+                                      u"prefixlen": ip.network.prefixlen}
+                            self.assertIn(prefix, prefixes[i], msg="Prefix %s not found in the list of prefixes: %s"
+                                                                   % (prefix, prefixes[i]))
+
+            # Check associated segment lists
+            segment_lists = path[header.index("segments")]
+            try:
+                segment_lists = json.loads(segment_lists)
+            except ValueError:
+                self.assertFalse(True, msg="Cannot parse segment_lists info %s as JSON" % segment_lists)
+
+            segment_list_addrs = []
+            for seglist_expect in [[], [net["E"]]]:
+                addrs = []
+                for node in seglist_expect:
+                    for ip in node.intf("lo").ip6s(exclude_lls=True):
+                        if ip.ip.compressed != "::1":
+                            addrs.append(ip.ip.compressed)
+                            break
+                segment_list_addrs.append(addrs)
+            self.assertEqual(segment_lists, segment_list_addrs, msg="Invalid segment lists: actual %s - expected %s"
+                                                                    % (segment_lists, segment_list_addrs))
+        lg.info("Generated paths were correct\n")
+
+
+def launch_class_test(cls, args, ovsschema):
+    cls.log_dir = args.log_dir
+    cls.ovsschema = ovsschema
+    suite = unittest.TestLoader().loadTestsFromTestCase(cls)
     unittest.TextTestRunner().run(suite)
+
+
+def launch_all_tests(args, ovsschema):
+    lg.info("Starting testing of the SRN Controller\n")
+    launch_class_test(TestController, args, ovsschema)
+
+    lg.info("Starting testing of SRRouted daemon\n")
+    launch_class_test(TestSRRouted, args, ovsschema)
 
     lg.info("\nStarting testing of kernel reaction to SR-ICMPs\n")
-    TestSRICMP.log_dir = args.log_dir
-    TestSRICMP.ovsschema = ovsschema
-
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestSRICMP)
-    unittest.TextTestRunner().run(suite)
+    launch_class_test(TestSRICMP, args, ovsschema)
 
     lg.info("Tests are finished\n")
