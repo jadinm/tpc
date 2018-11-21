@@ -1,5 +1,6 @@
 #include <arpa/inet.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <jansson.h>
 #include <netdb.h>
 #include <poll.h>
@@ -9,7 +10,9 @@
 #include <string.h>
 #include <sys/types.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
 #include <unistd.h>
+#include <time.h>
 #include <zlog.h>
 
 
@@ -19,6 +22,7 @@
 struct config {
 	char *zlog_conf_file;
 	int server_port;
+	int eval_file;
 };
 
 static zlog_category_t *zc;
@@ -26,6 +30,8 @@ static char buf [1024];
 struct config cfg;
 int stop;
 
+struct timespec last_measure;
+uint64_t transfer_size;
 
 void sig_handler(int signal_number _unused)
 {
@@ -112,12 +118,20 @@ static void clean_config()
 		free(cfg.zlog_conf_file);
 		cfg.zlog_conf_file = NULL;
 	}
+	if (cfg.eval_file >= 0) {
+		if (close(cfg.eval_file) < 0) {
+			fprintf(stderr, "Cannot close the eval file"
+			       " - errno %d\n", errno);
+		}
+		cfg.eval_file = -1;
+	}
 }
 
 static void default_config()
 {
 	cfg.zlog_conf_file = NULL;
 	cfg.server_port = 80;
+	cfg.eval_file = -1;
 }
 
 static int load_var_string(json_t *root_cfg, json_error_t *json_err,
@@ -135,6 +149,27 @@ static int load_var_string(json_t *root_cfg, json_error_t *json_err,
 		}
 		strcpy(*value, tmp);
 	}
+	return 0;
+}
+
+static int load_fd(json_t *root_cfg, json_error_t *json_err,
+		   const char *name, int *fd)
+{
+	char *tmp = NULL;
+	int err = load_var_string(root_cfg, json_err, name, &tmp);
+	if (err < 0) {
+		return -1;
+	} else if (tmp) {
+		*fd = open(tmp, O_CREAT | O_TRUNC | O_WRONLY,
+			   S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		if (*fd < 0) {
+			fprintf(stderr, "Cannot open eval file - errno %d\n",
+				errno);
+			free(tmp);
+			return -1;
+		}
+	}
+	free(tmp);
 	return 0;
 }
 
@@ -158,16 +193,39 @@ static int load_config(const char *config_file)
 	if (json_unpack_ex(root_cfg, &json_err, 0, "{s?:i}", "server_port",
 			   &cfg.server_port) < 0)
 		goto err;
+	if (load_fd(root_cfg, &json_err, "evalfile",
+		    &cfg.eval_file))
+		goto err;
 
 	json_decref(root_cfg);
 	return 0;
 err:
-	fprintf(stderr, "Cannot parse config file: %s\nCause: %s\nSource: %s\nLine %d Column %d\n",
-		config_file, json_err.text, json_err.source, json_err.line, json_err.column);
+	fprintf(stderr, "Cannot parse config file: %s\nCause: %s\n"
+		"Source: %s\nLine %d Column %d\n",
+		config_file, json_err.text, json_err.source,
+		json_err.line, json_err.column);
 	if (root_cfg)
 		json_decref(root_cfg);
 	clean_config();
 	return -1;
+}
+
+static void write_evalfile(int sfd, int received)
+{
+	struct timespec tp;
+	transfer_size += received;
+	if (clock_gettime(CLOCK_MONOTONIC, &tp)) {
+		zlog_warn(zc, "Cannot measure time ! - errno %d\n", errno);
+	} else if (cfg.eval_file >= 0 && tp.tv_sec >= last_measure.tv_sec + 1) {
+		char evalbuf[1024];
+		snprintf(evalbuf, 1024, "%d %lu %lu.%lu\n", sfd, transfer_size,
+			 tp.tv_sec, tp.tv_nsec);
+		last_measure = tp;
+		transfer_size = 0;
+		if (write(cfg.eval_file, evalbuf, strlen(evalbuf)) < 0)
+			zlog_warn(zc, "Cannot write to eval file !"
+				  " - errno %d\n", errno);
+	}
 }
 
 int main (int argc, char *argv[])
@@ -300,11 +358,18 @@ int main (int argc, char *argv[])
 				zlog_warn(zc, "ICMP received just for ACKs");
 			}
 			if (pfd[i].revents & POLLIN) {
-				if (recv(pfd[i].fd, buf, sizeof(buf), 0) < 0) {
+				int received;
+				if ((received = recv(pfd[i].fd, buf,
+						     sizeof(buf), 0)) < 0) {
 					zlog_error(zc, "Cannot receive - errno %d\n",
 						   errno);
 					ret = -1;
 					goto out_sfds;
+				}
+				if (cfg.eval_file >= 0) {
+					write_evalfile(pfd[i].fd, received);
+				} else {
+					zlog_error(zc, "fd is %d\n", cfg.eval_file);
 				}
 			}
 		}

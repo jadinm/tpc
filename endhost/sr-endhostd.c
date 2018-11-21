@@ -39,11 +39,12 @@ static void help(char *argv[])
 	printf("-h to print this message\n");
 }
 
-static struct ipv6_sr_hdr *get_srh(char *segments[], size_t segment_number)
+static struct ipv6_sr_hdr *get_srh(char *segments[], size_t segment_number,
+				   size_t *srh_len)
 {
 	struct ipv6_sr_hdr *srh;
-	size_t srh_len = sizeof(*srh) + (segment_number + 1) * sizeof(struct in6_addr);
-	srh = malloc(srh_len);
+	*srh_len = sizeof(*srh) + (segment_number + 1) * sizeof(struct in6_addr);
+	srh = calloc(1, *srh_len);
 	if (!srh) {
 		zlog_error(zc, "Out of memory\n");
 		return NULL;
@@ -93,16 +94,21 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 	sin6.sin6_port = htons(cfg.server_port);
 	sin6.sin6_addr = cfg.server_addr;
 
+	size_t srh_len = 0;
 	if (!srh) {
 		change_srh = true;
-		srh = get_srh(NULL, 0);
+		srh = get_srh(NULL, 0, &srh_len);
 		if (!srh) {
 			ret = -1;
 			zlog_error(zc, "Cannot produce the default SRH\n");
 			goto out;
 		}
+		zlog_debug(zc, "SRH of size %lu produced\n", srh_len);
+	} else {
+		srh_len = (srh->hdrlen + 1) << 3;
+		zlog_debug(zc, "Creating a socket for SRH of size %lu\n",
+			   srh_len);
 	}
-	size_t srh_len = (srh->hdrlen + 1) << 3;
 
 	if (setsockopt(sfd, IPPROTO_IPV6, IPV6_RTHDR, srh, srh_len) < 0) {
 		zlog_error(zc, "Cannot set the SRH in the socket - errno = %d",
@@ -127,7 +133,7 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 		goto err_srh;
 	}
 
-	struct hash_sfd *hsfd= malloc(sizeof(struct hash_sfd));
+	struct hash_sfd *hsfd = malloc(sizeof(struct hash_sfd));
 	if (!hsfd) {
 		ret = -1;
 		zlog_error(zc, "Cannot allocate hash_sfd\n");
@@ -135,7 +141,7 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 	}
 	hsfd->srh = srh;
 	hsfd->sfd = sfd;
-	HASH_ADD(hh, cfg.sockets, srh, srh_len, hsfd);
+	HASH_ADD_KEYPTR(hh, cfg.sockets, hsfd->srh, srh_len, hsfd);
 
 	ret = hsfd->sfd;
 out:
@@ -153,6 +159,8 @@ static int switch_socket(struct ipv6_sr_hdr *srh)
 	size_t srh_len = (srh->hdrlen + 1) << 3;
 	struct hash_sfd *hsfd = NULL;
 	int sfd = -1;
+
+	zlog_debug(zc, "Switch socket event !\n");
 
 	HASH_FIND(hh, cfg.sockets, srh, srh_len, hsfd);
 	if (hsfd) { /* Switch to previously created socket */
@@ -214,13 +222,15 @@ static struct ipv6_sr_hdr *send_traffic(int sfd)
 				zlog_error(zc, "Cannot allocate memory for SRH\n");
 				return NULL;
 			}
-			if (getsockopt(sfd, IPPROTO_IPV6, IPV6_RTHDR, &srh,
+			if (getsockopt(sfd, IPPROTO_IPV6, IPV6_RTHDR, srh,
 				       &srh_len) < 0) {
 				zlog_error(zc, "Cannot get back the SRH in the ICMP - errno = %d\n",
 					   errno);
 				free(srh);
 				srh = NULL;
 			}
+			zlog_debug(zc, "Received an new SRH of size %u\n",
+				   srh_len);
 			return srh;
 		}
 		if (pfd.revents & POLLOUT) {
@@ -242,10 +252,10 @@ static void clean_config()
 	if (cfg.sockets) {
 		struct hash_sfd *hsfd, *tmp;
 		HASH_ITER(hh, cfg.sockets, hsfd, tmp) {
-			zlog_debug(zc, "Cleaning socket %d\n", hsfd->sfd);
+			fprintf(stderr, "Cleaning socket %d\n", hsfd->sfd);
 			HASH_DEL(cfg.sockets, hsfd);
 			if (close(hsfd->sfd)) {
-				zlog_warn(zc, "Cannot close socket %d\n",
+				fprintf(stderr, "Cannot close socket %d\n",
 					  hsfd->sfd);
 			}
 			free(hsfd->srh);
