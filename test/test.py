@@ -226,7 +226,7 @@ class TestSRRouted(SRNMininetTest):
             self.check_icmp(packet, src_ip, dst_ip, src_port, dst_port,
                             pkt[IPv6ExtHdrSegmentRouting] if IPv6ExtHdrSegmentRouting in pkt else None,
                             [[net["server"]],
-                             [net["server"], net["B"]]])
+                             [net["server"], net["E"]]])
             lg.info("Correct ICMP packet received\n")
         except ValueError as e:
             self.assertFalse(True, msg="Packet received could not be parsed: %s" % str(e))
