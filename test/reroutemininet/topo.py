@@ -14,7 +14,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
         for n in rerouting_routers:
             self.set_node_property(n, "sr_controller", sr_controller)
 
-        self.rerouting_routers = rerouting_routers
+        self.rerouting_routers = rerouting_routers + access_routers
         self.sr_controller = sr_controller
         self.rerouted_opts = rerouted_opts if rerouted_opts is not None else {}
 
