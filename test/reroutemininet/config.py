@@ -42,8 +42,8 @@ class SRRerouted(SRNDaemon):
 
         defaults.red_limit = 1
         defaults.red_avpkt = 1000
-        defaults.red_probability = 0.1
-        defaults.red_min = 1/12.
+        defaults.red_probability = 0.9
+        defaults.red_min = 1/20.
         defaults.red_max = 1/4.
         defaults.red_burst = self.red_burst
         super(SRRerouted, self).set_defaults(defaults)
@@ -57,7 +57,7 @@ class SRRerouted(SRNDaemon):
         # Man pages say ((2. * red_min + 1. * red_max) / (3. * red_avpkt)) * red_limit * itf_bw + 1
         # but it seems new version of iproute prefers
         # return red_min * red_limit * itf_bw / float(red_avpkt) + 1
-        return red_min * red_limit * itf_bw / float(red_avpkt) + 1
+        return 1  # TODO Replace by red_min * red_limit * itf_bw / float(red_avpkt) + 1
 
     def cleanup(self):
         # Clean firewall
@@ -71,8 +71,7 @@ class SRRerouted(SRNDaemon):
             pass
         super(SRRerouted, self).cleanup()
 
-    @staticmethod
-    def reconfigure_itf(itf, bw=None, delay=None, jitter=None, loss=None,
+    def reconfigure_itf(self, itf, cfg, bw=None, delay=None, jitter=None, loss=None,
                         speedup=0, use_hfsc=False, use_tbf=False,
                         latency_ms=None, enable_ecn=False, enable_red=False,
                         max_queue_size=None, **params):
@@ -86,24 +85,40 @@ class SRRerouted(SRNDaemon):
         else:
             cmds = []
 
-        # Bandwidth limits via various methods
-        bwcmds, parent = itf.bwCmds(bw=bw, speedup=speedup, use_hfsc=use_hfsc, use_tbf=use_tbf,
-                                    latency_ms=latency_ms, enable_ecn=enable_ecn, enable_red=enable_red)
-        cmds += bwcmds
+        parent = " root "
 
-        # Delay/jitter/loss/max_queue_size using netem
-        delaycmds, parent = itf.delayCmds(delay=delay, jitter=jitter, loss=loss, max_queue_size=max_queue_size,
-                                          parent=parent)
-        cmds += delaycmds
+        # ECN
+        bw = itf.bw if itf.bw > 0 else 10
+        bw *= 10 ** 6
+        red_limit = cfg[self.NAME].red_limit * bw
+        burst = int(cfg[self.NAME].red_burst(bw, cfg[self.NAME].red_limit, cfg[self.NAME].red_avpkt,
+                                             cfg[self.NAME].red_probability, cfg[self.NAME].red_min,
+                                             cfg[self.NAME].red_max))
 
-        # Ugly but functional: display configuration info
-        stuff = ((['%.2fMbit' % bw] if bw is not None else []) +
-                 (['%s delay' % delay] if delay is not None else []) +
-                 (['%s jitter' % jitter] if jitter is not None else []) +
-                 (['%d%% loss' % loss] if loss is not None else []) +
-                 (['ECN'] if enable_ecn else ['RED']
-                 if enable_red else []))
-        lg.info('(' + ' '.join(stuff) + ') ')
+        # Shaping
+        cmds += ['%s qdisc add dev %s {parent} handle 5:0 htb default 1'.format(parent=parent),
+                 '%s class add dev %s parent 5:0 classid 5:1 htb ' +
+                 'rate %fMbit burst 15k' % (bw / 10**6)]
+        parent = ' parent 5:1 '
+
+        cmd = '%s qdisc add dev %s {parent} handle 1: red limit {limit} burst {burst} ' \
+              'avpkt {avpkt} probability {probability} min {min} max {max} bandwidth {bandwidth} {ecn}' \
+            .format(itf=itf.name, limit=int(red_limit), burst=burst, avpkt=cfg[self.NAME].red_avpkt,
+                    probability=cfg[self.NAME].red_probability, min=1000, # TODO replace int(red_limit * cfg[self.NAME].red_min)
+                    max=2000, bandwidth=bw, parent=parent, ecn='ecn') # TODO int(red_limit * cfg[self.NAME].red_max)
+        parent = " parent 1:1 "
+        cmds += [cmd]
+        # Delay
+        netemargs = '%s%s%s%s' % (
+            'delay %s ' % delay if delay is not None else '',
+            '%s ' % jitter if jitter is not None else '',
+            'loss %d ' % loss if loss is not None else '',
+            'limit %d' % max_queue_size if max_queue_size is not None else 'limit 10000000')
+        if netemargs:
+            cmds += ['%s qdisc add dev %s ' + parent +
+                     ' handle 10: netem ' +
+                     netemargs]
+            parent = ' parent 10:1 '
 
         # Execute all the commands in our node
         lg.debug("at map stage w/cmds: %s\n" % cmds)
@@ -128,24 +143,7 @@ class SRRerouted(SRNDaemon):
 
         # ECN marking through red
         for itf in realIntfList(self._node):
-            parent = self.reconfigure_itf(itf, **itf.params)
-
-            bw = itf.bw if itf.bw > 0 else 10
-            bw *= 10**6
-            red_limit = cfg[self.NAME].red_limit * bw
-            burst = int(cfg[self.NAME].red_burst(bw, cfg[self.NAME].red_limit, cfg[self.NAME].red_avpkt,
-                                                 cfg[self.NAME].red_probability, cfg[self.NAME].red_min,
-                                                 cfg[self.NAME].red_max))
-
-            cmd = 'tc qdisc add dev {itf} {parent} handle 20: red limit {limit} burst {burst} ' \
-                  'avpkt {avpkt} probability {probability} min {min} max {max} bandwidth {bandwidth} ecn'\
-                .format(itf=itf.name, limit=red_limit, burst=burst, avpkt=cfg[self.NAME].red_avpkt,
-                        probability=cfg[self.NAME].red_probability, min=int(red_limit * cfg[self.NAME].red_min),
-                        max=int(red_limit * cfg[self.NAME].red_max), bandwidth=bw, parent=parent)
-            _, err, exitcode = self._node.pexec(cmd)
-            if exitcode != 0:
-                raise ValueError('%s: Cannot set the ECN marking in %s - cmd "%s" exited with %s' %
-                                 (self._node.name, self.NAME, cmd, err))
+            self.reconfigure_itf(itf, cfg, **itf.params)
 
         return cfg_content
 
