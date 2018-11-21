@@ -78,15 +78,20 @@ class Albilene(SRNTopo):
     def addRouter(self, name, controller=False, **params):
         return super(Albilene, self).addRouter(name, controller, **params)
 
-    def addLink(self, node1, node2, link_delay=None, **opts):
+    def addLink(self, node1, node2, link_delay=None, link_bandwidth=None, **opts):
         link_delay = self.link_delay if link_delay is None else link_delay
+        link_bandwidth = self.link_bandwidth if link_bandwidth is None else link_bandwidth
 
-        default_params1 = {"bw": self.link_bandwidth, "delay": link_delay}
-        default_params1.update(opts.get("params1", {}))
-        opts["params1"] = default_params1
+        if self.isRouter(node1) and self.isRouter(node2):
+            # Because of strange behavior between tc and mininet on the sending-side
+            # we remove tc on these links
+            # source: https://progmp.net/mininetPitfalls.html
+            default_params1 = {"bw": link_bandwidth, "delay": link_delay}
+            default_params1.update(opts.get("params1", {}))
+            opts["params1"] = default_params1
 
-        default_params2 = {"bw": self.link_bandwidth, "delay": link_delay}
-        default_params2.update(opts.get("params2", {}))
-        opts["params2"] = default_params2
+            default_params2 = {"bw": link_bandwidth, "delay": link_delay}
+            default_params2.update(opts.get("params2", {}))
+            opts["params2"] = default_params2
 
         return super(SRNTopo, self).addLink(node1, node2, **opts)
