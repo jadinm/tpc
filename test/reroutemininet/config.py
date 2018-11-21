@@ -6,56 +6,12 @@ from mininet.log import lg
 from ipmininet.router.config.base import Daemon
 from ipmininet.router.config.utils import template_lookup
 from ipmininet.utils import realIntfList
-from mako import exceptions as mako_exceptions
-from srnmininet.config.config import SRNDaemon
+from srnmininet.config.config import SRNDaemon, ZlogDaemon
 
 template_lookup.directories.append(os.path.join(os.path.dirname(__file__), 'templates'))
 
 
-class ZlogDaemon(SRNDaemon):
-    """
-    Class for daemons using zlog
-    """
-
-    def build(self):
-        cfg = super(ZlogDaemon, self).build()
-        cfg.zlog_cfg_filename = self.zlog_cfg_filename
-        return cfg
-
-    @property
-    def zlog_cfg_filename(self):
-        """Return the filename in which this daemon log rules should be stored"""
-        return self._filepath("%s-zlog.cfg" % self.NAME)
-
-    @property
-    def zlog_template_filename(self):
-        return "zlog.mako"
-
-    def render(self, cfg, **kwargs):
-
-        cfg_content = [super(ZlogDaemon, self).render(cfg, **kwargs)]
-
-        self.files.append(self.zlog_cfg_filename)
-        lg.debug('Generating %s\n' % self.zlog_cfg_filename)
-        try:
-            cfg["zlog"] = cfg[self.NAME]
-            cfg_content.append(template_lookup.get_template(self.zlog_template_filename).render(node=cfg, **kwargs))
-        except:
-            # Display template errors in a less cryptic way
-            lg.error('Couldn''t render a reroutemininet file(',
-                     self.zlog_template_filename, ')')
-            lg.error(mako_exceptions.text_error_template().render())
-            raise ValueError('Cannot render the rules configuration [%s: %s]' % (
-                self._node.name, self.NAME))
-        return cfg_content
-
-    def write(self, cfg):
-        super(ZlogDaemon, self).write(cfg[0])
-        with open(self.zlog_cfg_filename, 'w') as f:
-            f.write(cfg[1])
-
-
-class SRRerouted(ZlogDaemon):
+class SRRerouted(SRNDaemon):
     """The class representing the sr-rerouted daemon,
     used for redirection via ICMPv6"""
 
@@ -233,15 +189,12 @@ class IPerf(Daemon):
         super(IPerf, self).cleanup()
 
 
-class ZlogHostDaemon(Daemon):
-    """
-    Class for daemons using zlog
-    """
+class SREndhostd(ZlogDaemon):
+    NAME = "sr-endhostd"
 
-    def build(self):
-        cfg = super(ZlogHostDaemon, self).build()
-        cfg.zlog_cfg_filename = self.zlog_cfg_filename
-        return cfg
+    def __init__(self, *args, **kwargs):
+        self.cwd = kwargs.pop("cwd", os.curdir)
+        super(SREndhostd, self).__init__(*args, **kwargs)
 
     @property
     def startup_line(self):
@@ -254,46 +207,6 @@ class ZlogHostDaemon(Daemon):
         return '{name} -d {cfg}' \
             .format(name=self.NAME,
                     cfg=self.cfg_filename)
-
-    @property
-    def zlog_cfg_filename(self):
-        """Return the filename in which this daemon log rules should be stored"""
-        return self._filepath("%s-zlog.cfg" % self.NAME)
-
-    @property
-    def zlog_template_filename(self):
-        return "zlog.mako"
-
-    def render(self, cfg, **kwargs):
-
-        cfg_content = [super(ZlogHostDaemon, self).render(cfg, **kwargs)]
-
-        self.files.append(self.zlog_cfg_filename)
-        lg.debug('Generating %s\n' % self.zlog_cfg_filename)
-        try:
-            cfg["zlog"] = cfg[self.NAME]
-            cfg_content.append(template_lookup.get_template(self.zlog_template_filename).render(node=cfg, **kwargs))
-        except:
-            # Display template errors in a less cryptic way
-            lg.error('Couldn''t render a reroutemininet file(',
-                     self.zlog_template_filename, ')')
-            lg.error(mako_exceptions.text_error_template().render())
-            raise ValueError('Cannot render the rules configuration [%s: %s]' % (
-                self._node.name, self.NAME))
-        return cfg_content
-
-    def write(self, cfg):
-        super(ZlogHostDaemon, self).write(cfg[0])
-        with open(self.zlog_cfg_filename, 'w') as f:
-            f.write(cfg[1])
-
-
-class SREndhostd(ZlogHostDaemon):
-    NAME = "sr-endhostd"
-
-    def __init__(self, *args, **kwargs):
-        self.cwd = kwargs.pop("cwd", os.curdir)
-        super(SREndhostd, self).__init__(*args, **kwargs)
 
     def build(self):
         cfg = super(SREndhostd, self).build()
@@ -320,12 +233,24 @@ class SREndhostd(ZlogHostDaemon):
         return os.path.join(self.cwd, f)
 
 
-class SRServerd(ZlogHostDaemon):
+class SRServerd(ZlogDaemon):
     NAME = "sr-serverd"
 
     def __init__(self, *args, **kwargs):
         self.cwd = kwargs.pop("cwd", os.curdir)
         super(SRServerd, self).__init__(*args, **kwargs)
+
+    @property
+    def startup_line(self):
+        return '{name} {cfg}' \
+            .format(name=self.NAME,
+                    cfg=self.cfg_filename)
+
+    @property
+    def dry_run(self):
+        return '{name} -d {cfg}' \
+            .format(name=self.NAME,
+                    cfg=self.cfg_filename)
 
     def build(self):
         cfg = super(SRServerd, self).build()
