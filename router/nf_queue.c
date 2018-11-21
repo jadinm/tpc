@@ -100,6 +100,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 	if (next_header == NEXTHDR_ROUTING) {
 		/* Already an SRH -> extract the final destination */
 		struct ipv6_sr_hdr *srh = (struct ipv6_sr_hdr *) ptr;
+		conn->srh = srh;
 		struct in6_addr *final_dst = (struct in6_addr *)
 			(ptr + sizeof(struct ipv6_sr_hdr));
 		conn->dst = *final_dst;
@@ -119,6 +120,7 @@ static int nf_queue_callback(const struct nlmsghdr *nlh, void *data)
 		// extension headers or stacked SRHs
 	} else {
 		conn->dst = iphdr->ip6_dst;
+		conn->srh = NULL;
 	}
 	conn->src = iphdr->ip6_src;
 	struct tcphdr *tcphdr;
@@ -259,11 +261,8 @@ int nf_queue_recv(struct connection *conn)
 			zlog_error(zc, "mnl_socket_recvfrom %s", err_buf);
 			return -1;
 		}
-		zlog_error(zc, "ret value %d", err); // TODO
 		err = mnl_cb_run(buf, err, 0, portid, nf_queue_callback, conn);
 		if (err == MNL_CB_ERROR) {
-			strerror_r(errno, err_buf, SIZEOF_ERR_BUF);
-			zlog_error(zc, "mnl_cb_run %s - %d", err_buf, errno);
 			return -1;
 		} // TODO MNL_CB_STOP Not interpreted
 		return 1;

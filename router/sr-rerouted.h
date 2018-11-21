@@ -13,6 +13,7 @@ struct connection {
 	struct in6_addr dst;
 	__u16 src_port;
 	__u16 dst_port;
+	struct ipv6_sr_hdr *srh;
 };
 
 struct prefix {

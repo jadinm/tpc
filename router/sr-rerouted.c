@@ -27,6 +27,15 @@ void sig_handler(int signal_number _unused)
 	stop = 1;
 }
 
+static int srdb_print(const char *fmt, ...)
+{
+	va_list args;
+	va_start(args, fmt);
+	vzlog_error(zc, fmt, args);
+	va_end(args);
+	return 0;
+}
+
 static void help(char *argv[])
 {
 	printf("Usage: %s [-h] [-d] config_file\n", argv[0]);
@@ -286,6 +295,8 @@ static int json_to_paths(const char *json_array, struct path **paths)
 	if (length <= 0)
 		goto out;
 
+	zlog_debug(zc, "%d paths for the flow:\n%s\n", length, json_array);
+
 	/* Allocate memory if needed */
 	if (!*paths) {
 		allocated = true;
@@ -317,10 +328,10 @@ err_path_table:
 	goto out_json_decref;
 }
 
-static int paths_read(struct srdb_entry *entry)
+static struct flow *new_flow(struct srdb_entry *entry)
 {
 	struct srdb_path_entry *path_entry = (struct srdb_path_entry *) entry;
-	struct flow *fl;
+	struct flow *fl = NULL;
 
 	fl = calloc(1, sizeof(*fl));
 	if (!fl) {
@@ -352,25 +363,47 @@ static int paths_read(struct srdb_entry *entry)
 	hmap_set(cfg.path_cache, fl->addrs, fl);
 
 out:
-	return 0;
+	return fl;
 free_fl:
 	free_flow(fl);
+	fl = NULL;
 	goto out;
 }
 
-static int paths_delete(struct srdb_entry *entry)
+static int paths_read(struct srdb_entry *entry)
+{
+	zlog_debug(zc, "New path received");
+	if (!new_flow(entry))
+		zlog_warn(zc, "Cannot create the newly inserted flow");
+	return 0;
+}
+
+static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff __unused__,
+			unsigned int mask __unused__)
 {
 	struct srdb_path_entry *path_entry = (struct srdb_path_entry *) entry;
-	struct in6_addr addrs[2];
+	struct in6_addr *addrs = NULL;
 
-	jsonchar_to_in6(path_entry->flow, (struct in6_addr **) &addrs);
+	zlog_debug(zc, "Update of path received");
 
-	struct flow *fl = hmap_get(cfg.path_cache, addrs);
-	if (fl) {
-		hmap_delete(cfg.path_cache, addrs);
-		free_flow(fl);
+	int nb = jsonchar_to_in6(path_entry->flow, (struct in6_addr **) &addrs);
+	if (nb != 2) {
+		zlog_warn(zc, "Cannot find flow information");
+		return 0;
 	}
 
+	struct flow *old_fl = hmap_get(cfg.path_cache, addrs);
+	if (!old_fl)
+		zlog_warn(zc, "Update received before the insertion");
+
+	struct flow *fl = new_flow(entry);
+	if (!fl) {
+		zlog_warn(zc, "Cannot create flow from updated entry");
+		return 0;
+	}
+
+	if (old_fl)
+		free_flow(old_fl);
 	return 0;
 }
 
@@ -396,11 +429,26 @@ static int launch_srdb()
 {
 	unsigned int mon_flags;
 
-	mon_flags = MON_INITIAL | MON_INSERT | MON_DELETE;
+	mon_flags = MON_INITIAL | MON_INSERT | MON_UPDATE;
 	if (srdb_monitor(cfg.srdb, "Paths", mon_flags, paths_read,
-			 NULL, paths_delete, false, true) < 0)
+			 paths_update, NULL, false, true) < 0)
 		return -1;
 	return 0;
+}
+
+static bool same_path(struct connection *conn, struct path *path, bool reversed)
+{
+	struct ipv6_sr_hdr *srh = conn->srh;
+	if (srh && path->nb_segments == srh->first_segment) { // The destination segment is not in the Path segment list
+		for (size_t i = 0; i < path->nb_segments; i++) {
+			size_t idx = !reversed ? i : path->nb_segments - i - 1;
+			if (memcmp(&srh->segments[srh->first_segment - i],
+				   &path->segments[idx], sizeof(struct in6_addr)))
+				return false;
+		}
+		return true;
+	}
+	return false;
 }
 
 int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
@@ -414,9 +462,9 @@ int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 
 	char buf_tmp [1024];
 	inet_ntop(AF_INET6, addr_pair, buf_tmp, 1024);
-	printf("lpm_lookup 1 - %s\n", buf_tmp);
+	zlog_debug(zc, "lpm_lookup 1 - %s\n", buf_tmp);
 	inet_ntop(AF_INET6, &addr_pair[1], buf_tmp, 1024);
-	printf("lpm_lookup 2 - %s\n", buf_tmp);
+	zlog_debug(zc, "lpm_lookup 2 - %s\n", buf_tmp);
 
 	struct flow *fl = hmap_get(cfg.path_cache, addr_pair);
 	if (!fl) {
@@ -424,18 +472,30 @@ int build_srh(struct connection *conn, struct ipv6_sr_hdr *srh)
 		return -1;
 	}
 
+	/* We need to reverse the SRH if the source and destination are reversed */
+	bool reversed = !(!compare_in6(addr_pair, fl->addrs)
+			  && !compare_in6(&addr_pair[1], &fl->addrs[1]));
+
 	// TODO Check on malloced size
 
-	// TODO Always take the first path
-	struct path *path = &fl->paths[0];
+	/* Choose randomly one of the paths */
+	int idx = rand() % fl->nb_paths;
+	zlog_debug(zc, "Path index found %d\n", idx);
+	if (same_path(conn, &fl->paths[idx], reversed)) {
+		zlog_debug(zc, "Same path ! - alternative ? %d\n", fl->nb_paths > 1);
+		if (fl->nb_paths == 1)
+			return -1; // No alternative path
+		idx = (idx + 1) % fl->nb_paths;
+	}
+	struct path *path = &fl->paths[idx];
 
 	srh->hdrlen = ((path->nb_segments + 1) * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
 	srh->segments_left = path->nb_segments;
 	srh->first_segment = path->nb_segments;
 
 	for (size_t i = 0; i < path->nb_segments; i++) {
-		memcpy(&srh->segments[i + 1],
-		       &path->segments[path->nb_segments - i - 1],
+		idx = reversed ? i : path->nb_segments - i - 1;
+		memcpy(&srh->segments[i + 1], &path->segments[idx],
 		       sizeof(struct in6_addr));
 	}
 	memcpy(&srh->segments[0], &conn->dst, sizeof(struct in6_addr));
@@ -514,7 +574,7 @@ int main(int argc, char *argv[])
 		goto out_path_cache;
 	}
 
-	cfg.srdb = srdb_new(&cfg.ovsdb_conf);
+	cfg.srdb = srdb_new(&cfg.ovsdb_conf, srdb_print);
 	if (!cfg.srdb) {
 		zlog_error(zc, "Cannot initialize SRDB\n");
 		ret = -1;
@@ -560,7 +620,7 @@ int main(int argc, char *argv[])
 	while (!stop) {
 		memset(&conn, 0, sizeof(conn));
 		if ((err = nf_queue_recv(&conn)) < 0) {
-			zlog_error(zc, "No connection was retrieved");
+			zlog_debug(zc, "No connection was retrieved");
 			continue;
 		} else if (!err) {
 			zlog_warn(zc, "Queue polling was interrupted");
