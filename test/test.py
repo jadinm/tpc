@@ -202,7 +202,7 @@ class TestSRRouted(SRNMininetTest):
                 pkt = pkt / IPv6ExtHdrSegmentRouting(addresses=ip_list)
             pkt = pkt / TCP(sport=src_port, dport=dst_port, flags='A')
 
-            cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
+            cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "utils.py"),
                    "--name", send_tcp_ecn_pkt.__name__, "--args", "10", str(pkt).encode("hex")]
             out, err, exitcode = net["client"].pexec(cmd)
             self.assertEqual(exitcode, 0, msg="The triggering of an ICMP failed:\nCommand '%s' returned %d\n"
@@ -320,17 +320,17 @@ class TestSRICMP(SRNMininetTest):
                                                                                                srcport=src_port)
             net["B"].cmd(cmd.split(" "))
             try:
-                sniff_cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
+                sniff_cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "utils.py"),
                              "--name", sniff_trigger_icmp.__name__,
                              "--args", src_ip, dst_ip, str(src_port), str(dst_port), redirect_ip, "60", capture_itf.name]
                 sniff_popen = net["A"].popen(sniff_cmd)
 
-                listen_cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
+                listen_cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "utils.py"),
                               "--name", tcp_server.__name__, "--args", str(dst_port)]
                 listen_popen = net["server"].popen(listen_cmd)
 
                 time.sleep(10)  # Wait for the server to start
-                client_cmd = ["python", os.path.join(os.path.dirname(__file__), "utils.py"),
+                client_cmd = [sys.executable, os.path.join(os.path.dirname(__file__), "utils.py"),
                               "--name", tcp_client.__name__, "--args", src_ip, dst_ip, str(src_port), str(dst_port),
                               "10", json.dumps(ip_list, separators=(',', ':'))]
                 client_popen = net["client"].popen(client_cmd)
