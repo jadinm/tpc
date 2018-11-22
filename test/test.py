@@ -5,6 +5,7 @@ from random import randint
 
 from ipaddress import ip_address
 from ipmininet.utils import realIntfList, otherIntf
+from scipy.special import comb
 from sr6mininet.sr6host import SR6Host
 
 from examples.albilene import Albilene
@@ -166,7 +167,7 @@ class TestSRRouted(SRNMininetTest):
         self.assertTrue(matching_srh, msg="The Segment List %s is not matching any possible SRH %s"
                                           % (srh.addresses, srh_list))
 
-    def trigger_ecn_marking(self, test_name, initial_srh):
+    def trigger_ecn_marking(self, test_name, initial_srh, expected_srhs):
         """
         This function tests that packets ecn marked will trigger the SRRouted daemon
         and it will reply with a well-formed ICMP.
@@ -174,6 +175,8 @@ class TestSRRouted(SRNMininetTest):
         :type test_name: str
         :param initial_srh: SRH to set in the trigger packet (only routers are accepted)
         :type initial_srh: Optional[list[str]]
+        :param expected_srhs: List of potential SRHs to receive in the ICMP
+        :type expected_srhs: list[list[str]]
         """
         topo_args = {"schema_tables": self.ovsschema["tables"],
                      "cwd": os.path.join(self.log_dir, type(self).__name__, test_name)}
@@ -219,14 +222,15 @@ class TestSRRouted(SRNMininetTest):
             self.assertFalse(True, msg="The output of %s was not the packet\n%s" % (cmd, out))
             return
 
+        expected_srhs = [[net[name] for name in srh] for srh in expected_srhs]
+
         try:
             packet = IPv6(packet_bytes)
             self.assertEqual(packet.nh, 58, msg="We did not received an ICMPv6 message from SRRouting\n"
                                                 "binary=%s\nipv6 packet=%s" % (out, packet.show(dump=True)))
             self.check_icmp(packet, src_ip, dst_ip, src_port, dst_port,
                             pkt[IPv6ExtHdrSegmentRouting] if IPv6ExtHdrSegmentRouting in pkt else None,
-                            [[net["server"]],
-                             [net["server"], net["E"]]])
+                            expected_srhs)
             lg.info("Correct ICMP packet received\n")
         except ValueError as e:
             self.assertFalse(True, msg="Packet received could not be parsed: %s" % str(e))
@@ -236,7 +240,8 @@ class TestSRRouted(SRNMininetTest):
         This function tests that packets ecn marked will trigger the SRRouted daemon
         and it will reply with a well-formed ICMP.
         """
-        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__, None)
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__, None,
+                                 [["server"], ["server", "E"]])
 
     def test_trigger_ecn_marking_with_initial_srh(self):
         """
@@ -245,13 +250,16 @@ class TestSRRouted(SRNMininetTest):
         and so, this SRH should be present in the ICMP.
         """
         lg.info("Testing trigger packet with an SRH with only the destination\n")
-        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_EmptySRH", [])
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_EmptySRH", [],
+                                 [["server", "E"]])
 
         lg.info("Testing trigger packet with an SRH with only one intermediate segment\n")
-        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_B", ["B"])
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_B", ["B"],
+                                 [["server"]])
 
         lg.info("Testing trigger packet with an SRH with only two intermediate segments\n")
-        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_F_B", ["F", "B"])
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_F_B", ["F", "B"],
+                                 [["server"], ["server", "E"]])
 
 
 class TestSRICMP(SRNMininetTest):
@@ -459,10 +467,26 @@ class TestController(SRNMininetTest):
         except ValueError:
             self.assertFalse(True, msg="Cannot parse output %s as JSON" % output)
 
+        access_routers = [net["A"], net["F"], net["B"]]
+        srhs = {
+            "A-F": [[], [net["E"]]],
+            "A-B": [[], [net["E"]]],
+            "B-F": [[], [net["C"]]]
+        }
         header = output["headings"]
         paths = output["data"]
-        self.assertEqual(len(paths), 1, msg="We expect only one path because there are two access routers"
-                                            " but we found %d path: %s" % (len(paths), paths))
+        nbr_flows = int(comb(len(access_routers), 2, exact=True))
+        self.assertEqual(len(paths), nbr_flows,
+                         msg="We expect only %d paths because there are %d access routers"
+                             " but we found %d path: %s" % (nbr_flows, len(access_routers), len(paths), paths))
+
+        lo_access_addrs = {}
+        for node in access_routers:
+            for ip in node.intf("lo").ip6s(exclude_lls=True):
+                if ip.ip.compressed != "::1":
+                    lo_access_addrs[ip.ip.compressed] = node
+                    break
+
         for path in paths:
             # Check flow info
             flow = path[header.index("flow")]
@@ -471,19 +495,14 @@ class TestController(SRNMininetTest):
             except ValueError:
                 self.assertFalse(True, msg="Cannot parse flow info %s as JSON" % flow)
 
-            access_routers = [net["A"], net["F"]]
-            lo_addrs = []
-            for node in access_routers:
-                for ip in node.intf("lo").ip6s(exclude_lls=True):
-                    if ip.ip.compressed != "::1":
-                        lo_addrs.append(ip.ip.compressed)
-                        break
+            self.assertEqual(len(flow), 2, msg="Invalid flow specs: there are supposed to have only two endpoints: %s" % flow)
 
-            sorted_addrs = sorted(lo_addrs, key=lambda x: ip_address(x))
-            if sorted_addrs != lo_addrs:
-                access_routers.reverse()
-
-            self.assertEqual(flow, sorted_addrs, msg="Invalid flow specs: actual %s - expected %s" % (flow, sorted_addrs))
+            for addr in flow:
+                self.assertIn(addr, lo_access_addrs,
+                              msg="Invalid flow specs: the address %s is not an access router address %s"
+                                  % (addr, str(lo_access_addrs)))
+            new_flow = sorted(flow, key=lambda x: ip_address(x))
+            self.assertEqual(flow, new_flow, msg="The first endpoint of the flow is not the smallest address %s" % flow)
 
             # Check associated prefixes
             prefixes = path[header.index("prefixes")]
@@ -492,8 +511,9 @@ class TestController(SRNMininetTest):
             except ValueError:
                 self.assertFalse(True, msg="Cannot parse prefixes info %s as JSON" % prefixes)
 
-            for i in range(len(access_routers)):
-                node = access_routers[i]
+            endpoints = [(addr, lo_access_addrs[addr]) for addr in flow if addr in lo_access_addrs]
+            for i in range(len(endpoints)):
+                node = endpoints[i][1]
                 for itf in node.intfList():
                     for ip in itf.ip6s(exclude_lls=True):
                         if ip.ip.compressed != "::1" and \
@@ -511,7 +531,9 @@ class TestController(SRNMininetTest):
                 self.assertFalse(True, msg="Cannot parse segment_lists info %s as JSON" % segment_lists)
 
             segment_list_addrs = []
-            for seglist_expect in [[], [net["E"]]]:
+            name_sort_endpoints = sorted(endpoints, key= lambda x: x[1].name)
+            key = name_sort_endpoints[0][1].name + "-" + name_sort_endpoints[1][1].name
+            for seglist_expect in srhs[key]:
                 addrs = []
                 for node in seglist_expect:
                     for ip in node.intf("lo").ip6s(exclude_lls=True):

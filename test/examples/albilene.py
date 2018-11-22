@@ -52,19 +52,21 @@ class Albilene(SRNTopo):
         f = self.addRouter("F")
 
         # Hosts
-        client = self.addHost("client")
-        server = self.addHost("server")
+        clientA = self.addHost("client")
+        clientB = self.addHost("clientB")
+        serverF = self.addHost("server")
 
         # Links
         self.addLink(a, b)
+        self.addLink(clientB, b)
         self.addLink(c, controller)
-        self.addLink(client, a)
+        self.addLink(clientA, a)
         self.addLink(a, c)
         self.addLink(c, d)
         self.addLink(d, e)
-        self.addLink(c, e, link_delay="5ms")
+        self.addLink(c, e)
         self.addLink(e, f)
-        self.addLink(f, server)
+        self.addLink(f, serverF)
         self.addLink(b, f)
 
         # SRN overlay
@@ -73,8 +75,8 @@ class Albilene(SRNTopo):
             opts = {"red_min": 1.0 / self.link_bandwidth, "red_max": 1., "red_probability": 1.}
         else:
             opts = {"red_limit": self.red_limit}
-        self.addOverlay(SRReroutedCtrlDomain(access_routers=(a, f), sr_controller=controller,
-                                             schema_tables=self.schema_tables, rerouting_routers=(b, c, d, e),
+        self.addOverlay(SRReroutedCtrlDomain(access_routers=(a, f, b), sr_controller=controller,
+                                             schema_tables=self.schema_tables, rerouting_routers=(c, d, e),
                                              rerouted_opts=opts))
 
         super(Albilene, self).build(*args, **kwargs)

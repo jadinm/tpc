@@ -26,6 +26,10 @@ package { 'matplotlib':
   require => Package['python-pip'],
   provider => 'pip',
 }
+package { 'scipy':
+  require  => Package['python-pip'],
+  provider => 'pip',
+}
 package { 'python-tk': }
 exec { 'download-scapy':
   require => Package['git'],
