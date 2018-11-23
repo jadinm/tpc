@@ -4,6 +4,7 @@
 #include <jansson.h>
 #include <netdb.h>
 #include <poll.h>
+#include <pthread.h>
 #include <signal.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -17,12 +18,19 @@
 
 
 #define _unused __attribute__((unused))
-#define MAX_CONNECTIONS 1000
+#define MAX_CONNECTIONS 1000 // TODO Parametrize
+
 
 struct config {
 	char *zlog_conf_file;
 	int server_port;
 	int eval_file;
+	pthread_mutex_t mutex;
+};
+
+struct evalstat {
+	int fd;
+	uint64_t transfer_size;
 };
 
 static zlog_category_t *zc;
@@ -30,8 +38,12 @@ static char buf [1024];
 struct config cfg;
 int stop;
 
-struct timespec last_measure;
-uint64_t transfer_size;
+size_t nbr_conn = 0;
+struct pollfd pfd[MAX_CONNECTIONS + 1];
+struct evalstat stats[MAX_CONNECTIONS + 1];
+
+pthread_t stat_thread;
+
 
 void sig_handler(int signal_number _unused)
 {
@@ -125,6 +137,7 @@ static void clean_config()
 		}
 		cfg.eval_file = -1;
 	}
+	pthread_mutex_destroy(&cfg.mutex);
 }
 
 static void default_config()
@@ -179,6 +192,8 @@ static int load_config(const char *config_file)
 	json_error_t json_err;
 	memset(&json_err, 0, sizeof(json_err));
 
+	pthread_mutex_init(&cfg.mutex, NULL);
+
 	root_cfg = json_load_file(config_file, 0, &json_err);
 	if (!root_cfg)
 		goto err;
@@ -210,22 +225,33 @@ err:
 	return -1;
 }
 
-static void write_evalfile(int sfd, int received)
+static void *stat_thread_run(void *args _unused)
 {
 	struct timespec tp;
-	transfer_size += received;
-	if (clock_gettime(CLOCK_MONOTONIC, &tp)) {
-		zlog_warn(zc, "Cannot measure time ! - errno %d\n", errno);
-	} else if (cfg.eval_file >= 0 && tp.tv_sec >= last_measure.tv_sec + 1) {
-		char evalbuf[1024];
-		snprintf(evalbuf, 1024, "%d %lu %lu.%lu\n", sfd, transfer_size,
-			 tp.tv_sec, tp.tv_nsec);
-		last_measure = tp;
-		transfer_size = 0;
-		if (write(cfg.eval_file, evalbuf, strlen(evalbuf)) < 0)
-			zlog_warn(zc, "Cannot write to eval file !"
-				  " - errno %d\n", errno);
+	char evalbuf[1024];
+	while (!stop && cfg.eval_file >= 0) {
+		if (pthread_mutex_lock(&cfg.mutex))
+			zlog_error(zc, "Cannot lock - errno %d\n",
+				   errno);
+		if (clock_gettime(CLOCK_MONOTONIC, &tp)) {
+			zlog_warn(zc, "Cannot measure time ! - errno %d\n", errno);
+		} else {
+			for (size_t i = 1; i < nbr_conn + 1; i++) {
+				snprintf(evalbuf, 1024, "%d %lu %lu.%lu\n",
+					 stats[i].fd, stats[i].transfer_size,
+					 tp.tv_sec, tp.tv_nsec);
+				if (write(cfg.eval_file, evalbuf, strlen(evalbuf)) < 0)
+					zlog_warn(zc, "Cannot write to eval file !"
+						  " - errno %d\n", errno);
+				stats[i].transfer_size = 0;
+			}
+		}
+		if (pthread_mutex_unlock(&cfg.mutex))
+			zlog_error(zc, "Cannot unlock - errno %d\n",
+				   errno);
+		sleep(1);
 	}
+	return NULL;
 }
 
 int main (int argc, char *argv[])
@@ -293,20 +319,25 @@ int main (int argc, char *argv[])
 		zlog_warn(zc, "Cannot catch SIG_INT\n");
 	}
 
+	/* Start stats */
+	if (pthread_create(&stat_thread, NULL, stat_thread_run, NULL)) {
+		zlog_error(zc, "Cannot start stat thread");
+		ret = -1;
+		goto out_logs;
+	}
+
 	/* Main Processing */
 	int listen_sfd = create_listening_socket();
 	if (listen_sfd < 0) {
 		ret = -1;
 		zlog_error(zc, "Cannot create the listening socket\n");
-		goto out_logs;
+		goto out_thread;
 	}
 	zlog_notice(zc, "Server has started\n");
 
-	struct pollfd pfd[MAX_CONNECTIONS + 1]; // Parametrize
 	pfd[0].fd = listen_sfd;
 	pfd[0].events = POLLIN;
 	pfd[0].revents = 0;
-	size_t nbr_conn = 0;
 	int err = 0;
 	while (!stop) {
 		if ((err = poll(pfd, nbr_conn + 1, -1)) < 1) {
@@ -330,10 +361,20 @@ int main (int argc, char *argv[])
 				ret = -1;
 				goto out_sfds;
 			}
+
+			if (pthread_mutex_lock(&cfg.mutex))
+				zlog_error(zc, "Cannot lock - errno %d\n",
+					   errno);
 			nbr_conn += 1;
 			pfd[nbr_conn].fd = sfd;
 			pfd[nbr_conn].events = POLLIN;
 			pfd[nbr_conn].revents = 0;
+			stats[nbr_conn].fd = sfd;
+			stats[nbr_conn].transfer_size = 0;
+
+			if (pthread_mutex_unlock(&cfg.mutex))
+				zlog_error(zc, "Cannot unlock - errno %d\n",
+					   errno);
 		}
 		if (pfd[0].revents & POLLNVAL) {
 			zlog_error(zc, "poll - listening socket is not open\n");
@@ -367,7 +408,13 @@ int main (int argc, char *argv[])
 					goto out_sfds;
 				}
 				if (cfg.eval_file >= 0) {
-					write_evalfile(pfd[i].fd, received);
+					if (pthread_mutex_lock(&cfg.mutex))
+						zlog_error(zc, "Cannot lock - errno %d\n",
+							   errno);
+					stats[i].transfer_size += received;
+					if (pthread_mutex_unlock(&cfg.mutex))
+						zlog_error(zc, "Cannot unlock - errno %d\n",
+							   errno);
 				} else {
 					zlog_error(zc, "fd is %d\n", cfg.eval_file);
 				}
@@ -377,6 +424,9 @@ int main (int argc, char *argv[])
 
 out_sfds:
 	clean_sfds(pfd, nbr_conn);
+out_thread:
+	stop = 1;
+	pthread_join(stat_thread, NULL);
 out_logs:
 	zlog_notice(zc, "Server has finished\n");
 	zlog_fini();
