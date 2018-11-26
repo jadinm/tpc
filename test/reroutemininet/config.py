@@ -286,7 +286,7 @@ def find_node(start, to_find, cost_intf):
     :rtype: (mininet.node.Node, mininet.node.IPIntf)
     """
     if start.name == to_find:
-        return start, start.intf("lo")
+        return start, realIntfList(start)[0]
 
     visited = set()
     to_visit = [(cost_intf(intf), intf) for intf in realIntfList(start)]

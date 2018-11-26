@@ -81,9 +81,6 @@ class Albilene(SRNTopo):
 
         super(Albilene, self).build(*args, **kwargs)
 
-    def addRouter(self, name, controller=False, **params):
-        return super(Albilene, self).addRouter(name, controller, **params)
-
     def addLink(self, node1, node2, link_delay=None, link_bandwidth=None, **opts):
         link_delay = self.link_delay if link_delay is None else link_delay
         link_bandwidth = self.link_bandwidth if link_bandwidth is None else link_bandwidth

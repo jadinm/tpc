@@ -10,7 +10,7 @@ from sr6mininet.cli import SR6CLI
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
-from eval import launch_eval
+from eval import launch_eval, launch_repetita_eval
 
 
 def mininet_cli(args, ovsschema):
@@ -26,7 +26,8 @@ def mininet_cli(args, ovsschema):
 tests = {
     "mininet-cli": mininet_cli,
     "unit": launch_all_tests,
-    "eval": launch_eval
+    "eval": launch_eval,
+    "repetita": launch_repetita_eval
 }
 
 
@@ -42,6 +43,9 @@ def parse_args():
                         default='../srn-dev')
     parser.add_argument('--test', help='Test name to perform', choices=tests,
                         default='mininet-cli')
+    parser.add_argument('--repetita-topo', help='Gives the path to a Repetita topology (only for repetita tests)',
+                        default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "examples",
+                                             "data", "Arpanet_low_latency.graph"))
     return parser.parse_args()
 
 

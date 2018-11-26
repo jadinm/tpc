@@ -27,6 +27,14 @@ class ReroutingNet(SRNNet):
         return table, entry
 
     def start_additional_daemon(self, d, node, **kwargs):
+
+        if kwargs.get("cwd", False):
+            try:
+                os.makedirs(kwargs["cwd"])
+            except OSError as e:
+                if e.errno != os.errno.EEXIST:
+                    raise
+
         cfg = ConfigDict()
         daemon = d(node, **kwargs)
         cfg[d.NAME] = daemon.build()
@@ -69,13 +77,21 @@ class ReroutingNet(SRNNet):
         port = 50000
         for client in self.clients:
             for server in self.servers:
-                path = os.path.join(self.topo.cwd, client, str(port))
-                os.makedirs(path)
-                self.start_additional_daemon(SREndhostd, self[client], server_port=port, cwd=path)
-                path = os.path.join(self.topo.cwd, server, str(port))
-                os.makedirs(path)
-                self.start_additional_daemon(SRServerd, self[server], server_port=port, cwd=path)
-                port += 1
+                if server != client:
+                    path = os.path.join(self.topo.cwd, server, str(port))
+                    self.start_additional_daemon(SRServerd, self[server], server_port=port, cwd=path)
+                    port += 1
+
+        # Let servers start
+        time.sleep(10)
+
+        port = 50000
+        for client in self.clients:
+            for server in self.servers:
+                if server != client:
+                    path = os.path.join(self.topo.cwd, client, str(port))
+                    self.start_additional_daemon(SREndhostd, self[client], server=server, server_port=port, cwd=path)
+                    port += 1
 
     def eval_files(self):
         return [daemon.evalfile() for daemon, _ in self._additional_daemons if daemon.NAME == SRServerd.NAME]
