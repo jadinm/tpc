@@ -254,7 +254,7 @@ class TestSRRouted(SRNMininetTest):
                                  [["server", "E"]])
 
         lg.info("Testing trigger packet with an SRH with only one intermediate segment\n")
-        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_B", ["B"],
+        self.trigger_ecn_marking(self.trigger_ecn_marking.__name__ + "_SRH_B", ["E"],
                                  [["server"]])
 
         lg.info("Testing trigger packet with an SRH with only two intermediate segments\n")
