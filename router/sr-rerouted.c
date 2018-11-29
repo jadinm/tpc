@@ -629,6 +629,7 @@ int main(int argc, char *argv[])
 	}
 
 	free(icmp);
+	srdb_monitor_join_all(cfg.srdb);
 out_notifier:
 	notifier_free();
 out_nf_queue:
