@@ -3,6 +3,7 @@
 #include <jansson.h>
 #include <linux/seg6.h>
 #include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <poll.h>
 #include <signal.h>
 #include <stdbool.h>
@@ -18,18 +19,25 @@
 
 #define MAX_PATH 255
 #define MAX_ADDRESS 30
+#define MIN_CHANGE 1000 // Minimum different in µs of RTT to change the path
 
 static zlog_category_t *zc;
 static char buf[1024];
 
 volatile int stop;
 struct config cfg;
+struct hash_sfd main_hsfd;
+pthread_rwlock_t lock;
 
 
-void sig_handler(int signal_number _unused)
+void sig_handler(int signal_number)
 {
-	stop = 1;
-	zlog_warn(zc, "SIGINT was received");
+	if (signal_number == SIGINT) {
+		stop = 1;
+		pthread_kill(cfg.switch_thread, SIGUSR1);
+		for(struct hash_sfd *iter = cfg.sockets; iter; iter = iter->hh.next)
+			pthread_kill(iter->thread, SIGUSR1);
+	}
 }
 
 static void help(char *argv[])
@@ -78,14 +86,13 @@ static struct ipv6_sr_hdr *get_srh(char *segments[], size_t segment_number,
  * If no SRH is supplied, it creates the default one.
  * When connected, a new entry is added to the hashtable of sockets.
  */
-static int create_new_socket(struct ipv6_sr_hdr *srh)
+static struct hash_sfd *create_new_socket(struct hash_sfd *hsfd, bool main_fd)
 {
-	int ret = -1;
+	struct ipv6_sr_hdr *srh = hsfd->srh;
 	bool change_srh = false;
 	int sfd = socket(AF_INET6, SOCK_STREAM, 0);
 	if (sfd < 0) {
 		zlog_error(zc, "Cannot initialize socket: errno = %d\n", errno);
-		ret = -1;
 		goto out;
 	}
 	struct sockaddr_in6 sin6;
@@ -99,8 +106,10 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 		change_srh = true;
 		srh = get_srh(NULL, 0, &srh_len);
 		if (!srh) {
-			ret = -1;
 			zlog_error(zc, "Cannot produce the default SRH\n");
+			if (!main_fd)
+				free(hsfd);
+			hsfd = NULL;
 			goto out;
 		}
 		zlog_debug(zc, "SRH of size %lu produced\n", srh_len);
@@ -113,7 +122,9 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 	if (setsockopt(sfd, IPPROTO_IPV6, IPV6_RTHDR, srh, srh_len) < 0) {
 		zlog_error(zc, "Cannot set the SRH in the socket - errno = %d",
 			   errno);
-		ret = -1;
+		if (!main_fd)
+			free(hsfd);
+		hsfd = NULL;
 		goto err_srh;
 	}
 
@@ -121,6 +132,9 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 	if (setsockopt(sfd, IPPROTO_IPV6, IPV6_RECVERR, &flag, sizeof(flag))) {
 		zlog_error(zc, "Cannot activate error catching - errno = %d",
 			   errno);
+		if (!main_fd)
+			free(hsfd);
+		hsfd = NULL;
 		goto err_srh;
 	}
 
@@ -129,23 +143,50 @@ static int create_new_socket(struct ipv6_sr_hdr *srh)
 		inet_ntop(AF_INET6, &sin6.sin6_addr, tmp, sizeof(tmp));
 		zlog_error(zc, "Cannot connect to server ([%s]:%d): errno = %d\n",
 			   tmp, ntohs(sin6.sin6_port), errno);
-		ret = -1;
+		if (!main_fd)
+			free(hsfd);
+		hsfd = NULL;
 		goto err_srh;
 	}
 
-	struct hash_sfd *hsfd = malloc(sizeof(struct hash_sfd));
-	if (!hsfd) {
-		ret = -1;
-		zlog_error(zc, "Cannot allocate hash_sfd\n");
-		goto err_close;
-	}
 	hsfd->srh = srh;
 	hsfd->sfd = sfd;
-	HASH_ADD_KEYPTR(hh, cfg.sockets, hsfd->srh, srh_len, hsfd);
 
-	ret = hsfd->sfd;
+	struct tcp_info info;
+	socklen_t tcp_info_length = sizeof(info);
+	if (getsockopt(sfd, SOL_TCP, TCP_INFO, &info, &tcp_info_length)) {
+		zlog_error(zc, "Cannot get TCP INFO when creating the probe socket: %s", strerror(errno));
+		if (!main_fd)
+			free(hsfd);
+		hsfd = NULL;
+		goto err_close;
+	} else {
+		hsfd->last_rtt = info.tcpi_rtt;
+	}
+
+	flag = true;
+	if (setsockopt(sfd, SOL_TCP, TCP_NODELAY, &flag, sizeof(flag))) {
+		zlog_error(zc, "Cannot disable Nagle algo in probes - errno = %d",
+			   errno);
+		if (!main_fd)
+			free(hsfd);
+		hsfd = NULL;
+		goto err_srh;
+	}
+
+	if (!main_fd) {
+		if (pthread_rwlock_wrlock(&lock)) {
+			zlog_error(zc, "Cannot write lock");
+			if (!main_fd)
+				free(hsfd);
+			hsfd = NULL;
+			goto err_close;
+		}
+		HASH_ADD_KEYPTR(hh, cfg.sockets, hsfd->srh, srh_len, hsfd);
+		pthread_rwlock_unlock(&lock);
+	}
 out:
-	return ret;
+	return hsfd;
 err_close:
 	close(sfd);
 err_srh:
@@ -154,33 +195,70 @@ err_srh:
 	goto out;
 }
 
-static int switch_socket(struct ipv6_sr_hdr *srh)
+static void *probe_thread(void *arg)
+{
+	struct hash_sfd *hsfd;
+	char probe_buf[1];
+	struct timespec sleep_time = {
+		.tv_sec = 0,
+		.tv_nsec = 100000L
+	};
+	probe_buf[0] = 0;
+
+	sigset_t set;
+	sigemptyset(&set);
+	sigaddset(&set, SIGINT);
+	if (sigprocmask(SIG_BLOCK, &set, NULL)) {
+		zlog_error(zc, "%s: Cannot block SIGINT\n", strerror(errno));
+		return NULL;
+	}
+
+	hsfd = create_new_socket((struct hash_sfd *) arg, false);
+	int fd = hsfd->sfd;
+
+	while (!stop) {
+		if (send(fd, probe_buf, 1, 0) < 0) {
+			zlog_error(zc, "Cannot send probe: %s", strerror(errno));
+			return NULL;
+		}
+		struct tcp_info info;
+		socklen_t tcp_info_length = sizeof(info);
+		if (getsockopt(fd, SOL_TCP, TCP_INFO, &info, &tcp_info_length)) {
+			zlog_error(zc, "Cannot get back TCP INFO when probing: %s", strerror(errno));
+		} else {
+			hsfd->last_rtt = info.tcpi_rtt;
+			zlog_debug(zc, "Probing - last rtt %u", hsfd->last_rtt);
+		}
+		if (nanosleep(&sleep_time, NULL) < 0) {
+			zlog_error(zc, "Cannot sleep %s", strerror(errno));
+			return NULL;
+		}
+	}
+
+	return NULL;
+}
+
+static int add_probe(struct ipv6_sr_hdr *srh)
 {
 	size_t srh_len = (srh->hdrlen + 1) << 3;
 	struct hash_sfd *hsfd = NULL;
-	int sfd = -1;
-
-	zlog_debug(zc, "Switch socket event !\n");
 
 	HASH_FIND(hh, cfg.sockets, srh, srh_len, hsfd);
-	if (hsfd) { /* Switch to previously created socket */
-		free(srh);
-
-		srh = hsfd->srh;
-		sfd = hsfd->sfd;
-
-		/* The old SRH was erased by the ICMP so we need to reset it on
-		 * the socket.
-		 */
-		if (setsockopt(sfd, IPPROTO_IPV6, IPV6_RTHDR, srh, srh_len) < 0) {
-			zlog_error(zc, "Cannot set the SRH in the socket - errno = %d",
-				   errno);
+	if (hsfd) { /* Probe already exists */
+		return -1;
+	} else {
+		hsfd = calloc(1, sizeof(struct hash_sfd));
+		if (!hsfd) {
+			zlog_error(zc, "Cannot allocate hash_sfd");
 			return -1;
 		}
-		return sfd;
+		hsfd->srh = srh;
+		if (pthread_create(&hsfd->thread, NULL, probe_thread, hsfd)) {
+			zlog_error(zc, "Cannot create thread");
+			return -1;
+		}
+		return 0;
 	}
-
-	return create_new_socket(srh);
 }
 
 static struct ipv6_sr_hdr *send_traffic(int sfd)
@@ -189,7 +267,7 @@ static struct ipv6_sr_hdr *send_traffic(int sfd)
 	pfd.fd = sfd;
 	pfd.events = POLLOUT; // POLLERR will be set on revent
 
-	while (true) {
+	while (!stop) {
 		if (poll(&pfd, 1, -1) < 1) {
 			zlog_error(zc, "poll failed on socket %d - errno %d\n",
 				   sfd, errno);
@@ -241,6 +319,7 @@ static struct ipv6_sr_hdr *send_traffic(int sfd)
 			}
 		}
 	}
+	return NULL;
 }
 
 static void clean_config()
@@ -255,8 +334,7 @@ static void clean_config()
 			fprintf(stderr, "Cleaning socket %d\n", hsfd->sfd);
 			HASH_DEL(cfg.sockets, hsfd);
 			if (close(hsfd->sfd)) {
-				fprintf(stderr, "Cannot close socket %d\n",
-					  hsfd->sfd);
+				fprintf(stderr, "Cannot close socket %d\n", hsfd->sfd);
 			}
 			free(hsfd->srh);
 			free(hsfd);
@@ -339,6 +417,63 @@ err:
 	return -1;
 }
 
+static void *switch_thread_run(void *arg _unused)
+{
+	struct timespec sleep_time = {
+		.tv_sec = 0,
+		.tv_nsec = 100000L
+	};
+	struct hash_sfd *current_rtt = NULL;
+	struct hash_sfd *min_rtt = NULL;
+	struct hash_sfd *iter = NULL;
+
+	sigset_t set;
+	sigemptyset(&set);
+	sigaddset(&set, SIGINT);
+	if (sigprocmask(SIG_BLOCK, &set, NULL)) {
+		zlog_error(zc, "%s: Cannot block SIGINT\n", strerror(errno));
+		return NULL;
+	}
+
+	while (!stop) {
+		if (nanosleep(&sleep_time, NULL) < 0) {
+			zlog_error(zc, "Cannot sleep %s", strerror(errno));
+			return NULL;
+		}
+
+		size_t srh_len = (main_hsfd.srh->hdrlen + 1) << 3;
+		HASH_FIND(hh, cfg.sockets, main_hsfd.srh, srh_len, current_rtt);
+
+		if (pthread_rwlock_rdlock(&lock)) {
+			zlog_error(zc, "Cannot read lock");
+			return NULL;
+		}
+
+		/* Loop on all keys - if sufficient DIFF, then switch */
+		min_rtt = current_rtt;
+		for(iter=cfg.sockets; iter; iter=iter->hh.next) {
+			zlog_debug(zc, "RTT of socket %d is %d", iter->sfd, iter->last_rtt);
+			if (!min_rtt || min_rtt->last_rtt > iter->last_rtt)
+				min_rtt = iter;
+		}
+		if (min_rtt != current_rtt &&
+		    min_rtt->last_rtt < current_rtt->last_rtt - MIN_CHANGE) {
+			/* Set current SRH */
+			zlog_debug(zc, "Switch socket event !\n");
+			main_hsfd.srh = min_rtt->srh;
+			size_t srh_len = (main_hsfd.srh->hdrlen + 1) << 3;
+			if (setsockopt(main_hsfd.sfd, IPPROTO_IPV6, IPV6_RTHDR, main_hsfd.srh, srh_len) < 0) {
+				zlog_error(zc, "Cannot set the SRH in the socket - errno = %d",
+					   errno);
+				return NULL;
+			}
+			current_rtt = min_rtt;
+		}
+		pthread_rwlock_unlock(&lock);
+	}
+	return NULL;
+}
+
 int main (int argc, char *argv[])
 {
 	bool dryrun = false;
@@ -398,30 +533,77 @@ int main (int argc, char *argv[])
 
 	/* Catching signals */
 	struct sigaction sa;
+	memset(&sa, 0, sizeof(sa));
 	sa.sa_handler = sig_handler;
-	sa.sa_flags = 0;
 	if (sigaction(SIGINT, &sa, NULL) == -1) {
 		zlog_warn(zc, "Cannot catch SIG_INT\n");
 	}
 
-	/* Main Processing */
-	int sfd = create_new_socket(NULL);
-	if (sfd < 0) {
+	memset(&sa, 0, sizeof(sa));
+	sa.sa_handler = sig_handler;
+	if (sigaction(SIGUSR1, &sa, NULL) == -1) {
+		zlog_warn(zc, "Cannot catch SIG_INT\n");
+	}
+
+	if (pthread_rwlock_init(&lock, NULL)) {
+		zlog_error(zc, "Cannot create rwlock %s", strerror(errno));
 		ret = -1;
-		zlog_error(zc, "Cannot create and connect the initial socket\n");
 		goto out_logs;
 	}
-	zlog_notice(zc, "SRv6 ICMP endhost has started\n");
 
-	while (!stop || sfd < 0) {
-		struct ipv6_sr_hdr *srh = send_traffic(sfd);
-		if (!srh) {
-			ret = -1;
-			goto out_logs;
-		}
-		sfd = switch_socket(srh);
+	/* Main Processing */
+	if (!create_new_socket(&main_hsfd, true)) {
+		ret = -1;
+		zlog_error(zc, "Cannot create and connect the initial socket\n");
+		goto out_rwlock;
 	}
 
+	/* Start probe on main path */
+	size_t srh_len = (main_hsfd.srh->hdrlen + 1) << 3;
+	struct ipv6_sr_hdr *srh = malloc(srh_len);
+	if (!srh) {
+		zlog_error(zc, "Cannot allocate memory for srh\n");
+		ret = -1;
+		goto out_socket;
+	}
+	memcpy(srh, main_hsfd.srh, srh_len);
+	if (add_probe(srh)) {
+		ret = -1;
+		free(srh);
+		goto out_main_srh;
+	}
+
+	/* Start switching thread */
+	pthread_create(&cfg.switch_thread, NULL, switch_thread_run, NULL);
+
+	zlog_notice(zc, "SRv6 ICMP endhost has started\n");
+
+	while (!stop || srh) {
+		srh = send_traffic(main_hsfd.sfd);
+		if (!srh) {
+			ret = -1;
+			goto out_threads;
+		}
+		if (add_probe(srh)) {
+			ret = -1;
+			free(srh);
+			goto out_threads;
+		}
+	}
+
+out_threads:
+	stop = 1;
+	pthread_join(cfg.switch_thread, NULL);
+	for(struct hash_sfd *iter = cfg.sockets; iter; iter = iter->hh.next)
+		pthread_join(iter->thread, NULL);
+out_main_srh:
+	if (main_hsfd.srh)
+		free(main_hsfd.srh);
+out_socket:
+	if (main_hsfd.sfd > 0)
+		close(main_hsfd.sfd);
+out_rwlock:
+	pthread_rwlock_destroy(&lock);
 out_logs:
 	zlog_notice(zc, "SRv6 ICMP endhost has finished\n");
 	zlog_fini();

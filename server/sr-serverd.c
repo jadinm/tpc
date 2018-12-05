@@ -3,6 +3,8 @@
 #include <fcntl.h>
 #include <jansson.h>
 #include <netdb.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
 #include <poll.h>
 #include <pthread.h>
 #include <signal.h>
@@ -259,6 +261,7 @@ int main (int argc, char *argv[])
 	bool dryrun = false;
 	int ret = 0;
 	int opt;
+	int flag;
 
 	/* Parsing arguments */
 	while ((opt = getopt(argc, argv, "hd")) != -1) {
@@ -361,6 +364,13 @@ int main (int argc, char *argv[])
 				ret = -1;
 				goto out_sfds;
 			}
+			flag = true;
+			if (setsockopt(sfd, SOL_TCP, TCP_QUICKACK, &flag, sizeof(flag))) {
+				zlog_error(zc, "Cannot disable delayed ACKs in probes - errno = %d",
+					   errno);
+				ret = -1;
+				goto out_sfds;
+			}
 
 			if (pthread_mutex_lock(&cfg.mutex))
 				zlog_error(zc, "Cannot lock - errno %d\n",
@@ -417,6 +427,15 @@ int main (int argc, char *argv[])
 							   errno);
 				} else {
 					zlog_error(zc, "fd is %d\n", cfg.eval_file);
+				}
+			}
+			if (i > 1) { // Disable delayed acks in probes
+				flag = true;
+				if (setsockopt(pfd[i].fd, SOL_TCP, TCP_QUICKACK, &flag, sizeof(flag))) {
+					zlog_error(zc, "Cannot disable delayed ACKs in probes - errno = %d",
+						   errno);
+					ret = -1;
+					goto out_sfds;
 				}
 			}
 		}
