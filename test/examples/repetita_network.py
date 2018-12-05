@@ -63,9 +63,10 @@ class RepetitaEdge:
 
 class RepetitaTopo(SRNTopo):
 
-    def __init__(self, repetita_graph=None, schema_tables=None, *args, **kwargs):
+    def __init__(self, repetita_graph=None, schema_tables=None, rerouting_enabled=True, *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
+        self.rerouting_enabled = rerouting_enabled
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def build(self, *args, **kwargs):

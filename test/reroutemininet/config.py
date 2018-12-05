@@ -30,6 +30,20 @@ class SRRerouted(SRNDaemon):
         cfg.red_burst = self.options.red_burst
         return cfg
 
+    @property
+    def dry_run(self):
+        if self.options.rerouting_enabled:
+            return super(SRRerouted, self).dry_run
+        else:
+            return "echo 'Rerouting disabled on node %s'" % self._node.name
+
+    @property
+    def startup_line(self):
+        if self.options.rerouting_enabled:
+            return super(SRRerouted, self).startup_line
+        else:
+            return "echo 'Rerouting disabled on node %s'" % self._node.name
+
     def set_defaults(self, defaults):
         """:param red_limit: Limit for red (see tc-red(1)) expressed as a multiplier of the link bandwidth
                              (or 10M if there is no link bandwidth)
@@ -38,7 +52,8 @@ class SRRerouted(SRNDaemon):
            :param red_min: min for red (see tc-red(1)) expressed as a multiplier of red_limit (multiplied by link bandwidth)
                            This value must be '> 0'
            :param red_max: max for red (see tc-red(1)) expressed as a multiplier of red_limit (multiplied by link bandwidth)
-           :param red_burst: function computing the burst for red (see tc-red(1))"""
+           :param red_burst: function computing the burst for red (see tc-red(1))
+           :param rerouting_enabled: whether the daemon is actually launched or only the tc and iptable tules are set"""
 
         defaults.red_limit = 1
         defaults.red_avpkt = 1000
@@ -46,6 +61,7 @@ class SRRerouted(SRNDaemon):
         defaults.red_min = 1/20.
         defaults.red_max = 1/4.
         defaults.red_burst = self.red_burst
+        defaults.rerouting_enabled = True
         super(SRRerouted, self).set_defaults(defaults)
 
     @staticmethod

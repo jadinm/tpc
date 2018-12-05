@@ -5,6 +5,7 @@ import time
 from examples.albilene import Albilene
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.net import ReroutingNet
+from sr6mininet.cli import SR6CLI
 
 COLORS = ["#00B0F0", "orangered", "#009B55", "white", "#D883B7", "yellowgreen", "black"]
 MARKERS = ["s", "o", "v", ",", "D", "v", "s", "<"]
@@ -33,7 +34,6 @@ def bandwidth_graphs(net, topo_args):
         subplot.set_xlabel("Time (sec)", fontsize=FONTSIZE)
         subplot.set_ylabel("Bandwidth (kbps)", fontsize=FONTSIZE)
         subplot.set_title("Bandwidth experienced by %s on port %s" % (server_node, server_port), fontsize=FONTSIZE)
-        subplot.set_ylim(0.0)
         for idx in range(len(sfds)):
             subplot.plot(x[sfds[idx]], y[sfds[idx]],
                          color=COLORS[idx], marker=MARKERS[idx],
@@ -45,12 +45,32 @@ def bandwidth_graphs(net, topo_args):
 
 
 def launch_eval(args, ovsschema):
+    # Perf with SRN
     topo_args = {"schema_tables": ovsschema["tables"],
-                 "cwd": os.path.join(args.log_dir, "eval")}
+                 "cwd": os.path.join(args.log_dir, "eval_srn")}
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True, clients=["client", "clientB"], servers=["server"])
     try:
+       net.start()
+       time.sleep(60)
+    finally:
+      net.stop()
+
+    bandwidth_graphs(net, topo_args)
+
+    time.sleep(10)
+
+
+def launch_eval_no_srn(args, ovsschema):
+    # Perf without SRN
+    topo_args = {"schema_tables": ovsschema["tables"],
+                 "cwd": os.path.join(args.log_dir, "eval_no_srn"),
+                 "rerouting_enabled": False}
+
+    net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True, clients=["client", "clientB"],
+                       servers=["server"])
+    try:
         net.start()
-        time.sleep(30)
+        time.sleep(60)
     finally:
         net.stop()
 

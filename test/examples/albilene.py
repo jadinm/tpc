@@ -6,13 +6,13 @@ class Albilene(SRNTopo):
     """
                                      +---+
                        +-------------+ B +-------------+
-                       |             +---+             |
+                       |  2ms        +---+             |
                        |                               |
         +--------+   +-+-+   +---+   +---+   +---+   +-+-+   +--------+
         | client +---+ A +---+ C +---+ D +---+ E +---+ F +---+ server |
         +--------+   +---+   +-+-+   +---+   +-+-+   +---+   +--------+
                              | |               |
-                             | |      5ms      |
+                             | |               |
                              | +---------------+
                              |
                        +-----+------+
@@ -24,7 +24,8 @@ class Albilene(SRNTopo):
     Link latencies are set at 1ms except for the latency of (C, E) which has a latency of 5ms.
     """
 
-    def __init__(self, schema_tables=None, link_bandwidth=100, always_redirect=False, red_limit=1.0, *args, **kwargs):
+    def __init__(self, schema_tables=None, link_bandwidth=100, always_redirect=False, rerouting_enabled=True,
+                 red_limit=1.0, *args, **kwargs):
         """:param schema_tables: The schema table of ovsdb
            :param link_delay: The link delay
            :param link_bandwidth: The link bandwidth
@@ -35,13 +36,14 @@ class Albilene(SRNTopo):
         self.schema_tables = schema_tables if schema_tables else {}
         self.always_redirect = always_redirect
         self.red_limit = red_limit
+        self.rerouting_enabled = rerouting_enabled
 
         super(Albilene, self).__init__("controller", *args, **kwargs)
 
     def build(self, *args, **kwargs):
 
         # Controllers
-        controller = self.addRouter(self.controllers[0], controller=True)
+        controller = self.addRouter(self.controllers[0])
 
         # Routers
         a = self.addRouter("A")
@@ -57,7 +59,7 @@ class Albilene(SRNTopo):
         serverF = self.addHost("server")
 
         # Links
-        self.addLink(a, b)
+        self.addLink(a, b, link_delay="2ms")
         self.addLink(clientB, b)
         self.addLink(c, controller)
         self.addLink(clientA, a)
