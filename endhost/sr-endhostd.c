@@ -23,6 +23,7 @@
 
 static zlog_category_t *zc;
 static char buf[1024];
+static char probe_buf[1024];
 
 volatile int stop;
 struct config cfg;
@@ -198,7 +199,6 @@ err_srh:
 static void *probe_thread(void *arg)
 {
 	struct hash_sfd *hsfd;
-	char probe_buf[1];
 	struct timespec sleep_time = {
 		.tv_sec = 0,
 		.tv_nsec = 100000L
@@ -217,9 +217,11 @@ static void *probe_thread(void *arg)
 	int fd = hsfd->sfd;
 
 	while (!stop) {
-		if (send(fd, probe_buf, 1, 0) < 0) {
-			zlog_error(zc, "Cannot send probe: %s", strerror(errno));
-			return NULL;
+		for (int i = 0; i < 15; i++) {
+			if (send(fd, probe_buf, sizeof(probe_buf), 0) < 0) {
+				zlog_error(zc, "Cannot send probe: %s", strerror(errno));
+				return NULL;
+			}
 		}
 		struct tcp_info info;
 		socklen_t tcp_info_length = sizeof(info);
