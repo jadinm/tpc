@@ -93,7 +93,10 @@ class ReroutingNet(SRNNet):
                     self.start_additional_daemon(SREndhostd, self[client], server=server, server_port=port, cwd=path)
                     port += 1
 
-    def eval_files(self):
+    def client_eval_files(self):
+        return [daemon.evalfile() for daemon, _ in self._additional_daemons if daemon.NAME == SREndhostd.NAME]
+
+    def server_eval_files(self):
         return [daemon.evalfile() for daemon, _ in self._additional_daemons if daemon.NAME == SRServerd.NAME]
 
     def stop(self):

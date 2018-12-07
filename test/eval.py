@@ -1,3 +1,5 @@
+# coding=utf-8
+
 import matplotlib.pyplot as plt
 import os
 import time
@@ -12,9 +14,43 @@ MARKERS = ["s", "o", "v", ",", "D", "v", "s", "<"]
 FONTSIZE = 20
 
 
+def rtt_graphs(net, topo_args):
+
+    client_evals = net.client_eval_files()
+    for filename in client_evals:
+        client_node = os.path.basename(filename).split(".")[0]
+        client_port = os.path.basename(os.path.dirname(filename))
+        x = {}
+        y = {}
+        with open(filename, "r") as fileobj:
+            for line in fileobj:
+                splitted = line.split(" ")
+                t = float(splitted[2])  # Time sec
+                b = int(splitted[1])  # RTT (µs)
+                x.setdefault(splitted[0], []).append(t)
+                y.setdefault(splitted[0], []).append(b)
+        sfds = x.keys()
+
+        # Plot data
+        fig1 = plt.figure()
+        subplot = fig1.add_subplot(111)
+        subplot.set_xlabel("Time (sec)", fontsize=FONTSIZE)
+        subplot.set_ylabel(u"RTT (µs)", fontsize=FONTSIZE)
+        subplot.set_title("RTT experienced by %s on port %s" % (client_node, client_port), fontsize=FONTSIZE)
+        for idx in range(len(sfds)):
+            subplot.plot(x[sfds[idx]], y[sfds[idx]],
+                         color=COLORS[idx], marker=MARKERS[idx],
+                         linestyle=":", markersize=2.0)
+        fig1.savefig(os.path.join(topo_args["cwd"], "%s-%s-rtt.pdf" % (client_node, client_port)),
+                     bbox_inches='tight', pad_inches=0)
+        fig1.clf()
+        plt.close()
+
+
 def bandwidth_graphs(net, topo_args):
-    evals = net.eval_files()
-    for filename in evals:
+
+    server_evals = net.server_eval_files()
+    for filename in server_evals:
         server_node = os.path.basename(filename).split(".")[0]
         server_port = os.path.basename(os.path.dirname(filename))
         x = {}
@@ -38,7 +74,7 @@ def bandwidth_graphs(net, topo_args):
             subplot.plot(x[sfds[idx]], y[sfds[idx]],
                          color=COLORS[idx], marker=MARKERS[idx],
                          linestyle=":", markersize=2.0)
-        fig1.savefig(os.path.join(topo_args["cwd"], "%s-%s.pdf" % (server_node, server_port)),
+        fig1.savefig(os.path.join(topo_args["cwd"], "%s-%s-bandwidth.pdf" % (server_node, server_port)),
                      bbox_inches='tight', pad_inches=0)
         fig1.clf()
         plt.close()
@@ -50,14 +86,13 @@ def launch_eval(args, ovsschema):
                  "cwd": os.path.join(args.log_dir, "eval_srn")}
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True, clients=["client", "clientB"], servers=["server"])
     try:
-       net.start()
-       time.sleep(60)
+        net.start()
+        time.sleep(60)
     finally:
-      net.stop()
+        net.stop()
 
     bandwidth_graphs(net, topo_args)
-
-    time.sleep(10)
+    rtt_graphs(net, topo_args)
 
 
 def launch_eval_no_srn(args, ovsschema):
@@ -75,6 +110,7 @@ def launch_eval_no_srn(args, ovsschema):
         net.stop()
 
     bandwidth_graphs(net, topo_args)
+    rtt_graphs(net, topo_args)
 
 
 def launch_repetita_eval(args, ovsschema):

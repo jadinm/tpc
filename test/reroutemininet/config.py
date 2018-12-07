@@ -234,7 +234,11 @@ class SREndhostd(ZlogDaemon):
                 cfg.server_addr = ip6.ip.compressed
 
         cfg.server_port = self.options.server_port
+        cfg.evalfile = self.evalfile()
         return cfg
+
+    def evalfile(self):
+        return self._filepath(self._filename("%s.%s.%s" % (self.options.server, self.options.server_port, "eval")))
 
     def set_defaults(self, defaults):
         """:param server: Server node name
