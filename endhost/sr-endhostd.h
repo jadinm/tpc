@@ -20,6 +20,7 @@ struct config {
 	int server_port;
 	struct hash_sfd *sockets;
 	pthread_t switch_thread;
+	int eval_file;
 };
 
 #endif /* SR_ENDHOSTD_H */

@@ -1,5 +1,6 @@
 #include <arpa/inet.h>
 #include <errno.h>
+#include <fcntl.h>
 #include <jansson.h>
 #include <linux/seg6.h>
 #include <netinet/in.h>
@@ -11,6 +12,8 @@
 #include <stdlib.h>
 #include <string.h>
 #include <sys/socket.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include <unistd.h>
 #include <uthash.h>
 #include <zlog.h>
@@ -20,6 +23,7 @@
 #define MAX_PATH 255
 #define MAX_ADDRESS 30
 #define MIN_CHANGE 1000 // Minimum different in µs of RTT to change the path
+#define SLEEP_PROBE_NS 100000000L
 
 static zlog_category_t *zc;
 static char buf[1024];
@@ -165,16 +169,6 @@ static struct hash_sfd *create_new_socket(struct hash_sfd *hsfd, bool main_fd)
 		hsfd->last_rtt = info.tcpi_rtt;
 	}
 
-	flag = true;
-	if (setsockopt(sfd, SOL_TCP, TCP_NODELAY, &flag, sizeof(flag))) {
-		zlog_error(zc, "Cannot disable Nagle algo in probes - errno = %d",
-			   errno);
-		if (!main_fd)
-			free(hsfd);
-		hsfd = NULL;
-		goto err_srh;
-	}
-
 	if (!main_fd) {
 		if (pthread_rwlock_wrlock(&lock)) {
 			zlog_error(zc, "Cannot write lock");
@@ -201,7 +195,7 @@ static void *probe_thread(void *arg)
 	struct hash_sfd *hsfd;
 	struct timespec sleep_time = {
 		.tv_sec = 0,
-		.tv_nsec = 100000L
+		.tv_nsec = SLEEP_PROBE_NS
 	};
 	probe_buf[0] = 0;
 
@@ -350,6 +344,7 @@ static void default_config()
 	cfg.sockets = NULL;
 	cfg.server_addr = in6addr_loopback;
 	cfg.server_port = 80;
+	cfg.eval_file = -1;
 }
 
 static int load_var_string(json_t *root_cfg, json_error_t *json_err,
@@ -384,6 +379,27 @@ static int load_in6(json_t *root_cfg, json_error_t *json_err,
 	return 0;
 }
 
+static int load_fd(json_t *root_cfg, json_error_t *json_err,
+		   const char *name, int *fd)
+{
+	char *tmp = NULL;
+	int err = load_var_string(root_cfg, json_err, name, &tmp);
+	if (err < 0) {
+		return -1;
+	} else if (tmp) {
+		*fd = open(tmp, O_CREAT | O_TRUNC | O_WRONLY,
+			   S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP);
+		if (*fd < 0) {
+			fprintf(stderr, "Cannot open eval file - errno %d\n",
+				errno);
+			free(tmp);
+			return -1;
+		}
+	}
+	free(tmp);
+	return 0;
+}
+
 static int load_config(const char *config_file)
 {
 	json_t *root_cfg;
@@ -407,6 +423,9 @@ static int load_config(const char *config_file)
 	if (json_unpack_ex(root_cfg, &json_err, 0, "{s?:i}", "server_port",
 			   &cfg.server_port) < 0)
 		goto err;
+	if (load_fd(root_cfg, &json_err, "evalfile",
+		    &cfg.eval_file))
+		goto err;
 
 	json_decref(root_cfg);
 	return 0;
@@ -419,11 +438,35 @@ err:
 	return -1;
 }
 
+static void store_rtt(struct hash_sfd *hsfd)
+{
+	struct timespec tp;
+	char evalbuf[1024];
+	struct tcp_info info;
+	socklen_t tcp_info_length = sizeof(info);
+
+	if (!hsfd) {
+		hsfd = &main_hsfd;
+		if (getsockopt(hsfd->sfd, SOL_TCP, TCP_INFO, &info, &tcp_info_length)) {
+			zlog_error(zc, "Cannot get TCP INFO on main socket: %s", strerror(errno));
+		} else {
+			hsfd->last_rtt = info.tcpi_rtt;
+		}
+	}
+	if (cfg.eval_file >= 0 && !clock_gettime(CLOCK_MONOTONIC, &tp)) {
+		snprintf(evalbuf, 1024, "%d %u %lu.%lu\n",
+			 hsfd->sfd, hsfd->last_rtt, tp.tv_sec, tp.tv_nsec);
+		if (write(cfg.eval_file, evalbuf, strlen(evalbuf)) < 0)
+			zlog_warn(zc, "Cannot write to eval file ! - %s",
+				  strerror(errno));
+	}
+}
+
 static void *switch_thread_run(void *arg _unused)
 {
 	struct timespec sleep_time = {
 		.tv_sec = 0,
-		.tv_nsec = 100000L
+		.tv_nsec = SLEEP_PROBE_NS
 	};
 	struct hash_sfd *current_rtt = NULL;
 	struct hash_sfd *min_rtt = NULL;
@@ -457,14 +500,17 @@ static void *switch_thread_run(void *arg _unused)
 			zlog_debug(zc, "RTT of socket %d is %d", iter->sfd, iter->last_rtt);
 			if (!min_rtt || min_rtt->last_rtt > iter->last_rtt)
 				min_rtt = iter;
+			store_rtt(iter);
 		}
+		store_rtt(NULL);
 		if (min_rtt != current_rtt &&
 		    min_rtt->last_rtt < current_rtt->last_rtt - MIN_CHANGE) {
 			/* Set current SRH */
 			zlog_debug(zc, "Switch socket event !\n");
 			main_hsfd.srh = min_rtt->srh;
 			size_t srh_len = (main_hsfd.srh->hdrlen + 1) << 3;
-			if (setsockopt(main_hsfd.sfd, IPPROTO_IPV6, IPV6_RTHDR, main_hsfd.srh, srh_len) < 0) {
+			if (setsockopt(main_hsfd.sfd, IPPROTO_IPV6, IPV6_RTHDR,
+				       main_hsfd.srh, srh_len) < 0) {
 				zlog_error(zc, "Cannot set the SRH in the socket - errno = %d",
 					   errno);
 				return NULL;
