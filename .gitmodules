@@ -6,3 +6,7 @@
 	path = srn-dev
 	url = git@bitbucket.org:jadinm/srn-dev.git
 	branch = dev
+[submodule "sr-optim"]
+	path = sr-optim
+	url = git@bitbucket.org:pschaus/sr-optim.git
+	branch = sricmp
