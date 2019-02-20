@@ -223,7 +223,6 @@ static void *probe_thread(void *arg)
 			zlog_error(zc, "Cannot get back TCP INFO when probing: %s", strerror(errno));
 		} else {
 			hsfd->last_rtt = info.tcpi_rtt;
-			zlog_debug(zc, "Probing - last rtt %u", hsfd->last_rtt);
 		}
 		if (nanosleep(&sleep_time, NULL) < 0) {
 			zlog_error(zc, "Cannot sleep %s", strerror(errno));
@@ -275,7 +274,7 @@ static struct ipv6_sr_hdr *send_traffic(int sfd)
 			return NULL;
 		}
 		if (pfd.revents & POLLERR) { // An ICMP was received
-
+			zlog_debug(zc, "Received an SR-ICMP");
 			int err = 0;
 			socklen_t size = sizeof(err);
 			if (getsockopt(sfd, SOL_SOCKET, SO_ERROR, &err,
@@ -497,7 +496,6 @@ static void *switch_thread_run(void *arg _unused)
 		/* Loop on all keys - if sufficient DIFF, then switch */
 		min_rtt = current_rtt;
 		for(iter=cfg.sockets; iter; iter=iter->hh.next) {
-			zlog_debug(zc, "RTT of socket %d is %d", iter->sfd, iter->last_rtt);
 			if (!min_rtt || min_rtt->last_rtt > iter->last_rtt)
 				min_rtt = iter;
 			store_rtt(iter);
@@ -507,6 +505,8 @@ static void *switch_thread_run(void *arg _unused)
 		    min_rtt->last_rtt < current_rtt->last_rtt - MIN_CHANGE) {
 			/* Set current SRH */
 			zlog_debug(zc, "Switch socket event !\n");
+			zlog_debug(zc, "RTT redecuction is %d",
+				   current_rtt->last_rtt - min_rtt->last_rtt);
 			main_hsfd.srh = min_rtt->srh;
 			size_t srh_len = (main_hsfd.srh->hdrlen + 1) << 3;
 			if (setsockopt(main_hsfd.sfd, IPPROTO_IPV6, IPV6_RTHDR,
