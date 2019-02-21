@@ -56,8 +56,7 @@
 \usepackage{tikz}
 \usepackage{amsmath}
 
-% inlined bib file
-\usepackage{filecontents}
+\usepackage[caption=false]{subfig}
 
 %-------------------------------------------------------------------------------
 \begin{document}
@@ -112,15 +111,32 @@ A paragraph of text goes here.
 \section{Evaluation}
 %-------------------------------------------------------------------------------
 
-We used \todo{compute} topologies from the Topology Zoo\ccite{topologyzoo}.
+We used 233 topologies from the Topology Zoo\ccite{topologyzoo}.
 We modified these topologies to remove part of the graphs that lack link redundancy,\dots trees.
 The resulting topologies have only routers with at least two links.
-\todo{add graph of node number distribution graph ?}
 Communication between routers in a tree can only use a single path.
 Such trees cannot see any improvement from using Segment Routing.
 Moreover, such trees are likely artifacts of the topology collection
 because they cannot preserve connectivity even with a single link failure.
-\todo{add router degree distribution graph ?}
+Figure \ref{fig:topo:routers} and \ref{fig:topo:links} shows the CDF
+of the number of routers and links in the resulting topologies.
+Figure \ref{fig:topo:degree} shows the distributions of routers percentage with a given number
+of attached links.
+
+\begin{figure*}
+	\centering
+	\subfloat[Number of routers\label{fig:topo:routers}]{%
+		\includegraphics[width=0.3\textwidth]{figs/solver_number_routers_cdfs.pdf}
+	}
+	\subfloat[Number of links\label{fig:topo:links}]{%
+		\includegraphics[width=0.3\textwidth]{figs/solver_number_links_cdfs.pdf}
+	}
+	\subfloat[Out degree of the routers\label{fig:topo:degree}]{%
+		\includegraphics[width=0.303\textwidth]{figs/boxplot_network_outdegree_boxplots.pdf}
+	}
+	\caption{Features of the evaluation topologies}
+	\label{fig:topo}
+\end{figure*}
 
 The set of topologies does not include which routers are actually linked to endhosts
 and which are core routers. We assume that routers with two links are edge routers
@@ -138,12 +154,12 @@ the maximum amount of traffic that can go through the topology without
 exceeding the link capacity.
 
 \begin{equation*}
-\setlength\arraycolsep{0.2pt}
-\begin{smallmatrix}
-\displaystyle maxflow(\P) & & \\
-\displaystyle \max_{f} & \displaystyle \sum_{p \in \P} f_{p} & \\[0.5cm]
-\textrm{s.t.} & \displaystyle \sum_{p \in \P} \r(l, p) \cdot f_{p} & \displaystyle \leq & \displaystyle \cap(l) & \forall l \in \L
-\end{smallmatrix}
+	\setlength\arraycolsep{0.2pt}
+	\begin{smallmatrix}
+		\displaystyle maxflow(\P) & & \\
+		\displaystyle \max_{f} & \displaystyle \sum_{p \in \P} f_{p} & \\[0.5cm]
+		\textrm{s.t.}          & \displaystyle \sum_{p \in \P} \r(l, p) \cdot f_{p} & \displaystyle \leq & \displaystyle \cap(l) & \forall l \in \L
+	\end{smallmatrix}
 \end{equation*}
 
 $\P$ represents the set of \texttt{sr-paths}, encoded as a list of intermediate routers.
@@ -180,6 +196,18 @@ gives the same solution.
 
 \textbf{Adding IPv6 SR improves the maximum throughput by \todo{values}\%.}
 Figure \ref{fig:maxflow-theory} shows the relative maxfimum flow improvement of using single path or multiple path with Segment Routing. \todo{Add the graph + detailed description of why 1\%, 5\% and 10\% of heavy hitters}
+
+\begin{figure*}
+	\centering
+	\subfloat[Single path transport protocol\label{fig:fig:maxflow-theory:tcp}]{%
+		\includegraphics[width=0.4\textwidth]{figs/boxplot_maxflow_diff_accesslinks_5_20_50_tcp_segs_ecmp_0_0_boxplots.pdf}
+	}
+	\subfloat[Multiple path transport protocol\label{fig:fig:maxflow-theory:mptcp}]{%
+		\includegraphics[width=0.4\textwidth]{figs/boxplot_maxflow_diff_accesslinks_5_20_50_mptcp_segs_ecmp_0_0_boxplots.pdf}
+	}
+	\caption{Max flow relative difference between a protocol with or without IPv6 SR}
+	\label{fig:maxflow-theory}
+\end{figure*}
 
 %-------------------------------------------------------------------------------
 \bibliographystyle{plain}
