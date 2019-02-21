@@ -194,16 +194,27 @@ When it reaches this point, computing the model on this restricted set or on the
 gives the same solution.
 \todo{Explain how the model is different from infocom, i.e., demands become unbounded or is it too detailed ?}
 
-\textbf{Adding IPv6 SR improves the maximum throughput by \todo{values}\%.}
-Figure \ref{fig:maxflow-theory} shows the relative maxfimum flow improvement of using single path or multiple path with Segment Routing. \todo{Add the graph + detailed description of why 1\%, 5\% and 10\% of heavy hitters}
+\textbf{Adding IPv6 SR can significantly improve the maximum throughput.}
+Figure \ref{fig:maxflow-theory:tcp} shows the relative maximum flow improvement
+of using single path or multiple path with SR.
+There is a boxplot for a given percentage of edge router pairs that have heavy hitters
+to route \todo{Give the rational behind the choice of the values}.
+The number of heavy hitters has influence on the relative improvement.
+It is easier to unused alternative paths with fewer heavy hitters.
+With 1\% of heavy hitter pairs, for half of the topologies,
+we can improve the maximum flow by 71\%.
+For 10\% of heavy hitter pairs, we can still improve it by 30\%.
+Figure \ref{fig:maxflow-theory:mptcp} shows the improvement with multiple path protocol
+without SR.
+The improvement is about 5\% lower. This justifies the use of SR even with multipath protocols.
 
 \begin{figure*}
 	\centering
-	\subfloat[Single path transport protocol\label{fig:fig:maxflow-theory:tcp}]{%
-		\includegraphics[width=0.4\textwidth]{figs/boxplot_maxflow_diff_accesslinks_2_tcp_segs_ecmp_0_0_boxplots.pdf}
+	\subfloat[Single path transport protocol\label{fig:maxflow-theory:tcp}]{%
+		\includegraphics[width=0.4\textwidth]{figs/cdf_maxflow_diff_accesslinks_2_tcp_segs_ecmp_0_0_cdf.pdf}
 	}
-	\subfloat[Multiple path transport protocol\label{fig:fig:maxflow-theory:mptcp}]{%
-		\includegraphics[width=0.4\textwidth]{figs/boxplot_maxflow_diff_accesslinks_2_mptcp_segs_ecmp_0_0_boxplots.pdf}
+	\subfloat[Multiple path transport protocol\label{fig:maxflow-theory:mptcp}]{%
+		\includegraphics[width=0.4\textwidth]{figs/cdf_maxflow_diff_accesslinks_2_mptcp_segs_ecmp_0_0_cdf.pdf}
 	}
 	\caption{Relative Maxflow improvement of adding IPv6 SR}
 	\label{fig:maxflow-theory}
