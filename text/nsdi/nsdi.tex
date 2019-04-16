@@ -142,6 +142,8 @@ The set of topologies does not include which routers are actually linked to endh
 and which are core routers. We assume that routers with two links are edge routers
 and the others are core routers because they are more connected.
 
+% TODO This implies that a few topologies must be ignored by default
+
 \subsection{Maximum improvement}
 
 This sections evaluation the theoritical improvement of using
@@ -219,6 +221,51 @@ The improvement is about 5\% lower. This justifies the use of SR even with multi
 	\caption{Relative Maxflow improvement of adding IPv6 SR}
 	\label{fig:maxflow-theory}
 \end{figure*}
+
+\subsection{Largest set of disjoint paths}
+
+Finding the largest set of disjoint paths between two routers can be done with Edmonds–Karp algorithm \cite{edmondskarp} in O($|\R||\L|^2$).
+Even faster strategies can imply applying Dijkstra algorithm iteratively.
+Each time that the algorithm finds a path, we remove its links for the next computations.
+We stop it when it cannot find another path.
+This is solved in O($(|\L|+|\R|)n\log{|\R|}$) with $n$ being the number of iterations of dijkstra algorithm.
+O($n$) cannot be bigger than O($|\L|$) because at each iteration, if a path is found, the links if this path will be removed.
+In practise, source and destinations are behind routers with exactly two outgoing links.
+There will be at most two disjoint paths.
+Therefore, applying the Dijkstra algorithm iteratively is faster than using the Edmonds-Karp.
+
+Figure \ref{fig:disjoint:noseglimit} shows a CDF of the mean number of disjoint paths by pair of access router in each topology.
+We consider routers with exectly two links as access routers.
+This means that there are at least one path between two routers but at most two since there are only two outgoing links.
+Edmonds-Karp computes the largest set of disjoint paths that can be reached.
+We can reach the same sets for 70\% of topologies by applying iteratively Dijkstra algorithm.
+
+SRv6 is limited in the number of segments that it can apply in a packet.
+This limit can be due to hardware limitationsi of IPv6 SR implementations \cite{Tantsura_SID:2017}.
+So we need to use algorithms that prevent the number of segments to grow beyond a given limit.
+Always finding the largest set of disjoint paths within the limit of segment is exponential and therefore not feasible in practise.
+\cite{aubry2015traffic} defines the SPS\todo{Check with Francois for the name} algorithm that computes the shortest path between two routers
+under a given limit of segments.
+Each time that the algorithm finds a path, they remove all the links for the next computations.
+They stop when no more path can be found.
+Figure \ref{fig:disjoint:seglimit} shows that the number of disjoint paths increases with the number of authorized segments.
+We see that increasing the limit beyond ??? segments does not improve significantly the number of disjoint paths.
+
+% TODO Figure with iterative dijkstra/warshall as maximum in max seg ?
+
+\begin{figure*}
+	\centering
+	\subfloat[Without a segment limit\label{fig:disjoint:noseglimit}]{
+		\includegraphics[width=0.4\textwidth]{figs/solver_number_disjoint_paths_cdfs.pdf}
+	}
+	\subfloat[With a segment limit\label{fig:disjoint:seglimit}]{%
+		\includegraphics[width=0.4\textwidth]{figs/solver_number_disjoint_paths_max_segs_cdfs.pdf}
+	}
+	\caption{Number of disjoint paths found by pair of access routers}
+	\label{fig:disjoint}
+\end{figure*}
+
+\todo{Conclusion}
 
 %-------------------------------------------------------------------------------
 \bibliographystyle{plain}
