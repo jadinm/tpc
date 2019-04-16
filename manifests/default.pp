@@ -19,6 +19,7 @@ exec { 'apt-update':
 }
 
 # Miscellaneous
+package {'libelf-dev': }  # Needed for virtualbox guest additions to work even after new kernel install
 package { 'git': }
 package { 'python-pip': }
 package { 'iperf3': }
