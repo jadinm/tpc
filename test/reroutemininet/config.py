@@ -63,6 +63,7 @@ class SRRerouted(SRNDaemon):
         defaults.red_burst = self.red_burst
         defaults.rerouting_enabled = True
         super(SRRerouted, self).set_defaults(defaults)
+        defaults.loglevel = self.DEBUG  # TODO Remove
 
     @staticmethod
     def red_burst(itf_bw, red_limit, red_avpkt, red_probability, red_min, red_max):
@@ -247,6 +248,7 @@ class SREndhostd(ZlogDaemon):
         defaults.server_port = 80
         defaults.routerid = 1
         super(SREndhostd, self).set_defaults(defaults)
+        defaults.loglevel = self.DEBUG  # TODO Remove
 
     def _filepath(self, f):
         return os.path.join(self.cwd, f)
@@ -286,6 +288,7 @@ class SRServerd(ZlogDaemon):
         defaults.cwd = os.curdir
         defaults.routerid = 1
         super(SRServerd, self).set_defaults(defaults)
+        defaults.loglevel = self.DEBUG  # TODO Remove
 
     def _filepath(self, f):
         return os.path.join(self.cwd, f)

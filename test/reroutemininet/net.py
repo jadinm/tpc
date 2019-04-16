@@ -8,12 +8,14 @@ from ipmininet.router.config.utils import ConfigDict
 from srnmininet.srnnet import SRNNet
 
 from config import SREndhostd, SRServerd
+from router import ReroutingRouter, ReroutingConfig
 
 
 class ReroutingNet(SRNNet):
 
-    def __init__(self, clients=None, servers=None, *args, **kwargs):
-        super(ReroutingNet, self).__init__(*args, **kwargs)
+    def __init__(self, clients=None, servers=None,
+                 config=ReroutingConfig, router=ReroutingRouter, *args, **kwargs):
+        super(ReroutingNet, self).__init__(config=config, router=router, *args, **kwargs)
         self.clients = clients if clients is not None else []
         self.servers = servers if servers is not None else []
         self._additional_daemons = []

@@ -31,6 +31,8 @@ tests = {
     "repetita": launch_repetita_eval
 }
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+
 
 # Argument parsing
 
@@ -41,7 +43,7 @@ def parse_args():
     parser.add_argument('--log-dir', help='Logging directory root',
                         default='/tmp/logs-%s' % datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     parser.add_argument('--src-dir', help='Source directory root of SRN components',
-                        default='../srn-dev')
+                        default=os.path.join(os.path.dirname(script_dir), 'srn-dev'))
     parser.add_argument('--test', help='Test name to perform', choices=tests,
                         default='mininet-cli')
     parser.add_argument('--repetita-topo', help='Gives the path to a Repetita topology (only for repetita tests)',

@@ -25,18 +25,20 @@ class Albilene(SRNTopo):
     """
 
     def __init__(self, schema_tables=None, link_bandwidth=100, always_redirect=False, rerouting_enabled=True,
-                 red_limit=1.0, *args, **kwargs):
+                 red_limit=1.0, maxseg=-1, *args, **kwargs):
         """:param schema_tables: The schema table of ovsdb
            :param link_delay: The link delay
            :param link_bandwidth: The link bandwidth
            :param always_redirect: Tune tc parameters such that SRRerouted daemon always chooses to reroute (for debugging)
-           :param red_limit: Portion of the link bandwidth that is the limit for RED on SRRerouted daemon"""
+           :param red_limit: Portion of the link bandwidth that is the limit for RED on SRRerouted daemon
+           :param maxseg: Maximum number of segment allowed (-1 or 0 means no limit)"""
         self.link_delay = "1ms"
         self.link_bandwidth = link_bandwidth
         self.schema_tables = schema_tables if schema_tables else {}
         self.always_redirect = always_redirect
         self.red_limit = red_limit
         self.rerouting_enabled = rerouting_enabled
+        self.maxseg = maxseg
 
         super(Albilene, self).__init__("controller", *args, **kwargs)
 
@@ -79,7 +81,7 @@ class Albilene(SRNTopo):
             opts = {"red_limit": self.red_limit}
         self.addOverlay(SRReroutedCtrlDomain(access_routers=(a, f, b), sr_controller=controller,
                                              schema_tables=self.schema_tables, rerouting_routers=(c, d, e),
-                                             rerouted_opts=opts))
+                                             rerouted_opts=opts, maxseg=self.maxseg))
 
         super(Albilene, self).build(*args, **kwargs)
 

@@ -7,6 +7,7 @@ from ipaddress import ip_address
 from ipmininet.utils import realIntfList, otherIntf
 from scipy.special import comb
 from sr6mininet.sr6host import SR6Host
+from sr6mininet.cli import SR6CLI
 
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
@@ -444,18 +445,41 @@ class TestController(SRNMininetTest):
     """
 
     def test_controller_precomputed_paths(self):
+        srhs = {
+            "A-F": [[], ["E"]],
+            "A-B": [[], ["E"]],
+            "B-F": [[], ["C"]]
+        }
+        self.launch_controller_precomputed_paths(srhs)
+
+    def test_controller_precomputed_paths_max_segs(self):
+        srhs = {
+            "A-F": [[]],
+            "A-B": [[]],
+            "B-F": [[]]
+        }
+        self.launch_controller_precomputed_paths(srhs, maxseg=1, label="albilene_precompute_maxseg_1")
+        srhs = {
+            "A-F": [[], ["E"]],
+            "A-B": [[], ["E"]],
+            "B-F": [[], ["C"]]
+        }
+        self.launch_controller_precomputed_paths(srhs, maxseg=2, label="albilene_precompute_maxseg_2")
+
+    def launch_controller_precomputed_paths(self, srhs, maxseg=-1, label="albilene_precompute"):
         """
         Check that the controller computes correctly disjoint paths for Albilene
         """
         topo_args = {"schema_tables": self.ovsschema["tables"],
-                     "cwd": os.path.join(self.log_dir, type(self).__name__, "albilene_precompute")}
+                     "cwd": os.path.join(self.log_dir, type(self).__name__, label),
+                     "maxseg": maxseg}
         net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
 
         try:
             net.start()
 
             lg.info("Waiting for the controller to start\n")
-            time.sleep(10)
+            time.sleep(30)
 
             cmd = "ovsdb-client --format=json dump tcp:[::1]:6640 SR_test Paths"
             output = net["controller"].cmd(cmd.split(" "))
@@ -468,11 +492,6 @@ class TestController(SRNMininetTest):
             self.assertFalse(True, msg="Cannot parse output %s as JSON" % output)
 
         access_routers = [net["A"], net["F"], net["B"]]
-        srhs = {
-            "A-F": [[], [net["E"]]],
-            "A-B": [[], [net["E"]]],
-            "B-F": [[], [net["C"]]]
-        }
         header = output["headings"]
         paths = output["data"]
         nbr_flows = int(comb(len(access_routers), 2, exact=True))
@@ -536,7 +555,7 @@ class TestController(SRNMininetTest):
             for seglist_expect in srhs[key]:
                 addrs = []
                 for node in seglist_expect:
-                    for ip in node.intf("lo").ip6s(exclude_lls=True):
+                    for ip in net[node].intf("lo").ip6s(exclude_lls=True):
                         if ip.ip.compressed != "::1":
                             addrs.append(ip.ip.compressed)
                             break

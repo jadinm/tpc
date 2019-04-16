@@ -7,12 +7,14 @@ from config import SRRerouted
 
 class SRReroutedCtrlDomain(SRCtrlDomain):
 
-    def __init__(self, access_routers, sr_controller, schema_tables, rerouting_routers, rerouted_opts=None):
+    def __init__(self, access_routers, sr_controller, schema_tables, rerouting_routers, rerouted_opts=None,
+                 maxseg=-1):
         super(SRReroutedCtrlDomain, self).__init__(access_routers, sr_controller, schema_tables)
 
         self.nodes.extend(rerouting_routers)
         for n in rerouting_routers:
             self.set_node_property(n, "sr_controller", sr_controller)
+        self.set_node_property(sr_controller, "maxseg", maxseg)
 
         self.rerouting_routers = list(rerouting_routers)
         for node in access_routers:
