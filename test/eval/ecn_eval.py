@@ -42,6 +42,8 @@ def launch(**kwargs):
     net = SR6Net(topo=ECNSRNet(**kwargs), static_routing=True, allocate_IPs=False)
     pid_client = None
     pid_server = None
+    pid_conc_client = None
+    pid_conc_server = None
     try:
         net.start()
 
@@ -53,7 +55,19 @@ def launch(**kwargs):
                 print("The server exited too early with err=%s" % pid_server.poll())
                 return 0, [], []
 
+            pid_conc_server = net["r5"].popen(split("iperf3 -s"))
+            time.sleep(1)
+            if pid_conc_server.poll() is not None:
+                print("The concurrent server exited too early with err=%s" % pid_conc_server.poll())
+                return 0, [], []
+
             SR6CLI(net)  # TODO Remove
+
+            pid_conc_client = net["r3"].popen(split("iperf3 -c fc11::5 -t 100"))
+            time.sleep(1)
+            if pid_conc_client.poll() is not None:
+                print("The concurrent client exited too early with err=%s" % pid_conc_client.poll())
+                return 0, [], []
 
             pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 1M",
                                        stdout=results_file)
@@ -69,6 +83,10 @@ def launch(**kwargs):
             pid_client.kill()
         if pid_server is not None and pid_server.poll() is None:
             pid_server.kill()
+        if pid_conc_client is not None and pid_conc_client.poll() is None:
+            pid_conc_client.kill()
+        if pid_conc_server is not None and pid_conc_server.poll() is None:
+            pid_conc_server.kill()
     return res
 
 
