@@ -96,7 +96,7 @@ def launch(**kwargs):
                 pid.kill()
             out, _ = pid.communicate()
             lines = out.split("\n")
-            timestamp_paths.append([float(line.split(" ")[0]) for line in lines])
+            timestamp_paths.append([float(line.split(" ")[0]) for line in lines if len(line) > 0])
 
     finally:
         for pid in tcpdump_pids:
