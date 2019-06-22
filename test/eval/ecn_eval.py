@@ -95,7 +95,7 @@ def launch(**kwargs):
             if pid.poll() is None:
                 pid.kill()
             out, _ = pid.communicate()
-            lines = out.readlines()
+            lines = out.split("\n")
             timestamp_paths.append([float(line.split(" ")[0]) for line in lines])
 
     finally:
