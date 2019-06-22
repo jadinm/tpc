@@ -1,7 +1,6 @@
 import json
 import os
 import subprocess
-import tempfile
 import time
 from mininet.log import lg
 from shlex import split
@@ -9,6 +8,7 @@ from shlex import split
 import matplotlib.pyplot as plt
 import psutil
 from ipmininet.clean import cleanup
+from ipmininet.utils import realIntfList
 from sr6mininet.cli import SR6CLI
 from sr6mininet.examples.ecn_sr_network import ECNSRNet
 from sr6mininet.sr6net import SR6Net
@@ -32,7 +32,17 @@ def run_in_cgroup(node, cmd, **kwargs):
     return popen
 
 
-# Setup Mininet network
+def tcpdump(node, *itfs):
+    """
+    Run a tcpdump for each interface in itfs
+    It returns the list of popen objects matching the tcpdumps
+    """
+    processes = []
+    for itf in itfs:
+        processes.append(node.popen(split("tcpdump -i %s -s 1 -tt tcp dst port 5201" % itf)))
+    return processes
+
+
 def launch(**kwargs):
     """
     Setup Mininet network and launch test
@@ -44,8 +54,12 @@ def launch(**kwargs):
     pid_server = None
     pid_conc_client = None
     pid_conc_server = None
+    tcpdump_pids = []
+    timestamp_paths = []
     try:
         net.start()
+
+        tcpdump_pids = tcpdump(net["client"], *realIntfList(net["client"]))
 
         results_path = "/tmp/results.json"
         with open(results_path, "w") as results_file:
@@ -53,13 +67,13 @@ def launch(**kwargs):
             time.sleep(1)
             if pid_server.poll() is not None:
                 print("The server exited too early with err=%s" % pid_server.poll())
-                return 0, [], []
+                return 0, [], [], []
 
             pid_conc_server = net["r5"].popen(split("iperf3 -s"))
             time.sleep(1)
             if pid_conc_server.poll() is not None:
                 print("The concurrent server exited too early with err=%s" % pid_conc_server.poll())
-                return 0, [], []
+                return 0, [], [], []
 
             SR6CLI(net)  # TODO Remove
 
@@ -67,17 +81,27 @@ def launch(**kwargs):
             time.sleep(1)
             if pid_conc_client.poll() is not None:
                 print("The concurrent client exited too early with err=%s" % pid_conc_client.poll())
-                return 0, [], []
+                return 0, [], [], []
 
             pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 1M",
                                        stdout=results_file)
             time.sleep(15)
             if pid_client.poll() is None:
                 print("The client did not finished after 15 seconds")
-                return 0, [], []
+                return 0, [], [], []
 
-        res = parse_results(results_path)
+        # Get packet timestamps for each interface/path
+        for pid in tcpdump_pids:
+            if pid.poll() is None:
+                pid.kill()
+            out, _ = pid.communicate()
+            lines = out.readlines()
+            timestamp_paths.append([float(line.split(" ")[0]) for line in lines])
+
     finally:
+        for pid in tcpdump_pids:
+            if pid.poll() is None:
+                pid.kill()
         net.stop()
         if pid_client is not None and pid_client.poll() is None:
             pid_client.kill()
@@ -87,7 +111,9 @@ def launch(**kwargs):
             pid_conc_client.kill()
         if pid_conc_server is not None and pid_conc_server.poll() is None:
             pid_conc_server.kill()
-    return res
+
+    start, bw, retransmits = parse_results(results_path)
+    return start, bw, retransmits, timestamp_paths
 
 
 def parse_results(results_path):
@@ -102,7 +128,7 @@ def parse_results(results_path):
     return start, bw, retransmits
 
 
-def plot(start, bw, retransmits):
+def plot(start, bw, retransmits, timestamp_paths):
     # Bandwidth
 
     figure_name = "bw_ecn_iperf"
@@ -141,9 +167,41 @@ def plot(start, bw, retransmits):
     fig.clf()
     plt.close()
 
+    # Selected path along time
+
+    figure_name = "path_ecn_iperf"
+    fig = plt.figure()
+    subplot = fig.add_subplot(111)
+
+    timestamps = []
+    for path in range(len(timestamp_paths)):
+        for t in timestamp_paths[path]:
+            timestamps.append([t, path])
+
+    timestamps = sorted(timestamps)
+    filtered_timestamps = []
+    for t, path in timestamps:
+        if len(filtered_timestamps) == 0 or filtered_timestamps[-1][1] != path:
+            filtered_timestamps.append([t, path])
+    filtered_timestamps.append(timestamps[-1])
+    print(filtered_timestamps)
+
+    x, y = zip(filtered_timestamps)
+    subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
+                 markersize=9, zorder=1)
+
+    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
+    subplot.set_ylabel("Path index", fontsize=FONTSIZE)
+
+    print("Save figure for paths")
+    fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
+                bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
     print("Saving raw data")
     with open(os.path.join(output_path, "ecn.json"), "w") as file:
-        json.dump({"bw": bw, "retransmits": retransmits, "start": start},
+        json.dump({"bw": bw, "retransmits": retransmits, "start": start, "paths": filtered_timestamps},
                   file, indent=4)
 
 
