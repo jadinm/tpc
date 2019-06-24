@@ -217,5 +217,11 @@ def plot(start, bw, retransmits, timestamp_paths):
 
 
 # Customize parameters
-plot(*launch(red_min=1000, red_max=2000, red_avpkt=1000, red_probability=0.9,
-             red_burst=1, red_limit=1))
+
+# Trigger happy ecn
+# plot(*launch(red_min=1000, red_max=2000, red_avpkt=1000, red_probability=0.9,
+#              red_burst=1, red_limit=1))
+
+# Mininet configuration of ecn
+plot(*launch(red_limit=1000000, red_avpkt=1500, red_probability=1,
+             red_min=30000, red_max=35000, red_burst=20))
