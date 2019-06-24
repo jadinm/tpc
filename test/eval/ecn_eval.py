@@ -189,13 +189,14 @@ def plot(start, bw, retransmits, timestamp_paths):
             filtered_timestamps.append([t, path])
     if len(timestamps) > 1:
         filtered_timestamps.append(timestamps[-1])
-    print(filtered_timestamps)
 
     x = []
     y = []
     for t, path in filtered_timestamps:
         x.append(t)
         y.append(path)
+    print(x)
+    print(y)
     subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
                  markersize=9, zorder=1)
 
