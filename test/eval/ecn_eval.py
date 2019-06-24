@@ -223,5 +223,5 @@ def plot(start, bw, retransmits, timestamp_paths):
 #              red_burst=1, red_limit=1))
 
 # Mininet configuration of ecn
-plot(*launch(red_limit=1000000, red_avpkt=1500, red_probability=1,
+plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
              red_min=30000, red_max=35000, red_burst=20))
