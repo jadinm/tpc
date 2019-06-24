@@ -6,7 +6,6 @@ from mininet.log import lg
 from shlex import split
 
 import matplotlib.pyplot as plt
-import psutil
 from ipmininet.clean import cleanup
 from ipmininet.utils import realIntfList
 from sr6mininet.cli import SR6CLI
@@ -23,9 +22,10 @@ def run_in_cgroup(node, cmd, **kwargs):
     Run asynchronously the command cmd in a cgroup
     """
     popen = node.popen(split("bash"), stdin=subprocess.PIPE, **kwargs)
-    parent_pid = psutil.Process(popen.pid).ppid()
-    with open("/sys/fs/cgroup/unified/%s/cgroup.procs" % CGROUP, "a") as cgroup_file:
-        cgroup_file.write("%d\n" % parent_pid)
+    time.sleep(1)
+
+    os.system('echo %d > /sys/fs/cgroup/unified/%s/cgroup.procs' % (popen.pid, CGROUP))
+    time.sleep(1)
 
     popen.stdin.write(bytes(cmd))
     popen.stdin.close()
@@ -40,7 +40,9 @@ def tcpdump(node, *itfs):
     processes = []
     for itf in itfs:
         # Triggers for Routing Headers
-        processes.append(node.popen(split("tcpdump -i %s -s 1 -tt ip6 proto 43" % itf)))
+        cmd = "tcpdump -i %s -s 1 -tt ip6 proto 43" % itf
+        print(cmd)
+        processes.append(node.popen(split(cmd)))
     return processes
 
 
@@ -70,7 +72,7 @@ def launch(**kwargs):
                 print("The server exited too early with err=%s" % pid_server.poll())
                 return 0, [], [], []
 
-            pid_conc_server = net["r5"].popen(split("iperf3 -s"))
+            pid_conc_server = net["r5"].popen(split("iperf3 -s -p 8000"))
             time.sleep(1)
             if pid_conc_server.poll() is not None:
                 print("The concurrent server exited too early with err=%s" % pid_conc_server.poll())
@@ -78,13 +80,13 @@ def launch(**kwargs):
 
             SR6CLI(net)  # TODO Remove
 
-            pid_conc_client = net["r3"].popen(split("iperf3 -c fc11::5 -t 100"))
+            pid_conc_client = net["r3"].popen(split("iperf3 -c fc11::5 -t 100 -p 8000"))
             time.sleep(1)
             if pid_conc_client.poll() is not None:
                 print("The concurrent client exited too early with err=%s" % pid_conc_client.poll())
                 return 0, [], [], []
 
-            pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 1M",
+            pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 10M",
                                        stdout=results_file)
             time.sleep(15)
             if pid_client.poll() is None:
@@ -98,7 +100,10 @@ def launch(**kwargs):
                 pid.kill()
             out, _ = pid.communicate()
             lines = out.split("\n")
-            timestamp_paths.append([float(line.split(" ")[0]) for line in lines if len(line) > 0])
+            with open("/tmp/tcpdump_%s" % pid.pid, "w") as fileobj:
+                for line in lines:
+                    fileobj.write(line + "\n")
+            timestamp_paths.append([float(line.split(" ")[0]) for line in lines if len(line) > 0 and len(line.split(" ")) == 2])
             print("%d packets sent on the path %d" % (len(timestamp_paths), path))
             path += 1
 
@@ -187,17 +192,16 @@ def plot(start, bw, retransmits, timestamp_paths):
     for t, path in timestamps:
         if len(filtered_timestamps) == 0 or filtered_timestamps[-1][1] != path:
             filtered_timestamps.append([t, path])
-    if len(timestamps) > 1:
+    if len(filtered_timestamps) >= 1:
         filtered_timestamps.append(timestamps[-1])
+    print(filtered_timestamps)
 
     x = []
     y = []
     start = filtered_timestamps[0][0]
     for t, path in filtered_timestamps:
-        x.append(t - start)
+        x.append((t - start))
         y.append(str(path))
-    print(x)
-    print(y)
     subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
                  markersize=9, zorder=1)
 
@@ -219,9 +223,13 @@ def plot(start, bw, retransmits, timestamp_paths):
 # Customize parameters
 
 # Trigger happy ecn
-# plot(*launch(red_min=1000, red_max=2000, red_avpkt=1000, red_probability=0.9,
-#              red_burst=1, red_limit=1))
+plot(*launch(red_min=1000, red_max=2000, red_avpkt=1000, red_probability=0.9,
+             red_burst=1, red_limit=1))
 
 # Mininet configuration of ecn
-plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
-             red_min=30000, red_max=35000, red_burst=20))
+#plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
+#             red_min=30000, red_max=35000, red_burst=20))
+
+# Custom configuration of ecn
+#plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
+#             red_min=30000, red_max=35000, red_burst=20))
