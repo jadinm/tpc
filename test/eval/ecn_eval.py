@@ -39,7 +39,8 @@ def tcpdump(node, *itfs):
     """
     processes = []
     for itf in itfs:
-        processes.append(node.popen(split("tcpdump -i %s -s 1 -tt tcp dst port 5201" % itf)))
+        # Triggers for Routing Headers
+        processes.append(node.popen(split("tcpdump -i %s -s 1 -tt ip6 proto 43" % itf)))
     return processes
 
 
@@ -186,7 +187,8 @@ def plot(start, bw, retransmits, timestamp_paths):
     for t, path in timestamps:
         if len(filtered_timestamps) == 0 or filtered_timestamps[-1][1] != path:
             filtered_timestamps.append([t, path])
-    filtered_timestamps.append(timestamps[-1])
+    if len(timestamps) > 1:
+        filtered_timestamps.append(timestamps[-1])
     print(filtered_timestamps)
 
     x = []
