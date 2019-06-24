@@ -91,12 +91,15 @@ def launch(**kwargs):
                 return 0, [], [], []
 
         # Get packet timestamps for each interface/path
+        path = 0
         for pid in tcpdump_pids:
             if pid.poll() is None:
                 pid.kill()
             out, _ = pid.communicate()
             lines = out.split("\n")
             timestamp_paths.append([float(line.split(" ")[0]) for line in lines if len(line) > 0])
+            print("%d packets sent on the path %d" % (len(timestamp_paths), path))
+            path += 1
 
     finally:
         for pid in tcpdump_pids:
@@ -186,7 +189,11 @@ def plot(start, bw, retransmits, timestamp_paths):
     filtered_timestamps.append(timestamps[-1])
     print(filtered_timestamps)
 
-    x, y = zip(filtered_timestamps)
+    x = []
+    y = []
+    for t, path in timestamps:
+        x.append(t)
+        y.append(path)
     subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
                  markersize=9, zorder=1)
 
