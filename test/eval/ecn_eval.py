@@ -192,9 +192,10 @@ def plot(start, bw, retransmits, timestamp_paths):
 
     x = []
     y = []
+    start = filtered_timestamps[0][0]
     for t, path in filtered_timestamps:
-        x.append(t)
-        y.append(path)
+        x.append(t - start)
+        y.append(str(path))
     print(x)
     print(y)
     subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
