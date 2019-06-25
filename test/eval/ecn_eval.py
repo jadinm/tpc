@@ -12,6 +12,7 @@ from sr6mininet.cli import SR6CLI
 from sr6mininet.examples.ecn_sr_network import ECNSRNet
 from sr6mininet.sr6net import SR6Net
 
+INTERVALS = 1
 FONTSIZE = 12
 CGROUP = "test.slice"
 output_path = os.path.dirname(os.path.abspath(__file__))
@@ -46,7 +47,7 @@ def tcpdump(node, *itfs):
     return processes
 
 
-def launch(**kwargs):
+def launch(ebpf=True, **kwargs):
     """
     Setup Mininet network and launch test
     """
@@ -80,17 +81,26 @@ def launch(**kwargs):
 
             SR6CLI(net)  # TODO Remove
 
+            if ebpf:
+                pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 10M -t 30 -i %s" % INTERVALS,
+                                           stdout=results_file)
+            else:
+                pid_client = net["client"].popen(split("iperf3 -J -c fc11::2 -b 10M -t 30 -i %s" % INTERVALS),
+                                                 stdout=results_file)
+
+            time.sleep(5)
+
+            # Launch the concurrent flow after 5 seconds
             pid_conc_client = net["r3"].popen(split("iperf3 -c fc11::5 -t 100 -p 8000"))
             time.sleep(1)
             if pid_conc_client.poll() is not None:
                 print("The concurrent client exited too early with err=%s" % pid_conc_client.poll())
                 return 0, [], [], []
 
-            pid_client = run_in_cgroup(net["client"], "iperf3 -J -c fc11::2 -b 10M",
-                                       stdout=results_file)
-            time.sleep(15)
+            time.sleep(30)
+
             if pid_client.poll() is None:
-                print("The client did not finished after 15 seconds")
+                print("The client did not finished after 35 seconds")
                 return 0, [], [], []
 
         # Get packet timestamps for each interface/path
@@ -137,20 +147,90 @@ def parse_results(results_path):
     return start, bw, retransmits
 
 
-def plot(start, bw, retransmits, timestamp_paths):
+def plot(start, bw, retransmits, timestamp_paths, bw_noebpf):
+
+    # Selected path along time
+
+    figure_name = "path_ecn_iperf"
+    fig = plt.figure()
+    subplot = fig.add_subplot(111)
+
+    timestamps = []
+    for path in range(len(timestamp_paths)):
+        for t in timestamp_paths[path]:
+            timestamps.append([t, path])
+
+    timestamps = sorted(timestamps)
+    timestamps = timestamps[20:]  # Ignore control connection
+    print(len(timestamps))
+    filtered_timestamps = []
+    for t, path in timestamps:
+        if len(filtered_timestamps) == 0 or filtered_timestamps[-1][1] != path:
+            filtered_timestamps.append([t, path])
+    if len(filtered_timestamps) >= 1:
+        filtered_timestamps.append(timestamps[-1])
+    print(filtered_timestamps)
+
+    x_time = []
+    y_path = []
+    start = filtered_timestamps[0][0]
+    for t, path in filtered_timestamps:
+        x_time.append((t - start))
+        y_path.append(str(path))
+    subplot.step(x_time, y_path, color="orangered", marker="o", linewidth=2.0, where="post",
+                 markersize=5, zorder=1)
+
+    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
+    subplot.set_ylabel("Path index", fontsize=FONTSIZE)
+
+    print("Save figure for paths")
+    fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
+                bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
     # Bandwidth
 
     figure_name = "bw_ecn_iperf"
     fig = plt.figure()
     subplot = fig.add_subplot(111)
-    x = [i for i in range(len(bw))]
+    x = [i * float(INTERVALS) for i in range(len(bw))]
     bw = [float(b) / 10**6 for b in bw]
+    bw_noebpf = [float(b) / 10**6 for b in bw_noebpf]
 
-    subplot.step(x, bw, color="orangered", marker="s", linewidth=2.0, where="post",
-                 markersize=9, zorder=1)
+    subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0, where="post",
+                 markersize=5, zorder=2, label="with eBPF")
+    subplot.step(x, bw_noebpf, color="#009B55", marker="s", linewidth=2.0, where="post",
+                 markersize=5, zorder=1, label="without eBPF")
+    subplot.legend(loc="best", fontsize=FONTSIZE)
+
+    for i in range(1, len(x_time) - 1):
+        subplot.axvline(x=x_time[i], color="orangered", linewidth=2.0, zorder=3)
 
     subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
     subplot.set_ylabel("Bandwidth (Mbps)", fontsize=FONTSIZE)
+    subplot.set_ylim(bottom=0)
+    subplot.set_xlim(left=0, right=30)
+
+    print("Save figure for bandwidth")
+    fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
+                bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
+    figure_name = "bw_no_ebpf_ecn_iperf"
+    fig = plt.figure()
+    subplot = fig.add_subplot(111)
+    subplot.step(x, bw_noebpf, color="#009B55", marker="s", linewidth=2.0, where="post",
+                 markersize=5, zorder=1)
+
+    for i in range(1, len(x_time) - 1):
+        subplot.axvline(x=x_time[i], color="orangered", linewidth=2.0, zorder=3)
+
+    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
+    subplot.set_ylabel("Bandwidth (Mbps)", fontsize=FONTSIZE)
+    subplot.set_ylim(bottom=0)
+    subplot.set_xlim(left=0, right=30)
 
     print("Save figure for bandwidth")
     fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
@@ -176,44 +256,6 @@ def plot(start, bw, retransmits, timestamp_paths):
     fig.clf()
     plt.close()
 
-    # Selected path along time
-
-    figure_name = "path_ecn_iperf"
-    fig = plt.figure()
-    subplot = fig.add_subplot(111)
-
-    timestamps = []
-    for path in range(len(timestamp_paths)):
-        for t in timestamp_paths[path]:
-            timestamps.append([t, path])
-
-    timestamps = sorted(timestamps)
-    filtered_timestamps = []
-    for t, path in timestamps:
-        if len(filtered_timestamps) == 0 or filtered_timestamps[-1][1] != path:
-            filtered_timestamps.append([t, path])
-    if len(filtered_timestamps) >= 1:
-        filtered_timestamps.append(timestamps[-1])
-    print(filtered_timestamps)
-
-    x = []
-    y = []
-    start = filtered_timestamps[0][0]
-    for t, path in filtered_timestamps:
-        x.append((t - start))
-        y.append(str(path))
-    subplot.step(x, y, color="orangered", marker="s", linewidth=2.0, where="post",
-                 markersize=9, zorder=1)
-
-    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
-    subplot.set_ylabel("Path index", fontsize=FONTSIZE)
-
-    print("Save figure for paths")
-    fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
-                bbox_inches='tight', pad_inches=0, markersize=9)
-    fig.clf()
-    plt.close()
-
     print("Saving raw data")
     with open(os.path.join(output_path, "ecn.json"), "w") as file:
         json.dump({"bw": bw, "retransmits": retransmits, "start": start, "paths": filtered_timestamps},
@@ -223,13 +265,17 @@ def plot(start, bw, retransmits, timestamp_paths):
 # Customize parameters
 
 # Trigger happy ecn
-plot(*launch(red_min=1000, red_max=2000, red_avpkt=1000, red_probability=0.9,
-             red_burst=1, red_limit=1))
-
+args = {"red_min": 1000, "red_max": 2000, "red_avpkt": 1000, "red_probability": 0.9, "red_burst": 1, "red_limit": 1}
 # Mininet configuration of ecn
-#plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
-#             red_min=30000, red_max=35000, red_burst=20))
-
+# args = {"red_min": 30000, "red_max": 35000, "red_avpkt": 1500, "red_probability": 1, "red_burst": 1, "red_limit": 1}
 # Custom configuration of ecn
-#plot(*launch(red_limit=1, red_avpkt=1500, red_probability=1,
-#             red_min=30000, red_max=35000, red_burst=20))
+# args = {"red_min": 30000, "red_max": 35000, "red_avpkt": 1500, "red_probability": 1, "red_burst": 1, "red_limit": 1}
+
+print("\n************ Test with ebpf\n")
+start_ebpf, bw, retransmits, timestamp_paths = launch(**args)
+
+print("\n************ Test without ebpf\n")
+_, no_ebpf_bw, _, _ = launch(ebpf=False, **args)
+
+print("\n************ Plot results\n")
+plot(start_ebpf, bw, retransmits, timestamp_paths, no_ebpf_bw)
