@@ -249,7 +249,9 @@ under a given limit of segments.
 Each time that the algorithm finds a path, they remove all the links for the next computations.
 They stop when no more path can be found.
 Figure \ref{fig:disjoint:seglimit} shows that the number of disjoint paths increases with the number of authorized segments.
-We see that increasing the limit beyond ??? segments does not improve significantly the number of disjoint paths.
+With only one segment, we can only  have one path because only the destination can be encoded in the segment list.
+Increasing to 4 segments, (i.e., 3 intermediate routers), signigicantly improves the number of disjoint paths.
+We see that increasing the limit beyond this does not improve significantly the number of disjoint paths.
 
 % TODO Figure with iterative dijkstra/warshall as maximum in max seg ?
 
