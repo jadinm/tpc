@@ -1,5 +1,5 @@
 SRN=srn-dev
-BINDIRS=router endhost server
+BINDIRS=router endhost server localctrl
 clean_BINDIRS=$(addprefix clean_,$(BINDIRS))
 
 .PHONY: $(BINDIRS) $(SRN)
