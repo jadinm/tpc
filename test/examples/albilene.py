@@ -1,4 +1,7 @@
+import os
+
 from srnmininet.srntopo import SRNTopo
+
 from reroutemininet.topo import SRReroutedCtrlDomain
 
 
@@ -81,7 +84,7 @@ class Albilene(SRNTopo):
             opts = {"red_limit": self.red_limit}
         self.addOverlay(SRReroutedCtrlDomain(access_routers=(a, f, b), sr_controller=controller,
                                              schema_tables=self.schema_tables, rerouting_routers=(c, d, e),
-                                             rerouted_opts=opts, maxseg=self.maxseg))
+                                             rerouted_opts=opts, maxseg=self.maxseg, hosts=[clientA, clientB, serverF]))
 
         super(Albilene, self).build(*args, **kwargs)
 
@@ -102,3 +105,8 @@ class Albilene(SRNTopo):
             opts["params2"] = default_params2
 
         return super(SRNTopo, self).addLink(node1, node2, **opts)
+
+    def addHost(self, name, **params):
+        if self.cwd is not None and "cwd" not in params:
+            params["cwd"] = os.path.join(self.cwd, name)
+        return super(SRNTopo, self).addHost(name, **params)

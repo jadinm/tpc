@@ -11,6 +11,23 @@ from srnmininet.config.config import SRNDaemon, ZlogDaemon
 template_lookup.directories.append(os.path.join(os.path.dirname(__file__), 'templates'))
 
 
+class SRLocalCtrl(SRNDaemon):
+    """The class representing the sr-localctrl daemon
+    used on the host to fill eBPF map and reading the database"""
+
+    NAME = 'sr-localctrl'
+
+    def set_defaults(self, defaults):
+        super(SRLocalCtrl, self).set_defaults(defaults)
+        defaults.loglevel = self.DEBUG  # TODO Remove
+
+    @property
+    def startup_line(self):
+        s = super(SRLocalCtrl, self).startup_line
+        print(s)
+        return "ls"
+
+
 class SRRerouted(SRNDaemon):
     """The class representing the sr-rerouted daemon,
     used for redirection via ICMPv6"""

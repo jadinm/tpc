@@ -33,6 +33,11 @@ class ReroutingConfig(SR6Config):
         super(SR6Config, self).__init__(node, daemons=d,
                                         *args, **kwargs)
 
+    def build(self):
+        self.sysctl = "net.ipv4.tcp_ecn=1"
+        self.sysctl = "net.ipv4.tcp_ecn_fallback=0"
+        super(ReroutingConfig, self).build()
+
 
 class ReroutingRouter(SRNRouter):
 

@@ -127,9 +127,14 @@ class RepetitaTopo(SRNTopo):
         # Configure SRN with rerouting
         self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router, _ in access_routers],
                                              sr_controller=controller, schema_tables=self.schema_tables,
-                                             rerouting_routers=routers))
+                                             rerouting_routers=routers, hosts=self.hosts()))
 
         super(RepetitaTopo, self).build(*args, **kwargs)
 
     def __str__(self):
         return "RepetitaNetwork %s" % os.path.basename(self.repetita_graph)
+
+    def addHost(self, name, **params):
+        if self.cwd is not None and "cwd" not in params:
+            params["cwd"] = os.path.join(self.cwd, name)
+        return super(SRNTopo, self).addHost(name, **params)
