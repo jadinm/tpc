@@ -1,8 +1,15 @@
+#include <bpf.h>
 #include <netinet/in.h>
 #include <uthash.h>
 
 #include "sr-localctrl.h"
 #include "prefixmatch.h"
+
+#define SRH_KEY_VALUE_SIZE sizeof(uint32_t)
+#define SRH_MAP_VALUE_SIZE 16+72
+#define MAX_SRH 3
+
+static uint32_t counter;
 
 /**
  * Returns true iff at least one prefix matches at least one of the endhost's global IPv6 addresses
@@ -33,14 +40,15 @@ static bool matching_prefix(json_t *prefixes)
     return false;
 }
 
-static struct ipv6_sr_hdr *build_srh(json_t *segments, bool reverse_srh, size_t *srh_len)
+static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *srh_record_len)
 {
-    *srh_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct ipv6_sr_hdr);
-    struct ipv6_sr_hdr *srh = calloc(1, *srh_len);
-    if (!srh) {
+    *srh_record_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct srh_record);
+    struct srh_record *srh_record = calloc(1, *srh_record_len);
+    if (!srh_record) {
         zlog_warn(zc, "Cannot allocate memory for a new SRH");
         return NULL;
     }
+    struct ipv6_sr_hdr *srh = &srh_record->srh;
 	srh->type = 4;
 
 	srh->hdrlen = ((json_array_size(segments) + 1) * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
@@ -62,7 +70,8 @@ static struct ipv6_sr_hdr *build_srh(json_t *segments, bool reverse_srh, size_t 
     }
     // Destination segment is left at 0
 
-	return srh;
+    srh_record->is_valid = 1;
+	return srh_record;
 }
 
 /**
@@ -71,17 +80,18 @@ static struct ipv6_sr_hdr *build_srh(json_t *segments, bool reverse_srh, size_t 
 static int insert_segments(json_t *segments, bool reverse_srh)
 {
     int err = 0;
-    size_t srh_len;
+    bool init_cache = false;
+    size_t srh_record_len;
     struct hash_srh *hsrh = NULL;
-    struct ipv6_sr_hdr *srh = build_srh(segments, reverse_srh, &srh_len);
-    if (!srh) {
+    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len);
+    if (!srh_record) {
         return -1;
     }
 
     /* Insert it in the hash if not already present */
 
     if (cfg.srh_cache) {
-        HASH_FIND(hh, cfg.srh_cache, srh, srh_len, hsrh);
+        HASH_FIND(hh, cfg.srh_cache, srh_record, srh_record_len, hsrh);
         if (hsrh) {
             zlog_debug(zc, "Same SRH received twice");
             err = 0; /* Already inserted */
@@ -95,17 +105,45 @@ static int insert_segments(json_t *segments, bool reverse_srh)
         err = -1;
         goto free_srh;
     }
-    hsrh->srh = srh;
-    HASH_ADD_KEYPTR(hh, cfg.srh_cache, srh, srh_len, hsrh);
+    hsrh->srh_record = srh_record;
+    if (!cfg.srh_cache)
+        init_cache = true;
+    HASH_ADD_KEYPTR(hh, cfg.srh_cache, srh_record, srh_record_len, hsrh);
 
     zlog_debug(zc, "SRH inserted in the Program Hashmap");
 
-    // TODO Insert it in eBPF map
+    /* Insert it in eBPF map */
+
+    srh_record->srh_id = counter;
+    counter++;
+    if (srh_record->srh_id < MAX_SRH) {
+        char value [SRH_MAP_VALUE_SIZE];
+        memset(value, 0, SRH_MAP_VALUE_SIZE);
+        memcpy(value, srh_record, srh_record_len);
+
+        if (bpf_map_update_elem(cfg.srh_map_fd, &srh_record->srh_id, value, BPF_ANY)) {
+            zlog_warn(zc, "SRH couldn't be inserted !");
+            err = -1;
+            goto free_hsrh;
+        }
+
+        zlog_debug(zc, "SRH inserted in the eBPF map");
+    } else {
+        zlog_warn(zc, "Not enough room for a new SRH in the map !");
+        err = -1;
+        goto free_hsrh;
+    }
 
     return 0;
+
+free_hsrh:
+    if (hsrh)
+        free(hsrh);
+    if (init_cache)
+        cfg.srh_cache = NULL;
 free_srh:
-    if (srh)
-        free(srh);
+    if (srh_record)
+        free(srh_record);
     return err;
 }
 
@@ -115,7 +153,7 @@ void destroy_srh_cache()
         struct hash_srh *hsrh, *tmp;
         HASH_ITER(hh, cfg.srh_cache, hsrh, tmp) {
             HASH_DEL(cfg.srh_cache, hsrh);
-            free(hsrh->srh);
+            free(hsrh->srh_record);
             free(hsrh);
         }
     }

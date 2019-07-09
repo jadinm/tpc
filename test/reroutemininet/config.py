@@ -1,12 +1,16 @@
 
 import heapq
 import os
+import shlex
+import subprocess
 from mininet.log import lg
+import time
 
 from ipmininet.router.config.base import Daemon
 from ipmininet.router.config.utils import template_lookup
 from ipmininet.utils import realIntfList
 from srnmininet.config.config import SRNDaemon, ZlogDaemon
+from srnmininet.srnrouter import mkdir_p
 
 template_lookup.directories.append(os.path.join(os.path.dirname(__file__), 'templates'))
 
@@ -17,15 +21,102 @@ class SRLocalCtrl(SRNDaemon):
 
     NAME = 'sr-localctrl'
 
+    def __init__(self, *args, **kwargs):
+        super(SRLocalCtrl, self).__init__(*args, **kwargs)
+        self.prog_id = -1
+        self.files.append(self.ebpf_load_path)
+        self.files.append(self.map_path("srh_map"))
+        self.files.append(self.map_path("conn_map"))
+
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
         defaults.loglevel = self.DEBUG  # TODO Remove
+        defaults.bpftool = os.path.expanduser("~/ebpf_hhf/bpftool")
+        defaults.ebpf_program = os.path.expanduser("~/ebpf_hhf/ebpf_socks_hhf.o")
 
     @property
-    def startup_line(self):
-        s = super(SRLocalCtrl, self).startup_line
-        print(s)
-        return "ls"
+    def cgroup(self):
+        return "/sys/fs/cgroup/unified/{node}_{daemon}.slice/".format(node=self._node.name, daemon=self.NAME)
+
+    @property
+    def ebpf_load_path(self):
+        return "/sys/fs/bpf/{node}_{daemon}".format(node=self._node.name, daemon=self.NAME)
+
+    def map_path(self, map_name):
+        return self.ebpf_load_path + "_" + map_name
+
+    def render(self, cfg, **kwargs):
+
+        # Load eBPF program
+
+        cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path} type sockops"\
+              .format(bpftool=self.options.bpftool, ebpf_program=self.options.ebpf_program,
+                      ebpf_load_path=self.ebpf_load_path)
+        print(cmd)
+        subprocess.check_call(shlex.split(cmd))
+
+        # Extract IDs
+
+        time.sleep(1)
+
+        cmd = "{bpftool} prog".format(bpftool=self.options.bpftool)
+        print(cmd)
+        out = subprocess.check_output(shlex.split(cmd))
+        prog_id = -1
+        for line in out.split("\n"):
+            if "sock_ops" in line:
+                prog_id = int(line.split(":")[0])
+
+        cmd = "{bpftool} map".format(bpftool=self.options.bpftool)
+        print(cmd)
+        out = subprocess.check_output(shlex.split(cmd))
+        srh_id = -1
+        conn_id = -1
+        for line in out.split("\n"):
+            if "srh_map" in line:
+                srh_id = int(line.split(":")[0])
+            elif "conn_map" in line:
+                conn_id = int(line.split(":")[0])
+
+        # Pin maps to fds
+
+        cmd = "{bpftool} map pin id {srh_id} {map_path}".format(bpftool=self.options.bpftool, srh_id=srh_id,
+                                                                map_path=self.map_path("srh_map"))
+        print(cmd)
+        subprocess.check_call(shlex.split(cmd))
+
+        cmd = "{bpftool} map pin id {conn_id} {map_path}".format(bpftool=self.options.bpftool, conn_id=conn_id,
+                                                                 map_path=self.map_path("conn_map"))
+        print(cmd)
+        subprocess.check_call(shlex.split(cmd))
+
+        # Create cgroup
+
+        mkdir_p(self.cgroup)
+
+        cmd = "{bpftool} cgroup attach {cgroup} sock_ops id {prog_id} multi"\
+              .format(bpftool=self.options.bpftool, cgroup=self.cgroup, prog_id=prog_id)
+        print(cmd)
+        subprocess.check_call(shlex.split(cmd))
+        self.prog_id = prog_id
+
+        # Fill config template
+
+        cfg[self.NAME].srh_map_id = srh_id
+        cfg[self.NAME].conn_map_id = conn_id
+        cfg_content = super(SRLocalCtrl, self).render(cfg, **kwargs)
+
+        return cfg_content
+
+    def cleanup(self):
+        if self.prog_id >= 0:
+            cmd = "{bpftool} cgroup detach {cgroup} sock_ops id {prog_id} multi".format(bpftool=self.options.bpftool,
+                                                                                        cgroup=self.cgroup,
+                                                                                        prog_id=self.prog_id)
+            print(cmd)
+            subprocess.check_call(shlex.split(cmd))
+
+        super(SRLocalCtrl, self).cleanup()
 
 
 class SRRerouted(SRNDaemon):

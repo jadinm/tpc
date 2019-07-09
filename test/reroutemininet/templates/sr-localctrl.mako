@@ -10,5 +10,7 @@
     "ovsdb-server": "${node["sr-localctrl"].ovsdb_server}",
     "ovsdb-database": "${node["sr-localctrl"].ovsdb_database}",
     "ovsdb-client": "${node["sr-localctrl"].ovsdb_client}",
-    "ntransacts": ${node["sr-localctrl"].ntransacts}
+    "ntransacts": ${node["sr-localctrl"].ntransacts},
+    "srh_map_id": ${node["sr-localctrl"].srh_map_id},
+    "conn_map_id": ${node["sr-localctrl"].conn_map_id}
 }

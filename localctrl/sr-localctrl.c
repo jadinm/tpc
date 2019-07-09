@@ -1,3 +1,4 @@
+#include <bpf.h>
 #include <getopt.h>
 #include <jansson.h>
 #include <netinet/in.h>
@@ -43,6 +44,12 @@ static void clean_config()
 		free(cfg.zlog_conf_file);
 		cfg.zlog_conf_file = NULL;
 	}
+	if (cfg.srh_map_fd >= 0) {
+		close(cfg.srh_map_fd);
+	}
+	if (cfg.conn_map_fd >= 0) {
+		close(cfg.conn_map_fd);
+	}
 }
 
 static void default_config()
@@ -52,6 +59,8 @@ static void default_config()
 	strncpy(cfg.ovsdb_conf.ovsdb_server, "tcp:[::1]:6640", SLEN + 1);
 	strncpy(cfg.ovsdb_conf.ovsdb_database, "SR_test", SLEN + 1);
 	cfg.ovsdb_conf.ntransacts = 1;
+	cfg.srh_map_fd = -1;
+	cfg.conn_map_fd = -1;
 }
 
 static int load_var_string(json_t *root_cfg, json_error_t *json_err,
@@ -134,6 +143,38 @@ static int load_config(const char *config_file)
 	if (load_int(root_cfg, &json_err, "ntransacts",
 		     &cfg.ovsdb_conf.ntransacts))
 		goto err;
+
+	/* Id of the SRH map */
+	int srh_map_id = -1;
+	if (load_int(root_cfg, &json_err, "srh_map_id",
+			&srh_map_id))
+		goto err;
+
+	cfg.srh_map_fd = bpf_map_get_fd_by_id(srh_map_id);
+	if (cfg.srh_map_fd < 0) {
+		fprintf(stderr, "Cannot retrieve srh map with id %d\n", srh_map_id);
+		perror("");
+		if (root_cfg)
+			json_decref(root_cfg);
+		clean_config();
+		return -1;
+	}
+
+	/* Id of the connection map */
+	int conn_map_id = -1;
+	if (load_int(root_cfg, &json_err, "conn_map_id",
+			&conn_map_id))
+		goto err;
+
+	cfg.conn_map_fd = bpf_map_get_fd_by_id(conn_map_id);
+	if (cfg.conn_map_fd < 0) {
+		fprintf(stderr, "Cannot retrieve connection map with id %d\n", conn_map_id);
+		perror("");
+		if (root_cfg)
+			json_decref(root_cfg);
+		clean_config();
+		return -1;
+	}
 
 	json_decref(root_cfg);
 	return 0;

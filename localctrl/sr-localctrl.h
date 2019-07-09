@@ -10,9 +10,16 @@
 #define _unused __attribute__((unused))
 
 
+struct srh_record {
+        uint32_t srh_id;
+        uint32_t is_valid;
+        uint64_t curr_bw; 
+        struct ipv6_sr_hdr srh;
+} __attribute__((packed));
+
 struct hash_srh {
 	uint32_t srh_hash; // hash of the srh (also used for eBPF mapping)
-	struct ipv6_sr_hdr *srh;
+	struct srh_record *srh_record;
 	UT_hash_handle hh;
 };
 
@@ -31,6 +38,9 @@ struct config {
 	struct hash_srh *srh_cache; // hashmap of srhs
 
 	char *zlog_conf_file;
+
+	int srh_map_fd; // eBPF fd for the SRH map
+	int conn_map_fd; // eBPF fd for the connection map
 };
 
 extern struct config cfg;
