@@ -20,6 +20,7 @@ struct srh_record {
 struct hash_srh {
 	uint32_t srh_hash; // hash of the srh (also used for eBPF mapping)
 	struct srh_record *srh_record;
+	uint32_t refcount;
 	UT_hash_handle hh;
 };
 

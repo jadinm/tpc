@@ -40,9 +40,10 @@ static bool matching_prefix(json_t *prefixes)
     return false;
 }
 
-static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *srh_record_len)
+static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *srh_record_len, size_t *srh_len)
 {
     *srh_record_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct srh_record);
+    *srh_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct ipv6_sr_hdr);
     struct srh_record *srh_record = calloc(1, *srh_record_len);
     if (!srh_record) {
         zlog_warn(zc, "Cannot allocate memory for a new SRH");
@@ -74,6 +75,56 @@ static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *
 	return srh_record;
 }
 
+static int remove_segments(json_t *segments, bool reverse_srh)
+{
+    int err = 0;
+    bool init_cache = false;
+    size_t srh_record_len;
+    size_t srh_len;
+    struct hash_srh *hsrh = NULL;
+
+    if (cfg.srh_cache) {
+        zlog_debug(zc, "SRH removal skipped because never inserted (the hashmap is empty)");
+        return 0;
+    }
+
+    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len, &srh_len);
+    if (!srh_record) {
+        return -1;
+    }
+
+    HASH_FIND(hh, cfg.srh_cache, &srh_record->srh, srh_record_len, hsrh);
+    if (!hsrh) {
+        zlog_debug(zc, "SRH removal skipped because never inserted");
+        free(srh_record);
+        return 0;
+    }
+    free(srh_record);
+    srh_record = hsrh->srh_record;
+
+    hsrh->refcount -= 1;
+    if (hsrh->refcount > 0) {
+        zlog_debug(zc, "SRH is used for another destination");
+        return 0;
+    }
+
+    /* Remove it in eBPF map (by inserting an invalid srh record) */
+
+    srh_record->is_valid = 0;
+    char value [SRH_MAP_VALUE_SIZE];
+    memset(value, 0, SRH_MAP_VALUE_SIZE);
+    memcpy(value, srh_record, srh_record_len);
+
+    if (bpf_map_update_elem(cfg.srh_map_fd, &srh_record->srh_id, value, BPF_ANY)) {
+        zlog_warn(zc, "SRH couldn't be removed !");
+        err = -1;
+    }
+
+    zlog_debug(zc, "SRH removed from the eBPF map");
+
+    return err;
+}
+
 /**
  * Creates a new SRH based on a list of segments and insert it in both the program hashmap and the eBPF hashmap
  */
@@ -82,8 +133,9 @@ static int insert_segments(json_t *segments, bool reverse_srh)
     int err = 0;
     bool init_cache = false;
     size_t srh_record_len;
-    struct hash_srh *hsrh = NULL;
-    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len);
+    size_t srh_len;
+    struct hash_srh *hsrh = NULL, *cur_hsrh=NULL, *tmp = NULL;
+    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len, &srh_len);
     if (!srh_record) {
         return -1;
     }
@@ -91,10 +143,11 @@ static int insert_segments(json_t *segments, bool reverse_srh)
     /* Insert it in the hash if not already present */
 
     if (cfg.srh_cache) {
-        HASH_FIND(hh, cfg.srh_cache, srh_record, srh_record_len, hsrh);
+        HASH_FIND(hh, cfg.srh_cache, &srh_record->srh, srh_len, hsrh);
         if (hsrh) {
             zlog_debug(zc, "Same SRH received twice");
             err = 0; /* Already inserted */
+            hsrh->refcount += 1;
             goto free_srh;
         }
     }
@@ -108,14 +161,25 @@ static int insert_segments(json_t *segments, bool reverse_srh)
     hsrh->srh_record = srh_record;
     if (!cfg.srh_cache)
         init_cache = true;
-    HASH_ADD_KEYPTR(hh, cfg.srh_cache, srh_record, srh_record_len, hsrh);
-
-    zlog_debug(zc, "SRH inserted in the Program Hashmap");
 
     /* Insert it in eBPF map */
 
     srh_record->srh_id = counter;
-    counter++;
+    if (srh_record->srh_id >= MAX_SRH) { // Look for room in deleted records
+        HASH_ITER(hh, cfg.srh_cache, cur_hsrh, tmp) {
+            if (!cur_hsrh->srh_record->is_valid) {
+                srh_record->srh_id = cur_hsrh->srh_record->srh_id;
+                HASH_DEL(cfg.srh_cache, cur_hsrh);
+                free(cur_hsrh->srh_record);
+                free(cur_hsrh);
+                zlog_debug(zc, "Old SRH with id %u is garbage collected", srh_record->srh_id);
+                break;
+            }
+        }
+    } else {
+        counter++;
+    }
+
     if (srh_record->srh_id < MAX_SRH) {
         char value [SRH_MAP_VALUE_SIZE];
         memset(value, 0, SRH_MAP_VALUE_SIZE);
@@ -128,6 +192,10 @@ static int insert_segments(json_t *segments, bool reverse_srh)
         }
 
         zlog_debug(zc, "SRH inserted in the eBPF map");
+
+        hsrh->refcount = 1;
+        HASH_ADD_KEYPTR(hh, cfg.srh_cache, &srh_record->srh, srh_len, hsrh);
+        zlog_debug(zc, "SRH inserted in the Program Hashmap");
     } else {
         zlog_warn(zc, "Not enough room for a new SRH in the map !");
         err = -1;
@@ -194,16 +262,41 @@ free_prefixes:
     return 0;
 }
 
-static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff _unused,
-                        unsigned int mask _unused)
+static bool same_segments(json_t *segs1, json_t *segs2)
+{
+    json_t *seg1, *seg2;
+
+    if (json_array_size(segs1) != json_array_size(segs2))
+        return false;
+
+    for (size_t i = 0; i < json_array_size(segs1); i++) {
+        seg1 = json_array_get(segs1, i);
+        seg2 = json_array_get(segs2, i);
+        if (json_string_length(seg1) != json_string_length(seg2))
+            return false;
+        if (strcmp(json_string_value(seg1), json_string_value(seg2)))
+            return false;
+    }
+
+    return true;
+}
+
+static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
+                        unsigned int mask)
 {
 	struct srdb_path_entry *path_entry = (struct srdb_path_entry *) entry;
+	struct srdb_path_entry *diff_entry = (struct srdb_path_entry *) diff;
 
 	zlog_debug(zc, "New update path received");
 
-    struct json_t *prefixes = json_loads(path_entry->prefixes, 0, NULL);
-    struct json_t *prefixes_rt1 = json_array_get(prefixes, 0);
-    struct json_t *prefixes_rt2 = json_array_get(prefixes, 1);
+    if ((mask & ENTRY_MASK(PA_SEGMENTS)) == 0) {
+	    zlog_debug(zc, "This update does not change the segments");
+        return 0;
+    }
+
+    json_t *prefixes = json_loads(path_entry->prefixes, 0, NULL);
+    json_t *prefixes_rt1 = json_array_get(prefixes, 0);
+    json_t *prefixes_rt2 = json_array_get(prefixes, 1);
 
     bool reverse_srh = false;
     if (matching_prefix(prefixes_rt1)) {
@@ -216,15 +309,48 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff _unuse
     }
     zlog_debug(zc, "The path is for this endhost");
 
-    struct json_t *segments = json_loads(path_entry->segments, 0, NULL);
-    struct json_t *curr_segments;
+    /* Compare with old paths */
+
+    json_t *segments = json_loads(path_entry->segments, 0, NULL);
+    json_t *curr_segments;
     size_t idx = 0;
-    json_array_foreach(segments, idx, curr_segments) {
-        insert_segments(curr_segments, reverse_srh);
-        // TODO: Insert the srhs ids to the dest <-> srh map 
+
+    json_t *old_segments = json_loads(diff_entry->segments, 0, NULL);
+    json_t *curr_old_segments;
+    size_t old_idx = 0;
+
+    /* Remove old SRHs */
+
+    bool found = false;
+    json_array_foreach(old_segments, old_idx, curr_old_segments) {
+        found = false;
+        json_array_foreach(segments, idx, curr_segments) {
+            if (same_segments(curr_segments, curr_old_segments)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {// TODO: Remove the srhs ids to the dest <-> srh map
+            zlog_debug(zc, "An old SRH was not in the update");
+            remove_segments(old_segments, reverse_srh);
+        }
     }
 
-    // TODO: For updates, Mapping between destination and SRHs should be removed if not renewed (+ a refcount on SRHs)
+    /* Insert new SRHs */
+
+    json_array_foreach(segments, idx, curr_segments) {
+        found = false;
+        json_array_foreach(old_segments, old_idx, curr_old_segments) {
+            if (same_segments(curr_segments, curr_old_segments)) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {// TODO: Insert the srhs ids to the dest <-> srh map
+            zlog_debug(zc, "A new SRH is in the update");
+            insert_segments(curr_segments, reverse_srh);
+        }
+    }
 
     json_decref(segments);
 free_prefixes:
