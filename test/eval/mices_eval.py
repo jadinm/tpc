@@ -142,7 +142,7 @@ server.bind          = "[::]"
             fileobj.write("0" * 1000)
 
         results_path = "/tmp/results.csv"
-        cmd = "ab -k -n 80 -e {results_path} -B 2042:52::2 http://[fc11::1]:8080/file_1k"\
+        cmd = "ab -k -n 80 -e {results_path} -B 2042:52::2 http://[2042:13::1]:8080/file_1k"\
               .format(results_path=results_path)
         print(cmd)
         # SR6CLI(net)  # TODO remove
@@ -272,7 +272,7 @@ def plot(percentages, delay, timestamp_paths, delay_noebpf):
 # Customize parameters
 
 print("\n************ Test with ebpf\n")
-p, d, t_paths = launch(debug=True)
+p, d, t_paths = launch(debug=False)
 
 print("\n************ Test without ebpf\n")
 _, d_noebpf, _ = launch(ebpf=False)
