@@ -199,10 +199,7 @@ def plot(start, bw, retransmits, timestamp_paths, bw_noebpf):
     bw_noebpf = [float(b) / 10**6 for b in bw_noebpf]
 
     subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0, where="post",
-                 markersize=5, zorder=2, label="with eBPF")
-    subplot.step(x, bw_noebpf, color="#009B55", marker="s", linewidth=2.0, where="post",
-                 markersize=5, zorder=1, label="without eBPF")
-    subplot.legend(loc="best", fontsize=FONTSIZE)
+                 markersize=5, zorder=2)
 
     for i in range(1, len(x_time) - 1):
         subplot.axvline(x=x_time[i], color="orangered", linewidth=2.0, zorder=3)
