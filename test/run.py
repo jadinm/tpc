@@ -24,6 +24,8 @@ def mininet_cli(args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
+    # TODO This requires the custom version of scapy on segment-routing organisation
+    #  until scapy reaches 2.4.3 (still unstable)
     "unit": launch_all_tests
 }
 

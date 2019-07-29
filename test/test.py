@@ -1,17 +1,23 @@
 import json
+import logging
+import os
+import sys
+import time
 import unittest
-from mininet.log import lg
 from random import randint
 
 from ipaddress import ip_address
 from ipmininet.utils import realIntfList, otherIntf
+from mininet.log import lg
+from scapy.layers.inet import TCP, TCPerror
+from scapy.layers.inet6 import IPv6, IPv6ExtHdrSegmentRouting
+from scapy.packet import Raw
 from scipy.special import comb
 from sr6mininet.sr6host import SR6Host
-from sr6mininet.cli import SR6CLI
 
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
-from sricmp_dissector import *
+from sricmp_dissector import SRICMPv6
 from utils import send_tcp_ecn_pkt, sniff_trigger_icmp, tcp_client, tcp_server
 
 

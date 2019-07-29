@@ -1,4 +1,11 @@
-from scapy.all import *
+import socket
+import struct
+
+import scapy
+from scapy.fields import ByteEnumField, ByteField, XShortField, ShortField, PacketLenField
+from scapy.layers.inet import TCP, TCPerror
+from scapy.layers.inet6 import IPv6, IPerror6, IPv6ExtHdrSegmentRouting, _IPv6ExtHdr, \
+    IPv6ExtHdrRouting, in6_chksum, ICMPv6Unknown
 
 
 class SRICMPIPerror6(IPerror6):
@@ -10,10 +17,10 @@ class SRICMPIPerror6(IPerror6):
     def answers(self, other):
         if not isinstance(other, IPv6):
             return False
-        sd = inet_pton(socket.AF_INET6, self.dst)
-        ss = inet_pton(socket.AF_INET6, self.src)
-        od = inet_pton(socket.AF_INET6, other.dst)
-        os = inet_pton(socket.AF_INET6, other.src)
+        sd = socket.inet_pton(socket.AF_INET6, self.dst)
+        ss = socket.inet_pton(socket.AF_INET6, self.src)
+        od = socket.inet_pton(socket.AF_INET6, other.dst)
+        os = socket.inet_pton(socket.AF_INET6, other.src)
 
         # find upper layer for self (possible citation)
         selfup = self.payload
