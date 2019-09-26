@@ -25,14 +25,13 @@ class SRLocalCtrl(SRNDaemon):
         super(SRLocalCtrl, self).__init__(*args, **kwargs)
         self.prog_id = -1
         self.files.append(self.ebpf_load_path)
-        self.files.append(self.map_path("srh_map"))
-        self.files.append(self.map_path("conn_map"))
+        self.files.append(self.map_path("dest_map_fd"))
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
         defaults.loglevel = self.DEBUG  # TODO Remove
         defaults.bpftool = os.path.expanduser("~/ebpf_hhf/bpftool")
-        defaults.ebpf_program = os.path.expanduser("~/ebpf_hhf/ebpf_socks_hhf.o")
+        defaults.ebpf_program = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")  # TODO Change
 
     @property
     def cgroup(self):
@@ -70,23 +69,17 @@ class SRLocalCtrl(SRNDaemon):
         cmd = "{bpftool} map".format(bpftool=self.options.bpftool)
         print(cmd)
         out = subprocess.check_output(shlex.split(cmd))
-        srh_id = -1
-        conn_id = -1
+        dest_map_id = -1
         for line in out.split("\n"):
-            if "srh_map" in line:
-                srh_id = int(line.split(":")[0])
-            elif "conn_map" in line:
-                conn_id = int(line.split(":")[0])
+            if "dest_map" in line:
+                dest_map_id = int(line.split(":")[0])
+        print(dest_map_id)
 
         # Pin maps to fds
 
-        cmd = "{bpftool} map pin id {srh_id} {map_path}".format(bpftool=self.options.bpftool, srh_id=srh_id,
-                                                                map_path=self.map_path("srh_map"))
-        print(cmd)
-        subprocess.check_call(shlex.split(cmd))
-
-        cmd = "{bpftool} map pin id {conn_id} {map_path}".format(bpftool=self.options.bpftool, conn_id=conn_id,
-                                                                 map_path=self.map_path("conn_map"))
+        cmd = "{bpftool} map pin id {dest_map_id} {map_path}".format(bpftool=self.options.bpftool,
+                                                                     dest_map_id=dest_map_id,
+                                                                     map_path=self.map_path("dest_map"))
         print(cmd)
         subprocess.check_call(shlex.split(cmd))
 
@@ -102,8 +95,7 @@ class SRLocalCtrl(SRNDaemon):
 
         # Fill config template
 
-        cfg[self.NAME].srh_map_id = srh_id
-        cfg[self.NAME].conn_map_id = conn_id
+        cfg[self.NAME].dest_map_id = dest_map_id
         cfg_content = super(SRLocalCtrl, self).render(cfg, **kwargs)
 
         return cfg_content
@@ -115,6 +107,7 @@ class SRLocalCtrl(SRNDaemon):
                                                                                         prog_id=self.prog_id)
             print(cmd)
             subprocess.check_call(shlex.split(cmd))
+            os.unlink(self.map_path("dest_map"))
 
         super(SRLocalCtrl, self).cleanup()
 

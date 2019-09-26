@@ -2,11 +2,12 @@ import argparse
 import datetime
 import json
 import os
-from mininet.log import LEVELS, lg
 
 import ipmininet
+from mininet.log import LEVELS, lg
 from sr6mininet.cli import SR6CLI
 
+from eval.repetita_eval import eval_albilene
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
@@ -24,6 +25,7 @@ def mininet_cli(args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
+    "eval-albilene": eval_albilene,
     # TODO This requires the custom version of scapy on segment-routing organisation
     #  until scapy reaches 2.4.3 (still unstable)
     "unit": launch_all_tests
@@ -47,6 +49,7 @@ def parse_args():
     parser.add_argument('--repetita-topo', help='Gives the path to a Repetita topology (only for repetita tests)',
                         default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "examples",
                                              "data", "Arpanet_low_latency.graph"))
+    parser.add_argument('--ebpf', action="store_true", help='Use ebpf in the evaluation')
     return parser.parse_args()
 
 

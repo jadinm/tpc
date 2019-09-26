@@ -1,50 +1,21 @@
 import json
 import os
-import subprocess
 import time
-from mininet.log import lg
 from shlex import split
 
 import matplotlib.pyplot as plt
 from ipmininet.clean import cleanup
 from ipmininet.utils import realIntfList
+from mininet.log import lg
 from sr6mininet.cli import SR6CLI
 from sr6mininet.examples.ecn_sr_network import ECNSRNet
 from sr6mininet.sr6net import SR6Net
 
+from .utils import run_in_cgroup, tcpdump
+
 INTERVALS = 1
 FONTSIZE = 12
-CGROUP = "test.slice"
 output_path = os.path.dirname(os.path.abspath(__file__))
-
-
-def run_in_cgroup(node, cmd, **kwargs):
-    """
-    Run asynchronously the command cmd in a cgroup
-    """
-    popen = node.popen(split("bash"), stdin=subprocess.PIPE, **kwargs)
-    time.sleep(1)
-
-    os.system('echo %d > /sys/fs/cgroup/unified/%s/cgroup.procs' % (popen.pid, CGROUP))
-    time.sleep(1)
-
-    popen.stdin.write(bytes(cmd))
-    popen.stdin.close()
-    return popen
-
-
-def tcpdump(node, *itfs):
-    """
-    Run a tcpdump for each interface in itfs
-    It returns the list of popen objects matching the tcpdumps
-    """
-    processes = []
-    for itf in itfs:
-        # Triggers for Routing Headers
-        cmd = "tcpdump -i %s -s 1 -tt ip6 proto 43" % itf
-        print(cmd)
-        processes.append(node.popen(split(cmd)))
-    return processes
 
 
 def launch(ebpf=True, **kwargs):

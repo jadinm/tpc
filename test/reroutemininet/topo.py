@@ -9,7 +9,7 @@ from router import ReroutingConfig
 class SRReroutedCtrlDomain(SRCtrlDomain):
 
     def __init__(self, access_routers, sr_controller, schema_tables, rerouting_routers, hosts,
-                 rerouted_opts=None, maxseg=-1):
+                 rerouted_opts=None, maxseg=-1, localctrl_opts=None):
         super(SRReroutedCtrlDomain, self).__init__(access_routers, sr_controller, schema_tables)
 
         self.nodes.extend(rerouting_routers)
@@ -30,6 +30,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
 
         self.sr_controller = sr_controller
         self.rerouted_opts = rerouted_opts if rerouted_opts is not None else {}
+        self.localctrl_opts = localctrl_opts if localctrl_opts is not None else {}
 
     def apply(self, topo):
         """Apply the Overlay properties to the given topology"""
@@ -52,5 +53,5 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
                 config = (ReroutingHostConfig, {})
             if 'daemons' not in config[1]:
                 config[1]['daemons'] = []
-            config[1]['daemons'].append(SRLocalCtrl)
+            config[1]['daemons'].append((SRLocalCtrl, self.localctrl_opts))
             topo.nodeInfo(h)["config"] = config

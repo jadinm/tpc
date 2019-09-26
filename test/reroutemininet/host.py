@@ -1,16 +1,20 @@
-import mininet.clean
+import os
+import subprocess
 import sys
 import time
-from mininet.log import lg
 from operator import attrgetter
 
+import mininet.clean
 from ipmininet import DEBUG_FLAG
 from ipmininet.router.__router import ProcessHelper
 from ipmininet.router.config.base import Daemon
 from ipmininet.router.config.utils import ConfigDict
 from ipmininet.utils import require_cmd, realIntfList
+from mininet.log import lg
 from sr6mininet.sr6host import SR6Host
 from srnmininet.srnrouter import mkdir_p
+
+from .config import SRLocalCtrl
 
 
 class HostConfig(object):
@@ -215,3 +219,18 @@ class ReroutingHost(SR6Host):
     @property
     def asn(self):
         return self.get('asn')
+
+    def run_cgroup(self, cmd, **kwargs):
+        """
+        Run asynchronously the command cmd in a cgroup
+        """
+        popen = self.popen(["bash"], stdin=subprocess.PIPE, **kwargs)
+        time.sleep(1)
+
+        cgroup = self.config.daemon(SRLocalCtrl).cgroup
+        os.system('echo %d > %s/cgroup.procs' % (popen.pid, cgroup))
+        time.sleep(1)
+
+        popen.stdin.write(bytes(cmd))
+        popen.stdin.close()
+        return popen

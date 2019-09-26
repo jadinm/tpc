@@ -11,6 +11,5 @@
     "ovsdb-database": "${node["sr-localctrl"].ovsdb_database}",
     "ovsdb-client": "${node["sr-localctrl"].ovsdb_client}",
     "ntransacts": ${node["sr-localctrl"].ntransacts},
-    "srh_map_id": ${node["sr-localctrl"].srh_map_id},
-    "conn_map_id": ${node["sr-localctrl"].conn_map_id}
+    "dest_map_id": ${node["sr-localctrl"].dest_map_id}
 }

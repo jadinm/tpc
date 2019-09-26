@@ -2,56 +2,20 @@ import json
 import os
 import subprocess
 import time
-from mininet.log import lg
 from shlex import split
 
 import matplotlib.pyplot as plt
 from ipmininet.clean import cleanup
 from ipmininet.utils import realIntfList
+from mininet.log import lg
 from sr6mininet.examples.delay_sr_network import DelaySRNet
 from sr6mininet.sr6net import SR6Net
 
+from .utils import run_in_cgroup, tcpdump, debug_tcpdump
+
 INTERVALS = 1
 FONTSIZE = 12
-CGROUP = "test.slice"
 output_path = os.path.dirname(os.path.abspath(__file__))
-
-
-def run_in_cgroup(node, cmd, **kwargs):
-    """
-    Run asynchronously the command cmd in a cgroup
-    """
-    popen = node.popen(split("bash"), stdin=subprocess.PIPE, **kwargs)
-    time.sleep(1)
-
-    os.system('echo %d > /sys/fs/cgroup/unified/%s/cgroup.procs' % (popen.pid, CGROUP))
-    time.sleep(1)
-
-    popen.stdin.write(bytes(cmd))
-    popen.stdin.close()
-    return popen
-
-
-def tcpdump(node, *itfs):
-    """
-    Run a tcpdump for each interface in itfs
-    It returns the list of popen objects matching the tcpdumps
-    """
-    processes = []
-    for itf in itfs:
-        # Triggers for Routing Headers
-        cmd = "tcpdump -i %s -s 1 -tt ip6 proto 43" % itf
-        print(cmd)
-        processes.append(node.popen(split(cmd)))
-    return processes
-
-
-def debug_tcpdump(node, itf, out_prefix=""):
-    processes = []
-    cmd = "tcpdump -i %s -w %s ip6" % (itf, os.path.join(output_path, out_prefix + "_" + node.name + "_" + itf + ".pcap"))
-    print(cmd)
-    processes.append(node.popen(split(cmd)))
-    return processes
 
 
 def launch_iperf(net, ebpf=True):
@@ -178,8 +142,10 @@ def launch(ebpf=True, capture=False, debug=False, **kwargs):
         net.start()
 
         tcpdump_pids = tcpdump(net["client"], *realIntfList(net["client"])) if capture else []
-        tcpdump_debug_pids = debug_tcpdump(net["server"], "server-eth0", "ebpf" if ebpf else "no-ebpf") if debug else []
-        tcpdump_debug_pids = debug_tcpdump(net["client"], "client-eth0", "ebpf" if ebpf else "no-ebpf") if debug else []
+        tcpdump_debug_pids = debug_tcpdump(net["server"], "server-eth0",
+                                           output_path, "ebpf" if ebpf else "no-ebpf") if debug else []
+        tcpdump_debug_pids = debug_tcpdump(net["client"], "client-eth0",
+                                           output_path, "ebpf" if ebpf else "no-ebpf") if debug else []
 
         iperf_pids = launch_iperf(net, ebpf=ebpf)
 
