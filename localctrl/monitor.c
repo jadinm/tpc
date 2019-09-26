@@ -5,10 +5,6 @@
 #include "sr-localctrl.h"
 #include "prefixmatch.h"
 
-#define SRH_KEY_VALUE_SIZE sizeof(uint32_t)
-#define SRH_MAP_VALUE_SIZE 16+72
-#define MAX_SRH 3
-
 static uint32_t counter;
 
 /**
@@ -40,11 +36,21 @@ static bool matching_prefix(json_t *prefixes)
     return false;
 }
 
-static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *srh_record_len, size_t *srh_len)
+static struct srh_record *build_srh(json_t *rt_dst_addr, json_t *segments, bool reverse_srh, size_t *srh_record_len, size_t *srh_len)
 {
     *srh_record_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct srh_record);
     *srh_len = (json_array_size(segments) + 1) * sizeof(struct in6_addr) + sizeof(struct ipv6_sr_hdr);
-    struct srh_record *srh_record = calloc(1, *srh_record_len);
+    if (json_array_size(segments) == 0) {
+        *srh_record_len += sizeof(struct in6_addr);
+        *srh_len  += sizeof(struct in6_addr);
+    }
+
+    if (json_array_size(segments) > MAX_SEGS_NBR - 1) {
+        zlog_warn(zc, "Cannot have more than %d segments (destination included) in an SRH in the eBPF map", MAX_SEGS_NBR);
+        return NULL;
+    }
+
+    struct srh_record *srh_record = calloc(1, sizeof(struct srh_record));
     if (!srh_record) {
         zlog_warn(zc, "Cannot allocate memory for a new SRH");
         return NULL;
@@ -55,19 +61,32 @@ static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *
 	srh->hdrlen = ((json_array_size(segments) + 1) * sizeof(struct in6_addr)) / 8; // We do not count the first 8 bytes
 	srh->segments_left = json_array_size(segments);
 	srh->first_segment = json_array_size(segments);
+    if (json_array_size(segments) == 0) {
+        srh->hdrlen += (sizeof(struct in6_addr) / 8);
+        srh->segments_left  += 1;
+        srh->first_segment  += 1;
+    }
 
     json_t *jseg;
     size_t i;
+    struct in6_addr seg;
     json_array_foreach(segments, i, jseg) {
         size_t idx = reverse_srh ? i : json_array_size(segments) - i - 1;
 
-        struct in6_addr seg;
         if (inet_pton(AF_INET6, json_string_value(jseg), &seg) != 1) {
             free(srh);
             zlog_warn(zc, "Cannot parse segments as IPv6 addresses");
             return NULL;
         }
-        memcpy(&srh->segments[idx + 1], &seg, sizeof(struct in6_addr));
+        memcpy(&srh_record->segments[idx + 1], &seg, sizeof(struct in6_addr));
+    }
+    if (json_array_size(segments) == 0) { // SRHs with only one segment are not correctly parsed => force at least two segments
+        if (inet_pton(AF_INET6, json_string_value(rt_dst_addr), &seg) != 1) {
+            free(srh);
+            zlog_warn(zc, "Cannot parse rt_dst_addr as IPv6 addresses");
+            return NULL;
+        }
+        memcpy(&srh_record->segments[json_array_size(segments) + 1], &seg, sizeof(struct in6_addr));
     }
     // Destination segment is left at 0
 
@@ -75,47 +94,62 @@ static struct srh_record *build_srh(json_t *segments, bool reverse_srh, size_t *
 	return srh_record;
 }
 
-static int remove_segments(json_t *segments, bool reverse_srh)
+static int remove_segments(json_t *destination, json_t *segments, bool reverse_srh, json_t *rt_dst_addr)
 {
     int err = 0;
-    bool init_cache = false;
     size_t srh_record_len;
     size_t srh_len;
-    struct hash_srh *hsrh = NULL;
+    struct in6_addr dest_ip;
+    struct hash_dest *hdest = NULL;
 
-    if (cfg.srh_cache) {
+    if (cfg.dest_cache) {
         zlog_debug(zc, "SRH removal skipped because never inserted (the hashmap is empty)");
         return 0;
     }
 
-    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len, &srh_len);
+    struct srh_record *srh_record = build_srh(rt_dst_addr, segments, reverse_srh, &srh_record_len, &srh_len);
     if (!srh_record) {
         return -1;
     }
 
-    HASH_FIND(hh, cfg.srh_cache, &srh_record->srh, srh_record_len, hsrh);
-    if (!hsrh) {
-        zlog_debug(zc, "SRH removal skipped because never inserted");
+    /* Get destination IP */
+    if (inet_pton(AF_INET6, json_string_value(destination), &dest_ip) != 1) {
+        zlog_warn(zc, "Cannot parse destination as IPv6 addresses");
         free(srh_record);
         return 0;
     }
-    free(srh_record);
-    srh_record = hsrh->srh_record;
 
-    hsrh->refcount -= 1;
-    if (hsrh->refcount > 0) {
-        zlog_debug(zc, "SRH is used for another destination");
+    HASH_FIND(hh, cfg.dest_cache, &dest_ip, sizeof(struct in6_addr), hdest);
+    if (!hdest) {
+        zlog_debug(zc, "SRH removal skipped because destination was never inserted");
+        free(srh_record);
         return 0;
     }
 
-    /* Remove it in eBPF map (by inserting an invalid srh record) */
+    /* Find the SRH id */
+    srh_record->srh_id = MAX_SRH_BY_DEST;
+    for (int i = 0; i < MAX_SRH_BY_DEST; i++) {
+        /* Skip free slot */
+        if (!hdest->info.srhs[i].srh.type || !hdest->info.srhs[i].is_valid) {
+            continue;
+        }
+        /* Check that the SRH was not already present */
+        if (!memcmp(&hdest->info.srhs[i].srh, srh_record->segments, sizeof(srh_record->segments))) {
+            srh_record->srh_id = i; // Overwrite if the tag or other info (like is_valid) is different
+        }
+    }
+    if (srh_record->srh_id == MAX_SRH_BY_DEST) {
+        zlog_debug(zc, "SRH removal skipped because SRH was never inserted");
+        free(srh_record);
+        return 0;
+    }
 
-    srh_record->is_valid = 0;
-    char value [SRH_MAP_VALUE_SIZE];
-    memset(value, 0, SRH_MAP_VALUE_SIZE);
-    memcpy(value, srh_record, srh_record_len);
+    /* Invalidate the SRH */
+    hdest->info.srhs[srh_record->srh_id].is_valid = 0;
+    free(srh_record);
 
-    if (bpf_map_update_elem(cfg.srh_map_fd, &srh_record->srh_id, value, BPF_ANY)) {
+    /* Remove it in eBPF map (by updating the dest entry with an invalid srh record) */
+    if (bpf_map_update_elem(cfg.dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
         zlog_warn(zc, "SRH couldn't be removed !");
         err = -1;
     }
@@ -128,101 +162,89 @@ static int remove_segments(json_t *segments, bool reverse_srh)
 /**
  * Creates a new SRH based on a list of segments and insert it in both the program hashmap and the eBPF hashmap
  */
-static int insert_segments(json_t *segments, bool reverse_srh)
+static int insert_segments(json_t *destination, json_t *segments, bool reverse_srh, json_t *rt_dst_addr)
 {
     int err = 0;
-    bool init_cache = false;
     size_t srh_record_len;
     size_t srh_len;
-    struct hash_srh *hsrh = NULL, *cur_hsrh=NULL, *tmp = NULL;
-    struct srh_record *srh_record = build_srh(segments, reverse_srh, &srh_record_len, &srh_len);
+    struct in6_addr dest_ip;
+    struct hash_dest *hdest = NULL, *cur_hdest=NULL, *tmp = NULL;
+    struct srh_record *srh_record = build_srh(rt_dst_addr, segments, reverse_srh, &srh_record_len, &srh_len);
     if (!srh_record) {
         return -1;
     }
 
-    /* Insert it in the hash if not already present */
-
-    if (cfg.srh_cache) {
-        HASH_FIND(hh, cfg.srh_cache, &srh_record->srh, srh_len, hsrh);
-        if (hsrh) {
-            zlog_debug(zc, "Same SRH received twice");
-            err = 0; /* Already inserted */
-            hsrh->refcount += 1;
-            goto free_srh;
-        }
-    }
-
-    hsrh = calloc(1, sizeof(struct hash_srh));
-    if (!hsrh) {
-        zlog_warn(zc, "Cannot allocate memory for hash entry of SRH");
-        err = -1;
+    /* Get destination IP */
+    if (inet_pton(AF_INET6, json_string_value(destination), &dest_ip) != 1) {
+        zlog_warn(zc, "Cannot parse destination as IPv6 addresses");
         goto free_srh;
     }
-    hsrh->srh_record = srh_record;
-    if (!cfg.srh_cache)
-        init_cache = true;
+
+    /* Create the destination hash if not already present */
+    if (cfg.dest_cache) {
+        HASH_FIND(hh, cfg.dest_cache, &dest_ip, sizeof(struct in6_addr), hdest);
+        if (hdest)
+            zlog_debug(zc, "New SRH received for an existing destination");
+    }
+    if (!hdest) {
+        hdest = calloc(1, sizeof(struct hash_dest));
+        if (!hdest) {
+            zlog_warn(zc, "Cannot allocate memory for hash entry of destination");
+            err = -1;
+            goto free_srh;
+        }
+        /* Setup destination hash entry and insert in the hashmap */
+        memcpy(&hdest->info.dest, &dest_ip, sizeof(struct in6_addr));
+        HASH_ADD_KEYPTR(hh, cfg.dest_cache, &hdest->info.dest, sizeof(struct in6_addr), hdest);
+    }
+
+    /* Check that the SRH is not present and set the SRH id with a free slot index if any */
+    srh_record->srh_id = MAX_SRH_BY_DEST;
+    for (int i = 0; i < MAX_SRH_BY_DEST; i++) {
+        /* Use the first free slot */
+        zlog_debug(zc, "SRH insertion in %u ? Iteration %d - srh_type %u - srh_is_valid %u", srh_record->srh_id, i, hdest->info.srhs[i].srh.type, hdest->info.srhs[i].is_valid);
+        zlog_debug(zc, "SRH insertion in %u ? Cond 1 %d", srh_record->srh_id, srh_record->srh_id == MAX_SRH_BY_DEST && (!hdest->info.srhs[i].srh.type || !hdest->info.srhs[i].is_valid));
+        if (srh_record->srh_id == MAX_SRH_BY_DEST && (!hdest->info.srhs[i].srh.type || !hdest->info.srhs[i].is_valid)) {
+            srh_record->srh_id = i;
+        }
+        /* Check that the SRH was not already present and overwrite if this is the case */
+        zlog_debug(zc, "SRH insertion in %u ? Cond 2 %d", srh_record->srh_id, !memcmp(&hdest->info.srhs[i].srh, srh_record->segments, sizeof(srh_record->segments)));
+        if (!memcmp(&hdest->info.srhs[i].srh, srh_record->segments, sizeof(srh_record->segments))) {
+            srh_record->srh_id = i; // Overwrite if the tag or other info (like is_valid) is different
+        }
+    }
+    uint32_t id = srh_record->srh_id;
+    if (id < MAX_SRH_BY_DEST) {
+        memcpy(&hdest->info.srhs[srh_record->srh_id], srh_record, sizeof(struct srh_record));
+    }
+    free(srh_record);
 
     /* Insert it in eBPF map */
-
-    srh_record->srh_id = counter;
-    if (srh_record->srh_id >= MAX_SRH) { // Look for room in deleted records
-        HASH_ITER(hh, cfg.srh_cache, cur_hsrh, tmp) {
-            if (!cur_hsrh->srh_record->is_valid) {
-                srh_record->srh_id = cur_hsrh->srh_record->srh_id;
-                HASH_DEL(cfg.srh_cache, cur_hsrh);
-                free(cur_hsrh->srh_record);
-                free(cur_hsrh);
-                zlog_debug(zc, "Old SRH with id %u is garbage collected", srh_record->srh_id);
-                break;
-            }
+    if (id < MAX_SRH_BY_DEST) {
+        if (bpf_map_update_elem(cfg.dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
+            zlog_warn(zc, "Dest entry couldn't be inserted in eBPF map !");
+            return -1;
         }
-    } else {
-        counter++;
-    }
-
-    if (srh_record->srh_id < MAX_SRH) {
-        char value [SRH_MAP_VALUE_SIZE];
-        memset(value, 0, SRH_MAP_VALUE_SIZE);
-        memcpy(value, srh_record, srh_record_len);
-
-        if (bpf_map_update_elem(cfg.srh_map_fd, &srh_record->srh_id, value, BPF_ANY)) {
-            zlog_warn(zc, "SRH couldn't be inserted !");
-            err = -1;
-            goto free_hsrh;
-        }
-
         zlog_debug(zc, "SRH inserted in the eBPF map");
-
-        hsrh->refcount = 1;
-        HASH_ADD_KEYPTR(hh, cfg.srh_cache, &srh_record->srh, srh_len, hsrh);
-        zlog_debug(zc, "SRH inserted in the Program Hashmap");
     } else {
         zlog_warn(zc, "Not enough room for a new SRH in the map !");
-        err = -1;
-        goto free_hsrh;
+        return -1;
     }
-
     return 0;
 
-free_hsrh:
-    if (hsrh)
-        free(hsrh);
-    if (init_cache)
-        cfg.srh_cache = NULL;
 free_srh:
     if (srh_record)
         free(srh_record);
     return err;
 }
 
-void destroy_srh_cache()
+void destroy_dest_cache()
 {
-    if (cfg.srh_cache) {
-        struct hash_srh *hsrh, *tmp;
-        HASH_ITER(hh, cfg.srh_cache, hsrh, tmp) {
-            HASH_DEL(cfg.srh_cache, hsrh);
-            free(hsrh->srh_record);
-            free(hsrh);
+    if (cfg.dest_cache) {
+        struct hash_dest *hdest, *tmp;
+        HASH_ITER(hh, cfg.dest_cache, hdest, tmp) {
+            HASH_DEL(cfg.dest_cache, hdest);
+            free(hdest);
         }
     }
 }
@@ -236,29 +258,48 @@ static int paths_read(struct srdb_entry *entry)
     json_t *prefixes = json_loads(path_entry->prefixes, 0, NULL);
     json_t *prefixes_rt1 = json_array_get(prefixes, 0);
     json_t *prefixes_rt2 = json_array_get(prefixes, 1);
+    json_t *flow = json_loads(path_entry->flow, 0, NULL);
+    json_t *rt_dst_addr = NULL;
+    json_t *dest_addresses = NULL;
+    size_t idx_dest = 0;
+    json_t *curr_destination = NULL;
 
     bool reverse_srh = false;
     if (matching_prefix(prefixes_rt1)) {
         reverse_srh = false;
+        rt_dst_addr = json_array_get(flow, 1);
+        dest_addresses = prefixes_rt2;
     } else if (matching_prefix(prefixes_rt2)) {
         reverse_srh = true;
+        rt_dst_addr = json_array_get(flow, 0);
+        dest_addresses = prefixes_rt1;
     } else {
         zlog_debug(zc, "The path is not for this endhost");
         goto free_prefixes;
     }
     zlog_debug(zc, "The path is for this endhost");
+    char *s = json_dumps(prefixes, 0);
+    zlog_debug(zc, "Paths %s", s);
+    free(s);
+    s = json_dumps(dest_addresses, 0);
+    zlog_debug(zc, "Destinations %s", s);
+    free(s);
 
     json_t *segments = json_loads(path_entry->segments, 0, NULL);
     json_t *curr_segments;
     size_t idx = 0;
     json_array_foreach(segments, idx, curr_segments) {
-        insert_segments(curr_segments, reverse_srh);
-        // TODO: Insert the srhs ids to the dest <-> srh map 
+        json_array_foreach(dest_addresses, idx_dest, curr_destination) {
+            json_t *dest_json_str = json_object_get(curr_destination, "address");
+            zlog_debug(zc, "Inserting a segment path for a destination");
+            insert_segments(dest_json_str, curr_segments, reverse_srh, rt_dst_addr);
+        }
     }
 
     json_decref(segments);
 free_prefixes:
     json_decref(prefixes);
+    json_decref(flow);
     return 0;
 }
 
@@ -297,12 +338,21 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
     json_t *prefixes = json_loads(path_entry->prefixes, 0, NULL);
     json_t *prefixes_rt1 = json_array_get(prefixes, 0);
     json_t *prefixes_rt2 = json_array_get(prefixes, 1);
+    json_t *flow = json_loads(path_entry->flow, 0, NULL);
+    json_t *rt_dst_addr = NULL;
+    json_t *dest_addresses = NULL;
+    size_t idx_dest = 0;
+    json_t *curr_destination = NULL;
 
     bool reverse_srh = false;
     if (matching_prefix(prefixes_rt1)) {
         reverse_srh = false;
+        rt_dst_addr = json_array_get(flow, 1);
+        dest_addresses = prefixes_rt2;
     } else if (matching_prefix(prefixes_rt2)) {
         reverse_srh = true;
+        rt_dst_addr = json_array_get(flow, 0);
+        dest_addresses = prefixes_rt1;
     } else {
         zlog_debug(zc, "The path is not for this endhost");
         goto free_prefixes;
@@ -330,9 +380,13 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
                 break;
             }
         }
-        if (!found) {// TODO: Remove the srhs ids to the dest <-> srh map
+        if (!found) {
             zlog_debug(zc, "An old SRH was not in the update");
-            remove_segments(old_segments, reverse_srh);
+            json_array_foreach(dest_addresses, idx_dest, curr_destination) {
+                json_t *dest_json_str = json_object_get(curr_destination, "address");
+                zlog_debug(zc, "Inserting a segment path for a destination");
+                remove_segments(dest_json_str, old_segments, reverse_srh, rt_dst_addr);
+            }
         }
     }
 
@@ -346,15 +400,18 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
                 break;
             }
         }
-        if (!found) {// TODO: Insert the srhs ids to the dest <-> srh map
+        if (!found) {
             zlog_debug(zc, "A new SRH is in the update");
-            insert_segments(curr_segments, reverse_srh);
+            json_array_foreach(dest_addresses, idx_dest, curr_destination) {
+                insert_segments(curr_destination, curr_segments, reverse_srh, rt_dst_addr);
+            }
         }
     }
 
     json_decref(segments);
 free_prefixes:
     json_decref(prefixes);
+    json_decref(flow);
     return 0;
 }
 

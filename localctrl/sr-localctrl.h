@@ -9,24 +9,28 @@
 
 #define _unused __attribute__((unused))
 
+#define MAX_SRH_BY_DEST 3
+#define MAX_SEGS_NBR 4
 
 struct srh_record {
-        uint32_t srh_id;
-        uint32_t is_valid;
-        uint64_t curr_bw; 
-        struct ipv6_sr_hdr srh;
+	uint32_t srh_id;
+	uint32_t is_valid;
+	uint64_t curr_bw; 
+	struct ipv6_sr_hdr srh;
+
+	struct in6_addr segments[MAX_SEGS_NBR];
 } __attribute__((packed));
 
-struct hash_srh {
-	uint32_t srh_hash; // hash of the srh (also used for eBPF mapping)
-	struct srh_record *srh_record;
-	uint32_t refcount;
-	UT_hash_handle hh;
-};
+struct dest_infos {
+	struct in6_addr dest;
+	struct srh_record srhs[MAX_SRH_BY_DEST];
+} __attribute__((packed));
+
+#define DEST_KEY_VALUE_SIZE sizeof(in6_addr)
+#define DEST_MAP_VALUE_SIZE sizeof(dest_infos)
 
 struct hash_dest {
-	struct in6_addr dest;
-	uint32_t *srh_hash; // list of srhs that are valid for this destination
+	struct dest_infos info;
 	UT_hash_handle hh;
 };
 
@@ -36,18 +40,17 @@ struct config {
 
 	struct in6_addr *laddrs;
 	size_t nbr_laddrs;
-	struct hash_srh *srh_cache; // hashmap of srhs
+	struct hash_dest *dest_cache; // hashmap of srhs by destination
 
 	char *zlog_conf_file;
 
-	int srh_map_fd; // eBPF fd for the SRH map
-	int conn_map_fd; // eBPF fd for the connection map
+	int dest_map_fd; // eBPF fd for the connection map
 };
 
 extern struct config cfg;
 extern zlog_category_t *zc;
 
 int launch_srdb();
-void destroy_srh_cache();
+void destroy_dest_cache();
 
 #endif
