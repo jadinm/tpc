@@ -44,7 +44,7 @@ class Albilene(SRNTopo):
         self.rerouting_enabled = rerouting_enabled
         self.maxseg = maxseg
         self.ebpf_program = ebpf_program
-
+        self.switch_count = 0
         super(Albilene, self).__init__("controller", *args, **kwargs)
 
     def build(self, *args, **kwargs):
@@ -95,19 +95,38 @@ class Albilene(SRNTopo):
         link_delay = self.link_delay if link_delay is None else link_delay
         link_bandwidth = self.link_bandwidth if link_bandwidth is None else link_bandwidth
 
+        opts1 = dict(opts)
+        try:
+            opts1.pop("params2")
+        except KeyError:
+            pass
+        opts2 = dict(opts)
+        try:
+            opts2.pop("params1")
+        except KeyError:
+            pass
+
         if self.isRouter(node1) and self.isRouter(node2):
             # Because of strange behavior between tc and mininet on the sending-side
             # we remove tc on these links
             # source: https://progmp.net/mininetPitfalls.html
-            default_params1 = {"bw": link_bandwidth, "delay": link_delay}
+            default_params1 = {"bw": link_bandwidth}
             default_params1.update(opts.get("params1", {}))
-            opts["params1"] = default_params1
+            opts1["params1"] = default_params1
 
-            default_params2 = {"bw": link_bandwidth, "delay": link_delay}
+            default_params2 = {"bw": link_bandwidth}
             default_params2.update(opts.get("params2", {}))
-            opts["params2"] = default_params2
+            opts2["params2"] = default_params2
 
-        return super(SRNTopo, self).addLink(node1, node2, **opts)
+            opts1["params2"] = {"delay": link_delay, "max_queue_size": 1000000}
+            opts2["params1"] = {"delay": link_delay, "max_queue_size": 1000000}
+
+        # Netem queues might disturb shaping and ecn marking
+        # Therefore, we put them on an intermediary switch
+        self.switch_count += 1
+        s = "s%d" % self.switch_count
+        self.addSwitch(s)
+        return super(SRNTopo, self).addLink(node1, s, **opts1), super(SRNTopo, self).addLink(s, node2, **opts2)
 
     def addHost(self, name, **params):
         if self.cwd is not None and "cwd" not in params:

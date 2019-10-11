@@ -124,7 +124,9 @@ def plot(start, bw, retransmits, output_path, ebpf=True):
 
 def eval_albilene(args, ovsschema):
     topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
-                 "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")}
+                 "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
+                 "always_redirect": True,  # TODO Change to correct ECN parameters
+                 "maxseg": 4}
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
     result_files = []
     tcpdumps = []

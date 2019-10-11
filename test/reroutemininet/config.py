@@ -219,24 +219,28 @@ class SRRerouted(SRNDaemon):
                  'rate %fMbit burst 15k' % (bw / 10**6)]
         parent = ' parent 5:1 '
 
-        cmd = '%s qdisc add dev %s {parent} handle 1: red limit {limit} burst {burst} ' \
-              'avpkt {avpkt} probability {probability} min {min} max {max} bandwidth {bandwidth} {ecn}' \
-            .format(itf=itf.name, limit=int(red_limit), burst=burst, avpkt=cfg[self.NAME].red_avpkt,
-                    probability=cfg[self.NAME].red_probability, min=1000, # TODO replace int(red_limit * cfg[self.NAME].red_min)
-                    max=2000, bandwidth=bw, parent=parent, ecn='ecn') # TODO int(red_limit * cfg[self.NAME].red_max)
-        parent = " parent 1:1 "
-        cmds += [cmd]
+        # FQCodel # TODO Parametrize
+        cmds += ['%s qdisc add dev %s {parent} handle 4: fq_codel ecn'.format(parent=parent)]
+        parent = ' parent 4: '
+
+        # cmd = '%s qdisc add dev %s {parent} handle 1: red limit {limit} burst {burst} ' \
+        #      'avpkt {avpkt} probability {probability} min {min} max {max} bandwidth {bandwidth} {ecn}' \
+        #    .format(itf=itf.name, limit=int(red_limit), burst=burst, avpkt=cfg[self.NAME].red_avpkt,
+        #           probability=cfg[self.NAME].red_probability, min=1000, # TODO replace int(red_limit * cfg[self.NAME].red_min)
+        #           max=2000, bandwidth=bw, parent=parent, ecn='ecn') # TODO int(red_limit * cfg[self.NAME].red_max)
+        # parent = " parent 1:1 "
+        # cmds += [cmd]
         # Delay
-        netemargs = '%s%s%s%s' % (
-            'delay %s ' % delay if delay is not None else '',
-            '%s ' % jitter if jitter is not None else '',
-            'loss %d ' % loss if loss is not None else '',
-            'limit %d' % max_queue_size if max_queue_size is not None else 'limit 10000000')
-        if netemargs:
-            cmds += ['%s qdisc add dev %s ' + parent +
-                     ' handle 10: netem ' +
-                     netemargs]
-            parent = ' parent 10:1 '
+        # netemargs = '%s%s%s%s' % (
+        #     'delay %s ' % delay if delay is not None else '',
+        #     '%s ' % jitter if jitter is not None else '',
+        #     'loss %d ' % loss if loss is not None else '',
+        #     'limit %d' % max_queue_size if max_queue_size is not None else 'limit 10000000')
+        # if netemargs:
+        #     cmds += ['%s qdisc add dev %s ' + parent +
+        #              ' handle 10: netem ' +
+        #              netemargs]
+        #     parent = ' parent 10:1 '
 
         # Execute all the commands in our node
         lg.debug("at map stage w/cmds: %s\n" % cmds)
