@@ -162,7 +162,7 @@ static int remove_segments(json_t *destination, json_t *segments, bool reverse_s
 /**
  * Creates a new SRH based on a list of segments and insert it in both the program hashmap and the eBPF hashmap
  */
-static int insert_segments(json_t *destination, json_t *segments, bool reverse_srh, json_t *rt_dst_addr)
+static int insert_segments(json_t *destination, json_t *segments, uint64_t bw, uint64_t delay, bool reverse_srh, json_t *rt_dst_addr)
 {
     int err = 0;
     size_t srh_record_len;
@@ -173,6 +173,8 @@ static int insert_segments(json_t *destination, json_t *segments, bool reverse_s
     if (!srh_record) {
         return -1;
     }
+    srh_record->curr_bw = bw;
+    srh_record->delay = delay;
 
     /* Get destination IP */
     if (inet_pton(AF_INET6, json_string_value(destination), &dest_ip) != 1) {
@@ -291,8 +293,11 @@ static int paths_read(struct srdb_entry *entry)
     json_array_foreach(segments, idx, curr_segments) {
         json_array_foreach(dest_addresses, idx_dest, curr_destination) {
             json_t *dest_json_str = json_object_get(curr_destination, "address");
+            json_t *seg_list = json_object_get(curr_segments, "segs");
+            uint64_t bw = (uint64_t) json_integer_value(json_object_get(curr_segments, "bw"));
+            uint64_t delay = (uint64_t) json_integer_value(json_object_get(curr_segments, "delay"));
             zlog_debug(zc, "Inserting a segment path for a destination");
-            insert_segments(dest_json_str, curr_segments, reverse_srh, rt_dst_addr);
+            insert_segments(dest_json_str, seg_list, bw, delay, reverse_srh, rt_dst_addr);
         }
     }
 
@@ -369,6 +374,16 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
     json_t *curr_old_segments;
     size_t old_idx = 0;
 
+    json_t *seg_list = NULL;
+    uint64_t bw = 0;
+    uint64_t delay = 0;
+
+    json_t *old_seg_list = NULL;
+    /*uint64_t old_bw = 0;
+    uint64_t old_delay = 0;*/
+
+    json_t *dest_json_str = NULL;
+
     /* Remove old SRHs */
 
     bool found = false;
@@ -383,9 +398,10 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
         if (!found) {
             zlog_debug(zc, "An old SRH was not in the update");
             json_array_foreach(dest_addresses, idx_dest, curr_destination) {
-                json_t *dest_json_str = json_object_get(curr_destination, "address");
-                zlog_debug(zc, "Inserting a segment path for a destination");
-                remove_segments(dest_json_str, old_segments, reverse_srh, rt_dst_addr);
+                dest_json_str = json_object_get(curr_destination, "address");
+                zlog_debug(zc, "Removing a segment path for a destination");
+                old_seg_list = json_object_get(old_segments, "segs");
+                remove_segments(dest_json_str, old_seg_list, reverse_srh, rt_dst_addr);
             }
         }
     }
@@ -394,7 +410,13 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
 
     json_array_foreach(segments, idx, curr_segments) {
         found = false;
+        seg_list = json_object_get(curr_segments, "segs");
+        bw = (uint64_t) json_integer_value(json_object_get(curr_segments, "bw"));
+        delay = (uint64_t) json_integer_value(json_object_get(curr_segments, "delay"));
         json_array_foreach(old_segments, old_idx, curr_old_segments) {
+            old_seg_list = json_object_get(old_segments, "segs");
+            //old_bw = (uint64_t) json_integer_value(json_object_get(old_segments, "bw"));
+            //old_delay = (uint64_t) json_integer_value(json_object_get(old_segments, "delay"));
             if (same_segments(curr_segments, curr_old_segments)) {
                 found = true;
                 break;
@@ -403,9 +425,12 @@ static int paths_update(struct srdb_entry *entry, struct srdb_entry *diff,
         if (!found) {
             zlog_debug(zc, "A new SRH is in the update");
             json_array_foreach(dest_addresses, idx_dest, curr_destination) {
-                insert_segments(curr_destination, curr_segments, reverse_srh, rt_dst_addr);
+                dest_json_str = json_object_get(curr_destination, "address");
+                zlog_debug(zc, "Inserting a segment path for a destination");
+                insert_segments(dest_json_str, seg_list, bw, delay, reverse_srh, rt_dst_addr);
             }
         }
+        // TODO Update here the bandwidth or delay even if same segments were found
     }
 
     json_decref(segments);

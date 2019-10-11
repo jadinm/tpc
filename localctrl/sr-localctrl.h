@@ -15,7 +15,8 @@
 struct srh_record {
 	uint32_t srh_id;
 	uint32_t is_valid;
-	uint64_t curr_bw; 
+	uint64_t curr_bw;
+	uint64_t delay; // ms
 	struct ipv6_sr_hdr srh;
 
 	struct in6_addr segments[MAX_SEGS_NBR];
