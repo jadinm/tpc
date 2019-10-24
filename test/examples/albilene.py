@@ -110,11 +110,11 @@ class Albilene(SRNTopo):
             # Because of strange behavior between tc and mininet on the sending-side
             # we remove tc on these links
             # source: https://progmp.net/mininetPitfalls.html
-            default_params1 = {"bw": link_bandwidth}
+            default_params1 = {"bw": link_bandwidth, "enable_ecn": True}
             default_params1.update(opts.get("params1", {}))
             opts1["params1"] = default_params1
 
-            default_params2 = {"bw": link_bandwidth}
+            default_params2 = {"bw": link_bandwidth, "enable_ecn": True}
             default_params2.update(opts.get("params2", {}))
             opts2["params2"] = default_params2
 

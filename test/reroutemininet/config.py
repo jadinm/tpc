@@ -189,70 +189,6 @@ class SRRerouted(SRNDaemon):
             pass
         super(SRRerouted, self).cleanup()
 
-    def reconfigure_itf(self, itf, cfg, bw=None, delay=None, jitter=None, loss=None,
-                        speedup=0, use_hfsc=False, use_tbf=False,
-                        latency_ms=None, enable_ecn=False, enable_red=False,
-                        max_queue_size=None, **params):
-        """
-        This ugly function is needed because Mininet does not store the last tc handle used
-        """
-        # Clear existing configuration
-        tcoutput = itf.tc('%s qdisc show dev %s')
-        if "priomap" not in tcoutput and "noqueue" not in tcoutput:
-            cmds = ['%s qdisc del dev %s root']
-        else:
-            cmds = []
-
-        parent = " root "
-
-        # ECN
-        bw = itf.bw if itf.bw > 0 else 10
-        bw *= 10 ** 6
-        red_limit = cfg[self.NAME].red_limit * bw
-        burst = int(cfg[self.NAME].red_burst(bw, cfg[self.NAME].red_limit, cfg[self.NAME].red_avpkt,
-                                             cfg[self.NAME].red_probability, cfg[self.NAME].red_min,
-                                             cfg[self.NAME].red_max))
-
-        # Shaping
-        cmds += ['%s qdisc add dev %s {parent} handle 5:0 htb default 1'.format(parent=parent),
-                 '%s class add dev %s parent 5:0 classid 5:1 htb ' +
-                 'rate %fMbit burst 15k' % (bw / 10**6)]
-        parent = ' parent 5:1 '
-
-        # FQCodel # TODO Parametrize
-        cmds += ['%s qdisc add dev %s {parent} handle 4: fq_codel ecn'.format(parent=parent)]
-        parent = ' parent 4: '
-
-        # cmd = '%s qdisc add dev %s {parent} handle 1: red limit {limit} burst {burst} ' \
-        #      'avpkt {avpkt} probability {probability} min {min} max {max} bandwidth {bandwidth} {ecn}' \
-        #    .format(itf=itf.name, limit=int(red_limit), burst=burst, avpkt=cfg[self.NAME].red_avpkt,
-        #           probability=cfg[self.NAME].red_probability, min=1000, # TODO replace int(red_limit * cfg[self.NAME].red_min)
-        #           max=2000, bandwidth=bw, parent=parent, ecn='ecn') # TODO int(red_limit * cfg[self.NAME].red_max)
-        # parent = " parent 1:1 "
-        # cmds += [cmd]
-        # Delay
-        # netemargs = '%s%s%s%s' % (
-        #     'delay %s ' % delay if delay is not None else '',
-        #     '%s ' % jitter if jitter is not None else '',
-        #     'loss %d ' % loss if loss is not None else '',
-        #     'limit %d' % max_queue_size if max_queue_size is not None else 'limit 10000000')
-        # if netemargs:
-        #     cmds += ['%s qdisc add dev %s ' + parent +
-        #              ' handle 10: netem ' +
-        #              netemargs]
-        #     parent = ' parent 10:1 '
-
-        # Execute all the commands in our node
-        lg.debug("at map stage w/cmds: %s\n" % cmds)
-        tcoutputs = [itf.tc(cmd) for cmd in cmds]
-        for output in tcoutputs:
-            if output != '':
-                lg.error("*** Error: %s" % output)
-        lg.debug("cmds:", cmds, '\n')
-        lg.debug("outputs:", tcoutputs, '\n')
-
-        return parent
-
     def render(self, cfg, **kwargs):
         cfg_content = super(SRRerouted, self).render(cfg, **kwargs)
 
@@ -263,9 +199,7 @@ class SRRerouted(SRNDaemon):
             raise ValueError('%s: Cannot set firewall rule in %s - cmd "%s" exited with %s' %
                              (self._node.name, self.NAME, cmd, err))
 
-        # ECN marking through red
-        for itf in realIntfList(self._node):
-            self.reconfigure_itf(itf, cfg, **itf.params)
+        # Warning ECN marking should be enabled !
 
         return cfg_content
 

@@ -4,13 +4,14 @@ from srnmininet.srnnet import SRNNet
 
 from host import ReroutingHost
 from router import ReroutingRouter, ReroutingConfig
+from link import RerouteIntf
 
 
 class ReroutingNet(SRNNet):
 
-    def __init__(self, config=ReroutingConfig, router=ReroutingRouter,
+    def __init__(self, config=ReroutingConfig, intf=RerouteIntf, router=ReroutingRouter,
                  host=ReroutingHost, *args, **kwargs):
-        super(ReroutingNet, self).__init__(config=config, router=router,
+        super(ReroutingNet, self).__init__(config=config, router=router, intf=intf,
                                            host=host, *args, **kwargs)
 
     def ovsdb_node_entry(self, r, ospfv3_id, prefix):
