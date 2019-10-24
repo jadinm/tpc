@@ -11,7 +11,7 @@ from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from .utils import get_addr, debug_tcpdump
 
-MAX_BANDWIDTH = 100
+MAX_BANDWIDTH = 75
 MEASUREMENT_TIME = 100
 
 FONTSIZE = 12
@@ -130,6 +130,7 @@ def eval_albilene(args, ovsschema):
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
     result_files = []
     tcpdumps = []
+    subprocess.call("pkill -9 iperf".split(" "))
     try:
         net.start()
         SR6CLI(net)
@@ -168,6 +169,7 @@ def eval_albilene(args, ovsschema):
         for fileobj in result_files:
             if fileobj is not None:
                 fileobj.close()
+        subprocess.call("pkill -9 iperf".split(" "))
 
     if not err:
         # Extract JSON output
