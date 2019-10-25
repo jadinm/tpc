@@ -8,13 +8,13 @@ import matplotlib.pyplot as plt
 from sr6mininet.cli import SR6CLI
 
 from examples.albilene import Albilene
+from examples.repetita_network import RepetitaTopo
 from reroutemininet.net import ReroutingNet
-from .utils import get_addr, debug_tcpdump
+from .utils import get_addr, debug_tcpdump, FONTSIZE
 
 MAX_BANDWIDTH = 75
 MEASUREMENT_TIME = 100
 
-FONTSIZE = 12
 INTERVALS = 1
 
 
@@ -74,7 +74,7 @@ def launch_iperf(net, clients, servers, result_files, ebpf=True):
     return pid_servers, pid_clients
 
 
-def plot(start, bw, retransmits, output_path, ebpf=True):
+def plot(times, bw, output_path, ebpf=True, identifier=None):
 
     suffix = "ebpf" if ebpf else "no-ebpf"
 
@@ -82,8 +82,10 @@ def plot(start, bw, retransmits, output_path, ebpf=True):
     figure_name = "bw_repetita_iperf_%s" % suffix
     fig = plt.figure()
     subplot = fig.add_subplot(111)
-    x = [i * float(INTERVALS) for i in range(len(bw))]
+    x = times
     bw = [float(b) / 10**6 for b in bw]
+    print(bw)
+    print(x)
 
     subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0, where="post",
                  markersize=5, zorder=2)
@@ -99,34 +101,126 @@ def plot(start, bw, retransmits, output_path, ebpf=True):
     fig.clf()
     plt.close()
 
-    # Retransmission
-    figure_name = "retrans_repetita_iperf_%s" % suffix
-    fig = plt.figure()
-    subplot = fig.add_subplot(111)
-
-    subplot.step(x, retransmits, color="orangered", marker="s", linewidth=2.0, where="post",
-                 markersize=9, zorder=1)
-
-    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
-    subplot.set_ylabel("Retransmissions", fontsize=FONTSIZE)
-
-    print("Save figure for retransmissions")
-    fig.savefig(os.path.join(output_path, "%s.pdf" % figure_name),
-                bbox_inches='tight', pad_inches=0, markersize=9)
-    fig.clf()
-    plt.close()
-
     print("Saving raw data")
     with open(os.path.join(output_path, "repetita_%s.json" % suffix), "w") as file:
-        json.dump({"bw": bw, "retransmits": retransmits, "start": start},
-                  file, indent=4)
+        json.dump({"bw": {times[i]: bw[i] for i in range(len(bw))}, "id": identifier}, file, indent=4)
+
+
+def cs_name(client, server):
+    return "%s-%s" % (client, server)
+
+
+def aggregate_bandwidth(clients, servers, start, bw):
+    indexes = [0 for _ in range(len(clients))]
+    times = set()
+    aggregated_bw = {}
+    current_bw = [0 for _ in range(len(clients))]
+
+    # Aggregate all measurements in order until None can be found
+
+    while not all([indexes[i] >= len(bw[cs_name(clients[i], servers[i])]) for i in range(len(clients))]):
+        # Get next minimum time
+        next_min_time = None
+        next_i = 0
+        for i in range(len(clients)):
+            if indexes[i] >= len(bw[cs_name(clients[i], servers[i])]):  # No more values to unpack
+                continue
+            next_time = start[cs_name(clients[i], servers[i])] + indexes[i] * INTERVALS
+            if next_min_time is None or next_min_time > next_time:
+                next_min_time = next_time
+                next_i = i
+
+        # Update current bandwidth and add timestamp
+        times.add(next_min_time)
+        current_bw[next_i] = bw[cs_name(clients[next_i], servers[next_i])][indexes[next_i]]
+        indexes[next_i] += 1
+        aggregated_bw[next_min_time] = sum(current_bw)
+
+    aggregated_bw = [(timestamp, bw) for timestamp, bw in aggregated_bw.items()]
+    aggregated_bw.sort()
+    aggregated_bw = [elem[1] for elem in aggregated_bw]
+
+    times = sorted(list(times))
+    start = times[0]
+    times = [x - start for x in times]
+
+    return times, aggregated_bw
+
+
+def eval_repetita(args, ovsschema):
+    topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
+                 "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
+                 "always_redirect": True,
+                 "maxseg": -1, "repetita_graph": args.repetita_topo}
+
+    net = ReroutingNet(topo=RepetitaTopo(**topo_args), static_routing=True)
+    result_files = []
+    tcpdumps = []
+    subprocess.call("pkill -9 iperf".split(" "))
+    try:
+        net.start()
+        SR6CLI(net)
+        time.sleep(1)
+
+        clients = [h.name for i, h in enumerate(net.hosts) if i % 2 == 0]  # TODO Choose a variable portion of clients
+        servers = [h.name for i, h in enumerate(net.hosts) if i % 2 == 1]  # TODO Choose a variable portion of servers
+        servers = servers[:len(clients)]  # Make two sets of same length
+        clients = clients[:len(servers)]  # Make two sets of same length
+
+        result_files = [open("results_%s_%s.json" % (clients[i], servers[i]), "w") for i in range(len(clients))]
+        # TODO Fix Maximum iperf bandwidth
+        pid_servers, pid_clients = launch_iperf(net, clients, servers, result_files, ebpf=args.ebpf)
+        if len(pid_servers) == 0:
+            return
+        time.sleep(MEASUREMENT_TIME)
+
+        err = False
+        for i, pid in enumerate(pid_clients):
+            if pid.poll() is None:
+                print("The iperf (%s,%s) has not finish yet" % (clients[i], servers[i]))
+                err = True
+                pid.kill()
+                break
+            elif pid.poll() != 0:
+                print("The iperf (%s,%s) returned with error code %d" % (clients[i], servers[i], pid.poll()))
+                err = True
+                break
+
+        for pid in pid_servers:
+            pid.kill()
+    finally:
+        for pid in tcpdumps:
+            pid.kill()
+        net.stop()
+        for fileobj in result_files:
+            if fileobj is not None:
+                fileobj.close()
+        subprocess.call("pkill -9 iperf".split(" "))
+
+    if not err:
+        # Extract JSON output
+        bw = {}
+        start = {}
+        retrans = {}
+        for i in range(len(clients)):
+            with open("results_%s_%s.json" % (clients[i], servers[i]), "r") as fileobj:
+                results = json.load(fileobj)
+                start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
+                for interval in results["intervals"]:
+                    bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
+                    retrans.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["retransmits"])
+
+        times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
+
+        plot(times, aggregated_bw, args.log_dir, ebpf=args.ebpf,
+             identifier={"topo": args.repetita_topo, "ebpf": args.ebpf, "maxseg": -1})
 
 
 def eval_albilene(args, ovsschema):
     topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
                  "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
-                 "always_redirect": True,  # TODO Change to correct ECN parameters
-                 "maxseg": 4}
+                 "always_redirect": True,
+                 "maxseg": -1}
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
     result_files = []
     tcpdumps = []
@@ -175,12 +269,16 @@ def eval_albilene(args, ovsschema):
         # Extract JSON output
         bw = {}
         retrans = {}
+        start = {}
         for i in range(len(clients)):
             with open("results_%s_%s.json" % (clients[i], servers[i]), "r") as fileobj:
                 results = json.load(fileobj)
+                start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
                 for interval in results["intervals"]:
-                    bw.setdefault("%s-%s" % (clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
-                    retrans.setdefault("%s-%s" % (clients[i], servers[i]), []).append(interval["sum"]["retransmits"])
-                start = results["start"]["timestamp"]["timesecs"]
+                    bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
+                    retrans.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["retransmits"])
 
-        plot(start, bw["client-server"], retrans["client-server"], args.log_dir, ebpf=args.ebpf)
+        times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
+
+        plot(times, aggregated_bw, args.log_dir, ebpf=args.ebpf,
+             identifier={"topo": "Albilene", "ebpf": args.ebpf, "maxseg": -1})

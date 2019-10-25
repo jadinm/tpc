@@ -7,7 +7,7 @@ import ipmininet
 from mininet.log import LEVELS, lg
 from sr6mininet.cli import SR6CLI
 
-from eval.repetita_eval import eval_albilene
+from eval.repetita_eval import eval_albilene, eval_repetita
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
@@ -28,7 +28,8 @@ tests = {
     "eval-albilene": eval_albilene,
     # TODO This requires the custom version of scapy on segment-routing organisation
     #  until scapy reaches 2.4.3 (still unstable)
-    "unit": launch_all_tests
+    "unit": launch_all_tests,
+    "eval-repetita": eval_repetita
 }
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -41,7 +42,7 @@ def parse_args():
     parser.add_argument('--log', choices=LEVELS.keys(), default='info',
                         help='The level of details in the logs.')
     parser.add_argument('--log-dir', help='Logging directory root',
-                        default='/tmp/logs-%s' % datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
+                        default='/root/experiences/logs-%s' % datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     parser.add_argument('--src-dir', help='Source directory root of SRN components',
                         default=os.path.join(os.path.dirname(script_dir), 'srn-dev'))
     parser.add_argument('--test', help='Test name to perform', choices=tests,

@@ -6,6 +6,9 @@ from shlex import split
 from ipmininet.utils import realIntfList
 
 DEFAULT_CGROUP = "test.slice"
+FONTSIZE = 12
+LINE_WIDTH = 2.0
+MARKER_SIZE = 5.0
 
 
 def run_in_cgroup(node, cmd, cgroup=DEFAULT_CGROUP, **kwargs):
