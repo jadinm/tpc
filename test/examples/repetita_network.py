@@ -46,11 +46,13 @@ class RepetitaEdge:
     def add_to_topo(self, topo, node_index):
         if not self.complete_edge():
             raise Exception("Only partial information: " + str(self))
+        bw_src = self.bw_src if topo.bw is None else topo.bw
+        bw_dst = self.bw_dst if topo.bw is None else topo.bw
         return topo.addLink(node_index[self.src], node_index[self.dest],
-                            params1={"bw": self.bw_src,
+                            params1={"bw": bw_src,
                                      "delay": str(self.delay_src) + "ms",
                                      "igp_weight": self.weight_src},
-                            params2={"bw": self.bw_dst,
+                            params2={"bw": bw_dst,
                                      "delay": str(self.delay_dst) + "ms",
                                      "igp_weight": self.weight_dst})
 
@@ -63,10 +65,12 @@ class RepetitaEdge:
 
 class RepetitaTopo(SRNTopo):
 
-    def __init__(self, repetita_graph=None, schema_tables=None, rerouting_enabled=True, *args, **kwargs):
+    def __init__(self, repetita_graph=None, schema_tables=None, rerouting_enabled=True, bw=None, *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
         self.rerouting_enabled = rerouting_enabled
+        self.bw = bw
+        self.switch_count = 1
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def build(self, *args, **kwargs):
@@ -111,13 +115,7 @@ class RepetitaTopo(SRNTopo):
         access_routers = [(x, bw) for x, (e, bw) in access_routers.iteritems() if e <= 2]
         for access_router, bw in access_routers:
             h = self.addHost("h%s" % access_router)
-            s = self.addSwitch("s%s" % access_router)
-            self.addLink(h, s)
-            self.addLink(s, access_router,
-                         params1={"bw": bw,  # Minimum bandwidth of all outgoing links of the access router
-                                  "delay": "1ms"},
-                         params2={"bw": bw,
-                                  "delay": "1ms"})
+            self.addLink(h, access_router)
 
         # Add controller
         routers = self.routers()
@@ -133,6 +131,48 @@ class RepetitaTopo(SRNTopo):
 
     def __str__(self):
         return "RepetitaNetwork %s" % os.path.basename(self.repetita_graph)
+
+    def addLink(self, node1, node2, delay="1ms", bw=None, **opts):
+        src_delay = None
+        dst_delay = None
+        opts1 = dict(opts)
+        try:
+            opts1.pop("params2")
+            src_delay = opts.get("params1", {}).pop("delay")
+        except KeyError:
+            pass
+        opts2 = dict(opts)
+        try:
+            opts2.pop("params1")
+            dst_delay = opts.get("params2", {}).pop("delay")
+        except KeyError:
+            pass
+
+        src_delay = src_delay if src_delay else delay
+        dst_delay = dst_delay if dst_delay else delay
+
+        if self.isRouter(node1) and self.isRouter(node2):
+            # Because of strange behavior between tc and mininet on the sending-side
+            # we remove tc on these links
+            # source: https://progmp.net/mininetPitfalls.html
+            print(opts)
+            default_params1 = {"bw": bw, "enable_ecn": True}
+            default_params1.update(opts.get("params1", {}))
+            opts1["params1"] = default_params1
+
+            default_params2 = {"bw": bw, "enable_ecn": True}
+            default_params2.update(opts.get("params2", {}))
+            opts2["params2"] = default_params2
+
+            opts1["params2"] = {"delay": dst_delay, "max_queue_size": 1000000}
+            opts2["params1"] = {"delay": src_delay, "max_queue_size": 1000000}
+
+        # Netem queues might disturb shaping and ecn marking
+        # Therefore, we put them on an intermediary switch
+        self.switch_count += 1
+        s = "s%d" % self.switch_count
+        self.addSwitch(s)
+        return super(SRNTopo, self).addLink(node1, s, **opts1), super(SRNTopo, self).addLink(s, node2, **opts2)
 
     def addHost(self, name, **params):
         if self.cwd is not None and "cwd" not in params:

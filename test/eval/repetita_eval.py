@@ -13,6 +13,7 @@ from reroutemininet.net import ReroutingNet
 from .utils import get_addr, debug_tcpdump, FONTSIZE
 
 MAX_BANDWIDTH = 75
+LINK_BANDWIDTH = 100
 MEASUREMENT_TIME = 100
 
 INTERVALS = 1
@@ -151,7 +152,7 @@ def eval_repetita(args, ovsschema):
     topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
                  "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
                  "always_redirect": True,
-                 "maxseg": -1, "repetita_graph": args.repetita_topo}
+                 "maxseg": -1, "repetita_graph": args.repetita_topo, "bw": LINK_BANDWIDTH}
 
     net = ReroutingNet(topo=RepetitaTopo(**topo_args), static_routing=True)
     result_files = []
