@@ -120,7 +120,8 @@ class RepetitaTopo(SRNTopo):
         # Add controller
         routers = self.routers()
         controller = self.addRouter("controller")
-        self.addLink(routers[0], controller)
+        # Be sure that this is not the bottleneck link (i.e, 100Gbps, 1ms)
+        self.addLink(routers[0], controller, delay="1ms", bw=10**5)
 
         # Configure SRN with rerouting
         self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router, _ in access_routers],

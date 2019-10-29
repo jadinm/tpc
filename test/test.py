@@ -578,7 +578,7 @@ def launch_class_test(cls, args, ovsschema):
     unittest.TextTestRunner().run(suite)
 
 
-def launch_all_tests(args, ovsschema):
+def launch_all_tests(lg, args, ovsschema):
     lg.info("Starting testing of the SRN Controller\n")
     launch_class_test(TestController, args, ovsschema)
 

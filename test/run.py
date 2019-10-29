@@ -4,7 +4,8 @@ import json
 import os
 
 import ipmininet
-from mininet.log import LEVELS, lg
+from mininet.log import LEVELS
+import mininet.log
 from sr6mininet.cli import SR6CLI
 
 from eval.repetita_eval import eval_albilene, eval_repetita
@@ -13,7 +14,7 @@ from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
 
 
-def mininet_cli(args, ovsschema):
+def mininet_cli(lg, args, ovsschema):
     topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir}
     net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
     try:
@@ -48,8 +49,9 @@ def parse_args():
     parser.add_argument('--test', help='Test name to perform', choices=tests,
                         default='mininet-cli')
     parser.add_argument('--repetita-topo', help='Gives the path to a Repetita topology (only for repetita tests)',
-                        default=os.path.join(os.path.dirname(os.path.abspath(__file__)), "examples",
-                                             "data", "Arpanet_low_latency.graph"))
+                        default=None)
+    parser.add_argument('--repetita-dir', help='Gives the path to a Repetita directory (only for repetita tests)',
+                        default=None)
     parser.add_argument('--ebpf', action="store_true", help='Use ebpf in the evaluation')
     return parser.parse_args()
 
@@ -59,7 +61,7 @@ args = parse_args()
 with open(os.path.join(args.src_dir, "sr.ovsschema"), "r") as fileobj:
     ovsschema = json.load(fileobj)
 
-lg.setLogLevel(args.log)
+mininet.log.lg.setLogLevel(args.log)
 if args.log == 'debug':
     ipmininet.DEBUG_FLAG = True
 sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
@@ -68,4 +70,4 @@ sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
 os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "bin") + os.pathsep +\
                      os.path.join(os.path.abspath(args.src_dir), "bin") + os.pathsep + os.environ["PATH"]
 
-tests[args.test](args, ovsschema)
+tests[args.test](mininet.log.lg, args, ovsschema)
