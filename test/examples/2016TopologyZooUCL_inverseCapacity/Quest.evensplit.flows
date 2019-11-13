@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Auckland_2->1_Fiji",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Auckland_1->5_Los_Angeles",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Melbourne->11_Sydney_2",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Korea->19_Perth",
+        "src": 12,
+        "dest": 19,
+        "volume": 100000
+    }
+]

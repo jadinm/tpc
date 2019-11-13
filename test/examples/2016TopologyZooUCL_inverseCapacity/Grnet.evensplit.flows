@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_4_Mytilini->5_Chios",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Igoumenitsa->14_Chania",
+        "src": 6,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Kalamata->21_Rhodos",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kalavrita->26_Korinthos",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Edessa->35_Komotini",
+        "src": 31,
+        "dest": 35,
+        "volume": 100000
+    }
+]

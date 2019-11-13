@@ -1,0 +1,93 @@
+NODES 30
+label x y
+0_Cyprus_Univ._of_Tech. 0.0 0.0
+1_Intercollege 33.6 34.9
+2_United_Nations 0.0 0.0
+3_CyIX_Cypress_ISPs 0.0 0.0
+4_Users 0.0 0.0
+5_Grid 0.0 0.0
+6_Grid-SW 0.0 0.0
+7_None 0.0 0.0
+8_KyprosNet 0.0 0.0
+9_Inst._of_Neurology 0.0 0.0
+10_Pedagogical_Inst. 0.0 0.0
+11_Nursing_School 0.0 0.0
+12_Phillips_College 0.0 0.0
+13_European_Uni. 0.0 0.0
+14_Open_Uni._of_Cyprus 0.0 0.0
+15_Univ._of_Nicosia 0.0 0.0
+16_Agriculture_Inst. 0.0 0.0
+17_Cyprus_Inst. 0.0 0.0
+18_English_School 0.0 0.0
+19_Uni._of_Frederick 0.0 0.0
+20_Limassol_PoP 33.0 34.7
+21_European_Inst._of_Cyprus 0.0 0.0
+22_Border_Router 33.4 35.2
+23_EUMED_CONNECT 0.0 0.0
+24_Syria_NREN 0.0 0.0
+25_GEANT_Athens 0.0 0.0
+26_GEANT_Milano 0.0 0.0
+27_Univ._of_Cyprus 0.0 0.0
+28_Evagoras 0.0 0.0
+29_Nicosia_PoP 33.4 35.2
+
+EDGES 58
+label src dest weight bw delay
+Link_0 0 20 200 5000 1
+Link_1 20 0 200 5000 1
+Link_2 1 20 200 5000 1
+Link_3 20 1 200 5000 1
+Link_4 2 28 200 5000 1
+Link_5 28 2 200 5000 1
+Link_6 3 29 10 100000 1
+Link_7 29 3 10 100000 1
+Link_8 4 7 46 21280 1
+Link_9 7 4 46 21280 1
+Link_10 5 6 46 21280 1
+Link_11 6 5 46 21280 1
+Link_12 6 29 10 100000 1
+Link_13 29 6 10 100000 1
+Link_14 6 7 10 100000 1
+Link_15 7 6 10 100000 1
+Link_16 8 29 200 5000 1
+Link_17 29 8 200 5000 1
+Link_18 9 29 200 5000 1
+Link_19 29 9 200 5000 1
+Link_20 10 29 200 5000 1
+Link_21 29 10 200 5000 1
+Link_22 11 29 200 5000 1
+Link_23 29 11 200 5000 1
+Link_24 12 29 200 5000 1
+Link_25 29 12 200 5000 1
+Link_26 13 29 200 5000 1
+Link_27 29 13 200 5000 1
+Link_28 14 29 200 5000 1
+Link_29 29 14 200 5000 1
+Link_30 15 29 200 5000 1
+Link_31 29 15 200 5000 1
+Link_32 16 29 200 5000 1
+Link_33 29 16 200 5000 1
+Link_34 17 29 200 5000 1
+Link_35 29 17 200 5000 1
+Link_36 18 29 200 5000 1
+Link_37 29 18 200 5000 1
+Link_38 19 29 200 5000 1
+Link_39 29 19 200 5000 1
+Link_40 20 22 166 6000 1
+Link_41 22 20 166 6000 1
+Link_42 21 28 200 5000 1
+Link_43 28 21 200 5000 1
+Link_44 22 23 100 10000 1
+Link_45 23 22 100 10000 1
+Link_46 22 25 64 15500 1
+Link_47 25 22 64 15500 1
+Link_48 22 26 64 15500 1
+Link_49 26 22 64 15500 1
+Link_50 22 27 10 100000 1
+Link_51 27 22 10 100000 1
+Link_52 22 28 46 21280 1
+Link_53 28 22 46 21280 1
+Link_54 22 29 46 21280 1
+Link_55 29 22 46 21280 1
+Link_56 23 24 200 5000 1
+Link_57 24 23 200 5000 1

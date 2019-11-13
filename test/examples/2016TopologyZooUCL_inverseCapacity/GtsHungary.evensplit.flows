@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_4_Szolnok->5_Dunaujvaros",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->8_Kecskemet",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Szombathely->24_Zalaegerszeg",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Szekesfehervar->27_Veszprem",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_1_Brisbane2->2_Canberra1",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Townsville->7_Rockhampton",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Hobart->10_Canberra2",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Perth1->12_Perth2",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Alice_Springs->18_Darwin",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    }
+]

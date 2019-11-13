@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_4_ANL->5_AMES",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_FNAL->10_NASH",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_None->17_None",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_BNL->25_None",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_CERN->38_None",
+        "src": 33,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_None->40_None",
+        "src": 39,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_None->56_PNNL",
+        "src": 41,
+        "dest": 56,
+        "volume": 100000
+    }
+]

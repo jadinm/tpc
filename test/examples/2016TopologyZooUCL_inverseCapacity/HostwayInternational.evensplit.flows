@@ -1,0 +1,20 @@
+[
+    {
+        "label": "flow_1_Tampa->5_Austin",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Bucharest->9_Seoul",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Hannover->13_Antwerp",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    }
+]

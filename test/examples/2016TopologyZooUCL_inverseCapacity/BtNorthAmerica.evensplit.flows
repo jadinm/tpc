@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Cheyenne->3_?",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Eugene->6_Spokane",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Boston->14_Europe",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Albuquerque->26_?",
+        "src": 19,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Boise->30_Helena",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Billings->32_Fargo",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    }
+]

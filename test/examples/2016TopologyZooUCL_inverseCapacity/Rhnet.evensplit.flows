@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Solborg-Akureyri->1_Fjarski",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_FSA-Akureyri->5_NORDUnet",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Hvanneyri->8_Grensas",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Skulagata->12_Hringbraut",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Bustaoavegur->14_Ofanleiti",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    }
+]

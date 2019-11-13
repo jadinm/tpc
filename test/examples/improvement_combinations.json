@@ -1,0 +1,507 @@
+[
+    {
+        "topo": "Aarnet.graph",
+        "demands": "Aarnet.evensplit.flows",
+        "improvement": 27.333869175669616
+    },
+    {
+        "topo": "Abvt.graph",
+        "demands": "Abvt.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Aconet.graph",
+        "demands": "Aconet.evensplit.flows",
+        "improvement": 25.71428571428571
+    },
+    {
+        "topo": "Arpanet196912.graph",
+        "demands": "Arpanet196912.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Arpanet19706.graph",
+        "demands": "Arpanet19706.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Arpanet19719.graph",
+        "demands": "Arpanet19719.evensplit.flows",
+        "improvement": 20.0
+    },
+    {
+        "topo": "Arpanet19723.graph",
+        "demands": "Arpanet19723.evensplit.flows",
+        "improvement": 9.090909090909092
+    },
+    {
+        "topo": "Arpanet19728.graph",
+        "demands": "Arpanet19728.evensplit.flows",
+        "improvement": 27.777777777777814
+    },
+    {
+        "topo": "AsnetAm.graph",
+        "demands": "AsnetAm.evensplit.flows",
+        "improvement": 14.285714285714285
+    },
+    {
+        "topo": "AttMpls.graph",
+        "demands": "AttMpls.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Bandcon.graph",
+        "demands": "Bandcon.evensplit.flows",
+        "improvement": 33.33333333333336
+    },
+    {
+        "topo": "Bellcanada.graph",
+        "demands": "Bellcanada.evensplit.flows",
+        "improvement": 10.0
+    },
+    {
+        "topo": "Bellsouth.graph",
+        "demands": "Bellsouth.evensplit.flows",
+        "improvement": 50.0
+    },
+    {
+        "topo": "Belnet2007.graph",
+        "demands": "Belnet2007.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Belnet2008.graph",
+        "demands": "Belnet2008.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Belnet2009.graph",
+        "demands": "Belnet2009.evensplit.flows",
+        "improvement": 36.95652173913043
+    },
+    {
+        "topo": "Belnet2010.graph",
+        "demands": "Belnet2010.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "BeyondTheNetwork.graph",
+        "demands": "BeyondTheNetwork.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Bics.graph",
+        "demands": "Bics.evensplit.flows",
+        "improvement": 75.0
+    },
+    {
+        "topo": "Biznet.graph",
+        "demands": "Biznet.evensplit.flows",
+        "improvement": 12.5
+    },
+    {
+        "topo": "BsonetEurope.graph",
+        "demands": "BsonetEurope.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "BtAsiaPac.graph",
+        "demands": "BtAsiaPac.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "BtEurope.graph",
+        "demands": "BtEurope.evensplit.flows",
+        "improvement": 68.75
+    },
+    {
+        "topo": "BtLatinAmerica.graph",
+        "demands": "BtLatinAmerica.evensplit.flows",
+        "improvement": 16.666666666666664
+    },
+    {
+        "topo": "BtNorthAmerica.graph",
+        "demands": "BtNorthAmerica.evensplit.flows",
+        "improvement": 83.33333333333334
+    },
+    {
+        "topo": "Canerie.graph",
+        "demands": "Canerie.evensplit.flows",
+        "improvement": 60.0
+    },
+    {
+        "topo": "Chinanet.graph",
+        "demands": "Chinanet.evensplit.flows",
+        "improvement": 26.31578947368421
+    },
+    {
+        "topo": "Claranet.graph",
+        "demands": "Claranet.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Cogentco.graph",
+        "demands": "Cogentco.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Colt.graph",
+        "demands": "Colt.evensplit.flows",
+        "improvement": 30.23255813953488
+    },
+    {
+        "topo": "Columbus.graph",
+        "demands": "Columbus.evensplit.flows",
+        "improvement": 35.92233009708738
+    },
+    {
+        "topo": "Darkstrand.graph",
+        "demands": "Darkstrand.evensplit.flows",
+        "improvement": 20.0
+    },
+    {
+        "topo": "Deltacom.graph",
+        "demands": "Deltacom.evensplit.flows",
+        "improvement": 36.84210526315792
+    },
+    {
+        "topo": "DeutscheTelekom.graph",
+        "demands": "DeutscheTelekom.evensplit.flows",
+        "improvement": 87.5
+    },
+    {
+        "topo": "Dfn.graph",
+        "demands": "Dfn.evensplit.flows",
+        "improvement": 56.52173913043479
+    },
+    {
+        "topo": "DialtelecomCz.graph",
+        "demands": "DialtelecomCz.evensplit.flows",
+        "improvement": 11.304347826086957
+    },
+    {
+        "topo": "EliBackbone.graph",
+        "demands": "EliBackbone.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Eunetworks.graph",
+        "demands": "Eunetworks.evensplit.flows",
+        "improvement": 50.0
+    },
+    {
+        "topo": "Fccn.graph",
+        "demands": "Fccn.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Funet.graph",
+        "demands": "Funet.evensplit.flows",
+        "improvement": 28.57142857142857
+    },
+    {
+        "topo": "Geant2009.graph",
+        "demands": "Geant2009.evensplit.flows",
+        "improvement": 43.956043956043956
+    },
+    {
+        "topo": "Geant2012.graph",
+        "demands": "Geant2012.evensplit.flows",
+        "improvement": 8.808570433744528
+    },
+    {
+        "topo": "Globenet.graph",
+        "demands": "Globenet.evensplit.flows",
+        "improvement": 23.809523809523807
+    },
+    {
+        "topo": "GtsCe.graph",
+        "demands": "GtsCe.evensplit.flows",
+        "improvement": 20.6521739130435
+    },
+    {
+        "topo": "GtsCzechRepublic.graph",
+        "demands": "GtsCzechRepublic.evensplit.flows",
+        "improvement": 25.0
+    },
+    {
+        "topo": "GtsPoland.graph",
+        "demands": "GtsPoland.evensplit.flows",
+        "improvement": 28.57142857142857
+    },
+    {
+        "topo": "Heanet.graph",
+        "demands": "Heanet.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "HiberniaCanada.graph",
+        "demands": "HiberniaCanada.evensplit.flows",
+        "improvement": 66.66666666666666
+    },
+    {
+        "topo": "HiberniaGlobal.graph",
+        "demands": "HiberniaGlobal.evensplit.flows",
+        "improvement": 40.25974025974027
+    },
+    {
+        "topo": "HiberniaIreland.graph",
+        "demands": "HiberniaIreland.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "HiberniaNireland.graph",
+        "demands": "HiberniaNireland.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "HiberniaUs.graph",
+        "demands": "HiberniaUs.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Highwinds.graph",
+        "demands": "Highwinds.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "HurricaneElectric.graph",
+        "demands": "HurricaneElectric.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Integra.graph",
+        "demands": "Integra.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Intellifiber.graph",
+        "demands": "Intellifiber.evensplit.flows",
+        "improvement": 24.39024390243904
+    },
+    {
+        "topo": "Interoute.graph",
+        "demands": "Interoute.evensplit.flows",
+        "improvement": 64.15094339622641
+    },
+    {
+        "topo": "Intranetwork.graph",
+        "demands": "Intranetwork.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Ion.graph",
+        "demands": "Ion.evensplit.flows",
+        "improvement": 16.363636363636363
+    },
+    {
+        "topo": "IowaStatewideFiberMap.graph",
+        "demands": "IowaStatewideFiberMap.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Iris.graph",
+        "demands": "Iris.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Janetbackbone.graph",
+        "demands": "Janetbackbone.evensplit.flows",
+        "improvement": 52.38095238095239
+    },
+    {
+        "topo": "Karen.graph",
+        "demands": "Karen.evensplit.flows",
+        "improvement": 50.0
+    },
+    {
+        "topo": "KentmanJul2005.graph",
+        "demands": "KentmanJul2005.evensplit.flows",
+        "improvement": 45.05823777232072
+    },
+    {
+        "topo": "Latnet.graph",
+        "demands": "Latnet.evensplit.flows",
+        "improvement": 17.647058823529413
+    },
+    {
+        "topo": "Missouri.graph",
+        "demands": "Missouri.evensplit.flows",
+        "improvement": 27.27272727272727
+    },
+    {
+        "topo": "NetworkUsa.graph",
+        "demands": "NetworkUsa.evensplit.flows",
+        "improvement": 18.181818181818183
+    },
+    {
+        "topo": "Nextgen.graph",
+        "demands": "Nextgen.evensplit.flows",
+        "improvement": 20.0
+    },
+    {
+        "topo": "Noel.graph",
+        "demands": "Noel.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Nsfcnet.graph",
+        "demands": "Nsfcnet.evensplit.flows",
+        "improvement": 50.0
+    },
+    {
+        "topo": "Ntelos.graph",
+        "demands": "Ntelos.evensplit.flows",
+        "improvement": 39.53488372093023
+    },
+    {
+        "topo": "Oteglobe.graph",
+        "demands": "Oteglobe.evensplit.flows",
+        "improvement": 20.754716981132077
+    },
+    {
+        "topo": "Oxford.graph",
+        "demands": "Oxford.evensplit.flows",
+        "improvement": 20.0
+    },
+    {
+        "topo": "Palmetto.graph",
+        "demands": "Palmetto.evensplit.flows",
+        "improvement": 62.5
+    },
+    {
+        "topo": "Peer1.graph",
+        "demands": "Peer1.evensplit.flows",
+        "improvement": 66.66666666666666
+    },
+    {
+        "topo": "PionierL1.graph",
+        "demands": "PionierL1.evensplit.flows",
+        "improvement": 28.57142857142857
+    },
+    {
+        "topo": "Quest.graph",
+        "demands": "Quest.evensplit.flows",
+        "improvement": 25.0
+    },
+    {
+        "topo": "RedBestel.graph",
+        "demands": "RedBestel.evensplit.flows",
+        "improvement": 16.666666666666664
+    },
+    {
+        "topo": "Renater2004.graph",
+        "demands": "Renater2004.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Renater2006.graph",
+        "demands": "Renater2006.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Renater2008.graph",
+        "demands": "Renater2008.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Renater2010.graph",
+        "demands": "Renater2010.evensplit.flows",
+        "improvement": 40.0
+    },
+    {
+        "topo": "Rhnet.graph",
+        "demands": "Rhnet.evensplit.flows",
+        "improvement": 25.0
+    },
+    {
+        "topo": "RoedunetFibre.graph",
+        "demands": "RoedunetFibre.evensplit.flows",
+        "improvement": 28.57142857142857
+    },
+    {
+        "topo": "Shentel.graph",
+        "demands": "Shentel.evensplit.flows",
+        "improvement": 20.0
+    },
+    {
+        "topo": "Spiralight.graph",
+        "demands": "Spiralight.evensplit.flows",
+        "improvement": 16.666666666666664
+    },
+    {
+        "topo": "Sunet.graph",
+        "demands": "Sunet.evensplit.flows",
+        "improvement": 100.0
+    },
+    {
+        "topo": "Surfnet.graph",
+        "demands": "Surfnet.evensplit.flows",
+        "improvement": 57.14285714285714
+    },
+    {
+        "topo": "Switch.graph",
+        "demands": "Switch.evensplit.flows",
+        "improvement": 44.44444444444444
+    },
+    {
+        "topo": "Syringa.graph",
+        "demands": "Syringa.evensplit.flows",
+        "improvement": 3.8461538461538463
+    },
+    {
+        "topo": "TataNld.graph",
+        "demands": "TataNld.evensplit.flows",
+        "improvement": 14.432989690721643
+    },
+    {
+        "topo": "Telecomserbia.graph",
+        "demands": "Telecomserbia.evensplit.flows",
+        "improvement": 33.33333333333333
+    },
+    {
+        "topo": "Tinet.graph",
+        "demands": "Tinet.evensplit.flows",
+        "improvement": 54.385964912280706
+    },
+    {
+        "topo": "Tw.graph",
+        "demands": "Tw.evensplit.flows",
+        "improvement": 77.77777777777773
+    },
+    {
+        "topo": "UniC.graph",
+        "demands": "UniC.evensplit.flows",
+        "improvement": 36.36363636363636
+    },
+    {
+        "topo": "Uninett2011.graph",
+        "demands": "Uninett2011.evensplit.flows",
+        "improvement": 5.128205128205128
+    },
+    {
+        "topo": "UsCarrier.graph",
+        "demands": "UsCarrier.evensplit.flows",
+        "improvement": 19.99999999999997
+    },
+    {
+        "topo": "UsSignal.graph",
+        "demands": "UsSignal.evensplit.flows",
+        "improvement": 43.6619718309859
+    },
+    {
+        "topo": "VtlWavenet2008.graph",
+        "demands": "VtlWavenet2008.evensplit.flows",
+        "improvement": 4.761904761904762
+    },
+    {
+        "topo": "Xeex.graph",
+        "demands": "Xeex.evensplit.flows",
+        "improvement": 80.0
+    },
+    {
+        "topo": "Xspedius.graph",
+        "demands": "Xspedius.evensplit.flows",
+        "improvement": 50.0
+    }
+]

@@ -1,0 +1,36 @@
+NODES 11
+label x y
+0_Limerick -8.6 52.7
+1_Cork -8.5 51.9
+2_Tralee -9.7 52.3
+3_Galway -9.0 53.3
+4_Sligo -8.5 54.3
+5_Letterkenny -7.7 55.0
+6_Athlone -7.9 53.4
+7_Dundalk -6.4 54.0
+8_Blanchardstown,_Dun_Laoghaire,_Tallaght -6.4 53.4
+9_Carlow -6.7 52.8
+10_Waterford -7.1 52.3
+
+EDGES 20
+label src dest weight bw delay
+Link_0 0 8 10 100000 1
+Link_1 8 0 10 100000 1
+Link_2 1 8 10 100000 1
+Link_3 8 1 10 100000 1
+Link_4 2 8 10 100000 1
+Link_5 8 2 10 100000 1
+Link_6 3 8 10 100000 1
+Link_7 8 3 10 100000 1
+Link_8 4 8 10 100000 1
+Link_9 8 4 10 100000 1
+Link_10 5 8 10 100000 1
+Link_11 8 5 10 100000 1
+Link_12 6 8 10 100000 1
+Link_13 8 6 10 100000 1
+Link_14 7 8 10 100000 1
+Link_15 8 7 10 100000 1
+Link_16 8 9 10 100000 1
+Link_17 9 8 10 100000 1
+Link_18 8 10 10 100000 1
+Link_19 10 8 10 100000 1

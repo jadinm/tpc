@@ -1,0 +1,48 @@
+NODES 13
+label x y
+0_SEQSUINET,_Rice_University,_Houston -95.4 29.8
+1_Jon_Von_Neumann_Center,_Princeton,_NJ -74.7 40.3
+2_SURANET,_Georgia_Tech,_Atlanta -84.4 33.7
+3_Pittsburgh_Supercomputer_Center -80.0 40.4
+4_Cornell_Theory_Center,_Ithaca_NY -76.5 42.4
+5_NorthWestNet,_Seattle -122.3 47.6
+6_BARRnet,_Palo_Alto -122.1 37.4
+7_San_Diego_Supercomputer_Center -117.2 32.7
+8_Westnet,_Salt_Lake_City -111.9 40.8
+9_NCAR,_Boulder -105.3 40.0
+10_MIDnet,_Lincoln,_NE -96.7 40.8
+11_NCSA,_University_of_Illinois,_Champaign -88.2 40.1
+12_Merit_Univ_of_Michigan,_Ann_Arbor -83.7 42.3
+
+EDGES 30
+label src dest weight bw delay
+Link_0 0 2 10 1544 1
+Link_1 2 0 10 1544 1
+Link_2 0 11 10 1544 1
+Link_3 11 0 10 1544 1
+Link_4 0 7 10 1544 1
+Link_5 7 0 10 1544 1
+Link_6 1 2 10 1544 1
+Link_7 2 1 10 1544 1
+Link_8 1 4 10 1544 1
+Link_9 4 1 10 1544 1
+Link_10 3 12 10 1544 1
+Link_11 12 3 10 1544 1
+Link_12 4 12 10 1544 1
+Link_13 12 4 10 1544 1
+Link_14 5 9 10 1544 1
+Link_15 9 5 10 1544 1
+Link_16 5 6 10 1544 1
+Link_17 6 5 10 1544 1
+Link_18 6 12 10 1544 1
+Link_19 12 6 10 1544 1
+Link_20 6 7 10 1544 1
+Link_21 7 6 10 1544 1
+Link_22 8 9 10 1544 1
+Link_23 9 8 10 1544 1
+Link_24 9 11 10 1544 1
+Link_25 11 9 10 1544 1
+Link_26 10 11 10 1544 1
+Link_27 11 10 10 1544 1
+Link_28 11 12 10 1544 1
+Link_29 12 11 10 1544 1

@@ -1,0 +1,62 @@
+[
+    {
+        "label": "flow_7_Dobele->10_Saldus",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Viesite->13_Aizkroukle",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Rujiena->19_Mazsalaca",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Valmiera->27_Carnikava",
+        "src": 25,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Jumprava->29_Kegums",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Olaine->37_Lielvarde",
+        "src": 36,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Salaspils->41_Jekabpils",
+        "src": 39,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Tukums->55_Adazi",
+        "src": 50,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Ozolnieki->59_Preili",
+        "src": 56,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Karsava->63_Malnava",
+        "src": 62,
+        "dest": 63,
+        "volume": 100000
+    }
+]

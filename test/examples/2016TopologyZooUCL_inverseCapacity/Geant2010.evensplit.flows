@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_1_BE->6_LU",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_TR->14_CY",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_IL->21_PT",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_SL->27_LT",
+        "src": 25,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_RU->29_IS",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_IE->32_NO",
+        "src": 30,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_FI->35_EE",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    }
+]

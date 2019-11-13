@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_1_Lexington->2_Tulsa",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Memphis->11_Fort_Lauderdale",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tampa->13_Austin",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Greensboro->19_Mobile",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Charlotte->22_Greenville",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Little_Rock->26_Las_Vegas",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Albuquerque->29_Tucson",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_0_Leicester->1_Northampton",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Sheffield->3_Nottingham",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Slough->6_Milton_Keynes",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Banbury->12_Birmingham",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Preston->14_Manchester",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Glasgow->16_Edinburgh",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Newcastle->18_Middlesborough",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Harrogate->22_Carlisle",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    }
+]

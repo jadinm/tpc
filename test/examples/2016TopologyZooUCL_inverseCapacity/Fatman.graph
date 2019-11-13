@@ -1,0 +1,64 @@
+NODES 17
+label x y
+0_Carnegie_College 0.0 0.0
+1_Adam_Smith_College 0.0 0.0
+2_Kirkcaldy -3.2 56.1
+3_UoD_Fife_Campus 0.0 0.0
+4_Janet_and_Internet 0.0 0.0
+5_None 0.0 0.0
+6_Janet_and_Internet 0.0 0.0
+7_Dundee_College 0.0 0.0
+8_Angus_College 0.0 0.0
+9_Glasgow -4.3 55.9
+10_Leeds -1.5 53.8
+11_RNEP1 -3.0 56.5
+12_RNEP2 -3.0 56.5
+13_University_of_Abertay_Dundee 0.0 0.0
+14_University_of_Dundee 0.0 0.0
+15_University_of_St_Andrews 0.0 0.0
+16_Elmwood_College 0.0 0.0
+
+EDGES 42
+label src dest weight bw delay
+Link_0 0 2 10 100000 1
+Link_1 2 0 10 100000 1
+Link_2 1 2 10 100000 1
+Link_3 2 1 10 100000 1
+Link_4 2 3 10 100000 1
+Link_5 3 2 10 100000 1
+Link_6 2 5 10 100000 1
+Link_7 5 2 10 100000 1
+Link_8 4 9 10 100000 1
+Link_9 9 4 10 100000 1
+Link_10 5 11 10 100000 1
+Link_11 11 5 10 100000 1
+Link_12 5 12 10 100000 1
+Link_13 12 5 10 100000 1
+Link_14 6 10 10 100000 1
+Link_15 10 6 10 100000 1
+Link_16 7 11 10 100000 1
+Link_17 11 7 10 100000 1
+Link_18 8 11 10 100000 1
+Link_19 11 8 10 100000 1
+Link_20 9 12 10 100000 1
+Link_21 12 9 10 100000 1
+Link_22 9 10 10 100000 1
+Link_23 10 9 10 100000 1
+Link_24 10 11 10 100000 1
+Link_25 11 10 10 100000 1
+Link_26 11 12 10 100000 1
+Link_27 12 11 10 100000 1
+Link_28 11 13 10 100000 1
+Link_29 13 11 10 100000 1
+Link_30 11 14 10 100000 1
+Link_31 14 11 10 100000 1
+Link_32 11 15 10 100000 1
+Link_33 15 11 10 100000 1
+Link_34 11 16 10 100000 1
+Link_35 16 11 10 100000 1
+Link_36 12 13 10 100000 1
+Link_37 13 12 10 100000 1
+Link_38 12 14 10 100000 1
+Link_39 14 12 10 100000 1
+Link_40 12 15 10 100000 1
+Link_41 15 12 10 100000 1

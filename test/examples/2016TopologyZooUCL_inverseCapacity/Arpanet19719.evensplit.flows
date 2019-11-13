@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_CASE->1_ILLINOIS",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_HARVARD->3_CARNEGIE",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_MITRE->5_AMES",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->7_BBN",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->13_Stanford",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->17_Lincoln",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    }
+]

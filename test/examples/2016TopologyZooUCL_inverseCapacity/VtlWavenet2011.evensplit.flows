@@ -1,0 +1,248 @@
+[
+    {
+        "label": "flow_0_Ependes->1_Olten",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Souppes->3_Briare",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Nevers->5_Bourbon",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Charolles->7_Belleville",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Sault_Brenaz->9_Lavours",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Lyon->12_Montfaucon",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Antwerp_(NMBS)->14_Toulouse",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Brussels_MIDI_(NMBS)->16_Marseille",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Bordeaux->18_Luzern",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Azy-sur-Marne->21_Meaux",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Revigny->23_Conde-sur-Marne",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Antoing_(NMBS)->26_Thourotte",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Courrieres->28_Gent",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Antwerp->30_Altdorf",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Monte_Carasso->32_Bern",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Basel->35_Nancy",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_Mannheim->38_Frankfurt",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Internexion->40_Paris_La_Defense",
+        "src": 39,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Geneva->42_Egham",
+        "src": 41,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_London_Telehouse_North->44_Lowestoft",
+        "src": 43,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_Amiens->49_Crawley",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Rotterdam->52_Grisolles",
+        "src": 50,
+        "dest": 52,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_Bon-Encontre->54_Blois",
+        "src": 53,
+        "dest": 54,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_Nambsheim->56_Availles_(Poiters)",
+        "src": 55,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Veretz_(Tours)->58_Nersac",
+        "src": 57,
+        "dest": 58,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Blanzay->60_Meilhan",
+        "src": 59,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_St-Christophe->62_Andancette",
+        "src": 61,
+        "dest": 62,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Dusseldorf->64_Cazan",
+        "src": 63,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_Montelimar->66_Pichegu",
+        "src": 65,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_Fos->68_Poilhes",
+        "src": 67,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_Sete_(Montpellier)->70_Avignonet",
+        "src": 69,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_71_Marseillette->72_Artenay_(Orleans)",
+        "src": 71,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_73_St-Martin->74_Snow_Hill",
+        "src": 73,
+        "dest": 74,
+        "volume": 100000
+    },
+    {
+        "label": "flow_75_Pakenham->76_Zandvoort",
+        "src": 75,
+        "dest": 76,
+        "volume": 100000
+    },
+    {
+        "label": "flow_77_Essen->78_Corbeil",
+        "src": 77,
+        "dest": 78,
+        "volume": 100000
+    },
+    {
+        "label": "flow_79_L'Isle_Adam->80_Cayeux-sur-Mer",
+        "src": 79,
+        "dest": 80,
+        "volume": 100000
+    },
+    {
+        "label": "flow_81_Polegate->82_Xouxange",
+        "src": 81,
+        "dest": 82,
+        "volume": 100000
+    },
+    {
+        "label": "flow_83_Troussey->84_Elten",
+        "src": 83,
+        "dest": 84,
+        "volume": 100000
+    },
+    {
+        "label": "flow_85_Leersum/Doorn??->86_Kapella",
+        "src": 85,
+        "dest": 86,
+        "volume": 100000
+    },
+    {
+        "label": "flow_87_Porz->88_Linz",
+        "src": 87,
+        "dest": 88,
+        "volume": 100000
+    },
+    {
+        "label": "flow_89_Dernbach->90_Naurod",
+        "src": 89,
+        "dest": 90,
+        "volume": 100000
+    }
+]

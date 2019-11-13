@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_1_Brussels_Campus->2_Arlon",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Bruzav->9_Hasselt",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Brudie->11_Geel",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Louvain-la-Neuve->13_Namur",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Brugge->19_Korthijk",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Mons->21_Charleroi",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    }
+]

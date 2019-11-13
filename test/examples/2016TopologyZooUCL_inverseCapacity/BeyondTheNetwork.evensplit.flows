@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Boston->1_Detroit",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sacramento->7_Portland",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Sunnyvale->38_San_Diego",
+        "src": 8,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Tampa->44_Baltimore",
+        "src": 39,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_Denver->48_Kansas_City",
+        "src": 45,
+        "dest": 48,
+        "volume": 100000
+    }
+]

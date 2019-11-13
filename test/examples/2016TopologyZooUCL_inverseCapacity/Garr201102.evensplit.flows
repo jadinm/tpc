@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_6_AQ-1->16_TS-1",
+        "src": 6,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CS->21_PA",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_TN->34_MI-4",
+        "src": 32,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_GE->37_SA",
+        "src": 35,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_FRA->41_AQ",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    }
+]

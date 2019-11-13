@@ -1,0 +1,68 @@
+[
+    {
+        "label": "flow_0_ILLINOIS->1_MITRE",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_CARNEGIE->5_AFGWC",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BBN->7_NBS",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tinker->9_AMES",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_ARPA->11_RADC",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_McClellan->14_AMES",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_NOAA_{[Boulder,_Colorado}}->16_SAAC",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_BELVOIR->18_SDC",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_BBN->20_HARVARD",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_UCSB->24_Stanford",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_USC->26_UTAH",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_6_AQ-1->9_Pv-1",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_TS-1->20_CS",
+        "src": 17,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_PA->31_VE",
+        "src": 22,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_TN->36_MI-4",
+        "src": 34,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_GE->39_SA",
+        "src": 37,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CB->42_FRA",
+        "src": 41,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_AQ->55_Fe",
+        "src": 43,
+        "dest": 55,
+        "volume": 100000
+    }
+]

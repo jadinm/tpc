@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Thunder_Bay->2_Regina",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Ottawa->6_Windsor/Detroit",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Fredericton->9_Charlottetown",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->16_St_John's",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Saskatoon->30_Victoria",
+        "src": 23,
+        "dest": 30,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Glasgow->1_Bainville",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Culbertson->7_Missoula",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Miles_City->19_Fairfield",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Great_Falls->21_Moore",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Big_Timber->23_Billings",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    }
+]

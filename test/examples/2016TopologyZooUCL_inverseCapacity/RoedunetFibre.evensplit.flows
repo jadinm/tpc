@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_2_Gorj->11_Covasna",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Alba->14_Arges",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Dambovita->17_Buzau",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vrancea->19_Bacau",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Sibiu->24_None",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Vaslui->33_Braila",
+        "src": 30,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Suceava->40_Satu_Mare",
+        "src": 35,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Maramures->46_Timis",
+        "src": 41,
+        "dest": 46,
+        "volume": 100000
+    }
+]

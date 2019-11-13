@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Drogheda->2_Portadown",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Castleblayney->4_Monaghan",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dundalk->8_Ballymena",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Belfast->10_Europe",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_North_America->13_Omagh",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    }
+]

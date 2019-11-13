@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_4_Santa_Clara->5_Portland",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Atlanta->11_Houston",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Spokane->15_Minneapolis",
+        "src": 12,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Rochester->18_Newark",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    }
+]

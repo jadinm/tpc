@@ -1,0 +1,77 @@
+NODES 24
+label x y
+0_Kherson 32.6 46.6
+1_Mykolaiv 32.0 47.0
+2_Sevastopol 33.5 44.6
+3_Simferopol 34.1 45.0
+4_Vinnitsa 28.5 49.2
+5_Khmelnitsky 27.0 49.4
+6_Odessa 30.7 46.5
+7_Kamianets-Podilsky 26.6 48.7
+8_Frankfurt_(Internet) 0.0 0.0
+9_Poznan_(GEANT_&_Internet) 0.0 0.0
+10_Cherkassy 32.1 49.4
+11_Odessa-IX 0.0 0.0
+12_Kharkiv-IX 0.0 0.0
+13_UA-IX 0.0 0.0
+14_Zaporizhia 35.2 47.8
+15_Dnipropetrovsk 35.0 48.5
+16_Lviv 24.0 49.8
+17_Lutsk 25.3 50.8
+18_Zhitomir 28.7 50.2
+19_Kiev 30.5 50.5
+20_Pereyaslav 31.5 50.1
+21_Poltava 34.6 49.6
+22_Kharkiv 36.2 50.0
+23_Donetsk 37.8 48.0
+
+EDGES 48
+label src dest weight bw delay
+Link_0 0 1 100 10000 1
+Link_1 1 0 100 10000 1
+Link_2 0 3 200 5000 1
+Link_3 3 0 200 5000 1
+Link_4 1 10 100 10000 1
+Link_5 10 1 100 10000 1
+Link_6 1 6 100 10000 1
+Link_7 6 1 100 10000 1
+Link_8 2 3 200 5000 1
+Link_9 3 2 200 5000 1
+Link_10 4 19 200 5000 1
+Link_11 19 4 200 5000 1
+Link_12 4 5 200 5000 1
+Link_13 5 4 200 5000 1
+Link_14 5 16 200 5000 1
+Link_15 16 5 200 5000 1
+Link_16 6 11 100 10000 1
+Link_17 11 6 100 10000 1
+Link_18 7 19 200 5000 1
+Link_19 19 7 200 5000 1
+Link_20 8 19 10 100000 1
+Link_21 19 8 10 100000 1
+Link_22 9 16 10 100000 1
+Link_23 16 9 10 100000 1
+Link_24 10 19 100 10000 1
+Link_25 19 10 100 10000 1
+Link_26 12 22 100 10000 1
+Link_27 22 12 100 10000 1
+Link_28 13 19 10 100000 1
+Link_29 19 13 10 100000 1
+Link_30 14 15 200 5000 1
+Link_31 15 14 200 5000 1
+Link_32 15 21 100 10000 1
+Link_33 21 15 100 10000 1
+Link_34 15 23 200 5000 1
+Link_35 23 15 200 5000 1
+Link_36 16 19 100 10000 1
+Link_37 19 16 100 10000 1
+Link_38 17 18 200 5000 1
+Link_39 18 17 200 5000 1
+Link_40 18 19 200 5000 1
+Link_41 19 18 200 5000 1
+Link_42 19 20 200 5000 1
+Link_43 20 19 200 5000 1
+Link_44 19 21 100 10000 1
+Link_45 21 19 100 10000 1
+Link_46 21 22 100 10000 1
+Link_47 22 21 100 10000 1

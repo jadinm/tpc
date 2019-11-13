@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Tokyo_DC1->1_Tokyo_DC2",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Sendai_DC->3_Saitama_DC",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->8_Yokohama_DC2",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Kyoto_DC->26_PaloAlto_DC",
+        "src": 22,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->29_Chiba",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Toyama->32_Kanazawa",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->35_Okayama",
+        "src": 33,
+        "dest": 35,
+        "volume": 100000
+    }
+]

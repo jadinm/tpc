@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_Cilacap->1_Purwokerto",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Sukabumi->3_Tasikmalaya",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Pekalongan->6_Magelang",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Yogyakarta->8_Kudus",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Madium->14_Tuban",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Banyunwangi->17_Probolinggo",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Malang->20_Cibaliung",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Tegal->22_Cirebon",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Karawang->27_Serang",
+        "src": 24,
+        "dest": 27,
+        "volume": 100000
+    }
+]

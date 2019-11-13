@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_1_Pau->2_Orleans",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->4_Clermont-Ferrand",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dijon->10_Martinique,_Guadeloupe,_Cayenne",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Nice->18_Grenoble",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Internet_mondial->23_Nantes",
+        "src": 19,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Strasbourg->26_Nancy",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Reims->28_Compiegne",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Lille->30_Rouen",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Caen->32_Rennes",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    }
+]

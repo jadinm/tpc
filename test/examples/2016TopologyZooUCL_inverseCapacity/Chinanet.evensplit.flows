@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_1_Lanzhou->6_Taiyuan",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Suzhou->14_Guiyang",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Chongqing->22_Haikou",
+        "src": 15,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Xining->40_Hohhot",
+        "src": 32,
+        "dest": 40,
+        "volume": 100000
+    }
+]

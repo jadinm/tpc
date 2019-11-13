@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_4_?->8_Lima",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_?->13_Costa_Rica",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_?->20_?",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Guayaquil->24_Monterey",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_?->27_?",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_?->30_Caracas",
+        "src": 25,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Honduras->34_Cali",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Quito->40_?",
+        "src": 32,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Sucre->47_New_York",
+        "src": 37,
+        "dest": 41,
+        "volume": 100000
+    }
+]

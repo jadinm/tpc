@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_1_Dallas->2_St_Cloud",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Santa_Clara->10_Salem",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Bend->13_Reno",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_New_York->16_Ashburn",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Spokane->18_Fargo?",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Billings->22_Orem",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    }
+]

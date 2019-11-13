@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Fribourg->2_Delemont",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Villigen_PSI->24_Brig",
+        "src": 6,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Martigny->26_Grenchen",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Davos->32_Horw",
+        "src": 27,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Brugg->36_Geneva",
+        "src": 33,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Yverdon->39_Birmensdorf",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Rueschlikon->41_Winterthur",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    }
+]

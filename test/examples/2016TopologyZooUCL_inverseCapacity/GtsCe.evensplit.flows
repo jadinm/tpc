@@ -1,0 +1,242 @@
+[
+    {
+        "label": "flow_2_Kobenhavn->3_Hamburg",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Gdansk->5_Gdynia",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slupsk->7_Koszalin",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kolobrzeg->9_Szczecin",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Braniewo->15_Amsterdam,_London",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Lowicz->19_Ulmi",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Balvanesti->22_Alexandria",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Craiova->26_Caransebes",
+        "src": 23,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ploiesti->31_Szombathely",
+        "src": 28,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Szekesfehervar->33_Tatabanya",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Keszthely->35_Veszprem",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Rozvadov->37_Karlovy_Vary",
+        "src": 36,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Liberec->39_Plzen",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Tirane->43_Athina",
+        "src": 42,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_Riga->49_Helsinki",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Poieni->53_Galati",
+        "src": 50,
+        "dest": 53,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_Brasov->55_Bacau",
+        "src": 54,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Medias->57_Cluj",
+        "src": 56,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Dumbravita->65_Dnipropetrovsk",
+        "src": 59,
+        "dest": 65,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Lviv->67_Tarnow",
+        "src": 66,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_68_Banska_Bystrica->71_Szolnok",
+        "src": 68,
+        "dest": 71,
+        "volume": 100000
+    },
+    {
+        "label": "flow_73_Tapolca->74_Tekirdag",
+        "src": 73,
+        "dest": 74,
+        "volume": 100000
+    },
+    {
+        "label": "flow_75_Cheb->76_Usti_nad_Labem",
+        "src": 75,
+        "dest": 76,
+        "volume": 100000
+    },
+    {
+        "label": "flow_78_Dunaujvaros->80_Tompa",
+        "src": 78,
+        "dest": 80,
+        "volume": 100000
+    },
+    {
+        "label": "flow_82_Szentes->84_Kosice",
+        "src": 82,
+        "dest": 84,
+        "volume": 100000
+    },
+    {
+        "label": "flow_85_Kecskemet->86_Paks",
+        "src": 85,
+        "dest": 86,
+        "volume": 100000
+    },
+    {
+        "label": "flow_88_Debrecen->89_Bors",
+        "src": 88,
+        "dest": 89,
+        "volume": 100000
+    },
+    {
+        "label": "flow_90_Haskovo->91_Wroclaw",
+        "src": 90,
+        "dest": 91,
+        "volume": 100000
+    },
+    {
+        "label": "flow_92_Leszno->96_Bydgoszcz",
+        "src": 92,
+        "dest": 96,
+        "volume": 100000
+    },
+    {
+        "label": "flow_97_Wloclawek->98_Olsztyn",
+        "src": 97,
+        "dest": 98,
+        "volume": 100000
+    },
+    {
+        "label": "flow_99_Konin->101_Lublin",
+        "src": 99,
+        "dest": 101,
+        "volume": 100000
+    },
+    {
+        "label": "flow_105_Radom->106_Lodz",
+        "src": 105,
+        "dest": 106,
+        "volume": 100000
+    },
+    {
+        "label": "flow_108_Kielce->109_Opole",
+        "src": 108,
+        "dest": 109,
+        "volume": 100000
+    },
+    {
+        "label": "flow_111_Svilengrad->113_Olomouc",
+        "src": 111,
+        "dest": 113,
+        "volume": 100000
+    },
+    {
+        "label": "flow_115_Zlin->118_Ceske_Budejovice",
+        "src": 115,
+        "dest": 118,
+        "volume": 100000
+    },
+    {
+        "label": "flow_119_Jihlava->121_Bielsko",
+        "src": 119,
+        "dest": 121,
+        "volume": 100000
+    },
+    {
+        "label": "flow_122_Most->127_Sankt_Peterburg",
+        "src": 122,
+        "dest": 127,
+        "volume": 100000
+    },
+    {
+        "label": "flow_132_Berlin->134_Podgorica",
+        "src": 132,
+        "dest": 134,
+        "volume": 100000
+    },
+    {
+        "label": "flow_136_Izmir->137_Thessaloniki",
+        "src": 136,
+        "dest": 137,
+        "volume": 100000
+    },
+    {
+        "label": "flow_138_Petrich->139_Pleven",
+        "src": 138,
+        "dest": 139,
+        "volume": 100000
+    }
+]

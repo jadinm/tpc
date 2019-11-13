@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_3_Krustevac->7_Leskovac",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->16_Raska",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Subotica->20_Sabac",
+        "src": 17,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->22_Uzice",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    }
+]

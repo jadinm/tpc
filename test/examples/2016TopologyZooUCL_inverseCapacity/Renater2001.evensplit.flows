@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Bordeaux->6_Montpellier",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Sophia->14_Nantes",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Strasbourg->17_Nancy",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Rouen->23_Rennes",
+        "src": 21,
+        "dest": 23,
+        "volume": 100000
+    }
+]

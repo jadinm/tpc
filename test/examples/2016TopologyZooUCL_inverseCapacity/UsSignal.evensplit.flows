@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_1_Bloomington->3_Greenwood",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Centralia_->10_St_Loius",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gary->15_Battle_Creek",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Rockford_->18_Muncie",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Anderson->21_Terre_Haute_",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Champaign_->23_Bloomington",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Peoria_->26_Ann_Arbor",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Traverse_City->29_Portage",
+        "src": 26,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Midland->35_Appleton_",
+        "src": 30,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Oshkosh_->38_Green_Bay_",
+        "src": 35,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Des_Plaines_->40_Northbrook_",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Lima->46_Warsaw",
+        "src": 42,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_Kokomo->50_Three_Rivers",
+        "src": 47,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_52_Niles->53_Dayton_",
+        "src": 51,
+        "dest": 52,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_Cincinnati_->55_Saginaw",
+        "src": 53,
+        "dest": 54,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Pontiac->60_Cleveland",
+        "src": 56,
+        "dest": 59,
+        "volume": 100000
+    }
+]

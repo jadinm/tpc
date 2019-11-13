@@ -1,0 +1,80 @@
+[
+    {
+        "label": "flow_2_HiG_Gjovik->12_HiF_Vadso",
+        "src": 2,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiF_Kirkenes->16_HSH_Stord",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_HiT_Porsgrunn->19_UiA_Arendal",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_UiA_Grimstad->25_HSH_Haugesund",
+        "src": 21,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_SA/SH_Kautokeino->32_HiNT_Namsos",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_HiNe_Sandnesjoen->43_HSF_Forde",
+        "src": 35,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HSM_Molde->45_HVO_Volda",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_HSM_Kristiansun->47_HiNT_Levanger",
+        "src": 46,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_UiTo_Karasjok->50_HiT_Notodden",
+        "src": 48,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_Hing_Stjordal->58_UMB_As",
+        "src": 51,
+        "dest": 58,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HiO_Fredrikstad->64_HH_Hamar",
+        "src": 59,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_HiL_Lillehammer->69_HH_Tynset",
+        "src": 65,
+        "dest": 69,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_HH_Evenstad->71_HH_Rena",
+        "src": 70,
+        "dest": 71,
+        "volume": 100000
+    }
+]

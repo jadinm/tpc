@@ -1,0 +1,110 @@
+[
+    {
+        "label": "flow_1_Durres->3_Pleven",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Stara_Zagora->14_Edirne",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Marseille->23_Venice",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Rome->26_Lyon",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Bologna->29_Valery",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_Blaabjerg->40_Penmarch",
+        "src": 32,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Kilkis->49_Petrich",
+        "src": 37,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Promachonas->54_Tel_Aviv",
+        "src": 44,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Yeroskipos->61_Haifa",
+        "src": 52,
+        "dest": 54,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Conil->64_Sesimbra",
+        "src": 56,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_Mazara->73_Bucharest",
+        "src": 58,
+        "dest": 63,
+        "volume": 100000
+    },
+    {
+        "label": "flow_74_Tg_Carbunesti->75_Hegyeshantom",
+        "src": 64,
+        "dest": 65,
+        "volume": 100000
+    },
+    {
+        "label": "flow_76_Bratislava->78_Katwijk",
+        "src": 66,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_79_Drobeta_Turnu_Sevenin->81_Dunaujvaros",
+        "src": 69,
+        "dest": 71,
+        "volume": 100000
+    },
+    {
+        "label": "flow_82_Budapest->83_Stuttgart",
+        "src": 72,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_84_Zurich->86_Amsterdam",
+        "src": 74,
+        "dest": 76,
+        "volume": 100000
+    },
+    {
+        "label": "flow_88_Paris->89_Lille",
+        "src": 78,
+        "dest": 79,
+        "volume": 100000
+    },
+    {
+        "label": "flow_91_Walserberg->92_Nuremberg",
+        "src": 81,
+        "dest": 82,
+        "volume": 100000
+    }
+]

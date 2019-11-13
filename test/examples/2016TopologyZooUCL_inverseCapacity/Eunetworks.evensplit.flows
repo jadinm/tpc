@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Hamburg->2_Stuttgart",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Munich->4_Berlin",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Dublin->10_Rotterdam",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_The_Hague->13_Utrecht",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    }
+]

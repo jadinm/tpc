@@ -1,0 +1,36 @@
+NODES 11
+label x y
+0_NICT_QGPOP_APAN-JP_Japan 0.0 0.0
+1_AARNET 0.0 0.0
+2_Academia_Sinica_Taiwan 0.0 0.0
+3_NTU 0.0 0.0
+4_Biopolis 0.0 0.0
+5_Fusionopolis 0.0 0.0
+6_NUS 0.0 0.0
+7_Schools 0.0 0.0
+8_SingAREN_members 0.0 0.0
+9_SingAREN-GIX 0.0 0.0
+10_TEIN3 0.0 0.0
+
+EDGES 20
+label src dest weight bw delay
+Link_0 0 9 10 100000 1
+Link_1 9 0 10 100000 1
+Link_2 1 9 10 100000 1
+Link_3 9 1 10 100000 1
+Link_4 2 9 10 100000 1
+Link_5 9 2 10 100000 1
+Link_6 3 9 10 100000 1
+Link_7 9 3 10 100000 1
+Link_8 4 9 10 100000 1
+Link_9 9 4 10 100000 1
+Link_10 5 9 10 100000 1
+Link_11 9 5 10 100000 1
+Link_12 6 9 10 100000 1
+Link_13 9 6 10 100000 1
+Link_14 7 9 10 100000 1
+Link_15 9 7 10 100000 1
+Link_16 8 9 10 100000 1
+Link_17 9 8 10 100000 1
+Link_18 9 10 10 100000 1
+Link_19 10 9 10 100000 1

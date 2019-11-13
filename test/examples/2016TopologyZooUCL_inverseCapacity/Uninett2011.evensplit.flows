@@ -1,0 +1,92 @@
+[
+    {
+        "label": "flow_2_HiG_Gjovik->4_HiBU_Kongsberg",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_UNIK_Kjeller->7_HiBu_Honefoss",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_HiNe_Nesna->14_UiTo_Karasjok",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_HVO_Volda->20_HSH_Haugesund",
+        "src": 17,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->24_HSF_Songdal",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->31_HiF_Kirkenes",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->35_HiNT_Levanger",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->39_HSM_Molde",
+        "src": 36,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_UNIS_Svalbard->41_HSM_Kristiansun",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->47_UiA_Grimstad",
+        "src": 44,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->49_UMB_As",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->53_HiT_Porsgrunn",
+        "src": 51,
+        "dest": 53,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->59_HH_Hamar",
+        "src": 57,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->64_HH_Tynset",
+        "src": 60,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->68_HH_Kongsvinger",
+        "src": 66,
+        "dest": 68,
+        "volume": 100000
+    }
+]

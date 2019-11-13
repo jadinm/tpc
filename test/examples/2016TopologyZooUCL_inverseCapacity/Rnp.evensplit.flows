@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Revife->2_Campina_Grande",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Jobo_Passoa->6_Aracaju",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Vitoria->11_Goiania",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Porto_Alegro->15_Florianopolis",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Porto_Velho->20_Campo_Grande",
+        "src": 17,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Teresina->22_Natal",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Belem->29_Sao_Luis",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    }
+]

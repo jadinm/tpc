@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_1_Bialystok->2_Wlocawek",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Plock->4_Opole",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Wroclaw->6_Lublin",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Rzeszow->9_Lodz",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Olszlyn->16_Kalowice",
+        "src": 14,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Kielce->18_Radom",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Torun->25_Gdyia",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Slupsk->27_Koszalin",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Kolobrzeg->29_Szczecin",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    }
+]

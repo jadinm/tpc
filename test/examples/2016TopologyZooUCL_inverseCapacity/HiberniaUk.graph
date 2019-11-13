@@ -1,0 +1,50 @@
+NODES 15
+label x y
+0_London -0.1 51.5
+1_Southport -3.0 53.6
+2_None 0.0 0.0
+3_None 0.0 0.0
+4_Manchester -2.2 53.5
+5_Peterborough -0.2 52.6
+6_Cambridge 0.1 52.2
+7_Sheffield -1.5 53.4
+8_Leicester -1.1 52.6
+9_Bracewell -2.2 53.9
+10_Leeds -1.5 53.8
+11_Birmingham -1.9 52.5
+12_Liverpool -3.0 53.4
+13_Reading -1.0 51.5
+14_Bristol -2.6 51.5
+
+EDGES 30
+label src dest weight bw delay
+Link_0 0 3 10 100000 1
+Link_1 3 0 10 100000 1
+Link_2 0 13 10 100000 1
+Link_3 13 0 10 100000 1
+Link_4 0 6 10 100000 1
+Link_5 6 0 10 100000 1
+Link_6 1 9 10 100000 1
+Link_7 9 1 10 100000 1
+Link_8 1 12 10 100000 1
+Link_9 12 1 10 100000 1
+Link_10 2 13 10 100000 1
+Link_11 13 2 10 100000 1
+Link_12 4 11 10 100000 1
+Link_13 11 4 10 100000 1
+Link_14 4 12 10 100000 1
+Link_15 12 4 10 100000 1
+Link_16 5 8 10 100000 1
+Link_17 8 5 10 100000 1
+Link_18 5 6 10 100000 1
+Link_19 6 5 10 100000 1
+Link_20 7 8 10 100000 1
+Link_21 8 7 10 100000 1
+Link_22 7 10 10 100000 1
+Link_23 10 7 10 100000 1
+Link_24 9 10 10 100000 1
+Link_25 10 9 10 100000 1
+Link_26 11 14 10 100000 1
+Link_27 14 11 10 100000 1
+Link_28 13 14 10 100000 1
+Link_29 14 13 10 100000 1

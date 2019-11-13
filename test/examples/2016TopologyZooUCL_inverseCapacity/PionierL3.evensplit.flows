@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_8_Rzeszow->12_Sochaczew",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Czechtochowa->25_Wroclaw",
+        "src": 20,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Opole->28_Olsztyn",
+        "src": 26,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Koszalin->33_Zielona_gora",
+        "src": 31,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Bydgoszcz->36_Torun",
+        "src": 35,
+        "dest": 36,
+        "volume": 100000
+    }
+]

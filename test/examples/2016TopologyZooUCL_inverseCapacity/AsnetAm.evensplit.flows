@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_4_Inst._Biochem->12_Library",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geological->27_?",
+        "src": 15,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Museum->44_SCS",
+        "src": 28,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_Inst._Microbiology->48_Molecular_Structure",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_Institute_of_Applied_Physics->57_Agricultural_Academy",
+        "src": 55,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_58_Ecological_Center->59_Intitute_of_Botany",
+        "src": 58,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->62_Yerevan_University",
+        "src": 61,
+        "dest": 62,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Hagerstown->7_Edinburg",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Covington_(Planned)->10_Glenville",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sutton->12_Summersville",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Charleston_(Planned)->18_Warrenton",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Front_Royal->21_None",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Leesburg->26_Ashburn",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    }
+]

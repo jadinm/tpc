@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Kherson->3_Simferopol",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Vinnitsa->5_Khmelnitsky",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Odessa->10_Cherkassy",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Zhitomir->22_Kharkiv",
+        "src": 18,
+        "dest": 22,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_1_Dover->2_Biddeford",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Sanford->4_Boston",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Framingham->6_Manchester",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Keene->8_Worcester",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Springfield->10_Bangor",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Turner->13_Bethel",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

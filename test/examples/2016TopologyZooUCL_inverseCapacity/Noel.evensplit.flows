@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_3_Othello->4_Walla_Walla",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Pullman->10_Ellensburg",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Vancouver->12_Bellingham",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Mt_Vernon->14_Everett",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Tacoma->17_Olympia",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    }
+]

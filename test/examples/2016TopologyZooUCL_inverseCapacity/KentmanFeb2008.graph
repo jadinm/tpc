@@ -1,0 +1,87 @@
+NODES 26
+label x y
+0_UCCA-C 1.1 51.3
+1_Canterbury_College 1.1 51.3
+2_Medway_ACL 0.5 51.4
+3_Mid_Kent_College 0.5 51.4
+4_South_Kent_College_-_Ashford 0.9 51.1
+5_KIAD-O 0.5 51.3
+6_Thanet_College 1.4 51.4
+7_Hilderstone_College 1.4 51.4
+8_Kent_ACL 0.5 51.3
+9_Hadlow_College 0.3 51.2
+10_University_College_Folkestone 1.2 51.1
+11_Kent_Community_Network_(Schools,_etc) 0.0 0.0
+12_UoK-C 1.1 51.3
+13_West_Kent_College 0.3 51.2
+14_Hadlow_College_Mottingham 0.0 51.4
+15_IFS_School_of_Finance 1.1 51.3
+16_NW_Kent_College_-_Dartford 0.2 51.5
+17_KIAD-R 0.5 51.4
+18_UoG-AH 0.1 51.4
+19_University_of_Greenwich 0.1 51.4
+20_CCCU-C 1.1 51.3
+21_IC-Wye 0.9 51.2
+22_EIS-Maidstone 0.5 51.3
+23_CCCU-S 0.2 51.2
+24_CCCU-T 1.4 51.4
+25_Dorton_College 0.2 51.3
+
+EDGES 56
+label src dest weight bw delay
+Link_0 0 12 200 5000 1
+Link_1 12 0 200 5000 1
+Link_2 1 12 200 5000 1
+Link_3 12 1 200 5000 1
+Link_4 2 19 200 5000 1
+Link_5 19 2 200 5000 1
+Link_6 3 19 200 5000 1
+Link_7 19 3 200 5000 1
+Link_8 4 21 200 5000 1
+Link_9 21 4 200 5000 1
+Link_10 5 22 200 5000 1
+Link_11 22 5 200 5000 1
+Link_12 6 24 200 5000 1
+Link_13 24 6 200 5000 1
+Link_14 7 24 200 5000 1
+Link_15 24 7 200 5000 1
+Link_16 8 19 200 5000 1
+Link_17 19 8 200 5000 1
+Link_18 9 23 200 5000 1
+Link_19 23 9 200 5000 1
+Link_20 10 21 200 5000 1
+Link_21 21 10 200 5000 1
+Link_22 11 12 10 100000 1
+Link_23 12 11 10 100000 1
+Link_24 11 22 10 100000 1
+Link_25 22 11 10 100000 1
+Link_26 12 15 200 5000 1
+Link_27 15 12 200 5000 1
+Link_28 12 19 10 100000 1
+Link_29 19 12 10 100000 1
+Link_30 12 20 200 5000 1
+Link_31 20 12 200 5000 1
+Link_32 12 21 10 100000 1
+Link_33 21 12 10 100000 1
+Link_34 12 24 33 29731 1
+Link_35 24 12 33 29731 1
+Link_36 12 24 129 7750 1
+Link_37 24 12 129 7750 1
+Link_38 13 23 200 5000 1
+Link_39 23 13 200 5000 1
+Link_40 14 18 200 5000 1
+Link_41 18 14 200 5000 1
+Link_42 16 18 200 5000 1
+Link_43 18 16 200 5000 1
+Link_44 17 19 200 5000 1
+Link_45 19 17 200 5000 1
+Link_46 18 19 10 100000 1
+Link_47 19 18 10 100000 1
+Link_48 19 22 10 100000 1
+Link_49 22 19 10 100000 1
+Link_50 19 25 200 5000 1
+Link_51 25 19 200 5000 1
+Link_52 21 22 10 100000 1
+Link_53 22 21 10 100000 1
+Link_54 22 23 200 5000 1
+Link_55 23 22 200 5000 1

@@ -1,0 +1,49 @@
+NODES 14
+label x y
+0_Tel_Aviv_GigaPoP 34.8 32.1
+1_Int'l_backup_ 0.0 0.0
+2_IIX 0.0 0.0
+3_Petach_Tikva_GigaPoP 34.9 32.1
+4_External_Users 0.0 0.0
+5_GEANT_2_Germany 0.0 0.0
+6_Open_University 34.9 32.2
+7_Haifa_University 35.0 32.8
+8_Technion 35.0 32.8
+9_Bar_Ilan_University 34.8 32.1
+10_Hebrew_University 35.2 31.8
+11_Ben_Gurion_University 35.0 29.6
+12_Weizmann_Institute 34.8 31.9
+13_Tel_Aviv_University 34.8 32.1
+
+EDGES 30
+label src dest weight bw delay
+Link_0 0 1 41 24000 1
+Link_1 1 0 41 24000 1
+Link_2 0 7 25 40000 1
+Link_3 7 0 25 40000 1
+Link_4 0 8 22 43666 1
+Link_5 8 0 22 43666 1
+Link_6 0 9 25 40000 1
+Link_7 9 0 25 40000 1
+Link_8 0 10 25 40000 1
+Link_9 10 0 25 40000 1
+Link_10 0 11 25 40000 1
+Link_11 11 0 25 40000 1
+Link_12 0 12 25 40000 1
+Link_13 12 0 25 40000 1
+Link_14 0 13 25 40000 1
+Link_15 13 0 25 40000 1
+Link_16 2 3 22 43666 1
+Link_17 3 2 22 43666 1
+Link_18 3 4 22 43666 1
+Link_19 4 3 22 43666 1
+Link_20 3 5 10 100000 1
+Link_21 5 3 10 100000 1
+Link_22 3 6 25 40000 1
+Link_23 6 3 25 40000 1
+Link_24 3 7 25 40000 1
+Link_25 7 3 25 40000 1
+Link_26 3 9 25 40000 1
+Link_27 9 3 25 40000 1
+Link_28 3 13 25 40000 1
+Link_29 13 3 25 40000 1

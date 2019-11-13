@@ -1,0 +1,25 @@
+NODES 6
+label x y
+0_Seattle -122.3 47.6
+1_San_Jose -121.9 37.3
+2_Minneapolis -93.3 45.0
+3_Chicago -87.7 41.9
+4_Vienna -77.3 38.9
+5_Dallas -96.8 32.8
+
+EDGES 14
+label src dest weight bw delay
+Link_0 0 1 10 45000 1
+Link_1 1 0 10 45000 1
+Link_2 0 3 10 45000 1
+Link_3 3 0 10 45000 1
+Link_4 1 3 10 45000 1
+Link_5 3 1 10 45000 1
+Link_6 1 4 10 45000 1
+Link_7 4 1 10 45000 1
+Link_8 2 3 10 45000 1
+Link_9 3 2 10 45000 1
+Link_10 3 4 10 45000 1
+Link_11 4 3 10 45000 1
+Link_12 3 5 10 45000 1
+Link_13 5 3 10 45000 1

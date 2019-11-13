@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_3_Ottawa->5_Philadelphia",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Hartford->8_Baltimore",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Austin->16_Jacksonville",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pittsburgh->24_Detroit",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Indianapolis->28_St_Louis",
+        "src": 26,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Raleigh->38_San_Diego",
+        "src": 34,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Vancouver->44_Portland",
+        "src": 42,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_Salt_Lake_City->48_Minneapolis",
+        "src": 46,
+        "dest": 48,
+        "volume": 100000
+    }
+]

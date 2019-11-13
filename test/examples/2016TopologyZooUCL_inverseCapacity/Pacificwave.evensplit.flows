@@ -1,0 +1,20 @@
+[
+    {
+        "label": "flow_2_NLR_FrameNet->6_NLR_FrameNet",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->8_NLR_FrameNet",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->17_CENIC",
+        "src": 9,
+        "dest": 17,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Eisenstadt->1_St._Polten",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Leoben->6_Krems",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Klagenfurt2->15_Linz1",
+        "src": 13,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->17_Salzburg1",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->21_Dornbirn",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    }
+]

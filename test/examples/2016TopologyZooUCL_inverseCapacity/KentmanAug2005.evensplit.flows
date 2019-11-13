@@ -1,0 +1,20 @@
+[
+    {
+        "label": "flow_10_NTL-Wye->11_Cranbrook",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->17_Dunkirk",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_UoG-AH->26_CCCU-T",
+        "src": 19,
+        "dest": 25,
+        "volume": 100000
+    }
+]

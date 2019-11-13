@@ -1,0 +1,110 @@
+[
+    {
+        "label": "flow_0_South_Bend->4_Youngstown",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Dover->11_Rochester",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Roanoke->13_Norfolk/VA_Beach",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Fredericksburg->17_Altoona",
+        "src": 14,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Poughkeepsie->20_Stamford",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Binghampton->27_Petersburg",
+        "src": 21,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Emporia->31_Indianapolis",
+        "src": 28,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Williamsburg->33_Culpeper",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dayton->36_Columbus",
+        "src": 35,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_Danville->38_Raleigh",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Rocky_Mount->40_Roanoke_Rapids",
+        "src": 39,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_Baltimore->49_New_Haven",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Hartford->56_Providence",
+        "src": 50,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Boston->58_Worcester",
+        "src": 57,
+        "dest": 58,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Springfield->60_Harrisonburg",
+        "src": 59,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Salisbury->62_Cincinnati",
+        "src": 61,
+        "dest": 62,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Jackson->64_Battle_Creek",
+        "src": 63,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_Lansing->70_Southfield",
+        "src": 67,
+        "dest": 70,
+        "volume": 100000
+    }
+]

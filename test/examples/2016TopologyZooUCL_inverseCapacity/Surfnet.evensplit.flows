@@ -1,0 +1,86 @@
+[
+    {
+        "label": "flow_5_Lelystad->6_Leeuwarden",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Den_Helder->9_Haarlem",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Houten->13_Wageningen",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Venlo->18_Maasbracht",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Yerseke->21_Vlissingen",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Gouda->23_Nieuwegen",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Tilburg->25_Dordrecht",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Middelburg->29_Zierikzee",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Breukelen->33_Oegstgeest",
+        "src": 31,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Lisse->35_Schiphol-Rijk",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Hilversum->39_Den_Haag",
+        "src": 36,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Emmen->41_Winschoten",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Apeldoorn->44_Zutphen",
+        "src": 43,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_Enschede->48_Meppel",
+        "src": 45,
+        "dest": 48,
+        "volume": 100000
+    }
+]

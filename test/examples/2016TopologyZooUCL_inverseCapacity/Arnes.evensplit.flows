@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_Trbovlje->1_Krsko",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Bled->6_Novo_Mesto",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tolmin->10_Portoroz",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Gornja_Radgona->12_Radenci",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Rogasja_Slatina->18_Postojna",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Ajdovscina->20_Kovevje",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Kamnik->22_Izola",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Slovenj_Gradec->26_Murska_Sobota",
+        "src": 24,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Ljutomer->28_Ormoz",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    }
+]

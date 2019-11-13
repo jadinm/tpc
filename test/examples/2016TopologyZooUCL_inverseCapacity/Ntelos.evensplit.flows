@@ -1,0 +1,62 @@
+[
+    {
+        "label": "flow_1_Culpeper->3_Madison",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Warrenton->12_Bristol",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Tazewell->15_Bluefield",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Blacksburg->19_Christiansburg",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Martinsville->21_Rocky_Mount",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Lexington->25_South_Boston",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Montgomery->28_Kingsport",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Lewisburg->32_White_Sulphur_Springs",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Ashland->41_Morgantown",
+        "src": 34,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Sutton->45_Pittsburgh",
+        "src": 42,
+        "dest": 44,
+        "volume": 100000
+    }
+]

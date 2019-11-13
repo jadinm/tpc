@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_2_Chomutov->4_Jindrichuv_Hradec",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Havlickuv_Brod->12_Usti_nad_Labem",
+        "src": 5,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Zlin->16_Ostrokovice",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Hodonin->22_Beroun",
+        "src": 17,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Karlovy_vary->26_Ceska_Trebova",
+        "src": 23,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Liberec->28_Semily",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    }
+]

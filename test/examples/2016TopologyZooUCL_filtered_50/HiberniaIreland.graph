@@ -1,0 +1,29 @@
+NODES 8
+label x y
+0_Dublin -6.3 53.3
+1_Galway -9.0 53.3
+2_Limerick -8.6 52.7
+3_Cork -8.5 51.9
+4_Waterford -7.1 52.3
+5_Portlaioise -7.3 53.0
+6_None 0.0 0.0
+7_None 0.0 0.0
+
+EDGES 16
+label src dest weight bw delay
+Link_0 0 4 10 100000 1
+Link_1 4 0 10 100000 1
+Link_2 0 5 10 100000 1
+Link_3 5 0 10 100000 1
+Link_4 0 6 10 100000 1
+Link_5 6 0 10 100000 1
+Link_6 0 7 10 100000 1
+Link_7 7 0 10 100000 1
+Link_8 1 2 10 100000 1
+Link_9 2 1 10 100000 1
+Link_10 2 3 10 100000 1
+Link_11 3 2 10 100000 1
+Link_12 2 5 10 100000 1
+Link_13 5 2 10 100000 1
+Link_14 3 4 10 100000 1
+Link_15 4 3 10 100000 1

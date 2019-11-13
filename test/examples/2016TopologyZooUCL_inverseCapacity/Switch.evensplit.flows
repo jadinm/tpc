@@ -1,0 +1,80 @@
+[
+    {
+        "label": "flow_14_HEIG-VD->15_VSNet",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->26_UniFR",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->30_HFT-SO",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->33_EHL",
+        "src": 31,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_HSR->36_PSI",
+        "src": 34,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->38_BSSE",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->41_Skyguide",
+        "src": 39,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HES-SO_AvdP->45_IMD",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->48_EUResearch",
+        "src": 46,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->61_RERO",
+        "src": 51,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->66_ZHAW",
+        "src": 62,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_meteoGH->68_NAZ",
+        "src": 67,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_72_IBM->73_WSL",
+        "src": 72,
+        "dest": 73,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Bordeaux->1_Toulouse",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->5_Besancon",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->8_Grenoble",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Internet_mondial->20_Nantes",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Strasbourg->23_Nancy",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->28_Caen",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_2_Oskaloosa->3_Ottumwa",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Creston->17_Iowa_City",
+        "src": 4,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Mt._Pleasant->21_Fairfield",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Muscatine->23_Ames",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Marshalltown->25_Spencer",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Ft_Dodge->29_Waterloo",
+        "src": 27,
+        "dest": 29,
+        "volume": 100000
+    }
+]

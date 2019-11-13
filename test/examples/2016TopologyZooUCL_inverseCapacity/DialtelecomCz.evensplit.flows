@@ -1,0 +1,230 @@
+[
+    {
+        "label": "flow_1_Ostrava->4_Janovice",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cesky_Tusin->10_Ceska_Lipa",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Usti_nad_Labem->19_Hora_Sv._Kateriny",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Kasejovice->23_Haje",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Melnice->27_Hraz",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Chrastovice->36_Bratislava",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_Hodonin->40_Vyskov",
+        "src": 22,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Proslejov->45_Kyselovice",
+        "src": 26,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_Olomouc->49_Osek",
+        "src": 30,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_Horami->56_Tritim",
+        "src": 35,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Zverkovice->61_Zajecice",
+        "src": 40,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Zlosyn->64_Nove_Ouholice",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Krupa->68_Kladno",
+        "src": 47,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_Hajek->70_Radonice",
+        "src": 50,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_71_Tuklaty->72_Limuzy",
+        "src": 52,
+        "dest": 53,
+        "volume": 100000
+    },
+    {
+        "label": "flow_73_KS_Kourim->80_Pozden",
+        "src": 54,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_89_Most->91_Svinomazy",
+        "src": 64,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_93_Plzen->95_Bor",
+        "src": 67,
+        "dest": 69,
+        "volume": 100000
+    },
+    {
+        "label": "flow_98_Trstenice->100_Hlohova",
+        "src": 71,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_103_Sosen->104_Karlovy_Vary",
+        "src": 74,
+        "dest": 75,
+        "volume": 100000
+    },
+    {
+        "label": "flow_106_Marianske_Lazne->108_Cheb",
+        "src": 76,
+        "dest": 77,
+        "volume": 100000
+    },
+    {
+        "label": "flow_109_Sokolov->110_Mladotice",
+        "src": 78,
+        "dest": 79,
+        "volume": 100000
+    },
+    {
+        "label": "flow_112_Ust_nad_Orlicl->117_Bruntal",
+        "src": 80,
+        "dest": 83,
+        "volume": 100000
+    },
+    {
+        "label": "flow_121_Sumperk->122_Jemniste",
+        "src": 84,
+        "dest": 85,
+        "volume": 100000
+    },
+    {
+        "label": "flow_125_Zvestov->126_Doubravice",
+        "src": 87,
+        "dest": 88,
+        "volume": 100000
+    },
+    {
+        "label": "flow_128_Kamyk->129_Brzina",
+        "src": 90,
+        "dest": 91,
+        "volume": 100000
+    },
+    {
+        "label": "flow_131_Velka->132_Jindice",
+        "src": 92,
+        "dest": 93,
+        "volume": 100000
+    },
+    {
+        "label": "flow_134_Vrbice->135_Vilemovice",
+        "src": 94,
+        "dest": 95,
+        "volume": 100000
+    },
+    {
+        "label": "flow_137_Olesna->139_Pardubice",
+        "src": 96,
+        "dest": 98,
+        "volume": 100000
+    },
+    {
+        "label": "flow_147_V._Pavlovice->148_Hustopece",
+        "src": 103,
+        "dest": 104,
+        "volume": 100000
+    },
+    {
+        "label": "flow_150_Lanzhot->155_Tvrdonice",
+        "src": 106,
+        "dest": 111,
+        "volume": 100000
+    },
+    {
+        "label": "flow_156_Mutenico->159_Bukovany",
+        "src": 112,
+        "dest": 114,
+        "volume": 100000
+    },
+    {
+        "label": "flow_160_Stare_Mesto->161_Zlin",
+        "src": 115,
+        "dest": 116,
+        "volume": 100000
+    },
+    {
+        "label": "flow_177_Brno1->178_Brno2",
+        "src": 127,
+        "dest": 128,
+        "volume": 100000
+    },
+    {
+        "label": "flow_179_Kninice->180_Dacice",
+        "src": 129,
+        "dest": 130,
+        "volume": 100000
+    },
+    {
+        "label": "flow_181_Hefmanec->183_Dolni_Radoun",
+        "src": 131,
+        "dest": 132,
+        "volume": 100000
+    },
+    {
+        "label": "flow_186_Jihlava->190_Cerna",
+        "src": 133,
+        "dest": 135,
+        "volume": 100000
+    },
+    {
+        "label": "flow_191_Brezejc->192_Kralice",
+        "src": 136,
+        "dest": 137,
+        "volume": 100000
+    }
+]
