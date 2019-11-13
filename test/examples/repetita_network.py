@@ -14,7 +14,7 @@ class RepetitaEdge:
         self.dest = int(dest)
 
         self.weight_src = int(weight)
-        self.bw_src = int(min(int(bw)/10**6, 10))  # Mbps
+        self.bw_src = int(min(int(bw)/10**3, 10))  # kbps
         self.delay_src = int(delay)
 
         self.weight_dst = -1
@@ -48,6 +48,7 @@ class RepetitaEdge:
             raise Exception("Only partial information: " + str(self))
         bw_src = self.bw_src if topo.bw is None else topo.bw
         bw_dst = self.bw_dst if topo.bw is None else topo.bw
+        print("Link between %s and %s" % (node_index[self.src], node_index[self.dest]))
         return topo.addLink(node_index[self.src], node_index[self.dest],
                             params1={"bw": bw_src,
                                      "delay": str(self.delay_src) + "ms",
@@ -71,7 +72,19 @@ class RepetitaTopo(SRNTopo):
         self.rerouting_enabled = rerouting_enabled
         self.bw = bw
         self.switch_count = 1
+        self.router_indices = []
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
+
+    def getFromIndex(self, idx):
+        """
+        Get Node name that was at index idx
+        :param idx: The index of the node in the Repetita file
+        :return: The string name of the router
+        """
+        return self.router_indices[idx] if idx < len(self.router_indices) else None
+
+    def label2node(self, label):
+        return label.replace("(", "").replace(")", "").replace("]", "").replace("[", "").replace("/", "")[:9]
 
     def build(self, *args, **kwargs):
         """
@@ -86,9 +99,11 @@ class RepetitaTopo(SRNTopo):
             fileobj.readline()  # label x y
             for i in range(nbr_nodes):
                 label, _, _ = fileobj.readline().split(" ")  # Node line
-                router = self.addRouter(label)
+                router = self.addRouter(self.label2node(label))  # Interface names are at max 15 characters (NULL not included)
+                self.router_indices.append(self.label2node(label))  # Interface names are at max 15 characters (NULL not included)
                 access_routers[router] = (0, float("inf"))
                 node_index.append(router)
+            print(self.router_indices)
 
             fileobj.readline()  # Empty line
             nbr_edges = int(fileobj.readline().split(" ")[1])  # EDGES XXX
@@ -114,7 +129,7 @@ class RepetitaTopo(SRNTopo):
         # We consider that access routers have maximum two links
         access_routers = [(x, bw) for x, (e, bw) in access_routers.iteritems() if e <= 2]
         for access_router, bw in access_routers:
-            h = self.addHost("h%s" % access_router)
+            h = self.addHost("h%s" % self.label2node(access_router))  # Interface names are at max 15 characters (NULL not included)
             self.addLink(h, access_router)
 
         # Add controller

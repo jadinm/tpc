@@ -225,11 +225,11 @@ class ReroutingHost(SR6Host):
         Run asynchronously the command cmd in a cgroup
         """
         popen = self.popen(["bash"], stdin=subprocess.PIPE, **kwargs)
-        time.sleep(1)
+        # time.sleep(1)
 
         cgroup = self.config.daemon(SRLocalCtrl).cgroup
         os.system('echo %d > %s/cgroup.procs' % (popen.pid, cgroup))
-        time.sleep(1)
+        # time.sleep(1)
 
         popen.stdin.write(bytes(cmd))
         popen.stdin.close()
