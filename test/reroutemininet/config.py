@@ -1,5 +1,6 @@
 
 import heapq
+import json
 import os
 import shlex
 import subprocess
@@ -21,82 +22,97 @@ class SRLocalCtrl(SRNDaemon):
 
     NAME = 'sr-localctrl'
     KILL_PATTERNS = (NAME,)
+    BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
+    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")  # TODO Change
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super(SRLocalCtrl, self).__init__(*args,
                                           template_lookup=template_lookup,
                                           **kwargs)
-        self.prog_id = -1
-        self.files.append(self.ebpf_load_path)
+        self.files.append(self.ebpf_load_path(self._node.name))
         self.files.append(self.map_path("dest_map_fd"))
         os.makedirs(self._node.cwd, exist_ok=True)
+        self.attached = False
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
         defaults.loglevel = self.DEBUG  # TODO Remove
-        defaults.bpftool = os.path.expanduser("~/ebpf_hhf/bpftool")
-        defaults.ebpf_program = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")  # TODO Change
+        defaults.bpftool = self.BPFTOOL
+        defaults.ebpf_program = self.EBPF_PROGRAM
 
     @property
     def cgroup(self):
         return "/sys/fs/cgroup/unified/{node}_{daemon}.slice/".format(node=self._node.name, daemon=self.NAME)
 
-    @property
-    def ebpf_load_path(self):
-        return "/sys/fs/bpf/{node}_{daemon}".format(node=self._node.name, daemon=self.NAME)
+    @classmethod
+    def ebpf_load_path(cls, node_name):
+        return "/sys/fs/bpf/{node}_{daemon}".format(node=node_name,
+                                                    daemon=cls.NAME)
 
     def map_path(self, map_name):
-        return self.ebpf_load_path + "_" + map_name
+        return self.ebpf_load_path(self._node.name) + "_" + map_name
 
     def render(self, cfg, **kwargs):
-
-        # Load eBPF program
-
-        cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path} type sockops"\
-              .format(bpftool=self.options.bpftool, ebpf_program=self.options.ebpf_program,
-                      ebpf_load_path=self.ebpf_load_path)
-        print(cmd)
-        print(self._node.name)
-        subprocess.check_call(shlex.split(cmd))
 
         # Extract IDs
 
         time.sleep(1)
 
-        cmd = "{bpftool} prog".format(bpftool=self.options.bpftool)
+        ebpf_load_path = self.ebpf_load_path(self._node.name)
+        cmd = "{bpftool} prog -j show pinned {ebpf_load_path}"\
+            .format(bpftool=self.options.bpftool,
+                    ebpf_load_path=ebpf_load_path)
         print(cmd)
         out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
-        prog_id = -1
-        for line in out.split("\n"):
-            if "sock_ops" in line:
-                prog_id = int(line.split(":")[0])
+        try:
+            map_ids = json.loads(out)["map_ids"]
+        except (json.JSONDecodeError, KeyError) as e:
+            print("Cannot get the map ids of %s" % ebpf_load_path)
+            raise e
 
-        cmd = "{bpftool} map".format(bpftool=self.options.bpftool)
-        print(cmd)
-        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
-        dest_map_id = -1
-        for line in out.split("\n"):
-            if "dest_map" in line:
-                dest_map_id = int(line.split(":")[0])
-        print(dest_map_id)
+        if len(map_ids) == 0:
+            raise ValueError("Cannot find the maps of %s" % ebpf_load_path)
 
         # Pin maps to fds
 
-        cmd = "{bpftool} map pin id {dest_map_id} {map_path}".format(bpftool=self.options.bpftool,
-                                                                     dest_map_id=dest_map_id,
-                                                                     map_path=self.map_path("dest_map"))
-        print(cmd)
-        subprocess.check_call(shlex.split(cmd))
+        dest_map_id = -1
+        for map_id in map_ids:
+
+            cmd = "{bpftool} map -j show id {map_id}"\
+                .format(bpftool=self.options.bpftool, map_id=map_id)
+            print(cmd)
+            out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
+            try:
+                map_name = json.loads(out)["name"]
+            except (json.JSONDecodeError, KeyError) as e:
+                print("Cannot get the map ids of %s" % ebpf_load_path)
+                raise e
+
+            # If the map is the destination map, pin it
+            # The other map is an internal map for the eBPF program
+            if map_name == "dest_map":
+                cmd = "{bpftool} map pin id {dest_map_id} {map_path}"\
+                    .format(bpftool=self.options.bpftool,
+                            dest_map_id=map_id,
+                            map_path=self.map_path("dest_map"))
+                print(cmd)
+                subprocess.check_call(shlex.split(cmd))
+                dest_map_id = map_id
+        if dest_map_id == -1:
+            raise ValueError("Cannot pin the dest_map of program %s"
+                             % ebpf_load_path)
 
         # Create cgroup
 
         mkdir_p(self.cgroup)
 
-        cmd = "{bpftool} cgroup attach {cgroup} sock_ops id {prog_id} multi"\
-              .format(bpftool=self.options.bpftool, cgroup=self.cgroup, prog_id=prog_id)
+        cmd = "{bpftool} cgroup attach {cgroup} sock_ops" \
+              " pinned {ebpf_load_path} multi"\
+              .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
+                      ebpf_load_path=ebpf_load_path)
         print(cmd)
         subprocess.check_call(shlex.split(cmd))
-        self.prog_id = prog_id
+        self.attached = True
 
         # Fill config template
 
@@ -106,10 +122,12 @@ class SRLocalCtrl(SRNDaemon):
         return cfg_content
 
     def cleanup(self):
-        if self.prog_id >= 0:
-            cmd = "{bpftool} cgroup detach {cgroup} sock_ops id {prog_id} multi".format(bpftool=self.options.bpftool,
-                                                                                        cgroup=self.cgroup,
-                                                                                        prog_id=self.prog_id)
+        if self.attached:
+            ebpf_load_path = self.ebpf_load_path(self._node.name)
+            cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
+                  " pinned {ebpf_load_path} multi"\
+                .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
+                        ebpf_load_path=ebpf_load_path)
             print(cmd)
             subprocess.check_call(shlex.split(cmd))
             os.unlink(self.map_path("dest_map"))

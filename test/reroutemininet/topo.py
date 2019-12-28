@@ -1,7 +1,10 @@
+import os
+import shlex
+import subprocess
 
 from srnmininet.config.config import SRCtrlDomain
 
-from .config import SRRerouted, SRLocalCtrl
+from .config import SRLocalCtrl
 from .host import ReroutingHostConfig
 from .router import ReroutingConfig
 
@@ -32,6 +35,36 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
         self.rerouted_opts = rerouted_opts if rerouted_opts is not None else {}
         self.localctrl_opts = localctrl_opts if localctrl_opts is not None else {}
 
+    def load_bpf_programs(self):
+        processes = []
+        for h in self.hosts:
+            # Load eBPF program
+            cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}" \
+                  " type sockops"\
+                  .format(bpftool=SRLocalCtrl.BPFTOOL,
+                          ebpf_program=SRLocalCtrl.EBPF_PROGRAM,
+                          ebpf_load_path=SRLocalCtrl.ebpf_load_path(h))
+            print(h + " " + cmd)
+            processes.append(subprocess.Popen(shlex.split(cmd),
+                                              stdout=subprocess.PIPE,
+                                              stderr=subprocess.PIPE))
+
+        failed = False
+        for p in processes:
+            stdout, stderr = p.communicate()
+            p.poll()
+            if stdout is not None:
+                print(stdout.decode("utf-8"))
+            if stderr is not None:
+                print(stderr.decode("utf-8"))
+            if p.returncode != 0:
+                print("ERROR %d while loading the eBPF program" % p.returncode)
+                failed = True
+                break
+
+        subprocess.call(shlex.split("pkill -9 bpftool"))
+        return not failed
+
     def apply(self, topo):
         """Apply the Overlay properties to the given topology"""
         super(SRReroutedCtrlDomain, self).apply(topo)
@@ -48,8 +81,10 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
             # self.rerouted_opts))
             topo.nodeInfo(n)["config"] = config
 
-        # TODO Load the program concurrently as many times as needed
-
+        # Load the program concurrently as many times as needed
+        # because the verification is a slow process
+        if not self.load_bpf_programs():
+            raise ValueError("eBPF programs are not loading")
 
         for h in self.hosts:
             config = topo.nodeInfo(h).get("config", None)
