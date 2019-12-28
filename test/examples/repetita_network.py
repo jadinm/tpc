@@ -1,8 +1,11 @@
 
 import os
+import string
 
 from srnmininet.srntopo import SRNTopo
 
+from reroutemininet.config import Lighttpd
+from reroutemininet.host import ReroutingHostConfig
 from reroutemininet.topo import SRReroutedCtrlDomain
 
 
@@ -14,7 +17,7 @@ class RepetitaEdge:
         self.dest = int(dest)
 
         self.weight_src = int(weight)
-        self.bw_src = int(min(int(bw)/10**3, 10))  # kbps
+        self.bw_src = int(int(bw) / 10**3)  # Mbps
         self.delay_src = int(delay)
 
         self.weight_dst = -1
@@ -84,7 +87,13 @@ class RepetitaTopo(SRNTopo):
         return self.router_indices[idx] if idx < len(self.router_indices) else None
 
     def label2node(self, label):
-        return label.replace("(", "").replace(")", "").replace("]", "").replace("[", "").replace("/", "")[:9]
+        node_name = ""
+        for i in range(len(label)):
+            if len(node_name) == 9:
+                break
+            if label[i] in string.ascii_letters or label[i] in "-_" or label[i] in string.digits:
+                node_name = node_name + label[i]
+        return node_name
 
     def build(self, *args, **kwargs):
         """
@@ -127,7 +136,7 @@ class RepetitaTopo(SRNTopo):
                 edge.add_to_topo(self, node_index)
 
         # We consider that access routers have maximum two links
-        access_routers = [(x, bw) for x, (e, bw) in access_routers.iteritems() if e <= 2]
+        access_routers = [(x, bw) for x, (e, bw) in access_routers.items() if e <= 2]
         for access_router, bw in access_routers:
             h = self.addHost("h%s" % self.label2node(access_router))  # Interface names are at max 15 characters (NULL not included)
             self.addLink(h, access_router)
@@ -193,4 +202,6 @@ class RepetitaTopo(SRNTopo):
     def addHost(self, name, **params):
         if self.cwd is not None and "cwd" not in params:
             params["cwd"] = os.path.join(self.cwd, name)
-        return super(SRNTopo, self).addHost(name, **params)
+        h = super(SRNTopo, self).addHost(name, config=ReroutingHostConfig, **params)
+        h.addDaemon(Lighttpd)  # Launch an HTTP server on each node
+        return h

@@ -26,7 +26,9 @@ class RerouteIntf(SR6TCIntf):
 
             # FQCodel # TODO Parametrize
             if enable_ecn:
-                cmds += ['%s qdisc add dev %s {parent} handle 4: fq_codel ecn'.format(parent=parent)]
+                cmds += ['%s qdisc add dev %s {parent} handle 4: fq_codel '
+                         # 'interval 10ms target 5ms '  # limit 1000
+                         'ecn'.format(parent=parent)]
                 parent = ' parent 4: '
 
         return cmds, parent

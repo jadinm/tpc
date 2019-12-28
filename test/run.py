@@ -53,6 +53,11 @@ def parse_args():
     parser.add_argument('--repetita-dir', help='Gives the path to a Repetita directory (only for repetita tests)',
                         default=None)
     parser.add_argument('--ebpf', action="store_true", help='Use ebpf in the evaluation')
+    parser.add_argument('--tcpdump', action="store_true",
+                        help='Use tcpdump on each host in the evaluation (only for repetita tests)')
+    parser.add_argument('--with-interactive', action="store_true",
+                        help='Send interactive following a Zipf law in volume '
+                             'while sending iperf traffic in the evaluation.')
     return parser.parse_args()
 
 

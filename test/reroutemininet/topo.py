@@ -1,9 +1,9 @@
 
 from srnmininet.config.config import SRCtrlDomain
 
-from config import SRRerouted, SRLocalCtrl
-from host import ReroutingHostConfig
-from router import ReroutingConfig
+from .config import SRRerouted, SRLocalCtrl
+from .host import ReroutingHostConfig
+from .router import ReroutingConfig
 
 
 class SRReroutedCtrlDomain(SRCtrlDomain):
@@ -44,8 +44,12 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
                 config[1]['additional_daemons'] = []
             if 'rerouting_enabled' not in self.rerouted_opts:
                 self.rerouted_opts['rerouting_enabled'] = getattr(topo, 'rerouting_enabled', True)
-            config[1]['additional_daemons'].append((SRRerouted, self.rerouted_opts))
+            # config[1]['additional_daemons'].append((SRRerouted,
+            # self.rerouted_opts))
             topo.nodeInfo(n)["config"] = config
+
+        # TODO Load the program concurrently as many times as needed
+
 
         for h in self.hosts:
             config = topo.nodeInfo(h).get("config", None)

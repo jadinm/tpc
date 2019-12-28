@@ -3,16 +3,16 @@ import heapq
 import os
 import shlex
 import subprocess
-from mininet.log import lg
 import time
 
-from ipmininet.router.config.base import Daemon
-from ipmininet.router.config.utils import template_lookup
+from ipmininet.host.config.base import HostDaemon
 from ipmininet.utils import realIntfList
-from srnmininet.config.config import SRNDaemon, ZlogDaemon
+from srnmininet.config.config import SRNDaemon, ZlogDaemon, srn_template_lookup
 from srnmininet.srnrouter import mkdir_p
 
-template_lookup.directories.append(os.path.join(os.path.dirname(__file__), 'templates'))
+
+__TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates')
+srn_template_lookup.directories.append(__TEMPLATES_DIR)
 
 
 class SRLocalCtrl(SRNDaemon):
@@ -20,12 +20,16 @@ class SRLocalCtrl(SRNDaemon):
     used on the host to fill eBPF map and reading the database"""
 
     NAME = 'sr-localctrl'
+    KILL_PATTERNS = (NAME,)
 
-    def __init__(self, *args, **kwargs):
-        super(SRLocalCtrl, self).__init__(*args, **kwargs)
+    def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
+        super(SRLocalCtrl, self).__init__(*args,
+                                          template_lookup=template_lookup,
+                                          **kwargs)
         self.prog_id = -1
         self.files.append(self.ebpf_load_path)
         self.files.append(self.map_path("dest_map_fd"))
+        os.makedirs(self._node.cwd, exist_ok=True)
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
@@ -52,6 +56,7 @@ class SRLocalCtrl(SRNDaemon):
               .format(bpftool=self.options.bpftool, ebpf_program=self.options.ebpf_program,
                       ebpf_load_path=self.ebpf_load_path)
         print(cmd)
+        print(self._node.name)
         subprocess.check_call(shlex.split(cmd))
 
         # Extract IDs
@@ -60,7 +65,7 @@ class SRLocalCtrl(SRNDaemon):
 
         cmd = "{bpftool} prog".format(bpftool=self.options.bpftool)
         print(cmd)
-        out = subprocess.check_output(shlex.split(cmd))
+        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
         prog_id = -1
         for line in out.split("\n"):
             if "sock_ops" in line:
@@ -68,7 +73,7 @@ class SRLocalCtrl(SRNDaemon):
 
         cmd = "{bpftool} map".format(bpftool=self.options.bpftool)
         print(cmd)
-        out = subprocess.check_output(shlex.split(cmd))
+        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
         dest_map_id = -1
         for line in out.split("\n"):
             if "dest_map" in line:
@@ -117,6 +122,12 @@ class SRRerouted(SRNDaemon):
     used for redirection via ICMPv6"""
 
     NAME = 'sr-rerouted'
+    KILL_PATTERNS = (NAME,)
+
+    def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
+        super(SRRerouted, self).__init__(*args,
+                                         template_lookup=template_lookup,
+                                         **kwargs)
 
     def build(self):
         cfg = super(SRRerouted, self).build()
@@ -204,52 +215,15 @@ class SRRerouted(SRNDaemon):
         return cfg_content
 
 
-class IPerf(Daemon):
-    """Class to laucnh iperf in daemon mode"""
-
-    NAME = "iperf"
-
-    def render(self, cfg, **kwargs):
-        return None
-
-    def write(self, cfg):
-        return None
-
-    def build(self):
-        cfg = super(IPerf, self).build()
-
-        if not self.options.logobj:
-            self.options.logobj = open(self.options.logfile, "a+")
-
-        return cfg
-
-    def set_defaults(self, defaults):
-        """:param duration: Length of the iperf3
-           :param server: Name of the server node (or None if this is the server-side iperf)"""
-        defaults.duration = 300
-        defaults.server = None
-        super(IPerf, self).set_defaults(defaults)
-
-    @property
-    def startup_line(self):
-        return 'iperf3 -s  -V -J'
-
-    @property
-    def dry_run(self):
-        return 'true'
-
-    def cleanup(self):
-        if self.options.logobj:
-            self.options.logobj.close()
-        super(IPerf, self).cleanup()
-
-
 class SREndhostd(ZlogDaemon):
     NAME = "sr-endhostd"
+    KILL_PATTERNS = (NAME,)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         self.cwd = kwargs.pop("cwd", os.curdir)
-        super(SREndhostd, self).__init__(*args, **kwargs)
+        super(SREndhostd, self).__init__(*args,
+                                         template_lookup=template_lookup,
+                                         **kwargs)
 
     @property
     def startup_line(self):
@@ -295,10 +269,13 @@ class SREndhostd(ZlogDaemon):
 
 class SRServerd(ZlogDaemon):
     NAME = "sr-serverd"
+    KILL_PATTERNS = (NAME,)
 
-    def __init__(self, *args, **kwargs):
+    def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         self.cwd = kwargs.pop("cwd", os.curdir)
-        super(SRServerd, self).__init__(*args, **kwargs)
+        super(SRServerd, self).__init__(*args,
+                                        template_lookup=template_lookup,
+                                        **kwargs)
 
     @property
     def startup_line(self):
@@ -331,6 +308,62 @@ class SRServerd(ZlogDaemon):
 
     def _filepath(self, f):
         return os.path.join(self.cwd, f)
+
+
+class Lighttpd(HostDaemon):
+    NAME = 'lighttpd'
+    DEPENDS = (SRLocalCtrl,)  # Need to have eBPF loaded before starting
+    KILL_PATTERNS = (NAME,)
+
+    def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
+        super(Lighttpd, self).__init__(*args,
+                                       template_lookup=template_lookup,
+                                       **kwargs)
+
+    @property
+    def startup_line(self):
+        return "{name} -D -f {conf}".format(name=self.NAME,
+                                            conf=self.cfg_filename)
+
+    @property
+    def dry_run(self):
+        return "{name} -tt -f {conf}".format(name=self.NAME,
+                                             conf=self.cfg_filename)
+
+    def build(self):
+        cfg = super(Lighttpd, self).build()
+        cfg.web_dir = self.options.web_dir
+        cfg.pid_file = self._file(suffix='pid')
+        cfg.port = self.options.port
+        return cfg
+
+    def render(self, cfg, **kwargs):
+        cfg_content = super(Lighttpd, self).render(cfg, **kwargs)
+        # Create the big file
+        path = os.path.join(self._node.cwd, "mock_file")
+        os.makedirs(self._node.cwd, exist_ok=True)
+        if not os.path.exists(path):
+            with open(path, "w") as fileobj:
+                fileobj.write("0" * 10**7)
+            self.files.append(path)
+
+        return cfg_content
+
+    def set_defaults(self, defaults):
+        """
+        :param port: The port on which the daemon listens for HTTP requests
+        :param web_dir: The directory of files that can be queried
+        """
+        defaults.port = 8080
+        defaults.web_dir = self._node.cwd
+        super(Lighttpd, self).set_defaults(defaults)
+
+    def has_started(self):
+        # Try to connect to the server
+        _, _, ret = self._node.pexec("nc -z ::1 {port}"
+                                     .format(port=self.options.port))
+        print(ret)
+        return ret == 0
 
 
 def find_node(start, to_find, cost_intf):

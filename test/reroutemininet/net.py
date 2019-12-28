@@ -1,10 +1,8 @@
-from mininet.log import lg
-
 from srnmininet.srnnet import SRNNet
 
-from host import ReroutingHost
-from router import ReroutingRouter, ReroutingConfig
-from link import RerouteIntf
+from .host import ReroutingHost
+from .link import RerouteIntf
+from .router import ReroutingRouter, ReroutingConfig
 
 
 class ReroutingNet(SRNNet):
@@ -21,11 +19,3 @@ class ReroutingNet(SRNNet):
         entry["accessRouter"] = 1 if r.access_router else 0
 
         return table, entry
-
-    def start(self):
-        super(ReroutingNet, self).start()
-        lg.info('*** Starting', len(self.hosts), 'hosts\n')
-        for host in self.hosts:
-            lg.info(host.name + ' ')
-            host.start()
-        lg.info('\n')

@@ -4,6 +4,8 @@ import re
 import subprocess
 import time
 from shlex import split
+from numpy.random import zipf, poisson
+from multiprocessing import Process, Value, Queue
 
 import matplotlib.pyplot as plt
 from ipmininet.tests.utils import assert_connectivity
@@ -15,8 +17,8 @@ from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
 from .utils import get_addr, debug_tcpdump, FONTSIZE
 
-LINK_BANDWIDTH = 100
-MEASUREMENT_TIME = 30
+#LINK_BANDWIDTH = 100
+MEASUREMENT_TIME = 100
 
 INTERVALS = 1
 
@@ -263,6 +265,35 @@ def post_process_link_loads(net, timestamps, byte_loads, packet_loads):
     return times, bloads, ploads
 
 
+def send_interactive_traffic(queue, curl_cfg, ebpf, stop, client, server):
+
+    while stop.value == 0:
+        # Random sleep around 0.5 sec
+        time.sleep(poisson(0.5))
+
+        # Byte size
+        # From Figure 5 in "How Speedy is SPDY"
+        file_size = zipf(750000 + 10 * 20000)
+
+        # Query it
+        start_connection = time.time()
+        cmd = "curl '@{cfg}' -o /dev/null -r 0-{file_size} -s" \
+              " http://[{ip6}]/mock_file"\
+            .format(cfg=curl_cfg, ip6=server.ip6, file_size=file_size)
+        if ebpf:
+            curl = client.run_cgroup(cmd)
+        else:
+            curl = client.popen(split(cmd))
+
+        out, err = curl.communicate()
+        data = json.loads(out.decode("utf-8"))
+        data["http_client"] = client.name
+        data["http_server"] = server.name
+        queue.put(data)
+
+    return 0
+
+
 def eval_repetita(lg, args, ovsschema):
     topos = {}
     if args.repetita_topo is None and args.repetita_dir is None:
@@ -287,6 +318,18 @@ def eval_repetita(lg, args, ovsschema):
 
     os.mkdir(args.log_dir)
 
+    # Create curl_cfg
+    curl_cfg = os.path.join(args.log_dir, "curl.cfg")
+    with open(curl_cfg, "w") as fileobj:
+        fileobj.write("""
+        {
+            "size_download": %{size_download},
+            "http_code": %{http_code},
+            "speed_download": %{speed_download},
+            "time_total": %{time_total}
+        }
+        """)
+
     lg.info("******* %d Topologies to test *******\n" % len(topos))
 
     for topo, demands_list in topos.items():
@@ -302,13 +345,21 @@ def eval_repetita(lg, args, ovsschema):
             topo_args = {"schema_tables": ovsschema["tables"], "cwd": os.path.join(args.log_dir, os.path.basename(topo)),
                          "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
-                         "maxseg": -1, "repetita_graph": topo, "bw": LINK_BANDWIDTH}
+                         "maxseg": -1, "repetita_graph": topo}
 
-            net = ReroutingNet(topo=RepetitaTopo(**topo_args), static_routing=True)
+            net = ReroutingNet(topo=RepetitaTopo(**topo_args),
+                               static_routing=True)
             result_files = []
             tcpdumps = []
+
             subprocess.call("pkill -9 iperf".split(" "))
+            subprocess.call("pkill -9 lighttpd".split(" "))
+            subprocess.call("pkill -9 curl".split(" "))
             err = False
+            interactives = []
+            stop = Value("i")
+            stop.value = 0
+            queue = Queue()
             try:
                 net.start()
 
@@ -321,12 +372,31 @@ def eval_repetita(lg, args, ovsschema):
                 servers = ["h" + net.topo.getFromIndex(d["dest"]) for d in json_demands]
                 print(clients)
                 print(servers)
+                if args.tcpdump:
+                    for h in clients + servers:
+                        tcpdumps.extend(debug_tcpdump(net[h], h + "-eth0",
+                                                      os.path.join(
+                                                      args.log_dir, os.path.basename(topo)),
+                                                      out_prefix="ebpf" if
+                                                      args.ebpf else ""))
 
-                # SR6CLI(net)
+                SR6CLI(net)  # TODO Remove
                 time.sleep(1)
                 # TODO Remove
                 time.sleep(30)
                 # TODO Remove
+
+                # Launch interactive traffic
+                if args.with_interactive:
+                    lg.info("*********Starting interactive traffic*********\n")
+                    for i in range(len(servers)):
+                        # Client and servers are reversed because we want the
+                        # traffic to go in the same direction as iperf traffic
+                        interactives.append(
+                            Process(target=send_interactive_traffic,
+                                    args=(queue, curl_cfg, args.ebpf, stop,
+                                          servers[i], clients[i])))
+                        interactives[-1].start()
 
                 result_files = [open("results_%s_%s.json" % (clients[i], servers[i]), "w") for i in range(len(clients))]
                 pid_servers, pid_clients = launch_iperf(lg, net, clients, servers, result_files, ebpf=args.ebpf)
@@ -354,16 +424,25 @@ def eval_repetita(lg, args, ovsschema):
 
                 for pid in pid_servers:
                     pid.kill()
-            except Exception as e:
-                lg.error("Exception %s in the topo emulation... Skipping...\n" % e)
-                lg.error(str(e.message))
-                continue
+            # TODO except Exception as e:
+            #    lg.error("Exception %s in the topo emulation... Skipping...\n" % e)
+            #    lg.error(str(e.message))
+            #    continue
             finally:
                 for pid in tcpdumps:
                     pid.kill()
                 if len(timestamps) > 0:
-                    timestamps, byte_loads, packet_loads = post_process_link_loads(net, timestamps, byte_loads,
-                                                                                   packet_loads)
+                    timestamps, byte_loads, packet_loads = \
+                        post_process_link_loads(net, timestamps, byte_loads,
+                                                packet_loads)
+                stop.value = 1
+                for process in interactives:
+                    process.join(timeout=30)
+                    if process.is_alive():
+                        process.kill()
+                        process.join()
+
+                SR6CLI(net)  # TODO Remove
                 net.stop()
                 cleanup()
                 for fileobj in result_files:
