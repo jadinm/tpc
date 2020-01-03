@@ -8,6 +8,10 @@ from .config import SRLocalCtrl
 from .host import ReroutingHostConfig
 from .router import ReroutingConfig
 
+SIMULTANEOUS_LOADS = 1
+# 1 means sequential but you may want to put it if
+# you don't have much memory on your computer
+
 
 class SRReroutedCtrlDomain(SRCtrlDomain):
 
@@ -36,30 +40,40 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
         self.localctrl_opts = localctrl_opts if localctrl_opts is not None else {}
 
     def load_bpf_programs(self):
-        processes = []
-        for h in self.hosts:
-            # Load eBPF program
-            cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}" \
-                  " type sockops"\
-                  .format(bpftool=SRLocalCtrl.BPFTOOL,
-                          ebpf_program=SRLocalCtrl.EBPF_PROGRAM,
-                          ebpf_load_path=SRLocalCtrl.ebpf_load_path(h))
-            print(h + " " + cmd)
-            processes.append(subprocess.Popen(shlex.split(cmd),
-                                              stdout=subprocess.PIPE,
-                                              stderr=subprocess.PIPE))
+        hosts = []  # list of list of host to load program concurrently
+        for i in range(len(self.hosts)):
+            if i % SIMULTANEOUS_LOADS == 0:
+                hosts.append([self.hosts[i]])
+            else:
+                hosts[-1].append(self.hosts[i])
 
         failed = False
-        for p in processes:
-            stdout, stderr = p.communicate()
-            p.poll()
-            if stdout is not None:
-                print(stdout.decode("utf-8"))
-            if stderr is not None:
-                print(stderr.decode("utf-8"))
-            if p.returncode != 0:
-                print("ERROR %d while loading the eBPF program" % p.returncode)
-                failed = True
+        for h_list in hosts:
+            processes = []
+            for h in h_list:
+                # Load eBPF program
+                cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}" \
+                      " type sockops"\
+                      .format(bpftool=SRLocalCtrl.BPFTOOL,
+                              ebpf_program=SRLocalCtrl.EBPF_PROGRAM,
+                              ebpf_load_path=SRLocalCtrl.ebpf_load_path(h))
+                print(h + " " + cmd)
+                processes.append(subprocess.Popen(shlex.split(cmd),
+                                                  stdout=subprocess.PIPE,
+                                                  stderr=subprocess.PIPE))
+
+            for p in processes:
+                stdout, stderr = p.communicate()
+                p.poll()
+                if stdout is not None:
+                    print(stdout.decode("utf-8"))
+                if stderr is not None:
+                    print(stderr.decode("utf-8"))
+                if p.returncode != 0:
+                    print("ERROR %d while loading the eBPF program" % p.returncode)
+                    failed = True
+                    break
+            if failed:
                 break
 
         subprocess.call(shlex.split("pkill -9 bpftool"))

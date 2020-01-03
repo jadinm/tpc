@@ -23,7 +23,9 @@ class SRLocalCtrl(SRNDaemon):
     NAME = 'sr-localctrl'
     KILL_PATTERNS = (NAME,)
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
-    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")  # TODO Change
+    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")
+    # TODO os.path.expanduser("~/ebpf_hhf/test_external_function.o")
+    # TODO Change
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super(SRLocalCtrl, self).__init__(*args,
@@ -52,14 +54,9 @@ class SRLocalCtrl(SRNDaemon):
     def map_path(self, map_name):
         return self.ebpf_load_path(self._node.name) + "_" + map_name
 
-    def render(self, cfg, **kwargs):
-
-        # Extract IDs
-
-        time.sleep(1)
-
+    def pin_maps(self):
         ebpf_load_path = self.ebpf_load_path(self._node.name)
-        cmd = "{bpftool} prog -j show pinned {ebpf_load_path}"\
+        cmd = "{bpftool} prog -j show pinned {ebpf_load_path}" \
             .format(bpftool=self.options.bpftool,
                     ebpf_load_path=ebpf_load_path)
         print(cmd)
@@ -78,7 +75,7 @@ class SRLocalCtrl(SRNDaemon):
         dest_map_id = -1
         for map_id in map_ids:
 
-            cmd = "{bpftool} map -j show id {map_id}"\
+            cmd = "{bpftool} map -j show id {map_id}" \
                 .format(bpftool=self.options.bpftool, map_id=map_id)
             print(cmd)
             out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
@@ -91,7 +88,7 @@ class SRLocalCtrl(SRNDaemon):
             # If the map is the destination map, pin it
             # The other map is an internal map for the eBPF program
             if map_name == "dest_map":
-                cmd = "{bpftool} map pin id {dest_map_id} {map_path}"\
+                cmd = "{bpftool} map pin id {dest_map_id} {map_path}" \
                     .format(bpftool=self.options.bpftool,
                             dest_map_id=map_id,
                             map_path=self.map_path("dest_map"))
@@ -101,6 +98,16 @@ class SRLocalCtrl(SRNDaemon):
         if dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % ebpf_load_path)
+        return dest_map_id
+
+    def render(self, cfg, **kwargs):
+
+        # Extract IDs
+
+        time.sleep(1)
+
+        dest_map_id = self.pin_maps()
+        ebpf_load_path = self.ebpf_load_path(self._node.name)
 
         # Create cgroup
 
