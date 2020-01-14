@@ -15,6 +15,7 @@ from examples.albilene import Albilene
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
+from .bpf_stats import Snapshot
 from .utils import get_addr, debug_tcpdump, FONTSIZE
 
 #LINK_BANDWIDTH = 100
@@ -105,7 +106,7 @@ def measure_link_load(net, timestamps, byte_loads, packet_loads):
     timestamps.append(int(round(time.time())))
 
 
-def plot(lg, times, bw, output_path, ebpf=True, identifier=None):
+def plot(lg, times, bw, output_path, snapshots, ebpf=True, identifier=None):
 
     suffix = "ebpf" if ebpf else "no-ebpf"
 
@@ -135,7 +136,11 @@ def plot(lg, times, bw, output_path, ebpf=True, identifier=None):
     json_file = os.path.join(output_path, "repetita_%s.json" % suffix)
     lg.info("Saving raw data to %s\n" % json_file)
     with open(json_file, "w") as file:
-        json.dump({"bw": {times[i]: bw[i] for i in range(len(bw))}, "id": identifier}, file, indent=4)
+        json.dump({"bw": {times[i]: bw[i] for i in range(len(bw))},
+                   "id": identifier,
+                   "snapshots": {h: [snap.export() for snap in snaps]
+                                 for h, snaps in snapshots.items()}},
+                  file, indent=4)
 
 
 def plot_link_loads(lg, times, byte_loads, packet_loads, output_path, ebpf=True, identifier=None):
@@ -380,7 +385,7 @@ def eval_repetita(lg, args, ovsschema):
                                                       out_prefix="ebpf" if
                                                       args.ebpf else ""))
 
-                SR6CLI(net)  # TODO Remove
+                # SR6CLI(net)  # TODO Remove
                 time.sleep(1)
                 # TODO Remove
                 time.sleep(30)
@@ -405,8 +410,14 @@ def eval_repetita(lg, args, ovsschema):
 
                 # Measure load on each interface
                 t = 0
+                snapshots = {h: [] for h in clients + servers}
                 while t < MEASUREMENT_TIME:
+                    # Get all link loads
                     measure_link_load(net, timestamps, byte_loads, packet_loads)
+                    # Extract snapshot info from eBPF
+                    for h in snapshots.keys():
+                        snapshots[h].extend(Snapshot.extract_info(net[h]))
+                        snapshots[h] = sorted(list(set(snapshots[h])))
                     time.sleep(1)
                     t += 1
 
@@ -442,7 +453,7 @@ def eval_repetita(lg, args, ovsschema):
                         process.kill()
                         process.join()
 
-                SR6CLI(net)  # TODO Remove
+                # SR6CLI(net)  # TODO Remove
                 net.stop()
                 cleanup()
                 for fileobj in result_files:
@@ -471,7 +482,8 @@ def eval_repetita(lg, args, ovsschema):
                         os.makedirs(cwd)
                     except OSError as e:
                         print("OSError %s" % e)
-                    plot(lg, times, aggregated_bw, cwd, ebpf=args.ebpf,
+                    plot(lg, times, aggregated_bw, cwd, snapshots,
+                         ebpf=args.ebpf,
                          identifier={"topo": os.path.basename(topo), "demands": os.path.basename(demands),
                                      "ebpf": args.ebpf, "maxseg": -1})
                     plot_link_loads(lg, timestamps, byte_loads, packet_loads, cwd, ebpf=args.ebpf,
@@ -496,7 +508,7 @@ def eval_albilene(lg, args, ovsschema):
     subprocess.call("pkill -9 iperf".split(" "))
     try:
         net.start()
-        SR6CLI(net)
+        # TODO SR6CLI(net)
 
         out_prefix = "albilene" + ("-ebpf" if args.ebpf else "")
         tcpdumps = debug_tcpdump(net["client"], "client-eth0", args.log_dir, out_prefix=out_prefix) \
@@ -549,5 +561,5 @@ def eval_albilene(lg, args, ovsschema):
 
         times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
 
-        plot(lg, times, aggregated_bw, args.log_dir, ebpf=args.ebpf,
+        plot(lg, times, aggregated_bw, args.log_dir, {}, ebpf=args.ebpf,
              identifier={"topo": "Albilene", "ebpf": args.ebpf, "maxseg": -1})

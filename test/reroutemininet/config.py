@@ -35,6 +35,7 @@ class SRLocalCtrl(SRNDaemon):
         self.files.append(self.map_path("dest_map_fd"))
         os.makedirs(self._node.cwd, exist_ok=True)
         self.attached = False
+        self.stat_map_id = -1
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
@@ -95,6 +96,8 @@ class SRLocalCtrl(SRNDaemon):
                 print(cmd)
                 subprocess.check_call(shlex.split(cmd))
                 dest_map_id = map_id
+            if map_name == "stat_map":
+                self.stat_map_id = map_id
         if dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % ebpf_load_path)
