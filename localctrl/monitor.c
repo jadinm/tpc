@@ -209,6 +209,9 @@ static int insert_segments(json_t *destination, json_t *segments, uint64_t bw, u
         if (srh_record->srh_id == MAX_SRH_BY_DEST && (!hdest->info.srhs[i].srh.type || !hdest->info.srhs[i].is_valid)) {
             srh_record->srh_id = i;
         }
+        /* The maximum reward is the number of bytes */
+        if (hdest->info.max_reward < hdest->info.srhs[i].curr_bw)
+            hdest->info.max_reward = hdest->info.srhs[i].curr_bw;
         /* Check that the SRH was not already present and overwrite if this is the case */
         zlog_debug(zc, "SRH insertion in %u ? Cond 2 %d", srh_record->srh_id, !memcmp(&hdest->info.srhs[i].srh, srh_record->segments, sizeof(srh_record->segments)));
         if (!memcmp(&hdest->info.srhs[i].srh, srh_record->segments, sizeof(srh_record->segments))) {

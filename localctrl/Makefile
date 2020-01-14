@@ -1,5 +1,5 @@
 CC=gcc
-kerneltree=/usr/src/ebpf_hhf_kernel
+kerneltree=/root/ebpf_hhf_kernel
 CFLAGS=-I../lib -I../srn-dev/lib -O2 -Wall -Werror -Wextra -Wno-unused-variable \
        -Wno-unused-parameter -Wshadow -Wno-missing-field-initializers -D__EXPORTED_HEADERS__ \
 	   -I$(kerneltree)/tools/lib/bpf -g # TODO Remove -g for performance

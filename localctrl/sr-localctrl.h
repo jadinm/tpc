@@ -24,6 +24,7 @@ struct srh_record {
 
 struct dest_infos {
 	struct in6_addr dest;
+	__u32 max_reward;
 	struct srh_record srhs[MAX_SRH_BY_DEST];
 } __attribute__((packed));
 
