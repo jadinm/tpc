@@ -102,6 +102,10 @@ class Snapshot:
     def __eq__(self, other):
         return self.seq == other.seq
 
+    def conn_key(self):
+        return str(self.src) + str(self.dst) + str(self.src_port) \
+               + str(self.dst_port)
+
     def __lt__(self, other):
         return self.seq < other.seq
 

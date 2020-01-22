@@ -135,8 +135,11 @@ class RepetitaTopo(SRNTopo):
                                               min(access_routers[access_dst][1], edge.bw_dst))
                 edge.add_to_topo(self, node_index)
 
-        # We consider that access routers have maximum two links
-        access_routers = [(x, bw) for x, (e, bw) in access_routers.items() if e <= 2]
+        # We consider that access routers have minimum two links
+        print(access_routers)
+        access_routers = [(x, bw)
+                          for x, (e, bw) in access_routers.items()
+                          if e >= 2]
         for access_router, bw in access_routers:
             h = self.addHost("h%s" % self.label2node(access_router))  # Interface names are at max 15 characters (NULL not included)
             self.addLink(h, access_router)

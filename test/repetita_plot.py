@@ -1,15 +1,20 @@
 import argparse
 import datetime
 import os
+from typing import Dict, List
 
 import matplotlib.pyplot as plt
 import numpy as np
 from mininet.log import LEVELS, lg
 
+from eval.bpf_stats import Snapshot
 from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data
 from explore_data import explore_bw_json_files, explore_maxflow_json_files
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
+
+
+MEASUREMENT_TIME = 100
 
 
 def parse_args():
@@ -75,7 +80,6 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path)
                 # Add line for max value of maxflow if any
                 objective = json_srmip_maxflow.get(topo, {}).get(demands, {}).get(6, None)  # TODO Change 6 by maxseg
                 if objective is not None:
-                    print(objective)
                     subplot.hlines(objective, 0, 100, colors=colors["srmip"],  # Objective values are in kbps
                                    linestyles="solid", label="optimum")
                 else:
@@ -91,8 +95,6 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path)
                 fig.clf()
                 plt.close()
 
-                break  # TODO Remove
-
 
 def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_path):
     color = "orangered"
@@ -103,11 +105,8 @@ def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_pat
         for demands, demands_exp in topo_exp.items():
             for maxseg, maxseg_exp in demands_exp.items():
                 ebpf_example = np.median(maxseg_exp[True])
-                print(ebpf_example)
                 no_ebpf_example = np.median(maxseg_exp[False])
-                print(no_ebpf_example)
                 bw_diff.append(float(ebpf_example - no_ebpf_example) / float(no_ebpf_example) * 100)
-    print(bw_diff)
 
     # Build CDF
     bin_edges, cdf = cdf_data(bw_diff)
@@ -148,12 +147,73 @@ def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_pat
     plt.close()
 
 
+def plot_bw_per_topo(times, bw, output_path, demand_id,
+                     snapshots: Dict[str, List[Snapshot]], ebpf=True):
+
+    suffix = "ebpf" if ebpf else "no-ebpf"
+
+    # Bandwidth
+    figure_name = "bw_iperf_%s_%s" % (demand_id, suffix)
+    fig = plt.figure()
+    subplot = fig.add_subplot(111)
+    x = times
+    bw = [float(b) for b in bw]
+
+    subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0, where="post",
+                 markersize=5, zorder=2)
+
+    # Parse snapshots
+    for h, snaps in snapshots.items():
+        conn_snaps = {}
+        for s in snaps:
+            conn_snaps.setdefault(s.conn_key(), []).append(s)
+        for by_conn_snaps in conn_snaps.values():
+            if len(by_conn_snaps) <= 2:
+                print("ONLY 2")
+                continue
+            print("MORE THAN 2")
+            print(by_conn_snaps[0].time)
+            print(by_conn_snaps[-1].time)
+            for i in range(1, len(by_conn_snaps) - 1):
+                # Vertical line
+                t = (by_conn_snaps[i].time - by_conn_snaps[0].time) / 10**9
+                print(t)
+                subplot.axvline(x=t)
+
+    subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
+    subplot.set_ylabel("Bandwidth (Mbps)", fontsize=FONTSIZE)
+    subplot.set_ylim(bottom=0)
+    subplot.set_xlim(left=0, right=MEASUREMENT_TIME)
+
+    pdf = os.path.join(output_path, "%s.pdf" % figure_name)
+    lg.info("Save figure for bandwidth to %s\n" % pdf)
+    fig.savefig(pdf, bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
+
 if __name__ == "__main__":
     args = parse_args()
     lg.setLogLevel(args.log)
     os.mkdir(args.out_dir)
 
-    bw_loaded_data = explore_bw_json_files(args.src_dir)
+    bw_loaded_data, snap_data = explore_bw_json_files(args.src_dir)
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
     bw_ebpf_or_no_ebpf_by_topo(bw_loaded_data, optim_bw_data, args.out_dir)
     bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
+
+    for topo, topo_exp in bw_loaded_data.items():
+        for demands, demands_exp in topo_exp.items():
+            for maxseg, maxseg_exp in demands_exp.items():
+                for ebpf in [False, True]:
+                    # Get back data
+                    times_tmp = []
+                    bw_tmp = []
+                    for t, b in sorted(maxseg_exp[ebpf]):
+                        times_tmp.append(t)
+                        bw_tmp.append(b)
+                    plot_bw_per_topo(times_tmp, bw_tmp, args.out_dir,
+                                     demands,
+                                     snap_data.get(topo, {}).get(demands, {})
+                                     .get(maxseg, {}).get(ebpf, []),
+                                     ebpf)

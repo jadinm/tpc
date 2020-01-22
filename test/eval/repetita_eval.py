@@ -340,14 +340,20 @@ def eval_repetita(lg, args, ovsschema):
     for topo, demands_list in topos.items():
         lg.info("******* %d flow files to test in topo '%s' *******\n" % (len(demands_list), os.path.basename(topo)))
         for demands in demands_list:
-            cwd = os.path.join(args.log_dir, os.path.basename(topo) + "_" + os.path.basename(demands))
+            cwd = os.path.join(args.log_dir, os.path.basename(demands))
+            try:
+                os.makedirs(cwd)
+            except OSError as e:
+                print("OSError %s" % e)
             cleanup()
             timestamps = []
             byte_loads = {}
             packet_loads = {}
             lg.info("******* Processing topo '%s' demands '%s' *******\n" % (os.path.basename(topo),
                                                                              os.path.basename(demands)))
-            topo_args = {"schema_tables": ovsschema["tables"], "cwd": os.path.join(args.log_dir, os.path.basename(topo)),
+            topo_args = {"schema_tables": ovsschema["tables"],
+                         "cwd": os.path.join(args.log_dir,
+                                             os.path.basename(demands)),
                          "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
                          "maxseg": -1, "repetita_graph": topo}
@@ -435,10 +441,10 @@ def eval_repetita(lg, args, ovsschema):
 
                 for pid in pid_servers:
                     pid.kill()
-            # TODO except Exception as e:
-            #    lg.error("Exception %s in the topo emulation... Skipping...\n" % e)
-            #    lg.error(str(e.message))
-            #    continue
+            except Exception as e:
+                lg.error("Exception %s in the topo emulation... Skipping...\n"
+                         % e)
+                continue
             finally:
                 for pid in tcpdumps:
                     pid.kill()
@@ -463,7 +469,8 @@ def eval_repetita(lg, args, ovsschema):
 
             if not err:
                 try:
-                    lg.info("******* Ploting graphs '%s' *******\n" % os.path.basename(topo))
+                    lg.info("******* Plotting graphs '%s' *******\n" %
+                            os.path.basename(topo))
                     # Extract JSON output
                     bw = {}
                     start = {}
