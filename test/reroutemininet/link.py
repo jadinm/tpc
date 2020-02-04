@@ -22,7 +22,7 @@ class RerouteIntf(SR6TCIntf):
 
             cmds += ['%s qdisc add dev %s {parent} handle 5:0 htb default 1'.format(parent=parent),
                      '%s class add dev %s parent 5:0 classid 5:1 htb ' +
-                     'rate %dMbit burst 15k' % (int(bw))]
+                     'rate %dMbit burst %s' % (int(bw), 394365)]
             parent = ' parent 5:1 '
 
             # FQCodel # TODO Parametrize
@@ -31,5 +31,23 @@ class RerouteIntf(SR6TCIntf):
                          # 'interval 10ms target 5ms '  # limit 1000
                          'ecn'.format(parent=parent)]
                 parent = ' parent 4: '
+
+        if self.params.get("policing", False):
+            if self.params.get("policing_delay", None) is None:
+                lg.error('Cannot compute burst without delay info\n')
+            elif self.params.get("policing_bw", None) is None:
+                lg.error('Cannot compute policing without bw info\n')
+            else:
+                cmds.append("%s qdisc add dev %s handle ffff: ingress")
+                delay_pol = int(self.params["policing_delay"].split("ms")[0])\
+                            / 1000 * 2 * 1000000
+                bw_pol = self.params["policing_bw"]
+                bw_pol_bytes = (bw_pol * 10**6) / 8
+                # We set the burst to the BDP (Bandwidth Delay Product) in Bytes
+                cmd = "%s filter add dev %s parent ffff: u32 match u32 0" \
+                      " 0 police rate {bw}mbit burst {mqs} drop"\
+                    .format(bw=bw_pol, mqs=394365)
+                print(cmd % ("tc", self.name))
+                cmds.append(cmd)
 
         return cmds, parent
