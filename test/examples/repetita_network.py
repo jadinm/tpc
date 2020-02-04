@@ -8,6 +8,8 @@ from reroutemininet.config import Lighttpd
 from reroutemininet.host import ReroutingHostConfig
 from reroutemininet.topo import SRReroutedCtrlDomain
 
+MAX_QUEUE = 1000000000
+
 
 class RepetitaEdge:
 
@@ -190,13 +192,17 @@ class RepetitaTopo(SRNTopo):
             default_params1 = {"bw": bw, "enable_ecn": True}
             default_params1.update(opts.get("params1", {}))
             opts1["params1"] = default_params1
+            # opts1["params1"]["delay"] = "5ms"
+            # opts1["params1"]["max_queue_size"] = MAX_QUEUE
 
             default_params2 = {"bw": bw, "enable_ecn": True}
             default_params2.update(opts.get("params2", {}))
             opts2["params2"] = default_params2
+            # opts2["params2"]["delay"] = "5ms"
+            # opts2["params2"]["max_queue_size"] = MAX_QUEUE
 
-            opts1["params2"] = {"delay": dst_delay, "max_queue_size": 1000000}
-            opts2["params1"] = {"delay": src_delay, "max_queue_size": 1000000}
+            opts1["params2"] = {"delay": dst_delay, "max_queue_size": MAX_QUEUE}
+            opts2["params1"] = {"delay": src_delay, "max_queue_size": MAX_QUEUE}
 
         # Netem queues might disturb shaping and ecn marking
         # Therefore, we put them on an intermediary switch
