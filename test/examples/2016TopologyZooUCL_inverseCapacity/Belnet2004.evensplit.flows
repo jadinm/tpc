@@ -12,33 +12,45 @@
         "volume": 100000
     },
     {
+        "label": "flow_4_Brussel_II_B->6_Brussel_I_B",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Brussel_II_A->10_Global_Internet",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
         "label": "flow_11_BNIX->13_Liege",
         "src": 11,
         "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_15_Brugge->16_Gent",
-        "src": 15,
-        "dest": 16,
+        "label": "flow_14_Brussel_I_A->15_Brugge",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_17_Korthijk->18_Mons",
-        "src": 17,
-        "dest": 18,
+        "label": "flow_16_Gent->17_Korthijk",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_19_Charleroi->20_Louvain-la-Neuve",
-        "src": 19,
-        "dest": 20,
+        "label": "flow_18_Mons->19_Charleroi",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_21_Namur->22_Arlon",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_20_Louvain-la-Neuve->21_Namur",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     }
 ]

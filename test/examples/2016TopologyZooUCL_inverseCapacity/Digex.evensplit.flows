@@ -1,26 +1,44 @@
 [
     {
-        "label": "flow_1_Omaha->3_Detroit",
-        "src": 1,
+        "label": "flow_0_Chicago->1_Omaha",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Columbus->3_Detroit",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_5_Jacksonville->6_Kansas_City",
-        "src": 5,
-        "dest": 6,
+        "label": "flow_4_Atlanta->5_Jacksonville",
+        "src": 4,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_7_St_Louis->8_Orlando",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_6_Kansas_City->7_St_Louis",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_9_Tampa->12_Trenton",
-        "src": 9,
-        "dest": 12,
+        "label": "flow_8_Orlando->9_Tampa",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Baltimore->11_Philadelphia",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Trenton->13_Pittsburgh",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
@@ -30,21 +48,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_16_Miami->20_Boston",
+        "label": "flow_16_Miami->17_Newark",
         "src": 16,
-        "dest": 20,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_21_Louisville->22_Cincinnati",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_18_New_York->19_Washington,_DC",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_23_Hayward->24_Los_Angeles",
-        "src": 23,
-        "dest": 24,
+        "label": "flow_20_Boston->21_Louisville",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Cincinnati->23_Hayward",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Los_Angeles->25_Dallas",
+        "src": 24,
+        "dest": 25,
         "volume": 100000
     },
     {
@@ -54,9 +84,9 @@
         "volume": 100000
     },
     {
-        "label": "flow_28_San_Francisco->30_Nashville",
+        "label": "flow_28_San_Francisco->29_Houston",
         "src": 28,
-        "dest": 30,
+        "dest": 29,
         "volume": 100000
     }
 ]

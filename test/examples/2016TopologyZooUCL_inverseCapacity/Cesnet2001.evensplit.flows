@@ -1,8 +1,20 @@
 [
     {
-        "label": "flow_0_Olomouc->16_Plzen",
+        "label": "flow_0_Olomouc->1_Brno",
         "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Ostrava->16_Plzen",
+        "src": 5,
         "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Usti_nad_Labem->19_Praha",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     }
 ]

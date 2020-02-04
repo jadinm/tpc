@@ -6,14 +6,32 @@
         "volume": 100000
     },
     {
-        "label": "flow_3_Culbertson->7_Missoula",
+        "label": "flow_3_Culbertson->4_Lincoln",
         "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Helena->7_Missoula",
+        "src": 5,
         "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_15_Miles_City->19_Fairfield",
-        "src": 15,
+        "label": "flow_11_Fort_Benton->13_Havre",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Forsyth->15_Miles_City",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Noxon->19_Fairfield",
+        "src": 16,
         "dest": 19,
         "volume": 100000
     },

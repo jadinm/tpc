@@ -1,7 +1,13 @@
 [
     {
-        "label": "flow_2_NLR_FrameNet->6_NLR_FrameNet",
+        "label": "flow_2_NLR_FrameNet->4_StarLight",
         "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->6_NLR_FrameNet",
+        "src": 5,
         "dest": 6,
         "volume": 100000
     },
@@ -12,9 +18,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_9_CENIC->17_CENIC",
+        "label": "flow_9_CENIC->10_Pacific_Wave_Sunnyvale",
         "src": 9,
-        "dest": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->15_Pacific_Wave_Los_Angeles",
+        "src": 11,
+        "dest": 15,
         "volume": 100000
     }
 ]

@@ -1,25 +1,73 @@
 [
     {
-        "label": "flow_1_BE->6_LU",
-        "src": 1,
-        "dest": 6,
+        "label": "flow_0_NL->1_BE",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_12_TR->14_CY",
+        "label": "flow_2_DK->3_PL",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DE->5_CZ",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_LU->7_FR",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_CH->9_IT",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BG->11_RO",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_TR->13_GR",
         "src": 12,
-        "dest": 14,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_15_IL->21_PT",
-        "src": 15,
-        "dest": 21,
+        "label": "flow_14_CY->15_IL",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_25_SL->27_LT",
-        "src": 25,
+        "label": "flow_19_HU->20_SK",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_PT->22_ES",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_HR->25_SL",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_AT->27_LT",
+        "src": 26,
         "dest": 27,
         "volume": 100000
     },
@@ -30,9 +78,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_30_IE->32_NO",
+        "label": "flow_30_IE->31_UK",
         "src": 30,
-        "dest": 32,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_NO->33_SE",
+        "src": 32,
+        "dest": 33,
         "volume": 100000
     },
     {

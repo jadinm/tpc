@@ -1,8 +1,20 @@
 [
     {
-        "label": "flow_7_None->23_EUMED_CONNECT",
-        "src": 7,
-        "dest": 23,
+        "label": "flow_6_Grid-SW->7_None",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Limassol_PoP->22_Border_Router",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_EUMED_CONNECT->28_Evagoras",
+        "src": 23,
+        "dest": 28,
         "volume": 100000
     }
 ]

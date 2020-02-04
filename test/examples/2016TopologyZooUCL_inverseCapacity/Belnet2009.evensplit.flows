@@ -12,9 +12,27 @@
         "volume": 100000
     },
     {
+        "label": "flow_4_Antwerpen_2->5_Antwerpen1",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
         "label": "flow_6_Mons->7_Korthijk",
         "src": 6,
         "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->9_Gent1",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Liege_1_->11_Liege_2",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     },
     {
@@ -24,8 +42,20 @@
         "volume": 100000
     },
     {
-        "label": "flow_14_Hasselt->19_Brussels_Science",
+        "label": "flow_14_Hasselt->15_Leuven2",
         "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Leuven1->17_Vilvoorde",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Evere->19_Brussels_Science",
+        "src": 18,
         "dest": 19,
         "volume": 100000
     }

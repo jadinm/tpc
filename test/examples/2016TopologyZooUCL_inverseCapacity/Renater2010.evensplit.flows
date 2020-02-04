@@ -1,44 +1,62 @@
 [
     {
-        "label": "flow_1_Pau->3_Limoges",
-        "src": 1,
+        "label": "flow_0_Bordeaux->1_Pau",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orleans->3_Limoges",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_5_Dijon->7_Montpellier",
-        "src": 5,
+        "label": "flow_4_Clermont-Ferrand->5_Dijon",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Toulouse->7_Montpellier",
+        "src": 6,
         "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_8_Besancon->10_Lannion",
+        "label": "flow_8_Besancon->9_Grenoble",
         "src": 8,
-        "dest": 10,
+        "dest": 9,
         "volume": 100000
     },
     {
-        "label": "flow_11_Brest->12_Le_Mans",
-        "src": 11,
-        "dest": 12,
+        "label": "flow_10_Lannion->11_Brest",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     },
     {
-        "label": "flow_13_Tours->15_Geneve",
-        "src": 13,
-        "dest": 15,
+        "label": "flow_12_Le_Mans->13_Tours",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_16_Vannes->17_Loreient",
-        "src": 16,
-        "dest": 17,
+        "label": "flow_15_Geneve->16_Vannes",
+        "src": 15,
+        "dest": 16,
         "volume": 100000
     },
     {
-        "label": "flow_18_Quimper->19_Saint-Brieuc",
-        "src": 18,
-        "dest": 19,
+        "label": "flow_17_Loreient->18_Quimper",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Saint-Brieuc->20_None",
+        "src": 19,
+        "dest": 20,
         "volume": 100000
     },
     {
@@ -48,9 +66,27 @@
         "volume": 100000
     },
     {
+        "label": "flow_26_Cadarache->27_Marseille",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
         "label": "flow_28_Nice->30_Internet_mondial",
         "src": 28,
         "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Lyon->32_Paris",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Nantes->34_Poiters",
+        "src": 33,
+        "dest": 34,
         "volume": 100000
     },
     {
@@ -69,6 +105,12 @@
         "label": "flow_39_Lille->40_Rouen",
         "src": 39,
         "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Caen->42_Rennes",
+        "src": 41,
+        "dest": 42,
         "volume": 100000
     }
 ]

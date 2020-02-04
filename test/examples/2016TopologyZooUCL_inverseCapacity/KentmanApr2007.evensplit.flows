@@ -1,8 +1,26 @@
 [
     {
-        "label": "flow_10_Kent_Community_Network_(Schools,_etc)->15_UoG-AH",
+        "label": "flow_10_Kent_Community_Network_(Schools,_etc)->11_UoK-C",
         "src": 10,
-        "dest": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_UoG-AH->16_University_of_Greenwich",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_IC-Wye->19_EIS-Maidstone",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_CCCU-S->21_CCCU-T",
+        "src": 19,
+        "dest": 20,
         "volume": 100000
     }
 ]

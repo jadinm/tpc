@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "label": "flow_11_Kent_Community_Network_(Schools,_etc)->12_UoK-C",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_UoG-AH->19_University_of_Greenwich",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_IC-Wye->22_EIS-Maidstone",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_CCCU-S->24_CCCU-T",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    }
+]

@@ -1,8 +1,38 @@
 [
     {
-        "label": "flow_5_Zlin->26_Liberec",
+        "label": "flow_0_Hradec_Kralove->3_Pardubice",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->6_Olomouc",
         "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Brno->9_Ostrava",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Plzen->24_Usti_nad_Labem",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Praha->26_Liberec",
+        "src": 25,
         "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Podebrady->28_Ceske_Budejovice",
+        "src": 27,
+        "dest": 28,
         "volume": 100000
     }
 ]

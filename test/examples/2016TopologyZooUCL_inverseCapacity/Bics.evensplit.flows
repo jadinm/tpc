@@ -1,32 +1,86 @@
 [
     {
-        "label": "flow_3_Rotterdam->4_Roma",
-        "src": 3,
-        "dest": 4,
+        "label": "flow_0_Bratislava->1_Vienna",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_7_Zagreb->9_Istanbul",
+        "label": "flow_2_Praha->3_Rotterdam",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Roma->5_Budapest",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Zagreb->8_Bucharest",
         "src": 7,
-        "dest": 9,
+        "dest": 8,
         "volume": 100000
     },
     {
-        "label": "flow_12_Luxembourg->17_Athens",
+        "label": "flow_9_Istanbul->11_Strasbourg",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Luxembourg->13_Zurich",
         "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Brussels->15_Geneva",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->17_Athens",
+        "src": 16,
         "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_18_Sofia->25_Kiev",
+        "label": "flow_18_Sofia->19_Frankfurt",
         "src": 18,
-        "dest": 25,
+        "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_28_Madrid->29_Barcelona",
-        "src": 28,
-        "dest": 29,
+        "label": "flow_20_Amsterdam->21_London",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Paris->24_Warsaw",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->28_Madrid",
+        "src": 25,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Barcelona->30_Marseille",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Lyon->32_Basel",
+        "src": 31,
+        "dest": 32,
         "volume": 100000
     }
 ]

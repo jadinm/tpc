@@ -1,8 +1,20 @@
 [
     {
-        "label": "flow_9_Edmonton->12_Winnipeg",
-        "src": 9,
-        "dest": 12,
+        "label": "flow_4_Toronto->5_Vancouver",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Calgary->9_Edmonton",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Saskatoon->11_Regina",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     }
 ]

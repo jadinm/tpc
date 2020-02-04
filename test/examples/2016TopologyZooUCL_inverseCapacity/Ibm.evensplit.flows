@@ -1,20 +1,50 @@
 [
     {
-        "label": "flow_0_Montreal->3_Toronto",
+        "label": "flow_0_Montreal->1_White_Plains",
         "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Detroit->3_Toronto",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_7_Philadelphia->8_Schaumburg",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_4_Columbus->5_Bethesda",
+        "src": 4,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_9_St_Louis->13_Phoenix",
-        "src": 9,
-        "dest": 13,
+        "label": "flow_6_New_York->7_Philadelphia",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Schaumburg->9_St_Louis",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_San_Francisco->12_Los_Angeles",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Phoenix->14_Dallas",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Atlanta->16_Tampa",
+        "src": 15,
+        "dest": 16,
         "volume": 100000
     }
 ]

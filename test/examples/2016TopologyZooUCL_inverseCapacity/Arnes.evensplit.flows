@@ -6,51 +6,87 @@
         "volume": 100000
     },
     {
-        "label": "flow_5_Bled->6_Novo_Mesto",
-        "src": 5,
-        "dest": 6,
+        "label": "flow_2_Celje->3_Lasko",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_8_Tolmin->10_Portoroz",
+        "label": "flow_4_Kranj->5_Bled",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Novo_Mesto->7_Ljubljana",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tolmin->9_Nova_Gorica",
         "src": 8,
-        "dest": 10,
+        "dest": 9,
         "volume": 100000
     },
     {
-        "label": "flow_11_Gornja_Radgona->12_Radenci",
-        "src": 11,
-        "dest": 12,
+        "label": "flow_10_Portoroz->11_Gornja_Radgona",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     },
     {
-        "label": "flow_13_Rogasja_Slatina->18_Postojna",
-        "src": 13,
-        "dest": 18,
+        "label": "flow_12_Radenci->13_Rogasja_Slatina",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_19_Ajdovscina->20_Kovevje",
-        "src": 19,
-        "dest": 20,
+        "label": "flow_14_Senozece->17_Divaca",
+        "src": 14,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_21_Kamnik->22_Izola",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_18_Postojna->19_Ajdovscina",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_24_Slovenj_Gradec->26_Murska_Sobota",
+        "label": "flow_20_Kovevje->21_Kamnik",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Izola->23_Koper",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Slovenj_Gradec->25_Velenje",
         "src": 24,
-        "dest": 26,
+        "dest": 25,
         "volume": 100000
     },
     {
-        "label": "flow_27_Ljutomer->28_Ormoz",
-        "src": 27,
-        "dest": 28,
+        "label": "flow_26_Murska_Sobota->27_Ljutomer",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ormoz->29_Ptuj",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Maribor->31_Slovenska_Bistrica",
+        "src": 30,
+        "dest": 31,
         "volume": 100000
     }
 ]

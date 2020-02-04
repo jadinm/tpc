@@ -1,14 +1,20 @@
 [
     {
-        "label": "flow_0_Peking_University->5_Natural_Science_Foundation_of_China",
+        "label": "flow_0_Peking_University->4_Tsinghua_Unviersity",
         "src": 0,
-        "dest": 4,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_6_Beijing_University_of_Posts_and_Telecommunications->7_Beijing_University_of_Aeronautics_and_Astronautics",
-        "src": 5,
-        "dest": 6,
+        "label": "flow_5_Natural_Science_Foundation_of_China->6_Beijing_University_of_Posts_and_Telecommunications",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Beijing_University_of_Aeronautics_and_Astronautics->8_China_Academy_of_Sciences",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     }
 ]

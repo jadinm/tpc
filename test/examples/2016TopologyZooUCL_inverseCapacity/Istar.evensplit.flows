@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "label": "flow_0_Montreal->4_Moncton",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Halifax->13_Toronto",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Vancouver->17_Calgary",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    }
+]

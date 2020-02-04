@@ -1,38 +1,98 @@
 [
     {
-        "label": "flow_1_BE->6_LU",
-        "src": 1,
-        "dest": 6,
+        "label": "flow_0_NL->1_BE",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_14_TR->16_CY",
+        "label": "flow_2_DK->3_PL",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DE->5_CZ",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_LU->7_FR",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_CH->9_IT",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_BG->13_RO",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_TR->15_GR",
         "src": 14,
-        "dest": 16,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_17_IL->24_PT",
-        "src": 17,
-        "dest": 24,
+        "label": "flow_16_CY->17_IL",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_28_SL->31_RU",
-        "src": 28,
-        "dest": 31,
+        "label": "flow_22_HU->23_SK",
+        "src": 22,
+        "dest": 23,
         "volume": 100000
     },
     {
-        "label": "flow_32_IS->33_IE",
-        "src": 32,
-        "dest": 33,
+        "label": "flow_24_PT->25_ES",
+        "src": 24,
+        "dest": 25,
         "volume": 100000
     },
     {
-        "label": "flow_35_NO->38_EE",
+        "label": "flow_27_HR->28_SL",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_AT->30_LT",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_RU->32_IS",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_IE->34_UK",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_NO->36_SE",
         "src": 35,
-        "dest": 38,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_EE->39_LV",
+        "src": 38,
+        "dest": 39,
         "volume": 100000
     }
 ]

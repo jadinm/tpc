@@ -12,15 +12,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_4_Pekalongan->6_Magelang",
+        "label": "flow_4_Pekalongan->5_Semarang",
         "src": 4,
-        "dest": 6,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_7_Yogyakarta->8_Kudus",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_6_Magelang->7_Yogyakarta",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kudus->9_Surakarta",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Surabaya->12_Kediri",
+        "src": 11,
+        "dest": 12,
         "volume": 100000
     },
     {
@@ -30,26 +42,38 @@
         "volume": 100000
     },
     {
-        "label": "flow_15_Banyunwangi->17_Probolinggo",
+        "label": "flow_15_Banyunwangi->16_Jember",
         "src": 15,
-        "dest": 17,
+        "dest": 16,
         "volume": 100000
     },
     {
-        "label": "flow_18_Malang->20_Cibaliung",
-        "src": 18,
-        "dest": 20,
+        "label": "flow_17_Probolinggo->18_Malang",
+        "src": 17,
+        "dest": 18,
         "volume": 100000
     },
     {
-        "label": "flow_21_Tegal->22_Cirebon",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_20_Cibaliung->21_Tegal",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     },
     {
-        "label": "flow_24_Karawang->27_Serang",
+        "label": "flow_22_Cirebon->23_Bandung",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Karawang->25_Jakarta",
         "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Bogor->27_Serang",
+        "src": 26,
         "dest": 27,
         "volume": 100000
     }

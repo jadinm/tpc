@@ -1,8 +1,38 @@
 [
     {
-        "label": "flow_32_Internet->35_Chalkida",
+        "label": "flow_3_Kavala->7_Athens",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Ag._Nikolaos->27_Larissa",
+        "src": 20,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Internet->33_Patra",
         "src": 32,
-        "dest": 35,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Chalkida->41_Ioaninna",
+        "src": 35,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Hersonlssos->43_Heraklion",
+        "src": 42,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_Tripoli->55_Thessaloniki",
+        "src": 51,
+        "dest": 55,
         "volume": 100000
     }
 ]

@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "label": "flow_1_MI->5_BO",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_NA->19_RM",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    }
+]

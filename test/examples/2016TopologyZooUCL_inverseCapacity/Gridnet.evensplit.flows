@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "label": "flow_0_Houston->1_San_Francisco",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Los_Angeles->3_New_York",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Newark->5_Washington,_DC",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Atlanta->7_Dallas",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

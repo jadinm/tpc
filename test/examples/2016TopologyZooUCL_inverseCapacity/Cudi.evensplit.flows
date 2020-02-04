@@ -1,7 +1,13 @@
 [
     {
-        "label": "flow_2_UTEI->13_UV",
-        "src": 2,
+        "label": "flow_0_None->2_UTEI",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->13_UV",
+        "src": 5,
         "dest": 13,
         "volume": 100000
     },
@@ -12,9 +18,33 @@
         "volume": 100000
     },
     {
+        "label": "flow_28_VPN->31_None",
+        "src": 28,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
         "label": "flow_41_CENIC->42_Abilene",
         "src": 41,
         "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->44_GDL",
+        "src": 43,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_MEX->46_Cd.J",
+        "src": 45,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_TU->50_?",
+        "src": 47,
+        "dest": 50,
         "volume": 100000
     }
 ]

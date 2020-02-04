@@ -1,20 +1,44 @@
 [
     {
+        "label": "flow_0_ELPA->1_CHI-SL",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Denv->3_ALBU",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
         "label": "flow_4_ANL->5_AMES",
         "src": 4,
         "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_7_FNAL->10_NASH",
-        "src": 7,
+        "label": "flow_6_CHIC->7_FNAL",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_DOE-A->10_NASH",
+        "src": 8,
         "dest": 10,
         "volume": 100000
     },
     {
-        "label": "flow_16_None->17_None",
-        "src": 16,
-        "dest": 17,
+        "label": "flow_11_ATLA->16_None",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_None->18_NETL",
+        "src": 17,
+        "dest": 18,
         "volume": 100000
     },
     {
@@ -24,21 +48,51 @@
         "volume": 100000
     },
     {
-        "label": "flow_33_CERN->38_None",
-        "src": 33,
-        "dest": 38,
+        "label": "flow_29_SNLA->33_CERN",
+        "src": 29,
+        "dest": 33,
         "volume": 100000
     },
     {
-        "label": "flow_39_None->40_None",
-        "src": 39,
-        "dest": 40,
+        "label": "flow_38_None->39_None",
+        "src": 38,
+        "dest": 39,
         "volume": 100000
     },
     {
-        "label": "flow_41_None->56_PNNL",
-        "src": 41,
+        "label": "flow_40_None->41_None",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_ORNL->51_WASH",
+        "src": 50,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_52_NEWY->56_PNNL",
+        "src": 52,
         "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_58_Salt_Lake->60_SEA",
+        "src": 58,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_SUNN->62_SNV1",
+        "src": 61,
+        "dest": 62,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_LANL->67_SDSC",
+        "src": 64,
+        "dest": 67,
         "volume": 100000
     }
 ]

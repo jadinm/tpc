@@ -1,20 +1,26 @@
 [
     {
-        "label": "flow_1_Wye->2_Dunkirk",
-        "src": 1,
-        "dest": 2,
+        "label": "flow_0_Blue_Bell_Hill->1_Wye",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_6_Cranbrook->7_NTL-Wye",
-        "src": 6,
-        "dest": 7,
+        "label": "flow_2_Dunkirk->3_Beacon_Hill",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_8_University_of_Greenwich->15_Tonbridge",
-        "src": 8,
-        "dest": 15,
+        "label": "flow_4_Kent->6_Cranbrook",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->8_University_of_Greenwich",
+        "src": 7,
+        "dest": 8,
         "volume": 100000
     }
 ]

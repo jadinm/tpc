@@ -1,5 +1,17 @@
 [
     {
+        "label": "flow_r00->r01",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_r10->r11",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
         "label": "flow_a-00-01->a-00-10",
         "src": 4,
         "dest": 5,

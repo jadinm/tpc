@@ -1,13 +1,25 @@
 [
     {
-        "label": "flow_3_Krustevac->7_Leskovac",
+        "label": "flow_3_Krustevac->5_Nis",
         "src": 3,
-        "dest": 7,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_8_Kragujevac->16_Raska",
-        "src": 8,
+        "label": "flow_7_Leskovac->8_Kragujevac",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->12_Beograd",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kraljevo->16_Raska",
+        "src": 15,
         "dest": 16,
         "volume": 100000
     },

@@ -1,1 +1,38 @@
-[]
+[
+    {
+        "label": "flow_10_None->13_Peshawar",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Karachi->46_None",
+        "src": 43,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_Faisalabad->59_None",
+        "src": 50,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_None->66_Quetta",
+        "src": 60,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_72_Lahore->102_Peshawar",
+        "src": 72,
+        "dest": 102,
+        "volume": 100000
+    },
+    {
+        "label": "flow_119_Abbottabad->126_Islamabad",
+        "src": 119,
+        "dest": 126,
+        "volume": 100000
+    }
+]

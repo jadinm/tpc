@@ -24,9 +24,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_10_Chicago->11_San_Francisco",
-        "src": 10,
-        "dest": 11,
+        "label": "flow_8_Dallas->10_Chicago",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_San_Francisco->12_Los_Angeles",
+        "src": 11,
+        "dest": 12,
         "volume": 100000
     },
     {

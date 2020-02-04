@@ -1,32 +1,56 @@
 [
     {
-        "label": "flow_7_Dobele->10_Saldus",
-        "src": 7,
-        "dest": 10,
+        "label": "flow_6_Platone->7_Dobele",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_12_Viesite->13_Aizkroukle",
-        "src": 12,
-        "dest": 13,
+        "label": "flow_10_Saldus->12_Viesite",
+        "src": 10,
+        "dest": 12,
         "volume": 100000
     },
     {
-        "label": "flow_16_Rujiena->19_Mazsalaca",
-        "src": 16,
+        "label": "flow_13_Aizkroukle->16_Rujiena",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aloja->19_Mazsalaca",
+        "src": 18,
         "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_25_Valmiera->27_Carnikava",
-        "src": 25,
-        "dest": 27,
+        "label": "flow_22_Limbazi->23_Liepupe",
+        "src": 22,
+        "dest": 23,
         "volume": 100000
     },
     {
-        "label": "flow_28_Jumprava->29_Kegums",
-        "src": 28,
-        "dest": 29,
+        "label": "flow_25_Valmiera->26_Rezekne",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Carnikava->28_Jumprava",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kegums->30_Riga",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Daugapils->34_Liepaja",
+        "src": 31,
+        "dest": 34,
         "volume": 100000
     },
     {
@@ -36,27 +60,39 @@
         "volume": 100000
     },
     {
-        "label": "flow_39_Salaspils->41_Jekabpils",
-        "src": 39,
-        "dest": 41,
+        "label": "flow_38_Ikskile->39_Salaspils",
+        "src": 38,
+        "dest": 39,
         "volume": 100000
     },
     {
-        "label": "flow_50_Tukums->55_Adazi",
-        "src": 50,
-        "dest": 55,
+        "label": "flow_41_Jekabpils->42_Jelgava",
+        "src": 41,
+        "dest": 42,
         "volume": 100000
     },
     {
-        "label": "flow_56_Ozolnieki->59_Preili",
-        "src": 56,
-        "dest": 59,
+        "label": "flow_48_Sigulda->50_Tukums",
+        "src": 48,
+        "dest": 50,
         "volume": 100000
     },
     {
-        "label": "flow_62_Karsava->63_Malnava",
-        "src": 62,
-        "dest": 63,
+        "label": "flow_55_Adazi->56_Ozolnieki",
+        "src": 55,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Preili->62_Karsava",
+        "src": 59,
+        "dest": 62,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Malnava->66_Ludza",
+        "src": 63,
+        "dest": 66,
         "volume": 100000
     }
 ]

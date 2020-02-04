@@ -1,32 +1,80 @@
 [
     {
-        "label": "flow_0_Fribourg->2_Delemont",
+        "label": "flow_0_Fribourg->1_Basel",
         "src": 0,
-        "dest": 2,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_6_Villigen_PSI->24_Brig",
+        "label": "flow_2_Delemont->3_Bern",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Kreuzlingen->5_St._Gallen",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Villigen_PSI->7_Zurich_(ETH)",
         "src": 6,
-        "dest": 24,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_25_Martigny->26_Grenchen",
-        "src": 25,
-        "dest": 26,
+        "label": "flow_8_Buchs_SG->9_Chur",
+        "src": 8,
+        "dest": 9,
         "volume": 100000
     },
     {
-        "label": "flow_27_Davos->32_Horw",
-        "src": 27,
-        "dest": 32,
+        "label": "flow_22_Neuchatel->23_IXEurope_Zurich",
+        "src": 22,
+        "dest": 23,
         "volume": 100000
     },
     {
-        "label": "flow_33_Brugg->36_Geneva",
-        "src": 33,
-        "dest": 36,
+        "label": "flow_24_Brig->25_Martigny",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Grenchen->27_Davos",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Liechtenstein->29_Rapperswil",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Manno->31_Zurich_(University)",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Horw->33_Brugg",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CERN->35_Lausanne_(University)",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Geneva->37_Lausanne_(EPFL)",
+        "src": 36,
+        "dest": 37,
         "volume": 100000
     },
     {

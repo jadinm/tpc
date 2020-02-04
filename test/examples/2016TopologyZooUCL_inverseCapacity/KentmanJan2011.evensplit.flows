@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "label": "flow_5_UoK-C->12_KPSN",
+        "src": 5,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Chatham->25_UoK_-_Tonbridge",
+        "src": 18,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_UoG-AH->33_EIS-Maidstone",
+        "src": 30,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CCCU-S->35_CCCU-T",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    }
+]

@@ -1,1 +1,26 @@
-[]
+[
+    {
+        "label": "flow_0_Los_Angeles->1_Chennai",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_New_York->8_London",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mumbai->11_Marseille",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Hong_Kong->14_Singapore",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    }
+]

@@ -18,6 +18,12 @@
         "volume": 100000
     },
     {
+        "label": "flow_7_London->8_Reading",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
         "label": "flow_9_Banbury->12_Birmingham",
         "src": 9,
         "dest": 12,
@@ -42,8 +48,14 @@
         "volume": 100000
     },
     {
-        "label": "flow_19_Harrogate->22_Carlisle",
+        "label": "flow_19_Harrogate->20_York",
         "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Leeds->22_Carlisle",
+        "src": 21,
         "dest": 22,
         "volume": 100000
     }

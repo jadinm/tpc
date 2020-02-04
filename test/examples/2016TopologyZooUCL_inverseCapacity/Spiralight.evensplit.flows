@@ -12,33 +12,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_4_Chicago->6_Camp_Douglas",
+        "label": "flow_4_Chicago->5_Madison",
         "src": 4,
-        "dest": 6,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_7_Minneaopolis->8_Eau_Claire",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_6_Camp_Douglas->7_Minneaopolis",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_9_Wausau->10_Green_Bay",
-        "src": 9,
-        "dest": 10,
+        "label": "flow_8_Eau_Claire->9_Wausau",
+        "src": 8,
+        "dest": 9,
         "volume": 100000
     },
     {
-        "label": "flow_11_Appleton->12_Oshkosh",
-        "src": 11,
-        "dest": 12,
+        "label": "flow_10_Green_Bay->11_Appleton",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     },
     {
-        "label": "flow_13_Fon_Du_Lac->14_Beaver_Dam",
-        "src": 13,
-        "dest": 14,
+        "label": "flow_12_Oshkosh->13_Fon_Du_Lac",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     }
 ]

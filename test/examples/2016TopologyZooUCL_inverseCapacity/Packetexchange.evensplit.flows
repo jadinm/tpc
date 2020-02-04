@@ -1,32 +1,56 @@
 [
     {
-        "label": "flow_0_Miami->3_New_York",
+        "label": "flow_0_Miami->1_London",
         "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Ashburn/Washington->3_New_York",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_6_Amsterdam->8_Hong_Kong",
-        "src": 6,
+        "label": "flow_4_Paris->6_Amsterdam",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Frankfurt->8_Hong_Kong",
+        "src": 7,
         "dest": 8,
         "volume": 100000
     },
     {
-        "label": "flow_9_Singapore->12_Chicago",
+        "label": "flow_9_Singapore->10_Los_Angeles",
         "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Kansas_City->12_Chicago",
+        "src": 11,
         "dest": 12,
         "volume": 100000
     },
     {
-        "label": "flow_13_Seattle->15_San_Jose",
+        "label": "flow_13_Seattle->14_San_Francisco",
         "src": 13,
-        "dest": 15,
+        "dest": 14,
         "volume": 100000
     },
     {
-        "label": "flow_16_Houston->18_Phoenix",
-        "src": 16,
-        "dest": 18,
+        "label": "flow_15_San_Jose->16_Houston",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Phoenix->19_Dallas",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     }
 ]

@@ -1,7 +1,13 @@
 [
     {
-        "label": "flow_1_Grande_Prairie->5_Vernon",
+        "label": "flow_1_Grande_Prairie->2_Edmonton",
         "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Kamloops->5_Vernon",
+        "src": 4,
         "dest": 5,
         "volume": 100000
     },
@@ -12,38 +18,92 @@
         "volume": 100000
     },
     {
-        "label": "flow_11_Charlottetown->13_Ottawa",
-        "src": 11,
+        "label": "flow_8_Kelowna->11_Charlottetown",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_New_York->13_Ottawa",
+        "src": 12,
         "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_17_Chicoutimi->18_Rimouski",
-        "src": 17,
-        "dest": 18,
+        "label": "flow_14_Montreal->15_Sherbrooke",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_19_Baie-Comeau->23_Fredericton",
-        "src": 19,
+        "label": "flow_16_Quebec_City->17_Chicoutimi",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Rimouski->19_Baie-Comeau",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Saint_John->21_Moncton",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Halifax->23_Fredericton",
+        "src": 22,
         "dest": 23,
         "volume": 100000
     },
     {
-        "label": "flow_24_St_John's->28_Buffalo",
+        "label": "flow_24_St_John's->25_Onslow",
         "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Calgary->28_Buffalo",
+        "src": 27,
         "dest": 28,
         "volume": 100000
     },
     {
-        "label": "flow_37_San_Francisco->38_Medicine_Hat",
-        "src": 37,
-        "dest": 38,
+        "label": "flow_29_Toronto->30_Victoria",
+        "src": 29,
+        "dest": 30,
         "volume": 100000
     },
     {
-        "label": "flow_39_Red_Deer->41_Atlanta",
-        "src": 39,
+        "label": "flow_31_Seattle->33_Vancouver",
+        "src": 31,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Chicago->35_Los_Angeles",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Palo_Alto->37_San_Francisco",
+        "src": 36,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Medicine_Hat->39_Red_Deer",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Washington->41_Atlanta",
+        "src": 40,
         "dest": 41,
         "volume": 100000
     },
@@ -54,9 +114,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_44_Thunder_Bay->46_Saskatoon",
+        "label": "flow_44_Thunder_Bay->45_Winnipeg",
         "src": 44,
-        "dest": 46,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_Saskatoon->47_Regina",
+        "src": 46,
+        "dest": 47,
         "volume": 100000
     }
 ]

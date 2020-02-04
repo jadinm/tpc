@@ -1,5 +1,11 @@
 [
     {
+        "label": "flow_2_NOC_and_CampusSocial_Sciences->4_NationalBroadcastingcompany_Comm._Tower",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
         "label": "flow_5_I_of_Political_and_Juridical_Res->7_Campus_Natural_Sciences_and_Mathematics",
         "src": 5,
         "dest": 7,
@@ -12,9 +18,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_16_Campus_Arch_and_Civil_Eng->18_Campus_Medicine",
+        "label": "flow_16_Campus_Arch_and_Civil_Eng->17_CampusTechnical",
         "src": 16,
-        "dest": 18,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Campus_Medicine->19_CampusBiotech._Sciences",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     }
 ]

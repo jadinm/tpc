@@ -1,19 +1,25 @@
 [
     {
-        "label": "flow_0_Tulsa->2_San_Antonio",
+        "label": "flow_0_Tulsa->1_Kansas_City",
         "src": 0,
-        "dest": 2,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_3_Dallas->4_Pensacola",
-        "src": 3,
-        "dest": 4,
+        "label": "flow_2_San_Antonio->3_Dallas",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_5_Jacksonville->7_Baton_Rouge",
-        "src": 5,
+        "label": "flow_4_Pensacola->5_Jacksonville",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Houston->7_Baton_Rouge",
+        "src": 6,
         "dest": 7,
         "volume": 100000
     },
@@ -30,33 +36,45 @@
         "volume": 100000
     },
     {
-        "label": "flow_13_Chicago->14_Raton",
-        "src": 13,
-        "dest": 14,
+        "label": "flow_12_Cleveland->13_Chicago",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_15_Pittsburgh->17_Philadelphia",
-        "src": 15,
+        "label": "flow_14_Raton->15_Pittsburgh",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Washington_DC->17_Philadelphia",
+        "src": 16,
         "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_18_Los_Angeles->20_Seattle",
+        "label": "flow_18_Los_Angeles->19_El_Paso/Las_Cruces",
         "src": 18,
-        "dest": 20,
+        "dest": 19,
         "volume": 100000
     },
     {
-        "label": "flow_21_Portland->22_Sunny_Vale",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_20_Seattle->21_Portland",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     },
     {
-        "label": "flow_23_Boise->24_Salt_Lake_City",
-        "src": 23,
-        "dest": 24,
+        "label": "flow_22_Sunny_Vale->23_Boise",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Salt_Lake_City->25_Denver",
+        "src": 24,
+        "dest": 25,
         "volume": 100000
     },
     {

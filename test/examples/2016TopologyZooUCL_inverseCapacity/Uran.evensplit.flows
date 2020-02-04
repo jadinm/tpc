@@ -1,26 +1,38 @@
 [
     {
-        "label": "flow_0_Kherson->3_Simferopol",
+        "label": "flow_0_Kherson->1_Mykolaiv",
         "src": 0,
-        "dest": 3,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_4_Vinnitsa->5_Khmelnitsky",
-        "src": 4,
-        "dest": 5,
+        "label": "flow_3_Simferopol->4_Vinnitsa",
+        "src": 3,
+        "dest": 4,
         "volume": 100000
     },
     {
-        "label": "flow_6_Odessa->10_Cherkassy",
-        "src": 6,
-        "dest": 10,
+        "label": "flow_5_Khmelnitsky->6_Odessa",
+        "src": 5,
+        "dest": 6,
         "volume": 100000
     },
     {
-        "label": "flow_18_Zhitomir->22_Kharkiv",
-        "src": 18,
-        "dest": 22,
+        "label": "flow_10_Cherkassy->15_Dnipropetrovsk",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Lviv->18_Zhitomir",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Kiev->21_Poltava",
+        "src": 19,
+        "dest": 21,
         "volume": 100000
     }
 ]

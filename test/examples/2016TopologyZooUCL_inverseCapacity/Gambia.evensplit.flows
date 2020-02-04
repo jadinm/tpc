@@ -1,20 +1,38 @@
 [
     {
-        "label": "flow_2_Kerewan->15_Intelsat",
+        "label": "flow_2_Kerewan->3_Banjul",
         "src": 2,
-        "dest": 15,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_16_Earth_Station->18_Basse",
-        "src": 16,
-        "dest": 18,
+        "label": "flow_15_Intelsat->16_Earth_Station",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->20_Abuko",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Serekunda->23_Bakau",
+        "src": 21,
+        "dest": 23,
         "volume": 100000
     },
     {
         "label": "flow_24_Brikama->25_Yundum",
         "src": 24,
         "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->27_Farafenni",
+        "src": 26,
+        "dest": 27,
         "volume": 100000
     }
 ]

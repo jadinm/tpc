@@ -6,15 +6,21 @@
         "volume": 100000
     },
     {
-        "label": "flow_3_Parkes->4_Albury",
-        "src": 3,
-        "dest": 4,
+        "label": "flow_2_None->3_Parkes",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_5_Newcastle->6_Coff's_Harbour",
-        "src": 5,
-        "dest": 6,
+        "label": "flow_4_Albury->5_Newcastle",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Coff's_Harbour->7_Geelong",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
@@ -24,15 +30,21 @@
         "volume": 100000
     },
     {
-        "label": "flow_12_Sydney->14_Brisbane",
-        "src": 12,
-        "dest": 14,
+        "label": "flow_10_Adelaide->11_Melbourne",
+        "src": 10,
+        "dest": 11,
         "volume": 100000
     },
     {
-        "label": "flow_15_Kalgoorlie->16_Port_Augusta",
-        "src": 15,
-        "dest": 16,
+        "label": "flow_12_Sydney->13_Canberra",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Brisbane->15_Kalgoorlie",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     }
 ]

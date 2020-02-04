@@ -4,5 +4,23 @@
         "src": 11,
         "dest": 21,
         "volume": 100000
+    },
+    {
+        "label": "flow_24_Adelaide->25_Perth",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Brisbane->27_Sydney1",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->29_Canberra",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
     }
 ]

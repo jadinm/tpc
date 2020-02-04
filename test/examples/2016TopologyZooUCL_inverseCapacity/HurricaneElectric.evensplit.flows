@@ -1,14 +1,50 @@
 [
     {
-        "label": "flow_5_Fremont_1->8_Fremont_2",
-        "src": 5,
-        "dest": 8,
+        "label": "flow_0_Amsterdam->1_Frankfurt",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_10_New_York_3->14_Atlanta",
+        "label": "flow_2_London->3_Paris",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Palo_Alto->5_Fremont_1",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Fremont_2->9_San_Jose_2",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_New_York_3->11_New_York_2",
         "src": 10,
-        "dest": 14,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_New_York_1->13_San_Jose_1",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Atlanta->19_Los_Angeles",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Dallas->21_Chicago",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     }
 ]

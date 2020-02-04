@@ -6,9 +6,21 @@
         "volume": 100000
     },
     {
-        "label": "flow_7_Samtarem->21_Aveiro",
-        "src": 7,
-        "dest": 21,
+        "label": "flow_6_Lisboa->7_Samtarem",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Setubal->20_Porto",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Aveiro->22_Coimbra",
+        "src": 21,
+        "dest": 22,
         "volume": 100000
     }
 ]

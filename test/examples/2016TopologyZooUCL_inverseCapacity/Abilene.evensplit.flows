@@ -10,5 +10,23 @@
         "src": 2,
         "dest": 3,
         "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->5_Los_Angeles",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Denver->7_Kansas_City",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Houston->9_Atlanta",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
     }
 ]

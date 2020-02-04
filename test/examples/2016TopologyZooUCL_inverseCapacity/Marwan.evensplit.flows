@@ -4,5 +4,23 @@
         "src": 0,
         "dest": 1,
         "volume": 100000
+    },
+    {
+        "label": "flow_2_Rabat->3_Agadir",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Tanger->6_None",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Casa->13_None",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
     }
 ]

@@ -1,13 +1,25 @@
 [
     {
-        "label": "flow_0_Cisco_3640_Samtredia->6_Cisco_3640_Khashuri",
+        "label": "flow_0_Cisco_3640_Samtredia->3_Cisco_3640_Kutaisi_C04",
         "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cisco_3640_Poti->6_Cisco_3640_Khashuri",
+        "src": 4,
         "dest": 6,
         "volume": 100000
     },
     {
-        "label": "flow_10_Rustavi_CO14->14_Cisco_3640_Gori",
-        "src": 10,
+        "label": "flow_8_Tbilisi_GRENA_Network->10_Rustavi_CO14",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Rustavi_CO15->14_Cisco_3640_Gori",
+        "src": 13,
         "dest": 14,
         "volume": 100000
     }

@@ -1,8 +1,26 @@
 [
     {
-        "label": "flow_7_CN->16_CT",
-        "src": 7,
-        "dest": 16,
+        "label": "flow_1_VN_HN->2_HCM",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DN->5_JP",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_HK->7_CN",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_CT->24_SG",
+        "src": 16,
+        "dest": 24,
         "volume": 100000
     }
 ]

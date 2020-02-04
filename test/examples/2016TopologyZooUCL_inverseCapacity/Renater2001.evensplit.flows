@@ -1,14 +1,32 @@
 [
     {
-        "label": "flow_0_Bordeaux->6_Montpellier",
+        "label": "flow_0_Bordeaux->1_Toulouse",
         "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->6_Montpellier",
+        "src": 5,
         "dest": 6,
         "volume": 100000
     },
     {
-        "label": "flow_9_Sophia->14_Nantes",
+        "label": "flow_9_Sophia->10_Lyon",
         "src": 9,
-        "dest": 14,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Paris->13_Marseille",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Nantes->15_Poiters",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {

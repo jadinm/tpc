@@ -30,14 +30,32 @@
         "volume": 100000
     },
     {
-        "label": "flow_10_Sco-locate->15_Telehouse",
+        "label": "flow_10_Sco-locate->11_Reading",
         "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Leeds->13_Warrington",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Glasgow->15_Telehouse",
+        "src": 14,
         "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_16_Telecity->19_C&NLMAN",
+        "label": "flow_16_Telecity->17_London",
         "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Bristol->19_C&NLMAN",
+        "src": 18,
         "dest": 19,
         "volume": 100000
     },

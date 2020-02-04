@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "label": "flow_0_None->1_None",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->6_Praha",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    }
+]

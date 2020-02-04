@@ -1,7 +1,13 @@
 [
     {
-        "label": "flow_1_Lahti->3_Jyvaskyla",
-        "src": 1,
+        "label": "flow_0_Kouvola->1_Lahti",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Mikkeli->3_Jyvaskyla",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
@@ -24,6 +30,12 @@
         "volume": 100000
     },
     {
+        "label": "flow_11_Helsinki->12_Espoo",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
         "label": "flow_13_Salo->15_NORDU",
         "src": 13,
         "dest": 15,
@@ -36,9 +48,21 @@
         "volume": 100000
     },
     {
-        "label": "flow_19_Haukipudas->23_Kokkola",
-        "src": 19,
-        "dest": 23,
+        "label": "flow_18_Oulu->19_Haukipudas",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->22_Ristijavi",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->24_Vaasa",
+        "src": 23,
+        "dest": 24,
         "volume": 100000
     }
 ]

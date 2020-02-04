@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "label": "flow_0_Pacific_NW_Gigapop_(Seattle,_WA)->2_Cat_6500_AS23814",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_ONS-15454->10_BigIron_15000_AS23814",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    }
+]

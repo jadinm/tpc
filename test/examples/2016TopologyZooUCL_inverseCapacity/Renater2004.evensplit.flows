@@ -12,15 +12,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_7_Clermont-Ferrand->8_Grenoble",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_6_Montpellier->7_Clermont-Ferrand",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_19_Internet_mondial->20_Nantes",
-        "src": 19,
-        "dest": 20,
+        "label": "flow_8_Grenoble->9_Nice",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Lyon->13_Paris",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Marseille->19_Internet_mondial",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Nantes->21_Poiters",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     },
     {

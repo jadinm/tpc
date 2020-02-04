@@ -1,1 +1,32 @@
-[]
+[
+    {
+        "label": "flow_0_None->1_Dialup_server",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Wireless_server->3_Wireless_router",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_ANAS_users->7_Distribution_switch",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Information_Tech.->13_NOC",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Local_ISP->17_VSAT_Station",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    }
+]

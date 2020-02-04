@@ -1,8 +1,14 @@
 [
     {
-        "label": "flow_1_Lanzhou->6_Taiyuan",
-        "src": 1,
-        "dest": 6,
+        "label": "flow_0_Lhasa->1_Lanzhou",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Taiyuan->8_Shanghai",
+        "src": 6,
+        "dest": 8,
         "volume": 100000
     },
     {
@@ -12,15 +18,45 @@
         "volume": 100000
     },
     {
-        "label": "flow_15_Chongqing->22_Haikou",
+        "label": "flow_15_Chongqing->16_Chengdu",
         "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Xi'an->22_Haikou",
+        "src": 18,
         "dest": 22,
         "volume": 100000
     },
     {
-        "label": "flow_32_Xining->40_Hohhot",
+        "label": "flow_23_Hong_Kong->25_Wuhan",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Nanjing->28_Guangzhou",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Xining->33_Urumqi",
         "src": 32,
-        "dest": 40,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Tianjin->39_Beijing",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Hohhot->41_Yinchuan",
+        "src": 40,
+        "dest": 41,
         "volume": 100000
     }
 ]

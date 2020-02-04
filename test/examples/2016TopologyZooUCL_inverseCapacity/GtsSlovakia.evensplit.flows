@@ -1,8 +1,26 @@
 [
     {
-        "label": "flow_4_Detva->17_Trencin",
+        "label": "flow_4_Detva->6_Zilina",
         "src": 4,
-        "dest": 17,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Trencin->25_Spisska",
+        "src": 17,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Poprad->27_Banska_Bystrica",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->29_Kosice",
+        "src": 28,
+        "dest": 29,
         "volume": 100000
     }
 ]

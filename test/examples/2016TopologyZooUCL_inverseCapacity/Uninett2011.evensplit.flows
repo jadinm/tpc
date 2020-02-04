@@ -1,8 +1,20 @@
 [
     {
-        "label": "flow_2_HiG_Gjovik->4_HiBU_Kongsberg",
+        "label": "flow_0_UiO->1_UiO",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_HiG_Gjovik->3_UiO_St_Olavsplass_5",
         "src": 2,
-        "dest": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->5_HiBU_Drammen",
+        "src": 4,
+        "dest": 5,
         "volume": 100000
     },
     {
@@ -12,27 +24,69 @@
         "volume": 100000
     },
     {
-        "label": "flow_9_HiNe_Nesna->14_UiTo_Karasjok",
-        "src": 9,
+        "label": "flow_8_NB_Mo_i_Rana->9_HiNe_Nesna",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_HVE_Borre->12_HiN_Narvik",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->14_UiTo_Karasjok",
+        "src": 13,
         "dest": 14,
         "volume": 100000
     },
     {
-        "label": "flow_17_HVO_Volda->20_HSH_Haugesund",
+        "label": "flow_15_UiTo->16_HiA_Alesund",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_HVO_Volda->18_UiS_Stavanger",
         "src": 17,
-        "dest": 20,
+        "dest": 18,
         "volume": 100000
     },
     {
-        "label": "flow_21_HSH_Stord->24_HSF_Songdal",
-        "src": 21,
-        "dest": 24,
+        "label": "flow_20_HSH_Haugesund->21_HSH_Stord",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     },
     {
-        "label": "flow_30_SA/SH_Kautokeino->31_HiF_Kirkenes",
-        "src": 30,
-        "dest": 31,
+        "label": "flow_22_UiB_Hoyteklogibygget->23_UiB_BT",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_HSF_Songdal->25_HSF_Forde",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_HiNe_Sandnesjoen->27_HiNT_Steinkjer",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_HBO_Bodo->30_SA/SH_Kautokeino",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_HiF_Kirkenes->32_Stockholm",
+        "src": 31,
+        "dest": 32,
         "volume": 100000
     },
     {
@@ -54,15 +108,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_44_HiF_Vadso->47_UiA_Grimstad",
-        "src": 44,
-        "dest": 47,
+        "label": "flow_42_HiF_Hammerfest->43_UiTo",
+        "src": 42,
+        "dest": 43,
         "volume": 100000
     },
     {
-        "label": "flow_48_HiO_Halden->49_UMB_As",
-        "src": 48,
-        "dest": 49,
+        "label": "flow_44_HiF_Vadso->46_UiA_Kristiansand",
+        "src": 44,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->48_HiO_Halden",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_UMB_As->50_HiO_Fredrikstad",
+        "src": 49,
+        "dest": 50,
         "volume": 100000
     },
     {
@@ -72,20 +138,38 @@
         "volume": 100000
     },
     {
+        "label": "flow_54_HiT_Bo->56_HiF_Alta",
+        "src": 54,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
         "label": "flow_57_HH_Evenstad->59_HH_Hamar",
         "src": 57,
         "dest": 59,
         "volume": 100000
     },
     {
-        "label": "flow_60_HiL_Lillehammer->64_HH_Tynset",
+        "label": "flow_60_HiL_Lillehammer->61_NTNU_Hovedbygget",
         "src": 60,
-        "dest": 64,
+        "dest": 61,
         "volume": 100000
     },
     {
-        "label": "flow_66_HH_Rena->68_HH_Kongsvinger",
-        "src": 66,
+        "label": "flow_62_NTNU_Realfagbygget->63_UNINETT_Teknobyen",
+        "src": 62,
+        "dest": 63,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->66_HH_Rena",
+        "src": 64,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->68_HH_Kongsvinger",
+        "src": 67,
         "dest": 68,
         "volume": 100000
     }

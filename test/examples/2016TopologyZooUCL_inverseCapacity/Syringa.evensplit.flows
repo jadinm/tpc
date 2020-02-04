@@ -18,8 +18,14 @@
         "volume": 100000
     },
     {
-        "label": "flow_8_Rockland->10_Fairfield",
-        "src": 8,
+        "label": "flow_7_Boise->8_Rockland",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arbon->10_Fairfield",
+        "src": 9,
         "dest": 10,
         "volume": 100000
     },
@@ -30,9 +36,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_14_Rupert->16_Bone",
+        "label": "flow_14_Rupert->15_Burley",
         "src": 14,
-        "dest": 16,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Bone->17_Iona",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
@@ -42,27 +54,57 @@
         "volume": 100000
     },
     {
-        "label": "flow_27_Hailey->31_Raft_River",
+        "label": "flow_23_Freedom->25_Henry",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Hailey->29_Pocatello",
         "src": 27,
-        "dest": 31,
+        "dest": 29,
         "volume": 100000
     },
     {
-        "label": "flow_39_McCammon->41_Idaho_Falls",
-        "src": 39,
-        "dest": 41,
+        "label": "flow_31_Raft_River->32_None",
+        "src": 31,
+        "dest": 32,
         "volume": 100000
     },
     {
-        "label": "flow_43_Glenn's_Ferry->47_Hagerman",
-        "src": 43,
-        "dest": 47,
+        "label": "flow_33_Twin_Falls->34_Soda_Springs",
+        "src": 33,
+        "dest": 34,
         "volume": 100000
     },
     {
-        "label": "flow_48_American_Falls->50_Dubois",
-        "src": 48,
+        "label": "flow_36_Lava_Hot_Springs->39_McCammon",
+        "src": 36,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Idaho_Falls->43_Glenn's_Ferry",
+        "src": 41,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_Hagerman->48_American_Falls",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_St_Anthony->50_Dubois",
+        "src": 49,
         "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_None->52_Challis",
+        "src": 51,
+        "dest": 52,
         "volume": 100000
     },
     {
@@ -84,21 +126,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_64_Payette->65_Fruitland",
-        "src": 64,
-        "dest": 65,
+        "label": "flow_61_Filer->64_Payette",
+        "src": 61,
+        "dest": 64,
         "volume": 100000
     },
     {
-        "label": "flow_67_Council->71_Indian_Valley",
-        "src": 67,
-        "dest": 71,
+        "label": "flow_65_Fruitland->67_Council",
+        "src": 65,
+        "dest": 67,
         "volume": 100000
     },
     {
-        "label": "flow_72_Midvale->73_Weiser",
-        "src": 72,
-        "dest": 73,
+        "label": "flow_69_Cambridge->70_Mesa",
+        "src": 69,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_71_Indian_Valley->72_Midvale",
+        "src": 71,
+        "dest": 72,
         "volume": 100000
     }
 ]

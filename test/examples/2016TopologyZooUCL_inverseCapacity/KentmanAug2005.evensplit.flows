@@ -6,14 +6,32 @@
         "volume": 100000
     },
     {
-        "label": "flow_12_Tonbridge->17_Dunkirk",
+        "label": "flow_12_Tonbridge->14_UoK-C",
         "src": 11,
-        "dest": 16,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_20_UoG-AH->26_CCCU-T",
-        "src": 19,
+        "label": "flow_15_Blue_Bell_Hill->16_Beacon_Hill",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->20_UoG-AH",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->23_IC-Wye",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_CCCU-S->26_CCCU-T",
+        "src": 24,
         "dest": 25,
         "volume": 100000
     }

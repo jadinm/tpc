@@ -6,8 +6,20 @@
         "volume": 100000
     },
     {
-        "label": "flow_12_UNI.iu->16_Bettembourg",
+        "label": "flow_9_RESTENA->10_BCE",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UNI.iu->14_Campus_Geesseknaeppchen",
         "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->16_Bettembourg",
+        "src": 15,
         "dest": 16,
         "volume": 100000
     },

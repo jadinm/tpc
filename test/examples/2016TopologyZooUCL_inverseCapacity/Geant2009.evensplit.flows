@@ -1,20 +1,62 @@
 [
     {
-        "label": "flow_1_BE->6_LU",
-        "src": 1,
-        "dest": 6,
+        "label": "flow_0_NL->1_BE",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_11_CY->13_MT",
-        "src": 11,
-        "dest": 13,
+        "label": "flow_2_DK->3_PL",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_14_TR->18_PT",
-        "src": 14,
+        "label": "flow_4_DE->5_CZ",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_LU->7_FR",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_CH->9_IT",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_GR->11_CY",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_MT->14_TR",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_RO->16_HU",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_SK->18_PT",
+        "src": 17,
         "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_ES->20_BG",
+        "src": 19,
+        "dest": 20,
         "volume": 100000
     },
     {
@@ -24,15 +66,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_24_LT->25_RU",
-        "src": 24,
-        "dest": 25,
+        "label": "flow_23_AT->24_LT",
+        "src": 23,
+        "dest": 24,
         "volume": 100000
     },
     {
-        "label": "flow_29_NO->32_EE",
+        "label": "flow_25_RU->28_UK",
+        "src": 25,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_NO->30_SE",
         "src": 29,
-        "dest": 32,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_EE->33_LV",
+        "src": 32,
+        "dest": 33,
         "volume": 100000
     }
 ]

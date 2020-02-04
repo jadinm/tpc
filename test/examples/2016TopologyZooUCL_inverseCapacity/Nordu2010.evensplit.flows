@@ -1,1 +1,14 @@
-[]
+[
+    {
+        "label": "flow_10_Reyjavik->11_Oslo",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Stockholm->16_Copenhagen",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    }
+]

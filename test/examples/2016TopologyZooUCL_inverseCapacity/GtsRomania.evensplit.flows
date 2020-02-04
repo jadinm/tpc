@@ -6,8 +6,14 @@
         "volume": 100000
     },
     {
-        "label": "flow_7_Focsani->13_Iasi",
-        "src": 7,
+        "label": "flow_5_Bucarest->7_Focsani",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Timisoara->13_Iasi",
+        "src": 11,
         "dest": 13,
         "volume": 100000
     },
@@ -15,6 +21,12 @@
         "label": "flow_15_Bacau->17_Cluj",
         "src": 15,
         "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oradea->19_Bors",
+        "src": 18,
+        "dest": 19,
         "volume": 100000
     }
 ]

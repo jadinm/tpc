@@ -12,14 +12,44 @@
         "volume": 100000
     },
     {
-        "label": "flow_5_Yokohama_DC1->8_Yokohama_DC2",
+        "label": "flow_5_Yokohama_DC1->6_Shibuya_DC",
         "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->8_Yokohama_DC2",
+        "src": 7,
         "dest": 8,
         "volume": 100000
     },
     {
-        "label": "flow_22_Kyoto_DC->26_PaloAlto_DC",
-        "src": 22,
+        "label": "flow_9_Nagoya_DC->18_Equinix_exchange",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->20_Fukuoka_DC",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->22_Kyoto_DC",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Ashburn_DC->24_LA_DC",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->26_PaloAlto_DC",
+        "src": 25,
         "dest": 26,
         "volume": 100000
     },
@@ -30,14 +60,20 @@
         "volume": 100000
     },
     {
-        "label": "flow_31_Toyama->32_Kanazawa",
-        "src": 31,
-        "dest": 32,
+        "label": "flow_30_Tokyo->31_Toyama",
+        "src": 30,
+        "dest": 31,
         "volume": 100000
     },
     {
-        "label": "flow_33_Hamamatsu->35_Okayama",
-        "src": 33,
+        "label": "flow_32_Kanazawa->33_Hamamatsu",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->35_Okayama",
+        "src": 34,
         "dest": 35,
         "volume": 100000
     }

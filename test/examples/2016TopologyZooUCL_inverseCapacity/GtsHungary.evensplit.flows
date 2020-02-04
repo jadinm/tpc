@@ -12,15 +12,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_23_Szombathely->24_Zalaegerszeg",
-        "src": 23,
-        "dest": 24,
+        "label": "flow_12_Szeged->20_Budapest",
+        "src": 12,
+        "dest": 20,
         "volume": 100000
     },
     {
-        "label": "flow_26_Szekesfehervar->27_Veszprem",
-        "src": 26,
-        "dest": 27,
+        "label": "flow_22_Sopron->23_Szombathely",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Zalaegerszeg->26_Szekesfehervar",
+        "src": 24,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->28_Gyor",
+        "src": 27,
+        "dest": 28,
         "volume": 100000
     }
 ]

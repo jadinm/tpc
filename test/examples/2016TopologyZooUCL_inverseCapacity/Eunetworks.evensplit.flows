@@ -12,15 +12,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_7_Dublin->10_Rotterdam",
+        "label": "flow_5_Cologne->6_Frankfurt",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Dublin->8_London",
         "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Paris->10_Rotterdam",
+        "src": 8,
         "dest": 9,
         "volume": 100000
     },
     {
-        "label": "flow_11_The_Hague->13_Utrecht",
+        "label": "flow_11_The_Hague->12_Amsterdam",
         "src": 10,
-        "dest": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Utrecht->14_Dusseldorf",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     }
 ]

@@ -30,39 +30,45 @@
         "volume": 100000
     },
     {
-        "label": "flow_10_Lyon->12_Montfaucon",
+        "label": "flow_10_Lyon->11_None",
         "src": 10,
-        "dest": 12,
+        "dest": 11,
         "volume": 100000
     },
     {
-        "label": "flow_13_Antwerp_(NMBS)->14_Toulouse",
-        "src": 13,
-        "dest": 14,
+        "label": "flow_12_Montfaucon->13_Antwerp_(NMBS)",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_15_Brussels_MIDI_(NMBS)->16_Marseille",
-        "src": 15,
-        "dest": 16,
+        "label": "flow_14_Toulouse->15_Brussels_MIDI_(NMBS)",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_17_Bordeaux->18_Luzern",
-        "src": 17,
-        "dest": 18,
+        "label": "flow_16_Marseille->17_Bordeaux",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_20_Azy-sur-Marne->21_Meaux",
-        "src": 20,
-        "dest": 21,
+        "label": "flow_18_Luzern->20_Azy-sur-Marne",
+        "src": 18,
+        "dest": 20,
         "volume": 100000
     },
     {
-        "label": "flow_22_Revigny->23_Conde-sur-Marne",
-        "src": 22,
-        "dest": 23,
+        "label": "flow_21_Meaux->22_Revigny",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Conde-sur-Marne->24_Leers-Nord_Estampuis",
+        "src": 23,
+        "dest": 24,
         "volume": 100000
     },
     {
@@ -90,9 +96,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_34_Basel->35_Nancy",
-        "src": 34,
-        "dest": 35,
+        "label": "flow_33_Zurich->34_Basel",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Nancy->36_Strasbourg",
+        "src": 35,
+        "dest": 36,
         "volume": 100000
     },
     {
@@ -120,14 +132,26 @@
         "volume": 100000
     },
     {
-        "label": "flow_48_Amiens->49_Crawley",
-        "src": 48,
-        "dest": 49,
+        "label": "flow_45_Amsterdam_(Schipluidlaan/Deflandlaan)->46_Paris_(35Rdj)",
+        "src": 45,
+        "dest": 46,
         "volume": 100000
     },
     {
-        "label": "flow_50_Rotterdam->52_Grisolles",
-        "src": 50,
+        "label": "flow_47_Biaches->48_Amiens",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_Crawley->50_Rotterdam",
+        "src": 49,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_Brussels_Tollaan->52_Grisolles",
+        "src": 51,
         "dest": 52,
         "volume": 100000
     },

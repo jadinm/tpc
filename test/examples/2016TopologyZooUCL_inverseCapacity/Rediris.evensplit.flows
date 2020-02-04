@@ -6,9 +6,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_2_Cantabria->8_Murcia",
+        "label": "flow_2_Cantabria->3_Pais_Vasco",
         "src": 2,
-        "dest": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Baleares->5_Valencia",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Aragon->7_Cataluna",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Murcia->9_Galacia",
+        "src": 8,
+        "dest": 9,
         "volume": 100000
     },
     {
@@ -18,9 +36,21 @@
         "volume": 100000
     },
     {
-        "label": "flow_13_Canarias_(las_palmas)->14_Canarias_(tenerife)",
-        "src": 13,
-        "dest": 14,
+        "label": "flow_12_Andalucia->13_Canarias_(las_palmas)",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Canarias_(tenerife)->15_Castilla_La_Mancha",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Nacional->18_Castilla_Y_Leon",
+        "src": 16,
+        "dest": 18,
         "volume": 100000
     }
 ]

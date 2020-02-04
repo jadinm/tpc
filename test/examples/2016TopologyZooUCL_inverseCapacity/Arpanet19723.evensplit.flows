@@ -6,27 +6,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_2_CARNEGIE->4_ETAC",
+        "label": "flow_2_CARNEGIE->3_CASE",
         "src": 2,
-        "dest": 4,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_6_BBN->7_NBS",
-        "src": 6,
-        "dest": 7,
+        "label": "flow_4_ETAC->6_BBN",
+        "src": 4,
+        "dest": 6,
         "volume": 100000
     },
     {
-        "label": "flow_8_Tinker->9_AMES",
-        "src": 8,
-        "dest": 9,
+        "label": "flow_7_NBS->8_Tinker",
+        "src": 7,
+        "dest": 8,
         "volume": 100000
     },
     {
-        "label": "flow_10_RADC->11_McClellan",
-        "src": 10,
-        "dest": 11,
+        "label": "flow_9_AMES->10_RADC",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_McClellan->12_RAND",
+        "src": 11,
+        "dest": 12,
         "volume": 100000
     },
     {
@@ -36,8 +42,14 @@
         "volume": 100000
     },
     {
-        "label": "flow_16_HARVARD->18_UCSB",
-        "src": 16,
+        "label": "flow_15_BBN->16_HARVARD",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_SRI->18_UCSB",
+        "src": 17,
         "dest": 18,
         "volume": 100000
     },
@@ -45,6 +57,18 @@
         "label": "flow_19_UCLA->20_Stanford",
         "src": 19,
         "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_USC->22_UTAH",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lincoln->24_MIT",
+        "src": 23,
+        "dest": 24,
         "volume": 100000
     }
 ]

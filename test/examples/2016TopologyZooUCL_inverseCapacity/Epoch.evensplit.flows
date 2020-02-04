@@ -1,13 +1,19 @@
 [
     {
-        "label": "flow_1_Los_Angeles->2_Denver",
-        "src": 1,
-        "dest": 2,
+        "label": "flow_0_Palo_Alto->1_Los_Angeles",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_3_Chicago->5_Atlanta",
-        "src": 3,
+        "label": "flow_2_Denver->3_Chicago",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Vienna->5_Atlanta",
+        "src": 4,
         "dest": 5,
         "volume": 100000
     }

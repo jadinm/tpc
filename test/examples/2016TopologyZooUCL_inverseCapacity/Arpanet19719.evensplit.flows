@@ -24,14 +24,32 @@
         "volume": 100000
     },
     {
-        "label": "flow_11_UCSB->13_Stanford",
-        "src": 11,
+        "label": "flow_8_MIT->9_BBN",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_SRI->11_UCSB",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->13_Stanford",
+        "src": 12,
         "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_15_SDC->17_Lincoln",
-        "src": 15,
+        "label": "flow_14_RAND->15_SDC",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->17_Lincoln",
+        "src": 16,
         "dest": 17,
         "volume": 100000
     }

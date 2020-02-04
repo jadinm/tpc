@@ -1,32 +1,44 @@
 [
     {
-        "label": "flow_1_Prievidza->2_Trencin",
-        "src": 1,
-        "dest": 2,
+        "label": "flow_0_Zilina->1_Prievidza",
+        "src": 0,
+        "dest": 1,
         "volume": 100000
     },
     {
-        "label": "flow_3_Puchov->4_Martin",
-        "src": 3,
-        "dest": 4,
+        "label": "flow_2_Trencin->3_Puchov",
+        "src": 2,
+        "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_7_B._Bystrica->8_L.Mikulas",
-        "src": 7,
-        "dest": 8,
+        "label": "flow_4_Martin->5_Ruzomberok",
+        "src": 4,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_12_Topolcany->13_Levice",
-        "src": 12,
-        "dest": 13,
+        "label": "flow_6_Zvolen->7_B._Bystrica",
+        "src": 6,
+        "dest": 7,
         "volume": 100000
     },
     {
-        "label": "flow_14_Nove_Zamky->15_Sala",
-        "src": 14,
-        "dest": 15,
+        "label": "flow_8_L.Mikulas->12_Topolcany",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Levice->14_Nove_Zamky",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Sala->16_None",
+        "src": 15,
+        "dest": 16,
         "volume": 100000
     },
     {
@@ -42,9 +54,15 @@
         "volume": 100000
     },
     {
-        "label": "flow_29_Spisska_Nova_Ves->30_Roznava",
-        "src": 29,
-        "dest": 30,
+        "label": "flow_28_Poprad->29_Spisska_Nova_Ves",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Roznava->31_Kosice",
+        "src": 30,
+        "dest": 31,
         "volume": 100000
     },
     {
@@ -54,8 +72,20 @@
         "volume": 100000
     },
     {
-        "label": "flow_34_Nove_Mesto_n._Vahom->41_Hurbanovo",
+        "label": "flow_34_Nove_Mesto_n._Vahom->36_Brno",
         "src": 34,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_Vieden->38_Bratislava",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->41_Hurbanovo",
+        "src": 39,
         "dest": 41,
         "volume": 100000
     }

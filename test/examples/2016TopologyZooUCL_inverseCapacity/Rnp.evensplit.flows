@@ -6,15 +6,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_3_Jobo_Passoa->6_Aracaju",
+        "label": "flow_3_Jobo_Passoa->4_Brasilia",
         "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Belo_Horizonte->6_Aracaju",
+        "src": 5,
         "dest": 6,
         "volume": 100000
     },
     {
-        "label": "flow_8_Vitoria->11_Goiania",
-        "src": 8,
+        "label": "flow_7_Salvador->8_Vitoria",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Rio_de_Janeiro->11_Goiania",
+        "src": 9,
         "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Cuiaba->13_Curitiba",
+        "src": 12,
+        "dest": 13,
         "volume": 100000
     },
     {
@@ -24,21 +42,27 @@
         "volume": 100000
     },
     {
-        "label": "flow_17_Porto_Velho->20_Campo_Grande",
-        "src": 17,
-        "dest": 20,
+        "label": "flow_16_Sao_Paulo->17_Porto_Velho",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_21_Teresina->22_Natal",
-        "src": 21,
-        "dest": 22,
+        "label": "flow_20_Campo_Grande->21_Teresina",
+        "src": 20,
+        "dest": 21,
         "volume": 100000
     },
     {
-        "label": "flow_28_Belem->29_Sao_Luis",
-        "src": 28,
-        "dest": 29,
+        "label": "flow_22_Natal->28_Belem",
+        "src": 22,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Sao_Luis->30_Fortaleza",
+        "src": 29,
+        "dest": 30,
         "volume": 100000
     }
 ]

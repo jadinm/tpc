@@ -1,5 +1,17 @@
 [
     {
+        "label": "flow_0_Pittsburgh->1_Philadelphia",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Newark->3_Ashburn",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
         "label": "flow_4_Raleigh->5_Charlotte",
         "src": 4,
         "dest": 5,
@@ -12,9 +24,33 @@
         "volume": 100000
     },
     {
-        "label": "flow_12_White_Plains->14_Chicago",
-        "src": 12,
+        "label": "flow_9_New_York->12_White_Plains",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stamford->14_Chicago",
+        "src": 13,
         "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Cleveland->16_Buffalo",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Toronto->18_Montreal",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Albany->20_Boston",
+        "src": 19,
+        "dest": 20,
         "volume": 100000
     }
 ]

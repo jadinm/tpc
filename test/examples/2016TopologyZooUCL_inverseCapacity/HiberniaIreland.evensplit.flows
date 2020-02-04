@@ -1,5 +1,11 @@
 [
     {
+        "label": "flow_0_Dublin->2_Limerick",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
         "label": "flow_3_Cork->4_Waterford",
         "src": 3,
         "dest": 4,

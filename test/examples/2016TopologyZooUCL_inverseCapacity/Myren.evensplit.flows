@@ -1,1 +1,20 @@
-[]
+[
+    {
+        "label": "flow_29_Cyberjaya_PoP_(NOC)->30_Border_Router",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_South_PoP_(UTM)->32_East_Coast_PoP_(UMP)",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_North_PoP_(USM)->34_KL_PoP_(UM)",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    }
+]

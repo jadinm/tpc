@@ -1,38 +1,110 @@
 [
     {
-        "label": "flow_0_Cheyenne->3_?",
+        "label": "flow_0_Cheyenne->1_Salt_Lake",
         "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Denver->3_?",
+        "src": 2,
         "dest": 3,
         "volume": 100000
     },
     {
-        "label": "flow_5_Eugene->6_Spokane",
-        "src": 5,
-        "dest": 6,
+        "label": "flow_4_Portland->5_Eugene",
+        "src": 4,
+        "dest": 5,
         "volume": 100000
     },
     {
-        "label": "flow_12_Boston->14_Europe",
+        "label": "flow_6_Spokane->7_Seattle",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Burbank->9_Los_Angeles",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Newark->11_New_York",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Boston->13_Eckington",
         "src": 12,
-        "dest": 14,
+        "dest": 13,
         "volume": 100000
     },
     {
-        "label": "flow_19_Albuquerque->26_?",
-        "src": 19,
-        "dest": 26,
+        "label": "flow_14_Europe->15_Tukwita",
+        "src": 14,
+        "dest": 15,
         "volume": 100000
     },
     {
-        "label": "flow_29_Boise->30_Helena",
-        "src": 29,
-        "dest": 30,
+        "label": "flow_16_Washington->17_Chicago",
+        "src": 16,
+        "dest": 17,
         "volume": 100000
     },
     {
-        "label": "flow_31_Billings->32_Fargo",
-        "src": 31,
-        "dest": 32,
+        "label": "flow_18_Dallas->19_Albuquerque",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Tucson->21_Phoenix",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Cermak->23_Atlanta",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Tampa->25_Houston",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_?->27_Kansas",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sunnyvale->29_Boise",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Helena->31_Billings",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Fargo->33_Minneapolis",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Sioux_City->35_Omaha",
+        "src": 34,
+        "dest": 35,
         "volume": 100000
     }
 ]

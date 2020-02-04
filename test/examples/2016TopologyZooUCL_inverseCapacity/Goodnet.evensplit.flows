@@ -6,9 +6,33 @@
         "volume": 100000
     },
     {
+        "label": "flow_2_New_Orleans->3_Jacksonville",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Los_Angeles->5_Phoenix",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Atlanta->9_San_Jose",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
         "label": "flow_10_Salt_Lake_City->11_Denver",
         "src": 10,
         "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Chicago->14_New_York",
+        "src": 12,
+        "dest": 14,
         "volume": 100000
     }
 ]
