@@ -17,7 +17,6 @@ def explore_bw_json_files(src_dir):
 
     # Order files by date so that old data gets erased by newest experiments
     bw_files.sort()
-    print(bw_files)
 
     # Get back the bandwidth data
     for f in bw_files:
@@ -58,8 +57,9 @@ def explore_maxflow_json_files(src_dir):
             for _, flow in data["flows"].items():
                 for exp in flow:
                     if not exp["MPTCP"]:
+                        # We export value in Mbps because files are in kbps
                         maxflow_data.setdefault(os.path.basename(data["id"]["topo"]), {}) \
                             .setdefault(os.path.basename(data["id"]["demands"]), {})[exp["maxseg"]] \
-                            = exp["data"]["Solution"]["objective value"]
+                            = exp["data"]["Solution"]["objective value"] / 10**3
 
     return maxflow_data

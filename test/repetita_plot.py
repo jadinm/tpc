@@ -25,12 +25,14 @@ def parse_args():
                         default='/root/graphs-ebpf/%s' % datetime.datetime.now().strftime('%Y-%m-%d_%H-%M-%S'))
     parser.add_argument('--src-dir', help='Source directory root all test logs',
                         default="/root/experiences")
-    parser.add_argument('--srmip-dir', help='Source directory root all sr-mip optimization',
+    parser.add_argument('--srmip-dir',
+                        help='Source directory root all sr-mip optimization',
                         default="/root/maxflow-out")
     return parser.parse_args()
 
 
-def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path):
+def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
+                               output_path):
 
     colors = {
         False: "#00B0F0",  # Blue
@@ -50,15 +52,18 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path)
         for demands, demands_exp in topo_exp.items():
             for maxseg, maxseg_exp in demands_exp.items():
 
-                figure_name = "bw_ebpf_or_no_ebpf_by_topo_{topo}_{demands}_{maxseg}".format(topo=topo,
-                                                                                            demands=demands,
-                                                                                            maxseg=maxseg)
+                if True not in maxseg_exp.keys() \
+                        or False not in maxseg_exp.keys():
+                    continue
+                print("HERE 1")
+
+                figure_name = "bw_ebpf_or_no_ebpf_by_topo" \
+                              "_{topo}_{demands}_{maxseg}"\
+                    .format(topo=topo, demands=demands, maxseg=maxseg)
                 fig = plt.figure()
                 subplot = fig.add_subplot(111)
 
                 for zorder, ebpf in enumerate([False, True]):
-                    if ebpf not in maxseg_exp:
-                        continue
 
                     # Get back data
                     times = []
@@ -66,28 +71,37 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path)
                     for t, b in sorted(maxseg_exp[ebpf]):
                         times.append(t)
                         bw.append(b)
-                    subplot.step(times, bw, color=colors[ebpf], marker=markers[ebpf], linewidth=LINE_WIDTH,
-                                 where="post", markersize=MARKER_SIZE, zorder=zorder, label=labels[ebpf])
+                    subplot.step(times, bw, color=colors[ebpf],
+                                 marker=markers[ebpf], linewidth=LINE_WIDTH,
+                                 where="post", markersize=MARKER_SIZE,
+                                 zorder=zorder, label=labels[ebpf])
 
                     subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
                     subplot.set_ylabel("Bandwidth (Mbps)", fontsize=FONTSIZE)
 
-                    maxseg_description = "with max {maxseg} segments".format(maxseg=maxseg) if maxseg >= 0\
+                    maxseg_description = "with max {maxseg} segments"\
+                        .format(maxseg=maxseg) if maxseg >= 0\
                         else "without segment limit"
-                    subplot.set_title("Bandwidth for {topo} - {demand}".format(topo=topo, demand=demands)
+                    subplot.set_title("Bandwidth for {topo} - {demand}"
+                                      .format(topo=topo, demand=demands)
                                       + maxseg_description)
 
                 # Add line for max value of maxflow if any
-                objective = json_srmip_maxflow.get(topo, {}).get(demands, {}).get(6, None)  # TODO Change 6 by maxseg
+                objective = json_srmip_maxflow.get(topo, {})\
+                    .get(demands, {}).get(6, None)  # TODO Change 6 by maxseg
                 if objective is not None:
                     subplot.hlines(objective, 0, 100, colors=colors["srmip"],  # Objective values are in kbps
                                    linestyles="solid", label="optimum")
                 else:
-                    lg.error("No optimum computation found for '{topo}' - '{demands}' with maximum {maxseg} segments\n"
+                    lg.error("No optimum computation found for '{topo}'"
+                             " - '{demands}' with maximum {maxseg} segments\n"
                              .format(topo=topo, demands=demands, maxseg=maxseg))
 
-                lg.info("Saving figure for bandwidth for '{topo}' demand '{demands}' with maxseg={maxseg} to {path}\n"
-                        .format(topo=topo, maxseg=maxseg, demands=demands, path=os.path.join(output_path, figure_name + ".pdf")))
+                lg.info("Saving figure for bandwidth for '{topo}' demand "
+                        "'{demands}' with maxseg={maxseg} to {path}\n"
+                        .format(topo=topo, maxseg=maxseg, demands=demands,
+                                path=os.path.join(output_path,
+                                                  figure_name + ".pdf")))
                 subplot.set_ylim(bottom=0)
                 subplot.set_xlim(left=1, right=29)
                 fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
@@ -96,22 +110,48 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow, output_path)
                 plt.close()
 
 
-def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_path):
+def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow,
+                                 output_path):
     color = "orangered"
     marker = "o"
 
     bw_diff = []
     for topo, topo_exp in json_bandwidths.items():
         for demands, demands_exp in topo_exp.items():
+            print(demands)
+            if "rand.1" not in demands:
+                # TODO Replace by plots by type of
+                #  demand files
+                continue
             for maxseg, maxseg_exp in demands_exp.items():
-                ebpf_example = np.median(maxseg_exp[True])
-                no_ebpf_example = np.median(maxseg_exp[False])
-                bw_diff.append(float(ebpf_example - no_ebpf_example) / float(no_ebpf_example) * 100)
+                print(str(list(maxseg_exp.keys())))
+
+                if True not in maxseg_exp.keys() \
+                        or False not in maxseg_exp.keys():
+                    continue
+                print("HERE 2")
+
+                ebpf_example = np.median([x for _, x in maxseg_exp[True]])
+                no_ebpf_example = np.median([x for _, x in maxseg_exp[False]])
+                bw_diff.append(float(ebpf_example - no_ebpf_example)
+                               / float(no_ebpf_example) * 100)
+
+                if bw_diff[-1] > 50:
+                    print("Good example ! %f %s" % (bw_diff[-1], topo))
+                elif bw_diff[-1] < -25:
+                    print("BAD example ! %f %s" % (bw_diff[-1], topo))
+                    print(ebpf_example)
+                    print(no_ebpf_example)
+                    print([x for _, x in maxseg_exp[True]])
+                    print([x for _, x in maxseg_exp[False]])
+                    print(float(ebpf_example - no_ebpf_example))
+                    print(float(no_ebpf_example))
 
     # Build CDF
     bin_edges, cdf = cdf_data(bw_diff)
     if bin_edges is None or cdf is None:
-        lg.error("bin_edges or cdf data are None... {bin_edges} - {cdf}\n".format(bin_edges=bin_edges, cdf=cdf))
+        lg.error("bin_edges or cdf data are None... {bin_edges} - {cdf}\n"
+                 .format(bin_edges=bin_edges, cdf=cdf))
         return
     min_value = min(bin_edges[1:])
     max_value = max(bin_edges[1:])
@@ -121,7 +161,8 @@ def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_pat
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
-    subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]], color=color, marker=marker, linewidth=LINE_WIDTH,
+    subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
+                 color=color, marker=marker, linewidth=LINE_WIDTH,
                  where="post", markersize=MARKER_SIZE)
 
     subplot.set_xlabel("Maximum flow improvement (%)", fontsize=FONTSIZE)
@@ -129,7 +170,8 @@ def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_pat
 
     subplot.set_title("Maximum flow improvement by adding SRv6")
 
-    lg.info("Saving figure for SR effectiveness in reality to path {path}\n".format(path=os.path.join(output_path, figure_name + ".pdf")))
+    lg.info("Saving figure for SR effectiveness in reality to path {path}\n"
+            .format(path=os.path.join(output_path, figure_name + ".pdf")))
 
     if max_value <= min_value:
         xdiff = 0.0
@@ -138,8 +180,8 @@ def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow, output_pat
 
     xlim_min = min(0.0, min_value - xdiff)
     xlim_max = max_value + xdiff
-    if xlim_min != xlim_max:
-        subplot.set_xlim(left=xlim_min, right=xlim_max)  # To avoid being too near of 0
+    if xlim_min != xlim_max:  # To avoid being too near of 0
+        subplot.set_xlim(left=xlim_min, right=xlim_max)
     subplot.set_ylim(bottom=0, top=1)
     fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                 bbox_inches='tight', pad_inches=0, markersize=9)
@@ -159,8 +201,8 @@ def plot_bw_per_topo(times, bw, output_path, demand_id,
     x = times
     bw = [float(b) for b in bw]
 
-    subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0, where="post",
-                 markersize=5, zorder=2)
+    subplot.step(x, bw, color="#00B0F0", marker="o", linewidth=2.0,
+                 where="post", markersize=5, zorder=2)
 
     # Parse snapshots
     for h, snaps in snapshots.items():
@@ -169,15 +211,10 @@ def plot_bw_per_topo(times, bw, output_path, demand_id,
             conn_snaps.setdefault(s.conn_key(), []).append(s)
         for by_conn_snaps in conn_snaps.values():
             if len(by_conn_snaps) <= 2:
-                print("ONLY 2")
                 continue
-            print("MORE THAN 2")
-            print(by_conn_snaps[0].time)
-            print(by_conn_snaps[-1].time)
             for i in range(1, len(by_conn_snaps) - 1):
                 # Vertical line
                 t = (by_conn_snaps[i].time - by_conn_snaps[0].time) / 10**9
-                print(t)
                 subplot.axvline(x=t)
 
     subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
@@ -205,7 +242,7 @@ if __name__ == "__main__":
     for topo, topo_exp in bw_loaded_data.items():
         for demands, demands_exp in topo_exp.items():
             for maxseg, maxseg_exp in demands_exp.items():
-                for ebpf in [False, True]:
+                for ebpf in maxseg_exp.keys():
                     # Get back data
                     times_tmp = []
                     bw_tmp = []

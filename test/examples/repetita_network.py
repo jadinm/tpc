@@ -69,13 +69,15 @@ class RepetitaEdge:
 
 class RepetitaTopo(SRNTopo):
 
-    def __init__(self, repetita_graph=None, schema_tables=None, rerouting_enabled=True, bw=None, *args, **kwargs):
+    def __init__(self, repetita_graph=None, schema_tables=None,
+                 rerouting_enabled=True, bw=None, ebpf=True, *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
         self.rerouting_enabled = rerouting_enabled
         self.bw = bw
         self.switch_count = 1
         self.router_indices = []
+        self.ebpf = ebpf
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -151,9 +153,10 @@ class RepetitaTopo(SRNTopo):
         self.addLink(routers[0], controller, delay="1ms", bw=10**5)
 
         # Configure SRN with rerouting
-        self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router, _ in access_routers],
-                                             sr_controller=controller, schema_tables=self.schema_tables,
-                                             rerouting_routers=routers, hosts=self.hosts()))
+        if self.ebpf:
+            self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router, _ in access_routers],
+                                                 sr_controller=controller, schema_tables=self.schema_tables,
+                                                 rerouting_routers=routers, hosts=self.hosts()))
 
         super(RepetitaTopo, self).build(*args, **kwargs)
 
