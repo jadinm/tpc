@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_A->B",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_A->E",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_A->F",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_C->B",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_C->E",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_C->F",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_D->B",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_D->F",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_D->E",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    }
+]

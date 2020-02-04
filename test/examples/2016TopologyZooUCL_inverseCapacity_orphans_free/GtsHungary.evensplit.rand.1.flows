@@ -1,0 +1,254 @@
+[
+    {
+        "label": "flow_4_Szolnok->29_Tatabanya",
+        "src": 0,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->23_Szombathely",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->24_Zalaegerszeg",
+        "src": 0,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->20_Budapest",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->26_Szekesfehervar",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->8_Kecskemet",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Szolnok->22_Sopron",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->29_Tatabanya",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->24_Zalaegerszeg",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->22_Sopron",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->8_Kecskemet",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->23_Szombathely",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->20_Budapest",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Dunaujvaros->26_Szekesfehervar",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->22_Sopron",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->24_Zalaegerszeg",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->8_Kecskemet",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->29_Tatabanya",
+        "src": 2,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->26_Szekesfehervar",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->23_Szombathely",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->20_Budapest",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->23_Szombathely",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->22_Sopron",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->20_Budapest",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->29_Tatabanya",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->26_Szekesfehervar",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->8_Kecskemet",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->24_Zalaegerszeg",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->20_Budapest",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->26_Szekesfehervar",
+        "src": 10,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->23_Szombathely",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->29_Tatabanya",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->8_Kecskemet",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->22_Sopron",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->24_Zalaegerszeg",
+        "src": 10,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->29_Tatabanya",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->20_Budapest",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->22_Sopron",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->8_Kecskemet",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->26_Szekesfehervar",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->23_Szombathely",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Gyor->24_Zalaegerszeg",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    }
+]

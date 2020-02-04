@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_0_Spokane->2_Wenatchee",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Othello->4_Walla_Walla",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pasco->8_Kennewick",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Yakima->10_Ellensburg",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Vancouver->12_Bellingham",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Mt_Vernon->14_Everett",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Westin_-_Seattle->16_Tacoma",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Olympia->18_Portland",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_4_Tsinghua_Unviersity->6_Beijing_University_of_Posts_and_Telecommunications",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Tsinghua_Unviersity->0_Peking_University",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Tsinghua_Unviersity->8_China_Academy_of_Sciences",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Natural_Science_Foundation_of_China->6_Beijing_University_of_Posts_and_Telecommunications",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Natural_Science_Foundation_of_China->8_China_Academy_of_Sciences",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Natural_Science_Foundation_of_China->0_Peking_University",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Beijing_University_of_Aeronautics_and_Astronautics->6_Beijing_University_of_Posts_and_Telecommunications",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Beijing_University_of_Aeronautics_and_Astronautics->8_China_Academy_of_Sciences",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Beijing_University_of_Aeronautics_and_Astronautics->0_Peking_University",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    }
+]

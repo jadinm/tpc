@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_3_Chicago->4_New_York_City",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Chicago->1_San_Francisco",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Washington_DC->1_San_Francisco",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Washington_DC->4_New_York_City",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    }
+]

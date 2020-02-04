@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_21_IC-Wye->18_UoG-AH",
+        "src": 21,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_IC-Wye->12_UoK-C",
+        "src": 21,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_IC-Wye->19_University_of_Greenwich",
+        "src": 21,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_IC-Wye->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 21,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_EIS-Maidstone->18_UoG-AH",
+        "src": 22,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_EIS-Maidstone->19_University_of_Greenwich",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_EIS-Maidstone->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 22,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_EIS-Maidstone->12_UoK-C",
+        "src": 22,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_CCCU-S->19_University_of_Greenwich",
+        "src": 23,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_CCCU-S->12_UoK-C",
+        "src": 23,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_CCCU-S->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 23,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_CCCU-S->18_UoG-AH",
+        "src": 23,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_CCCU-T->18_UoG-AH",
+        "src": 24,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_CCCU-T->12_UoK-C",
+        "src": 24,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_CCCU-T->19_University_of_Greenwich",
+        "src": 24,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_CCCU-T->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 24,
+        "dest": 11,
+        "volume": 100000
+    }
+]

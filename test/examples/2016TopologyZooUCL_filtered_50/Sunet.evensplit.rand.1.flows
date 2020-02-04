@@ -1,0 +1,1016 @@
+[
+    {
+        "label": "flow_1_Skovde->10_Lund",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->4_Halmstad",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->19_Lulea",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->18_Kiruna",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->11_Kristianstad",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->6_Boras",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->14_Visby",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->9_Vaxjo",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->17_Vasten",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->20_None",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->16_Stockholm",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->3_Karlstad",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Skovde->0_Goteborg",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->20_None",
+        "src": 2,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->4_Halmstad",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->9_Vaxjo",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->11_Kristianstad",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->18_Kiruna",
+        "src": 2,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->3_Karlstad",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->19_Lulea",
+        "src": 2,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->14_Visby",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->10_Lund",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->17_Vasten",
+        "src": 2,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->16_Stockholm",
+        "src": 2,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->6_Boras",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Orebro->0_Goteborg",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->18_Kiruna",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->17_Vasten",
+        "src": 5,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->4_Halmstad",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->10_Lund",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->11_Kristianstad",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->19_Lulea",
+        "src": 5,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->6_Boras",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->0_Goteborg",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->9_Vaxjo",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->20_None",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->14_Visby",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->3_Karlstad",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Linkoping->16_Stockholm",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->9_Vaxjo",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->6_Boras",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->0_Goteborg",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->20_None",
+        "src": 7,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->3_Karlstad",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->16_Stockholm",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->11_Kristianstad",
+        "src": 7,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->17_Vasten",
+        "src": 7,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->19_Lulea",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->4_Halmstad",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->10_Lund",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->18_Kiruna",
+        "src": 7,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Trollhattan->14_Visby",
+        "src": 7,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->11_Kristianstad",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->3_Karlstad",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->14_Visby",
+        "src": 8,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->17_Vasten",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->20_None",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->19_Lulea",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->6_Boras",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->9_Vaxjo",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->18_Kiruna",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->10_Lund",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->4_Halmstad",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->16_Stockholm",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Jonkoping->0_Goteborg",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->11_Kristianstad",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->10_Lund",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->17_Vasten",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->18_Kiruna",
+        "src": 12,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->19_Lulea",
+        "src": 12,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->9_Vaxjo",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->0_Goteborg",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->6_Boras",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->14_Visby",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->4_Halmstad",
+        "src": 12,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->3_Karlstad",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->20_None",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Ronneby->16_Stockholm",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->3_Karlstad",
+        "src": 13,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->11_Kristianstad",
+        "src": 13,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->19_Lulea",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->6_Boras",
+        "src": 13,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->20_None",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->9_Vaxjo",
+        "src": 13,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->4_Halmstad",
+        "src": 13,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->10_Lund",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->0_Goteborg",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->17_Vasten",
+        "src": 13,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->18_Kiruna",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->16_Stockholm",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Kalmar->14_Visby",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->3_Karlstad",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->6_Boras",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->9_Vaxjo",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->17_Vasten",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->4_Halmstad",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->11_Kristianstad",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->19_Lulea",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->18_Kiruna",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->14_Visby",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->20_None",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->10_Lund",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->0_Goteborg",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Malmo->16_Stockholm",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->17_Vasten",
+        "src": 21,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->18_Kiruna",
+        "src": 21,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->19_Lulea",
+        "src": 21,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->14_Visby",
+        "src": 21,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->6_Boras",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->0_Goteborg",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->3_Karlstad",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->9_Vaxjo",
+        "src": 21,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->20_None",
+        "src": 21,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->16_Stockholm",
+        "src": 21,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->4_Halmstad",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->11_Kristianstad",
+        "src": 21,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Umea->10_Lund",
+        "src": 21,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->6_Boras",
+        "src": 22,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->3_Karlstad",
+        "src": 22,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->18_Kiruna",
+        "src": 22,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->0_Goteborg",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->20_None",
+        "src": 22,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->14_Visby",
+        "src": 22,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->4_Halmstad",
+        "src": 22,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->11_Kristianstad",
+        "src": 22,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->17_Vasten",
+        "src": 22,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->10_Lund",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->9_Vaxjo",
+        "src": 22,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->16_Stockholm",
+        "src": 22,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sundsvall->19_Lulea",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->14_Visby",
+        "src": 23,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->4_Halmstad",
+        "src": 23,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->18_Kiruna",
+        "src": 23,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->17_Vasten",
+        "src": 23,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->19_Lulea",
+        "src": 23,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->11_Kristianstad",
+        "src": 23,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->0_Goteborg",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->3_Karlstad",
+        "src": 23,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->6_Boras",
+        "src": 23,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->16_Stockholm",
+        "src": 23,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->10_Lund",
+        "src": 23,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->20_None",
+        "src": 23,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Gavle->9_Vaxjo",
+        "src": 23,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->3_Karlstad",
+        "src": 24,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->6_Boras",
+        "src": 24,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->16_Stockholm",
+        "src": 24,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->11_Kristianstad",
+        "src": 24,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->19_Lulea",
+        "src": 24,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->10_Lund",
+        "src": 24,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->9_Vaxjo",
+        "src": 24,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->18_Kiruna",
+        "src": 24,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->0_Goteborg",
+        "src": 24,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->4_Halmstad",
+        "src": 24,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->17_Vasten",
+        "src": 24,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->20_None",
+        "src": 24,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Borlange->14_Visby",
+        "src": 24,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->9_Vaxjo",
+        "src": 25,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->3_Karlstad",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->4_Halmstad",
+        "src": 25,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->19_Lulea",
+        "src": 25,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->16_Stockholm",
+        "src": 25,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->18_Kiruna",
+        "src": 25,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->11_Kristianstad",
+        "src": 25,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->17_Vasten",
+        "src": 25,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->6_Boras",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->0_Goteborg",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->14_Visby",
+        "src": 25,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->10_Lund",
+        "src": 25,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Uppsala->20_None",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    }
+]

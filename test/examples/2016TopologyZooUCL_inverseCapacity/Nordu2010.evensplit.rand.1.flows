@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_11_Oslo->16_Copenhagen",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Oslo->17_Hamburg",
+        "src": 10,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Oslo->10_Reyjavik",
+        "src": 10,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Stockholm->10_Reyjavik",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Stockholm->17_Hamburg",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Stockholm->16_Copenhagen",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    }
+]

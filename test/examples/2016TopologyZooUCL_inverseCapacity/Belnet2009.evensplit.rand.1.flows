@@ -1,0 +1,662 @@
+[
+    {
+        "label": "flow_1_Charleroi->13_Geel",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->0_Louvain-la-Neuve",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->19_Brussels_Science",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->16_Leuven1",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->6_Mons",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->14_Hasselt",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->17_Vilvoorde",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->11_Liege_2",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->18_Evere",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->10_Liege_1_",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Charleroi->20_Brussels_Campus",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->14_Hasselt",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->17_Vilvoorde",
+        "src": 2,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->18_Evere",
+        "src": 2,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->10_Liege_1_",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->11_Liege_2",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->19_Brussels_Science",
+        "src": 2,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->16_Leuven1",
+        "src": 2,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->0_Louvain-la-Neuve",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->20_Brussels_Campus",
+        "src": 2,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->13_Geel",
+        "src": 2,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->6_Mons",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->6_Mons",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->10_Liege_1_",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->14_Hasselt",
+        "src": 3,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->16_Leuven1",
+        "src": 3,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->0_Louvain-la-Neuve",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->13_Geel",
+        "src": 3,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->11_Liege_2",
+        "src": 3,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->19_Brussels_Science",
+        "src": 3,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->17_Vilvoorde",
+        "src": 3,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->18_Evere",
+        "src": 3,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Namur->20_Brussels_Campus",
+        "src": 3,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->0_Louvain-la-Neuve",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->16_Leuven1",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->11_Liege_2",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->10_Liege_1_",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->17_Vilvoorde",
+        "src": 4,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->13_Geel",
+        "src": 4,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->18_Evere",
+        "src": 4,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->6_Mons",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->14_Hasselt",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->19_Brussels_Science",
+        "src": 4,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Antwerpen_2->20_Brussels_Campus",
+        "src": 4,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->6_Mons",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->11_Liege_2",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->17_Vilvoorde",
+        "src": 5,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->18_Evere",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->10_Liege_1_",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->0_Louvain-la-Neuve",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->16_Leuven1",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->14_Hasselt",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->13_Geel",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->20_Brussels_Campus",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Antwerpen1->19_Brussels_Science",
+        "src": 5,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->17_Vilvoorde",
+        "src": 7,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->0_Louvain-la-Neuve",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->11_Liege_2",
+        "src": 7,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->16_Leuven1",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->13_Geel",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->10_Liege_1_",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->20_Brussels_Campus",
+        "src": 7,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->14_Hasselt",
+        "src": 7,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->18_Evere",
+        "src": 7,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->19_Brussels_Science",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Korthijk->6_Mons",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->17_Vilvoorde",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->11_Liege_2",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->20_Brussels_Campus",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->14_Hasselt",
+        "src": 8,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->18_Evere",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->0_Louvain-la-Neuve",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->19_Brussels_Science",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->16_Leuven1",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->6_Mons",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->13_Geel",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Gent2->10_Liege_1_",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->16_Leuven1",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->10_Liege_1_",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->11_Liege_2",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->0_Louvain-la-Neuve",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->13_Geel",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->17_Vilvoorde",
+        "src": 9,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->18_Evere",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->14_Hasselt",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->6_Mons",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->20_Brussels_Campus",
+        "src": 9,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Gent1->19_Brussels_Science",
+        "src": 9,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->6_Mons",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->14_Hasselt",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->11_Liege_2",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->18_Evere",
+        "src": 12,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->10_Liege_1_",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->0_Louvain-la-Neuve",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->13_Geel",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->20_Brussels_Campus",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->19_Brussels_Science",
+        "src": 12,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->17_Vilvoorde",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brugge->16_Leuven1",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->11_Liege_2",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->14_Hasselt",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->19_Brussels_Science",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->10_Liege_1_",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->20_Brussels_Campus",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->6_Mons",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->18_Evere",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->13_Geel",
+        "src": 15,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->16_Leuven1",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->17_Vilvoorde",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Leuven2->0_Louvain-la-Neuve",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    }
+]

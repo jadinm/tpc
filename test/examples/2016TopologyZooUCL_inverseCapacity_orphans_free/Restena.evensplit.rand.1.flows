@@ -1,0 +1,152 @@
+[
+    {
+        "label": "flow_2_Ettelbruck->17_Luxembourg",
+        "src": 0,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Ettelbruck->18_Limpertsberg",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Ettelbruck->16_Bettembourg",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Ettelbruck->3_Diekirch",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Ettelbruck->12_UNI.iu",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->17_Luxembourg",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->16_Bettembourg",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->18_Limpertsberg",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->3_Diekirch",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->12_UNI.iu",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BCE->16_Bettembourg",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BCE->12_UNI.iu",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BCE->17_Luxembourg",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BCE->3_Diekirch",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BCE->18_Limpertsberg",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Campus_Geesseknaeppchen->12_UNI.iu",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Campus_Geesseknaeppchen->18_Limpertsberg",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Campus_Geesseknaeppchen->17_Luxembourg",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Campus_Geesseknaeppchen->16_Bettembourg",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Campus_Geesseknaeppchen->3_Diekirch",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->18_Limpertsberg",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->17_Luxembourg",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->16_Bettembourg",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->3_Diekirch",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->12_UNI.iu",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    }
+]

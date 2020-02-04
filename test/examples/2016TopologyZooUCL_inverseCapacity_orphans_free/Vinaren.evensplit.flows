@@ -1,0 +1,20 @@
+[
+    {
+        "label": "flow_1_VN_HN->2_HCM",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DN->5_JP",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_HK->24_SG",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    }
+]

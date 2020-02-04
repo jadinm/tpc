@@ -1,0 +1,488 @@
+[
+    {
+        "label": "flow_10_None->2_Graz2",
+        "src": 10,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->6_Krems",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->1_St._Polten",
+        "src": 10,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->15_Linz1",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->3_Leoben",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->4_Vienna2",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->0_Eisenstadt",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->13_Klagenfurt2",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_None->7_Vienna1",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->7_Vienna1",
+        "src": 14,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->2_Graz2",
+        "src": 14,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->13_Klagenfurt2",
+        "src": 14,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->3_Leoben",
+        "src": 14,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->15_Linz1",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->1_St._Polten",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->0_Eisenstadt",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->6_Krems",
+        "src": 14,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Graz1->4_Vienna2",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->6_Krems",
+        "src": 16,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->15_Linz1",
+        "src": 16,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->0_Eisenstadt",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->4_Vienna2",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->7_Vienna1",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->2_Graz2",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->3_Leoben",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->13_Klagenfurt2",
+        "src": 16,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Linz2->1_St._Polten",
+        "src": 16,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->2_Graz2",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->4_Vienna2",
+        "src": 17,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->15_Linz1",
+        "src": 17,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->13_Klagenfurt2",
+        "src": 17,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->6_Krems",
+        "src": 17,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->7_Vienna1",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->0_Eisenstadt",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->1_St._Polten",
+        "src": 17,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Salzburg1->3_Leoben",
+        "src": 17,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->0_Eisenstadt",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->3_Leoben",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->13_Klagenfurt2",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->2_Graz2",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->1_St._Polten",
+        "src": 18,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->7_Vienna1",
+        "src": 18,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->15_Linz1",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->4_Vienna2",
+        "src": 18,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Salzburg2->6_Krems",
+        "src": 18,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->6_Krems",
+        "src": 19,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->0_Eisenstadt",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->13_Klagenfurt2",
+        "src": 19,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->3_Leoben",
+        "src": 19,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->7_Vienna1",
+        "src": 19,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->1_St._Polten",
+        "src": 19,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->15_Linz1",
+        "src": 19,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->4_Vienna2",
+        "src": 19,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Innsbruck1->2_Graz2",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->13_Klagenfurt2",
+        "src": 20,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->3_Leoben",
+        "src": 20,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->4_Vienna2",
+        "src": 20,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->7_Vienna1",
+        "src": 20,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->2_Graz2",
+        "src": 20,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->0_Eisenstadt",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->6_Krems",
+        "src": 20,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->15_Linz1",
+        "src": 20,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Innsbruck2->1_St._Polten",
+        "src": 20,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->13_Klagenfurt2",
+        "src": 21,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->3_Leoben",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->2_Graz2",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->15_Linz1",
+        "src": 21,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->1_St._Polten",
+        "src": 21,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->6_Krems",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->7_Vienna1",
+        "src": 21,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->4_Vienna2",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Dornbirn->0_Eisenstadt",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->13_Klagenfurt2",
+        "src": 22,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->15_Linz1",
+        "src": 22,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->2_Graz2",
+        "src": 22,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->6_Krems",
+        "src": 22,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->4_Vienna2",
+        "src": 22,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->1_St._Polten",
+        "src": 22,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->3_Leoben",
+        "src": 22,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->0_Eisenstadt",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Klagenfurt1->7_Vienna1",
+        "src": 22,
+        "dest": 7,
+        "volume": 100000
+    }
+]

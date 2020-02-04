@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_0_Dolj->36_Cluj",
+        "src": 0,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Dolj->20_GEANT",
+        "src": 0,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Dolj->40_Timis",
+        "src": 0,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Dolj->31_Iasi",
+        "src": 0,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Bucaresti->31_Iasi",
+        "src": 4,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Bucaresti->36_Cluj",
+        "src": 4,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Bucaresti->20_GEANT",
+        "src": 4,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Bucaresti->40_Timis",
+        "src": 4,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Mures->40_Timis",
+        "src": 22,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Mures->31_Iasi",
+        "src": 22,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Mures->36_Cluj",
+        "src": 22,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Mures->20_GEANT",
+        "src": 22,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Galati->31_Iasi",
+        "src": 25,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Galati->20_GEANT",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Galati->36_Cluj",
+        "src": 25,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Galati->40_Timis",
+        "src": 25,
+        "dest": 40,
+        "volume": 100000
+    }
+]

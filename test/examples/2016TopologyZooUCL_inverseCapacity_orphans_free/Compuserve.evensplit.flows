@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_2_Washington,_DC->4_Boston",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_New_York->6_Seattle",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_San_Francisco->8_Los_Angeles",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Dallas->10_Houston",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Atlanta->12_Columbus",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,31 @@
+NODES 8
+label x y
+0_Blue_Bell_Hill 0.5 51.3
+1_Wye 0.9 51.2
+2_Dunkirk 1.0 51.3
+3_Beacon_Hill 0.4 51.4
+4_Kent 1.1 51.3
+6_Cranbrook 0.5 51.1
+7_NTL-Wye 0.9 51.2
+8_University_of_Greenwich 0.1 51.4
+
+EDGES 18
+label src dest weight bw delay
+Link_0 0 3 10 100000 1
+Link_1 3 0 10 100000 1
+Link_4 0 5 10 100000 1
+Link_5 5 0 10 100000 1
+Link_6 0 7 10 100000 1
+Link_7 7 0 10 100000 1
+Link_12 1 4 10 100000 1
+Link_13 4 1 10 100000 1
+Link_14 1 6 10 100000 1
+Link_15 6 1 10 100000 1
+Link_16 2 3 10 100000 1
+Link_17 3 2 10 100000 1
+Link_18 2 4 10 100000 1
+Link_19 4 2 10 100000 1
+Link_20 3 7 10 100000 1
+Link_21 7 3 10 100000 1
+Link_30 5 6 10 100000 1
+Link_31 6 5 10 100000 1

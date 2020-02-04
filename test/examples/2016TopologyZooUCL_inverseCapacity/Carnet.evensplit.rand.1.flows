@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_27_Split->26_Rijeka",
+        "src": 27,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Split->17_Zadar",
+        "src": 27,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Split->24_Pula",
+        "src": 27,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Split->6_Sisak",
+        "src": 27,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Split->43_Osijek",
+        "src": 27,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Vukovar->6_Sisak",
+        "src": 34,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Vukovar->26_Rijeka",
+        "src": 34,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Vukovar->17_Zadar",
+        "src": 34,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Vukovar->43_Osijek",
+        "src": 34,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Vukovar->24_Pula",
+        "src": 34,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Zagreb->24_Pula",
+        "src": 36,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Zagreb->6_Sisak",
+        "src": 36,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Zagreb->17_Zadar",
+        "src": 36,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Zagreb->26_Rijeka",
+        "src": 36,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Zagreb->43_Osijek",
+        "src": 36,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Varazdin->17_Zadar",
+        "src": 39,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Varazdin->24_Pula",
+        "src": 39,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Varazdin->26_Rijeka",
+        "src": 39,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Varazdin->6_Sisak",
+        "src": 39,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Varazdin->43_Osijek",
+        "src": 39,
+        "dest": 43,
+        "volume": 100000
+    }
+]

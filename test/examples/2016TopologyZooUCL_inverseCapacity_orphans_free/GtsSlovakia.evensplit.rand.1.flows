@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_27_Banska_Bystrica->6_Zilina",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->17_Trencin",
+        "src": 4,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->25_Spisska",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->26_Poprad",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->25_Spisska",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->26_Poprad",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->17_Trencin",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->6_Zilina",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->17_Trencin",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->6_Zilina",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->26_Poprad",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->25_Spisska",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Presov->6_Zilina",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Presov->17_Trencin",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Presov->26_Poprad",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Presov->25_Spisska",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    }
+]

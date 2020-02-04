@@ -1,0 +1,488 @@
+[
+    {
+        "label": "flow_6_BURROUGHS->4_MITRE",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->7_BBN",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->3_CARNEGIE",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->5_AMES",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->2_HARVARD",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->1_ILLINOIS",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->0_CASE",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->9_BBN",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_BURROUGHS->10_SRI",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->1_ILLINOIS",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->7_BBN",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->0_CASE",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->2_HARVARD",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->9_BBN",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->10_SRI",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->4_MITRE",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->5_AMES",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_MIT->3_CARNEGIE",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->2_HARVARD",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->0_CASE",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->4_MITRE",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->5_AMES",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->10_SRI",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->7_BBN",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->9_BBN",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->1_ILLINOIS",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_UCSB->3_CARNEGIE",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->1_ILLINOIS",
+        "src": 12,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->7_BBN",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->4_MITRE",
+        "src": 12,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->3_CARNEGIE",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->0_CASE",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->10_SRI",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->5_AMES",
+        "src": 12,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->9_BBN",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UCLA->2_HARVARD",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->4_MITRE",
+        "src": 13,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->2_HARVARD",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->3_CARNEGIE",
+        "src": 13,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->1_ILLINOIS",
+        "src": 13,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->9_BBN",
+        "src": 13,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->10_SRI",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->0_CASE",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->5_AMES",
+        "src": 13,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Stanford->7_BBN",
+        "src": 13,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->5_AMES",
+        "src": 14,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->4_MITRE",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->7_BBN",
+        "src": 14,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->0_CASE",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->10_SRI",
+        "src": 14,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->3_CARNEGIE",
+        "src": 14,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->9_BBN",
+        "src": 14,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->2_HARVARD",
+        "src": 14,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_RAND->1_ILLINOIS",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->9_BBN",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->7_BBN",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->0_CASE",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->2_HARVARD",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->1_ILLINOIS",
+        "src": 15,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->10_SRI",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->5_AMES",
+        "src": 15,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->3_CARNEGIE",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_SDC->4_MITRE",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->3_CARNEGIE",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->4_MITRE",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->1_ILLINOIS",
+        "src": 16,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->5_AMES",
+        "src": 16,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->9_BBN",
+        "src": 16,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->2_HARVARD",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->0_CASE",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->10_SRI",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_UTAH->7_BBN",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->3_CARNEGIE",
+        "src": 17,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->2_HARVARD",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->7_BBN",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->9_BBN",
+        "src": 17,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->0_CASE",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->1_ILLINOIS",
+        "src": 17,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->5_AMES",
+        "src": 17,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->10_SRI",
+        "src": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Lincoln->4_MITRE",
+        "src": 17,
+        "dest": 4,
+        "volume": 100000
+    }
+]

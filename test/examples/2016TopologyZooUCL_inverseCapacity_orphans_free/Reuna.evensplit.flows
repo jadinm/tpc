@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_1_ULAGOS->9_Arica",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->12_RC-Nacional",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->14_None",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->16_None",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->19_La_Serena",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Copiapo->21_Antofagasta",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->23_Valdivia",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->25_Concepcion",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Santiago->36_REUNA",
+        "src": 26,
+        "dest": 36,
+        "volume": 100000
+    }
+]

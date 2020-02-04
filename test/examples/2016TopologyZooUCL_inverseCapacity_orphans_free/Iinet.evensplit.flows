@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_11_TELSTRA->24_Adelaide",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->26_Brisbane",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sydney1->28_Sydney2",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->30_Melbourne",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

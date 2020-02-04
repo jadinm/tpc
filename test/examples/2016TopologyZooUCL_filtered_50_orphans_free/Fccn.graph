@@ -1,0 +1,30 @@
+NODES 7
+label x y
+0_Portalegre -7.4 39.3
+5_Leiria -8.8 39.7
+6_Lisboa -9.1 38.7
+7_Samtarem -8.7 39.2
+20_Porto -8.6 41.1
+21_Aveiro -8.7 40.6
+22_Coimbra -8.4 40.2
+
+EDGES 18
+label src dest weight bw delay
+Link_0 0 2 10 100000 1
+Link_1 2 0 10 100000 1
+Link_10 1 2 10 100000 1
+Link_11 2 1 10 100000 1
+Link_12 1 6 10 100000 1
+Link_13 6 1 10 100000 1
+Link_14 2 3 10 100000 1
+Link_15 3 2 10 100000 1
+Link_24 2 6 10 100000 1
+Link_25 6 2 10 100000 1
+Link_26 3 6 10 100000 1
+Link_27 6 3 10 100000 1
+Link_44 4 5 10 100000 1
+Link_45 5 4 10 100000 1
+Link_46 4 6 10 100000 1
+Link_47 6 4 10 100000 1
+Link_48 5 6 10 100000 1
+Link_49 6 5 10 100000 1

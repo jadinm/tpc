@@ -1,0 +1,48 @@
+NODES 11
+label x y
+0_Hradec_Kralove 15.8 50.2
+3_Pardubice 15.8 50.0
+5_Zlin 17.7 49.2
+6_Olomouc 17.3 49.6
+7_Brno 16.6 49.2
+9_Ostrava 18.3 49.8
+32_Plzen 13.4 49.7
+34_Usti_nad_Labem 14.0 50.7
+35_Praha 14.4 50.1
+36_Liberec 15.1 50.8
+38_Ceske_Budejovice 14.5 49.0
+
+EDGES 32
+label src dest weight bw delay
+Link_2 0 1 40 25000 1
+Link_3 1 0 40 25000 1
+Link_4 0 9 40 25000 1
+Link_5 9 0 40 25000 1
+Link_6 0 3 40 25000 1
+Link_7 3 0 40 25000 1
+Link_10 0 8 40 25000 1
+Link_11 8 0 40 25000 1
+Link_16 1 8 40 25000 1
+Link_17 8 1 40 25000 1
+Link_22 2 3 40 25000 1
+Link_23 3 2 40 25000 1
+Link_24 2 4 40 25000 1
+Link_25 4 2 40 25000 1
+Link_26 3 5 40 25000 1
+Link_27 5 3 40 25000 1
+Link_28 3 4 40 25000 1
+Link_29 4 3 40 25000 1
+Link_30 4 8 60 16581 1
+Link_31 8 4 60 16581 1
+Link_34 4 5 40 25000 1
+Link_35 5 4 40 25000 1
+Link_40 4 10 40 25000 1
+Link_41 10 4 40 25000 1
+Link_76 6 8 40 25000 1
+Link_77 8 6 40 25000 1
+Link_78 6 10 40 25000 1
+Link_79 10 6 40 25000 1
+Link_82 7 8 40 25000 1
+Link_83 8 7 40 25000 1
+Link_84 7 9 40 25000 1
+Link_85 9 7 40 25000 1

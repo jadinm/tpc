@@ -1,0 +1,46 @@
+NODES 11
+label x y
+2_NLR_FrameNet 0.0 0.0
+4_StarLight 0.0 0.0
+5_Pacific_Northwest_Gigapop 0.0 0.0
+6_NLR_FrameNet 0.0 0.0
+7_Internet2_DCN 0.0 0.0
+8_NLR_FrameNet 0.0 0.0
+9_CENIC 0.0 0.0
+10_Pacific_Wave_Sunnyvale -122.0 37.4
+11_Pacific_Wave_Seattle -122.3 47.6
+15_Pacific_Wave_Los_Angeles -118.2 34.1
+17_CENIC 0.0 0.0
+
+EDGES 30
+label src dest weight bw delay
+Link_4 0 6 10 93400 1
+Link_5 6 0 10 93400 1
+Link_6 0 7 10 100000 1
+Link_7 7 0 10 100000 1
+Link_10 1 8 10 100000 1
+Link_11 8 1 10 100000 1
+Link_12 2 8 10 100000 1
+Link_13 8 2 10 100000 1
+Link_14 2 3 100 10000 1
+Link_15 3 2 100 10000 1
+Link_16 2 4 10 100000 1
+Link_17 4 2 10 100000 1
+Link_18 3 8 10 100000 1
+Link_19 8 3 10 100000 1
+Link_20 4 8 10 100000 1
+Link_21 8 4 10 100000 1
+Link_22 5 10 10 93400 1
+Link_23 10 5 10 93400 1
+Link_24 5 9 10 100000 1
+Link_25 9 5 10 100000 1
+Link_26 6 7 10 100000 1
+Link_27 7 6 10 100000 1
+Link_28 7 8 10 100000 1
+Link_29 8 7 10 100000 1
+Link_30 7 9 10 100000 1
+Link_31 9 7 10 100000 1
+Link_32 8 9 10 100000 1
+Link_33 9 8 10 100000 1
+Link_42 9 10 10 100000 1
+Link_43 10 9 10 100000 1

@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_6_Zilina->4_Detva",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zilina->25_Spisska",
+        "src": 6,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zilina->26_Poprad",
+        "src": 6,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zilina->17_Trencin",
+        "src": 6,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zilina->30_Presov",
+        "src": 6,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->30_Presov",
+        "src": 27,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->25_Spisska",
+        "src": 27,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->26_Poprad",
+        "src": 27,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->4_Detva",
+        "src": 27,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->17_Trencin",
+        "src": 27,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->4_Detva",
+        "src": 28,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->26_Poprad",
+        "src": 28,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->17_Trencin",
+        "src": 28,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->25_Spisska",
+        "src": 28,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Bratislava->30_Presov",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->25_Spisska",
+        "src": 29,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->4_Detva",
+        "src": 29,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->30_Presov",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->17_Trencin",
+        "src": 29,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->26_Poprad",
+        "src": 29,
+        "dest": 26,
+        "volume": 100000
+    }
+]

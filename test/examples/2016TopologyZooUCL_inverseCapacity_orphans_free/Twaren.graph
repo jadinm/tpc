@@ -1,0 +1,17 @@
+NODES 4
+label x y
+2_TN 0.0 0.0
+4_TC 0.0 0.0
+13_HC 0.0 0.0
+19_TP 0.0 0.0
+
+EDGES 8
+label src dest weight bw delay
+Link_6 0 1 10 100000 1
+Link_7 1 0 10 100000 1
+Link_12 0 2 10 100000 1
+Link_13 2 0 10 100000 1
+Link_14 1 3 10 100000 1
+Link_15 3 1 10 100000 1
+Link_34 2 3 10 100000 1
+Link_35 3 2 10 100000 1

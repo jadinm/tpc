@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_1_Perth->2_Singapore",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_San_Jose->5_Los_Angeles",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Sydney->7_Auckland",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->11_Mumbai",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Seoul->13_Tokyo",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Taipei->15_Hong_Kong",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Manila->17_Bangkok",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

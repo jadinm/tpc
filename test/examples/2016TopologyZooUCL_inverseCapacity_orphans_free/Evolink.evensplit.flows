@@ -1,0 +1,68 @@
+[
+    {
+        "label": "flow_0_Shumen->2_Razgrad",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Turgovishte->4_Yambol",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Sliven->6_Dobrich",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Burgas->8_St_Zagora",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Varna->12_Plovdiv",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Frankfurt->14_Sofia",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Haskovo->22_V_Turnovo",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pazardjik->27_Bucharest",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ruse->29_Amsterdam",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Montana->33_Vraca",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Pleven->35_Lovech",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    }
+]

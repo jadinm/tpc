@@ -1,0 +1,182 @@
+[
+    {
+        "label": "flow_1_Chicago->6_Denver",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Chicago->0_New_York",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Chicago->9_Atlanta",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Chicago->3_Seattle",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Chicago->10_Indianapolis",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Chicago->8_Houston",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->3_Seattle",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->0_New_York",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->10_Indianapolis",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->6_Denver",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->9_Atlanta",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Washington_DC->8_Houston",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->6_Denver",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->10_Indianapolis",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->8_Houston",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->0_New_York",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->9_Atlanta",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Sunnyvale->3_Seattle",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->8_Houston",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->9_Atlanta",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->3_Seattle",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->10_Indianapolis",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->6_Denver",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Los_Angeles->0_New_York",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->10_Indianapolis",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->8_Houston",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->3_Seattle",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->0_New_York",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->6_Denver",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->9_Atlanta",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    }
+]

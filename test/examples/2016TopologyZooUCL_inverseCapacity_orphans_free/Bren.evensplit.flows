@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Technical_Uni->2_Todos_Kableshkov_Uni",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_IPP-BAS->10_Vasil_Levski_Uni",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Uni_of_Economics->17_Ruse_Uni.",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Plovdiv_Uni->22_Pleven_University",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Military_Uni->27_Sofia_University",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Economy_Uni.->34_Sofia_Uni.",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

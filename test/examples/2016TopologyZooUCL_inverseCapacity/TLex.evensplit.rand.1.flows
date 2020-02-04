@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_3_ONS-15454->11_NetIron_N140G_AS23814",
+        "src": 3,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_ONS-15454->0_Pacific_NW_Gigapop_(Seattle,_WA)",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_ONS-15454->2_Cat_6500_AS23814",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BigIron_15000_AS23814->11_NetIron_N140G_AS23814",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BigIron_15000_AS23814->2_Cat_6500_AS23814",
+        "src": 10,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_BigIron_15000_AS23814->0_Pacific_NW_Gigapop_(Seattle,_WA)",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    }
+]

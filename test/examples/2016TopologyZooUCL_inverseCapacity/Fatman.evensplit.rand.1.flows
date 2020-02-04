@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_2_Kirkcaldy->11_RNEP1",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Kirkcaldy->15_University_of_St_Andrews",
+        "src": 2,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Kirkcaldy->13_University_of_Abertay_Dundee",
+        "src": 2,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Kirkcaldy->12_RNEP2",
+        "src": 2,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Kirkcaldy->14_University_of_Dundee",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_None->12_RNEP2",
+        "src": 5,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_None->15_University_of_St_Andrews",
+        "src": 5,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_None->13_University_of_Abertay_Dundee",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_None->11_RNEP1",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_None->14_University_of_Dundee",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Glasgow->15_University_of_St_Andrews",
+        "src": 9,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Glasgow->12_RNEP2",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Glasgow->13_University_of_Abertay_Dundee",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Glasgow->11_RNEP1",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Glasgow->14_University_of_Dundee",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Leeds->13_University_of_Abertay_Dundee",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Leeds->12_RNEP2",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Leeds->11_RNEP1",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Leeds->14_University_of_Dundee",
+        "src": 10,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Leeds->15_University_of_St_Andrews",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    }
+]

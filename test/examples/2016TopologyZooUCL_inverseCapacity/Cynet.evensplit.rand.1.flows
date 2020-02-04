@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_6_Grid-SW->29_Nicosia_PoP",
+        "src": 6,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Grid-SW->22_Border_Router",
+        "src": 6,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Grid-SW->28_Evagoras",
+        "src": 6,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Grid-SW->23_EUMED_CONNECT",
+        "src": 6,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_None->28_Evagoras",
+        "src": 7,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_None->22_Border_Router",
+        "src": 7,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_None->23_EUMED_CONNECT",
+        "src": 7,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_None->29_Nicosia_PoP",
+        "src": 7,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Limassol_PoP->23_EUMED_CONNECT",
+        "src": 20,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Limassol_PoP->29_Nicosia_PoP",
+        "src": 20,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Limassol_PoP->28_Evagoras",
+        "src": 20,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Limassol_PoP->22_Border_Router",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    }
+]

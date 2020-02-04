@@ -1,0 +1,152 @@
+[
+    {
+        "label": "flow_2_NLR_FrameNet->10_Pacific_Wave_Sunnyvale",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_NLR_FrameNet->9_CENIC",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_NLR_FrameNet->11_Pacific_Wave_Seattle",
+        "src": 0,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_NLR_FrameNet->17_CENIC",
+        "src": 0,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_NLR_FrameNet->15_Pacific_Wave_Los_Angeles",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->15_Pacific_Wave_Los_Angeles",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->11_Pacific_Wave_Seattle",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->10_Pacific_Wave_Sunnyvale",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->9_CENIC",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Pacific_Northwest_Gigapop->17_CENIC",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_NLR_FrameNet->17_CENIC",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_NLR_FrameNet->10_Pacific_Wave_Sunnyvale",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_NLR_FrameNet->9_CENIC",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_NLR_FrameNet->11_Pacific_Wave_Seattle",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_NLR_FrameNet->15_Pacific_Wave_Los_Angeles",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->9_CENIC",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->15_Pacific_Wave_Los_Angeles",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->17_CENIC",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->11_Pacific_Wave_Seattle",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Internet2_DCN->10_Pacific_Wave_Sunnyvale",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->11_Pacific_Wave_Seattle",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->9_CENIC",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->15_Pacific_Wave_Los_Angeles",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->10_Pacific_Wave_Sunnyvale",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->17_CENIC",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    }
+]

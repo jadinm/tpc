@@ -1,0 +1,434 @@
+[
+    {
+        "label": "flow_1_Moree->0_Dubbo",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->14_Brisbane",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->2_None",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->16_Port_Augusta",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->10_Adelaide",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->8_Shepparton",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->7_Geelong",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->6_Coff's_Harbour",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Moree->3_Parkes",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->3_Parkes",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->6_Coff's_Harbour",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->14_Brisbane",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->7_Geelong",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->8_Shepparton",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->16_Port_Augusta",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->2_None",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->10_Adelaide",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Albury->0_Dubbo",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->7_Geelong",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->14_Brisbane",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->8_Shepparton",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->2_None",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->6_Coff's_Harbour",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->3_Parkes",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->0_Dubbo",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->16_Port_Augusta",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Newcastle->10_Adelaide",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->2_None",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->10_Adelaide",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->14_Brisbane",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->8_Shepparton",
+        "src": 9,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->3_Parkes",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->16_Port_Augusta",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->6_Coff's_Harbour",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->7_Geelong",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Perth->0_Dubbo",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->7_Geelong",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->16_Port_Augusta",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->14_Brisbane",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->3_Parkes",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->10_Adelaide",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->2_None",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->0_Dubbo",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->8_Shepparton",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Melbourne->6_Coff's_Harbour",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->0_Dubbo",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->14_Brisbane",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->2_None",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->7_Geelong",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->8_Shepparton",
+        "src": 12,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->10_Adelaide",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->16_Port_Augusta",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->6_Coff's_Harbour",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Sydney->3_Parkes",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->6_Coff's_Harbour",
+        "src": 13,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->0_Dubbo",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->3_Parkes",
+        "src": 13,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->8_Shepparton",
+        "src": 13,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->7_Geelong",
+        "src": 13,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->16_Port_Augusta",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->14_Brisbane",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->10_Adelaide",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Canberra->2_None",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->2_None",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->6_Coff's_Harbour",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->7_Geelong",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->0_Dubbo",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->14_Brisbane",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->16_Port_Augusta",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->8_Shepparton",
+        "src": 15,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->10_Adelaide",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Kalgoorlie->3_Parkes",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    }
+]

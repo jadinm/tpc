@@ -1,0 +1,4874 @@
+[
+    {
+        "label": "flow_1_UiO->8_NB_Mo_i_Rana",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->41_HSM_Kristiansun",
+        "src": 1,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->29_HBO_Bodo",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->31_HiF_Kirkenes",
+        "src": 1,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->56_HiF_Alta",
+        "src": 1,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->2_HiG_Gjovik",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->14_UiTo_Karasjok",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->26_HiNe_Sandnesjoen",
+        "src": 1,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->3_UiO_St_Olavsplass_5",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->10_HVE_Borre",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->6_UNIK_Kjeller",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->0_UiO",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->62_NTNU_Realfagbygget",
+        "src": 1,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->49_UMB_As",
+        "src": 1,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->54_HiT_Bo",
+        "src": 1,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->23_UiB_BT",
+        "src": 1,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->7_HiBu_Honefoss",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->32_Stockholm",
+        "src": 1,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->61_NTNU_Hovedbygget",
+        "src": 1,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->9_HiNe_Nesna",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->35_HiNT_Levanger",
+        "src": 1,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->24_HSF_Songdal",
+        "src": 1,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->22_UiB_Hoyteklogibygget",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->46_UiA_Kristiansand",
+        "src": 1,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->68_HH_Kongsvinger",
+        "src": 1,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->18_UiS_Stavanger",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->15_UiTo",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->17_HVO_Volda",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_UiO->20_HSH_Haugesund",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->32_Stockholm",
+        "src": 4,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->61_NTNU_Hovedbygget",
+        "src": 4,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->41_HSM_Kristiansun",
+        "src": 4,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->49_UMB_As",
+        "src": 4,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->17_HVO_Volda",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->10_HVE_Borre",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->31_HiF_Kirkenes",
+        "src": 4,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->18_UiS_Stavanger",
+        "src": 4,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->62_NTNU_Realfagbygget",
+        "src": 4,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->22_UiB_Hoyteklogibygget",
+        "src": 4,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->56_HiF_Alta",
+        "src": 4,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->6_UNIK_Kjeller",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->2_HiG_Gjovik",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->15_UiTo",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->24_HSF_Songdal",
+        "src": 4,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->35_HiNT_Levanger",
+        "src": 4,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->46_UiA_Kristiansand",
+        "src": 4,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->23_UiB_BT",
+        "src": 4,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->0_UiO",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->3_UiO_St_Olavsplass_5",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->8_NB_Mo_i_Rana",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->68_HH_Kongsvinger",
+        "src": 4,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->26_HiNe_Sandnesjoen",
+        "src": 4,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->9_HiNe_Nesna",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->14_UiTo_Karasjok",
+        "src": 4,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->7_HiBu_Honefoss",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->20_HSH_Haugesund",
+        "src": 4,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->54_HiT_Bo",
+        "src": 4,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_HiBU_Kongsberg->29_HBO_Bodo",
+        "src": 4,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->41_HSM_Kristiansun",
+        "src": 5,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->22_UiB_Hoyteklogibygget",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->15_UiTo",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->31_HiF_Kirkenes",
+        "src": 5,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->8_NB_Mo_i_Rana",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->32_Stockholm",
+        "src": 5,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->9_HiNe_Nesna",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->6_UNIK_Kjeller",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->29_HBO_Bodo",
+        "src": 5,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->49_UMB_As",
+        "src": 5,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->2_HiG_Gjovik",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->3_UiO_St_Olavsplass_5",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->24_HSF_Songdal",
+        "src": 5,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->14_UiTo_Karasjok",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->26_HiNe_Sandnesjoen",
+        "src": 5,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->17_HVO_Volda",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->0_UiO",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->18_UiS_Stavanger",
+        "src": 5,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->61_NTNU_Hovedbygget",
+        "src": 5,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->68_HH_Kongsvinger",
+        "src": 5,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->10_HVE_Borre",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->23_UiB_BT",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->35_HiNT_Levanger",
+        "src": 5,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->20_HSH_Haugesund",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->62_NTNU_Realfagbygget",
+        "src": 5,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->7_HiBu_Honefoss",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->46_UiA_Kristiansand",
+        "src": 5,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->56_HiF_Alta",
+        "src": 5,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_HiBU_Drammen->54_HiT_Bo",
+        "src": 5,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->22_UiB_Hoyteklogibygget",
+        "src": 11,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->29_HBO_Bodo",
+        "src": 11,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->8_NB_Mo_i_Rana",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->54_HiT_Bo",
+        "src": 11,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->14_UiTo_Karasjok",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->18_UiS_Stavanger",
+        "src": 11,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->17_HVO_Volda",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->62_NTNU_Realfagbygget",
+        "src": 11,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->68_HH_Kongsvinger",
+        "src": 11,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->24_HSF_Songdal",
+        "src": 11,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->6_UNIK_Kjeller",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->31_HiF_Kirkenes",
+        "src": 11,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->35_HiNT_Levanger",
+        "src": 11,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->61_NTNU_Hovedbygget",
+        "src": 11,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->20_HSH_Haugesund",
+        "src": 11,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->49_UMB_As",
+        "src": 11,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->7_HiBu_Honefoss",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->26_HiNe_Sandnesjoen",
+        "src": 11,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->0_UiO",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->56_HiF_Alta",
+        "src": 11,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->46_UiA_Kristiansand",
+        "src": 11,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->23_UiB_BT",
+        "src": 11,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->3_UiO_St_Olavsplass_5",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->41_HSM_Kristiansun",
+        "src": 11,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->9_HiNe_Nesna",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->32_Stockholm",
+        "src": 11,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->10_HVE_Borre",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->2_HiG_Gjovik",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_HiN_Narvik->15_UiTo",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->22_UiB_Hoyteklogibygget",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->8_NB_Mo_i_Rana",
+        "src": 12,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->10_HVE_Borre",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->26_HiNe_Sandnesjoen",
+        "src": 12,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->18_UiS_Stavanger",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->6_UNIK_Kjeller",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->56_HiF_Alta",
+        "src": 12,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->14_UiTo_Karasjok",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->15_UiTo",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->17_HVO_Volda",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->20_HSH_Haugesund",
+        "src": 12,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->68_HH_Kongsvinger",
+        "src": 12,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->31_HiF_Kirkenes",
+        "src": 12,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->62_NTNU_Realfagbygget",
+        "src": 12,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->0_UiO",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->29_HBO_Bodo",
+        "src": 12,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->3_UiO_St_Olavsplass_5",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->7_HiBu_Honefoss",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->2_HiG_Gjovik",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->9_HiNe_Nesna",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->32_Stockholm",
+        "src": 12,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->24_HSF_Songdal",
+        "src": 12,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->41_HSM_Kristiansun",
+        "src": 12,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->54_HiT_Bo",
+        "src": 12,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->49_UMB_As",
+        "src": 12,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->61_NTNU_Hovedbygget",
+        "src": 12,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->46_UiA_Kristiansand",
+        "src": 12,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->23_UiB_BT",
+        "src": 12,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_HiH_Harstad->35_HiNT_Levanger",
+        "src": 12,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->18_UiS_Stavanger",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->41_HSM_Kristiansun",
+        "src": 15,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->68_HH_Kongsvinger",
+        "src": 15,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->29_HBO_Bodo",
+        "src": 15,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->23_UiB_BT",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->17_HVO_Volda",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->49_UMB_As",
+        "src": 15,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->54_HiT_Bo",
+        "src": 15,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->20_HSH_Haugesund",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->31_HiF_Kirkenes",
+        "src": 15,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->2_HiG_Gjovik",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->35_HiNT_Levanger",
+        "src": 15,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->8_NB_Mo_i_Rana",
+        "src": 15,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->22_UiB_Hoyteklogibygget",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->7_HiBu_Honefoss",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->6_UNIK_Kjeller",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->56_HiF_Alta",
+        "src": 15,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->0_UiO",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->32_Stockholm",
+        "src": 15,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->24_HSF_Songdal",
+        "src": 15,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->9_HiNe_Nesna",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->3_UiO_St_Olavsplass_5",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->61_NTNU_Hovedbygget",
+        "src": 15,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->14_UiTo_Karasjok",
+        "src": 15,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->46_UiA_Kristiansand",
+        "src": 15,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->15_UiTo",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->10_HVE_Borre",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->62_NTNU_Realfagbygget",
+        "src": 15,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_HiA_Alesund->26_HiNe_Sandnesjoen",
+        "src": 15,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->49_UMB_As",
+        "src": 19,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->17_HVO_Volda",
+        "src": 19,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->31_HiF_Kirkenes",
+        "src": 19,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->15_UiTo",
+        "src": 19,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->14_UiTo_Karasjok",
+        "src": 19,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->20_HSH_Haugesund",
+        "src": 19,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->56_HiF_Alta",
+        "src": 19,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->3_UiO_St_Olavsplass_5",
+        "src": 19,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->18_UiS_Stavanger",
+        "src": 19,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->9_HiNe_Nesna",
+        "src": 19,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->35_HiNT_Levanger",
+        "src": 19,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->0_UiO",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->24_HSF_Songdal",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->46_UiA_Kristiansand",
+        "src": 19,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->26_HiNe_Sandnesjoen",
+        "src": 19,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->62_NTNU_Realfagbygget",
+        "src": 19,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->7_HiBu_Honefoss",
+        "src": 19,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->29_HBO_Bodo",
+        "src": 19,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->22_UiB_Hoyteklogibygget",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->10_HVE_Borre",
+        "src": 19,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->61_NTNU_Hovedbygget",
+        "src": 19,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->54_HiT_Bo",
+        "src": 19,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->23_UiB_BT",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->8_NB_Mo_i_Rana",
+        "src": 19,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->6_UNIK_Kjeller",
+        "src": 19,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->32_Stockholm",
+        "src": 19,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->2_HiG_Gjovik",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->41_HSM_Kristiansun",
+        "src": 19,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_HSH_Stord->68_HH_Kongsvinger",
+        "src": 19,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->23_UiB_BT",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->31_HiF_Kirkenes",
+        "src": 23,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->14_UiTo_Karasjok",
+        "src": 23,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->6_UNIK_Kjeller",
+        "src": 23,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->2_HiG_Gjovik",
+        "src": 23,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->22_UiB_Hoyteklogibygget",
+        "src": 23,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->26_HiNe_Sandnesjoen",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->56_HiF_Alta",
+        "src": 23,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->3_UiO_St_Olavsplass_5",
+        "src": 23,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->35_HiNT_Levanger",
+        "src": 23,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->8_NB_Mo_i_Rana",
+        "src": 23,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->62_NTNU_Realfagbygget",
+        "src": 23,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->32_Stockholm",
+        "src": 23,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->17_HVO_Volda",
+        "src": 23,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->54_HiT_Bo",
+        "src": 23,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->10_HVE_Borre",
+        "src": 23,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->61_NTNU_Hovedbygget",
+        "src": 23,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->0_UiO",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->7_HiBu_Honefoss",
+        "src": 23,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->68_HH_Kongsvinger",
+        "src": 23,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->24_HSF_Songdal",
+        "src": 23,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->9_HiNe_Nesna",
+        "src": 23,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->18_UiS_Stavanger",
+        "src": 23,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->41_HSM_Kristiansun",
+        "src": 23,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->49_UMB_As",
+        "src": 23,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->46_UiA_Kristiansand",
+        "src": 23,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->29_HBO_Bodo",
+        "src": 23,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->20_HSH_Haugesund",
+        "src": 23,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSF_Forde->15_UiTo",
+        "src": 23,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->9_HiNe_Nesna",
+        "src": 25,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->17_HVO_Volda",
+        "src": 25,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->14_UiTo_Karasjok",
+        "src": 25,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->26_HiNe_Sandnesjoen",
+        "src": 25,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->23_UiB_BT",
+        "src": 25,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->62_NTNU_Realfagbygget",
+        "src": 25,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->20_HSH_Haugesund",
+        "src": 25,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->61_NTNU_Hovedbygget",
+        "src": 25,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->8_NB_Mo_i_Rana",
+        "src": 25,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->3_UiO_St_Olavsplass_5",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->54_HiT_Bo",
+        "src": 25,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->29_HBO_Bodo",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->22_UiB_Hoyteklogibygget",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->24_HSF_Songdal",
+        "src": 25,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->32_Stockholm",
+        "src": 25,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->49_UMB_As",
+        "src": 25,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->7_HiBu_Honefoss",
+        "src": 25,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->68_HH_Kongsvinger",
+        "src": 25,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->15_UiTo",
+        "src": 25,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->46_UiA_Kristiansand",
+        "src": 25,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->41_HSM_Kristiansun",
+        "src": 25,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->2_HiG_Gjovik",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->0_UiO",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->35_HiNT_Levanger",
+        "src": 25,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->31_HiF_Kirkenes",
+        "src": 25,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->6_UNIK_Kjeller",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->56_HiF_Alta",
+        "src": 25,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->18_UiS_Stavanger",
+        "src": 25,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_HiNT_Steinkjer->10_HVE_Borre",
+        "src": 25,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->17_HVO_Volda",
+        "src": 27,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->3_UiO_St_Olavsplass_5",
+        "src": 27,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->56_HiF_Alta",
+        "src": 27,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->14_UiTo_Karasjok",
+        "src": 27,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->35_HiNT_Levanger",
+        "src": 27,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->22_UiB_Hoyteklogibygget",
+        "src": 27,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->0_UiO",
+        "src": 27,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->23_UiB_BT",
+        "src": 27,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->68_HH_Kongsvinger",
+        "src": 27,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->9_HiNe_Nesna",
+        "src": 27,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->29_HBO_Bodo",
+        "src": 27,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->10_HVE_Borre",
+        "src": 27,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->7_HiBu_Honefoss",
+        "src": 27,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->18_UiS_Stavanger",
+        "src": 27,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->62_NTNU_Realfagbygget",
+        "src": 27,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->20_HSH_Haugesund",
+        "src": 27,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->2_HiG_Gjovik",
+        "src": 27,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->26_HiNe_Sandnesjoen",
+        "src": 27,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->41_HSM_Kristiansun",
+        "src": 27,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->61_NTNU_Hovedbygget",
+        "src": 27,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->6_UNIK_Kjeller",
+        "src": 27,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->32_Stockholm",
+        "src": 27,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->31_HiF_Kirkenes",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->54_HiT_Bo",
+        "src": 27,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->8_NB_Mo_i_Rana",
+        "src": 27,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->49_UMB_As",
+        "src": 27,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->46_UiA_Kristiansand",
+        "src": 27,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->15_UiTo",
+        "src": 27,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_SA/SH_Kautokeino->24_HSF_Songdal",
+        "src": 27,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->22_UiB_Hoyteklogibygget",
+        "src": 30,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->23_UiB_BT",
+        "src": 30,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->29_HBO_Bodo",
+        "src": 30,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->17_HVO_Volda",
+        "src": 30,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->8_NB_Mo_i_Rana",
+        "src": 30,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->0_UiO",
+        "src": 30,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->46_UiA_Kristiansand",
+        "src": 30,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->14_UiTo_Karasjok",
+        "src": 30,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->61_NTNU_Hovedbygget",
+        "src": 30,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->2_HiG_Gjovik",
+        "src": 30,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->15_UiTo",
+        "src": 30,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->68_HH_Kongsvinger",
+        "src": 30,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->62_NTNU_Realfagbygget",
+        "src": 30,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->6_UNIK_Kjeller",
+        "src": 30,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->18_UiS_Stavanger",
+        "src": 30,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->56_HiF_Alta",
+        "src": 30,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->26_HiNe_Sandnesjoen",
+        "src": 30,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->20_HSH_Haugesund",
+        "src": 30,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->54_HiT_Bo",
+        "src": 30,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->41_HSM_Kristiansun",
+        "src": 30,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->24_HSF_Songdal",
+        "src": 30,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->31_HiF_Kirkenes",
+        "src": 30,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->10_HVE_Borre",
+        "src": 30,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->32_Stockholm",
+        "src": 30,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->9_HiNe_Nesna",
+        "src": 30,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->35_HiNT_Levanger",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->3_UiO_St_Olavsplass_5",
+        "src": 30,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->49_UMB_As",
+        "src": 30,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Hing_Stjordal->7_HiBu_Honefoss",
+        "src": 30,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->17_HVO_Volda",
+        "src": 32,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->20_HSH_Haugesund",
+        "src": 32,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->10_HVE_Borre",
+        "src": 32,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->56_HiF_Alta",
+        "src": 32,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->49_UMB_As",
+        "src": 32,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->3_UiO_St_Olavsplass_5",
+        "src": 32,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->9_HiNe_Nesna",
+        "src": 32,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->26_HiNe_Sandnesjoen",
+        "src": 32,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->15_UiTo",
+        "src": 32,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->6_UNIK_Kjeller",
+        "src": 32,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->41_HSM_Kristiansun",
+        "src": 32,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->2_HiG_Gjovik",
+        "src": 32,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->8_NB_Mo_i_Rana",
+        "src": 32,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->24_HSF_Songdal",
+        "src": 32,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->35_HiNT_Levanger",
+        "src": 32,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->54_HiT_Bo",
+        "src": 32,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->23_UiB_BT",
+        "src": 32,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->62_NTNU_Realfagbygget",
+        "src": 32,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->68_HH_Kongsvinger",
+        "src": 32,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->7_HiBu_Honefoss",
+        "src": 32,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->29_HBO_Bodo",
+        "src": 32,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->18_UiS_Stavanger",
+        "src": 32,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->22_UiB_Hoyteklogibygget",
+        "src": 32,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->46_UiA_Kristiansand",
+        "src": 32,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->32_Stockholm",
+        "src": 32,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->61_NTNU_Hovedbygget",
+        "src": 32,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->0_UiO",
+        "src": 32,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->14_UiTo_Karasjok",
+        "src": 32,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_HiNT_Namsos->31_HiF_Kirkenes",
+        "src": 32,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->49_UMB_As",
+        "src": 33,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->56_HiF_Alta",
+        "src": 33,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->31_HiF_Kirkenes",
+        "src": 33,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->23_UiB_BT",
+        "src": 33,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->3_UiO_St_Olavsplass_5",
+        "src": 33,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->7_HiBu_Honefoss",
+        "src": 33,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->9_HiNe_Nesna",
+        "src": 33,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->20_HSH_Haugesund",
+        "src": 33,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->26_HiNe_Sandnesjoen",
+        "src": 33,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->35_HiNT_Levanger",
+        "src": 33,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->14_UiTo_Karasjok",
+        "src": 33,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->15_UiTo",
+        "src": 33,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->0_UiO",
+        "src": 33,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->29_HBO_Bodo",
+        "src": 33,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->17_HVO_Volda",
+        "src": 33,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->2_HiG_Gjovik",
+        "src": 33,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->61_NTNU_Hovedbygget",
+        "src": 33,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->41_HSM_Kristiansun",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->10_HVE_Borre",
+        "src": 33,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->62_NTNU_Realfagbygget",
+        "src": 33,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->18_UiS_Stavanger",
+        "src": 33,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->8_NB_Mo_i_Rana",
+        "src": 33,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->54_HiT_Bo",
+        "src": 33,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->6_UNIK_Kjeller",
+        "src": 33,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->68_HH_Kongsvinger",
+        "src": 33,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->46_UiA_Kristiansand",
+        "src": 33,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->24_HSF_Songdal",
+        "src": 33,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->22_UiB_Hoyteklogibygget",
+        "src": 33,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HSM_Molde->32_Stockholm",
+        "src": 33,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->14_UiTo_Karasjok",
+        "src": 35,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->17_HVO_Volda",
+        "src": 35,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->23_UiB_BT",
+        "src": 35,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->68_HH_Kongsvinger",
+        "src": 35,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->9_HiNe_Nesna",
+        "src": 35,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->2_HiG_Gjovik",
+        "src": 35,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->32_Stockholm",
+        "src": 35,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->29_HBO_Bodo",
+        "src": 35,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->46_UiA_Kristiansand",
+        "src": 35,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->41_HSM_Kristiansun",
+        "src": 35,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->54_HiT_Bo",
+        "src": 35,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->26_HiNe_Sandnesjoen",
+        "src": 35,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->49_UMB_As",
+        "src": 35,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->6_UNIK_Kjeller",
+        "src": 35,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->15_UiTo",
+        "src": 35,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->3_UiO_St_Olavsplass_5",
+        "src": 35,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->20_HSH_Haugesund",
+        "src": 35,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->8_NB_Mo_i_Rana",
+        "src": 35,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->61_NTNU_Hovedbygget",
+        "src": 35,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->7_HiBu_Honefoss",
+        "src": 35,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->0_UiO",
+        "src": 35,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->24_HSF_Songdal",
+        "src": 35,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->31_HiF_Kirkenes",
+        "src": 35,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->35_HiNT_Levanger",
+        "src": 35,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->56_HiF_Alta",
+        "src": 35,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->18_UiS_Stavanger",
+        "src": 35,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->62_NTNU_Realfagbygget",
+        "src": 35,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->10_HVE_Borre",
+        "src": 35,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_HiF_Hammerfest->22_UiB_Hoyteklogibygget",
+        "src": 35,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->2_HiG_Gjovik",
+        "src": 36,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->23_UiB_BT",
+        "src": 36,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->31_HiF_Kirkenes",
+        "src": 36,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->24_HSF_Songdal",
+        "src": 36,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->8_NB_Mo_i_Rana",
+        "src": 36,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->26_HiNe_Sandnesjoen",
+        "src": 36,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->15_UiTo",
+        "src": 36,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->29_HBO_Bodo",
+        "src": 36,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->32_Stockholm",
+        "src": 36,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->35_HiNT_Levanger",
+        "src": 36,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->17_HVO_Volda",
+        "src": 36,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->6_UNIK_Kjeller",
+        "src": 36,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->10_HVE_Borre",
+        "src": 36,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->46_UiA_Kristiansand",
+        "src": 36,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->54_HiT_Bo",
+        "src": 36,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->41_HSM_Kristiansun",
+        "src": 36,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->49_UMB_As",
+        "src": 36,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->20_HSH_Haugesund",
+        "src": 36,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->22_UiB_Hoyteklogibygget",
+        "src": 36,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->7_HiBu_Honefoss",
+        "src": 36,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->56_HiF_Alta",
+        "src": 36,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->62_NTNU_Realfagbygget",
+        "src": 36,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->14_UiTo_Karasjok",
+        "src": 36,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->61_NTNU_Hovedbygget",
+        "src": 36,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->9_HiNe_Nesna",
+        "src": 36,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->68_HH_Kongsvinger",
+        "src": 36,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->0_UiO",
+        "src": 36,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->3_UiO_St_Olavsplass_5",
+        "src": 36,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UiTo->18_UiS_Stavanger",
+        "src": 36,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->10_HVE_Borre",
+        "src": 37,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->8_NB_Mo_i_Rana",
+        "src": 37,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->7_HiBu_Honefoss",
+        "src": 37,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->32_Stockholm",
+        "src": 37,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->56_HiF_Alta",
+        "src": 37,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->22_UiB_Hoyteklogibygget",
+        "src": 37,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->17_HVO_Volda",
+        "src": 37,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->31_HiF_Kirkenes",
+        "src": 37,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->29_HBO_Bodo",
+        "src": 37,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->35_HiNT_Levanger",
+        "src": 37,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->20_HSH_Haugesund",
+        "src": 37,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->3_UiO_St_Olavsplass_5",
+        "src": 37,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->14_UiTo_Karasjok",
+        "src": 37,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->24_HSF_Songdal",
+        "src": 37,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->9_HiNe_Nesna",
+        "src": 37,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->49_UMB_As",
+        "src": 37,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->6_UNIK_Kjeller",
+        "src": 37,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->23_UiB_BT",
+        "src": 37,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->61_NTNU_Hovedbygget",
+        "src": 37,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->2_HiG_Gjovik",
+        "src": 37,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->15_UiTo",
+        "src": 37,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->54_HiT_Bo",
+        "src": 37,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->41_HSM_Kristiansun",
+        "src": 37,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->0_UiO",
+        "src": 37,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->62_NTNU_Realfagbygget",
+        "src": 37,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->18_UiS_Stavanger",
+        "src": 37,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->46_UiA_Kristiansand",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->68_HH_Kongsvinger",
+        "src": 37,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_HiF_Vadso->26_HiNe_Sandnesjoen",
+        "src": 37,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->10_HVE_Borre",
+        "src": 39,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->46_UiA_Kristiansand",
+        "src": 39,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->29_HBO_Bodo",
+        "src": 39,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->7_HiBu_Honefoss",
+        "src": 39,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->22_UiB_Hoyteklogibygget",
+        "src": 39,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->23_UiB_BT",
+        "src": 39,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->32_Stockholm",
+        "src": 39,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->18_UiS_Stavanger",
+        "src": 39,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->68_HH_Kongsvinger",
+        "src": 39,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->3_UiO_St_Olavsplass_5",
+        "src": 39,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->56_HiF_Alta",
+        "src": 39,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->49_UMB_As",
+        "src": 39,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->26_HiNe_Sandnesjoen",
+        "src": 39,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->14_UiTo_Karasjok",
+        "src": 39,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->24_HSF_Songdal",
+        "src": 39,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->8_NB_Mo_i_Rana",
+        "src": 39,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->35_HiNT_Levanger",
+        "src": 39,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->9_HiNe_Nesna",
+        "src": 39,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->17_HVO_Volda",
+        "src": 39,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->41_HSM_Kristiansun",
+        "src": 39,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->31_HiF_Kirkenes",
+        "src": 39,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->6_UNIK_Kjeller",
+        "src": 39,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->20_HSH_Haugesund",
+        "src": 39,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->62_NTNU_Realfagbygget",
+        "src": 39,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->15_UiTo",
+        "src": 39,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->2_HiG_Gjovik",
+        "src": 39,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->61_NTNU_Hovedbygget",
+        "src": 39,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->0_UiO",
+        "src": 39,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_UiA_Grimstad->54_HiT_Bo",
+        "src": 39,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->56_HiF_Alta",
+        "src": 40,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->54_HiT_Bo",
+        "src": 40,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->61_NTNU_Hovedbygget",
+        "src": 40,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->22_UiB_Hoyteklogibygget",
+        "src": 40,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->15_UiTo",
+        "src": 40,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->68_HH_Kongsvinger",
+        "src": 40,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->9_HiNe_Nesna",
+        "src": 40,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->29_HBO_Bodo",
+        "src": 40,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->24_HSF_Songdal",
+        "src": 40,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->35_HiNT_Levanger",
+        "src": 40,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->31_HiF_Kirkenes",
+        "src": 40,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->14_UiTo_Karasjok",
+        "src": 40,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->17_HVO_Volda",
+        "src": 40,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->0_UiO",
+        "src": 40,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->10_HVE_Borre",
+        "src": 40,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->26_HiNe_Sandnesjoen",
+        "src": 40,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->41_HSM_Kristiansun",
+        "src": 40,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->18_UiS_Stavanger",
+        "src": 40,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->8_NB_Mo_i_Rana",
+        "src": 40,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->7_HiBu_Honefoss",
+        "src": 40,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->46_UiA_Kristiansand",
+        "src": 40,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->6_UNIK_Kjeller",
+        "src": 40,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->49_UMB_As",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->32_Stockholm",
+        "src": 40,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->23_UiB_BT",
+        "src": 40,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->3_UiO_St_Olavsplass_5",
+        "src": 40,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->20_HSH_Haugesund",
+        "src": 40,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->2_HiG_Gjovik",
+        "src": 40,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_HiO_Halden->62_NTNU_Realfagbygget",
+        "src": 40,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->41_HSM_Kristiansun",
+        "src": 42,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->29_HBO_Bodo",
+        "src": 42,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->2_HiG_Gjovik",
+        "src": 42,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->3_UiO_St_Olavsplass_5",
+        "src": 42,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->23_UiB_BT",
+        "src": 42,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->18_UiS_Stavanger",
+        "src": 42,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->10_HVE_Borre",
+        "src": 42,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->32_Stockholm",
+        "src": 42,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->62_NTNU_Realfagbygget",
+        "src": 42,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->49_UMB_As",
+        "src": 42,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->61_NTNU_Hovedbygget",
+        "src": 42,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->15_UiTo",
+        "src": 42,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->6_UNIK_Kjeller",
+        "src": 42,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->68_HH_Kongsvinger",
+        "src": 42,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->20_HSH_Haugesund",
+        "src": 42,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->26_HiNe_Sandnesjoen",
+        "src": 42,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->17_HVO_Volda",
+        "src": 42,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->31_HiF_Kirkenes",
+        "src": 42,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->22_UiB_Hoyteklogibygget",
+        "src": 42,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->8_NB_Mo_i_Rana",
+        "src": 42,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->24_HSF_Songdal",
+        "src": 42,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->14_UiTo_Karasjok",
+        "src": 42,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->0_UiO",
+        "src": 42,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->54_HiT_Bo",
+        "src": 42,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->35_HiNT_Levanger",
+        "src": 42,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->9_HiNe_Nesna",
+        "src": 42,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->46_UiA_Kristiansand",
+        "src": 42,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->7_HiBu_Honefoss",
+        "src": 42,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_50_HiO_Fredrikstad->56_HiF_Alta",
+        "src": 42,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->31_HiF_Kirkenes",
+        "src": 43,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->32_Stockholm",
+        "src": 43,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->22_UiB_Hoyteklogibygget",
+        "src": 43,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->14_UiTo_Karasjok",
+        "src": 43,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->20_HSH_Haugesund",
+        "src": 43,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->7_HiBu_Honefoss",
+        "src": 43,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->15_UiTo",
+        "src": 43,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->10_HVE_Borre",
+        "src": 43,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->9_HiNe_Nesna",
+        "src": 43,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->8_NB_Mo_i_Rana",
+        "src": 43,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->56_HiF_Alta",
+        "src": 43,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->24_HSF_Songdal",
+        "src": 43,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->41_HSM_Kristiansun",
+        "src": 43,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->29_HBO_Bodo",
+        "src": 43,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->35_HiNT_Levanger",
+        "src": 43,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->46_UiA_Kristiansand",
+        "src": 43,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->49_UMB_As",
+        "src": 43,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->26_HiNe_Sandnesjoen",
+        "src": 43,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->17_HVO_Volda",
+        "src": 43,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->18_UiS_Stavanger",
+        "src": 43,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->2_HiG_Gjovik",
+        "src": 43,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->61_NTNU_Hovedbygget",
+        "src": 43,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->23_UiB_BT",
+        "src": 43,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->6_UNIK_Kjeller",
+        "src": 43,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->3_UiO_St_Olavsplass_5",
+        "src": 43,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->54_HiT_Bo",
+        "src": 43,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->62_NTNU_Realfagbygget",
+        "src": 43,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->0_UiO",
+        "src": 43,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HiAK_Kjeller->68_HH_Kongsvinger",
+        "src": 43,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->3_UiO_St_Olavsplass_5",
+        "src": 44,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->23_UiB_BT",
+        "src": 44,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->68_HH_Kongsvinger",
+        "src": 44,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->15_UiTo",
+        "src": 44,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->54_HiT_Bo",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->46_UiA_Kristiansand",
+        "src": 44,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->20_HSH_Haugesund",
+        "src": 44,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->62_NTNU_Realfagbygget",
+        "src": 44,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->56_HiF_Alta",
+        "src": 44,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->9_HiNe_Nesna",
+        "src": 44,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->6_UNIK_Kjeller",
+        "src": 44,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->31_HiF_Kirkenes",
+        "src": 44,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->32_Stockholm",
+        "src": 44,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->14_UiTo_Karasjok",
+        "src": 44,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->35_HiNT_Levanger",
+        "src": 44,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->2_HiG_Gjovik",
+        "src": 44,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->22_UiB_Hoyteklogibygget",
+        "src": 44,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->29_HBO_Bodo",
+        "src": 44,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->8_NB_Mo_i_Rana",
+        "src": 44,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->49_UMB_As",
+        "src": 44,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->24_HSF_Songdal",
+        "src": 44,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->17_HVO_Volda",
+        "src": 44,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->18_UiS_Stavanger",
+        "src": 44,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->61_NTNU_Hovedbygget",
+        "src": 44,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->7_HiBu_Honefoss",
+        "src": 44,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->10_HVE_Borre",
+        "src": 44,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->0_UiO",
+        "src": 44,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->26_HiNe_Sandnesjoen",
+        "src": 44,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_53_HiT_Porsgrunn->41_HSM_Kristiansun",
+        "src": 44,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->32_Stockholm",
+        "src": 47,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->68_HH_Kongsvinger",
+        "src": 47,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->14_UiTo_Karasjok",
+        "src": 47,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->17_HVO_Volda",
+        "src": 47,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->8_NB_Mo_i_Rana",
+        "src": 47,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->15_UiTo",
+        "src": 47,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->0_UiO",
+        "src": 47,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->62_NTNU_Realfagbygget",
+        "src": 47,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->56_HiF_Alta",
+        "src": 47,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->2_HiG_Gjovik",
+        "src": 47,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->35_HiNT_Levanger",
+        "src": 47,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->61_NTNU_Hovedbygget",
+        "src": 47,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->46_UiA_Kristiansand",
+        "src": 47,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->26_HiNe_Sandnesjoen",
+        "src": 47,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->3_UiO_St_Olavsplass_5",
+        "src": 47,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->41_HSM_Kristiansun",
+        "src": 47,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->9_HiNe_Nesna",
+        "src": 47,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->20_HSH_Haugesund",
+        "src": 47,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->31_HiF_Kirkenes",
+        "src": 47,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->22_UiB_Hoyteklogibygget",
+        "src": 47,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->49_UMB_As",
+        "src": 47,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->18_UiS_Stavanger",
+        "src": 47,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->10_HVE_Borre",
+        "src": 47,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->29_HBO_Bodo",
+        "src": 47,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->6_UNIK_Kjeller",
+        "src": 47,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->54_HiT_Bo",
+        "src": 47,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->7_HiBu_Honefoss",
+        "src": 47,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->23_UiB_BT",
+        "src": 47,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_HH_Evenstad->24_HSF_Songdal",
+        "src": 47,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->7_HiBu_Honefoss",
+        "src": 48,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->56_HiF_Alta",
+        "src": 48,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->29_HBO_Bodo",
+        "src": 48,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->49_UMB_As",
+        "src": 48,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->9_HiNe_Nesna",
+        "src": 48,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->10_HVE_Borre",
+        "src": 48,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->23_UiB_BT",
+        "src": 48,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->22_UiB_Hoyteklogibygget",
+        "src": 48,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->35_HiNT_Levanger",
+        "src": 48,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->61_NTNU_Hovedbygget",
+        "src": 48,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->26_HiNe_Sandnesjoen",
+        "src": 48,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->46_UiA_Kristiansand",
+        "src": 48,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->14_UiTo_Karasjok",
+        "src": 48,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->3_UiO_St_Olavsplass_5",
+        "src": 48,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->17_HVO_Volda",
+        "src": 48,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->68_HH_Kongsvinger",
+        "src": 48,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->2_HiG_Gjovik",
+        "src": 48,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->6_UNIK_Kjeller",
+        "src": 48,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->0_UiO",
+        "src": 48,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->32_Stockholm",
+        "src": 48,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->31_HiF_Kirkenes",
+        "src": 48,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->15_UiTo",
+        "src": 48,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->24_HSF_Songdal",
+        "src": 48,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->8_NB_Mo_i_Rana",
+        "src": 48,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->41_HSM_Kristiansun",
+        "src": 48,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->62_NTNU_Realfagbygget",
+        "src": 48,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->54_HiT_Bo",
+        "src": 48,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->20_HSH_Haugesund",
+        "src": 48,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_HH_Hamar->18_UiS_Stavanger",
+        "src": 48,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->24_HSF_Songdal",
+        "src": 49,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->32_Stockholm",
+        "src": 49,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->41_HSM_Kristiansun",
+        "src": 49,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->54_HiT_Bo",
+        "src": 49,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->18_UiS_Stavanger",
+        "src": 49,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->15_UiTo",
+        "src": 49,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->62_NTNU_Realfagbygget",
+        "src": 49,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->61_NTNU_Hovedbygget",
+        "src": 49,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->0_UiO",
+        "src": 49,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->3_UiO_St_Olavsplass_5",
+        "src": 49,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->20_HSH_Haugesund",
+        "src": 49,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->46_UiA_Kristiansand",
+        "src": 49,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->23_UiB_BT",
+        "src": 49,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->29_HBO_Bodo",
+        "src": 49,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->56_HiF_Alta",
+        "src": 49,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->8_NB_Mo_i_Rana",
+        "src": 49,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->26_HiNe_Sandnesjoen",
+        "src": 49,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->17_HVO_Volda",
+        "src": 49,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->35_HiNT_Levanger",
+        "src": 49,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->7_HiBu_Honefoss",
+        "src": 49,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->68_HH_Kongsvinger",
+        "src": 49,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->31_HiF_Kirkenes",
+        "src": 49,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->10_HVE_Borre",
+        "src": 49,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->9_HiNe_Nesna",
+        "src": 49,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->14_UiTo_Karasjok",
+        "src": 49,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->22_UiB_Hoyteklogibygget",
+        "src": 49,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->2_HiG_Gjovik",
+        "src": 49,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->49_UMB_As",
+        "src": 49,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_HiL_Lillehammer->6_UNIK_Kjeller",
+        "src": 49,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->23_UiB_BT",
+        "src": 52,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->2_HiG_Gjovik",
+        "src": 52,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->35_HiNT_Levanger",
+        "src": 52,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->62_NTNU_Realfagbygget",
+        "src": 52,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->41_HSM_Kristiansun",
+        "src": 52,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->6_UNIK_Kjeller",
+        "src": 52,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->26_HiNe_Sandnesjoen",
+        "src": 52,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->14_UiTo_Karasjok",
+        "src": 52,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->8_NB_Mo_i_Rana",
+        "src": 52,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->68_HH_Kongsvinger",
+        "src": 52,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->32_Stockholm",
+        "src": 52,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->24_HSF_Songdal",
+        "src": 52,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->22_UiB_Hoyteklogibygget",
+        "src": 52,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->9_HiNe_Nesna",
+        "src": 52,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->31_HiF_Kirkenes",
+        "src": 52,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->10_HVE_Borre",
+        "src": 52,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->29_HBO_Bodo",
+        "src": 52,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->0_UiO",
+        "src": 52,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->49_UMB_As",
+        "src": 52,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->7_HiBu_Honefoss",
+        "src": 52,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->46_UiA_Kristiansand",
+        "src": 52,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->18_UiS_Stavanger",
+        "src": 52,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->3_UiO_St_Olavsplass_5",
+        "src": 52,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->17_HVO_Volda",
+        "src": 52,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->20_HSH_Haugesund",
+        "src": 52,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->61_NTNU_Hovedbygget",
+        "src": 52,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->15_UiTo",
+        "src": 52,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->56_HiF_Alta",
+        "src": 52,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_UNINETT_Teknobyen->54_HiT_Bo",
+        "src": 52,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->7_HiBu_Honefoss",
+        "src": 53,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->8_NB_Mo_i_Rana",
+        "src": 53,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->18_UiS_Stavanger",
+        "src": 53,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->14_UiTo_Karasjok",
+        "src": 53,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->46_UiA_Kristiansand",
+        "src": 53,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->49_UMB_As",
+        "src": 53,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->56_HiF_Alta",
+        "src": 53,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->23_UiB_BT",
+        "src": 53,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->0_UiO",
+        "src": 53,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->41_HSM_Kristiansun",
+        "src": 53,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->15_UiTo",
+        "src": 53,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->62_NTNU_Realfagbygget",
+        "src": 53,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->17_HVO_Volda",
+        "src": 53,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->6_UNIK_Kjeller",
+        "src": 53,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->26_HiNe_Sandnesjoen",
+        "src": 53,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->3_UiO_St_Olavsplass_5",
+        "src": 53,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->29_HBO_Bodo",
+        "src": 53,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->9_HiNe_Nesna",
+        "src": 53,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->35_HiNT_Levanger",
+        "src": 53,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->20_HSH_Haugesund",
+        "src": 53,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->24_HSF_Songdal",
+        "src": 53,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->10_HVE_Borre",
+        "src": 53,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->68_HH_Kongsvinger",
+        "src": 53,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->2_HiG_Gjovik",
+        "src": 53,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->22_UiB_Hoyteklogibygget",
+        "src": 53,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->61_NTNU_Hovedbygget",
+        "src": 53,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->31_HiF_Kirkenes",
+        "src": 53,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->32_Stockholm",
+        "src": 53,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_HH_Tynset->54_HiT_Bo",
+        "src": 53,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->7_HiBu_Honefoss",
+        "src": 54,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->61_NTNU_Hovedbygget",
+        "src": 54,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->15_UiTo",
+        "src": 54,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->9_HiNe_Nesna",
+        "src": 54,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->18_UiS_Stavanger",
+        "src": 54,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->14_UiTo_Karasjok",
+        "src": 54,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->62_NTNU_Realfagbygget",
+        "src": 54,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->26_HiNe_Sandnesjoen",
+        "src": 54,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->46_UiA_Kristiansand",
+        "src": 54,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->10_HVE_Borre",
+        "src": 54,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->49_UMB_As",
+        "src": 54,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->41_HSM_Kristiansun",
+        "src": 54,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->35_HiNT_Levanger",
+        "src": 54,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->22_UiB_Hoyteklogibygget",
+        "src": 54,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->31_HiF_Kirkenes",
+        "src": 54,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->0_UiO",
+        "src": 54,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->29_HBO_Bodo",
+        "src": 54,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->68_HH_Kongsvinger",
+        "src": 54,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->17_HVO_Volda",
+        "src": 54,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->3_UiO_St_Olavsplass_5",
+        "src": 54,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->8_NB_Mo_i_Rana",
+        "src": 54,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->23_UiB_BT",
+        "src": 54,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->20_HSH_Haugesund",
+        "src": 54,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->32_Stockholm",
+        "src": 54,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->2_HiG_Gjovik",
+        "src": 54,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->54_HiT_Bo",
+        "src": 54,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->24_HSF_Songdal",
+        "src": 54,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->56_HiF_Alta",
+        "src": 54,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_HH_Rena->6_UNIK_Kjeller",
+        "src": 54,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->49_UMB_As",
+        "src": 55,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->31_HiF_Kirkenes",
+        "src": 55,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->10_HVE_Borre",
+        "src": 55,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->54_HiT_Bo",
+        "src": 55,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->61_NTNU_Hovedbygget",
+        "src": 55,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->9_HiNe_Nesna",
+        "src": 55,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->2_HiG_Gjovik",
+        "src": 55,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->26_HiNe_Sandnesjoen",
+        "src": 55,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->8_NB_Mo_i_Rana",
+        "src": 55,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->41_HSM_Kristiansun",
+        "src": 55,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->3_UiO_St_Olavsplass_5",
+        "src": 55,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->14_UiTo_Karasjok",
+        "src": 55,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->15_UiTo",
+        "src": 55,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->56_HiF_Alta",
+        "src": 55,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->23_UiB_BT",
+        "src": 55,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->6_UNIK_Kjeller",
+        "src": 55,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->29_HBO_Bodo",
+        "src": 55,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->68_HH_Kongsvinger",
+        "src": 55,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->7_HiBu_Honefoss",
+        "src": 55,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->18_UiS_Stavanger",
+        "src": 55,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->20_HSH_Haugesund",
+        "src": 55,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->24_HSF_Songdal",
+        "src": 55,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->32_Stockholm",
+        "src": 55,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->62_NTNU_Realfagbygget",
+        "src": 55,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->17_HVO_Volda",
+        "src": 55,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->46_UiA_Kristiansand",
+        "src": 55,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->0_UiO",
+        "src": 55,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->35_HiNT_Levanger",
+        "src": 55,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_HH_Elverum->22_UiB_Hoyteklogibygget",
+        "src": 55,
+        "dest": 20,
+        "volume": 100000
+    }
+]

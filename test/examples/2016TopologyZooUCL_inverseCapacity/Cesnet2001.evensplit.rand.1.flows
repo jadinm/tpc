@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_0_Olomouc->1_Brno",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Olomouc->21_Ceske_Budejovice",
+        "src": 0,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Olomouc->16_Plzen",
+        "src": 0,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Olomouc->18_Usti_nad_Labem",
+        "src": 0,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Ostrava->18_Usti_nad_Labem",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Ostrava->1_Brno",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Ostrava->21_Ceske_Budejovice",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Ostrava->16_Plzen",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Praha->21_Ceske_Budejovice",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Praha->1_Brno",
+        "src": 19,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Praha->18_Usti_nad_Labem",
+        "src": 19,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Praha->16_Plzen",
+        "src": 19,
+        "dest": 16,
+        "volume": 100000
+    }
+]

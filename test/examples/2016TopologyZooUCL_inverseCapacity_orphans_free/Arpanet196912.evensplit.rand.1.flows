@@ -1,0 +1,14 @@
+[
+    {
+        "label": "flow_1_USCB->0_SRI",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_USCB->2_UCLA",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    }
+]

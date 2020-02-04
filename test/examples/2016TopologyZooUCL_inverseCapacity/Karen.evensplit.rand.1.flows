@@ -1,0 +1,296 @@
+[
+    {
+        "label": "flow_0_WLG->2_AVL",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->6_IVM",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->15_NSH",
+        "src": 0,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->22_ROT",
+        "src": 0,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->21_NAP",
+        "src": 0,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->14_MUP",
+        "src": 0,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_WLG->4_LCN",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->4_LCN",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->14_MUP",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->15_NSH",
+        "src": 1,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->2_AVL",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->21_NAP",
+        "src": 1,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->6_IVM",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_DUD->22_ROT",
+        "src": 1,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->6_IVM",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->15_NSH",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->14_MUP",
+        "src": 3,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->4_LCN",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->21_NAP",
+        "src": 3,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->2_AVL",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_PNR->22_ROT",
+        "src": 3,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->2_AVL",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->4_LCN",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->6_IVM",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->21_NAP",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->14_MUP",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->15_NSH",
+        "src": 5,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CHC->22_ROT",
+        "src": 5,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->2_AVL",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->21_NAP",
+        "src": 9,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->22_ROT",
+        "src": 9,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->14_MUP",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->6_IVM",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->15_NSH",
+        "src": 9,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->4_LCN",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->21_NAP",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->15_NSH",
+        "src": 23,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->14_MUP",
+        "src": 23,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->4_LCN",
+        "src": 23,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->6_IVM",
+        "src": 23,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->2_AVL",
+        "src": 23,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->22_ROT",
+        "src": 23,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->6_IVM",
+        "src": 24,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->14_MUP",
+        "src": 24,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->15_NSH",
+        "src": 24,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->22_ROT",
+        "src": 24,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->4_LCN",
+        "src": 24,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->2_AVL",
+        "src": 24,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_AKL->21_NAP",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    }
+]

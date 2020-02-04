@@ -1,0 +1,1016 @@
+[
+    {
+        "label": "flow_0_Zurich->9_London",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->12_Washington",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->21_Frankfurt",
+        "src": 0,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->4_Madrid",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->17_Hong_Kong",
+        "src": 0,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->25_Ashburn",
+        "src": 0,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->19_Toronto",
+        "src": 0,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->20_New_York",
+        "src": 0,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->18_Singapore",
+        "src": 0,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->6_Milan",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->14_Los_Angeles",
+        "src": 0,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->11_Chicago",
+        "src": 0,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Zurich->26_Hamburg",
+        "src": 0,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->18_Singapore",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->14_Los_Angeles",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->21_Frankfurt",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->9_London",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->26_Hamburg",
+        "src": 1,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->17_Hong_Kong",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->25_Ashburn",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->11_Chicago",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->6_Milan",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->4_Madrid",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->12_Washington",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->19_Toronto",
+        "src": 1,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Geneva->20_New_York",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->9_London",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->18_Singapore",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->17_Hong_Kong",
+        "src": 4,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->25_Ashburn",
+        "src": 4,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->6_Milan",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->21_Frankfurt",
+        "src": 4,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->19_Toronto",
+        "src": 4,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->11_Chicago",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->12_Washington",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->26_Hamburg",
+        "src": 4,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->14_Los_Angeles",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->4_Madrid",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Barcelona->20_New_York",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->11_Chicago",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->4_Madrid",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->19_Toronto",
+        "src": 5,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->12_Washington",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->18_Singapore",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->9_London",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->17_Hong_Kong",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->20_New_York",
+        "src": 5,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->6_Milan",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->21_Frankfurt",
+        "src": 5,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->14_Los_Angeles",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->25_Ashburn",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Paris->26_Hamburg",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->17_Hong_Kong",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->14_Los_Angeles",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->25_Ashburn",
+        "src": 7,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->21_Frankfurt",
+        "src": 7,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->6_Milan",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->12_Washington",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->18_Singapore",
+        "src": 7,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->9_London",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->26_Hamburg",
+        "src": 7,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->4_Madrid",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->20_New_York",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->19_Toronto",
+        "src": 7,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Tokyo->11_Chicago",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->25_Ashburn",
+        "src": 11,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->11_Chicago",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->17_Hong_Kong",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->14_Los_Angeles",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->9_London",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->19_Toronto",
+        "src": 11,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->12_Washington",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->18_Singapore",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->6_Milan",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->4_Madrid",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->21_Frankfurt",
+        "src": 11,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->26_Hamburg",
+        "src": 11,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Palo_Alto->20_New_York",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->12_Washington",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->9_London",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->11_Chicago",
+        "src": 12,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->17_Hong_Kong",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->14_Los_Angeles",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->6_Milan",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->4_Madrid",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->20_New_York",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->25_Ashburn",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->26_Hamburg",
+        "src": 12,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->19_Toronto",
+        "src": 12,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->18_Singapore",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_San_Jose->21_Frankfurt",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->9_London",
+        "src": 18,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->25_Ashburn",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->18_Singapore",
+        "src": 18,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->14_Los_Angeles",
+        "src": 18,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->12_Washington",
+        "src": 18,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->21_Frankfurt",
+        "src": 18,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->20_New_York",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->11_Chicago",
+        "src": 18,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->6_Milan",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->17_Hong_Kong",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->4_Madrid",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->26_Hamburg",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Hanover->19_Toronto",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->18_Singapore",
+        "src": 19,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->9_London",
+        "src": 19,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->6_Milan",
+        "src": 19,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->17_Hong_Kong",
+        "src": 19,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->25_Ashburn",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->14_Los_Angeles",
+        "src": 19,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->26_Hamburg",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->20_New_York",
+        "src": 19,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->21_Frankfurt",
+        "src": 19,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->19_Toronto",
+        "src": 19,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->11_Chicago",
+        "src": 19,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->4_Madrid",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Amsterdam->12_Washington",
+        "src": 19,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->9_London",
+        "src": 22,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->26_Hamburg",
+        "src": 22,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->11_Chicago",
+        "src": 22,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->19_Toronto",
+        "src": 22,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->21_Frankfurt",
+        "src": 22,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->4_Madrid",
+        "src": 22,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->6_Milan",
+        "src": 22,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->14_Los_Angeles",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->18_Singapore",
+        "src": 22,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->20_New_York",
+        "src": 22,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->25_Ashburn",
+        "src": 22,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->12_Washington",
+        "src": 22,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Dusseldorf->17_Hong_Kong",
+        "src": 22,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->11_Chicago",
+        "src": 23,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->12_Washington",
+        "src": 23,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->4_Madrid",
+        "src": 23,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->20_New_York",
+        "src": 23,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->9_London",
+        "src": 23,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->25_Ashburn",
+        "src": 23,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->21_Frankfurt",
+        "src": 23,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->17_Hong_Kong",
+        "src": 23,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->19_Toronto",
+        "src": 23,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->14_Los_Angeles",
+        "src": 23,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->26_Hamburg",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->6_Milan",
+        "src": 23,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Copenhagen->18_Singapore",
+        "src": 23,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->11_Chicago",
+        "src": 24,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->6_Milan",
+        "src": 24,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->14_Los_Angeles",
+        "src": 24,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->12_Washington",
+        "src": 24,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->19_Toronto",
+        "src": 24,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->17_Hong_Kong",
+        "src": 24,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->4_Madrid",
+        "src": 24,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->20_New_York",
+        "src": 24,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->9_London",
+        "src": 24,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->21_Frankfurt",
+        "src": 24,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->18_Singapore",
+        "src": 24,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->26_Hamburg",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Stockholm->25_Ashburn",
+        "src": 24,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->21_Frankfurt",
+        "src": 25,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->26_Hamburg",
+        "src": 25,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->6_Milan",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->18_Singapore",
+        "src": 25,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->12_Washington",
+        "src": 25,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->20_New_York",
+        "src": 25,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->17_Hong_Kong",
+        "src": 25,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->11_Chicago",
+        "src": 25,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->14_Los_Angeles",
+        "src": 25,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->19_Toronto",
+        "src": 25,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->25_Ashburn",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->9_London",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Leipzig->4_Madrid",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    }
+]

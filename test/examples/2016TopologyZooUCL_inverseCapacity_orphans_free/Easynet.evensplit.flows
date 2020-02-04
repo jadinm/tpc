@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_1->1_1",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_1->5_Hong_Kong",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_1->9_Paris",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_London->11_Los_Angeles",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_San_Jose?->13_Palo_Alto?",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_New_York->15_Washington",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

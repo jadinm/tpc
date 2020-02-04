@@ -1,0 +1,200 @@
+[
+    {
+        "label": "flow_0_South_Bend->1_Toledo",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Kalmazoo->3_Chicago",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Youngstown->5_Erie",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cleveland->7_Akron",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Dover->10_Buffalo",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Rochester->12_Roanoke",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Norfolk/VA_Beach->14_Fredericksburg",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Richmond->16_Harrisburg",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Altoona->18_Poughkeepsie",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_New_York_City->20_Stamford",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Binghampton->22_Newark",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Philadelphia->24_Newark/Wilmington",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Atlantic_City->26_None",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Petersburg->28_Emporia",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_None->31_Indianapolis",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Williamsburg->33_Culpeper",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Charlottesville->35_Dayton",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Columbus->37_Danville",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Raleigh->39_Rocky_Mount",
+        "src": 36,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Roanoke_Rapids->41_Pittsburgh",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Johnstown->44_Hagerstown",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_Ashburn->46_Washington,_DC",
+        "src": 42,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_Staunton->48_Baltimore",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_New_Haven->50_Hartford",
+        "src": 46,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_None->53_Albany",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_Syracuse->56_Providence",
+        "src": 50,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Boston->58_Worcester",
+        "src": 52,
+        "dest": 53,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Springfield->60_Harrisonburg",
+        "src": 54,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Salisbury->62_Cincinnati",
+        "src": 56,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_Jackson->64_Battle_Creek",
+        "src": 58,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Grand_Rapids->67_Lansing",
+        "src": 60,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_68_Flint->70_Southfield",
+        "src": 62,
+        "dest": 63,
+        "volume": 100000
+    },
+    {
+        "label": "flow_71_Detroit->72_Ann_Arbor",
+        "src": 64,
+        "dest": 65,
+        "volume": 100000
+    }
+]

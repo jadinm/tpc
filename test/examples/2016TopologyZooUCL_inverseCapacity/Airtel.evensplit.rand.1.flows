@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_0_Los_Angeles->7_New_York",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Los_Angeles->11_Marseille",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Los_Angeles->1_Chennai",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Los_Angeles->13_Hong_Kong",
+        "src": 0,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->13_Hong_Kong",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->1_Chennai",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->7_New_York",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->11_Marseille",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mumbai->1_Chennai",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mumbai->13_Hong_Kong",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mumbai->11_Marseille",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mumbai->7_New_York",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Singapore->7_New_York",
+        "src": 14,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Singapore->13_Hong_Kong",
+        "src": 14,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Singapore->11_Marseille",
+        "src": 14,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Singapore->1_Chennai",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_1_San_Jose->3_Chicago",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_San_Jose->0_Seattle",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Vienna->0_Seattle",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Vienna->3_Chicago",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    }
+]

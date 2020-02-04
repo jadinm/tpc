@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->1_Jon_Von_Neumann_Center,_Princeton,_NJ",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->4_Cornell_Theory_Center,_Ithaca_NY",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NorthWestNet,_Seattle->6_BARRnet,_Palo_Alto",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_San_Diego_Supercomputer_Center->9_NCAR,_Boulder",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NCSA,_University_of_Illinois,_Champaign->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,4058 @@
+[
+    {
+        "label": "flow_3_None->12_CSCS_TI-EDU",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->28_UniSG",
+        "src": 3,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->30_HFT-SO",
+        "src": 3,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->34_HSR",
+        "src": 3,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->15_VSNet",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->68_NAZ",
+        "src": 3,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->19_None",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->1_None",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->26_UniFR",
+        "src": 3,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->42_EPFL",
+        "src": 3,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->8_UniNE",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->49_None",
+        "src": 3,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->21_None",
+        "src": 3,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->61_RERO",
+        "src": 3,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->63_SLF",
+        "src": 3,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->46_EESP",
+        "src": 3,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->67_meteoGH",
+        "src": 3,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->50_IWB",
+        "src": 3,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->17_UniGE",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->51_HLI",
+        "src": 3,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->44_HES-SO_AvdP",
+        "src": 3,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->70_ETH",
+        "src": 3,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->2_None",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->33_EHL",
+        "src": 3,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->35_ENSI",
+        "src": 3,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->0_None",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->17_UniGE",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->42_EPFL",
+        "src": 6,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->34_HSR",
+        "src": 6,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->46_EESP",
+        "src": 6,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->44_HES-SO_AvdP",
+        "src": 6,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->67_meteoGH",
+        "src": 6,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->26_UniFR",
+        "src": 6,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->68_NAZ",
+        "src": 6,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->49_None",
+        "src": 6,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->0_None",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->19_None",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->15_VSNet",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->2_None",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->61_RERO",
+        "src": 6,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->21_None",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->51_HLI",
+        "src": 6,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->1_None",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->30_HFT-SO",
+        "src": 6,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->33_EHL",
+        "src": 6,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->35_ENSI",
+        "src": 6,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->50_IWB",
+        "src": 6,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->12_CSCS_TI-EDU",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->70_ETH",
+        "src": 6,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->8_UniNE",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->28_UniSG",
+        "src": 6,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->63_SLF",
+        "src": 6,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->42_EPFL",
+        "src": 9,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->1_None",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->21_None",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->17_UniGE",
+        "src": 9,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->0_None",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->63_SLF",
+        "src": 9,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->51_HLI",
+        "src": 9,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->8_UniNE",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->50_IWB",
+        "src": 9,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->30_HFT-SO",
+        "src": 9,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->67_meteoGH",
+        "src": 9,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->15_VSNet",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->34_HSR",
+        "src": 9,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->35_ENSI",
+        "src": 9,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->61_RERO",
+        "src": 9,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->12_CSCS_TI-EDU",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->44_HES-SO_AvdP",
+        "src": 9,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->49_None",
+        "src": 9,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->2_None",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->26_UniFR",
+        "src": 9,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->28_UniSG",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->68_NAZ",
+        "src": 9,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->33_EHL",
+        "src": 9,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->19_None",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->46_EESP",
+        "src": 9,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->70_ETH",
+        "src": 9,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->21_None",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->63_SLF",
+        "src": 11,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->68_NAZ",
+        "src": 11,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->0_None",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->19_None",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->61_RERO",
+        "src": 11,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->15_VSNet",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->42_EPFL",
+        "src": 11,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->2_None",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->8_UniNE",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->12_CSCS_TI-EDU",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->49_None",
+        "src": 11,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->44_HES-SO_AvdP",
+        "src": 11,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->30_HFT-SO",
+        "src": 11,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->35_ENSI",
+        "src": 11,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->33_EHL",
+        "src": 11,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->28_UniSG",
+        "src": 11,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->67_meteoGH",
+        "src": 11,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->26_UniFR",
+        "src": 11,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->34_HSR",
+        "src": 11,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->46_EESP",
+        "src": 11,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->51_HLI",
+        "src": 11,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->17_UniGE",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->70_ETH",
+        "src": 11,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->50_IWB",
+        "src": 11,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->1_None",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->8_UniNE",
+        "src": 13,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->12_CSCS_TI-EDU",
+        "src": 13,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->51_HLI",
+        "src": 13,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->34_HSR",
+        "src": 13,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->70_ETH",
+        "src": 13,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->30_HFT-SO",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->68_NAZ",
+        "src": 13,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->46_EESP",
+        "src": 13,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->21_None",
+        "src": 13,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->17_UniGE",
+        "src": 13,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->61_RERO",
+        "src": 13,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->2_None",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->49_None",
+        "src": 13,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->63_SLF",
+        "src": 13,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->50_IWB",
+        "src": 13,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->28_UniSG",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->44_HES-SO_AvdP",
+        "src": 13,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->1_None",
+        "src": 13,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->35_ENSI",
+        "src": 13,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->19_None",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->15_VSNet",
+        "src": 13,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->67_meteoGH",
+        "src": 13,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->42_EPFL",
+        "src": 13,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->0_None",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->26_UniFR",
+        "src": 13,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_None->33_EHL",
+        "src": 13,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->19_None",
+        "src": 14,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->12_CSCS_TI-EDU",
+        "src": 14,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->61_RERO",
+        "src": 14,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->70_ETH",
+        "src": 14,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->63_SLF",
+        "src": 14,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->44_HES-SO_AvdP",
+        "src": 14,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->17_UniGE",
+        "src": 14,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->0_None",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->21_None",
+        "src": 14,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->68_NAZ",
+        "src": 14,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->8_UniNE",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->15_VSNet",
+        "src": 14,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->34_HSR",
+        "src": 14,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->49_None",
+        "src": 14,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->26_UniFR",
+        "src": 14,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->42_EPFL",
+        "src": 14,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->2_None",
+        "src": 14,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->35_ENSI",
+        "src": 14,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->33_EHL",
+        "src": 14,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->46_EESP",
+        "src": 14,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->67_meteoGH",
+        "src": 14,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->30_HFT-SO",
+        "src": 14,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->1_None",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->51_HLI",
+        "src": 14,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->28_UniSG",
+        "src": 14,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->50_IWB",
+        "src": 14,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->68_NAZ",
+        "src": 15,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->8_UniNE",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->30_HFT-SO",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->28_UniSG",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->63_SLF",
+        "src": 15,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->51_HLI",
+        "src": 15,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->0_None",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->35_ENSI",
+        "src": 15,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->70_ETH",
+        "src": 15,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->17_UniGE",
+        "src": 15,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->15_VSNet",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->42_EPFL",
+        "src": 15,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->12_CSCS_TI-EDU",
+        "src": 15,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->61_RERO",
+        "src": 15,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->49_None",
+        "src": 15,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->34_HSR",
+        "src": 15,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->21_None",
+        "src": 15,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->19_None",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->44_HES-SO_AvdP",
+        "src": 15,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->50_IWB",
+        "src": 15,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->67_meteoGH",
+        "src": 15,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->1_None",
+        "src": 15,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->2_None",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->33_EHL",
+        "src": 15,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->26_UniFR",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->46_EESP",
+        "src": 15,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->50_IWB",
+        "src": 16,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->21_None",
+        "src": 16,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->28_UniSG",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->33_EHL",
+        "src": 16,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->2_None",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->26_UniFR",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->63_SLF",
+        "src": 16,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->61_RERO",
+        "src": 16,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->19_None",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->30_HFT-SO",
+        "src": 16,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->67_meteoGH",
+        "src": 16,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->49_None",
+        "src": 16,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->44_HES-SO_AvdP",
+        "src": 16,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->68_NAZ",
+        "src": 16,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->70_ETH",
+        "src": 16,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->12_CSCS_TI-EDU",
+        "src": 16,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->15_VSNet",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->0_None",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->42_EPFL",
+        "src": 16,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->8_UniNE",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->1_None",
+        "src": 16,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->17_UniGE",
+        "src": 16,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->51_HLI",
+        "src": 16,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->34_HSR",
+        "src": 16,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->46_EESP",
+        "src": 16,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_HSLU->35_ENSI",
+        "src": 16,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->8_UniNE",
+        "src": 19,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->28_UniSG",
+        "src": 19,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->63_SLF",
+        "src": 19,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->2_None",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->0_None",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->49_None",
+        "src": 19,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->44_HES-SO_AvdP",
+        "src": 19,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->33_EHL",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->26_UniFR",
+        "src": 19,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->68_NAZ",
+        "src": 19,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->70_ETH",
+        "src": 19,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->51_HLI",
+        "src": 19,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->46_EESP",
+        "src": 19,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->35_ENSI",
+        "src": 19,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->67_meteoGH",
+        "src": 19,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->21_None",
+        "src": 19,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->30_HFT-SO",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->42_EPFL",
+        "src": 19,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->61_RERO",
+        "src": 19,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->12_CSCS_TI-EDU",
+        "src": 19,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->17_UniGE",
+        "src": 19,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->34_HSR",
+        "src": 19,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->19_None",
+        "src": 19,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->15_VSNet",
+        "src": 19,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->50_IWB",
+        "src": 19,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_UniBE->1_None",
+        "src": 19,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->33_EHL",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->61_RERO",
+        "src": 21,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->21_None",
+        "src": 21,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->12_CSCS_TI-EDU",
+        "src": 21,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->49_None",
+        "src": 21,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->68_NAZ",
+        "src": 21,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->44_HES-SO_AvdP",
+        "src": 21,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->63_SLF",
+        "src": 21,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->26_UniFR",
+        "src": 21,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->15_VSNet",
+        "src": 21,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->1_None",
+        "src": 21,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->0_None",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->50_IWB",
+        "src": 21,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->28_UniSG",
+        "src": 21,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->8_UniNE",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->34_HSR",
+        "src": 21,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->46_EESP",
+        "src": 21,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->70_ETH",
+        "src": 21,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->30_HFT-SO",
+        "src": 21,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->51_HLI",
+        "src": 21,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->19_None",
+        "src": 21,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->35_ENSI",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->42_EPFL",
+        "src": 21,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->2_None",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->67_meteoGH",
+        "src": 21,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->17_UniGE",
+        "src": 21,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->30_HFT-SO",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->49_None",
+        "src": 25,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->1_None",
+        "src": 25,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->44_HES-SO_AvdP",
+        "src": 25,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->50_IWB",
+        "src": 25,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->19_None",
+        "src": 25,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->17_UniGE",
+        "src": 25,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->70_ETH",
+        "src": 25,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->35_ENSI",
+        "src": 25,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->8_UniNE",
+        "src": 25,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->12_CSCS_TI-EDU",
+        "src": 25,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->42_EPFL",
+        "src": 25,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->67_meteoGH",
+        "src": 25,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->15_VSNet",
+        "src": 25,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->21_None",
+        "src": 25,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->68_NAZ",
+        "src": 25,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->34_HSR",
+        "src": 25,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->61_RERO",
+        "src": 25,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->46_EESP",
+        "src": 25,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->28_UniSG",
+        "src": 25,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->0_None",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->51_HLI",
+        "src": 25,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->33_EHL",
+        "src": 25,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->26_UniFR",
+        "src": 25,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->2_None",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->63_SLF",
+        "src": 25,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->33_EHL",
+        "src": 26,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->8_UniNE",
+        "src": 26,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->28_UniSG",
+        "src": 26,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->19_None",
+        "src": 26,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->2_None",
+        "src": 26,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->15_VSNet",
+        "src": 26,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->12_CSCS_TI-EDU",
+        "src": 26,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->1_None",
+        "src": 26,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->49_None",
+        "src": 26,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->46_EESP",
+        "src": 26,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->35_ENSI",
+        "src": 26,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->26_UniFR",
+        "src": 26,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->17_UniGE",
+        "src": 26,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->44_HES-SO_AvdP",
+        "src": 26,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->34_HSR",
+        "src": 26,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->61_RERO",
+        "src": 26,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->63_SLF",
+        "src": 26,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->50_IWB",
+        "src": 26,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->67_meteoGH",
+        "src": 26,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->51_HLI",
+        "src": 26,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->21_None",
+        "src": 26,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->30_HFT-SO",
+        "src": 26,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->0_None",
+        "src": 26,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->42_EPFL",
+        "src": 26,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->70_ETH",
+        "src": 26,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->68_NAZ",
+        "src": 26,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->21_None",
+        "src": 27,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->30_HFT-SO",
+        "src": 27,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->35_ENSI",
+        "src": 27,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->34_HSR",
+        "src": 27,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->12_CSCS_TI-EDU",
+        "src": 27,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->46_EESP",
+        "src": 27,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->68_NAZ",
+        "src": 27,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->28_UniSG",
+        "src": 27,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->8_UniNE",
+        "src": 27,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->70_ETH",
+        "src": 27,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->33_EHL",
+        "src": 27,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->1_None",
+        "src": 27,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->63_SLF",
+        "src": 27,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->0_None",
+        "src": 27,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->61_RERO",
+        "src": 27,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->2_None",
+        "src": 27,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->51_HLI",
+        "src": 27,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->50_IWB",
+        "src": 27,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->17_UniGE",
+        "src": 27,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->49_None",
+        "src": 27,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->15_VSNet",
+        "src": 27,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->44_HES-SO_AvdP",
+        "src": 27,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->67_meteoGH",
+        "src": 27,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->19_None",
+        "src": 27,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->42_EPFL",
+        "src": 27,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->26_UniFR",
+        "src": 27,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->17_UniGE",
+        "src": 28,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->26_UniFR",
+        "src": 28,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->67_meteoGH",
+        "src": 28,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->35_ENSI",
+        "src": 28,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->0_None",
+        "src": 28,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->15_VSNet",
+        "src": 28,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->34_HSR",
+        "src": 28,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->46_EESP",
+        "src": 28,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->12_CSCS_TI-EDU",
+        "src": 28,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->8_UniNE",
+        "src": 28,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->68_NAZ",
+        "src": 28,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->33_EHL",
+        "src": 28,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->63_SLF",
+        "src": 28,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->42_EPFL",
+        "src": 28,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->30_HFT-SO",
+        "src": 28,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->51_HLI",
+        "src": 28,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->61_RERO",
+        "src": 28,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->44_HES-SO_AvdP",
+        "src": 28,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->2_None",
+        "src": 28,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->21_None",
+        "src": 28,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->1_None",
+        "src": 28,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->28_UniSG",
+        "src": 28,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->50_IWB",
+        "src": 28,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->49_None",
+        "src": 28,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->70_ETH",
+        "src": 28,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_HES-SO->19_None",
+        "src": 28,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->46_EESP",
+        "src": 29,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->68_NAZ",
+        "src": 29,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->42_EPFL",
+        "src": 29,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->15_VSNet",
+        "src": 29,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->26_UniFR",
+        "src": 29,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->49_None",
+        "src": 29,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->2_None",
+        "src": 29,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->67_meteoGH",
+        "src": 29,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->0_None",
+        "src": 29,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->30_HFT-SO",
+        "src": 29,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->17_UniGE",
+        "src": 29,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->28_UniSG",
+        "src": 29,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->44_HES-SO_AvdP",
+        "src": 29,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->19_None",
+        "src": 29,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->8_UniNE",
+        "src": 29,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->33_EHL",
+        "src": 29,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->1_None",
+        "src": 29,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->70_ETH",
+        "src": 29,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->35_ENSI",
+        "src": 29,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->21_None",
+        "src": 29,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->50_IWB",
+        "src": 29,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->34_HSR",
+        "src": 29,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->63_SLF",
+        "src": 29,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->51_HLI",
+        "src": 29,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->12_CSCS_TI-EDU",
+        "src": 29,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_CERN->61_RERO",
+        "src": 29,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->15_VSNet",
+        "src": 30,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->63_SLF",
+        "src": 30,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->21_None",
+        "src": 30,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->70_ETH",
+        "src": 30,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->61_RERO",
+        "src": 30,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->35_ENSI",
+        "src": 30,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->17_UniGE",
+        "src": 30,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->49_None",
+        "src": 30,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->46_EESP",
+        "src": 30,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->42_EPFL",
+        "src": 30,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->19_None",
+        "src": 30,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->51_HLI",
+        "src": 30,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->33_EHL",
+        "src": 30,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->44_HES-SO_AvdP",
+        "src": 30,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->8_UniNE",
+        "src": 30,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->28_UniSG",
+        "src": 30,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->26_UniFR",
+        "src": 30,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->34_HSR",
+        "src": 30,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->12_CSCS_TI-EDU",
+        "src": 30,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->68_NAZ",
+        "src": 30,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->0_None",
+        "src": 30,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->1_None",
+        "src": 30,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->50_IWB",
+        "src": 30,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->2_None",
+        "src": 30,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->30_HFT-SO",
+        "src": 30,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Skyguide->67_meteoGH",
+        "src": 30,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->50_IWB",
+        "src": 32,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->2_None",
+        "src": 32,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->46_EESP",
+        "src": 32,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->0_None",
+        "src": 32,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->35_ENSI",
+        "src": 32,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->8_UniNE",
+        "src": 32,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->49_None",
+        "src": 32,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->51_HLI",
+        "src": 32,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->1_None",
+        "src": 32,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->67_meteoGH",
+        "src": 32,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->33_EHL",
+        "src": 32,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->34_HSR",
+        "src": 32,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->17_UniGE",
+        "src": 32,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->21_None",
+        "src": 32,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->12_CSCS_TI-EDU",
+        "src": 32,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->42_EPFL",
+        "src": 32,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->70_ETH",
+        "src": 32,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->63_SLF",
+        "src": 32,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->44_HES-SO_AvdP",
+        "src": 32,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->15_VSNet",
+        "src": 32,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->30_HFT-SO",
+        "src": 32,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->61_RERO",
+        "src": 32,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->28_UniSG",
+        "src": 32,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->26_UniFR",
+        "src": 32,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->19_None",
+        "src": 32,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->68_NAZ",
+        "src": 32,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->33_EHL",
+        "src": 34,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->51_HLI",
+        "src": 34,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->42_EPFL",
+        "src": 34,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->2_None",
+        "src": 34,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->8_UniNE",
+        "src": 34,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->28_UniSG",
+        "src": 34,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->17_UniGE",
+        "src": 34,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->30_HFT-SO",
+        "src": 34,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->21_None",
+        "src": 34,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->70_ETH",
+        "src": 34,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->35_ENSI",
+        "src": 34,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->46_EESP",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->49_None",
+        "src": 34,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->19_None",
+        "src": 34,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->44_HES-SO_AvdP",
+        "src": 34,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->34_HSR",
+        "src": 34,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->63_SLF",
+        "src": 34,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->12_CSCS_TI-EDU",
+        "src": 34,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->15_VSNet",
+        "src": 34,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->0_None",
+        "src": 34,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->50_IWB",
+        "src": 34,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->68_NAZ",
+        "src": 34,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->26_UniFR",
+        "src": 34,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->67_meteoGH",
+        "src": 34,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->61_RERO",
+        "src": 34,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->1_None",
+        "src": 34,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->26_UniFR",
+        "src": 36,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->30_HFT-SO",
+        "src": 36,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->28_UniSG",
+        "src": 36,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->8_UniNE",
+        "src": 36,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->68_NAZ",
+        "src": 36,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->44_HES-SO_AvdP",
+        "src": 36,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->51_HLI",
+        "src": 36,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->42_EPFL",
+        "src": 36,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->1_None",
+        "src": 36,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->49_None",
+        "src": 36,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->15_VSNet",
+        "src": 36,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->0_None",
+        "src": 36,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->61_RERO",
+        "src": 36,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->34_HSR",
+        "src": 36,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->35_ENSI",
+        "src": 36,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->33_EHL",
+        "src": 36,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->2_None",
+        "src": 36,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->70_ETH",
+        "src": 36,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->50_IWB",
+        "src": 36,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->21_None",
+        "src": 36,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->19_None",
+        "src": 36,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->12_CSCS_TI-EDU",
+        "src": 36,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->63_SLF",
+        "src": 36,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->67_meteoGH",
+        "src": 36,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->17_UniGE",
+        "src": 36,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->46_EESP",
+        "src": 36,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->46_EESP",
+        "src": 37,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->21_None",
+        "src": 37,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->2_None",
+        "src": 37,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->1_None",
+        "src": 37,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->42_EPFL",
+        "src": 37,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->70_ETH",
+        "src": 37,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->8_UniNE",
+        "src": 37,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->0_None",
+        "src": 37,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->15_VSNet",
+        "src": 37,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->26_UniFR",
+        "src": 37,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->51_HLI",
+        "src": 37,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->34_HSR",
+        "src": 37,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->68_NAZ",
+        "src": 37,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->17_UniGE",
+        "src": 37,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->63_SLF",
+        "src": 37,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->33_EHL",
+        "src": 37,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->49_None",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->50_IWB",
+        "src": 37,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->44_HES-SO_AvdP",
+        "src": 37,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->19_None",
+        "src": 37,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->30_HFT-SO",
+        "src": 37,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->28_UniSG",
+        "src": 37,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->61_RERO",
+        "src": 37,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->67_meteoGH",
+        "src": 37,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->35_ENSI",
+        "src": 37,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_EUResearch->12_CSCS_TI-EDU",
+        "src": 37,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->35_ENSI",
+        "src": 41,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->46_EESP",
+        "src": 41,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->30_HFT-SO",
+        "src": 41,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->12_CSCS_TI-EDU",
+        "src": 41,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->44_HES-SO_AvdP",
+        "src": 41,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->42_EPFL",
+        "src": 41,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->8_UniNE",
+        "src": 41,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->26_UniFR",
+        "src": 41,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->51_HLI",
+        "src": 41,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->33_EHL",
+        "src": 41,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->19_None",
+        "src": 41,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->50_IWB",
+        "src": 41,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->63_SLF",
+        "src": 41,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->2_None",
+        "src": 41,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->21_None",
+        "src": 41,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->70_ETH",
+        "src": 41,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->61_RERO",
+        "src": 41,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->0_None",
+        "src": 41,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->34_HSR",
+        "src": 41,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->67_meteoGH",
+        "src": 41,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->28_UniSG",
+        "src": 41,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->15_VSNet",
+        "src": 41,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->49_None",
+        "src": 41,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->17_UniGE",
+        "src": 41,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->1_None",
+        "src": 41,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_NTB->68_NAZ",
+        "src": 41,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->21_None",
+        "src": 42,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->1_None",
+        "src": 42,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->28_UniSG",
+        "src": 42,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->30_HFT-SO",
+        "src": 42,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->49_None",
+        "src": 42,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->34_HSR",
+        "src": 42,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->8_UniNE",
+        "src": 42,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->61_RERO",
+        "src": 42,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->12_CSCS_TI-EDU",
+        "src": 42,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->44_HES-SO_AvdP",
+        "src": 42,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->46_EESP",
+        "src": 42,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->2_None",
+        "src": 42,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->42_EPFL",
+        "src": 42,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->35_ENSI",
+        "src": 42,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->17_UniGE",
+        "src": 42,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->68_NAZ",
+        "src": 42,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->19_None",
+        "src": 42,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->51_HLI",
+        "src": 42,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->0_None",
+        "src": 42,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->67_meteoGH",
+        "src": 42,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->70_ETH",
+        "src": 42,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->26_UniFR",
+        "src": 42,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->33_EHL",
+        "src": 42,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->63_SLF",
+        "src": 42,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->15_VSNet",
+        "src": 42,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_PHTG->50_IWB",
+        "src": 42,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->61_RERO",
+        "src": 44,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->2_None",
+        "src": 44,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->70_ETH",
+        "src": 44,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->8_UniNE",
+        "src": 44,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->68_NAZ",
+        "src": 44,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->21_None",
+        "src": 44,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->44_HES-SO_AvdP",
+        "src": 44,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->17_UniGE",
+        "src": 44,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->51_HLI",
+        "src": 44,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->46_EESP",
+        "src": 44,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->33_EHL",
+        "src": 44,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->26_UniFR",
+        "src": 44,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->34_HSR",
+        "src": 44,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->63_SLF",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->0_None",
+        "src": 44,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->49_None",
+        "src": 44,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->35_ENSI",
+        "src": 44,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->12_CSCS_TI-EDU",
+        "src": 44,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->28_UniSG",
+        "src": 44,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->1_None",
+        "src": 44,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->30_HFT-SO",
+        "src": 44,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->67_meteoGH",
+        "src": 44,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->50_IWB",
+        "src": 44,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->15_VSNet",
+        "src": 44,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->42_EPFL",
+        "src": 44,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->19_None",
+        "src": 44,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->63_SLF",
+        "src": 46,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->50_IWB",
+        "src": 46,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->17_UniGE",
+        "src": 46,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->42_EPFL",
+        "src": 46,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->67_meteoGH",
+        "src": 46,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->21_None",
+        "src": 46,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->34_HSR",
+        "src": 46,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->49_None",
+        "src": 46,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->35_ENSI",
+        "src": 46,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->33_EHL",
+        "src": 46,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->51_HLI",
+        "src": 46,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->26_UniFR",
+        "src": 46,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->28_UniSG",
+        "src": 46,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->0_None",
+        "src": 46,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->44_HES-SO_AvdP",
+        "src": 46,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->46_EESP",
+        "src": 46,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->70_ETH",
+        "src": 46,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->68_NAZ",
+        "src": 46,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->19_None",
+        "src": 46,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->61_RERO",
+        "src": 46,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->15_VSNet",
+        "src": 46,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->12_CSCS_TI-EDU",
+        "src": 46,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->2_None",
+        "src": 46,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->30_HFT-SO",
+        "src": 46,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->8_UniNE",
+        "src": 46,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->1_None",
+        "src": 46,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->50_IWB",
+        "src": 47,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->68_NAZ",
+        "src": 47,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->19_None",
+        "src": 47,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->12_CSCS_TI-EDU",
+        "src": 47,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->51_HLI",
+        "src": 47,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->61_RERO",
+        "src": 47,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->46_EESP",
+        "src": 47,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->1_None",
+        "src": 47,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->15_VSNet",
+        "src": 47,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->30_HFT-SO",
+        "src": 47,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->2_None",
+        "src": 47,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->44_HES-SO_AvdP",
+        "src": 47,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->67_meteoGH",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->42_EPFL",
+        "src": 47,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->26_UniFR",
+        "src": 47,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->28_UniSG",
+        "src": 47,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->17_UniGE",
+        "src": 47,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->33_EHL",
+        "src": 47,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->8_UniNE",
+        "src": 47,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->0_None",
+        "src": 47,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->35_ENSI",
+        "src": 47,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->49_None",
+        "src": 47,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->21_None",
+        "src": 47,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->70_ETH",
+        "src": 47,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->34_HSR",
+        "src": 47,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_ZHAW->63_SLF",
+        "src": 47,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->15_VSNet",
+        "src": 50,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->51_HLI",
+        "src": 50,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->70_ETH",
+        "src": 50,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->26_UniFR",
+        "src": 50,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->61_RERO",
+        "src": 50,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->50_IWB",
+        "src": 50,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->63_SLF",
+        "src": 50,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->46_EESP",
+        "src": 50,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->2_None",
+        "src": 50,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->0_None",
+        "src": 50,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->17_UniGE",
+        "src": 50,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->1_None",
+        "src": 50,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->44_HES-SO_AvdP",
+        "src": 50,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->33_EHL",
+        "src": 50,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->8_UniNE",
+        "src": 50,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->21_None",
+        "src": 50,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->30_HFT-SO",
+        "src": 50,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->12_CSCS_TI-EDU",
+        "src": 50,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->28_UniSG",
+        "src": 50,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->68_NAZ",
+        "src": 50,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->49_None",
+        "src": 50,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->42_EPFL",
+        "src": 50,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->19_None",
+        "src": 50,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->34_HSR",
+        "src": 50,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->35_ENSI",
+        "src": 50,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->67_meteoGH",
+        "src": 50,
+        "dest": 48,
+        "volume": 100000
+    }
+]

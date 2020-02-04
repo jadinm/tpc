@@ -1,0 +1,25 @@
+NODES 6
+label x y
+0_Palo_Alto -122.1 37.4
+1_Los_Angeles -118.2 34.1
+2_Denver -105.0 39.7
+3_Chicago -87.7 41.9
+4_Vienna -77.3 38.9
+5_Atlanta -84.4 33.7
+
+EDGES 14
+label src dest weight bw delay
+Link_0 0 1 10 45000 1
+Link_1 1 0 10 45000 1
+Link_2 0 2 10 45000 1
+Link_3 2 0 10 45000 1
+Link_4 0 4 10 45000 1
+Link_5 4 0 10 45000 1
+Link_6 1 5 10 45000 1
+Link_7 5 1 10 45000 1
+Link_8 2 3 10 45000 1
+Link_9 3 2 10 45000 1
+Link_10 3 4 10 45000 1
+Link_11 4 3 10 45000 1
+Link_12 4 5 10 45000 1
+Link_13 5 4 10 45000 1

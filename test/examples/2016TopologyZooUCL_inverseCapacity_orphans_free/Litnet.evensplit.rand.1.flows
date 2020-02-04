@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_1_Panevezys->32_Vilnius",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Panevezys->33_Klaipeda",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Panevezys->39_Siauliai",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Kaunas->32_Vilnius",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Kaunas->33_Klaipeda",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Kaunas->39_Siauliai",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    }
+]

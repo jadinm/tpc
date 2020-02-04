@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_3_Pardubice->6_Olomouc",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->37_Plzen",
+        "src": 3,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->28_Opava",
+        "src": 3,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->7_Brno",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->39_Usti_nad_Labem",
+        "src": 3,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->0_Hradec_Kralove",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->37_Plzen",
+        "src": 5,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->39_Usti_nad_Labem",
+        "src": 5,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->7_Brno",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->28_Opava",
+        "src": 5,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->6_Olomouc",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Zlin->0_Hradec_Kralove",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->6_Olomouc",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->37_Plzen",
+        "src": 9,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->0_Hradec_Kralove",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->39_Usti_nad_Labem",
+        "src": 9,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->28_Opava",
+        "src": 9,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->7_Brno",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->0_Hradec_Kralove",
+        "src": 40,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->28_Opava",
+        "src": 40,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->7_Brno",
+        "src": 40,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->39_Usti_nad_Labem",
+        "src": 40,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->6_Olomouc",
+        "src": 40,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Praha->37_Plzen",
+        "src": 40,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->39_Usti_nad_Labem",
+        "src": 41,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->7_Brno",
+        "src": 41,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->37_Plzen",
+        "src": 41,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->6_Olomouc",
+        "src": 41,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->0_Hradec_Kralove",
+        "src": 41,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Liberec->28_Opava",
+        "src": 41,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->0_Hradec_Kralove",
+        "src": 43,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->37_Plzen",
+        "src": 43,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->28_Opava",
+        "src": 43,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->39_Usti_nad_Labem",
+        "src": 43,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->7_Brno",
+        "src": 43,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_Ceske_Budejovice->6_Olomouc",
+        "src": 43,
+        "dest": 6,
+        "volume": 100000
+    }
+]

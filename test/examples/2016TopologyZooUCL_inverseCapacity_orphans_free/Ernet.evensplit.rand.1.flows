@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_0_Pune->29_Hyderabad",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Pune->27_Kalkota",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Pune->22_Delhi",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Pune->3_Mumbai",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Chennai->3_Mumbai",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Chennai->29_Hyderabad",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Chennai->27_Kalkota",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Chennai->22_Delhi",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Bengaluru->27_Kalkota",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Bengaluru->29_Hyderabad",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Bengaluru->3_Mumbai",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Bengaluru->22_Delhi",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    }
+]

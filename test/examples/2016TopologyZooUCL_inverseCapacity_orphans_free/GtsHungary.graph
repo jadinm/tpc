@@ -1,0 +1,46 @@
+NODES 13
+label x y
+4_Szolnok 20.2 47.2
+5_Dunaujvaros 18.9 47.0
+7_Debrecen 21.6 47.5
+8_Kecskemet 19.7 46.9
+12_Szeged 20.1 46.3
+20_Budapest 19.0 47.5
+22_Sopron 16.6 47.7
+23_Szombathely 16.6 47.2
+24_Zalaegerszeg 16.8 46.8
+26_Szekesfehervar 18.4 47.2
+27_Veszprem 17.9 47.1
+28_Gyor 17.6 47.7
+29_Tatabanya 18.4 47.6
+
+EDGES 28
+label src dest weight bw delay
+Link_8 0 5 10 100000 1
+Link_9 5 0 10 100000 1
+Link_10 0 2 10 100000 1
+Link_11 2 0 10 100000 1
+Link_12 1 3 10 100000 1
+Link_13 3 1 10 100000 1
+Link_14 1 5 10 100000 1
+Link_15 5 1 10 100000 1
+Link_18 2 4 10 100000 1
+Link_19 4 2 10 100000 1
+Link_20 3 4 10 100000 1
+Link_21 4 3 10 100000 1
+Link_46 5 9 10 100000 1
+Link_47 9 5 10 100000 1
+Link_48 5 12 10 100000 1
+Link_49 12 5 10 100000 1
+Link_50 6 11 10 100000 1
+Link_51 11 6 10 100000 1
+Link_52 6 7 10 100000 1
+Link_53 7 6 10 100000 1
+Link_54 7 8 10 100000 1
+Link_55 8 7 10 100000 1
+Link_56 8 10 10 100000 1
+Link_57 10 8 10 100000 1
+Link_58 9 10 10 100000 1
+Link_59 10 9 10 100000 1
+Link_60 11 12 10 100000 1
+Link_61 12 11 10 100000 1

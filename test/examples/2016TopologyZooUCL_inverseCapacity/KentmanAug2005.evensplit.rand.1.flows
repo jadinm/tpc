@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_12_Tonbridge->15_Blue_Bell_Hill",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->10_NTL-Wye",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->25_CCCU-S",
+        "src": 11,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->11_Cranbrook",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->26_CCCU-T",
+        "src": 11,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Tonbridge->20_UoG-AH",
+        "src": 11,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->20_UoG-AH",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->26_CCCU-T",
+        "src": 13,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->11_Cranbrook",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->25_CCCU-S",
+        "src": 13,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->10_NTL-Wye",
+        "src": 13,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_UoK-C->15_Blue_Bell_Hill",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->20_UoG-AH",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->25_CCCU-S",
+        "src": 15,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->15_Blue_Bell_Hill",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->10_NTL-Wye",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->11_Cranbrook",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->26_CCCU-T",
+        "src": 15,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->25_CCCU-S",
+        "src": 16,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->11_Cranbrook",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->20_UoG-AH",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->10_NTL-Wye",
+        "src": 16,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->15_Blue_Bell_Hill",
+        "src": 16,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dunkirk->26_CCCU-T",
+        "src": 16,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->10_NTL-Wye",
+        "src": 20,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->25_CCCU-S",
+        "src": 20,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->11_Cranbrook",
+        "src": 20,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->15_Blue_Bell_Hill",
+        "src": 20,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->26_CCCU-T",
+        "src": 20,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_University_of_Greenwich->20_UoG-AH",
+        "src": 20,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->25_CCCU-S",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->26_CCCU-T",
+        "src": 22,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->15_Blue_Bell_Hill",
+        "src": 22,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->10_NTL-Wye",
+        "src": 22,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->11_Cranbrook",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_IC-Wye->20_UoG-AH",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    }
+]

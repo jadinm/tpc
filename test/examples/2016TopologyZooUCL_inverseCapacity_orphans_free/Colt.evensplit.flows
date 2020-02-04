@@ -1,0 +1,284 @@
+[
+    {
+        "label": "flow_0_Linz->2_Rostock",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->5_Dresden",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Krakov->7_Warsaw",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Nuremberg->10_Vienna",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Prague->12_Mannheim",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Munich->14_Cologne",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_The_Hague->16_Hannover",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Dusseldorf->18_Antwerp",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Rotterdam->30_Karlsruhe",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Pfaffikon->33_St_Gallen",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Winterthur->36_Lausanne",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Schaffhausen->39_Nyon",
+        "src": 27,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_Den_Bosch->50_Copenhagen",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_Hamburg->53_Aarhus",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_Newark->55_New_York",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Stockholm->58_Gothenburg",
+        "src": 35,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Oslo->60_None",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_None->63_Lucerne",
+        "src": 40,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_64_Chiasso->66_Genova",
+        "src": 42,
+        "dest": 43,
+        "volume": 100000
+    },
+    {
+        "label": "flow_68_Firenze->72_Como",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_73_None->74_Zurich",
+        "src": 46,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_75_Dublin->76_Manchester",
+        "src": 48,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_77_Birmingham->78_Ghent",
+        "src": 50,
+        "dest": 51,
+        "volume": 100000
+    },
+    {
+        "label": "flow_79_None->80_Valencia",
+        "src": 52,
+        "dest": 53,
+        "volume": 100000
+    },
+    {
+        "label": "flow_81_Rome->82_Marseille",
+        "src": 54,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_84_Montpellier->86_Bordeaux",
+        "src": 56,
+        "dest": 57,
+        "volume": 100000
+    },
+    {
+        "label": "flow_91_Reading->92_Kolding",
+        "src": 58,
+        "dest": 59,
+        "volume": 100000
+    },
+    {
+        "label": "flow_94_Ostend->97_Graz",
+        "src": 60,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_98_Bratislava->99_Salzburg",
+        "src": 62,
+        "dest": 63,
+        "volume": 100000
+    },
+    {
+        "label": "flow_101_Budapest->105_Modena",
+        "src": 65,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_106_Reggio_Emilia->107_Padova",
+        "src": 69,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_108_Bologna->109_Bergamo",
+        "src": 71,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_111_Verona->112_Brescia",
+        "src": 73,
+        "dest": 74,
+        "volume": 100000
+    },
+    {
+        "label": "flow_115_Lille->117_Basel",
+        "src": 75,
+        "dest": 76,
+        "volume": 100000
+    },
+    {
+        "label": "flow_118_Strasbourg->119_Stuttgart",
+        "src": 77,
+        "dest": 78,
+        "volume": 100000
+    },
+    {
+        "label": "flow_121_Nantes->122_Toulouse",
+        "src": 79,
+        "dest": 80,
+        "volume": 100000
+    },
+    {
+        "label": "flow_123_Lyon->124_Geneve",
+        "src": 81,
+        "dest": 82,
+        "volume": 100000
+    },
+    {
+        "label": "flow_125_Zug->126_Lugano",
+        "src": 83,
+        "dest": 84,
+        "volume": 100000
+    },
+    {
+        "label": "flow_129_Utrecht->131_Hilversum",
+        "src": 86,
+        "dest": 87,
+        "volume": 100000
+    },
+    {
+        "label": "flow_132_Hoofddorp->134_Wuppertal",
+        "src": 88,
+        "dest": 90,
+        "volume": 100000
+    },
+    {
+        "label": "flow_135_Dortmund->136_Essen",
+        "src": 91,
+        "dest": 92,
+        "volume": 100000
+    },
+    {
+        "label": "flow_137_Barcelona->138_Turin",
+        "src": 93,
+        "dest": 94,
+        "volume": 100000
+    },
+    {
+        "label": "flow_139_Paris->140_London",
+        "src": 95,
+        "dest": 96,
+        "volume": 100000
+    },
+    {
+        "label": "flow_141_Frankfurt->142_Brussels",
+        "src": 97,
+        "dest": 98,
+        "volume": 100000
+    },
+    {
+        "label": "flow_143_Amsterdam->144_Berlin",
+        "src": 99,
+        "dest": 100,
+        "volume": 100000
+    },
+    {
+        "label": "flow_148_Rennes->149_Rouen",
+        "src": 101,
+        "dest": 102,
+        "volume": 100000
+    },
+    {
+        "label": "flow_150_Bristol->151_Madrid",
+        "src": 103,
+        "dest": 104,
+        "volume": 100000
+    }
+]

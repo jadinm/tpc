@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_4_Szolnok->5_Dunaujvaros",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->8_Kecskemet",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Szeged->20_Budapest",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Sopron->23_Szombathely",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Zalaegerszeg->26_Szekesfehervar",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Veszprem->28_Gyor",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

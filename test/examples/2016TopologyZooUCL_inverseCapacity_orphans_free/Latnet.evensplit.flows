@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_16_Rujiena->18_Aloja",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mazsalaca->22_Limbazi",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Liepupe->26_Rezekne",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Carnikava->30_Riga",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Daugapils->36_Olaine",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Jelgava->48_Sigulda",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_55_Adazi->56_Ozolnieki",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

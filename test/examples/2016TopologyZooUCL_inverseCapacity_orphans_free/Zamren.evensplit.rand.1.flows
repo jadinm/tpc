@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_30_Copperbelt_University->26_Gateway_Router",
+        "src": 29,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Copperbelt_University->14_None",
+        "src": 29,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Copperbelt_University->28_University_of_Zambia",
+        "src": 29,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Copperbelt_University->29_Mulungushi_University",
+        "src": 29,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Copperbelt_University->13_None",
+        "src": 29,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Copperbelt_University->15_None",
+        "src": 29,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->28_University_of_Zambia",
+        "src": 30,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->15_None",
+        "src": 30,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->14_None",
+        "src": 30,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->13_None",
+        "src": 30,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->26_Gateway_Router",
+        "src": 30,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Kitwe->29_Mulungushi_University",
+        "src": 30,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->13_None",
+        "src": 31,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->26_Gateway_Router",
+        "src": 31,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->29_Mulungushi_University",
+        "src": 31,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->15_None",
+        "src": 31,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->14_None",
+        "src": 31,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kabwe->28_University_of_Zambia",
+        "src": 31,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->13_None",
+        "src": 32,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->15_None",
+        "src": 32,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->14_None",
+        "src": 32,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->26_Gateway_Router",
+        "src": 32,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->29_Mulungushi_University",
+        "src": 32,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Lusaka->28_University_of_Zambia",
+        "src": 32,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->13_None",
+        "src": 33,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->26_Gateway_Router",
+        "src": 33,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->15_None",
+        "src": 33,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->28_University_of_Zambia",
+        "src": 33,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->29_Mulungushi_University",
+        "src": 33,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Gateway_Router->14_None",
+        "src": 33,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->14_None",
+        "src": 34,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->28_University_of_Zambia",
+        "src": 34,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->26_Gateway_Router",
+        "src": 34,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->15_None",
+        "src": 34,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->13_None",
+        "src": 34,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Gateway_Router->29_Mulungushi_University",
+        "src": 34,
+        "dest": 28,
+        "volume": 100000
+    }
+]

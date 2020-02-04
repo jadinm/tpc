@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_3_CBI->9_UBI",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->6_CMI",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->5_CRI",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->1_NRT",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->10_KKN",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->2_SKA",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->10_KKN",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->5_CRI",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->2_SKA",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->9_UBI",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->6_CMI",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BKK->1_NRT",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->2_SKA",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->10_KKN",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->5_CRI",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->9_UBI",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->6_CMI",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->1_NRT",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->2_SKA",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->9_UBI",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->10_KKN",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->1_NRT",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->5_CRI",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_SKN->6_CMI",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->10_KKN",
+        "src": 10,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->5_CRI",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->9_UBI",
+        "src": 10,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->2_SKA",
+        "src": 10,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->6_CMI",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->1_NRT",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->10_KKN",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->5_CRI",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->2_SKA",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->1_NRT",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->6_CMI",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_NPM->9_UBI",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    }
+]

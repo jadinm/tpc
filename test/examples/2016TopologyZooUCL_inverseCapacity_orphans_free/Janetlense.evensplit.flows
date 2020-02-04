@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_0_Southampton_Aggregation->1_Southampton",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Winchester->3_Portsmouth",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Bournemouth->6_Solent",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Bournemouth_Aggregation->10_Wymering",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Chichester->12_Janet_SJ5",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Southampton_Core->14_Aldershot_Core",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Brighton_Aggregation->16_Brighton",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Sussex->18_Surrey",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    }
+]

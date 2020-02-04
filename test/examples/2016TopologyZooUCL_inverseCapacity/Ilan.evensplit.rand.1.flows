@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_7_Haifa_University->3_Petach_Tikva_GigaPoP",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Haifa_University->0_Tel_Aviv_GigaPoP",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Haifa_University->13_Tel_Aviv_University",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Bar_Ilan_University->3_Petach_Tikva_GigaPoP",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Bar_Ilan_University->0_Tel_Aviv_GigaPoP",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Bar_Ilan_University->13_Tel_Aviv_University",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,49 @@
+NODES 10
+label x y
+2_NOC_and_CampusSocial_Sciences 21.4 42.0
+4_NationalBroadcastingcompany_Comm._Tower 21.4 42.0
+5_I_of_Political_and_Juridical_Res 21.4 42.0
+7_Campus_Natural_Sciences_and_Mathematics 21.4 42.0
+10_National_and_Univ_Library 21.4 42.0
+11_I._of_Earthquake_Engineering 21.4 42.0
+16_Campus_Arch_and_Civil_Eng 21.4 42.0
+17_CampusTechnical 21.4 42.0
+18_Campus_Medicine 21.4 42.0
+19_CampusBiotech._Sciences 21.4 42.0
+
+EDGES 34
+label src dest weight bw delay
+Link_6 0 1 64 15500 1
+Link_7 1 0 64 15500 1
+Link_8 0 2 21 47331 1
+Link_9 2 0 21 47331 1
+Link_12 0 3 10 100000 1
+Link_13 3 0 10 100000 1
+Link_16 0 4 21 47331 1
+Link_17 4 0 21 47331 1
+Link_18 0 5 21 47331 1
+Link_19 5 0 21 47331 1
+Link_28 0 6 10 100000 1
+Link_29 6 0 10 100000 1
+Link_30 0 7 10 100000 1
+Link_31 7 0 10 100000 1
+Link_32 0 8 10 100000 1
+Link_33 8 0 10 100000 1
+Link_34 0 9 10 100000 1
+Link_35 9 0 10 100000 1
+Link_36 1 3 200 5000 1
+Link_37 3 1 200 5000 1
+Link_38 1 4 200 5000 1
+Link_39 4 1 200 5000 1
+Link_40 1 5 200 5000 1
+Link_41 5 1 200 5000 1
+Link_42 1 6 200 5000 1
+Link_43 6 1 200 5000 1
+Link_44 1 7 200 5000 1
+Link_45 7 1 200 5000 1
+Link_46 1 8 200 5000 1
+Link_47 8 1 200 5000 1
+Link_48 1 9 200 5000 1
+Link_49 9 1 200 5000 1
+Link_50 2 7 10 100000 1
+Link_51 7 2 10 100000 1

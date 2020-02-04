@@ -1,0 +1,182 @@
+[
+    {
+        "label": "flow_21_Fujisawa->1_Nezu",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Fujisawa->2_Yagami",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Fujisawa->10_Dojima",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Fujisawa->26_Sakyo",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Fujisawa->0_KDDI_Otemachi",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Fujisawa->6_NTT_Otemachi",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->1_Nezu",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->0_KDDI_Otemachi",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->2_Yagami",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->10_Dojima",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->26_Sakyo",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->6_NTT_Otemachi",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->0_KDDI_Otemachi",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->26_Sakyo",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->2_Yagami",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->1_Nezu",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->10_Dojima",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Fukuoka->6_NTT_Otemachi",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->0_KDDI_Otemachi",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->1_Nezu",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->2_Yagami",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->6_NTT_Otemachi",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->26_Sakyo",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->10_Dojima",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->0_KDDI_Otemachi",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->26_Sakyo",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->6_NTT_Otemachi",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->2_Yagami",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->10_Dojima",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kurashiki->1_Nezu",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    }
+]

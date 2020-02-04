@@ -1,0 +1,1094 @@
+[
+    {
+        "label": "flow_0_Bratislava->22_Paris",
+        "src": 0,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->30_Marseille",
+        "src": 0,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->8_Bucharest",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->3_Rotterdam",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->31_Lyon",
+        "src": 0,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->24_Warsaw",
+        "src": 0,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->4_Roma",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->32_Basel",
+        "src": 0,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->12_Luxembourg",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->29_Barcelona",
+        "src": 0,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->28_Madrid",
+        "src": 0,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->13_Zurich",
+        "src": 0,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->20_Amsterdam",
+        "src": 0,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bratislava->14_Brussels",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->22_Paris",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->31_Lyon",
+        "src": 1,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->4_Roma",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->29_Barcelona",
+        "src": 1,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->28_Madrid",
+        "src": 1,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->12_Luxembourg",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->13_Zurich",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->30_Marseille",
+        "src": 1,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->3_Rotterdam",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->24_Warsaw",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->32_Basel",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->14_Brussels",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->20_Amsterdam",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Vienna->8_Bucharest",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->4_Roma",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->22_Paris",
+        "src": 2,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->13_Zurich",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->31_Lyon",
+        "src": 2,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->20_Amsterdam",
+        "src": 2,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->28_Madrid",
+        "src": 2,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->3_Rotterdam",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->32_Basel",
+        "src": 2,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->24_Warsaw",
+        "src": 2,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->30_Marseille",
+        "src": 2,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->12_Luxembourg",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->29_Barcelona",
+        "src": 2,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->14_Brussels",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Praha->8_Bucharest",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->8_Bucharest",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->12_Luxembourg",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->24_Warsaw",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->31_Lyon",
+        "src": 5,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->22_Paris",
+        "src": 5,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->30_Marseille",
+        "src": 5,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->32_Basel",
+        "src": 5,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->14_Brussels",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->29_Barcelona",
+        "src": 5,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->3_Rotterdam",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->4_Roma",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->20_Amsterdam",
+        "src": 5,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->28_Madrid",
+        "src": 5,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Budapest->13_Zurich",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->22_Paris",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->24_Warsaw",
+        "src": 7,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->29_Barcelona",
+        "src": 7,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->3_Rotterdam",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->8_Bucharest",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->14_Brussels",
+        "src": 7,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->20_Amsterdam",
+        "src": 7,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->4_Roma",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->13_Zurich",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->28_Madrid",
+        "src": 7,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->12_Luxembourg",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->30_Marseille",
+        "src": 7,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->31_Lyon",
+        "src": 7,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Istanbul->32_Basel",
+        "src": 7,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->22_Paris",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->32_Basel",
+        "src": 8,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->31_Lyon",
+        "src": 8,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->20_Amsterdam",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->13_Zurich",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->8_Bucharest",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->28_Madrid",
+        "src": 8,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->14_Brussels",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->24_Warsaw",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->29_Barcelona",
+        "src": 8,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->4_Roma",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->30_Marseille",
+        "src": 8,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->12_Luxembourg",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Strasbourg->3_Rotterdam",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->31_Lyon",
+        "src": 12,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->32_Basel",
+        "src": 12,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->3_Rotterdam",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->8_Bucharest",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->28_Madrid",
+        "src": 12,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->30_Marseille",
+        "src": 12,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->14_Brussels",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->29_Barcelona",
+        "src": 12,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->22_Paris",
+        "src": 12,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->20_Amsterdam",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->12_Luxembourg",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->13_Zurich",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->24_Warsaw",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Geneva->4_Roma",
+        "src": 12,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->13_Zurich",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->12_Luxembourg",
+        "src": 13,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->4_Roma",
+        "src": 13,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->8_Bucharest",
+        "src": 13,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->28_Madrid",
+        "src": 13,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->14_Brussels",
+        "src": 13,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->31_Lyon",
+        "src": 13,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->22_Paris",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->24_Warsaw",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->20_Amsterdam",
+        "src": 13,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->30_Marseille",
+        "src": 13,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->3_Rotterdam",
+        "src": 13,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->29_Barcelona",
+        "src": 13,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Milan->32_Basel",
+        "src": 13,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->30_Marseille",
+        "src": 14,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->4_Roma",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->14_Brussels",
+        "src": 14,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->20_Amsterdam",
+        "src": 14,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->31_Lyon",
+        "src": 14,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->3_Rotterdam",
+        "src": 14,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->8_Bucharest",
+        "src": 14,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->32_Basel",
+        "src": 14,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->24_Warsaw",
+        "src": 14,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->12_Luxembourg",
+        "src": 14,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->13_Zurich",
+        "src": 14,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->28_Madrid",
+        "src": 14,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->22_Paris",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Athens->29_Barcelona",
+        "src": 14,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->31_Lyon",
+        "src": 15,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->3_Rotterdam",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->12_Luxembourg",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->30_Marseille",
+        "src": 15,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->8_Bucharest",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->22_Paris",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->4_Roma",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->20_Amsterdam",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->24_Warsaw",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->32_Basel",
+        "src": 15,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->28_Madrid",
+        "src": 15,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->29_Barcelona",
+        "src": 15,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->14_Brussels",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Sofia->13_Zurich",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->24_Warsaw",
+        "src": 16,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->30_Marseille",
+        "src": 16,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->4_Roma",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->20_Amsterdam",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->12_Luxembourg",
+        "src": 16,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->3_Rotterdam",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->13_Zurich",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->8_Bucharest",
+        "src": 16,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->28_Madrid",
+        "src": 16,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->14_Brussels",
+        "src": 16,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->29_Barcelona",
+        "src": 16,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->31_Lyon",
+        "src": 16,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->32_Basel",
+        "src": 16,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Frankfurt->22_Paris",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->32_Basel",
+        "src": 18,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->12_Luxembourg",
+        "src": 18,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->29_Barcelona",
+        "src": 18,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->8_Bucharest",
+        "src": 18,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->20_Amsterdam",
+        "src": 18,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->31_Lyon",
+        "src": 18,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->14_Brussels",
+        "src": 18,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->4_Roma",
+        "src": 18,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->22_Paris",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->13_Zurich",
+        "src": 18,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->3_Rotterdam",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->30_Marseille",
+        "src": 18,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->24_Warsaw",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_London->28_Madrid",
+        "src": 18,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->14_Brussels",
+        "src": 21,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->4_Roma",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->30_Marseille",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->28_Madrid",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->31_Lyon",
+        "src": 21,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->20_Amsterdam",
+        "src": 21,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->13_Zurich",
+        "src": 21,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->12_Luxembourg",
+        "src": 21,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->8_Bucharest",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->22_Paris",
+        "src": 21,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->24_Warsaw",
+        "src": 21,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->32_Basel",
+        "src": 21,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->3_Rotterdam",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Kiev->29_Barcelona",
+        "src": 21,
+        "dest": 23,
+        "volume": 100000
+    }
+]

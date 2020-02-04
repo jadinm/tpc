@@ -1,0 +1,52 @@
+NODES 15
+label x y
+1_Dublin -82.9 32.5
+2_Chicago -87.7 41.9
+3_Toledo -83.6 41.7
+4_Washington,_DC -77.0 38.9
+5_Baltimore -76.6 39.3
+6_Herndon -77.4 39.0
+7_Atlanta -84.4 33.7
+8_Wilmington -77.9 34.2
+9_Philadelphia -75.2 40.0
+12_New_York -74.0 40.7
+13_Newark -74.2 40.7
+14_Kansas_City -94.6 39.1
+15_St_Louis -90.2 38.6
+22_Dallas -96.8 32.8
+23_Houston -95.4 29.8
+
+EDGES 32
+label src dest weight bw delay
+Link_2 0 1 10 45000 1
+Link_3 1 0 10 45000 1
+Link_4 0 2 10 45000 1
+Link_5 2 0 10 45000 1
+Link_6 0 3 10 45000 1
+Link_7 3 0 10 45000 1
+Link_8 1 2 10 45000 1
+Link_9 2 1 10 45000 1
+Link_10 1 12 10 45000 1
+Link_11 12 1 10 45000 1
+Link_12 3 4 10 45000 1
+Link_13 4 3 10 45000 1
+Link_14 4 7 10 45000 1
+Link_15 7 4 10 45000 1
+Link_16 5 9 10 45000 1
+Link_17 9 5 10 45000 1
+Link_18 5 6 10 45000 1
+Link_19 6 5 10 45000 1
+Link_20 6 14 10 45000 1
+Link_21 14 6 10 45000 1
+Link_22 7 8 10 45000 1
+Link_23 8 7 10 45000 1
+Link_24 8 10 10 45000 1
+Link_25 10 8 10 45000 1
+Link_30 9 10 10 45000 1
+Link_31 10 9 10 45000 1
+Link_34 11 13 10 45000 1
+Link_35 13 11 10 45000 1
+Link_36 11 12 10 45000 1
+Link_37 12 11 10 45000 1
+Link_48 13 14 10 45000 1
+Link_49 14 13 10 45000 1

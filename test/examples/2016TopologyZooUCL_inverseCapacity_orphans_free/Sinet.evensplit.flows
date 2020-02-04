@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Fukuoka_DC->5_Hiroshima_DC",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->20_Nagoya_DC",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->34_Tokyo_DC1",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->44_Tsukuba_DC",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_Kyoto_DC->59_Osaka_DC",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->70_Sendai_DC",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_31_South_PoP_(UTM)->29_Cyberjaya_PoP_(NOC)",
+        "src": 31,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_South_PoP_(UTM)->32_East_Coast_PoP_(UMP)",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_South_PoP_(UTM)->30_Border_Router",
+        "src": 31,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_North_PoP_(USM)->29_Cyberjaya_PoP_(NOC)",
+        "src": 33,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_North_PoP_(USM)->30_Border_Router",
+        "src": 33,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_North_PoP_(USM)->32_East_Coast_PoP_(UMP)",
+        "src": 33,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_KL_PoP_(UM)->30_Border_Router",
+        "src": 34,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_KL_PoP_(UM)->32_East_Coast_PoP_(UMP)",
+        "src": 34,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_KL_PoP_(UM)->29_Cyberjaya_PoP_(NOC)",
+        "src": 34,
+        "dest": 29,
+        "volume": 100000
+    }
+]

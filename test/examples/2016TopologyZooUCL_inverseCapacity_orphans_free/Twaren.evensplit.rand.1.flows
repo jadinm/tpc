@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_2_TN->13_HC",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_TN->19_TP",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_TC->13_HC",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_TC->19_TP",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    }
+]

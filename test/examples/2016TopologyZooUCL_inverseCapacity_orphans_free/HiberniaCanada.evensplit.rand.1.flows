@@ -1,0 +1,182 @@
+[
+    {
+        "label": "flow_3_Moncton->12_Halifax",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Moncton->6_Quebec",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Moncton->4_None",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Moncton->7_Montreal",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Moncton->5_Edmundston",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Moncton->0_New_York",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->0_New_York",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->4_None",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->12_Halifax",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->5_Edmundston",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->7_Montreal",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->6_Quebec",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->7_Montreal",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->12_Halifax",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->6_Quebec",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->5_Edmundston",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->0_New_York",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Buffalo->4_None",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->7_Montreal",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->12_Halifax",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->0_New_York",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->5_Edmundston",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->4_None",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->6_Quebec",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->7_Montreal",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->12_Halifax",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->5_Edmundston",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->4_None",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->0_New_York",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->6_Quebec",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    }
+]

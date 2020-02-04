@@ -1,0 +1,182 @@
+[
+    {
+        "label": "flow_3_Copenhagen->7_Milan",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->2_Hamburg",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->6_Geneva",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->8_Brussels",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->1_Frankfurt",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->17_Paris",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->2_Hamburg",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->1_Frankfurt",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->17_Paris",
+        "src": 6,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->8_Brussels",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->6_Geneva",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Amsterdam->7_Milan",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->8_Brussels",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->2_Hamburg",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->7_Milan",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->1_Frankfurt",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->17_Paris",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Stockholm->6_Geneva",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->2_Hamburg",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->7_Milan",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->6_Geneva",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->1_Frankfurt",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->8_Brussels",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Oslo->17_Paris",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->8_Brussels",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->2_Hamburg",
+        "src": 10,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->1_Frankfurt",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->17_Paris",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->7_Milan",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_London->6_Geneva",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    }
+]

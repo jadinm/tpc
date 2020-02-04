@@ -1,0 +1,254 @@
+[
+    {
+        "label": "flow_0_Solborg-Akureyri->13_Bustaoavegur",
+        "src": 0,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->8_Grensas",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->15_Keldhaholt",
+        "src": 0,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->9_Skulagata",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->12_Hringbraut",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->10_Taeknigarour",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Solborg-Akureyri->2_FSA-Akureyri",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->9_Skulagata",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->2_FSA-Akureyri",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->12_Hringbraut",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->10_Taeknigarour",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->13_Bustaoavegur",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->15_Keldhaholt",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Fjarski->8_Grensas",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->12_Hringbraut",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->10_Taeknigarour",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->15_Keldhaholt",
+        "src": 3,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->2_FSA-Akureyri",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->8_Grensas",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->9_Skulagata",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_DST-Akureyri->13_Bustaoavegur",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->10_Taeknigarour",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->9_Skulagata",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->12_Hringbraut",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->13_Bustaoavegur",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->15_Keldhaholt",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->2_FSA-Akureyri",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_NORDUnet->8_Grensas",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->15_Keldhaholt",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->12_Hringbraut",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->2_FSA-Akureyri",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->13_Bustaoavegur",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->10_Taeknigarour",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->9_Skulagata",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Sturlugata->8_Grensas",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->10_Taeknigarour",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->15_Keldhaholt",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->9_Skulagata",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->2_FSA-Akureyri",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->12_Hringbraut",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->8_Grensas",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ofanleiti->13_Bustaoavegur",
+        "src": 11,
+        "dest": 10,
+        "volume": 100000
+    }
+]

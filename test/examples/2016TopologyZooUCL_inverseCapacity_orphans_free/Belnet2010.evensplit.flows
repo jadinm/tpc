@@ -1,0 +1,68 @@
+[
+    {
+        "label": "flow_0_Liege1_->1_Brussels_Campus",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Arlon->3_Liege2",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Vilvoorde->5_Leuven1",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Bruzav->7_Evere",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Leuven2->9_Hasselt",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Brudie->11_Geel",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Louvain-la-Neuve->13_Namur",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Brugge->15_Gent1",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Gent2->17_Antwerpen1",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Antwerpen2->19_Korthijk",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Mons->21_Charleroi",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    }
+]

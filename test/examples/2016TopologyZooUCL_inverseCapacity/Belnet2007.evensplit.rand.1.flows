@@ -1,0 +1,662 @@
+[
+    {
+        "label": "flow_0_Liege_1_->6_Evere",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->13_Brugge",
+        "src": 0,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->15_Gent2",
+        "src": 0,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->5_Leuven2",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->17_Antwerpen_2",
+        "src": 0,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->9_Geel",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->20_Charleroi",
+        "src": 0,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->11_Namur",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->2_Arlon",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->7_Vilvoorde",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Liege_1_->16_Antwerpen1",
+        "src": 0,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->13_Brugge",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->6_Evere",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->9_Geel",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->2_Arlon",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->11_Namur",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->17_Antwerpen_2",
+        "src": 1,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->20_Charleroi",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->7_Vilvoorde",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->16_Antwerpen1",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->15_Gent2",
+        "src": 1,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brussels_Campus->5_Leuven2",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->7_Vilvoorde",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->6_Evere",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->9_Geel",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->15_Gent2",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->11_Namur",
+        "src": 3,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->13_Brugge",
+        "src": 3,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->20_Charleroi",
+        "src": 3,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->17_Antwerpen_2",
+        "src": 3,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->2_Arlon",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->5_Leuven2",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Liege_2->16_Antwerpen1",
+        "src": 3,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->6_Evere",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->11_Namur",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->13_Brugge",
+        "src": 4,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->15_Gent2",
+        "src": 4,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->16_Antwerpen1",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->7_Vilvoorde",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->9_Geel",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->5_Leuven2",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->17_Antwerpen_2",
+        "src": 4,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->20_Charleroi",
+        "src": 4,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leuven1->2_Arlon",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->13_Brugge",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->2_Arlon",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->9_Geel",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->5_Leuven2",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->11_Namur",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->16_Antwerpen1",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->17_Antwerpen_2",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->20_Charleroi",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->7_Vilvoorde",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->15_Gent2",
+        "src": 8,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Hasselt->6_Evere",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->20_Charleroi",
+        "src": 10,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->7_Vilvoorde",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->17_Antwerpen_2",
+        "src": 10,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->6_Evere",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->13_Brugge",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->16_Antwerpen1",
+        "src": 10,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->9_Geel",
+        "src": 10,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->11_Namur",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->15_Gent2",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->2_Arlon",
+        "src": 10,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Louvain-la-Neuve->5_Leuven2",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->2_Arlon",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->11_Namur",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->7_Vilvoorde",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->5_Leuven2",
+        "src": 12,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->17_Antwerpen_2",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->15_Gent2",
+        "src": 12,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->9_Geel",
+        "src": 12,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->16_Antwerpen1",
+        "src": 12,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->6_Evere",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->20_Charleroi",
+        "src": 12,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Brussels_Science->13_Brugge",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->15_Gent2",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->5_Leuven2",
+        "src": 14,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->11_Namur",
+        "src": 14,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->17_Antwerpen_2",
+        "src": 14,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->20_Charleroi",
+        "src": 14,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->7_Vilvoorde",
+        "src": 14,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->9_Geel",
+        "src": 14,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->16_Antwerpen1",
+        "src": 14,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->13_Brugge",
+        "src": 14,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->2_Arlon",
+        "src": 14,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Gent1->6_Evere",
+        "src": 14,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->2_Arlon",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->20_Charleroi",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->5_Leuven2",
+        "src": 18,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->17_Antwerpen_2",
+        "src": 18,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->9_Geel",
+        "src": 18,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->16_Antwerpen1",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->7_Vilvoorde",
+        "src": 18,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->6_Evere",
+        "src": 18,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->15_Gent2",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->13_Brugge",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Korthijk->11_Namur",
+        "src": 18,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->16_Antwerpen1",
+        "src": 19,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->15_Gent2",
+        "src": 19,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->11_Namur",
+        "src": 19,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->20_Charleroi",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->13_Brugge",
+        "src": 19,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->7_Vilvoorde",
+        "src": 19,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->5_Leuven2",
+        "src": 19,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->6_Evere",
+        "src": 19,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->9_Geel",
+        "src": 19,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->17_Antwerpen_2",
+        "src": 19,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mons->2_Arlon",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    }
+]

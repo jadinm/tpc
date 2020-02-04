@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_5_Leiria->21_Aveiro",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Leiria->22_Coimbra",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Leiria->7_Samtarem",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Lisboa->21_Aveiro",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Lisboa->22_Coimbra",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Lisboa->7_Samtarem",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Porto->21_Aveiro",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Porto->22_Coimbra",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Porto->7_Samtarem",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    }
+]

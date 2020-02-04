@@ -1,0 +1,938 @@
+[
+    {
+        "label": "flow_3_Puchov->27_Presov",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->15_Sala",
+        "src": 3,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->13_Levice",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->1_Prievidza",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->28_Poprad",
+        "src": 3,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->34_Nove_Mesto_n._Vahom",
+        "src": 3,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->31_Kosice",
+        "src": 3,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->14_Nove_Zamky",
+        "src": 3,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->42_Nitra",
+        "src": 3,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->30_Roznava",
+        "src": 3,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->2_Trencin",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->5_Ruzomberok",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Puchov->0_Zilina",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->34_Nove_Mesto_n._Vahom",
+        "src": 4,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->13_Levice",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->1_Prievidza",
+        "src": 4,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->14_Nove_Zamky",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->30_Roznava",
+        "src": 4,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->0_Zilina",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->2_Trencin",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->5_Ruzomberok",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->42_Nitra",
+        "src": 4,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->27_Presov",
+        "src": 4,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->31_Kosice",
+        "src": 4,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->15_Sala",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Martin->28_Poprad",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->34_Nove_Mesto_n._Vahom",
+        "src": 6,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->42_Nitra",
+        "src": 6,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->2_Trencin",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->15_Sala",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->31_Kosice",
+        "src": 6,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->5_Ruzomberok",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->30_Roznava",
+        "src": 6,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->13_Levice",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->27_Presov",
+        "src": 6,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->0_Zilina",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->14_Nove_Zamky",
+        "src": 6,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->28_Poprad",
+        "src": 6,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Zvolen->1_Prievidza",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->15_Sala",
+        "src": 7,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->0_Zilina",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->30_Roznava",
+        "src": 7,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->2_Trencin",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->27_Presov",
+        "src": 7,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->5_Ruzomberok",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->28_Poprad",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->34_Nove_Mesto_n._Vahom",
+        "src": 7,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->13_Levice",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->31_Kosice",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->1_Prievidza",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->42_Nitra",
+        "src": 7,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_B._Bystrica->14_Nove_Zamky",
+        "src": 7,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->5_Ruzomberok",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->13_Levice",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->0_Zilina",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->1_Prievidza",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->42_Nitra",
+        "src": 8,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->14_Nove_Zamky",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->27_Presov",
+        "src": 8,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->30_Roznava",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->2_Trencin",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->15_Sala",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->28_Poprad",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->34_Nove_Mesto_n._Vahom",
+        "src": 8,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_L.Mikulas->31_Kosice",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->42_Nitra",
+        "src": 9,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->14_Nove_Zamky",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->1_Prievidza",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->2_Trencin",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->31_Kosice",
+        "src": 9,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->34_Nove_Mesto_n._Vahom",
+        "src": 9,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->28_Poprad",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->13_Levice",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->0_Zilina",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->27_Presov",
+        "src": 9,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->15_Sala",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->30_Roznava",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Topolcany->5_Ruzomberok",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->0_Zilina",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->5_Ruzomberok",
+        "src": 13,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->27_Presov",
+        "src": 13,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->15_Sala",
+        "src": 13,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->2_Trencin",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->13_Levice",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->14_Nove_Zamky",
+        "src": 13,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->42_Nitra",
+        "src": 13,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->30_Roznava",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->34_Nove_Mesto_n._Vahom",
+        "src": 13,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->28_Poprad",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->1_Prievidza",
+        "src": 13,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Lucenec->31_Kosice",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->34_Nove_Mesto_n._Vahom",
+        "src": 14,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->15_Sala",
+        "src": 14,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->30_Roznava",
+        "src": 14,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->42_Nitra",
+        "src": 14,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->1_Prievidza",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->2_Trencin",
+        "src": 14,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->27_Presov",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->13_Levice",
+        "src": 14,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->31_Kosice",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->14_Nove_Zamky",
+        "src": 14,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->0_Zilina",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->28_Poprad",
+        "src": 14,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_R.Sobota->5_Ruzomberok",
+        "src": 14,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->13_Levice",
+        "src": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->5_Ruzomberok",
+        "src": 17,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->28_Poprad",
+        "src": 17,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->42_Nitra",
+        "src": 17,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->31_Kosice",
+        "src": 17,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->30_Roznava",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->0_Zilina",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->2_Trencin",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->1_Prievidza",
+        "src": 17,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->34_Nove_Mesto_n._Vahom",
+        "src": 17,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->15_Sala",
+        "src": 17,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->14_Nove_Zamky",
+        "src": 17,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Spisska_Nova_Ves->27_Presov",
+        "src": 17,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->0_Zilina",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->27_Presov",
+        "src": 20,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->42_Nitra",
+        "src": 20,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->13_Levice",
+        "src": 20,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->2_Trencin",
+        "src": 20,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->14_Nove_Zamky",
+        "src": 20,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->5_Ruzomberok",
+        "src": 20,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->28_Poprad",
+        "src": 20,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->1_Prievidza",
+        "src": 20,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->15_Sala",
+        "src": 20,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->31_Kosice",
+        "src": 20,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->34_Nove_Mesto_n._Vahom",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Piestany->30_Roznava",
+        "src": 20,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->28_Poprad",
+        "src": 22,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->0_Zilina",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->30_Roznava",
+        "src": 22,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->34_Nove_Mesto_n._Vahom",
+        "src": 22,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->27_Presov",
+        "src": 22,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->2_Trencin",
+        "src": 22,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->13_Levice",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->14_Nove_Zamky",
+        "src": 22,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->42_Nitra",
+        "src": 22,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->31_Kosice",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->15_Sala",
+        "src": 22,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->1_Prievidza",
+        "src": 22,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Bratislava->5_Ruzomberok",
+        "src": 22,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->14_Nove_Zamky",
+        "src": 23,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->15_Sala",
+        "src": 23,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->34_Nove_Mesto_n._Vahom",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->42_Nitra",
+        "src": 23,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->1_Prievidza",
+        "src": 23,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->28_Poprad",
+        "src": 23,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->2_Trencin",
+        "src": 23,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->13_Levice",
+        "src": 23,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->5_Ruzomberok",
+        "src": 23,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->31_Kosice",
+        "src": 23,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->30_Roznava",
+        "src": 23,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->0_Zilina",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Trnava->27_Presov",
+        "src": 23,
+        "dest": 15,
+        "volume": 100000
+    }
+]

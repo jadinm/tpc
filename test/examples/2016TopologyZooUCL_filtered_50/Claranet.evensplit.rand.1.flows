@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_1_Madrid->12_Paris",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Madrid->14_London",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Madrid->4_Barcelona",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Madrid->3_Lisbon",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Madrid->7_Amsterdam",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Berlin->12_Paris",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Berlin->3_Lisbon",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Berlin->14_London",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Berlin->7_Amsterdam",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Berlin->4_Barcelona",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Frankfurt->14_London",
+        "src": 10,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Frankfurt->12_Paris",
+        "src": 10,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Frankfurt->4_Barcelona",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Frankfurt->3_Lisbon",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Frankfurt->7_Amsterdam",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Munich->3_Lisbon",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Munich->7_Amsterdam",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Munich->14_London",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Munich->4_Barcelona",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Munich->12_Paris",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    }
+]

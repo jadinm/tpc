@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_2_Larissa->8_Ermoupoli",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->14_Chania",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Heraklio->20_Athens",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Rhodos->22_Karlovassi",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->28_Ioannina",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->34_Xanthi",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    }
+]

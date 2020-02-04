@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_9_Mykonos->21_Rhodos",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->15_Heraklio",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->2_Larissa",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->14_Chania",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->8_Ermoupoli",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Mykonos->20_Athens",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->21_Rhodos",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->14_Chania",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->2_Larissa",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->8_Ermoupoli",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->15_Heraklio",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Karlovassi->20_Athens",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->14_Chania",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->21_Rhodos",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->8_Ermoupoli",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->15_Heraklio",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->2_Larissa",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Patra->20_Athens",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->14_Chania",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->20_Athens",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->8_Ermoupoli",
+        "src": 10,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->2_Larissa",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->21_Rhodos",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Ioannina->15_Heraklio",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->20_Athens",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->15_Heraklio",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->2_Larissa",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->14_Chania",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->21_Rhodos",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Thessaloniki->8_Ermoupoli",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->14_Chania",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->2_Larissa",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->8_Ermoupoli",
+        "src": 12,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->20_Athens",
+        "src": 12,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->15_Heraklio",
+        "src": 12,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Xanthi->21_Rhodos",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    }
+]

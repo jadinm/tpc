@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_Geel->1_Antwerpen",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Leuven->3_Hasselt",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Brussel_II_B->6_Brussel_I_B",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Brussel_II_A->10_Global_Internet",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Liege->14_Brussel_I_A",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Brugge->16_Gent",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Korthijk->18_Mons",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Charleroi->20_Louvain-la-Neuve",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Namur->22_Arlon",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    }
+]

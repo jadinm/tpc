@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_0_Blue_Bell_Hill->2_Dunkirk",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Blue_Bell_Hill->1_Wye",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Blue_Bell_Hill->4_Kent",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Blue_Bell_Hill->8_University_of_Greenwich",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Beacon_Hill->2_Dunkirk",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Beacon_Hill->4_Kent",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Beacon_Hill->8_University_of_Greenwich",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Beacon_Hill->1_Wye",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cranbrook->1_Wye",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cranbrook->4_Kent",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cranbrook->8_University_of_Greenwich",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Cranbrook->2_Dunkirk",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->4_Kent",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->8_University_of_Greenwich",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->2_Dunkirk",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->1_Wye",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    }
+]

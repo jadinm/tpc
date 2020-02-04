@@ -1,0 +1,542 @@
+[
+    {
+        "label": "flow_0_Bordeaux->19_Internet_mondial",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->21_Poiters",
+        "src": 0,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->29_Rennes",
+        "src": 0,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->22_Strasbourg",
+        "src": 0,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->6_Montpellier",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->13_Paris",
+        "src": 0,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->12_Lyon",
+        "src": 0,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->20_Nantes",
+        "src": 0,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->9_Nice",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Bordeaux->15_Marseille",
+        "src": 0,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->13_Paris",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->21_Poiters",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->22_Strasbourg",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->19_Internet_mondial",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->15_Marseille",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->6_Montpellier",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->20_Nantes",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->29_Rennes",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->9_Nice",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Toulouse->12_Lyon",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->22_Strasbourg",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->9_Nice",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->29_Rennes",
+        "src": 2,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->12_Lyon",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->15_Marseille",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->13_Paris",
+        "src": 2,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->20_Nantes",
+        "src": 2,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->6_Montpellier",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->19_Internet_mondial",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Limoges->21_Poiters",
+        "src": 2,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->12_Lyon",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->9_Nice",
+        "src": 3,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->15_Marseille",
+        "src": 3,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->20_Nantes",
+        "src": 3,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->21_Poiters",
+        "src": 3,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->22_Strasbourg",
+        "src": 3,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->29_Rennes",
+        "src": 3,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->6_Montpellier",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->19_Internet_mondial",
+        "src": 3,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Besancon->13_Paris",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->19_Internet_mondial",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->22_Strasbourg",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->20_Nantes",
+        "src": 5,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->6_Montpellier",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->15_Marseille",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->9_Nice",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->29_Rennes",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->12_Lyon",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->13_Paris",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Clermont-Ferrand->21_Poiters",
+        "src": 5,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->9_Nice",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->6_Montpellier",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->15_Marseille",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->19_Internet_mondial",
+        "src": 6,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->13_Paris",
+        "src": 6,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->29_Rennes",
+        "src": 6,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->22_Strasbourg",
+        "src": 6,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->20_Nantes",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->12_Lyon",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Grenoble->21_Poiters",
+        "src": 6,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->6_Montpellier",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->21_Poiters",
+        "src": 15,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->15_Marseille",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->22_Strasbourg",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->20_Nantes",
+        "src": 15,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->13_Paris",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->19_Internet_mondial",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->29_Rennes",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->12_Lyon",
+        "src": 15,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Nancy->9_Nice",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->29_Rennes",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->20_Nantes",
+        "src": 16,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->21_Poiters",
+        "src": 16,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->19_Internet_mondial",
+        "src": 16,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->13_Paris",
+        "src": 16,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->12_Lyon",
+        "src": 16,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->15_Marseille",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->6_Montpellier",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->9_Nice",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Rouen->22_Strasbourg",
+        "src": 16,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->29_Rennes",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->15_Marseille",
+        "src": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->6_Montpellier",
+        "src": 17,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->22_Strasbourg",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->21_Poiters",
+        "src": 17,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->19_Internet_mondial",
+        "src": 17,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->20_Nantes",
+        "src": 17,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->13_Paris",
+        "src": 17,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->12_Lyon",
+        "src": 17,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Caen->9_Nice",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    }
+]

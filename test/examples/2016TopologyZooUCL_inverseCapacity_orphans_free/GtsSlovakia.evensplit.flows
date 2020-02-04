@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_6_Zilina->17_Trencin",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Spisska->26_Poprad",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Banska_Bystrica->28_Bratislava",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Kosice->30_Presov",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

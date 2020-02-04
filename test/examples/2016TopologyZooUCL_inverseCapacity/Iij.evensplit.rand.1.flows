@@ -1,0 +1,1094 @@
+[
+    {
+        "label": "flow_1_Tokyo_DC2->6_Shibuya_DC",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->30_Tokyo",
+        "src": 1,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->29_Chiba",
+        "src": 1,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->26_PaloAlto_DC",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->35_Okayama",
+        "src": 1,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->24_LA_DC",
+        "src": 1,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->3_Saitama_DC",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->0_Tokyo_DC1",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->36_Hiroshima",
+        "src": 1,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->31_Toyama",
+        "src": 1,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->22_Kyoto_DC",
+        "src": 1,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->2_Sendai_DC",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->18_Equinix_exchange",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Tokyo_DC2->23_Ashburn_DC",
+        "src": 1,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->23_Ashburn_DC",
+        "src": 5,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->2_Sendai_DC",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->26_PaloAlto_DC",
+        "src": 5,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->3_Saitama_DC",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->0_Tokyo_DC1",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->35_Okayama",
+        "src": 5,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->30_Tokyo",
+        "src": 5,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->36_Hiroshima",
+        "src": 5,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->31_Toyama",
+        "src": 5,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->18_Equinix_exchange",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->22_Kyoto_DC",
+        "src": 5,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->6_Shibuya_DC",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->29_Chiba",
+        "src": 5,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Yokohama_DC1->24_LA_DC",
+        "src": 5,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->29_Chiba",
+        "src": 7,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->2_Sendai_DC",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->30_Tokyo",
+        "src": 7,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->6_Shibuya_DC",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->31_Toyama",
+        "src": 7,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->26_PaloAlto_DC",
+        "src": 7,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->36_Hiroshima",
+        "src": 7,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->23_Ashburn_DC",
+        "src": 7,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->0_Tokyo_DC1",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->18_Equinix_exchange",
+        "src": 7,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->35_Okayama",
+        "src": 7,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->22_Kyoto_DC",
+        "src": 7,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->3_Saitama_DC",
+        "src": 7,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Ikebukuro_DC->24_LA_DC",
+        "src": 7,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->35_Okayama",
+        "src": 8,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->30_Tokyo",
+        "src": 8,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->24_LA_DC",
+        "src": 8,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->0_Tokyo_DC1",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->36_Hiroshima",
+        "src": 8,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->31_Toyama",
+        "src": 8,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->18_Equinix_exchange",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->26_PaloAlto_DC",
+        "src": 8,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->22_Kyoto_DC",
+        "src": 8,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->2_Sendai_DC",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->29_Chiba",
+        "src": 8,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->23_Ashburn_DC",
+        "src": 8,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->3_Saitama_DC",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Yokohama_DC2->6_Shibuya_DC",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->30_Tokyo",
+        "src": 9,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->2_Sendai_DC",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->6_Shibuya_DC",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->0_Tokyo_DC1",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->23_Ashburn_DC",
+        "src": 9,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->35_Okayama",
+        "src": 9,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->31_Toyama",
+        "src": 9,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->29_Chiba",
+        "src": 9,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->26_PaloAlto_DC",
+        "src": 9,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->24_LA_DC",
+        "src": 9,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->18_Equinix_exchange",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->36_Hiroshima",
+        "src": 9,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->3_Saitama_DC",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Nagoya_DC->22_Kyoto_DC",
+        "src": 9,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->0_Tokyo_DC1",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->23_Ashburn_DC",
+        "src": 19,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->36_Hiroshima",
+        "src": 19,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->35_Okayama",
+        "src": 19,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->3_Saitama_DC",
+        "src": 19,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->18_Equinix_exchange",
+        "src": 19,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->6_Shibuya_DC",
+        "src": 19,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->26_PaloAlto_DC",
+        "src": 19,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->24_LA_DC",
+        "src": 19,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->2_Sendai_DC",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->31_Toyama",
+        "src": 19,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->30_Tokyo",
+        "src": 19,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->22_Kyoto_DC",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Newyork_DC->29_Chiba",
+        "src": 19,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->24_LA_DC",
+        "src": 20,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->3_Saitama_DC",
+        "src": 20,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->23_Ashburn_DC",
+        "src": 20,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->0_Tokyo_DC1",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->36_Hiroshima",
+        "src": 20,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->30_Tokyo",
+        "src": 20,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->35_Okayama",
+        "src": 20,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->22_Kyoto_DC",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->18_Equinix_exchange",
+        "src": 20,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->31_Toyama",
+        "src": 20,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->6_Shibuya_DC",
+        "src": 20,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->29_Chiba",
+        "src": 20,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->2_Sendai_DC",
+        "src": 20,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Fukuoka_DC->26_PaloAlto_DC",
+        "src": 20,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->18_Equinix_exchange",
+        "src": 21,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->3_Saitama_DC",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->30_Tokyo",
+        "src": 21,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->31_Toyama",
+        "src": 21,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->29_Chiba",
+        "src": 21,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->24_LA_DC",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->23_Ashburn_DC",
+        "src": 21,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->26_PaloAlto_DC",
+        "src": 21,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->35_Okayama",
+        "src": 21,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->0_Tokyo_DC1",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->6_Shibuya_DC",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->2_Sendai_DC",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->22_Kyoto_DC",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Shinsaibashi_DC->36_Hiroshima",
+        "src": 21,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->36_Hiroshima",
+        "src": 25,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->29_Chiba",
+        "src": 25,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->3_Saitama_DC",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->22_Kyoto_DC",
+        "src": 25,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->6_Shibuya_DC",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->18_Equinix_exchange",
+        "src": 25,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->2_Sendai_DC",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->23_Ashburn_DC",
+        "src": 25,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->24_LA_DC",
+        "src": 25,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->26_PaloAlto_DC",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->31_Toyama",
+        "src": 25,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->30_Tokyo",
+        "src": 25,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->35_Okayama",
+        "src": 25,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_San_Jose_DC->0_Tokyo_DC1",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->31_Toyama",
+        "src": 28,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->35_Okayama",
+        "src": 28,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->2_Sendai_DC",
+        "src": 28,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->36_Hiroshima",
+        "src": 28,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->24_LA_DC",
+        "src": 28,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->29_Chiba",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->6_Shibuya_DC",
+        "src": 28,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->26_PaloAlto_DC",
+        "src": 28,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->18_Equinix_exchange",
+        "src": 28,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->30_Tokyo",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->0_Tokyo_DC1",
+        "src": 28,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->22_Kyoto_DC",
+        "src": 28,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->23_Ashburn_DC",
+        "src": 28,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sappora_DC->3_Saitama_DC",
+        "src": 28,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->22_Kyoto_DC",
+        "src": 32,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->35_Okayama",
+        "src": 32,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->26_PaloAlto_DC",
+        "src": 32,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->24_LA_DC",
+        "src": 32,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->6_Shibuya_DC",
+        "src": 32,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->31_Toyama",
+        "src": 32,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->18_Equinix_exchange",
+        "src": 32,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->3_Saitama_DC",
+        "src": 32,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->29_Chiba",
+        "src": 32,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->23_Ashburn_DC",
+        "src": 32,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->0_Tokyo_DC1",
+        "src": 32,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->2_Sendai_DC",
+        "src": 32,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->36_Hiroshima",
+        "src": 32,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kanazawa->30_Tokyo",
+        "src": 32,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->31_Toyama",
+        "src": 33,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->18_Equinix_exchange",
+        "src": 33,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->26_PaloAlto_DC",
+        "src": 33,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->2_Sendai_DC",
+        "src": 33,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->35_Okayama",
+        "src": 33,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->24_LA_DC",
+        "src": 33,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->30_Tokyo",
+        "src": 33,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->3_Saitama_DC",
+        "src": 33,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->23_Ashburn_DC",
+        "src": 33,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->36_Hiroshima",
+        "src": 33,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->6_Shibuya_DC",
+        "src": 33,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->0_Tokyo_DC1",
+        "src": 33,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->29_Chiba",
+        "src": 33,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Hamamatsu->22_Kyoto_DC",
+        "src": 33,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->3_Saitama_DC",
+        "src": 34,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->26_PaloAlto_DC",
+        "src": 34,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->2_Sendai_DC",
+        "src": 34,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->22_Kyoto_DC",
+        "src": 34,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->23_Ashburn_DC",
+        "src": 34,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->36_Hiroshima",
+        "src": 34,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->30_Tokyo",
+        "src": 34,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->0_Tokyo_DC1",
+        "src": 34,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->31_Toyama",
+        "src": 34,
+        "dest": 31,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->18_Equinix_exchange",
+        "src": 34,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->6_Shibuya_DC",
+        "src": 34,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->35_Okayama",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->29_Chiba",
+        "src": 34,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_Osaka->24_LA_DC",
+        "src": 34,
+        "dest": 24,
+        "volume": 100000
+    }
+]

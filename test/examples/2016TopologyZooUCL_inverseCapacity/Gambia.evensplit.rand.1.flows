@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_16_Earth_Station->3_Banjul",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Earth_Station->20_Abuko",
+        "src": 16,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Earth_Station->23_Bakau",
+        "src": 16,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Earth_Station->2_Kerewan",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Earth_Station->21_Serekunda",
+        "src": 16,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Earth_Station->15_Intelsat",
+        "src": 16,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->23_Bakau",
+        "src": 18,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->21_Serekunda",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->15_Intelsat",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->20_Abuko",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->3_Banjul",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Basse->2_Kerewan",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->15_Intelsat",
+        "src": 24,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->21_Serekunda",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->3_Banjul",
+        "src": 24,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->23_Bakau",
+        "src": 24,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->20_Abuko",
+        "src": 24,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brikama->2_Kerewan",
+        "src": 24,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->23_Bakau",
+        "src": 25,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->21_Serekunda",
+        "src": 25,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->2_Kerewan",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->3_Banjul",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->20_Abuko",
+        "src": 25,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Yundum->15_Intelsat",
+        "src": 25,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->20_Abuko",
+        "src": 26,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->21_Serekunda",
+        "src": 26,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->15_Intelsat",
+        "src": 26,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->23_Bakau",
+        "src": 26,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->3_Banjul",
+        "src": 26,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->2_Kerewan",
+        "src": 26,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->3_Banjul",
+        "src": 27,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->21_Serekunda",
+        "src": 27,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->23_Bakau",
+        "src": 27,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->2_Kerewan",
+        "src": 27,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->15_Intelsat",
+        "src": 27,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Farafenni->20_Abuko",
+        "src": 27,
+        "dest": 20,
+        "volume": 100000
+    }
+]

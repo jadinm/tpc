@@ -1,0 +1,386 @@
+[
+    {
+        "label": "flow_3_Kolding->21_Silkeborg",
+        "src": 3,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->22_Arthus",
+        "src": 3,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->2_Vejle",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->8_Orestad",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->0_Odense",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->4_Holbaek",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->20_Hobro",
+        "src": 3,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Kolding->1_Nyborg",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->4_Holbaek",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->8_Orestad",
+        "src": 5,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->1_Nyborg",
+        "src": 5,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->2_Vejle",
+        "src": 5,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->0_Odense",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->20_Hobro",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->21_Silkeborg",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Lyngby->22_Arthus",
+        "src": 5,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->22_Arthus",
+        "src": 6,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->8_Orestad",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->0_Odense",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->20_Hobro",
+        "src": 6,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->21_Silkeborg",
+        "src": 6,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->2_Vejle",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->1_Nyborg",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->4_Holbaek",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->22_Arthus",
+        "src": 7,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->4_Holbaek",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->0_Odense",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->8_Orestad",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->1_Nyborg",
+        "src": 7,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->21_Silkeborg",
+        "src": 7,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->20_Hobro",
+        "src": 7,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Naestved->2_Vejle",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->2_Vejle",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->20_Hobro",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->22_Arthus",
+        "src": 13,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->21_Silkeborg",
+        "src": 13,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->1_Nyborg",
+        "src": 13,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->4_Holbaek",
+        "src": 13,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->0_Odense",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->8_Orestad",
+        "src": 13,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->8_Orestad",
+        "src": 16,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->22_Arthus",
+        "src": 16,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->21_Silkeborg",
+        "src": 16,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->20_Hobro",
+        "src": 16,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->1_Nyborg",
+        "src": 16,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->4_Holbaek",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->2_Vejle",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Herning->0_Odense",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->20_Hobro",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->22_Arthus",
+        "src": 18,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->1_Nyborg",
+        "src": 18,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->21_Silkeborg",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->0_Odense",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->2_Vejle",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->4_Holbaek",
+        "src": 18,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->8_Orestad",
+        "src": 18,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->22_Arthus",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->21_Silkeborg",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->20_Hobro",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->0_Odense",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->4_Holbaek",
+        "src": 19,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->2_Vejle",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->8_Orestad",
+        "src": 19,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Farso->1_Nyborg",
+        "src": 19,
+        "dest": 1,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,27 @@
+NODES 6
+label x y
+29_Cyberjaya_PoP_(NOC) 101.7 2.9
+30_Border_Router 0.0 0.0
+31_South_PoP_(UTM) 103.8 1.5
+32_East_Coast_PoP_(UMP) 103.3 3.8
+33_North_PoP_(USM) 100.3 5.4
+34_KL_PoP_(UM) 101.7 3.1
+
+EDGES 16
+label src dest weight bw delay
+Link_58 0 3 64 15500 1
+Link_59 3 0 64 15500 1
+Link_60 0 4 16 62200 1
+Link_61 4 0 16 62200 1
+Link_62 0 5 10 100000 1
+Link_63 5 0 10 100000 1
+Link_64 0 1 10 100000 1
+Link_65 1 0 10 100000 1
+Link_66 0 2 16 62200 1
+Link_67 2 0 16 62200 1
+Link_72 2 5 16 62200 1
+Link_73 5 2 16 62200 1
+Link_74 3 5 64 15500 1
+Link_75 5 3 64 15500 1
+Link_76 4 5 16 62200 1
+Link_77 5 4 16 62200 1

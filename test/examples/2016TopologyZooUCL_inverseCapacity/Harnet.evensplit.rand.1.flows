@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_13_LU->20_HKBU",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_LU->16_HKUST",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_LU->2_HKIX",
+        "src": 13,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_LU->14_HKIEd",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_LU->15_HKU",
+        "src": 13,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_PolyU->20_HKBU",
+        "src": 17,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_PolyU->16_HKUST",
+        "src": 17,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_PolyU->15_HKU",
+        "src": 17,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_PolyU->14_HKIEd",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_PolyU->2_HKIX",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_CUHK->15_HKU",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_CUHK->20_HKBU",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_CUHK->16_HKUST",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_CUHK->2_HKIX",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_CUHK->14_HKIEd",
+        "src": 18,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CityU->15_HKU",
+        "src": 19,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CityU->14_HKIEd",
+        "src": 19,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CityU->20_HKBU",
+        "src": 19,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CityU->2_HKIX",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_CityU->16_HKUST",
+        "src": 19,
+        "dest": 16,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,22 @@
+NODES 5
+label x y
+0_Pacific_NW_Gigapop_(Seattle,_WA) 0.0 0.0
+2_Cat_6500_AS23814 0.0 0.0
+3_ONS-15454 1.9 49.4
+10_BigIron_15000_AS23814 0.0 0.0
+11_NetIron_N140G_AS23814 0.0 0.0
+
+EDGES 12
+label src dest weight bw delay
+Link_0 0 2 160 6220 1
+Link_1 2 0 160 6220 1
+Link_4 1 2 15 66033 1
+Link_5 2 1 15 66033 1
+Link_6 1 4 10 100000 1
+Link_7 4 1 10 100000 1
+Link_8 2 4 15 66033 1
+Link_9 4 2 15 66033 1
+Link_10 2 3 15 66033 1
+Link_11 3 2 15 66033 1
+Link_24 3 4 15 66033 1
+Link_25 4 3 15 66033 1

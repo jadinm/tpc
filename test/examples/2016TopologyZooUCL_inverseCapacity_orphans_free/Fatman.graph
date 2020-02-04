@@ -1,0 +1,37 @@
+NODES 8
+label x y
+5_None 0.0 0.0
+9_Glasgow -4.3 55.9
+10_Leeds -1.5 53.8
+11_RNEP1 -3.0 56.5
+12_RNEP2 -3.0 56.5
+13_University_of_Abertay_Dundee 0.0 0.0
+14_University_of_Dundee 0.0 0.0
+15_University_of_St_Andrews 0.0 0.0
+
+EDGES 24
+label src dest weight bw delay
+Link_10 0 3 10 100000 1
+Link_11 3 0 10 100000 1
+Link_12 0 4 10 100000 1
+Link_13 4 0 10 100000 1
+Link_20 1 4 10 100000 1
+Link_21 4 1 10 100000 1
+Link_22 1 2 10 100000 1
+Link_23 2 1 10 100000 1
+Link_24 2 3 10 100000 1
+Link_25 3 2 10 100000 1
+Link_26 3 4 10 100000 1
+Link_27 4 3 10 100000 1
+Link_28 3 5 10 100000 1
+Link_29 5 3 10 100000 1
+Link_30 3 6 10 100000 1
+Link_31 6 3 10 100000 1
+Link_32 3 7 10 100000 1
+Link_33 7 3 10 100000 1
+Link_36 4 5 10 100000 1
+Link_37 5 4 10 100000 1
+Link_38 4 6 10 100000 1
+Link_39 6 4 10 100000 1
+Link_40 4 7 10 100000 1
+Link_41 7 4 10 100000 1

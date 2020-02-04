@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_5_UoK-C->33_EIS-Maidstone",
+        "src": 5,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UoK-C->18_Chatham",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UoK-C->25_UoK_-_Tonbridge",
+        "src": 5,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UoK-C->35_CCCU-T",
+        "src": 5,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_KPSN->18_Chatham",
+        "src": 12,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_KPSN->33_EIS-Maidstone",
+        "src": 12,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_KPSN->35_CCCU-T",
+        "src": 12,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_KPSN->25_UoK_-_Tonbridge",
+        "src": 12,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_UoG-AH->25_UoK_-_Tonbridge",
+        "src": 30,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_UoG-AH->18_Chatham",
+        "src": 30,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_UoG-AH->35_CCCU-T",
+        "src": 30,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_UoG-AH->33_EIS-Maidstone",
+        "src": 30,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CCCU-S->35_CCCU-T",
+        "src": 34,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CCCU-S->33_EIS-Maidstone",
+        "src": 34,
+        "dest": 33,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CCCU-S->25_UoK_-_Tonbridge",
+        "src": 34,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CCCU-S->18_Chatham",
+        "src": 34,
+        "dest": 18,
+        "volume": 100000
+    }
+]

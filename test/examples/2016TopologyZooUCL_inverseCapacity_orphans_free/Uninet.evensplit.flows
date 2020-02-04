@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_1_NRT->2_SKA",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CBI->4_BKK",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_CRI->6_CMI",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_PNK->8_SKN",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_UBI->10_KKN",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_NRM->12_NPM",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

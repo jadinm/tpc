@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_edge-0->edge-5",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-0->edge-6",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-0->edge-4",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-0->edge-7",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-1->edge-4",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-1->edge-5",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_edge-1->edge-7",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    }
+]

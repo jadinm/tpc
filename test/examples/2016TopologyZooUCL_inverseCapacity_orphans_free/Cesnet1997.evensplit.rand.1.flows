@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_None->2_None",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_None->11_Olomouc",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_None->6_Praha",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_None->2_None",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_None->11_Olomouc",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_None->6_Praha",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    }
+]

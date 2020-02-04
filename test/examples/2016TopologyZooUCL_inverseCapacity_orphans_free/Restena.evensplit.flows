@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_2_Ettelbruck->3_Diekirch",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_RESTENA->10_BCE",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UNI.iu->14_Campus_Geesseknaeppchen",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Esch-sur-Alzette->16_Bettembourg",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Luxembourg->18_Limpertsberg",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    }
+]

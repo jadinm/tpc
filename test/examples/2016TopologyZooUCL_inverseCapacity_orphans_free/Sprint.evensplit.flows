@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_Cheyenne->1_Atlanta",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Seattle->4_Stockton",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Anaheim->6_Fort_Worth",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Kansas_City->8_Chicago",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_New_York_(Pennsauken)->10_Washington,_DC",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    }
+]

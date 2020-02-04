@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_Novi_Sad->2_Kragujevac",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Novi_Sad->3_Nis",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Novi_Sad->5_Podgorica",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Belgrade->3_Nis",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Belgrade->5_Podgorica",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Belgrade->2_Kragujevac",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Krusevac->3_Nis",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Krusevac->5_Podgorica",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Krusevac->2_Kragujevac",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    }
+]

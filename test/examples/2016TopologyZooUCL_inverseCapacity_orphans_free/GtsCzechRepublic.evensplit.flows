@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_2_Chomutov->3_Plzen",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Jindrichuv_Hradec->5_Havlickuv_Brod",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Ceske_Budejovice->9_Brno",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Hardec_Kralove->12_Usti_nad_Labem",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Ostrava->15_Zlin",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Ostrokovice->17_Hodonin",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Beroun->23_Karlovy_vary",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Olomouc->26_Ceska_Trebova",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Liberec->28_Semily",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    }
+]

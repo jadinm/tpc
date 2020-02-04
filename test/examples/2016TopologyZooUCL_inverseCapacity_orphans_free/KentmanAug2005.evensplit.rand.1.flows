@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_15_Blue_Bell_Hill->21_University_of_Greenwich",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Blue_Bell_Hill->14_UoK-C",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Blue_Bell_Hill->17_Dunkirk",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->21_University_of_Greenwich",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->17_Dunkirk",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Beacon_Hill->14_UoK-C",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_CCCU-S->17_Dunkirk",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_CCCU-S->21_University_of_Greenwich",
+        "src": 5,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_CCCU-S->14_UoK-C",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    }
+]

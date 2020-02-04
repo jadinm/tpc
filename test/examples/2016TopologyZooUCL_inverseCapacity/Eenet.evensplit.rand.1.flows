@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_5_Tallinn->11_Tartu",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Tallinn->10_Jogeva",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Tallinn->9_Viljandi",
+        "src": 5,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Paide->11_Tartu",
+        "src": 7,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Paide->10_Jogeva",
+        "src": 7,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Paide->9_Viljandi",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "label": "flow_3_Copenhagen->8_Oslo",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Copenhagen->1_Stockholm",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    }
+]

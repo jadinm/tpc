@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_22_Alger->7_Ouargla",
+        "src": 22,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Alger->8_Constantine",
+        "src": 22,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Oran->8_Constantine",
+        "src": 24,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Oran->7_Ouargla",
+        "src": 24,
+        "dest": 7,
+        "volume": 100000
+    }
+]

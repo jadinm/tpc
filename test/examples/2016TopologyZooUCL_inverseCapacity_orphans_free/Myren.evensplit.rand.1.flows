@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_31_South_PoP_(UTM)->29_Cyberjaya_PoP_(NOC)",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_South_PoP_(UTM)->34_KL_PoP_(UM)",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_South_PoP_(UTM)->33_North_PoP_(USM)",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_East_Coast_PoP_(UMP)->34_KL_PoP_(UM)",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_East_Coast_PoP_(UMP)->33_North_PoP_(USM)",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_East_Coast_PoP_(UMP)->29_Cyberjaya_PoP_(NOC)",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    }
+]

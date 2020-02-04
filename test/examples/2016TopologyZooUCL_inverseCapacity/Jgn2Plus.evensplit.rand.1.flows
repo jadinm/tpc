@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_0_Chugoku->15_None",
+        "src": 0,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Chugoku->2_Kyushu",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Chugoku->1_Kinki",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_Chugoku->12_Tokyo",
+        "src": 0,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tokai->12_Tokyo",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tokai->2_Kyushu",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tokai->1_Kinki",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tokai->15_None",
+        "src": 6,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Tohoku->12_Tokyo",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Tohoku->2_Kyushu",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Tohoku->15_None",
+        "src": 11,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Tohoku->1_Kinki",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    }
+]

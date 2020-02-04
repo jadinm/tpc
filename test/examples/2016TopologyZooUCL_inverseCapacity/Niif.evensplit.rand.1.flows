@@ -1,0 +1,542 @@
+[
+    {
+        "label": "flow_7_Debrecen->35_Gyor",
+        "src": 7,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->25_Szeged",
+        "src": 7,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->13_Nagykanizsa",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->9_Kecskemet",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->0_Miskolc",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->18_Hodmazovasarhely",
+        "src": 7,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->19_Bekescsaba",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->4_Godollo",
+        "src": 7,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->5_Jaszbereny",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Debrecen->21_Dunaujvaros",
+        "src": 7,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->35_Gyor",
+        "src": 8,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->5_Jaszbereny",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->19_Bekescsaba",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->13_Nagykanizsa",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->18_Hodmazovasarhely",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->9_Kecskemet",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->25_Szeged",
+        "src": 8,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->0_Miskolc",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->21_Dunaujvaros",
+        "src": 8,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Szolnok->4_Godollo",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->19_Bekescsaba",
+        "src": 11,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->13_Nagykanizsa",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->18_Hodmazovasarhely",
+        "src": 11,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->0_Miskolc",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->9_Kecskemet",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->21_Dunaujvaros",
+        "src": 11,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->35_Gyor",
+        "src": 11,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->4_Godollo",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->5_Jaszbereny",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Veszprem->25_Szeged",
+        "src": 11,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->4_Godollo",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->13_Nagykanizsa",
+        "src": 14,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->35_Gyor",
+        "src": 14,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->18_Hodmazovasarhely",
+        "src": 14,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->19_Bekescsaba",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->25_Szeged",
+        "src": 14,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->5_Jaszbereny",
+        "src": 14,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->9_Kecskemet",
+        "src": 14,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->0_Miskolc",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Zalaegerszeg->21_Dunaujvaros",
+        "src": 14,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->19_Bekescsaba",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->4_Godollo",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->0_Miskolc",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->13_Nagykanizsa",
+        "src": 15,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->5_Jaszbereny",
+        "src": 15,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->21_Dunaujvaros",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->9_Kecskemet",
+        "src": 15,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->35_Gyor",
+        "src": 15,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->25_Szeged",
+        "src": 15,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Szombathely->18_Hodmazovasarhely",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->9_Kecskemet",
+        "src": 16,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->35_Gyor",
+        "src": 16,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->21_Dunaujvaros",
+        "src": 16,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->19_Bekescsaba",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->4_Godollo",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->18_Hodmazovasarhely",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->0_Miskolc",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->5_Jaszbereny",
+        "src": 16,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->25_Szeged",
+        "src": 16,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Kaposvar->13_Nagykanizsa",
+        "src": 16,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->25_Szeged",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->0_Miskolc",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->35_Gyor",
+        "src": 23,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->18_Hodmazovasarhely",
+        "src": 23,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->4_Godollo",
+        "src": 23,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->5_Jaszbereny",
+        "src": 23,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->19_Bekescsaba",
+        "src": 23,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->13_Nagykanizsa",
+        "src": 23,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->9_Kecskemet",
+        "src": 23,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Pecs->21_Dunaujvaros",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->35_Gyor",
+        "src": 27,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->21_Dunaujvaros",
+        "src": 27,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->25_Szeged",
+        "src": 27,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->0_Miskolc",
+        "src": 27,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->9_Kecskemet",
+        "src": 27,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->18_Hodmazovasarhely",
+        "src": 27,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->4_Godollo",
+        "src": 27,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->5_Jaszbereny",
+        "src": 27,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->19_Bekescsaba",
+        "src": 27,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Sopron->13_Nagykanizsa",
+        "src": 27,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->35_Gyor",
+        "src": 32,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->19_Bekescsaba",
+        "src": 32,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->9_Kecskemet",
+        "src": 32,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->0_Miskolc",
+        "src": 32,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->21_Dunaujvaros",
+        "src": 32,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->13_Nagykanizsa",
+        "src": 32,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->5_Jaszbereny",
+        "src": 32,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->4_Godollo",
+        "src": 32,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->18_Hodmazovasarhely",
+        "src": 32,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Budapest->25_Szeged",
+        "src": 32,
+        "dest": 25,
+        "volume": 100000
+    }
+]

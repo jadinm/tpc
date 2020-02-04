@@ -1,0 +1,30 @@
+NODES 7
+label x y
+0_Pune 73.9 18.5
+3_Mumbai 72.8 19.0
+20_Chennai 80.3 13.1
+21_Bengaluru 77.6 13.0
+22_Delhi 77.2 28.6
+27_Kalkota 88.4 22.6
+29_Hyderabad 78.5 17.4
+
+EDGES 18
+label src dest weight bw delay
+Link_0 0 1 10 100000 1
+Link_1 1 0 10 100000 1
+Link_4 0 3 10 100000 1
+Link_5 3 0 10 100000 1
+Link_14 1 4 10 100000 1
+Link_15 4 1 10 100000 1
+Link_42 2 3 10 100000 1
+Link_43 3 2 10 100000 1
+Link_44 2 6 10 100000 1
+Link_45 6 2 10 100000 1
+Link_46 3 4 10 100000 1
+Link_47 4 3 10 100000 1
+Link_48 3 6 10 100000 1
+Link_49 6 3 10 100000 1
+Link_52 4 5 10 100000 1
+Link_53 5 4 10 100000 1
+Link_62 5 6 10 100000 1
+Link_63 6 5 10 100000 1

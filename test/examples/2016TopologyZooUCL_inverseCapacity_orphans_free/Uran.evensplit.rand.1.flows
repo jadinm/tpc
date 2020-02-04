@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_16_Lviv->5_Khmelnitsky",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Lviv->4_Vinnitsa",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Kiev->5_Khmelnitsky",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Kiev->4_Vinnitsa",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    }
+]

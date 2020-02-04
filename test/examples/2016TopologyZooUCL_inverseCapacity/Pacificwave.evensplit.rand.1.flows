@@ -1,0 +1,182 @@
+[
+    {
+        "label": "flow_8_NLR_FrameNet->17_CENIC",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->7_Internet2_DCN",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->4_StarLight",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->6_NLR_FrameNet",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->2_NLR_FrameNet",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_NLR_FrameNet->5_Pacific_Northwest_Gigapop",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->2_NLR_FrameNet",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->4_StarLight",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->5_Pacific_Northwest_Gigapop",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->6_NLR_FrameNet",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->17_CENIC",
+        "src": 9,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_CENIC->7_Internet2_DCN",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->2_NLR_FrameNet",
+        "src": 10,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->17_CENIC",
+        "src": 10,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->4_StarLight",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->7_Internet2_DCN",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->6_NLR_FrameNet",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Pacific_Wave_Sunnyvale->5_Pacific_Northwest_Gigapop",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->6_NLR_FrameNet",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->7_Internet2_DCN",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->17_CENIC",
+        "src": 11,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->5_Pacific_Northwest_Gigapop",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->2_NLR_FrameNet",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Pacific_Wave_Seattle->4_StarLight",
+        "src": 11,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->6_NLR_FrameNet",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->4_StarLight",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->7_Internet2_DCN",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->17_CENIC",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->2_NLR_FrameNet",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Pacific_Wave_Los_Angeles->5_Pacific_Northwest_Gigapop",
+        "src": 15,
+        "dest": 5,
+        "volume": 100000
+    }
+]

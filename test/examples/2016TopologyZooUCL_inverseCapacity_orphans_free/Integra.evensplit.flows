@@ -1,0 +1,68 @@
+[
+    {
+        "label": "flow_0_Chicago->1_Dallas",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_St_Cloud->3_Minneapolis/St_Paul",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Los_Angeles->5_Santa_Clara",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Las_Vegas->7_Phoenix",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Sacramento->11_Bend",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Reno->15_New_York",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Ashburn->17_Spokane",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Fargo?->19_Billings",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Denver->21_Ogden",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Orem->23_Salt_Lake_City",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Boise->25_Portland",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    }
+]

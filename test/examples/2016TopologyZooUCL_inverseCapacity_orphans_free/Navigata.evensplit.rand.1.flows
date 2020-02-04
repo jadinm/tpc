@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_4_Toronto->12_Winnipeg",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Toronto->11_Regina",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Toronto->9_Edmonton",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Toronto->8_Calgary",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Vancouver->9_Edmonton",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Vancouver->11_Regina",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Vancouver->8_Calgary",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Vancouver->12_Winnipeg",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Saskatoon->12_Winnipeg",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Saskatoon->8_Calgary",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Saskatoon->9_Edmonton",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Saskatoon->11_Regina",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_mel4->1_syd6",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_mel6->4_bne1",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_syd7->7_bne4",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_cbr1->16_sin1",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_hkg1->19_sjc2",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_nrt1->24_iad1",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_lon1->45_lax1",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_58_per2->59_per1",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_adl6->61_adl2",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    }
+]

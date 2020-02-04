@@ -1,0 +1,386 @@
+[
+    {
+        "label": "flow_2_UTEI->45_MEX",
+        "src": 2,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->50_?",
+        "src": 2,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->14_CO?",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->0_None",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->47_TU",
+        "src": 2,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->15_UDLAP",
+        "src": 2,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->28_VPN",
+        "src": 2,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_UTEI->46_Cd.J",
+        "src": 2,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->15_UDLAP",
+        "src": 5,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->46_Cd.J",
+        "src": 5,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->50_?",
+        "src": 5,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->0_None",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->28_VPN",
+        "src": 5,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->47_TU",
+        "src": 5,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->45_MEX",
+        "src": 5,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_UNAM->14_CO?",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->0_None",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->28_VPN",
+        "src": 13,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->14_CO?",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->46_Cd.J",
+        "src": 13,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->45_MEX",
+        "src": 13,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->47_TU",
+        "src": 13,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->50_?",
+        "src": 13,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_UV->15_UDLAP",
+        "src": 13,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->50_?",
+        "src": 31,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->0_None",
+        "src": 31,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->15_UDLAP",
+        "src": 31,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->28_VPN",
+        "src": 31,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->47_TU",
+        "src": 31,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->45_MEX",
+        "src": 31,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->14_CO?",
+        "src": 31,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_None->46_Cd.J",
+        "src": 31,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->47_TU",
+        "src": 41,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->28_VPN",
+        "src": 41,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->46_Cd.J",
+        "src": 41,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->50_?",
+        "src": 41,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->15_UDLAP",
+        "src": 41,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->0_None",
+        "src": 41,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->14_CO?",
+        "src": 41,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_CENIC->45_MEX",
+        "src": 41,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->45_MEX",
+        "src": 42,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->50_?",
+        "src": 42,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->0_None",
+        "src": 42,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->15_UDLAP",
+        "src": 42,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->47_TU",
+        "src": 42,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->46_Cd.J",
+        "src": 42,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->28_VPN",
+        "src": 42,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_42_Abilene->14_CO?",
+        "src": 42,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->46_Cd.J",
+        "src": 43,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->45_MEX",
+        "src": 43,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->47_TU",
+        "src": 43,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->50_?",
+        "src": 43,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->14_CO?",
+        "src": 43,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->0_None",
+        "src": 43,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->15_UDLAP",
+        "src": 43,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_MTY->28_VPN",
+        "src": 43,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->14_CO?",
+        "src": 44,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->47_TU",
+        "src": 44,
+        "dest": 47,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->45_MEX",
+        "src": 44,
+        "dest": 45,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->28_VPN",
+        "src": 44,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->46_Cd.J",
+        "src": 44,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->15_UDLAP",
+        "src": 44,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->50_?",
+        "src": 44,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_GDL->0_None",
+        "src": 44,
+        "dest": 0,
+        "volume": 100000
+    }
+]

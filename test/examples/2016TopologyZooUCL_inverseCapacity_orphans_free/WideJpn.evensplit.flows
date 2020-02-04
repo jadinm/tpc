@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_KDDI_Otemachi->1_Nezu",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Yagami->6_NTT_Otemachi",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Dojima->21_Fujisawa",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Nara->23_Fukuoka",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Hiroshima->25_Kurashiki",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    }
+]

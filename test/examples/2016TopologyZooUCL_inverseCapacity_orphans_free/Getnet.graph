@@ -1,0 +1,22 @@
+NODES 5
+label x y
+1_Santa_Clara -122.0 37.4
+2_Phoenix -112.1 33.4
+4_Washington,_DC -77.0 38.9
+5_Baltimore -76.6 39.3
+6_Pittsburgh -80.0 40.4
+
+EDGES 12
+label src dest weight bw delay
+Link_2 0 1 10 45000 1
+Link_3 1 0 10 45000 1
+Link_4 0 2 10 45000 1
+Link_5 2 0 10 45000 1
+Link_6 0 4 10 45000 1
+Link_7 4 0 10 45000 1
+Link_10 1 2 10 45000 1
+Link_11 2 1 10 45000 1
+Link_12 2 3 10 45000 1
+Link_13 3 2 10 45000 1
+Link_14 3 4 10 45000 1
+Link_15 4 3 10 45000 1

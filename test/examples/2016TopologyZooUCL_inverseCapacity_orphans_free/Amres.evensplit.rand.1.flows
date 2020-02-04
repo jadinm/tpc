@@ -1,0 +1,254 @@
+[
+    {
+        "label": "flow_3_Krustevac->24_Velika_Plana",
+        "src": 3,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->12_Beograd",
+        "src": 3,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->16_Raska",
+        "src": 3,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->5_Nis",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->22_Uzice",
+        "src": 3,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->15_Kraljevo",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Krustevac->17_Subotica",
+        "src": 3,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->15_Kraljevo",
+        "src": 7,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->22_Uzice",
+        "src": 7,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->17_Subotica",
+        "src": 7,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->16_Raska",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->5_Nis",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->12_Beograd",
+        "src": 7,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Leskovac->24_Velika_Plana",
+        "src": 7,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->22_Uzice",
+        "src": 8,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->16_Raska",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->15_Kraljevo",
+        "src": 8,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->24_Velika_Plana",
+        "src": 8,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->12_Beograd",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->5_Nis",
+        "src": 8,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Kragujevac->17_Subotica",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->16_Raska",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->15_Kraljevo",
+        "src": 9,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->12_Beograd",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->22_Uzice",
+        "src": 9,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->5_Nis",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->24_Velika_Plana",
+        "src": 9,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Novi_Sad->17_Subotica",
+        "src": 9,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->5_Nis",
+        "src": 20,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->17_Subotica",
+        "src": 20,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->22_Uzice",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->24_Velika_Plana",
+        "src": 20,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->16_Raska",
+        "src": 20,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->12_Beograd",
+        "src": 20,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Sabac->15_Kraljevo",
+        "src": 20,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->17_Subotica",
+        "src": 21,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->22_Uzice",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->5_Nis",
+        "src": 21,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->24_Velika_Plana",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->12_Beograd",
+        "src": 21,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->15_Kraljevo",
+        "src": 21,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Valjevo->16_Raska",
+        "src": 21,
+        "dest": 16,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,14 @@
+[
+    {
+        "label": "flow_1_Dialup_server->0_None",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Dialup_server->13_NOC",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    }
+]

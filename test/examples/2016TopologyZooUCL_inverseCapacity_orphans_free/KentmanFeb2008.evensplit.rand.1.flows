@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_12_UoK-C->21_IC-Wye",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UoK-C->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_UoK-C->22_EIS-Maidstone",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_University_of_Greenwich->11_Kent_Community_Network_(Schools,_etc)",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_University_of_Greenwich->22_EIS-Maidstone",
+        "src": 2,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_University_of_Greenwich->21_IC-Wye",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    }
+]

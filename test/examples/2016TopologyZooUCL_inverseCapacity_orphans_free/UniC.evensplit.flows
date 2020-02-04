@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Odense->1_Nyborg",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Vejle->3_Kolding",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Holbaek->5_Lyngby",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Slagelse->7_Naestved",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Orestad->16_Herning",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Aalborg->19_Farso",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hobro->21_Silkeborg",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

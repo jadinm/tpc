@@ -1,0 +1,794 @@
+[
+    {
+        "label": "flow_1_Lahti->2_Mikkeli",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->8_Rauma",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->15_NORDU",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->17_Lappeenranta",
+        "src": 1,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->4_Seinajoki",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->0_Kouvola",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->12_Espoo",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->3_Jyvaskyla",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->5_Pori",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->25_Koupio",
+        "src": 1,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->7_Hameenlinna",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Lahti->16_Joensuu",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->25_Koupio",
+        "src": 6,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->4_Seinajoki",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->15_NORDU",
+        "src": 6,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->7_Hameenlinna",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->5_Pori",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->16_Joensuu",
+        "src": 6,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->0_Kouvola",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->3_Jyvaskyla",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->17_Lappeenranta",
+        "src": 6,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->12_Espoo",
+        "src": 6,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->2_Mikkeli",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Tampere->8_Rauma",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->12_Espoo",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->4_Seinajoki",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->17_Lappeenranta",
+        "src": 9,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->5_Pori",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->7_Hameenlinna",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->8_Rauma",
+        "src": 9,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->2_Mikkeli",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->15_NORDU",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->16_Joensuu",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->25_Koupio",
+        "src": 9,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->0_Kouvola",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Turku->3_Jyvaskyla",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->8_Rauma",
+        "src": 10,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->12_Espoo",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->15_NORDU",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->0_Kouvola",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->5_Pori",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->7_Hameenlinna",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->17_Lappeenranta",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->2_Mikkeli",
+        "src": 10,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->25_Koupio",
+        "src": 10,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->16_Joensuu",
+        "src": 10,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->4_Seinajoki",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Helsinki->3_Jyvaskyla",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->17_Lappeenranta",
+        "src": 12,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->0_Kouvola",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->3_Jyvaskyla",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->15_NORDU",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->4_Seinajoki",
+        "src": 12,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->16_Joensuu",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->7_Hameenlinna",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->8_Rauma",
+        "src": 12,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->25_Koupio",
+        "src": 12,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->2_Mikkeli",
+        "src": 12,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->5_Pori",
+        "src": 12,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Salo->12_Espoo",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->0_Kouvola",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->3_Jyvaskyla",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->15_NORDU",
+        "src": 16,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->12_Espoo",
+        "src": 16,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->25_Koupio",
+        "src": 16,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->4_Seinajoki",
+        "src": 16,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->5_Pori",
+        "src": 16,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->16_Joensuu",
+        "src": 16,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->17_Lappeenranta",
+        "src": 16,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->7_Hameenlinna",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->8_Rauma",
+        "src": 16,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Oulu->2_Mikkeli",
+        "src": 16,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->2_Mikkeli",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->0_Kouvola",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->16_Joensuu",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->4_Seinajoki",
+        "src": 17,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->17_Lappeenranta",
+        "src": 17,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->12_Espoo",
+        "src": 17,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->25_Koupio",
+        "src": 17,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->8_Rauma",
+        "src": 17,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->15_NORDU",
+        "src": 17,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->5_Pori",
+        "src": 17,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->7_Hameenlinna",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Haukipudas->3_Jyvaskyla",
+        "src": 17,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->25_Koupio",
+        "src": 18,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->12_Espoo",
+        "src": 18,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->5_Pori",
+        "src": 18,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->7_Hameenlinna",
+        "src": 18,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->15_NORDU",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->17_Lappeenranta",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->2_Mikkeli",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->16_Joensuu",
+        "src": 18,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->4_Seinajoki",
+        "src": 18,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->3_Jyvaskyla",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->8_Rauma",
+        "src": 18,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Rovaniemi->0_Kouvola",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->0_Kouvola",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->15_NORDU",
+        "src": 19,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->16_Joensuu",
+        "src": 19,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->12_Espoo",
+        "src": 19,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->2_Mikkeli",
+        "src": 19,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->25_Koupio",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->17_Lappeenranta",
+        "src": 19,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->4_Seinajoki",
+        "src": 19,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->7_Hameenlinna",
+        "src": 19,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->8_Rauma",
+        "src": 19,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->5_Pori",
+        "src": 19,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Ristijavi->3_Jyvaskyla",
+        "src": 19,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->0_Kouvola",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->17_Lappeenranta",
+        "src": 20,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->5_Pori",
+        "src": 20,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->3_Jyvaskyla",
+        "src": 20,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->7_Hameenlinna",
+        "src": 20,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->2_Mikkeli",
+        "src": 20,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->15_NORDU",
+        "src": 20,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->4_Seinajoki",
+        "src": 20,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->16_Joensuu",
+        "src": 20,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->25_Koupio",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->8_Rauma",
+        "src": 20,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_Kokkola->12_Espoo",
+        "src": 20,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->16_Joensuu",
+        "src": 21,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->7_Hameenlinna",
+        "src": 21,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->12_Espoo",
+        "src": 21,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->8_Rauma",
+        "src": 21,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->3_Jyvaskyla",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->2_Mikkeli",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->17_Lappeenranta",
+        "src": 21,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->25_Koupio",
+        "src": 21,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->4_Seinajoki",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->15_NORDU",
+        "src": 21,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->0_Kouvola",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Vaasa->5_Pori",
+        "src": 21,
+        "dest": 5,
+        "volume": 100000
+    }
+]

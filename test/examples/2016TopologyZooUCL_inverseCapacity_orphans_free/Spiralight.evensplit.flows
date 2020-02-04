@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Milwaukee->1_Rockford",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Janesville->3_Waukesha",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Chicago->5_Madison",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Camp_Douglas->7_Minneaopolis",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Eau_Claire->9_Wausau",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Green_Bay->11_Appleton",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Oshkosh->13_Fon_Du_Lac",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

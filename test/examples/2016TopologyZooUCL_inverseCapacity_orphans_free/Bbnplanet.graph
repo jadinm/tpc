@@ -1,0 +1,37 @@
+NODES 10
+label x y
+1_Atlanta -84.4 33.7
+7_Cleveland -81.7 41.5
+8_Chicago -87.7 41.9
+11_New_York -74.0 40.7
+15_Washington,_DC -77.0 38.9
+17_Denver -105.0 39.7
+18_Dallas -96.8 32.8
+20_Oakland -122.3 37.8
+23_San_Jose -121.9 37.3
+24_Los_Angeles -118.2 34.1
+
+EDGES 22
+label src dest weight bw delay
+Link_2 0 6 10 45000 1
+Link_3 6 0 10 45000 1
+Link_4 0 4 10 45000 1
+Link_5 4 0 10 45000 1
+Link_16 1 2 10 45000 1
+Link_17 2 1 10 45000 1
+Link_18 1 3 10 45000 1
+Link_19 3 1 10 45000 1
+Link_20 2 5 10 45000 1
+Link_21 5 2 10 45000 1
+Link_28 3 4 10 45000 1
+Link_29 4 3 10 45000 1
+Link_36 4 8 10 45000 1
+Link_37 8 4 10 45000 1
+Link_38 5 7 10 45000 1
+Link_39 7 5 10 45000 1
+Link_40 6 9 10 45000 1
+Link_41 9 6 10 45000 1
+Link_46 7 8 10 45000 1
+Link_47 8 7 10 45000 1
+Link_50 8 9 10 45000 1
+Link_51 9 8 10 45000 1

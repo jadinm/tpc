@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_11_TELSTRA->21_Hobart",
+        "src": 11,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_TELSTRA->24_Adelaide",
+        "src": 11,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_TELSTRA->27_Sydney1",
+        "src": 11,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_TELSTRA->30_Melbourne",
+        "src": 11,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_TELSTRA->26_Brisbane",
+        "src": 11,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->24_Adelaide",
+        "src": 25,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->27_Sydney1",
+        "src": 25,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->26_Brisbane",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->21_Hobart",
+        "src": 25,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Perth->30_Melbourne",
+        "src": 25,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->30_Melbourne",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->26_Brisbane",
+        "src": 28,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->27_Sydney1",
+        "src": 28,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->21_Hobart",
+        "src": 28,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Sydney2->24_Adelaide",
+        "src": 28,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->21_Hobart",
+        "src": 29,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->24_Adelaide",
+        "src": 29,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->27_Sydney1",
+        "src": 29,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->30_Melbourne",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Canberra->26_Brisbane",
+        "src": 29,
+        "dest": 26,
+        "volume": 100000
+    }
+]

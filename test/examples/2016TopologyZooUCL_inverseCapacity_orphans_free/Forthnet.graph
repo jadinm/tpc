@@ -1,0 +1,14 @@
+NODES 3
+label x y
+7_Athens 23.7 38.0
+32_Internet 0.0 0.0
+55_Thessaloniki 22.9 40.6
+
+EDGES 6
+label src dest weight bw delay
+Link_16 0 1 10 100000 1
+Link_17 1 0 10 100000 1
+Link_42 0 2 15 64285 1
+Link_43 2 0 15 64285 1
+Link_92 1 2 18 53571 1
+Link_93 2 1 18 53571 1

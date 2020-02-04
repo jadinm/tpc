@@ -1,0 +1,31 @@
+NODES 8
+label x y
+0_Marrkech -8.0 31.6
+1_Fes -5.0 34.0
+2_Rabat -6.8 34.0
+3_Agadir -9.6 30.4
+4_Tanger -5.8 35.8
+6_None 0.0 0.0
+7_Casa -7.6 33.6
+15_None 0.0 0.0
+
+EDGES 18
+label src dest weight bw delay
+Link_0 0 1 24 40274 1
+Link_1 1 0 24 40274 1
+Link_2 0 3 24 40274 1
+Link_3 3 0 24 40274 1
+Link_4 1 4 24 40274 1
+Link_5 4 1 24 40274 1
+Link_6 2 6 24 40274 1
+Link_7 6 2 24 40274 1
+Link_8 2 3 24 40274 1
+Link_9 3 2 24 40274 1
+Link_10 2 7 10 100000 1
+Link_11 7 2 10 100000 1
+Link_16 4 6 24 40274 1
+Link_17 6 4 24 40274 1
+Link_22 5 6 10 100000 1
+Link_23 6 5 10 100000 1
+Link_24 5 7 24 40274 1
+Link_25 7 5 24 40274 1

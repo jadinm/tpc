@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Hamburg->2_Stuttgart",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Munich->4_Berlin",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Cologne->6_Frankfurt",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_London->9_Paris",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rotterdam->11_The_Hague",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Amsterdam->13_Utrecht",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    }
+]

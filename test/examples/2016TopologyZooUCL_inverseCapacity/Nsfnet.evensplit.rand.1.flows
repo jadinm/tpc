@@ -1,0 +1,152 @@
+[
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->7_San_Diego_Supercomputer_Center",
+        "src": 0,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->11_NCSA,_University_of_Illinois,_Champaign",
+        "src": 0,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->5_NorthWestNet,_Seattle",
+        "src": 0,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 0,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_SEQSUINET,_Rice_University,_Houston->6_BARRnet,_Palo_Alto",
+        "src": 0,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Jon_Von_Neumann_Center,_Princeton,_NJ->5_NorthWestNet,_Seattle",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Jon_Von_Neumann_Center,_Princeton,_NJ->7_San_Diego_Supercomputer_Center",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Jon_Von_Neumann_Center,_Princeton,_NJ->11_NCSA,_University_of_Illinois,_Champaign",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Jon_Von_Neumann_Center,_Princeton,_NJ->6_BARRnet,_Palo_Alto",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Jon_Von_Neumann_Center,_Princeton,_NJ->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 2,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->6_BARRnet,_Palo_Alto",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->7_San_Diego_Supercomputer_Center",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->11_NCSA,_University_of_Illinois,_Champaign",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_SURANET,_Georgia_Tech,_Atlanta->5_NorthWestNet,_Seattle",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cornell_Theory_Center,_Ithaca_NY->5_NorthWestNet,_Seattle",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cornell_Theory_Center,_Ithaca_NY->7_San_Diego_Supercomputer_Center",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cornell_Theory_Center,_Ithaca_NY->11_NCSA,_University_of_Illinois,_Champaign",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cornell_Theory_Center,_Ithaca_NY->6_BARRnet,_Palo_Alto",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Cornell_Theory_Center,_Ithaca_NY->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NCAR,_Boulder->12_Merit_Univ_of_Michigan,_Ann_Arbor",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NCAR,_Boulder->5_NorthWestNet,_Seattle",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NCAR,_Boulder->6_BARRnet,_Palo_Alto",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NCAR,_Boulder->11_NCSA,_University_of_Illinois,_Champaign",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NCAR,_Boulder->7_San_Diego_Supercomputer_Center",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    }
+]

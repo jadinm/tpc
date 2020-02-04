@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_Herndon/Ashburn->2_Montreal",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_New_York->6_Chicago",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Toronto->8_Vancouver",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Seattle->10_Fremont",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_San_Jose->12_Los_Angeles",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Dallas->15_Atlanta",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

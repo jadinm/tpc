@@ -1,0 +1,1352 @@
+[
+    {
+        "label": "flow_1_Kunming->23_Nanchang",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->15_Shenyang",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->33_Urumchi",
+        "src": 1,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->37_Xi'an",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->27_Qingdao",
+        "src": 1,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->0_Gullin",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->31_Zhengzhou",
+        "src": 1,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->13_Tianjing",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->39_Hohhot",
+        "src": 1,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->28_Nanjing",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->3_Guiyang",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->38_Yinchuan",
+        "src": 1,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->8_Shenzhen",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->7_Guangzhou",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Kunming->40_Taiyuan",
+        "src": 1,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->37_Xi'an",
+        "src": 2,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->31_Zhengzhou",
+        "src": 2,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->27_Qingdao",
+        "src": 2,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->40_Taiyuan",
+        "src": 2,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->13_Tianjing",
+        "src": 2,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->28_Nanjing",
+        "src": 2,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->15_Shenyang",
+        "src": 2,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->33_Urumchi",
+        "src": 2,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->38_Yinchuan",
+        "src": 2,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->8_Shenzhen",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->0_Gullin",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->7_Guangzhou",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->3_Guiyang",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->23_Nanchang",
+        "src": 2,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chongqing->39_Hohhot",
+        "src": 2,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->40_Taiyuan",
+        "src": 4,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->8_Shenzhen",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->23_Nanchang",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->33_Urumchi",
+        "src": 4,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->7_Guangzhou",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->31_Zhengzhou",
+        "src": 4,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->15_Shenyang",
+        "src": 4,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->13_Tianjing",
+        "src": 4,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->0_Gullin",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->27_Qingdao",
+        "src": 4,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->39_Hohhot",
+        "src": 4,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->37_Xi'an",
+        "src": 4,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->28_Nanjing",
+        "src": 4,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->38_Yinchuan",
+        "src": 4,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Haikou->3_Guiyang",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->7_Guangzhou",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->37_Xi'an",
+        "src": 5,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->38_Yinchuan",
+        "src": 5,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->31_Zhengzhou",
+        "src": 5,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->39_Hohhot",
+        "src": 5,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->33_Urumchi",
+        "src": 5,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->28_Nanjing",
+        "src": 5,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->0_Gullin",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->8_Shenzhen",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->23_Nanchang",
+        "src": 5,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->15_Shenyang",
+        "src": 5,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->3_Guiyang",
+        "src": 5,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->27_Qingdao",
+        "src": 5,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->40_Taiyuan",
+        "src": 5,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Nanning->13_Tianjing",
+        "src": 5,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->37_Xi'an",
+        "src": 8,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->0_Gullin",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->23_Nanchang",
+        "src": 8,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->38_Yinchuan",
+        "src": 8,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->39_Hohhot",
+        "src": 8,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->7_Guangzhou",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->27_Qingdao",
+        "src": 8,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->31_Zhengzhou",
+        "src": 8,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->8_Shenzhen",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->40_Taiyuan",
+        "src": 8,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->3_Guiyang",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->15_Shenyang",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->13_Tianjing",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->33_Urumchi",
+        "src": 8,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Xiemen->28_Nanjing",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->3_Guiyang",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->38_Yinchuan",
+        "src": 9,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->7_Guangzhou",
+        "src": 9,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->31_Zhengzhou",
+        "src": 9,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->33_Urumchi",
+        "src": 9,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->13_Tianjing",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->40_Taiyuan",
+        "src": 9,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->27_Qingdao",
+        "src": 9,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->37_Xi'an",
+        "src": 9,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->28_Nanjing",
+        "src": 9,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->23_Nanchang",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->8_Shenzhen",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->39_Hohhot",
+        "src": 9,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->15_Shenyang",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Shijiazhuang->0_Gullin",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->38_Yinchuan",
+        "src": 12,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->39_Hohhot",
+        "src": 12,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->33_Urumchi",
+        "src": 12,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->13_Tianjing",
+        "src": 12,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->27_Qingdao",
+        "src": 12,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->7_Guangzhou",
+        "src": 12,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->40_Taiyuan",
+        "src": 12,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->37_Xi'an",
+        "src": 12,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->23_Nanchang",
+        "src": 12,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->28_Nanjing",
+        "src": 12,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->3_Guiyang",
+        "src": 12,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->8_Shenzhen",
+        "src": 12,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->15_Shenyang",
+        "src": 12,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->31_Zhengzhou",
+        "src": 12,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Hefei->0_Gullin",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->15_Shenyang",
+        "src": 13,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->8_Shenzhen",
+        "src": 13,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->31_Zhengzhou",
+        "src": 13,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->33_Urumchi",
+        "src": 13,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->23_Nanchang",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->39_Hohhot",
+        "src": 13,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->40_Taiyuan",
+        "src": 13,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->27_Qingdao",
+        "src": 13,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->0_Gullin",
+        "src": 13,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->3_Guiyang",
+        "src": 13,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->7_Guangzhou",
+        "src": 13,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->13_Tianjing",
+        "src": 13,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->37_Xi'an",
+        "src": 13,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->28_Nanjing",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Beijing->38_Yinchuan",
+        "src": 13,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->40_Taiyuan",
+        "src": 15,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->15_Shenyang",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->7_Guangzhou",
+        "src": 15,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->31_Zhengzhou",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->37_Xi'an",
+        "src": 15,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->28_Nanjing",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->27_Qingdao",
+        "src": 15,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->0_Gullin",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->38_Yinchuan",
+        "src": 15,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->8_Shenzhen",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->33_Urumchi",
+        "src": 15,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->39_Hohhot",
+        "src": 15,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->23_Nanchang",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->13_Tianjing",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Wuhan->3_Guiyang",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->40_Taiyuan",
+        "src": 16,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->37_Xi'an",
+        "src": 16,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->38_Yinchuan",
+        "src": 16,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->3_Guiyang",
+        "src": 16,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->8_Shenzhen",
+        "src": 16,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->15_Shenyang",
+        "src": 16,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->13_Tianjing",
+        "src": 16,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->23_Nanchang",
+        "src": 16,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->28_Nanjing",
+        "src": 16,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->33_Urumchi",
+        "src": 16,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->27_Qingdao",
+        "src": 16,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->0_Gullin",
+        "src": 16,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->39_Hohhot",
+        "src": 16,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->7_Guangzhou",
+        "src": 16,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Changsha->31_Zhengzhou",
+        "src": 16,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->39_Hohhot",
+        "src": 17,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->27_Qingdao",
+        "src": 17,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->33_Urumchi",
+        "src": 17,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->7_Guangzhou",
+        "src": 17,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->15_Shenyang",
+        "src": 17,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->40_Taiyuan",
+        "src": 17,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->28_Nanjing",
+        "src": 17,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->23_Nanchang",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->37_Xi'an",
+        "src": 17,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->13_Tianjing",
+        "src": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->3_Guiyang",
+        "src": 17,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->8_Shenzhen",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->31_Zhengzhou",
+        "src": 17,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->38_Yinchuan",
+        "src": 17,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Fuzhou->0_Gullin",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->0_Gullin",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->13_Tianjing",
+        "src": 20,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->27_Qingdao",
+        "src": 20,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->15_Shenyang",
+        "src": 20,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->38_Yinchuan",
+        "src": 20,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->33_Urumchi",
+        "src": 20,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->28_Nanjing",
+        "src": 20,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->40_Taiyuan",
+        "src": 20,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->31_Zhengzhou",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->37_Xi'an",
+        "src": 20,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->7_Guangzhou",
+        "src": 20,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->3_Guiyang",
+        "src": 20,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->23_Nanchang",
+        "src": 20,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->8_Shenzhen",
+        "src": 20,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Shanghai->39_Hohhot",
+        "src": 20,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->31_Zhengzhou",
+        "src": 22,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->40_Taiyuan",
+        "src": 22,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->7_Guangzhou",
+        "src": 22,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->23_Nanchang",
+        "src": 22,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->28_Nanjing",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->0_Gullin",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->33_Urumchi",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->37_Xi'an",
+        "src": 22,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->13_Tianjing",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->39_Hohhot",
+        "src": 22,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->38_Yinchuan",
+        "src": 22,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->15_Shenyang",
+        "src": 22,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->3_Guiyang",
+        "src": 22,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->27_Qingdao",
+        "src": 22,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Chengdou->8_Shenzhen",
+        "src": 22,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->39_Hohhot",
+        "src": 24,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->23_Nanchang",
+        "src": 24,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->7_Guangzhou",
+        "src": 24,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->13_Tianjing",
+        "src": 24,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->28_Nanjing",
+        "src": 24,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->40_Taiyuan",
+        "src": 24,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->8_Shenzhen",
+        "src": 24,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->3_Guiyang",
+        "src": 24,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->27_Qingdao",
+        "src": 24,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->31_Zhengzhou",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->15_Shenyang",
+        "src": 24,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->0_Gullin",
+        "src": 24,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->37_Xi'an",
+        "src": 24,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->33_Urumchi",
+        "src": 24,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Xining->38_Yinchuan",
+        "src": 24,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->13_Tianjing",
+        "src": 25,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->15_Shenyang",
+        "src": 25,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->40_Taiyuan",
+        "src": 25,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->23_Nanchang",
+        "src": 25,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->33_Urumchi",
+        "src": 25,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->39_Hohhot",
+        "src": 25,
+        "dest": 28,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->28_Nanjing",
+        "src": 25,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->3_Guiyang",
+        "src": 25,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->27_Qingdao",
+        "src": 25,
+        "dest": 18,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->37_Xi'an",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->31_Zhengzhou",
+        "src": 25,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->38_Yinchuan",
+        "src": 25,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->7_Guangzhou",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->0_Gullin",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Lanzhou->8_Shenzhen",
+        "src": 25,
+        "dest": 7,
+        "volume": 100000
+    }
+]

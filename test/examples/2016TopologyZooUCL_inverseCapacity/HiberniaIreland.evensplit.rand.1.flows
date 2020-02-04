@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_3_Cork->0_Dublin",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cork->5_Portlaioise",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cork->2_Limerick",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Waterford->2_Limerick",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Waterford->5_Portlaioise",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Waterford->0_Dublin",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    }
+]

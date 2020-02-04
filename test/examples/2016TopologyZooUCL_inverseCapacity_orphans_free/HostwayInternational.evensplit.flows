@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Seattle->1_Tampa",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Chicago->4_Miami",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Austin->6_New_York",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Atlanta->8_Bucharest",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Seoul->10_Sydney",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Hannover->12_Amsterdam",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Antwerp->14_Frankfurt",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

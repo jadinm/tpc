@@ -1,0 +1,98 @@
+[
+    {
+        "label": "flow_5_Leiria->6_Lisboa",
+        "src": 5,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Leiria->7_Samtarem",
+        "src": 5,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Leiria->0_Portalegre",
+        "src": 5,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Leiria->20_Porto",
+        "src": 5,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Setubal->6_Lisboa",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Setubal->0_Portalegre",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Setubal->20_Porto",
+        "src": 8,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Setubal->7_Samtarem",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Aveiro->0_Portalegre",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Aveiro->7_Samtarem",
+        "src": 21,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Aveiro->6_Lisboa",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Aveiro->20_Porto",
+        "src": 21,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Coimbra->0_Portalegre",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Coimbra->20_Porto",
+        "src": 22,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Coimbra->6_Lisboa",
+        "src": 22,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Coimbra->7_Samtarem",
+        "src": 22,
+        "dest": 7,
+        "volume": 100000
+    }
+]

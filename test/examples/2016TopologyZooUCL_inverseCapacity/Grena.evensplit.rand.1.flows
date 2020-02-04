@@ -1,0 +1,122 @@
+[
+    {
+        "label": "flow_3_Cisco_3640_Kutaisi_C04->6_Cisco_3640_Khashuri",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cisco_3640_Kutaisi_C04->15_Cisco_3640_Kutaisi_C07",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cisco_3640_Kutaisi_C04->13_Rustavi_CO15",
+        "src": 3,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cisco_3640_Kutaisi_C04->4_Cisco_3640_Poti",
+        "src": 3,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Cisco_3640_Kutaisi_C04->0_Cisco_3640_Samtredia",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tbilisi_GRENA_Network->15_Cisco_3640_Kutaisi_C07",
+        "src": 8,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tbilisi_GRENA_Network->6_Cisco_3640_Khashuri",
+        "src": 8,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tbilisi_GRENA_Network->0_Cisco_3640_Samtredia",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tbilisi_GRENA_Network->13_Rustavi_CO15",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Tbilisi_GRENA_Network->4_Cisco_3640_Poti",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rustavi_CO14->0_Cisco_3640_Samtredia",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rustavi_CO14->13_Rustavi_CO15",
+        "src": 10,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rustavi_CO14->6_Cisco_3640_Khashuri",
+        "src": 10,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rustavi_CO14->15_Cisco_3640_Kutaisi_C07",
+        "src": 10,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Rustavi_CO14->4_Cisco_3640_Poti",
+        "src": 10,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Cisco_3640_Gori->4_Cisco_3640_Poti",
+        "src": 14,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Cisco_3640_Gori->6_Cisco_3640_Khashuri",
+        "src": 14,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Cisco_3640_Gori->15_Cisco_3640_Kutaisi_C07",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Cisco_3640_Gori->0_Cisco_3640_Samtredia",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Cisco_3640_Gori->13_Rustavi_CO15",
+        "src": 14,
+        "dest": 13,
+        "volume": 100000
+    }
+]

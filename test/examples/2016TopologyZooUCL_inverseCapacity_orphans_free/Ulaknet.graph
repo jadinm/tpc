@@ -1,0 +1,14 @@
+NODES 3
+label x y
+74_Istanbul 28.9 41.0
+75_iZMiR 27.1 38.4
+76_Ankara 32.9 39.9
+
+EDGES 6
+label src dest weight bw delay
+Link_148 0 2 10 100000 1
+Link_149 2 0 10 100000 1
+Link_158 0 1 20 49990 1
+Link_159 1 0 20 49990 1
+Link_160 1 2 166 5990 1
+Link_161 2 1 166 5990 1

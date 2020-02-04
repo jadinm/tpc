@@ -1,0 +1,44 @@
+[
+    {
+        "label": "flow_0_Sydney1->1_Brisbane2",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Canberra1->3_Sydney2",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Brisbane1->9_Hobart",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Canberra2->11_Perth1",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_Perth2->13_Adelaide1",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_Adelaide2->15_Melbourne1",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_Melbourne2->17_Alice_Springs",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

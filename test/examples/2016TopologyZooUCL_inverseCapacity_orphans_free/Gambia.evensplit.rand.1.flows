@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_3_Banjul->25_Yundum",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Banjul->27_Farafenni",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Banjul->2_Kerewan",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Serekunda->27_Farafenni",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Serekunda->2_Kerewan",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Serekunda->25_Yundum",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->27_Farafenni",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->25_Yundum",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Soma->2_Kerewan",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    }
+]

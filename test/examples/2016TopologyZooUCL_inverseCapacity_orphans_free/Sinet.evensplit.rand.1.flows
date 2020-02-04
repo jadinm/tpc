@@ -1,0 +1,218 @@
+[
+    {
+        "label": "flow_10_Matsuyama_DC->20_Nagoya_DC",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->49_Kyoto_DC",
+        "src": 2,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->5_Hiroshima_DC",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->44_Tsukuba_DC",
+        "src": 2,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->34_Tokyo_DC1",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Matsuyama_DC->0_Fukuoka_DC",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->20_Nagoya_DC",
+        "src": 4,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->34_Tokyo_DC1",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->5_Hiroshima_DC",
+        "src": 4,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->44_Tsukuba_DC",
+        "src": 4,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->49_Kyoto_DC",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Kanazawa_DC->0_Fukuoka_DC",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->0_Fukuoka_DC",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->44_Tsukuba_DC",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->34_Tokyo_DC1",
+        "src": 6,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->20_Nagoya_DC",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->5_Hiroshima_DC",
+        "src": 6,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Tokyo_DC2->49_Kyoto_DC",
+        "src": 6,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->0_Fukuoka_DC",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->20_Nagoya_DC",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->34_Tokyo_DC1",
+        "src": 9,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->44_Tsukuba_DC",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->49_Kyoto_DC",
+        "src": 9,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Osaka_DC->5_Hiroshima_DC",
+        "src": 9,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->20_Nagoya_DC",
+        "src": 10,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->5_Hiroshima_DC",
+        "src": 10,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->49_Kyoto_DC",
+        "src": 10,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->44_Tsukuba_DC",
+        "src": 10,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->0_Fukuoka_DC",
+        "src": 10,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_66_Sapporo_DC->34_Tokyo_DC1",
+        "src": 10,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->44_Tsukuba_DC",
+        "src": 11,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->5_Hiroshima_DC",
+        "src": 11,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->49_Kyoto_DC",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->0_Fukuoka_DC",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->20_Nagoya_DC",
+        "src": 11,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_70_Sendai_DC->34_Tokyo_DC1",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    }
+]

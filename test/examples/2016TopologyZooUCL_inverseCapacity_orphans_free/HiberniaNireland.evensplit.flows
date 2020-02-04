@@ -1,0 +1,50 @@
+[
+    {
+        "label": "flow_0_Drogheda->1_Southport",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Portadown->3_Castleblayney",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Monaghan->5_Dundalk",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Dublin->7_Armagh",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Ballymena->9_Belfast",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_North_America->12_None",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Omagh->14_Strabane",
+        "src": 13,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Letterkenny->16_Londonderry",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    }
+]

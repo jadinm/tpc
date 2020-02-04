@@ -1,0 +1,14 @@
+NODES 3
+label x y
+11_Oslo 10.7 59.9
+12_Stockholm 18.1 59.3
+16_Copenhagen 12.6 55.7
+
+EDGES 6
+label src dest weight bw delay
+Link_20 0 2 10 100000 1
+Link_21 2 0 10 100000 1
+Link_22 0 1 10 100000 1
+Link_23 1 0 10 100000 1
+Link_24 1 2 10 100000 1
+Link_25 2 1 10 100000 1

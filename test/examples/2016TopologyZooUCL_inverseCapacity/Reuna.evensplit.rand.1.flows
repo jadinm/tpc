@@ -1,0 +1,488 @@
+[
+    {
+        "label": "flow_1_ULAGOS->19_La_Serena",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->20_Copiapo",
+        "src": 1,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->36_REUNA",
+        "src": 1,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->12_RC-Nacional",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->23_Valdivia",
+        "src": 1,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->21_Antofagasta",
+        "src": 1,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->16_None",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->26_Santiago",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_ULAGOS->25_Concepcion",
+        "src": 1,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->26_Santiago",
+        "src": 9,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->36_REUNA",
+        "src": 9,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->21_Antofagasta",
+        "src": 9,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->19_La_Serena",
+        "src": 9,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->20_Copiapo",
+        "src": 9,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->12_RC-Nacional",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->25_Concepcion",
+        "src": 9,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->16_None",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Arica->23_Valdivia",
+        "src": 9,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->25_Concepcion",
+        "src": 11,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->16_None",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->12_RC-Nacional",
+        "src": 11,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->36_REUNA",
+        "src": 11,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->26_Santiago",
+        "src": 11,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->21_Antofagasta",
+        "src": 11,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->20_Copiapo",
+        "src": 11,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->19_La_Serena",
+        "src": 11,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_RC-12->23_Valdivia",
+        "src": 11,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->20_Copiapo",
+        "src": 13,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->16_None",
+        "src": 13,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->12_RC-Nacional",
+        "src": 13,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->36_REUNA",
+        "src": 13,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->21_Antofagasta",
+        "src": 13,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->19_La_Serena",
+        "src": 13,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->26_Santiago",
+        "src": 13,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->23_Valdivia",
+        "src": 13,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_None->25_Concepcion",
+        "src": 13,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->20_Copiapo",
+        "src": 14,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->36_REUNA",
+        "src": 14,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->19_La_Serena",
+        "src": 14,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->16_None",
+        "src": 14,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->21_Antofagasta",
+        "src": 14,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->23_Valdivia",
+        "src": 14,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->26_Santiago",
+        "src": 14,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->12_RC-Nacional",
+        "src": 14,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_None->25_Concepcion",
+        "src": 14,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->16_None",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->36_REUNA",
+        "src": 15,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->12_RC-Nacional",
+        "src": 15,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->19_La_Serena",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->25_Concepcion",
+        "src": 15,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->23_Valdivia",
+        "src": 15,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->21_Antofagasta",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->20_Copiapo",
+        "src": 15,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_None->26_Santiago",
+        "src": 15,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->16_None",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->19_La_Serena",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->21_Antofagasta",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->20_Copiapo",
+        "src": 18,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->23_Valdivia",
+        "src": 18,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->26_Santiago",
+        "src": 18,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->36_REUNA",
+        "src": 18,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->25_Concepcion",
+        "src": 18,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Osorno->12_RC-Nacional",
+        "src": 18,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->16_None",
+        "src": 22,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->21_Antofagasta",
+        "src": 22,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->12_RC-Nacional",
+        "src": 22,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->23_Valdivia",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->25_Concepcion",
+        "src": 22,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->36_REUNA",
+        "src": 22,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->20_Copiapo",
+        "src": 22,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->19_La_Serena",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Iquique->26_Santiago",
+        "src": 22,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->12_RC-Nacional",
+        "src": 24,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->25_Concepcion",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->21_Antofagasta",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->16_None",
+        "src": 24,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->36_REUNA",
+        "src": 24,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->20_Copiapo",
+        "src": 24,
+        "dest": 20,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->23_Valdivia",
+        "src": 24,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->26_Santiago",
+        "src": 24,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Temuco->19_La_Serena",
+        "src": 24,
+        "dest": 19,
+        "volume": 100000
+    }
+]

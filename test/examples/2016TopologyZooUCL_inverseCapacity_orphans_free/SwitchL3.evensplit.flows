@@ -1,0 +1,92 @@
+[
+    {
+        "label": "flow_0_Fribourg->1_Basel",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Delemont->3_Bern",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Kreuzlingen->5_St._Gallen",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Villigen_PSI->7_Zurich_(ETH)",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Buchs_SG->9_Chur",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Neuchatel->23_IXEurope_Zurich",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_Brig->25_Martigny",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Grenchen->27_Davos",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_Liechtenstein->29_Rapperswil",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_30_Manno->31_Zurich_(University)",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Horw->33_Brugg",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_34_CERN->35_Lausanne_(University)",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Geneva->37_Lausanne_(EPFL)",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_Yverdon->39_Birmensdorf",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_40_Rueschlikon->41_Winterthur",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    }
+]

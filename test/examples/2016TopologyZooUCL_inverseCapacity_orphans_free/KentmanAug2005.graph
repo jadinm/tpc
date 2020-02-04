@@ -1,0 +1,27 @@
+NODES 6
+label x y
+14_UoK-C 1.1 51.3
+15_Blue_Bell_Hill 0.5 51.3
+16_Beacon_Hill 0.4 51.4
+17_Dunkirk 1.0 51.3
+21_University_of_Greenwich 0.1 51.4
+25_CCCU-S 0.2 51.2
+
+EDGES 16
+label src dest weight bw delay
+Link_28 0 3 64 15500 1
+Link_29 3 0 64 15500 1
+Link_30 0 4 10 100000 1
+Link_31 4 0 10 100000 1
+Link_34 1 2 64 15500 1
+Link_35 2 1 64 15500 1
+Link_36 1 5 200 5000 1
+Link_37 5 1 200 5000 1
+Link_38 1 4 64 15500 1
+Link_39 4 1 64 15500 1
+Link_40 2 3 64 15500 1
+Link_41 3 2 64 15500 1
+Link_44 2 4 64 15500 1
+Link_45 4 2 64 15500 1
+Link_52 4 5 200 5000 1
+Link_53 5 4 200 5000 1

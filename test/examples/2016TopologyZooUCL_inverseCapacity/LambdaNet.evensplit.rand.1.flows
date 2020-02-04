@@ -1,0 +1,1946 @@
+[
+    {
+        "label": "flow_1_Brunswick->6_Erfurt",
+        "src": 1,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->14_Cologne",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->8_Nuremberg",
+        "src": 1,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->37_Bielefeld",
+        "src": 1,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->13_Dusseldorf",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->19_Bratislava",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->26_Ingolstadt",
+        "src": 1,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->15_Bonn",
+        "src": 1,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->2_Rostock",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->16_Essen",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->38_Hertford",
+        "src": 1,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->5_Dresden",
+        "src": 1,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->0_Magdeburg",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->40_Hanover",
+        "src": 1,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->30_Frankfurt",
+        "src": 1,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->24_Karlsruhe",
+        "src": 1,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->34_Amsterdam",
+        "src": 1,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Brunswick->9_Prague",
+        "src": 1,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->34_Amsterdam",
+        "src": 3,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->6_Erfurt",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->2_Rostock",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->24_Karlsruhe",
+        "src": 3,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->8_Nuremberg",
+        "src": 3,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->5_Dresden",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->15_Bonn",
+        "src": 3,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->0_Magdeburg",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->16_Essen",
+        "src": 3,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->37_Bielefeld",
+        "src": 3,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->19_Bratislava",
+        "src": 3,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->38_Hertford",
+        "src": 3,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->40_Hanover",
+        "src": 3,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->14_Cologne",
+        "src": 3,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->26_Ingolstadt",
+        "src": 3,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->13_Dusseldorf",
+        "src": 3,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->30_Frankfurt",
+        "src": 3,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Berlin->9_Prague",
+        "src": 3,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->14_Cologne",
+        "src": 4,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->13_Dusseldorf",
+        "src": 4,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->38_Hertford",
+        "src": 4,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->16_Essen",
+        "src": 4,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->34_Amsterdam",
+        "src": 4,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->8_Nuremberg",
+        "src": 4,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->5_Dresden",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->24_Karlsruhe",
+        "src": 4,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->15_Bonn",
+        "src": 4,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->37_Bielefeld",
+        "src": 4,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->26_Ingolstadt",
+        "src": 4,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->30_Frankfurt",
+        "src": 4,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->19_Bratislava",
+        "src": 4,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->6_Erfurt",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->40_Hanover",
+        "src": 4,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->9_Prague",
+        "src": 4,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->2_Rostock",
+        "src": 4,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Leipzig->0_Magdeburg",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->13_Dusseldorf",
+        "src": 7,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->26_Ingolstadt",
+        "src": 7,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->37_Bielefeld",
+        "src": 7,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->0_Magdeburg",
+        "src": 7,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->14_Cologne",
+        "src": 7,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->15_Bonn",
+        "src": 7,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->8_Nuremberg",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->6_Erfurt",
+        "src": 7,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->34_Amsterdam",
+        "src": 7,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->40_Hanover",
+        "src": 7,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->24_Karlsruhe",
+        "src": 7,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->19_Bratislava",
+        "src": 7,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->16_Essen",
+        "src": 7,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->2_Rostock",
+        "src": 7,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->9_Prague",
+        "src": 7,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->5_Dresden",
+        "src": 7,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->30_Frankfurt",
+        "src": 7,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Coburg->38_Hertford",
+        "src": 7,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->6_Erfurt",
+        "src": 11,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->16_Essen",
+        "src": 11,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->0_Magdeburg",
+        "src": 11,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->40_Hanover",
+        "src": 11,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->5_Dresden",
+        "src": 11,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->13_Dusseldorf",
+        "src": 11,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->34_Amsterdam",
+        "src": 11,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->38_Hertford",
+        "src": 11,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->9_Prague",
+        "src": 11,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->30_Frankfurt",
+        "src": 11,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->19_Bratislava",
+        "src": 11,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->26_Ingolstadt",
+        "src": 11,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->24_Karlsruhe",
+        "src": 11,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->14_Cologne",
+        "src": 11,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->15_Bonn",
+        "src": 11,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->8_Nuremberg",
+        "src": 11,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->2_Rostock",
+        "src": 11,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_None->37_Bielefeld",
+        "src": 11,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->40_Hanover",
+        "src": 17,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->26_Ingolstadt",
+        "src": 17,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->14_Cologne",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->38_Hertford",
+        "src": 17,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->19_Bratislava",
+        "src": 17,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->8_Nuremberg",
+        "src": 17,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->37_Bielefeld",
+        "src": 17,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->5_Dresden",
+        "src": 17,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->24_Karlsruhe",
+        "src": 17,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->30_Frankfurt",
+        "src": 17,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->9_Prague",
+        "src": 17,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->6_Erfurt",
+        "src": 17,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->15_Bonn",
+        "src": 17,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->34_Amsterdam",
+        "src": 17,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->13_Dusseldorf",
+        "src": 17,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->0_Magdeburg",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->16_Essen",
+        "src": 17,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_Brno->2_Rostock",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->30_Frankfurt",
+        "src": 18,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->40_Hanover",
+        "src": 18,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->16_Essen",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->37_Bielefeld",
+        "src": 18,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->2_Rostock",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->15_Bonn",
+        "src": 18,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->13_Dusseldorf",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->24_Karlsruhe",
+        "src": 18,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->8_Nuremberg",
+        "src": 18,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->14_Cologne",
+        "src": 18,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->38_Hertford",
+        "src": 18,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->34_Amsterdam",
+        "src": 18,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->6_Erfurt",
+        "src": 18,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->5_Dresden",
+        "src": 18,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->0_Magdeburg",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->26_Ingolstadt",
+        "src": 18,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->19_Bratislava",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_Vienna->9_Prague",
+        "src": 18,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->34_Amsterdam",
+        "src": 21,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->16_Essen",
+        "src": 21,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->2_Rostock",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->6_Erfurt",
+        "src": 21,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->14_Cologne",
+        "src": 21,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->40_Hanover",
+        "src": 21,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->8_Nuremberg",
+        "src": 21,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->9_Prague",
+        "src": 21,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->5_Dresden",
+        "src": 21,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->26_Ingolstadt",
+        "src": 21,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->37_Bielefeld",
+        "src": 21,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->24_Karlsruhe",
+        "src": 21,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->19_Bratislava",
+        "src": 21,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->0_Magdeburg",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->38_Hertford",
+        "src": 21,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->30_Frankfurt",
+        "src": 21,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->15_Bonn",
+        "src": 21,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Augsburg->13_Dusseldorf",
+        "src": 21,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->30_Frankfurt",
+        "src": 25,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->5_Dresden",
+        "src": 25,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->34_Amsterdam",
+        "src": 25,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->8_Nuremberg",
+        "src": 25,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->40_Hanover",
+        "src": 25,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->38_Hertford",
+        "src": 25,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->6_Erfurt",
+        "src": 25,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->15_Bonn",
+        "src": 25,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->16_Essen",
+        "src": 25,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->37_Bielefeld",
+        "src": 25,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->2_Rostock",
+        "src": 25,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->9_Prague",
+        "src": 25,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->19_Bratislava",
+        "src": 25,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->24_Karlsruhe",
+        "src": 25,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->14_Cologne",
+        "src": 25,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->26_Ingolstadt",
+        "src": 25,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->13_Dusseldorf",
+        "src": 25,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Stuttgart->0_Magdeburg",
+        "src": 25,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->9_Prague",
+        "src": 27,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->34_Amsterdam",
+        "src": 27,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->6_Erfurt",
+        "src": 27,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->2_Rostock",
+        "src": 27,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->15_Bonn",
+        "src": 27,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->13_Dusseldorf",
+        "src": 27,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->24_Karlsruhe",
+        "src": 27,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->38_Hertford",
+        "src": 27,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->16_Essen",
+        "src": 27,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->40_Hanover",
+        "src": 27,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->0_Magdeburg",
+        "src": 27,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->5_Dresden",
+        "src": 27,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->37_Bielefeld",
+        "src": 27,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->19_Bratislava",
+        "src": 27,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->14_Cologne",
+        "src": 27,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->30_Frankfurt",
+        "src": 27,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->26_Ingolstadt",
+        "src": 27,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_Munich->8_Nuremberg",
+        "src": 27,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->37_Bielefeld",
+        "src": 29,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->2_Rostock",
+        "src": 29,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->40_Hanover",
+        "src": 29,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->6_Erfurt",
+        "src": 29,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->14_Cologne",
+        "src": 29,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->26_Ingolstadt",
+        "src": 29,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->15_Bonn",
+        "src": 29,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->30_Frankfurt",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->9_Prague",
+        "src": 29,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->38_Hertford",
+        "src": 29,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->13_Dusseldorf",
+        "src": 29,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->19_Bratislava",
+        "src": 29,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->34_Amsterdam",
+        "src": 29,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->8_Nuremberg",
+        "src": 29,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->0_Magdeburg",
+        "src": 29,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->5_Dresden",
+        "src": 29,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->16_Essen",
+        "src": 29,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Wurzburg->24_Karlsruhe",
+        "src": 29,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->37_Bielefeld",
+        "src": 31,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->16_Essen",
+        "src": 31,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->34_Amsterdam",
+        "src": 31,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->2_Rostock",
+        "src": 31,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->0_Magdeburg",
+        "src": 31,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->26_Ingolstadt",
+        "src": 31,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->5_Dresden",
+        "src": 31,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->13_Dusseldorf",
+        "src": 31,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->8_Nuremberg",
+        "src": 31,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->19_Bratislava",
+        "src": 31,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->40_Hanover",
+        "src": 31,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->14_Cologne",
+        "src": 31,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->15_Bonn",
+        "src": 31,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->38_Hertford",
+        "src": 31,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->30_Frankfurt",
+        "src": 31,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->24_Karlsruhe",
+        "src": 31,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->9_Prague",
+        "src": 31,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Mannheim->6_Erfurt",
+        "src": 31,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->26_Ingolstadt",
+        "src": 32,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->16_Essen",
+        "src": 32,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->34_Amsterdam",
+        "src": 32,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->0_Magdeburg",
+        "src": 32,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->5_Dresden",
+        "src": 32,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->15_Bonn",
+        "src": 32,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->14_Cologne",
+        "src": 32,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->40_Hanover",
+        "src": 32,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->13_Dusseldorf",
+        "src": 32,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->38_Hertford",
+        "src": 32,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->9_Prague",
+        "src": 32,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->37_Bielefeld",
+        "src": 32,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->6_Erfurt",
+        "src": 32,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->30_Frankfurt",
+        "src": 32,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->8_Nuremberg",
+        "src": 32,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->2_Rostock",
+        "src": 32,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->24_Karlsruhe",
+        "src": 32,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_32_Kiel->19_Bratislava",
+        "src": 32,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->5_Dresden",
+        "src": 33,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->16_Essen",
+        "src": 33,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->40_Hanover",
+        "src": 33,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->0_Magdeburg",
+        "src": 33,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->37_Bielefeld",
+        "src": 33,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->14_Cologne",
+        "src": 33,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->34_Amsterdam",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->26_Ingolstadt",
+        "src": 33,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->6_Erfurt",
+        "src": 33,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->19_Bratislava",
+        "src": 33,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->13_Dusseldorf",
+        "src": 33,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->9_Prague",
+        "src": 33,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->30_Frankfurt",
+        "src": 33,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->24_Karlsruhe",
+        "src": 33,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->8_Nuremberg",
+        "src": 33,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->38_Hertford",
+        "src": 33,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->15_Bonn",
+        "src": 33,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_Copenhagen->2_Rostock",
+        "src": 33,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->6_Erfurt",
+        "src": 35,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->37_Bielefeld",
+        "src": 35,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->40_Hanover",
+        "src": 35,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->14_Cologne",
+        "src": 35,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->16_Essen",
+        "src": 35,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->5_Dresden",
+        "src": 35,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->26_Ingolstadt",
+        "src": 35,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->34_Amsterdam",
+        "src": 35,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->24_Karlsruhe",
+        "src": 35,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->0_Magdeburg",
+        "src": 35,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->9_Prague",
+        "src": 35,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->13_Dusseldorf",
+        "src": 35,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->19_Bratislava",
+        "src": 35,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->2_Rostock",
+        "src": 35,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->38_Hertford",
+        "src": 35,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->15_Bonn",
+        "src": 35,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->8_Nuremberg",
+        "src": 35,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_35_Dortmund->30_Frankfurt",
+        "src": 35,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->40_Hanover",
+        "src": 36,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->9_Prague",
+        "src": 36,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->5_Dresden",
+        "src": 36,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->37_Bielefeld",
+        "src": 36,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->26_Ingolstadt",
+        "src": 36,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->15_Bonn",
+        "src": 36,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->34_Amsterdam",
+        "src": 36,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->16_Essen",
+        "src": 36,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->0_Magdeburg",
+        "src": 36,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->8_Nuremberg",
+        "src": 36,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->2_Rostock",
+        "src": 36,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->24_Karlsruhe",
+        "src": 36,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->38_Hertford",
+        "src": 36,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->14_Cologne",
+        "src": 36,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->30_Frankfurt",
+        "src": 36,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->13_Dusseldorf",
+        "src": 36,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->6_Erfurt",
+        "src": 36,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_Gutersloh->19_Bratislava",
+        "src": 36,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->19_Bratislava",
+        "src": 39,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->5_Dresden",
+        "src": 39,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->37_Bielefeld",
+        "src": 39,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->15_Bonn",
+        "src": 39,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->38_Hertford",
+        "src": 39,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->0_Magdeburg",
+        "src": 39,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->30_Frankfurt",
+        "src": 39,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->34_Amsterdam",
+        "src": 39,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->26_Ingolstadt",
+        "src": 39,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->6_Erfurt",
+        "src": 39,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->24_Karlsruhe",
+        "src": 39,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->14_Cologne",
+        "src": 39,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->2_Rostock",
+        "src": 39,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->13_Dusseldorf",
+        "src": 39,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->9_Prague",
+        "src": 39,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->16_Essen",
+        "src": 39,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->8_Nuremberg",
+        "src": 39,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_39_Bremen->40_Hanover",
+        "src": 39,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->5_Dresden",
+        "src": 41,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->19_Bratislava",
+        "src": 41,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->16_Essen",
+        "src": 41,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->15_Bonn",
+        "src": 41,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->24_Karlsruhe",
+        "src": 41,
+        "dest": 24,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->30_Frankfurt",
+        "src": 41,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->40_Hanover",
+        "src": 41,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->6_Erfurt",
+        "src": 41,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->8_Nuremberg",
+        "src": 41,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->9_Prague",
+        "src": 41,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->2_Rostock",
+        "src": 41,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->37_Bielefeld",
+        "src": 41,
+        "dest": 37,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->13_Dusseldorf",
+        "src": 41,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->14_Cologne",
+        "src": 41,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->26_Ingolstadt",
+        "src": 41,
+        "dest": 26,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->38_Hertford",
+        "src": 41,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->34_Amsterdam",
+        "src": 41,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_41_Hamburg->0_Magdeburg",
+        "src": 41,
+        "dest": 0,
+        "volume": 100000
+    }
+]

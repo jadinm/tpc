@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_1_SRI->2_UCSB",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_UCLA->4_RAND",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_SDC->6_UTAH",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_MIT->8_BBN",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

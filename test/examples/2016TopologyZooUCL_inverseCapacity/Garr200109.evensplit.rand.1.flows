@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_4_BO->0_MI",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_BO->12_NA",
+        "src": 4,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_RM->12_NA",
+        "src": 18,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_RM->0_MI",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    }
+]

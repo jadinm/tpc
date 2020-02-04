@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_WLG->1_DUD",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_AVL->3_PNR",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_LCN->5_CHC",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_NLS->14_MUP",
+        "src": 7,
+        "dest": 8,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_NAP->22_ROT",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_HLT->24_AKL",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    }
+]

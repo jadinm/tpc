@@ -1,0 +1,56 @@
+[
+    {
+        "label": "flow_0_Hradec_Kralove->2_Jindrichuv_Hradec",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Pardubice->5_Zlin",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Olomouc->7_Brno",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_Ostrava->11_Letohrad",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Marlanske_Lazne->16_Most",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_Jihlava->36_Opava",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_44_Cheb->45_Plzen",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_Decin->47_Usti_nad_Labem",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_48_Praha->49_Liberec",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    }
+]

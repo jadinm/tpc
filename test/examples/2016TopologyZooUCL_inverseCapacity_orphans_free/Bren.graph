@@ -1,0 +1,46 @@
+NODES 13
+label x y
+0_Technical_Uni 23.3 42.7
+2_Todos_Kableshkov_Uni 23.3 42.7
+3_IPP-BAS 23.3 42.7
+10_Vasil_Levski_Uni 26.9 43.3
+11_Uni_of_Economics 27.9 43.2
+17_Ruse_Uni. 26.0 43.9
+21_Plovdiv_Uni 24.8 42.1
+22_Pleven_University 24.6 43.4
+25_Military_Uni 25.6 43.1
+27_Sofia_University 23.3 42.7
+28_Economy_Uni. 23.3 42.7
+34_Sofia_Uni. 23.3 42.7
+35_Medical_Uni_Sofia 23.3 42.7
+
+EDGES 28
+label src dest weight bw delay
+Link_0 0 2 14 71200 1
+Link_1 2 0 14 71200 1
+Link_2 0 10 14 71200 1
+Link_3 10 0 14 71200 1
+Link_12 1 11 14 71200 1
+Link_13 11 1 14 71200 1
+Link_14 1 2 14 71200 1
+Link_15 2 1 14 71200 1
+Link_20 2 6 10 100000 1
+Link_21 6 2 10 100000 1
+Link_22 2 7 10 100000 1
+Link_23 7 2 10 100000 1
+Link_34 3 5 10 100000 1
+Link_35 5 3 10 100000 1
+Link_36 3 4 10 100000 1
+Link_37 4 3 10 100000 1
+Link_42 4 6 10 100000 1
+Link_43 6 4 10 100000 1
+Link_46 5 8 10 100000 1
+Link_47 8 5 10 100000 1
+Link_54 7 8 10 100000 1
+Link_55 8 7 10 100000 1
+Link_62 9 12 14 71200 1
+Link_63 12 9 14 71200 1
+Link_64 9 10 14 71200 1
+Link_65 10 9 14 71200 1
+Link_72 11 12 14 71200 1
+Link_73 12 11 14 71200 1

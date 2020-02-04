@@ -1,0 +1,866 @@
+[
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->46_Astrophysical_Obs.",
+        "src": 1,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->58_Ecological_Center",
+        "src": 1,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->53_Inst._Radiophysics",
+        "src": 1,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->47_Inst._Microbiology",
+        "src": 1,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->28_Museum",
+        "src": 1,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->55_Institute_of_Applied_Physics",
+        "src": 1,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->20_Yeveran_Physics_Inst.",
+        "src": 1,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->4_Inst._Biochem",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->2_Inst._Radio_Meas.",
+        "src": 1,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->8_TV_station",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->7_Inst._Informatics",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_Isnt._Chemical_Physics->44_SCS",
+        "src": 1,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->8_TV_station",
+        "src": 6,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->47_Inst._Microbiology",
+        "src": 6,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->2_Inst._Radio_Meas.",
+        "src": 6,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->4_Inst._Biochem",
+        "src": 6,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->58_Ecological_Center",
+        "src": 6,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->53_Inst._Radiophysics",
+        "src": 6,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->55_Institute_of_Applied_Physics",
+        "src": 6,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->7_Inst._Informatics",
+        "src": 6,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->28_Museum",
+        "src": 6,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->20_Yeveran_Physics_Inst.",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->44_SCS",
+        "src": 6,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Inst._Physiology->46_Astrophysical_Obs.",
+        "src": 6,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->7_Inst._Informatics",
+        "src": 8,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->20_Yeveran_Physics_Inst.",
+        "src": 8,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->58_Ecological_Center",
+        "src": 8,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->46_Astrophysical_Obs.",
+        "src": 8,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->47_Inst._Microbiology",
+        "src": 8,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->53_Inst._Radiophysics",
+        "src": 8,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->4_Inst._Biochem",
+        "src": 8,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->2_Inst._Radio_Meas.",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->28_Museum",
+        "src": 8,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->8_TV_station",
+        "src": 8,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->55_Institute_of_Applied_Physics",
+        "src": 8,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_National_Academy->44_SCS",
+        "src": 8,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->47_Inst._Microbiology",
+        "src": 9,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->28_Museum",
+        "src": 9,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->4_Inst._Biochem",
+        "src": 9,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->7_Inst._Informatics",
+        "src": 9,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->46_Astrophysical_Obs.",
+        "src": 9,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->2_Inst._Radio_Meas.",
+        "src": 9,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->8_TV_station",
+        "src": 9,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->44_SCS",
+        "src": 9,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->55_Institute_of_Applied_Physics",
+        "src": 9,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->20_Yeveran_Physics_Inst.",
+        "src": 9,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->53_Inst._Radiophysics",
+        "src": 9,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_National_Stats._science->58_Ecological_Center",
+        "src": 9,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->53_Inst._Radiophysics",
+        "src": 15,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->8_TV_station",
+        "src": 15,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->2_Inst._Radio_Meas.",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->20_Yeveran_Physics_Inst.",
+        "src": 15,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->28_Museum",
+        "src": 15,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->46_Astrophysical_Obs.",
+        "src": 15,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->47_Inst._Microbiology",
+        "src": 15,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->58_Ecological_Center",
+        "src": 15,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->44_SCS",
+        "src": 15,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->4_Inst._Biochem",
+        "src": 15,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->55_Institute_of_Applied_Physics",
+        "src": 15,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_ARENA->7_Inst._Informatics",
+        "src": 15,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->7_Inst._Informatics",
+        "src": 17,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->4_Inst._Biochem",
+        "src": 17,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->44_SCS",
+        "src": 17,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->53_Inst._Radiophysics",
+        "src": 17,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->47_Inst._Microbiology",
+        "src": 17,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->2_Inst._Radio_Meas.",
+        "src": 17,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->8_TV_station",
+        "src": 17,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->58_Ecological_Center",
+        "src": 17,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->28_Museum",
+        "src": 17,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->46_Astrophysical_Obs.",
+        "src": 17,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->55_Institute_of_Applied_Physics",
+        "src": 17,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_56_Inst._of_Molecular_Biology->20_Yeveran_Physics_Inst.",
+        "src": 17,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->28_Museum",
+        "src": 18,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->46_Astrophysical_Obs.",
+        "src": 18,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->8_TV_station",
+        "src": 18,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->47_Inst._Microbiology",
+        "src": 18,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->7_Inst._Informatics",
+        "src": 18,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->44_SCS",
+        "src": 18,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->53_Inst._Radiophysics",
+        "src": 18,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->4_Inst._Biochem",
+        "src": 18,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->20_Yeveran_Physics_Inst.",
+        "src": 18,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->58_Ecological_Center",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->55_Institute_of_Applied_Physics",
+        "src": 18,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_57_Agricultural_Academy->2_Inst._Radio_Meas.",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->20_Yeveran_Physics_Inst.",
+        "src": 20,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->47_Inst._Microbiology",
+        "src": 20,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->28_Museum",
+        "src": 20,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->53_Inst._Radiophysics",
+        "src": 20,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->58_Ecological_Center",
+        "src": 20,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->46_Astrophysical_Obs.",
+        "src": 20,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->44_SCS",
+        "src": 20,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->4_Inst._Biochem",
+        "src": 20,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->55_Institute_of_Applied_Physics",
+        "src": 20,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->7_Inst._Informatics",
+        "src": 20,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->2_Inst._Radio_Meas.",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_59_Intitute_of_Botany->8_TV_station",
+        "src": 20,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->58_Ecological_Center",
+        "src": 21,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->47_Inst._Microbiology",
+        "src": 21,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->44_SCS",
+        "src": 21,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->20_Yeveran_Physics_Inst.",
+        "src": 21,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->4_Inst._Biochem",
+        "src": 21,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->8_TV_station",
+        "src": 21,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->7_Inst._Informatics",
+        "src": 21,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->46_Astrophysical_Obs.",
+        "src": 21,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->53_Inst._Radiophysics",
+        "src": 21,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->2_Inst._Radio_Meas.",
+        "src": 21,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->28_Museum",
+        "src": 21,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Institute_of_Zoology->55_Institute_of_Applied_Physics",
+        "src": 21,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->2_Inst._Radio_Meas.",
+        "src": 22,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->58_Ecological_Center",
+        "src": 22,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->47_Inst._Microbiology",
+        "src": 22,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->20_Yeveran_Physics_Inst.",
+        "src": 22,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->7_Inst._Informatics",
+        "src": 22,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->46_Astrophysical_Obs.",
+        "src": 22,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->4_Inst._Biochem",
+        "src": 22,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->8_TV_station",
+        "src": 22,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->28_Museum",
+        "src": 22,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->53_Inst._Radiophysics",
+        "src": 22,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->44_SCS",
+        "src": 22,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_61_Gallery->55_Institute_of_Applied_Physics",
+        "src": 22,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->7_Inst._Informatics",
+        "src": 23,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->8_TV_station",
+        "src": 23,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->55_Institute_of_Applied_Physics",
+        "src": 23,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->4_Inst._Biochem",
+        "src": 23,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->2_Inst._Radio_Meas.",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->46_Astrophysical_Obs.",
+        "src": 23,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->28_Museum",
+        "src": 23,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->20_Yeveran_Physics_Inst.",
+        "src": 23,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->44_SCS",
+        "src": 23,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->58_Ecological_Center",
+        "src": 23,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->47_Inst._Microbiology",
+        "src": 23,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Yerevan_University->53_Inst._Radiophysics",
+        "src": 23,
+        "dest": 14,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->8_TV_station",
+        "src": 24,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->47_Inst._Microbiology",
+        "src": 24,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->58_Ecological_Center",
+        "src": 24,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->4_Inst._Biochem",
+        "src": 24,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->20_Yeveran_Physics_Inst.",
+        "src": 24,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->44_SCS",
+        "src": 24,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->55_Institute_of_Applied_Physics",
+        "src": 24,
+        "dest": 16,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->7_Inst._Informatics",
+        "src": 24,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->28_Museum",
+        "src": 24,
+        "dest": 10,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->2_Inst._Radio_Meas.",
+        "src": 24,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->46_Astrophysical_Obs.",
+        "src": 24,
+        "dest": 12,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_State_Engineering_University->53_Inst._Radiophysics",
+        "src": 24,
+        "dest": 14,
+        "volume": 100000
+    }
+]

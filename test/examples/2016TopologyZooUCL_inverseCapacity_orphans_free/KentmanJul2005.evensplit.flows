@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Blue_Bell_Hill->1_Wye",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Dunkirk->3_Beacon_Hill",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Kent->6_Cranbrook",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_NTL-Wye->8_University_of_Greenwich",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

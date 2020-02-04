@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_5_Tallinn->9_Viljandi",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_Tallinn->7_Paide",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Jogeva->7_Paide",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Jogeva->9_Viljandi",
+        "src": 3,
+        "dest": 2,
+        "volume": 100000
+    }
+]

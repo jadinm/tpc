@@ -1,0 +1,26 @@
+[
+    {
+        "label": "flow_0_Minneapolis->1_Seattle",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_San_Jose->3_Phoenix",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Dallas->5_Atlanta",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Vienna->7_Whippany",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    }
+]

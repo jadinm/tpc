@@ -1,0 +1,4538 @@
+[
+    {
+        "label": "flow_2_None->68_NAZ",
+        "src": 2,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->61_RERO",
+        "src": 2,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->50_IWB",
+        "src": 2,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->29_UniBE",
+        "src": 2,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->34_HSR",
+        "src": 2,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->66_ZHAW",
+        "src": 2,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->48_EUResearch",
+        "src": 2,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->70_ETH",
+        "src": 2,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->55_NTB",
+        "src": 2,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->60_PHTG",
+        "src": 2,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->35_ENSI",
+        "src": 2,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->22_None",
+        "src": 2,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->17_UniGE",
+        "src": 2,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->49_None",
+        "src": 2,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->42_EPFL",
+        "src": 2,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->1_None",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->73_WSL",
+        "src": 2,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->39_HES-SO",
+        "src": 2,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->44_HES-SO_AvdP",
+        "src": 2,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->67_meteoGH",
+        "src": 2,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->0_None",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->25_HSLU",
+        "src": 2,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->41_Skyguide",
+        "src": 2,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->21_None",
+        "src": 2,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->30_HFT-SO",
+        "src": 2,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->72_IBM",
+        "src": 2,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->64_Equinix",
+        "src": 2,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_None->40_CERN",
+        "src": 2,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->44_HES-SO_AvdP",
+        "src": 3,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->49_None",
+        "src": 3,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->72_IBM",
+        "src": 3,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->25_HSLU",
+        "src": 3,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->34_HSR",
+        "src": 3,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->64_Equinix",
+        "src": 3,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->21_None",
+        "src": 3,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->1_None",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->40_CERN",
+        "src": 3,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->68_NAZ",
+        "src": 3,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->67_meteoGH",
+        "src": 3,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->0_None",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->30_HFT-SO",
+        "src": 3,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->42_EPFL",
+        "src": 3,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->60_PHTG",
+        "src": 3,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->48_EUResearch",
+        "src": 3,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->22_None",
+        "src": 3,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->50_IWB",
+        "src": 3,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->61_RERO",
+        "src": 3,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->17_UniGE",
+        "src": 3,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->73_WSL",
+        "src": 3,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->55_NTB",
+        "src": 3,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->39_HES-SO",
+        "src": 3,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->29_UniBE",
+        "src": 3,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->70_ETH",
+        "src": 3,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->35_ENSI",
+        "src": 3,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->41_Skyguide",
+        "src": 3,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_None->66_ZHAW",
+        "src": 3,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->42_EPFL",
+        "src": 8,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->0_None",
+        "src": 8,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->22_None",
+        "src": 8,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->30_HFT-SO",
+        "src": 8,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->73_WSL",
+        "src": 8,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->40_CERN",
+        "src": 8,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->61_RERO",
+        "src": 8,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->67_meteoGH",
+        "src": 8,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->25_HSLU",
+        "src": 8,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->21_None",
+        "src": 8,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->50_IWB",
+        "src": 8,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->29_UniBE",
+        "src": 8,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->1_None",
+        "src": 8,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->17_UniGE",
+        "src": 8,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->35_ENSI",
+        "src": 8,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->60_PHTG",
+        "src": 8,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->66_ZHAW",
+        "src": 8,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->68_NAZ",
+        "src": 8,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->44_HES-SO_AvdP",
+        "src": 8,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->70_ETH",
+        "src": 8,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->64_Equinix",
+        "src": 8,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->49_None",
+        "src": 8,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->48_EUResearch",
+        "src": 8,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->72_IBM",
+        "src": 8,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->41_Skyguide",
+        "src": 8,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->55_NTB",
+        "src": 8,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->39_HES-SO",
+        "src": 8,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_UniNE->34_HSR",
+        "src": 8,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->50_IWB",
+        "src": 12,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->61_RERO",
+        "src": 12,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->55_NTB",
+        "src": 12,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->72_IBM",
+        "src": 12,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->40_CERN",
+        "src": 12,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->1_None",
+        "src": 12,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->30_HFT-SO",
+        "src": 12,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->73_WSL",
+        "src": 12,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->41_Skyguide",
+        "src": 12,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->39_HES-SO",
+        "src": 12,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->67_meteoGH",
+        "src": 12,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->22_None",
+        "src": 12,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->66_ZHAW",
+        "src": 12,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->48_EUResearch",
+        "src": 12,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->49_None",
+        "src": 12,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->17_UniGE",
+        "src": 12,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->70_ETH",
+        "src": 12,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->42_EPFL",
+        "src": 12,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->25_HSLU",
+        "src": 12,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->21_None",
+        "src": 12,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->34_HSR",
+        "src": 12,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->29_UniBE",
+        "src": 12,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->44_HES-SO_AvdP",
+        "src": 12,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->60_PHTG",
+        "src": 12,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->35_ENSI",
+        "src": 12,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->68_NAZ",
+        "src": 12,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->0_None",
+        "src": 12,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_12_CSCS_TI-EDU->64_Equinix",
+        "src": 12,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->34_HSR",
+        "src": 14,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->49_None",
+        "src": 14,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->30_HFT-SO",
+        "src": 14,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->60_PHTG",
+        "src": 14,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->21_None",
+        "src": 14,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->73_WSL",
+        "src": 14,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->40_CERN",
+        "src": 14,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->1_None",
+        "src": 14,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->66_ZHAW",
+        "src": 14,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->29_UniBE",
+        "src": 14,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->64_Equinix",
+        "src": 14,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->17_UniGE",
+        "src": 14,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->0_None",
+        "src": 14,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->22_None",
+        "src": 14,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->25_HSLU",
+        "src": 14,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->72_IBM",
+        "src": 14,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->67_meteoGH",
+        "src": 14,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->48_EUResearch",
+        "src": 14,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->41_Skyguide",
+        "src": 14,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->42_EPFL",
+        "src": 14,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->68_NAZ",
+        "src": 14,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->39_HES-SO",
+        "src": 14,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->35_ENSI",
+        "src": 14,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->44_HES-SO_AvdP",
+        "src": 14,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->50_IWB",
+        "src": 14,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->61_RERO",
+        "src": 14,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->55_NTB",
+        "src": 14,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_14_HEIG-VD->70_ETH",
+        "src": 14,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->66_ZHAW",
+        "src": 15,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->50_IWB",
+        "src": 15,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->17_UniGE",
+        "src": 15,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->21_None",
+        "src": 15,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->60_PHTG",
+        "src": 15,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->0_None",
+        "src": 15,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->1_None",
+        "src": 15,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->30_HFT-SO",
+        "src": 15,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->44_HES-SO_AvdP",
+        "src": 15,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->55_NTB",
+        "src": 15,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->70_ETH",
+        "src": 15,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->48_EUResearch",
+        "src": 15,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->73_WSL",
+        "src": 15,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->68_NAZ",
+        "src": 15,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->40_CERN",
+        "src": 15,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->29_UniBE",
+        "src": 15,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->61_RERO",
+        "src": 15,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->67_meteoGH",
+        "src": 15,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->35_ENSI",
+        "src": 15,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->34_HSR",
+        "src": 15,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->41_Skyguide",
+        "src": 15,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->49_None",
+        "src": 15,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->25_HSLU",
+        "src": 15,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->72_IBM",
+        "src": 15,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->64_Equinix",
+        "src": 15,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->22_None",
+        "src": 15,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->42_EPFL",
+        "src": 15,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_VSNet->39_HES-SO",
+        "src": 15,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->44_HES-SO_AvdP",
+        "src": 18,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->30_HFT-SO",
+        "src": 18,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->66_ZHAW",
+        "src": 18,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->60_PHTG",
+        "src": 18,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->40_CERN",
+        "src": 18,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->64_Equinix",
+        "src": 18,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->72_IBM",
+        "src": 18,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->25_HSLU",
+        "src": 18,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->50_IWB",
+        "src": 18,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->39_HES-SO",
+        "src": 18,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->48_EUResearch",
+        "src": 18,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->0_None",
+        "src": 18,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->41_Skyguide",
+        "src": 18,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->34_HSR",
+        "src": 18,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->55_NTB",
+        "src": 18,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->73_WSL",
+        "src": 18,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->70_ETH",
+        "src": 18,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->17_UniGE",
+        "src": 18,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->68_NAZ",
+        "src": 18,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->21_None",
+        "src": 18,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->22_None",
+        "src": 18,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->49_None",
+        "src": 18,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->1_None",
+        "src": 18,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->61_RERO",
+        "src": 18,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->35_ENSI",
+        "src": 18,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->67_meteoGH",
+        "src": 18,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->29_UniBE",
+        "src": 18,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_18_None->42_EPFL",
+        "src": 18,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->61_RERO",
+        "src": 19,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->72_IBM",
+        "src": 19,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->49_None",
+        "src": 19,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->0_None",
+        "src": 19,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->73_WSL",
+        "src": 19,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->66_ZHAW",
+        "src": 19,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->39_HES-SO",
+        "src": 19,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->42_EPFL",
+        "src": 19,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->17_UniGE",
+        "src": 19,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->22_None",
+        "src": 19,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->60_PHTG",
+        "src": 19,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->55_NTB",
+        "src": 19,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->70_ETH",
+        "src": 19,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->64_Equinix",
+        "src": 19,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->34_HSR",
+        "src": 19,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->48_EUResearch",
+        "src": 19,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->40_CERN",
+        "src": 19,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->68_NAZ",
+        "src": 19,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->50_IWB",
+        "src": 19,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->30_HFT-SO",
+        "src": 19,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->44_HES-SO_AvdP",
+        "src": 19,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->29_UniBE",
+        "src": 19,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->25_HSLU",
+        "src": 19,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->67_meteoGH",
+        "src": 19,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->21_None",
+        "src": 19,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->41_Skyguide",
+        "src": 19,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->1_None",
+        "src": 19,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_None->35_ENSI",
+        "src": 19,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->48_EUResearch",
+        "src": 20,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->66_ZHAW",
+        "src": 20,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->60_PHTG",
+        "src": 20,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->39_HES-SO",
+        "src": 20,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->41_Skyguide",
+        "src": 20,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->29_UniBE",
+        "src": 20,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->30_HFT-SO",
+        "src": 20,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->67_meteoGH",
+        "src": 20,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->1_None",
+        "src": 20,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->0_None",
+        "src": 20,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->70_ETH",
+        "src": 20,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->49_None",
+        "src": 20,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->21_None",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->17_UniGE",
+        "src": 20,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->25_HSLU",
+        "src": 20,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->72_IBM",
+        "src": 20,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->73_WSL",
+        "src": 20,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->68_NAZ",
+        "src": 20,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->34_HSR",
+        "src": 20,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->44_HES-SO_AvdP",
+        "src": 20,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->50_IWB",
+        "src": 20,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->40_CERN",
+        "src": 20,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->64_Equinix",
+        "src": 20,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->35_ENSI",
+        "src": 20,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->55_NTB",
+        "src": 20,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->42_EPFL",
+        "src": 20,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->61_RERO",
+        "src": 20,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_20_None->22_None",
+        "src": 20,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->48_EUResearch",
+        "src": 23,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->64_Equinix",
+        "src": 23,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->21_None",
+        "src": 23,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->72_IBM",
+        "src": 23,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->34_HSR",
+        "src": 23,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->29_UniBE",
+        "src": 23,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->39_HES-SO",
+        "src": 23,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->50_IWB",
+        "src": 23,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->0_None",
+        "src": 23,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->22_None",
+        "src": 23,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->30_HFT-SO",
+        "src": 23,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->49_None",
+        "src": 23,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->67_meteoGH",
+        "src": 23,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->42_EPFL",
+        "src": 23,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->68_NAZ",
+        "src": 23,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->40_CERN",
+        "src": 23,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->41_Skyguide",
+        "src": 23,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->1_None",
+        "src": 23,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->17_UniGE",
+        "src": 23,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->44_HES-SO_AvdP",
+        "src": 23,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->35_ENSI",
+        "src": 23,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->55_NTB",
+        "src": 23,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->70_ETH",
+        "src": 23,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->60_PHTG",
+        "src": 23,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->61_RERO",
+        "src": 23,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->25_HSLU",
+        "src": 23,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->66_ZHAW",
+        "src": 23,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_None->73_WSL",
+        "src": 23,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->50_IWB",
+        "src": 24,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->29_UniBE",
+        "src": 24,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->40_CERN",
+        "src": 24,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->44_HES-SO_AvdP",
+        "src": 24,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->35_ENSI",
+        "src": 24,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->68_NAZ",
+        "src": 24,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->17_UniGE",
+        "src": 24,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->25_HSLU",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->42_EPFL",
+        "src": 24,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->66_ZHAW",
+        "src": 24,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->39_HES-SO",
+        "src": 24,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->41_Skyguide",
+        "src": 24,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->21_None",
+        "src": 24,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->0_None",
+        "src": 24,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->60_PHTG",
+        "src": 24,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->1_None",
+        "src": 24,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->72_IBM",
+        "src": 24,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->49_None",
+        "src": 24,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->67_meteoGH",
+        "src": 24,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->73_WSL",
+        "src": 24,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->34_HSR",
+        "src": 24,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->64_Equinix",
+        "src": 24,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->55_NTB",
+        "src": 24,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->30_HFT-SO",
+        "src": 24,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->61_RERO",
+        "src": 24,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->48_EUResearch",
+        "src": 24,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->70_ETH",
+        "src": 24,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_24_None->22_None",
+        "src": 24,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->21_None",
+        "src": 26,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->0_None",
+        "src": 26,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->40_CERN",
+        "src": 26,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->68_NAZ",
+        "src": 26,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->25_HSLU",
+        "src": 26,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->1_None",
+        "src": 26,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->30_HFT-SO",
+        "src": 26,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->72_IBM",
+        "src": 26,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->39_HES-SO",
+        "src": 26,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->55_NTB",
+        "src": 26,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->42_EPFL",
+        "src": 26,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->70_ETH",
+        "src": 26,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->67_meteoGH",
+        "src": 26,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->48_EUResearch",
+        "src": 26,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->44_HES-SO_AvdP",
+        "src": 26,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->73_WSL",
+        "src": 26,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->35_ENSI",
+        "src": 26,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->49_None",
+        "src": 26,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->66_ZHAW",
+        "src": 26,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->17_UniGE",
+        "src": 26,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->60_PHTG",
+        "src": 26,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->50_IWB",
+        "src": 26,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->41_Skyguide",
+        "src": 26,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->34_HSR",
+        "src": 26,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->29_UniBE",
+        "src": 26,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->61_RERO",
+        "src": 26,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->22_None",
+        "src": 26,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_UniFR->64_Equinix",
+        "src": 26,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->1_None",
+        "src": 28,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->39_HES-SO",
+        "src": 28,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->61_RERO",
+        "src": 28,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->25_HSLU",
+        "src": 28,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->21_None",
+        "src": 28,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->67_meteoGH",
+        "src": 28,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->22_None",
+        "src": 28,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->70_ETH",
+        "src": 28,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->66_ZHAW",
+        "src": 28,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->41_Skyguide",
+        "src": 28,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->30_HFT-SO",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->72_IBM",
+        "src": 28,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->35_ENSI",
+        "src": 28,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->50_IWB",
+        "src": 28,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->0_None",
+        "src": 28,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->40_CERN",
+        "src": 28,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->73_WSL",
+        "src": 28,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->68_NAZ",
+        "src": 28,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->55_NTB",
+        "src": 28,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->17_UniGE",
+        "src": 28,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->44_HES-SO_AvdP",
+        "src": 28,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->64_Equinix",
+        "src": 28,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->49_None",
+        "src": 28,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->48_EUResearch",
+        "src": 28,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->60_PHTG",
+        "src": 28,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->29_UniBE",
+        "src": 28,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->42_EPFL",
+        "src": 28,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_28_UniSG->34_HSR",
+        "src": 28,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->42_EPFL",
+        "src": 31,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->55_NTB",
+        "src": 31,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->70_ETH",
+        "src": 31,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->34_HSR",
+        "src": 31,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->50_IWB",
+        "src": 31,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->61_RERO",
+        "src": 31,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->60_PHTG",
+        "src": 31,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->72_IBM",
+        "src": 31,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->39_HES-SO",
+        "src": 31,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->40_CERN",
+        "src": 31,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->66_ZHAW",
+        "src": 31,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->49_None",
+        "src": 31,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->41_Skyguide",
+        "src": 31,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->64_Equinix",
+        "src": 31,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->21_None",
+        "src": 31,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->29_UniBE",
+        "src": 31,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->17_UniGE",
+        "src": 31,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->22_None",
+        "src": 31,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->1_None",
+        "src": 31,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->44_HES-SO_AvdP",
+        "src": 31,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->30_HFT-SO",
+        "src": 31,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->35_ENSI",
+        "src": 31,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->67_meteoGH",
+        "src": 31,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->0_None",
+        "src": 31,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->68_NAZ",
+        "src": 31,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->73_WSL",
+        "src": 31,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->48_EUResearch",
+        "src": 31,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_ETH-Rat->25_HSLU",
+        "src": 31,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->67_meteoGH",
+        "src": 33,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->73_WSL",
+        "src": 33,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->42_EPFL",
+        "src": 33,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->48_EUResearch",
+        "src": 33,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->49_None",
+        "src": 33,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->70_ETH",
+        "src": 33,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->30_HFT-SO",
+        "src": 33,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->0_None",
+        "src": 33,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->40_CERN",
+        "src": 33,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->39_HES-SO",
+        "src": 33,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->68_NAZ",
+        "src": 33,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->44_HES-SO_AvdP",
+        "src": 33,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->64_Equinix",
+        "src": 33,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->29_UniBE",
+        "src": 33,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->17_UniGE",
+        "src": 33,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->50_IWB",
+        "src": 33,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->34_HSR",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->21_None",
+        "src": 33,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->41_Skyguide",
+        "src": 33,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->1_None",
+        "src": 33,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->72_IBM",
+        "src": 33,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->60_PHTG",
+        "src": 33,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->55_NTB",
+        "src": 33,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->61_RERO",
+        "src": 33,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->35_ENSI",
+        "src": 33,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->22_None",
+        "src": 33,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->25_HSLU",
+        "src": 33,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_33_EHL->66_ZHAW",
+        "src": 33,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->39_HES-SO",
+        "src": 36,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->41_Skyguide",
+        "src": 36,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->22_None",
+        "src": 36,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->68_NAZ",
+        "src": 36,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->61_RERO",
+        "src": 36,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->1_None",
+        "src": 36,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->35_ENSI",
+        "src": 36,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->29_UniBE",
+        "src": 36,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->70_ETH",
+        "src": 36,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->17_UniGE",
+        "src": 36,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->67_meteoGH",
+        "src": 36,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->60_PHTG",
+        "src": 36,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->72_IBM",
+        "src": 36,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->55_NTB",
+        "src": 36,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->30_HFT-SO",
+        "src": 36,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->48_EUResearch",
+        "src": 36,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->64_Equinix",
+        "src": 36,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->66_ZHAW",
+        "src": 36,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->50_IWB",
+        "src": 36,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->40_CERN",
+        "src": 36,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->34_HSR",
+        "src": 36,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->73_WSL",
+        "src": 36,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->44_HES-SO_AvdP",
+        "src": 36,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->42_EPFL",
+        "src": 36,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->49_None",
+        "src": 36,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->0_None",
+        "src": 36,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->25_HSLU",
+        "src": 36,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_36_PSI->21_None",
+        "src": 36,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->68_NAZ",
+        "src": 37,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->21_None",
+        "src": 37,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->66_ZHAW",
+        "src": 37,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->30_HFT-SO",
+        "src": 37,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->48_EUResearch",
+        "src": 37,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->25_HSLU",
+        "src": 37,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->73_WSL",
+        "src": 37,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->34_HSR",
+        "src": 37,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->40_CERN",
+        "src": 37,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->72_IBM",
+        "src": 37,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->64_Equinix",
+        "src": 37,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->1_None",
+        "src": 37,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->61_RERO",
+        "src": 37,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->39_HES-SO",
+        "src": 37,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->17_UniGE",
+        "src": 37,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->55_NTB",
+        "src": 37,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->42_EPFL",
+        "src": 37,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->41_Skyguide",
+        "src": 37,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->0_None",
+        "src": 37,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->50_IWB",
+        "src": 37,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->29_UniBE",
+        "src": 37,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->67_meteoGH",
+        "src": 37,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->22_None",
+        "src": 37,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->35_ENSI",
+        "src": 37,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->60_PHTG",
+        "src": 37,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->70_ETH",
+        "src": 37,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->49_None",
+        "src": 37,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_UniBAS->44_HES-SO_AvdP",
+        "src": 37,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->48_EUResearch",
+        "src": 38,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->60_PHTG",
+        "src": 38,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->0_None",
+        "src": 38,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->72_IBM",
+        "src": 38,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->34_HSR",
+        "src": 38,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->21_None",
+        "src": 38,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->50_IWB",
+        "src": 38,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->64_Equinix",
+        "src": 38,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->22_None",
+        "src": 38,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->67_meteoGH",
+        "src": 38,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->61_RERO",
+        "src": 38,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->44_HES-SO_AvdP",
+        "src": 38,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->40_CERN",
+        "src": 38,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->1_None",
+        "src": 38,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->73_WSL",
+        "src": 38,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->55_NTB",
+        "src": 38,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->49_None",
+        "src": 38,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->30_HFT-SO",
+        "src": 38,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->42_EPFL",
+        "src": 38,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->39_HES-SO",
+        "src": 38,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->25_HSLU",
+        "src": 38,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->17_UniGE",
+        "src": 38,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->29_UniBE",
+        "src": 38,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->70_ETH",
+        "src": 38,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->41_Skyguide",
+        "src": 38,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->66_ZHAW",
+        "src": 38,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->68_NAZ",
+        "src": 38,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_38_BSSE->35_ENSI",
+        "src": 38,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->67_meteoGH",
+        "src": 43,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->44_HES-SO_AvdP",
+        "src": 43,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->73_WSL",
+        "src": 43,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->64_Equinix",
+        "src": 43,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->55_NTB",
+        "src": 43,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->17_UniGE",
+        "src": 43,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->61_RERO",
+        "src": 43,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->29_UniBE",
+        "src": 43,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->0_None",
+        "src": 43,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->72_IBM",
+        "src": 43,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->42_EPFL",
+        "src": 43,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->60_PHTG",
+        "src": 43,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->40_CERN",
+        "src": 43,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->41_Skyguide",
+        "src": 43,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->66_ZHAW",
+        "src": 43,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->1_None",
+        "src": 43,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->48_EUResearch",
+        "src": 43,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->30_HFT-SO",
+        "src": 43,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->22_None",
+        "src": 43,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->21_None",
+        "src": 43,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->34_HSR",
+        "src": 43,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->70_ETH",
+        "src": 43,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->50_IWB",
+        "src": 43,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->35_ENSI",
+        "src": 43,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->25_HSLU",
+        "src": 43,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->39_HES-SO",
+        "src": 43,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->68_NAZ",
+        "src": 43,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_43_UniL->49_None",
+        "src": 43,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->39_HES-SO",
+        "src": 45,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->50_IWB",
+        "src": 45,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->61_RERO",
+        "src": 45,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->29_UniBE",
+        "src": 45,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->73_WSL",
+        "src": 45,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->67_meteoGH",
+        "src": 45,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->41_Skyguide",
+        "src": 45,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->55_NTB",
+        "src": 45,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->21_None",
+        "src": 45,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->30_HFT-SO",
+        "src": 45,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->22_None",
+        "src": 45,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->68_NAZ",
+        "src": 45,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->72_IBM",
+        "src": 45,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->25_HSLU",
+        "src": 45,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->48_EUResearch",
+        "src": 45,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->44_HES-SO_AvdP",
+        "src": 45,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->49_None",
+        "src": 45,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->17_UniGE",
+        "src": 45,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->40_CERN",
+        "src": 45,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->34_HSR",
+        "src": 45,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->1_None",
+        "src": 45,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->35_ENSI",
+        "src": 45,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->42_EPFL",
+        "src": 45,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->0_None",
+        "src": 45,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->70_ETH",
+        "src": 45,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->66_ZHAW",
+        "src": 45,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->60_PHTG",
+        "src": 45,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_IMD->64_Equinix",
+        "src": 45,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->66_ZHAW",
+        "src": 46,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->70_ETH",
+        "src": 46,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->30_HFT-SO",
+        "src": 46,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->41_Skyguide",
+        "src": 46,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->1_None",
+        "src": 46,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->39_HES-SO",
+        "src": 46,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->67_meteoGH",
+        "src": 46,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->48_EUResearch",
+        "src": 46,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->40_CERN",
+        "src": 46,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->0_None",
+        "src": 46,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->25_HSLU",
+        "src": 46,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->22_None",
+        "src": 46,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->68_NAZ",
+        "src": 46,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->60_PHTG",
+        "src": 46,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->61_RERO",
+        "src": 46,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->50_IWB",
+        "src": 46,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->42_EPFL",
+        "src": 46,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->34_HSR",
+        "src": 46,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->55_NTB",
+        "src": 46,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->21_None",
+        "src": 46,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->44_HES-SO_AvdP",
+        "src": 46,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->73_WSL",
+        "src": 46,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->29_UniBE",
+        "src": 46,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->17_UniGE",
+        "src": 46,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->49_None",
+        "src": 46,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->64_Equinix",
+        "src": 46,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->35_ENSI",
+        "src": 46,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_46_EESP->72_IBM",
+        "src": 46,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->44_HES-SO_AvdP",
+        "src": 47,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->67_meteoGH",
+        "src": 47,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->30_HFT-SO",
+        "src": 47,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->42_EPFL",
+        "src": 47,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->73_WSL",
+        "src": 47,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->21_None",
+        "src": 47,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->1_None",
+        "src": 47,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->64_Equinix",
+        "src": 47,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->22_None",
+        "src": 47,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->68_NAZ",
+        "src": 47,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->17_UniGE",
+        "src": 47,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->61_RERO",
+        "src": 47,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->49_None",
+        "src": 47,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->72_IBM",
+        "src": 47,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->48_EUResearch",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->60_PHTG",
+        "src": 47,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->0_None",
+        "src": 47,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->40_CERN",
+        "src": 47,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->25_HSLU",
+        "src": 47,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->70_ETH",
+        "src": 47,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->35_ENSI",
+        "src": 47,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->50_IWB",
+        "src": 47,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->39_HES-SO",
+        "src": 47,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->29_UniBE",
+        "src": 47,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->41_Skyguide",
+        "src": 47,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->66_ZHAW",
+        "src": 47,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->34_HSR",
+        "src": 47,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_HTW->55_NTB",
+        "src": 47,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->21_None",
+        "src": 51,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->29_UniBE",
+        "src": 51,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->42_EPFL",
+        "src": 51,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->0_None",
+        "src": 51,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->48_EUResearch",
+        "src": 51,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->22_None",
+        "src": 51,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->70_ETH",
+        "src": 51,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->17_UniGE",
+        "src": 51,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->39_HES-SO",
+        "src": 51,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->25_HSLU",
+        "src": 51,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->50_IWB",
+        "src": 51,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->67_meteoGH",
+        "src": 51,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->1_None",
+        "src": 51,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->40_CERN",
+        "src": 51,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->44_HES-SO_AvdP",
+        "src": 51,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->55_NTB",
+        "src": 51,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->61_RERO",
+        "src": 51,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->35_ENSI",
+        "src": 51,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->49_None",
+        "src": 51,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->66_ZHAW",
+        "src": 51,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->41_Skyguide",
+        "src": 51,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->68_NAZ",
+        "src": 51,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->72_IBM",
+        "src": 51,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->30_HFT-SO",
+        "src": 51,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->60_PHTG",
+        "src": 51,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->64_Equinix",
+        "src": 51,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->73_WSL",
+        "src": 51,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_HLI->34_HSR",
+        "src": 51,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->1_None",
+        "src": 62,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->64_Equinix",
+        "src": 62,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->39_HES-SO",
+        "src": 62,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->17_UniGE",
+        "src": 62,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->50_IWB",
+        "src": 62,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->61_RERO",
+        "src": 62,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->68_NAZ",
+        "src": 62,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->34_HSR",
+        "src": 62,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->22_None",
+        "src": 62,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->72_IBM",
+        "src": 62,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->48_EUResearch",
+        "src": 62,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->67_meteoGH",
+        "src": 62,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->60_PHTG",
+        "src": 62,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->66_ZHAW",
+        "src": 62,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->40_CERN",
+        "src": 62,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->42_EPFL",
+        "src": 62,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->21_None",
+        "src": 62,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->55_NTB",
+        "src": 62,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->29_UniBE",
+        "src": 62,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->30_HFT-SO",
+        "src": 62,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->49_None",
+        "src": 62,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->70_ETH",
+        "src": 62,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->41_Skyguide",
+        "src": 62,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->73_WSL",
+        "src": 62,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->0_None",
+        "src": 62,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->44_HES-SO_AvdP",
+        "src": 62,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->35_ENSI",
+        "src": 62,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_FHSG->25_HSLU",
+        "src": 62,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->66_ZHAW",
+        "src": 63,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->72_IBM",
+        "src": 63,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->21_None",
+        "src": 63,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->55_NTB",
+        "src": 63,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->42_EPFL",
+        "src": 63,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->34_HSR",
+        "src": 63,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->29_UniBE",
+        "src": 63,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->40_CERN",
+        "src": 63,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->22_None",
+        "src": 63,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->49_None",
+        "src": 63,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->60_PHTG",
+        "src": 63,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->61_RERO",
+        "src": 63,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->73_WSL",
+        "src": 63,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->41_Skyguide",
+        "src": 63,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->39_HES-SO",
+        "src": 63,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->1_None",
+        "src": 63,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->35_ENSI",
+        "src": 63,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->0_None",
+        "src": 63,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->64_Equinix",
+        "src": 63,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->17_UniGE",
+        "src": 63,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->48_EUResearch",
+        "src": 63,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->44_HES-SO_AvdP",
+        "src": 63,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->50_IWB",
+        "src": 63,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->30_HFT-SO",
+        "src": 63,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->70_ETH",
+        "src": 63,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->68_NAZ",
+        "src": 63,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->25_HSLU",
+        "src": 63,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_63_SLF->67_meteoGH",
+        "src": 63,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->61_RERO",
+        "src": 65,
+        "dest": 61,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->35_ENSI",
+        "src": 65,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->48_EUResearch",
+        "src": 65,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->21_None",
+        "src": 65,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->17_UniGE",
+        "src": 65,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->60_PHTG",
+        "src": 65,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->67_meteoGH",
+        "src": 65,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->50_IWB",
+        "src": 65,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->29_UniBE",
+        "src": 65,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->25_HSLU",
+        "src": 65,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->73_WSL",
+        "src": 65,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->42_EPFL",
+        "src": 65,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->39_HES-SO",
+        "src": 65,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->1_None",
+        "src": 65,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->40_CERN",
+        "src": 65,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->49_None",
+        "src": 65,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->70_ETH",
+        "src": 65,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->30_HFT-SO",
+        "src": 65,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->55_NTB",
+        "src": 65,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->66_ZHAW",
+        "src": 65,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->72_IBM",
+        "src": 65,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->68_NAZ",
+        "src": 65,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->22_None",
+        "src": 65,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->64_Equinix",
+        "src": 65,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->0_None",
+        "src": 65,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->44_HES-SO_AvdP",
+        "src": 65,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->34_HSR",
+        "src": 65,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_None->41_Skyguide",
+        "src": 65,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->68_NAZ",
+        "src": 69,
+        "dest": 68,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->44_HES-SO_AvdP",
+        "src": 69,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->0_None",
+        "src": 69,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->73_WSL",
+        "src": 69,
+        "dest": 73,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->64_Equinix",
+        "src": 69,
+        "dest": 64,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->29_UniBE",
+        "src": 69,
+        "dest": 29,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->50_IWB",
+        "src": 69,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->70_ETH",
+        "src": 69,
+        "dest": 70,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->21_None",
+        "src": 69,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->55_NTB",
+        "src": 69,
+        "dest": 55,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->30_HFT-SO",
+        "src": 69,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->72_IBM",
+        "src": 69,
+        "dest": 72,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->17_UniGE",
+        "src": 69,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->67_meteoGH",
+        "src": 69,
+        "dest": 67,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->40_CERN",
+        "src": 69,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->39_HES-SO",
+        "src": 69,
+        "dest": 39,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->1_None",
+        "src": 69,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->49_None",
+        "src": 69,
+        "dest": 49,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->34_HSR",
+        "src": 69,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->60_PHTG",
+        "src": 69,
+        "dest": 60,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->35_ENSI",
+        "src": 69,
+        "dest": 35,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->25_HSLU",
+        "src": 69,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->41_Skyguide",
+        "src": 69,
+        "dest": 41,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->48_EUResearch",
+        "src": 69,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->66_ZHAW",
+        "src": 69,
+        "dest": 66,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->42_EPFL",
+        "src": 69,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->22_None",
+        "src": 69,
+        "dest": 22,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_UZH->61_RERO",
+        "src": 69,
+        "dest": 61,
+        "volume": 100000
+    }
+]

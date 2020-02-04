@@ -1,0 +1,74 @@
+[
+    {
+        "label": "flow_2_Cork->6_Kilcarbery",
+        "src": 2,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Cork->5_TDC_(Trinity_College_Dublin)",
+        "src": 2,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Cork->0_Galway",
+        "src": 2,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Cork->1_Limerick",
+        "src": 2,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CityWest->6_Kilcarbery",
+        "src": 3,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CityWest->1_Limerick",
+        "src": 3,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CityWest->0_Galway",
+        "src": 3,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_3_CityWest->5_TDC_(Trinity_College_Dublin)",
+        "src": 3,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DCU_(Dublin_City_University->0_Galway",
+        "src": 4,
+        "dest": 0,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DCU_(Dublin_City_University->1_Limerick",
+        "src": 4,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DCU_(Dublin_City_University->6_Kilcarbery",
+        "src": 4,
+        "dest": 6,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_DCU_(Dublin_City_University->5_TDC_(Trinity_College_Dublin)",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    }
+]

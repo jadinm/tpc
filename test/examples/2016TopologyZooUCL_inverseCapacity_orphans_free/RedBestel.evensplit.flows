@@ -1,0 +1,176 @@
+[
+    {
+        "label": "flow_1_Mazatlan->4_Aguascalientes",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_5_San_Luis_Potosi->6_Durango",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_7_Tepic->8_Tepatitlan",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_9_San_Miguel_El_Alto->10_Leon",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Celaya->12_Jilotepec",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_13_Yurecuaro->14_Irolo",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    },
+    {
+        "label": "flow_15_Rio_Fro->16_Gral_Bravo",
+        "src": 12,
+        "dest": 13,
+        "volume": 100000
+    },
+    {
+        "label": "flow_17_San_Miguel->18_Monterrey",
+        "src": 14,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_19_Mexico->20_Talia",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_21_Candela->22_La_Sauceda",
+        "src": 18,
+        "dest": 19,
+        "volume": 100000
+    },
+    {
+        "label": "flow_23_El_Salado->24_San_Rafael",
+        "src": 20,
+        "dest": 21,
+        "volume": 100000
+    },
+    {
+        "label": "flow_25_Laguna_Seca->26_Matehlala",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_27_El_Huizache->28_Jesus_M_Aguirre",
+        "src": 24,
+        "dest": 25,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_SN_Jose_De_Gracia->30_Ruiz",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_31_Saltillo->33_Nopala",
+        "src": 28,
+        "dest": 30,
+        "volume": 100000
+    },
+    {
+        "label": "flow_37_S_Juan_Del_Rio->38_Jilotepec",
+        "src": 31,
+        "dest": 32,
+        "volume": 100000
+    },
+    {
+        "label": "flow_45_Escuinapa->46_Artesia_Wells",
+        "src": 33,
+        "dest": 34,
+        "volume": 100000
+    },
+    {
+        "label": "flow_47_Moore->48_Torreon",
+        "src": 35,
+        "dest": 36,
+        "volume": 100000
+    },
+    {
+        "label": "flow_49_Tilden->50_San_Isidro",
+        "src": 37,
+        "dest": 38,
+        "volume": 100000
+    },
+    {
+        "label": "flow_51_Hebbronville->52_San_Diego_Del_Union",
+        "src": 39,
+        "dest": 40,
+        "volume": 100000
+    },
+    {
+        "label": "flow_54_Yerbanis->55_Irapuato",
+        "src": 41,
+        "dest": 42,
+        "volume": 100000
+    },
+    {
+        "label": "flow_58_Puebla->59_Toluca",
+        "src": 43,
+        "dest": 44,
+        "volume": 100000
+    },
+    {
+        "label": "flow_60_Queretaro->61_Nuevo_Laredo",
+        "src": 45,
+        "dest": 46,
+        "volume": 100000
+    },
+    {
+        "label": "flow_62_Hidalgo->63_Reynosa",
+        "src": 47,
+        "dest": 48,
+        "volume": 100000
+    },
+    {
+        "label": "flow_65_Saljnas->66_Salvatierra",
+        "src": 49,
+        "dest": 50,
+        "volume": 100000
+    },
+    {
+        "label": "flow_67_MA->68_None",
+        "src": 51,
+        "dest": 52,
+        "volume": 100000
+    },
+    {
+        "label": "flow_69_Laredo->70_Mirando_City",
+        "src": 53,
+        "dest": 54,
+        "volume": 100000
+    },
+    {
+        "label": "flow_71_Las_Adjuntas->72_Alice",
+        "src": 55,
+        "dest": 56,
+        "volume": 100000
+    },
+    {
+        "label": "flow_75_Guadalajara->78_San_Antonio_Rotary",
+        "src": 57,
+        "dest": 58,
+        "volume": 100000
+    }
+]

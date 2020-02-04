@@ -1,0 +1,38 @@
+[
+    {
+        "label": "flow_0_San_Francisco->2_Chicago",
+        "src": 0,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_San_Francisco->5_Atlanta",
+        "src": 0,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_0_San_Francisco->4_Washington,_DC",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Los_Angeles->2_Chicago",
+        "src": 1,
+        "dest": 2,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Los_Angeles->5_Atlanta",
+        "src": 1,
+        "dest": 4,
+        "volume": 100000
+    },
+    {
+        "label": "flow_1_Los_Angeles->4_Washington,_DC",
+        "src": 1,
+        "dest": 3,
+        "volume": 100000
+    }
+]
