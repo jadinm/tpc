@@ -340,7 +340,7 @@ class SRServerd(ZlogDaemon):
 
 class Lighttpd(HostDaemon):
     NAME = 'lighttpd'
-    DEPENDS = (SRLocalCtrl,)  # Need to have eBPF loaded before starting
+    # DEPENDS = (SRLocalCtrl,)  # Need to have eBPF loaded before starting
     KILL_PATTERNS = (NAME,)
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):

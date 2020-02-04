@@ -28,20 +28,7 @@ class ReroutingHostConfig(SR6HostConfig):
 
 
 class CGroupProcessHelper(ProcessHelper):
-
-    def popen(self, *args, **kwargs):
-        """Call a command and return a Popen handle to it.
-
-        :param args: the command + arguments
-        :param kwargs: key-val arguments, as used in subprocess.Popen
-        :return: a process index in this family"""
-        self._pid_gen += 1
-        if "sr-localctrl" in args[0]:
-            self._processes[self._pid_gen] = self.node.popen(*args, **kwargs)
-        else:
-            self._processes[self._pid_gen] = self.node.run_cgroup(*args,
-                                                                  **kwargs)
-        return self._pid_gen
+    pass
 
 
 class ReroutingHost(SR6Host):
@@ -51,6 +38,7 @@ class ReroutingHost(SR6Host):
         super(ReroutingHost, self)\
             .__init__(name, process_manager=CGroupProcessHelper, *args,
                       **kwargs)
+        os.makedirs(self.cwd, exist_ok=True)
 
     @property
     def sr_controller(self):
@@ -62,6 +50,7 @@ class ReroutingHost(SR6Host):
         """
         if isinstance(cmd, list):
             cmd = " ".join(cmd)
+        print("Running '%s' in eBPF" % cmd)
         popen = self.popen(["bash"], stdin=subprocess.PIPE, **kwargs)
         # time.sleep(1)
 

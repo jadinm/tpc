@@ -13,7 +13,8 @@ class RerouteIntf(SR6TCIntf):
         cmds, parent = [], ' root '
 
         if bw and bw <= 0:
-            lg.error('Bandwidth limit', bw, 'is outside supported range ]0,inf[ - ignoring\n')
+            lg.error('Bandwidth limit', bw,
+                     'is outside supported range ]0,inf[ - ignoring\n')
         elif bw is not None:
             # BL: this seems a bit brittle...
             if speedup > 0 and self.node.name[0:1] == 's':

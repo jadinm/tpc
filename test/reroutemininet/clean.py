@@ -1,4 +1,5 @@
 import os
+import subprocess
 
 from ipmininet.clean import cleanup as ip_clean, killprocs
 from reroutemininet.config import SRLocalCtrl
@@ -6,7 +7,12 @@ from reroutemininet.config import SRLocalCtrl
 
 def cleanup(level='info'):
     ip_clean(level=level)
-    killprocs(['"^sr-"', '"^named"', '"^ovsdb"', '^lighttpd', '^bpftool'])
+
+    for p in ['"^sr-"', '"^named"', '"^ovsdb"', '^lighttpd', '^bpftool']:
+        try:
+            subprocess.call(("pkill -f %s" % p).split(" "))
+        except subprocess.CalledProcessError:
+            pass
 
     path = SRLocalCtrl.ebpf_load_path("")
     for root, dirs, files in os.walk(os.path.dirname(path)):
