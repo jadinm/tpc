@@ -3,6 +3,7 @@ import os
 import re
 import subprocess
 import time
+import ipmininet
 from shlex import split
 from numpy.random import zipf, poisson
 from multiprocessing import Process, Value, Queue
@@ -151,9 +152,6 @@ def plot_link_loads(lg, times, byte_loads, packet_loads, output_path, ebpf=True,
     figure_name = "link_loads_repetita_iperf_%s" % suffix
     fig = plt.figure()
     subplot = fig.add_subplot(111)
-    print(times)
-    print(byte_loads)
-    print(packet_loads)
 
     subplot.boxplot(byte_loads)
 
@@ -337,8 +335,12 @@ def eval_repetita(lg, args, ovsschema):
 
     lg.info("******* %d Topologies to test *******\n" % len(topos))
 
+    i = 0
     for topo, demands_list in topos.items():
-        lg.info("******* %d flow files to test in topo '%s' *******\n" % (len(demands_list), os.path.basename(topo)))
+        i += 1
+        lg.info("******* [topo %d/%d] %d flow files to test in topo '%s' "
+                "*******\n"
+                % (i, len(topos), len(demands_list), os.path.basename(topo)))
         for demands in demands_list:
             cwd = os.path.join(args.log_dir, os.path.basename(demands))
             try:
@@ -356,7 +358,8 @@ def eval_repetita(lg, args, ovsschema):
                                              os.path.basename(demands)),
                          "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
-                         "maxseg": -1, "repetita_graph": topo}
+                         "maxseg": -1, "repetita_graph": topo,
+                         "ebpf": args.ebpf}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
                                static_routing=True)
@@ -421,9 +424,10 @@ def eval_repetita(lg, args, ovsschema):
                     # Get all link loads
                     measure_link_load(net, timestamps, byte_loads, packet_loads)
                     # Extract snapshot info from eBPF
-                    for h in snapshots.keys():
-                        snapshots[h].extend(Snapshot.extract_info(net[h]))
-                        snapshots[h] = sorted(list(set(snapshots[h])))
+                    if args.ebpf:
+                        for h in snapshots.keys():
+                            snapshots[h].extend(Snapshot.extract_info(net[h]))
+                            snapshots[h] = sorted(list(set(snapshots[h])))
                     time.sleep(1)
                     t += 1
 
@@ -441,17 +445,21 @@ def eval_repetita(lg, args, ovsschema):
 
                 for pid in pid_servers:
                     pid.kill()
-            except Exception as e:
-                lg.error("Exception %s in the topo emulation... Skipping...\n"
-                         % e)
-                continue
-            finally:
+
                 for pid in tcpdumps:
                     pid.kill()
                 if len(timestamps) > 0:
                     timestamps, byte_loads, packet_loads = \
                         post_process_link_loads(net, timestamps, byte_loads,
                                                 packet_loads)
+            except Exception as e:
+                lg.error("Exception %s in the topo emulation... Skipping...\n"
+                         % e)
+                ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
+                continue
+            finally:
+                for pid in tcpdumps:
+                    pid.kill()
                 stop.value = 1
                 for process in interactives:
                     process.join(timeout=30)
