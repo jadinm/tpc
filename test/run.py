@@ -8,7 +8,7 @@ from mininet.log import LEVELS
 import mininet.log
 from sr6mininet.cli import SR6CLI
 
-from eval.repetita_eval import eval_albilene, eval_repetita
+from eval.repetita_eval import eval_repetita
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
@@ -26,7 +26,6 @@ def mininet_cli(lg, args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
-    "eval-albilene": eval_albilene,
     # TODO This requires the custom version of scapy on segment-routing organisation
     #  until scapy reaches 2.4.3 (still unstable)
     "unit": launch_all_tests,

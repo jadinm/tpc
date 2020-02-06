@@ -16,7 +16,7 @@ from examples.albilene import Albilene
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
-from .bpf_stats import Snapshot
+from .bpf_stats import Snapshot, BPFPaths
 from .utils import get_addr, debug_tcpdump, FONTSIZE
 
 #LINK_BANDWIDTH = 100
@@ -353,13 +353,17 @@ def eval_repetita(lg, args, ovsschema):
             packet_loads = {}
             lg.info("******* Processing topo '%s' demands '%s' *******\n" % (os.path.basename(topo),
                                                                              os.path.basename(demands)))
+
+            with open(demands) as fileobj:
+                json_demands = json.load(fileobj)
             topo_args = {"schema_tables": ovsschema["tables"],
                          "cwd": os.path.join(args.log_dir,
                                              os.path.basename(demands)),
                          "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
                          "maxseg": -1, "repetita_graph": topo,
-                         "ebpf": args.ebpf}
+                         "ebpf": args.ebpf,
+                         "json_demands": json_demands}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
                                static_routing=True)
@@ -376,9 +380,6 @@ def eval_repetita(lg, args, ovsschema):
             queue = Queue()
             try:
                 net.start()
-
-                with open(demands) as fileobj:
-                    json_demands = json.load(fileobj)
 
                 # Read flow file to retrieve the clients and servers
                 print(json_demands)
@@ -446,6 +447,13 @@ def eval_repetita(lg, args, ovsschema):
                 for pid in pid_servers:
                     pid.kill()
 
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
                 for pid in tcpdumps:
                     pid.kill()
                 if len(timestamps) > 0:
@@ -467,7 +475,7 @@ def eval_repetita(lg, args, ovsschema):
                         process.kill()
                         process.join()
 
-                # SR6CLI(net)  # TODO Remove
+                SR6CLI(net)  # TODO Remove
                 net.stop()
                 cleanup()
                 for fileobj in result_files:
@@ -510,71 +518,3 @@ def eval_repetita(lg, args, ovsschema):
                     continue
             else:
                 lg.error("******* Error %s processing graphs '%s' *******\n" % (err, os.path.basename(topo)))
-
-
-def eval_albilene(lg, args, ovsschema):
-    topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
-                 "ebpf_program": os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o"),
-                 "always_redirect": True,
-                 "maxseg": -1}
-    net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
-    result_files = []
-    tcpdumps = []
-    subprocess.call("pkill -9 iperf".split(" "))
-    try:
-        net.start()
-        # TODO SR6CLI(net)
-
-        out_prefix = "albilene" + ("-ebpf" if args.ebpf else "")
-        tcpdumps = debug_tcpdump(net["client"], "client-eth0", args.log_dir, out_prefix=out_prefix) \
-            + debug_tcpdump(net["clientB"], "clientB-eth0", args.log_dir, out_prefix=out_prefix)
-        time.sleep(1)
-
-        clients = ["client", "clientB"]
-        servers = ["server", "server"]
-        result_files = [open("results_%s_%s.json" % (clients[i], servers[i]), "w") for i in range(len(clients))]
-        pid_servers, pid_clients = launch_iperf(lg, net, clients, servers, result_files, ebpf=args.ebpf)
-        if len(pid_servers) == 0:
-            return
-        time.sleep(MEASUREMENT_TIME)
-
-        err = False
-        for i, pid in enumerate(pid_clients):
-            if pid.poll() is None:
-                lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
-                err = True
-                pid.kill()
-                break
-            elif pid.poll() != 0:
-                lg.error("The iperf (%s,%s) returned with error code %d\n" % (clients[i], servers[i], pid.poll()))
-                err = True
-                break
-
-        for pid in pid_servers:
-            pid.kill()
-    finally:
-        for pid in tcpdumps:
-            pid.kill()
-        net.stop()
-        for fileobj in result_files:
-            if fileobj is not None:
-                fileobj.close()
-        subprocess.call("pkill -9 iperf".split(" "))
-
-    if not err:
-        # Extract JSON output
-        bw = {}
-        retrans = {}
-        start = {}
-        for i in range(len(clients)):
-            with open("results_%s_%s.json" % (clients[i], servers[i]), "r") as fileobj:
-                results = json.load(fileobj)
-                start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
-                for interval in results["intervals"]:
-                    bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
-                    retrans.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["retransmits"])
-
-        times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
-
-        plot(lg, times, aggregated_bw, args.log_dir, {}, ebpf=args.ebpf,
-             identifier={"topo": "Albilene", "ebpf": args.ebpf, "maxseg": -1})

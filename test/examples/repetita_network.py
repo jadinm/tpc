@@ -72,7 +72,8 @@ class RepetitaEdge:
 class RepetitaTopo(SRNTopo):
 
     def __init__(self, repetita_graph=None, schema_tables=None,
-                 rerouting_enabled=True, bw=None, ebpf=True, *args, **kwargs):
+                 rerouting_enabled=True, bw=None, ebpf=True, json_demands=(),
+                 *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
         self.rerouting_enabled = rerouting_enabled
@@ -80,6 +81,7 @@ class RepetitaTopo(SRNTopo):
         self.switch_count = 1
         self.router_indices = []
         self.ebpf = ebpf
+        self.json_demands = json_demands
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -106,7 +108,7 @@ class RepetitaTopo(SRNTopo):
         """
         node_index = []
         edge_dict = {}
-        access_routers = {}
+        access_routers = []
         with open(self.repetita_graph) as fileobj:
             nbr_nodes = int(fileobj.readline().split(" ")[1]) # NODES XXX
             fileobj.readline()  # label x y
@@ -114,7 +116,11 @@ class RepetitaTopo(SRNTopo):
                 label, _, _ = fileobj.readline().split(" ")  # Node line
                 router = self.addRouter(self.label2node(label))  # Interface names are at max 15 characters (NULL not included)
                 self.router_indices.append(self.label2node(label))  # Interface names are at max 15 characters (NULL not included)
-                access_routers[router] = (0, float("inf"))
+                for d in self.json_demands:  # Access routers only for flows
+                    if (d["src"] == i or d["dest"] == i) \
+                            and router not in access_routers:
+                        access_routers.append(router)
+                        break
                 node_index.append(router)
             print(self.router_indices)
 
@@ -130,21 +136,11 @@ class RepetitaTopo(SRNTopo):
                     edge_dict[edge] = edge
 
             for edge in edge_dict.keys():
-                access_src = node_index[edge.src]
-                access_dst = node_index[edge.dest]
-
-                access_routers[access_src] = (access_routers[access_src][0] + 1,
-                                              min(access_routers[access_src][1], edge.bw_src))
-                access_routers[access_dst] = (access_routers[access_dst][0] + 1,
-                                              min(access_routers[access_dst][1], edge.bw_dst))
                 edge.add_to_topo(self, node_index)
 
         # We consider that access routers have minimum two links
         print(access_routers)
-        access_routers = [(x, bw)
-                          for x, (e, bw) in access_routers.items()
-                          if e >= 2]
-        for access_router, bw in access_routers:
+        for access_router in access_routers:
             h = self.addHost("h%s" % self.label2node(access_router))  # Interface names are at max 15 characters (NULL not included)
             self.addLink(h, access_router)
 
@@ -156,7 +152,7 @@ class RepetitaTopo(SRNTopo):
 
         # Configure SRN with rerouting
         if self.ebpf:
-            self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router, _ in access_routers],
+            self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router in access_routers],
                                                  sr_controller=controller, schema_tables=self.schema_tables,
                                                  rerouting_routers=routers, hosts=self.hosts()))
 

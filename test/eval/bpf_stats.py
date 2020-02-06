@@ -3,11 +3,14 @@ import os
 import shlex
 import struct
 import subprocess
-from ipaddress import ip_address
-from typing import List
+from ipaddress import ip_address, ip_interface, ip_network
+from typing import List, Dict
+
+from ipmininet.utils import L3Router
 
 from reroutemininet.config import SRLocalCtrl
-
+from reroutemininet.host import ReroutingHost
+from reroutemininet.net import ReroutingNet
 
 BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 
@@ -144,7 +147,6 @@ class Snapshot:
             hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
             snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
             if snap.seq > 0:  # Valid snapshot
-                # TODO Remove print(str(snap))
                 snapshots.append(snap)
         snapshots.sort()
         return snapshots
@@ -167,3 +169,120 @@ class Snapshot:
     @classmethod
     def retrieve_from_hex(cls, ebpf_map_entry: str):
         return cls(bytes.fromhex(ebpf_map_entry))
+
+
+# struct dst_infos {
+# 	struct ip6_addr_t dest;
+# 	__u32 max_reward;
+# 	struct srh_record_t srhs[4];
+# } __attribute__((packed));
+#
+# struct ip6_addr_t {
+# 	unsigned long long hi;
+# 	unsigned long long lo;
+# } __attribute__((packed));
+#
+# struct srh_record_t {
+# 	__u32 srh_id;
+# 	__u32 is_valid;
+# 	__u64 curr_bw; // Mbps
+# 	__u64 delay; // ms
+# 	struct ip6_srh_t srh;
+# } __attribute__((packed));
+#
+# struct ip6_srh_t {
+# 	unsigned char nexthdr;
+# 	unsigned char hdrlen;
+# 	unsigned char type;
+# 	unsigned char segments_left;
+# 	unsigned char first_segment;
+# 	unsigned char flags;
+# 	unsigned short tag;
+#
+# 	struct ip6_addr_t segments[MAX_SEGMENTS_BY_SRH];
+# } __attribute__((packed));
+
+
+class BPFPaths:
+    MAX_PATHS_BY_DEST = 4
+    MAX_SEGMENTS_BY_SRH = 10
+
+    def __init__(self, net: ReroutingNet, node: ReroutingHost, byte_chains):
+        self.src = node.name
+        self.byte_chains = byte_chains
+        self.paths_by_dest = {}
+
+        for chain in self.byte_chains:
+            # Get destination
+            dest_ip = ip_network(str(ip_address(chain[0:16])) + "/48")
+            dest = None
+            for key, value in net._ip_allocs.items():
+                # We only want destinations with hosts
+                if not L3Router.is_l3router_intf(value.intf()) \
+                        and ip_address(key.split("/")[0]) in dest_ip:
+                    dest = net.node_for_ip(key)
+            if dest is None:  # Cannot translate
+                continue
+            self.paths_by_dest[dest.name] = []
+
+            # Get SRH paths
+            print(chain)
+            chain = chain[20:]  # Remove key + max_reward
+            srh_fixed_size = (8 + self.MAX_SEGMENTS_BY_SRH * 16)
+            for i in range(self.MAX_PATHS_BY_DEST):
+                chain = chain[24:]  # Remove srh_record data
+                # Get SRH length
+                print(i)
+                print(chain)
+                srh_len, srh_type = struct.unpack("BB", chain[1:3])
+                if srh_type == 0:  # Unused or invalid SRH slot
+                    chain = chain[srh_fixed_size:]  # Pass to next SRH
+                    continue
+                assert srh_len % 2 == 0, "Problem the srh_len cannot be " \
+                                         "divided by 2"
+                # Get the actual path
+                path = []
+                for j in range(srh_len // 2):
+                    segment_idx = 8 + j * 16
+                    segment_ip = ip_address(chain[segment_idx:segment_idx+16])
+                    if "::" == str(segment_ip):
+                        segment_router = "::"
+                    else:
+                        segment_router = net.node_for_ip(segment_ip).name
+                    path.append(segment_router)
+                path.reverse()
+                self.paths_by_dest[dest.name].append(path)
+
+                # Pass to next SRH record
+                chain = chain[srh_fixed_size:]
+
+    def __str__(self):
+        paths_by_dest = json.dumps(self.paths_by_dest, indent=4)
+        return "BPFPaths<{src}>\n{paths_by_dest}" \
+            .format(src=self.src, paths_by_dest=paths_by_dest)
+
+    def export(self) -> Dict:
+        return {
+            "src": self.src,
+            "destinations": self.paths_by_dest
+        }
+
+    @classmethod
+    def extract_info(cls, net: ReroutingNet, node: ReroutingHost):
+        """Create the ordered list of valid snapshots taken a node"""
+
+        # Find the LocalCtrl object to get the map id
+        daemon = node.nconfig.daemon(SRLocalCtrl.NAME)
+        if daemon.dest_map_id == -1:
+            raise ValueError("Cannot find the id of the dest eBPF map")
+        print(daemon.dest_map_id)
+
+        cmd = "{bpftool} map -j dump id {map_id}"\
+            .format(bpftool=BPFTOOL, map_id=daemon.dest_map_id)
+        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
+        ebpf_map_entries = json.loads(out)
+        ebpf_map_entries = ["".join([byte_str[2:]
+                                     for byte_str in map_raw["value"]])
+                            for map_raw in ebpf_map_entries]
+        return cls(net, node, [bytes.fromhex(entry)
+                               for entry in ebpf_map_entries])

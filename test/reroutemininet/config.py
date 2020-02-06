@@ -36,6 +36,7 @@ class SRLocalCtrl(SRNDaemon):
         os.makedirs(self._node.cwd, exist_ok=True)
         self.attached = False
         self.stat_map_id = -1
+        self.dest_map_id = -1
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
@@ -73,7 +74,6 @@ class SRLocalCtrl(SRNDaemon):
 
         # Pin maps to fds
 
-        dest_map_id = -1
         for map_id in map_ids:
 
             cmd = "{bpftool} map -j show id {map_id}" \
@@ -95,13 +95,13 @@ class SRLocalCtrl(SRNDaemon):
                             map_path=self.map_path("dest_map"))
                 print(cmd)
                 subprocess.check_call(shlex.split(cmd))
-                dest_map_id = map_id
+                self.dest_map_id = map_id
             if map_name == "stat_map":
                 self.stat_map_id = map_id
-        if dest_map_id == -1:
+        if self.dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % ebpf_load_path)
-        return dest_map_id
+        return self.dest_map_id
 
     def render(self, cfg, **kwargs):
 
