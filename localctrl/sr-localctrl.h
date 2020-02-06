@@ -10,7 +10,7 @@
 #define _unused __attribute__((unused))
 
 #define MAX_SRH_BY_DEST 4
-#define MAX_SEGS_NBR 4
+#define MAX_SEGS_NBR 10
 
 struct srh_record {
 	uint32_t srh_id;
