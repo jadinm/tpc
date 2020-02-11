@@ -57,10 +57,10 @@ class RepetitaEdge:
         return topo.addLink(node_index[self.src], node_index[self.dest],
                             params1={"bw": bw_src,
                                      "delay": str(self.delay_src) + "ms",
-                                     "igp_weight": self.weight_src},
+                                     "igp_metric": self.weight_src},
                             params2={"bw": bw_dst,
                                      "delay": str(self.delay_dst) + "ms",
-                                     "igp_weight": self.weight_dst})
+                                     "igp_metric": self.weight_dst})
 
     def __str__(self):
         return "<Edge %s (%s to %s) params_src (%s %s %s) params_dest (%s %s %s)>" %\
