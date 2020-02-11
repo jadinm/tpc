@@ -8,13 +8,10 @@ import numpy as np
 from mininet.log import LEVELS, lg
 
 from eval.bpf_stats import Snapshot
-from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data
+from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data, MEASUREMENT_TIME
 from explore_data import explore_bw_json_files, explore_maxflow_json_files
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
-
-
-MEASUREMENT_TIME = 100
 
 
 def parse_args():
@@ -103,7 +100,7 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
                                 path=os.path.join(output_path,
                                                   figure_name + ".pdf")))
                 subplot.set_ylim(bottom=0)
-                subplot.set_xlim(left=1, right=29)
+                subplot.set_xlim(left=1, right=MEASUREMENT_TIME)
                 fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                             bbox_inches='tight', pad_inches=0, markersize=9)
                 fig.clf()

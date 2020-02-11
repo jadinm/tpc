@@ -17,10 +17,9 @@ from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
 from .bpf_stats import Snapshot, BPFPaths
-from .utils import get_addr, debug_tcpdump, FONTSIZE
+from .utils import get_addr, debug_tcpdump, FONTSIZE, MEASUREMENT_TIME
 
 #LINK_BANDWIDTH = 100
-MEASUREMENT_TIME = 100
 
 INTERVALS = 1
 
