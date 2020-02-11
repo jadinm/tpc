@@ -11,6 +11,7 @@ DEFAULT_CGROUP = "test.slice"
 FONTSIZE = 12
 LINE_WIDTH = 2.0
 MARKER_SIZE = 5.0
+MEASUREMENT_TIME = 100
 
 
 def run_in_cgroup(node, cmd, cgroup=DEFAULT_CGROUP, **kwargs):

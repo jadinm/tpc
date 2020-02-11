@@ -412,7 +412,9 @@ def eval_repetita(lg, args, ovsschema):
                                           servers[i], clients[i])))
                         interactives[-1].start()
 
-                result_files = [open("results_%s_%s.json" % (clients[i], servers[i]), "w") for i in range(len(clients))]
+                result_files = [open("%d_results_%s_%s.json"
+                                     % (i, clients[i], servers[i]), "w")
+                                for i in range(len(clients))]
                 pid_servers, pid_clients = launch_iperf(lg, net, clients, servers, result_files, ebpf=args.ebpf)
                 if len(pid_servers) == 0:
                     return
@@ -491,7 +493,9 @@ def eval_repetita(lg, args, ovsschema):
                     start = {}
                     retrans = {}
                     for i in range(len(clients)):
-                        with open("results_%s_%s.json" % (clients[i], servers[i]), "r") as fileobj:
+                        with open("%d_results_%s_%s.json"
+                                  % (i, clients[i], servers[i]), "r") \
+                                as fileobj:
                             results = json.load(fileobj)
                             start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
                             for interval in results["intervals"]:
