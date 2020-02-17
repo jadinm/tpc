@@ -11,6 +11,7 @@ from multiprocessing import Process, Value, Queue
 import matplotlib.pyplot as plt
 from ipmininet.tests.utils import assert_connectivity
 from sr6mininet.cli import SR6CLI
+import signal
 
 from examples.albilene import Albilene
 from examples.repetita_network import RepetitaTopo
@@ -24,7 +25,7 @@ from .utils import get_addr, debug_tcpdump, FONTSIZE, MEASUREMENT_TIME
 INTERVALS = 1
 
 
-def launch_iperf(lg, net, clients, servers, result_files, ebpf=True):
+def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, ebpf=True):
     """
     :param net: The Network object
     :param clients: The list of client node names
@@ -32,6 +33,7 @@ def launch_iperf(lg, net, clients, servers, result_files, ebpf=True):
      (same size as the client list and it means that clients[i] will have a connection to servers[i])
     :param result_files: The list of file object where to store the output
      (same size as the client list and it means that clients[i] will have its output written to result_files[i])
+    :param nbr_flows: The number of connections for each client server pair
     :param ebpf: Whether there is eBPF and ccgroup activated
     :return: a tuple <list of popen objects of servers, list of popen objects of clients>
     """
@@ -45,9 +47,9 @@ def launch_iperf(lg, net, clients, servers, result_files, ebpf=True):
     for i, server in enumerate(servers):
         cmd = "iperf3 -J -s -p %d" % ports[i]
         if ebpf:
-            pid_servers.append(net[server].run_cgroup(cmd))
+            pid_servers.append(net[server].run_cgroup(cmd, stdout=result_files[i]))
         else:
-            pid_servers.append(net[server].popen(split(cmd)))
+            pid_servers.append(net[server].popen(split(cmd), stdout=result_files[i]))
     time.sleep(15)
 
     for pid in pid_servers:
@@ -65,13 +67,16 @@ def launch_iperf(lg, net, clients, servers, result_files, ebpf=True):
 
     pid_clients = []
     for i, client in enumerate(clients):
-        cmd = "iperf3 -J -c {server_ip} -t {duration} -B {client_ip} -i {intervals} -p {port}"\
-            .format(server_ip=get_addr(net[servers[i]]), client_ip=get_addr(net[client]),
-                    duration=MEASUREMENT_TIME, intervals=INTERVALS, port=ports[i])
+        cmd = "iperf3 -J -P {nbr_connections} -c {server_ip} -t {duration} " \
+              "-B {client_ip} -i {intervals} -p {port}" \
+            .format(server_ip=get_addr(net[servers[i]]),
+                    client_ip=get_addr(net[client]),
+                    nbr_connections=nbr_flows[i], duration=MEASUREMENT_TIME,
+                    intervals=INTERVALS, port=ports[i])
         if ebpf:
-            pid_clients.append(net[client].run_cgroup(cmd, stdout=result_files[i]))
+            pid_clients.append(net[client].run_cgroup(cmd))
         else:
-            pid_clients.append(net[client].popen(split(cmd), stdout=result_files[i]))
+            pid_clients.append(net[client].popen(split(cmd)))
     time.sleep(5)
 
     for pid in pid_clients:
@@ -296,6 +301,21 @@ def send_interactive_traffic(queue, curl_cfg, ebpf, stop, client, server):
     return 0
 
 
+def parse_demands(json_demands):
+    """Fuse demands with the same destination and source"""
+
+    merged_demands = {}
+    for demand in json_demands:
+        demand["number"] = 1
+        str_key = "%s-%s" % (demand["src"], demand["dest"])
+        if str_key in merged_demands:
+            merged_demands[str_key]["number"] += 1
+        else:
+            merged_demands[str_key] = demand
+
+    return [x for x in merged_demands.values()]
+
+
 def eval_repetita(lg, args, ovsschema):
     topos = {}
     if args.repetita_topo is None and args.repetita_dir is None:
@@ -381,9 +401,11 @@ def eval_repetita(lg, args, ovsschema):
                 net.start()
 
                 # Read flow file to retrieve the clients and servers
+                json_demands = parse_demands(json_demands)
                 print(json_demands)
                 clients = ["h" + net.topo.getFromIndex(d["src"]) for d in json_demands]
                 servers = ["h" + net.topo.getFromIndex(d["dest"]) for d in json_demands]
+                nbr_flows = [d["number"] for d in json_demands]
                 print(clients)
                 print(servers)
                 if args.tcpdump:
@@ -400,6 +422,13 @@ def eval_repetita(lg, args, ovsschema):
                 time.sleep(30)
                 # TODO Remove
 
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
                 # Launch interactive traffic
                 if args.with_interactive:
                     lg.info("*********Starting interactive traffic*********\n")
@@ -415,9 +444,14 @@ def eval_repetita(lg, args, ovsschema):
                 result_files = [open("%d_results_%s_%s.json"
                                      % (i, clients[i], servers[i]), "w")
                                 for i in range(len(clients))]
-                pid_servers, pid_clients = launch_iperf(lg, net, clients, servers, result_files, ebpf=args.ebpf)
+                pid_servers, pid_clients = launch_iperf(lg, net, clients,
+                                                        servers,
+                                                        result_files, nbr_flows,
+                                                        ebpf=args.ebpf)
                 if len(pid_servers) == 0:
                     return
+
+                # SR6CLI(net)  # TODO Remove
 
                 # Measure load on each interface
                 t = 0
@@ -433,17 +467,17 @@ def eval_repetita(lg, args, ovsschema):
                     time.sleep(1)
                     t += 1
 
+                # SR6CLI(net)  # TODO Remove
+
                 for i, pid in enumerate(pid_clients):
-                    if pid.wait() is None:
+                    if pid.poll() is None:
                         lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
-                        err = True
-                        pid.kill()
-                        break
-                    elif pid.poll() != 0:
+                        pid.send_signal(signal.SIGINT)
+                        pid.wait()
+                    if pid.poll() != 0:
                         lg.error("The iperf (%s,%s) returned with error code %d\n"
                                  % (clients[i], servers[i], pid.poll()))
                         err = True
-                        break
 
                 for pid in pid_servers:
                     pid.kill()
@@ -476,7 +510,7 @@ def eval_repetita(lg, args, ovsschema):
                         process.kill()
                         process.join()
 
-                SR6CLI(net)  # TODO Remove
+                # SR6CLI(net)  # TODO Remove
                 net.stop()
                 cleanup()
                 for fileobj in result_files:
@@ -491,7 +525,6 @@ def eval_repetita(lg, args, ovsschema):
                     # Extract JSON output
                     bw = {}
                     start = {}
-                    retrans = {}
                     for i in range(len(clients)):
                         with open("%d_results_%s_%s.json"
                                   % (i, clients[i], servers[i]), "r") \
@@ -500,7 +533,6 @@ def eval_repetita(lg, args, ovsschema):
                             start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
                             for interval in results["intervals"]:
                                 bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
-                                retrans.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["retransmits"])
 
                     times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
 
@@ -517,7 +549,7 @@ def eval_repetita(lg, args, ovsschema):
                                                 "ebpf": args.ebpf, "maxseg": -1})
                 except Exception as e:
                     lg.error("Exception %s in the graph generation... Skipping...\n" % e)
-                    lg.error(str(e.message))
+                    lg.error(str(e))
                     continue
             else:
                 lg.error("******* Error %s processing graphs '%s' *******\n" % (err, os.path.basename(topo)))
