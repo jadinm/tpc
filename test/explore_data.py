@@ -4,16 +4,15 @@ import os
 from eval.bpf_stats import Snapshot
 
 
-def explore_bw_json_files(src_dir):
+def explore_bw_json_files(src_dirs):
     bw_data = {}
     snapshots = {}
     bw_files = []
-    for root, directories, files in os.walk(src_dir):
-        if "logs-" not in root:
-            continue
-        for f in files:
-            if ".json" in f and "repetita_" in f:
-                bw_files.append(os.path.join(root, f))
+    for src_dir in src_dirs:
+        for root, directories, files in os.walk(src_dir):
+            for f in files:
+                if ".json" in f and "repetita_" in f:
+                    bw_files.append(os.path.join(root, f))
 
     # Order files by date so that old data gets erased by newest experiments
     bw_files.sort()
