@@ -1,4 +1,37 @@
 
+\subsection{Simple example}
+
+\begin{figure*}
+	\centering
+	%\subfloat[Topology\label{fig:simple-example:topo}]{%
+	%	\includegraphics[width=0.3\textwidth]{figs/controller_communication.pdf}
+	%}
+	\subfloat[Sum of the used network bandwidth\label{fig:simple-example:gamma}]{%
+		\includegraphics[width=0.6\textwidth]{figs/simple_example_gamma.pdf}
+	}
+	\caption{Simple example with 6 disjoint paths and 4 clients communicating with 4 servers}
+	\label{fig:simple-example}
+\end{figure*}
+
+We use the topology shown in Figure \ref{fig:simple-example:topo}.
+This simple network only has links with the same bandwidth (100 Mbps) and latency (1ms).
+We prevent ECMP from working by setting arbitrary IGP weights on the links.\todo{Test with ECMP enabled}
+Each endhost starts 4 connections using iperf3 with the server in front of it the network.
+We emulate the network with Mininet\ccite{mininet} on a Linux kernel 5.3
+running on machine with 20 CPU and 16 GB of RAM.
+
+Figure \ref{fig:simple-example:gamma} shows the network bandwidth used by all the connections through time.
+In theory, this badnwidth could go as high as 600 Mbps according to the Maximum Flow
+approximation\ccite{maxflow} since there are six disjoint paths available.
+In practice, the total bandwidth is slightly below that number but since this number is above 500Mbps,
+we can deduce that all of the six paths are used.
+Regular TCP connections, without ECMP, cannot achive more than 100Mbps because they can only use one path.
+\todo{Test with ECMP enabled}
+We do not see significant changes with different values of \texttt{GAMMA}.
+\todo{Discuss with Schapira}
+
+\subsection{Topology Zoo set}
+
 We used 233 topologies from the Topology Zoo\ccite{topologyzoo}.
 We modified these topologies to remove part of the graphs that lack link redundancy,\dots trees.
 The resulting topologies have only routers with at least two links.
