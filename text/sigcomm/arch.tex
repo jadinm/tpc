@@ -127,29 +127,56 @@ This enables quicker reactions to congestion and better scalability of the netwo
 However letting endhost arbitrarly choose their own paths might lead to unstable solutions.
 Endhosts might decide to change the paths all at the same time and they could all choose the same path.
 
-Listing \ref{listing:congestion} shows the pseudocode of this algorithm.
 We first check that we waited a sufficient amount of time before moving the connection.
 Indeed, we implement an exponential backoff to prevent stability issues. Without this, all connections in the network
 would switch paths at the same time and this might cause congestion in another part of the network.
 Then, they would all switch back to previous situation and continue flapping between both paths.
 
-To choose the good paths, we use an algorithm of Adversarial Bandit Problem: EXP3 \cite{exp3}.
-\todo{Introduce the Bandit Problem}
+To choose the good paths, we formulate our problem as an Adversarial Bandit Problem.
+In the Adversarial Bandit Problem\ccite{banditproblem}, a gambler have to choose which of the K slot machines
+to play. At each time steps, he can pull the arm of one of the slot machines and he receives a reward
+(potentially negative).
+The problem is to find a tradeoff between the exploration of each slot machine and the exploitation
+of the most rewarding one.
+
+In our path management, the gambler is the TCP connection that wants to maximize its connection quality
+(i.e., latency, throughput,\dots)
+The slots machines are the paths that we use by setting the corresponding SRH.
+The time steps are the congestion signals. We don't want to change paths if there is nothing bad happening.
+At each time steps, we compute the reward of the current path,
+that is, the connection quality achieved on this path.
+
+\begin{figure}
+	\begin{framed}
+		Parameters: $\Gamma \in [0, 1]$, value of $w_i(t)$ $\forall i \in \mathcal{P}$ at time step t
+		\begin{itemize}
+			\setlength{\itemsep}{0pt}
+			\setlength{\parskip}{0pt}
+			\item Compute the reward of the current path $p$: $$x_{p_t}(t) \in [0, 1]$$
+			\item Update its weight: $$w_p(t+1) = w_p(t) \cdot exp(\Gamma \frac{x_{p_t}}{prob_p(t) \cdot K})$$
+			\item Set $\forall i \in \mathcal{P}$ $prob_i(t+1) = (1 - \Gamma) \frac{w_i(t+1)}{\sum^K_{j=1}w_j} + \frac{\Gamma}{K}$
+			\item Draw the new path $p_{t+1}$ randomly according to ${prob_1(t+1)},\dots {prob_K(t+1)}$.
+		\end{itemize}
+	\end{framed}
+	\caption{Pseudocode of an EXP3 algorithm step}
+	\label{algo:exp3}
+\end{figure}
+
+We use the EXP3 algorithm\ccite{exp3} to solve our path management issue.
+The algorithm pseudcode is shown in Figure \ref{algo:exp3}.
 We associate a weight to each path. When we consider changing the path, we evaluate the current path quality
 and we update its weight depending of this metric. A large increase of the weight means a good quality while
 a small increase indicates the opposite.
 Then, we make a weighted random choice to select the new path.
 Note that this ``new'' path could be the old one. In this case, we do not change the path.
 
-There are three design decisions to make to use this algorithm: the initial path weights, the reward computation and the value of \texttt{GAMMA}.
+There are three design decisions to make to use this algorithm: the initial path weights, the reward computation and the value of $\Gamma$.
 We set the initial weight to the maximum amount of bandwidth available on the path.
 The controller gives this information with the SRH.
 The reward is computed based on the last congestion window observed.
 \todo{Change to mean/median cwin}
-The value of \texttt{GAMMA} can change the emphasis on the path weights.
+The value of $\Gamma$ can change the emphasis on the path weights.
 If we set this value to 1, each path has the same likelihood to be selected.
 If we set this value to 0, paths are selected stricly based on their weight.
 \todo{Explain why we don't want value 0?}
-
-\lstinputlisting[language=C, caption={Reaction to congestion}, label={listing:congestion}]{code/congestion.c}
 
