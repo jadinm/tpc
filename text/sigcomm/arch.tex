@@ -1,5 +1,98 @@
+\subsection{Use cases}
 
-\subsection{Path injections}
+There are many possible use cases for a solution that enables hosts to
+dynamically reroute flows around congestion. We focus on three very different
+ones in this paper and provide all our software to enable
+other researchers to explore different use cases. Our first use case is
+content provider that manages a small datacenter that contains file, web
+or video streaming servers. This datacenter is connected to several transit
+ISPs that enable it to reach endusers. Many of these endusers are reachable
+via two or more transit ISPs. This is illustrated in the left part of Fig.~\ref{fig:uc}.
+Our second use case is an entreprise network that has redundant wide area links. In such a network servers are typically installed in a few well-connected
+sites and they interact with all other sites. Given the cost of the WAN
+links, it is impossible to overprovision such a network. This is illustrated in the middle part of Fig.~\ref{fig:uc}. 
+Finally our third use case is /ldots
+
+
+
+\begin{figure}
+	\centering
+        use cases TODO
+        \caption{Use cases}
+	\label{fig:uc}
+\end{figure}
+
+
+At a high-level, our design needs to answer three basic questions: $(i)$ When should a host decide to reroute a congested flow, $(ii)$ How are the available paths exposed to hosts and $(iii)$ How are the packets belonging to a flow rerouted ?.
+
+
+\subsection{Rerouting congested flows}
+
+
+The choice of changing the path is left to the endhost instead of relying on the controller.
+This enables quicker reactions to congestion and better scalability of the network core.
+However letting endhost arbitrarly choose their own paths might lead to unstable solutions.
+Endhosts might decide to change the paths all at the same time and they could all choose the same path.
+
+We first check that we waited a sufficient amount of time before moving the connection.
+Indeed, we implement an exponential backoff to prevent stability issues. Without this, all connections in the network
+would switch paths at the same time and this might cause congestion in another part of the network.
+Then, they would all switch back to previous situation and continue flapping between both paths.
+
+To choose the good paths, we formulate our problem as an Adversarial Bandit Problem.
+In the Adversarial Bandit Problem\ccite{banditproblem}, a gambler have to choose which of the K slot machines
+to play. At each time steps, he can pull the arm of one of the slot machines and he receives a reward
+(potentially negative).
+The problem is to find a tradeoff between the exploration of each slot machine and the exploitation
+of the most rewarding one.
+
+In our path management, the gambler is the TCP connection that wants to maximize its connection quality
+(i.e., latency, throughput,\dots)
+The slots machines are the paths that we use by setting the corresponding SRH.
+The time steps are the congestion signals. We don't want to change paths if there is nothing bad happening.
+At each time steps, we compute the reward of the current path,
+that is, the connection quality achieved on this path.
+
+\begin{figure}
+	\begin{framed}
+		Parameters: $\Gamma \in [0, 1]$, value of $w_i(t)$ $\forall i \in \mathcal{P}$ at time step t
+		\begin{itemize}
+			\setlength{\itemsep}{0pt}
+			\setlength{\parskip}{0pt}
+			\item Compute the reward of the current path $p$: $$x_{p_t}(t) \in [0, 1]$$
+			\item Update its weight: $$w_p(t+1) = w_p(t) \cdot exp(\Gamma \frac{x_{p_t}}{prob_p(t) \cdot K})$$
+			\item Set $\forall i \in \mathcal{P}$ $prob_i(t+1) = (1 - \Gamma) \frac{w_i(t+1)}{\sum^K_{j=1}w_j} + \frac{\Gamma}{K}$
+			\item Draw the new path $p_{t+1}$ randomly according to ${prob_1(t+1)},\dots {prob_K(t+1)}$.
+		\end{itemize}
+	\end{framed}
+	\caption{Pseudocode of an EXP3 algorithm step}
+	\label{algo:exp3}
+\end{figure}
+
+We use the EXP3 algorithm\ccite{exp3} to solve our path management issue.
+The algorithm pseudcode is shown in Figure \ref{algo:exp3}.
+We associate a weight to each path. When we consider changing the path, we evaluate the current path quality
+and we update its weight depending of this metric. A large increase of the weight means a good quality while
+a small increase indicates the opposite.
+Then, we make a weighted random choice to select the new path.
+Note that this ``new'' path could be the old one. In this case, we do not change the path.
+
+There are three design decisions to make to use this algorithm: the initial path weights, the reward computation and the value of $\Gamma$.
+We set the initial weight to the maximum amount of bandwidth available on the path.
+The controller gives this information with the SRH.
+The reward is computed based on the last congestion window observed.
+\todo{Change to mean/median cwin}
+The value of $\Gamma$ can change the emphasis on the path weights.
+If we set this value to 1, each path has the same likelihood to be selected.
+If we set this value to 0, paths are selected stricly based on their weight.
+\todo{Explain why we don't want value 0?}
+
+\subsection{Exposing paths to hosts}
+
+There are different possible ways to expose paths to hosts in real networks.
+Some approaches are applicable for servers in a datacenters, others are
+relevant for managed enterprise networks. 
+
 
 \begin{figure}
 	\centering
@@ -47,6 +140,26 @@ Each endhost daemon receives a list of Path IDs for pairs matching its access ro
 Along with the Path ID, the controller sends the bandwidth capacity, its current usage and its delay.
 We scales up the number of controllers with the number of endhost
 \todo{inaccurate, it is actually the database but it might be simpler to explain that}.
+
+
+\subsection{Enforcing paths for flows}
+
+As in the previous sections, several technical solutions are possible to
+enable hosts to request the utilisation of a specific path through a network.
+They all require the hosts to provide a hint on the path that it wishes to
+use by setting a specific field in the packet's header. A first
+approach could be to use Multi-Toplogy Routing \cite{rfc4915} and
+indicate with the DSCP field of the IP header the topology selected for
+each packet. This requires the network administrator to carefully select
+different topologies that he/she wants to disseminate with the intradomain
+routing protocol. This solution would work well in a datacenter with a
+few different border routers. Another approach would be rely on VLAN tags.
+
+In this work, we build and evaluate our prototype on top of IPv6
+Segment Routing (IPv6SR) \cite{ref}. IPv6 SR is a modern version of source
+routing that implements the Segment Routing architecture \cite{filsfils2015segment}, that is
+being finalised within the IETF.
+
 
 \subsection{Application-independent path management}
 
@@ -122,61 +235,4 @@ we call another routine to choose the new path.
 
 \subsection{Stable path management with EXP3}
 
-The choice of changing the path is left to the endhost instead of relying on the controller.
-This enables quicker reactions to congestion and better scalability of the network core.
-However letting endhost arbitrarly choose their own paths might lead to unstable solutions.
-Endhosts might decide to change the paths all at the same time and they could all choose the same path.
-
-We first check that we waited a sufficient amount of time before moving the connection.
-Indeed, we implement an exponential backoff to prevent stability issues. Without this, all connections in the network
-would switch paths at the same time and this might cause congestion in another part of the network.
-Then, they would all switch back to previous situation and continue flapping between both paths.
-
-To choose the good paths, we formulate our problem as an Adversarial Bandit Problem.
-In the Adversarial Bandit Problem\ccite{banditproblem}, a gambler have to choose which of the K slot machines
-to play. At each time steps, he can pull the arm of one of the slot machines and he receives a reward
-(potentially negative).
-The problem is to find a tradeoff between the exploration of each slot machine and the exploitation
-of the most rewarding one.
-
-In our path management, the gambler is the TCP connection that wants to maximize its connection quality
-(i.e., latency, throughput,\dots)
-The slots machines are the paths that we use by setting the corresponding SRH.
-The time steps are the congestion signals. We don't want to change paths if there is nothing bad happening.
-At each time steps, we compute the reward of the current path,
-that is, the connection quality achieved on this path.
-
-\begin{figure}
-	\begin{framed}
-		Parameters: $\Gamma \in [0, 1]$, value of $w_i(t)$ $\forall i \in \mathcal{P}$ at time step t
-		\begin{itemize}
-			\setlength{\itemsep}{0pt}
-			\setlength{\parskip}{0pt}
-			\item Compute the reward of the current path $p$: $$x_{p_t}(t) \in [0, 1]$$
-			\item Update its weight: $$w_p(t+1) = w_p(t) \cdot exp(\Gamma \frac{x_{p_t}}{prob_p(t) \cdot K})$$
-			\item Set $\forall i \in \mathcal{P}$ $prob_i(t+1) = (1 - \Gamma) \frac{w_i(t+1)}{\sum^K_{j=1}w_j} + \frac{\Gamma}{K}$
-			\item Draw the new path $p_{t+1}$ randomly according to ${prob_1(t+1)},\dots {prob_K(t+1)}$.
-		\end{itemize}
-	\end{framed}
-	\caption{Pseudocode of an EXP3 algorithm step}
-	\label{algo:exp3}
-\end{figure}
-
-We use the EXP3 algorithm\ccite{exp3} to solve our path management issue.
-The algorithm pseudcode is shown in Figure \ref{algo:exp3}.
-We associate a weight to each path. When we consider changing the path, we evaluate the current path quality
-and we update its weight depending of this metric. A large increase of the weight means a good quality while
-a small increase indicates the opposite.
-Then, we make a weighted random choice to select the new path.
-Note that this ``new'' path could be the old one. In this case, we do not change the path.
-
-There are three design decisions to make to use this algorithm: the initial path weights, the reward computation and the value of $\Gamma$.
-We set the initial weight to the maximum amount of bandwidth available on the path.
-The controller gives this information with the SRH.
-The reward is computed based on the last congestion window observed.
-\todo{Change to mean/median cwin}
-The value of $\Gamma$ can change the emphasis on the path weights.
-If we set this value to 1, each path has the same likelihood to be selected.
-If we set this value to 0, paths are selected stricly based on their weight.
-\todo{Explain why we don't want value 0?}
 
