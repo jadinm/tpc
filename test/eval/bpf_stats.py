@@ -29,29 +29,17 @@ BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 #
 # struct flow_infos {
 # 	__u32 srh_id;
-#	__u32 mss;
-# 	__u32 last_reported_bw;
-# 	__u64 sample_start_time;
-# 	__u32 sample_start_bytes;
 # 	__u64 last_move_time;
 # 	__u64 wait_backoff_max; // current max wating time
 # 	__u64 wait_before_move; // current waiting time
-# 	__u64 first_loss_time;
-# 	__u32 number_of_loss;
 # 	__u64 rtt_count; // Count the number of RTT in the connection, this is useful to know if congestion signals are consecutive or not
 # 	__u32 ecn_count; // Count the number of consecutive CWR sent (either from ECN or other causes)
 # 	__u64 last_ecn_rtt; // The index of the last RTT were we sent an CWR
 # 	__u32 exp3_last_number_actions;
 # 	__u32 exp3_curr_reward;
+#   __u32 exp3_start_snd_nxt;
 # 	floating exp3_last_probability;
-# 	__u64 exp3_weight_mantissa_0; // Current weight for each path
-# 	__u32 exp3_weight_exponent_0;
-# 	__u64 exp3_weight_mantissa_1; // Current weight for each path
-# 	__u32 exp3_weight_exponent_1;
-# 	__u64 exp3_weight_mantissa_2; // Current weight for each path
-# 	__u32 exp3_weight_exponent_2;
-# 	__u64 exp3_weight_mantissa_3; // Current weight for each path
-# 	__u32 exp3_weight_exponent_3;
+# 	floating exp3_weight[MAX_SRH_BY_DEST];
 # } __attribute__((packed));
 #
 # struct flow_snapshot {
@@ -61,44 +49,47 @@ BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 # 	struct flow_infos flow;
 # } __attribute__((packed));
 
+MAX_PATHS_BY_DEST = 8
+MAX_SEGMENTS_BY_SRH = 10
+
 
 class Snapshot:
 
     def __init__(self, ebpf_map_entry):
+        # TODO Make the weight extraction depend on the define for the number
+        #  of paths by destination
         self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port,\
-            self.dst_port, self.srh_id, self.mss, self.last_reported_bw, \
-            self.sample_start_time, self.sample_start_bytes, \
+            self.dst_port, self.srh_id, \
             self.last_move_time, self.wait_backoff_max, self.wait_before_move, \
-            self.first_loss_time, self.number_of_loss, self.rtt_count,\
-            self.ecn_count,  self.last_ecn_rtt, \
+            self.rtt_count, self.ecn_count,  self.last_ecn_rtt, \
             self.exp3_last_number_actions, self.exp3_curr_reward, \
-            exp3_last_probability_mantissa, exp3_last_probability_exponent, \
-            exp3_weight_mantissa_0, exp3_weight_exponent_0, \
-            exp3_weight_mantissa_1, exp3_weight_exponent_1, \
-            exp3_weight_mantissa_2, exp3_weight_exponent_2,\
-            exp3_weight_mantissa_3, exp3_weight_exponent_3 = \
+            self.exp3_start_snd_nxt, \
+            exp3_last_probability_mantissa, exp3_last_probability_exponent = \
             struct.unpack("<IQ"  # Start of flow_snapshot
                           + "I4q2I"  # flow id
-                          + "3IQI4QIQIQ2I"  # flow info (except floats)
-                          + "QIQIQIQIQI",  # Floats of flow info
-                          ebpf_map_entry)
+                          + "I4QIQ3I"  # flow info (except floats)
+                          + "QI",  # Floats of flow info
+                          ebpf_map_entry[:128])
         self.ebpf_map_entry = ebpf_map_entry
 
         # Parse addresses
         self.src = ip_address(self.ebpf_map_entry[16:32])
         self.dst = ip_address(self.ebpf_map_entry[32:48])
 
+        # print(exp3_last_probability_mantissa)
+        # print(exp3_last_probability_exponent)
+
         # Parse floats
         floatings = self.extract_floats([(exp3_last_probability_mantissa,
-                                          exp3_last_probability_exponent),
-                                         (exp3_weight_mantissa_0,
-                                          exp3_weight_exponent_0),
-                                         (exp3_weight_mantissa_1,
-                                          exp3_weight_exponent_1),
-                                         (exp3_weight_mantissa_2,
-                                          exp3_weight_exponent_2),
-                                         (exp3_weight_mantissa_3,
-                                          exp3_weight_exponent_3)])
+                                          exp3_last_probability_exponent)])
+                                         #(exp3_weight_mantissa_0,
+                                         # exp3_weight_exponent_0),
+                                         #(exp3_weight_mantissa_1,
+                                         # exp3_weight_exponent_1),
+                                         #(exp3_weight_mantissa_2,
+                                         # exp3_weight_exponent_2),
+                                         #(exp3_weight_mantissa_3,
+                                         # exp3_weight_exponent_3)])
         self.exp3_last_prob = floatings[0]
         self.exp3_weights = floatings[1:]
 
@@ -204,8 +195,6 @@ class Snapshot:
 
 
 class BPFPaths:
-    MAX_PATHS_BY_DEST = 4
-    MAX_SEGMENTS_BY_SRH = 10
 
     def __init__(self, net: ReroutingNet, node: ReroutingHost, byte_chains):
         self.src = node.name
@@ -226,14 +215,11 @@ class BPFPaths:
             self.paths_by_dest[dest.name] = []
 
             # Get SRH paths
-            print(chain)
             chain = chain[20:]  # Remove key + max_reward
-            srh_fixed_size = (8 + self.MAX_SEGMENTS_BY_SRH * 16)
-            for i in range(self.MAX_PATHS_BY_DEST):
+            srh_fixed_size = (8 + MAX_SEGMENTS_BY_SRH * 16)
+            for i in range(MAX_PATHS_BY_DEST):
                 chain = chain[24:]  # Remove srh_record data
                 # Get SRH length
-                print(i)
-                print(chain)
                 srh_len, srh_type = struct.unpack("BB", chain[1:3])
                 if srh_type == 0:  # Unused or invalid SRH slot
                     chain = chain[srh_fixed_size:]  # Pass to next SRH
@@ -275,7 +261,6 @@ class BPFPaths:
         daemon = node.nconfig.daemon(SRLocalCtrl.NAME)
         if daemon.dest_map_id == -1:
             raise ValueError("Cannot find the id of the dest eBPF map")
-        print(daemon.dest_map_id)
 
         cmd = "{bpftool} map -j dump id {map_id}"\
             .format(bpftool=BPFTOOL, map_id=daemon.dest_map_id)
