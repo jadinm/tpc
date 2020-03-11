@@ -7,6 +7,7 @@ from eval.bpf_stats import Snapshot
 def explore_bw_json_files(src_dirs):
     bw_data = {}
     snapshots = {}
+    unaggregated_bw = {}
     bw_files = []
     for src_dir in src_dirs:
         for root, directories, files in os.walk(src_dir):
@@ -26,14 +27,24 @@ def explore_bw_json_files(src_dirs):
             data_copy = [(int(k), float(v)) for k, v in data["bw"].items()]
             bw_data.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
                 .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]] = data_copy
+            if "unaggregated_bw" in data:
+                data_copy = [(int(k), [float(b) for b in v])
+                             for k, v in data["unaggregated_bw"].items()]
+                unaggregated_bw.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
+                    .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]]\
+                    = data_copy
             if "snapshots" not in data:
                 continue
-            snapshot_copy = {h: [Snapshot.retrieve_from_hex(s) for s in snaps]
-                             for h, snaps in data["snapshots"].items()}
-            snapshots.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
-                .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]] = snapshot_copy
+            try:
+                snapshot_copy = {h: [Snapshot.retrieve_from_hex(s) for s in snaps]
+                                 for h, snaps in data["snapshots"].items()}
+                snapshots.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
+                    .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]] = snapshot_copy
+            except OverflowError:
+                print("The file %s contains a failed execution because the "
+                      "weight overflowed " % f)
 
-    return bw_data, snapshots
+    return bw_data, snapshots, unaggregated_bw
 
 
 def explore_maxflow_json_files(src_dir):

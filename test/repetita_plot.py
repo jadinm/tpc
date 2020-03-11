@@ -37,11 +37,31 @@ def parse_args():
                                  0.5,
                                  "/root/paths-gamma-variable/ebpf-gamma-0.9",
                                  0.9])
+    parser.add_argument('--reward-mult-dirs', nargs='*', action='store',
+                        help='List of source directories for different '
+                             'values of gamma. Each element of the list has '
+                             'its gamma value appended to the list as well',
+                        default=["/root/paths-reward-mult-variable/ebpf-reward-mult-1",
+                                 1,
+                                 "/root/paths-reward-mult-variable/ebpf-reward-mult-10",
+                                 10,
+                                 "/root/paths-reward-mult-variable/ebpf-reward-mult-100",
+                                 100])
+    parser.add_argument('--cc-dirs', nargs='*', action='store',
+                        help='List of source directories for different '
+                             'values of gamma. Each element of the list has '
+                             'its gamma value appended to the list as well',
+                        default=["/root/paths-cc-variable/ebpf-cc-cubic",
+                                 "cubic",
+                                 "/root/paths-cc-variable/ebpf-cc-bbr",
+                                 "bbr",
+                                 "/root/paths-cc-variable/ebpf-cc-pcc",
+                                 "pcc"])
     return parser.parse_args()
 
 
 def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
-                               output_path):
+                               output_path, unaggregated_bw):
 
     colors = {
         False: "#00B0F0",  # Blue
@@ -64,7 +84,6 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
                 if True not in maxseg_exp.keys() \
                         or False not in maxseg_exp.keys():
                     continue
-                print("HERE 1")
 
                 figure_name = "bw_ebpf_or_no_ebpf_by_topo" \
                               "_{topo}_{demands}_{maxseg}"\
@@ -113,17 +132,60 @@ def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
                                                   figure_name + ".pdf")))
                 subplot.set_ylim(bottom=0)
                 subplot.set_xlim(left=1, right=MEASUREMENT_TIME)
+                subplot.legend(loc="best")
                 fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                             bbox_inches='tight', pad_inches=0, markersize=9)
                 fig.clf()
                 plt.close()
 
+                # Add a graph with a boxplot every second
+                if unaggregated_bw.get(topo, {}).get(demands, {}) \
+                        .get(maxseg, {}).get(True) is not None:
+                    fig = plt.figure()
+                    subplot = fig.add_subplot(111)
 
-def bw_gamma_by_topo(json_bandwidths, json_srmip_maxflow, output_path):
+                    times = []
+                    bw = []
+                    for t, b in sorted(unaggregated_bw[topo][demands][maxseg][True]):
+                        times.append(t)
+                        bw.append(b)
+                    subplot.boxplot(bw)
+                    subplot.set_ylim(bottom=0, top=200)  # TODO Change
+
+                    fig.savefig(os.path.join(output_path,
+                                             figure_name + "_boxplot.pdf"),
+                                bbox_inches='tight', pad_inches=0, markersize=9)
+                    fig.clf()
+                    plt.close()
+
+                # Add a graph with a boxplot every second
+                if unaggregated_bw.get(topo, {}).get(demands, {}) \
+                        .get(maxseg, {}).get(False) is not None:
+                    fig = plt.figure()
+                    subplot = fig.add_subplot(111)
+
+                    times = []
+                    bw = []
+                    for t, b in sorted(
+                            unaggregated_bw[topo][demands][maxseg][False]):
+                        times.append(t)
+                        bw.append(b)
+                    subplot.boxplot(bw)
+                    subplot.set_ylim(bottom=0, top=200)  # TODO Change
+
+                    fig.savefig(os.path.join(output_path,
+                                             figure_name + "_boxplot_no.pdf"),
+                                bbox_inches='tight', pad_inches=0,
+                                markersize=9)
+                    fig.clf()
+                    plt.close()
+
+
+def bw_param_influence_by_topo(json_bandwidths, json_srmip_maxflow, output_path,
+                               snapshots, param_name="cc"):
 
     colors = [
         "orangered",
-        "red",
         "blue",
         "green",
         "black",
@@ -138,31 +200,35 @@ def bw_gamma_by_topo(json_bandwidths, json_srmip_maxflow, output_path):
 
     topos = {}
 
-    for gamma, gamma_exp in json_bandwidths.items():
-        for topo, topo_exp in gamma_exp.items():
+    for param, param_exp in json_bandwidths.items():
+        for topo, topo_exp in param_exp.items():
             for demands, demands_exp in topo_exp.items():
                 for maxseg, maxseg_exp in demands_exp.items():
+                    snaps = snapshots.get(param, {}).get(topo, {})\
+                        .get(demands, {}).get(param, [])
                     topos.setdefault(topo, {}).setdefault(demands, {})\
-                        .setdefault(maxseg, {})[gamma] = maxseg_exp
+                        .setdefault(maxseg, {})[param] = maxseg_exp, snaps
 
     for topo, topo_exp in topos.items():
         for demands, demands_exp in topo_exp.items():
             for maxseg, maxseg_exp in demands_exp.items():
 
-                figure_name = "bw_gamma_by_topo" \
+                figure_name = "bw_{param_name}_by_topo" \
                               "_{topo}_{demands}"\
-                    .format(topo=topo, demands=demands)
+                    .format(topo=topo, demands=demands, param_name=param_name)
                 fig = plt.figure()
                 subplot = fig.add_subplot(111)
 
                 i = 0
-                for gamma, gamma_exp in maxseg_exp.items():
+                for param, param_exp in maxseg_exp.items():
                     i += 1
+
+                    param_exp, snaps = param_exp
 
                     if i == 1:  # Add no ebpf
                         times = []
                         bw = []
-                        for t, b in sorted(gamma_exp[False]):
+                        for t, b in sorted(param_exp[False]):
                             times.append(t)
                             bw.append(b)
                         subplot.step(times, bw, color="#00B0F0",
@@ -173,13 +239,14 @@ def bw_gamma_by_topo(json_bandwidths, json_srmip_maxflow, output_path):
                     # Get back data
                     times = []
                     bw = []
-                    for t, b in sorted(gamma_exp[True]):
+                    for t, b in sorted(param_exp[True]):
                         times.append(t)
                         bw.append(b)
                     subplot.step(times, bw, color=colors[i-1],
                                  marker=markers[i-1], linewidth=LINE_WIDTH,
                                  where="post", markersize=MARKER_SIZE,
-                                 zorder=i, label="Gamma %f" % gamma)
+                                 zorder=i,
+                                 label="{} {}".format(param_name, param))
 
                 subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
                 subplot.set_ylabel("Bandwidth (Mbps)", fontsize=FONTSIZE)
@@ -202,17 +269,19 @@ def bw_gamma_by_topo(json_bandwidths, json_srmip_maxflow, output_path):
                              " - '{demands}' with maximum {maxseg} segments\n"
                              .format(topo=topo, demands=demands, maxseg=maxseg))
 
-                lg.info("Saving figure for gammas for '{topo}' demand "
+                lg.info("Saving figure for {param_name}s for '{topo}' demand "
                         "'{demands}' with maxseg={maxseg} to {path}\n"
-                        .format(topo=topo, maxseg=maxseg, demands=demands,
+                        .format(param_name=param_name, topo=topo,
+                                maxseg=maxseg, demands=demands,
                                 path=os.path.join(output_path,
                                                   figure_name + ".pdf")))
                 subplot.set_ylim(bottom=0)
                 subplot.set_xlim(left=1, right=MEASUREMENT_TIME)
+                subplot.legend(loc="best")
                 fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                             bbox_inches='tight', pad_inches=0, markersize=9)
-                fig.clf()
-                plt.close()
+                plt.clf()
+                plt.close(fig)
 
 
 def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow,
@@ -331,31 +400,20 @@ def plot_bw_per_topo(times, bw, output_path, demand_id,
     plt.close()
 
 
-if __name__ == "__main__":
-    args = parse_args()
-    lg.setLogLevel(args.log)
-    os.mkdir(args.out_dir)
-
-    bw_loaded_data, snap_data = explore_bw_json_files(args.src_dirs)
-    optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
-    # Plot aggregates and comparison between ebpf topo or not
-    bw_ebpf_or_no_ebpf_by_topo(bw_loaded_data, optim_bw_data, args.out_dir)
-    bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
-
-    # Parse gamma diffs
-    gamma_loaded_data = {}
-    gamma_snap_data = {}
-    for i in range(0, len(args.gamma_dirs), 2):
-        bw_data, snaps = explore_bw_json_files([args.gamma_dirs[i]])
-        gamma_value = float(args.gamma_dirs[i+1])
-        gamma_loaded_data.setdefault(gamma_value, bw_data)
-        gamma_snap_data.setdefault(gamma_value, snaps)
+def produce_param_diff_graphs(dirs, param_name="cc"):
+    param_loaded_data = {}
+    param_snap_data = {}
+    for i in range(0, len(dirs), 2):
+        bw_data, snaps, unaggregated_bw = explore_bw_json_files([dirs[i]])
+        param_value = dirs[i + 1]
+        param_loaded_data.setdefault(param_value, bw_data)
+        param_snap_data.setdefault(param_value, snaps)
 
         # Add no ebpf data
-        for topo, topo_exp in gamma_loaded_data[gamma_value].items():
+        for topo, topo_exp in param_loaded_data[param_value].items():
             for demands, demands_exp in topo_exp.items():
                 for maxseg, maxseg_exp in demands_exp.items():
-                    bws_no_ebpf = bw_loaded_data.get(topo, {})\
+                    bws_no_ebpf = bw_loaded_data.get(topo, {}) \
                         .get(demands, {}).get(maxseg, {}).get(False)
                     if bws_no_ebpf is not None:
                         maxseg_exp[False] = bws_no_ebpf
@@ -363,7 +421,31 @@ if __name__ == "__main__":
                         print("Cannot find solution without ebpf for topo"
                               " {topo} demand {demand}".format(topo=topo,
                                                                demand=demands))
-    bw_gamma_by_topo(gamma_loaded_data, optim_bw_data, args.out_dir)
+    bw_param_influence_by_topo(param_loaded_data, optim_bw_data,
+                               args.out_dir, param_snap_data,
+                               param_name=param_name)
+
+
+if __name__ == "__main__":
+    args = parse_args()
+    lg.setLogLevel(args.log)
+    os.mkdir(args.out_dir)
+
+    bw_loaded_data, snap_data, unaggregated_bw = explore_bw_json_files(args.src_dirs)
+    optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
+    # Plot aggregates and comparison between ebpf topo or not
+    bw_ebpf_or_no_ebpf_by_topo(bw_loaded_data, optim_bw_data, args.out_dir,
+                               unaggregated_bw)
+    bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
+
+    # Parse gamma diffs
+    produce_param_diff_graphs(args.gamma_dirs, param_name="gamma")
+
+    # Parse reward mult diffs
+    produce_param_diff_graphs(args.reward_mult_dirs, param_name="reward_mult")
+
+    # Parse CC diffs
+    produce_param_diff_graphs(args.cc_dirs, param_name="cc")
 
     # Plot bw by topology
     for topo, topo_exp in bw_loaded_data.items():

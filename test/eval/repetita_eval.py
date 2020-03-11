@@ -111,7 +111,8 @@ def measure_link_load(net, timestamps, byte_loads, packet_loads):
     timestamps.append(int(round(time.time())))
 
 
-def plot(lg, times, bw, output_path, snapshots, ebpf=True, identifier=None):
+def plot(lg, times, bw, output_path, snapshots, unaggregated_bw, ebpf=True,
+         identifier=None):
 
     suffix = "ebpf" if ebpf else "no-ebpf"
 
@@ -121,6 +122,10 @@ def plot(lg, times, bw, output_path, snapshots, ebpf=True, identifier=None):
     subplot = fig.add_subplot(111)
     x = times
     bw = [float(b) / 10**6 for b in bw]
+    print(unaggregated_bw)
+    unaggregated_bw = [[float(b) / 10**6 for b in bw_list]
+                       for bw_list in unaggregated_bw]
+    print(unaggregated_bw)
     print(bw)
     print(x)
 
@@ -142,6 +147,7 @@ def plot(lg, times, bw, output_path, snapshots, ebpf=True, identifier=None):
     lg.info("Saving raw data to %s\n" % json_file)
     with open(json_file, "w") as file:
         json.dump({"bw": {times[i]: bw[i] for i in range(len(bw))},
+                   "unaggregated_bw": {times[i]: unaggregated_bw[i] for i in range(len(unaggregated_bw))},
                    "id": identifier,
                    "snapshots": {h: [snap.export() for snap in snaps]
                                  for h, snaps in snapshots.items()}},
@@ -204,6 +210,7 @@ def aggregate_bandwidth(clients, servers, start, bw):
     times = set()
     aggregated_bw = {}
     current_bw = [0 for _ in range(len(clients))]
+    unaggregated_bw = {}
 
     # Aggregate all measurements in order until None can be found
 
@@ -224,16 +231,21 @@ def aggregate_bandwidth(clients, servers, start, bw):
         current_bw[next_i] = bw[cs_name(clients[next_i], servers[next_i])][indexes[next_i]]
         indexes[next_i] += 1
         aggregated_bw[next_min_time] = sum(current_bw)
+        unaggregated_bw[next_min_time] = current_bw
 
     aggregated_bw = [(timestamp, bw) for timestamp, bw in aggregated_bw.items()]
     aggregated_bw.sort()
     aggregated_bw = [elem[1] for elem in aggregated_bw]
 
+    unaggregated_bw = [(timestamp, bw) for timestamp, bw in unaggregated_bw.items()]
+    unaggregated_bw.sort()
+    unaggregated_bw = [elem[1] for elem in unaggregated_bw]
+
     times = sorted(list(times))
     start = times[0]
     times = [x - start for x in times]
 
-    return times, aggregated_bw
+    return times, aggregated_bw, unaggregated_bw
 
 
 def post_process_link_loads(net, timestamps, byte_loads, packet_loads):
@@ -326,7 +338,7 @@ def eval_repetita(lg, args, ovsschema):
                 if ".graph" in f:
                     # Identify related flow files
                     for flow_name in files:
-                        if ".flows" in flow_name and f.split(".graph")[0] in flow_name:
+                        if ".flows" in flow_name and f.split(".")[0] in flow_name:
                             topos.setdefault(os.path.join(root, f), []).append(os.path.join(root, flow_name))
 
     if args.repetita_topo is not None:
@@ -495,11 +507,11 @@ def eval_repetita(lg, args, ovsschema):
                     timestamps, byte_loads, packet_loads = \
                         post_process_link_loads(net, timestamps, byte_loads,
                                                 packet_loads)
-            except Exception as e:
-                lg.error("Exception %s in the topo emulation... Skipping...\n"
-                         % e)
-                ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
-                continue
+            #except Exception as e:
+            #    lg.error("Exception %s in the topo emulation... Skipping...\n"
+            #             % e)
+            #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
+            #    continue
             finally:
                 for pid in tcpdumps:
                     pid.kill()
@@ -519,37 +531,39 @@ def eval_repetita(lg, args, ovsschema):
                 subprocess.call("pkill -9 iperf".split(" "))
 
             if not err:
+                #try:
+                lg.info("******* Plotting graphs '%s' *******\n" %
+                        os.path.basename(topo))
+                # Extract JSON output
+                bw = {}
+                start = {}
+                for i in range(len(clients)):
+                    with open("%d_results_%s_%s.json"
+                              % (i, clients[i], servers[i]), "r") \
+                            as fileobj:
+                        results = json.load(fileobj)
+                        start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
+                        for interval in results["intervals"]:
+                            bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
+
+                times, aggregated_bw, unaggregated_bw = \
+                    aggregate_bandwidth(clients, servers, start, bw)
+
                 try:
-                    lg.info("******* Plotting graphs '%s' *******\n" %
-                            os.path.basename(topo))
-                    # Extract JSON output
-                    bw = {}
-                    start = {}
-                    for i in range(len(clients)):
-                        with open("%d_results_%s_%s.json"
-                                  % (i, clients[i], servers[i]), "r") \
-                                as fileobj:
-                            results = json.load(fileobj)
-                            start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
-                            for interval in results["intervals"]:
-                                bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
-
-                    times, aggregated_bw = aggregate_bandwidth(clients, servers, start, bw)
-
-                    try:
-                        os.makedirs(cwd)
-                    except OSError as e:
-                        print("OSError %s" % e)
-                    plot(lg, times, aggregated_bw, cwd, snapshots,
-                         ebpf=args.ebpf,
-                         identifier={"topo": os.path.basename(topo), "demands": os.path.basename(demands),
-                                     "ebpf": args.ebpf, "maxseg": -1})
-                    plot_link_loads(lg, timestamps, byte_loads, packet_loads, cwd, ebpf=args.ebpf,
-                                    identifier={"topo": os.path.basename(topo), "demands": os.path.basename(demands),
-                                                "ebpf": args.ebpf, "maxseg": -1})
-                except Exception as e:
-                    lg.error("Exception %s in the graph generation... Skipping...\n" % e)
-                    lg.error(str(e))
-                    continue
+                    os.makedirs(cwd)
+                except OSError as e:
+                    print("OSError %s" % e)
+                plot(lg, times, aggregated_bw, cwd, snapshots,
+                     unaggregated_bw, ebpf=args.ebpf,
+                     identifier={"topo": os.path.basename(topo), "demands": os.path.basename(demands),
+                                 "ebpf": args.ebpf, "maxseg": -1})
+                plot_link_loads(lg, timestamps, byte_loads, packet_loads, cwd, ebpf=args.ebpf,
+                                identifier={"topo": os.path.basename(topo), "demands": os.path.basename(demands),
+                                            "ebpf": args.ebpf, "maxseg": -1})
+                #except Exception as e:
+                #    lg.error("Exception %s in the graph generation...
+                    #    Skipping...\n" % e)
+                #    lg.error(str(e))
+                #    continue
             else:
                 lg.error("******* Error %s processing graphs '%s' *******\n" % (err, os.path.basename(topo)))
