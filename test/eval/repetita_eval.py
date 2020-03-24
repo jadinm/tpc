@@ -1,19 +1,17 @@
+import copy
 import json
 import os
 import re
+import signal
 import subprocess
 import time
-import ipmininet
-from shlex import split
-from numpy.random import zipf, poisson
 from multiprocessing import Process, Value, Queue
+from shlex import split
 
 import matplotlib.pyplot as plt
 from ipmininet.tests.utils import assert_connectivity
-from sr6mininet.cli import SR6CLI
-import signal
+from numpy.random import zipf, poisson
 
-from examples.albilene import Albilene
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
@@ -201,37 +199,40 @@ def plot_link_loads(lg, times, byte_loads, packet_loads, output_path, ebpf=True,
                    "id": identifier}, file, indent=4)
 
 
-def cs_name(client, server):
-    return "%s-%s" % (client, server)
+def cs_name(client, server, nbr_conn):
+    return "%s-%s.%d" % (client, server, nbr_conn)
 
 
 def aggregate_bandwidth(clients, servers, start, bw):
-    indexes = [0 for _ in range(len(clients))]
+    indexes = [0 for _ in range(len(bw))]
     times = set()
     aggregated_bw = {}
-    current_bw = [0 for _ in range(len(clients))]
+    current_bw = [0 for _ in range(len(bw))]
     unaggregated_bw = {}
 
     # Aggregate all measurements in order until None can be found
 
-    while not all([indexes[i] >= len(bw[cs_name(clients[i], servers[i])]) for i in range(len(clients))]):
+    while not all([indexes[i] >= len(bw[k])
+                   for i, k in enumerate(list(bw.keys()))]):
         # Get next minimum time
         next_min_time = None
         next_i = 0
-        for i in range(len(clients)):
-            if indexes[i] >= len(bw[cs_name(clients[i], servers[i])]):  # No more values to unpack
+        next_k = None
+        for i, k in enumerate(list(bw.keys())):
+            if indexes[i] >= len(bw[k]):  # No more values to unpack
                 continue
-            next_time = start[cs_name(clients[i], servers[i])] + indexes[i] * INTERVALS
+            next_time = start[k] + indexes[i] * INTERVALS
             if next_min_time is None or next_min_time > next_time:
                 next_min_time = next_time
                 next_i = i
+                next_k = k
 
         # Update current bandwidth and add timestamp
         times.add(next_min_time)
-        current_bw[next_i] = bw[cs_name(clients[next_i], servers[next_i])][indexes[next_i]]
+        current_bw[next_i] = bw[next_k][indexes[next_i]]
         indexes[next_i] += 1
         aggregated_bw[next_min_time] = sum(current_bw)
-        unaggregated_bw[next_min_time] = current_bw
+        unaggregated_bw[next_min_time] = copy.deepcopy(current_bw)
 
     aggregated_bw = [(timestamp, bw) for timestamp, bw in aggregated_bw.items()]
     aggregated_bw.sort()
@@ -542,9 +543,13 @@ def eval_repetita(lg, args, ovsschema):
                               % (i, clients[i], servers[i]), "r") \
                             as fileobj:
                         results = json.load(fileobj)
-                        start[cs_name(clients[i], servers[i])] = results["start"]["timestamp"]["timesecs"]
-                        for interval in results["intervals"]:
-                            bw.setdefault(cs_name(clients[i], servers[i]), []).append(interval["sum"]["bits_per_second"])
+                        for j in range(nbr_flows[i]):
+                            start[cs_name(clients[i], servers[i], j)] = \
+                                results["start"]["timestamp"]["timesecs"]
+                            for interval in results["intervals"]:
+                                bw.setdefault(cs_name(clients[i],
+                                                      servers[i], j), [])\
+                                    .append(interval["streams"][j]["bits_per_second"])
 
                 times, aggregated_bw, unaggregated_bw = \
                     aggregate_bandwidth(clients, servers, start, bw)
