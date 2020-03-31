@@ -57,6 +57,9 @@ def parse_args():
     parser.add_argument('--with-interactive', action="store_true",
                         help='Send interactive following a Zipf law in volume '
                              'while sending iperf traffic in the evaluation.')
+    parser.add_argument('--number-tests',
+                        help='Repeat test a given number of times',
+                        default=1)
     return parser.parse_args()
 
 
@@ -74,4 +77,5 @@ sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
 os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "bin") + os.pathsep +\
                      os.path.join(os.path.abspath(args.src_dir), "bin") + os.pathsep + os.environ["PATH"]
 
-tests[args.test](mininet.log.lg, args, ovsschema)
+for _ in range(int(args.number_tests)):
+    tests[args.test](mininet.log.lg, args, ovsschema)
