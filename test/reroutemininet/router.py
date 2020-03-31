@@ -36,6 +36,8 @@ class ReroutingConfig(SR6Config):
     def build(self):
         self.sysctl = "net.ipv4.tcp_ecn=1"
         self.sysctl = "net.ipv4.tcp_ecn_fallback=0"
+        # Hash with port numbers as well
+        self.sysctl = "fib_multipath_hash_policy=1"
         super(ReroutingConfig, self).build()
 
 
