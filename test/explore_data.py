@@ -1,3 +1,4 @@
+import copy
 import json
 import os
 
@@ -8,6 +9,8 @@ def explore_bw_json_files(src_dirs):
     bw_data = {}
     snapshots = {}
     unaggregated_bw = {}
+    bw_by_conn = {}
+
     bw_files = []
     for src_dir in src_dirs:
         for root, directories, files in os.walk(src_dir):
@@ -25,13 +28,23 @@ def explore_bw_json_files(src_dirs):
             if "bw" not in data or "id" not in data:
                 continue
             data_copy = [(int(k), float(v)) for k, v in data["bw"].items()]
-            bw_data.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
-                .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]] = data_copy
+            bw_data.setdefault(data["id"]["topo"], {}).setdefault(
+                data["id"]["demands"], {}) \
+                .setdefault(data["id"]["maxseg"], {})[
+                data["id"]["ebpf"]] = data_copy
+            if "bw_by_conn" in data:
+                data_copy = copy.deepcopy(data["bw_by_conn"])
+                bw_by_conn.setdefault(data["id"]["topo"], {}).setdefault(
+                    data["id"]["demands"], {}) \
+                    .setdefault(data["id"]["maxseg"], {})[
+                    data["id"]["ebpf"]] = data_copy
+
             if "unaggregated_bw" in data:
                 data_copy = [(int(k), [float(b) for b in v])
                              for k, v in data["unaggregated_bw"].items()]
-                unaggregated_bw.setdefault(data["id"]["topo"], {}).setdefault(data["id"]["demands"], {})\
-                    .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]]\
+                unaggregated_bw.setdefault(data["id"]["topo"], {}).setdefault(
+                    data["id"]["demands"], {}) \
+                    .setdefault(data["id"]["maxseg"], {})[data["id"]["ebpf"]] \
                     = data_copy
             if "snapshots" not in data:
                 continue
@@ -44,7 +57,7 @@ def explore_bw_json_files(src_dirs):
                 print("The file %s contains a failed execution because the "
                       "weight overflowed " % f)
 
-    return bw_data, snapshots, unaggregated_bw
+    return bw_data, snapshots, unaggregated_bw, bw_by_conn
 
 
 def explore_maxflow_json_files(src_dir):

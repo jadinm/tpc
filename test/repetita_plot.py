@@ -71,6 +71,12 @@ def parse_args():
     return parser.parse_args()
 
 
+def jain_fairness(bw_data):
+    # https://en.wikipedia.org/wiki/Fairness_measure
+    return sum(bw_data) * sum(bw_data) \
+           / (len(bw_data) * sum([b*b for b in bw_data]))
+
+
 def bw_ebpf_or_no_ebpf_by_topo(json_bandwidths, json_srmip_maxflow,
                                output_path, unaggregated_bw):
 
@@ -238,9 +244,12 @@ def fairness_cdf_plot(output_path, data_vectors: List[List[float]],
 
     min_value = np.inf
     max_value = -np.inf
+    print()
     for i, vector in enumerate(data_vectors):
         # Get mean of each connection, then cdf
-        mean_data = [np.mean(x) for x in vector]
+        mean_data = [np.mean(x[4:-1]) for x in vector]
+        print("param: " + legends[i])
+        print(jain_fairness(mean_data))
         bin_edges, cdf = cdf_data(mean_data)
 
         min_value = min(bin_edges[1:] + [min_value])
@@ -274,7 +283,8 @@ def fairness_cdf_plot(output_path, data_vectors: List[List[float]],
 
 
 def bw_param_influence_by_topo(json_bandwidths, json_srmip_maxflow, output_path,
-                               snapshots, unaggregated_bw, param_name="cc"):
+                               snapshots, unaggregated_bw, param_bw_by_conn,
+                               param_name="cc"):
     colors = [
         "orangered",
         "blue",
@@ -324,13 +334,9 @@ def bw_param_influence_by_topo(json_bandwidths, json_srmip_maxflow, output_path,
                         for t, b in sorted(param_exp[False]):
                             times.append(t)
                             bw.append(b)
-                        if unaggregated_bw.get(param, {}).get(topo) is not None:
-                            for t, b in sorted(
-                                    unaggregated_bw[param][topo][demands][
-                                        maxseg][False]):
-                                for conn in range(len(b)):
-                                    cdf_data[-1].setdefault(conn, []).append(
-                                        b[conn])
+                        if param_bw_by_conn.get(param, {}).get(topo) is not None:
+                            cdf_data[-1] = param_bw_by_conn[param][topo][
+                                demands][maxseg][False]
                         subplot.step(times, bw, color="#00B0F0",
                                      marker="s", linewidth=LINE_WIDTH,
                                      where="post", markersize=MARKER_SIZE,
@@ -343,13 +349,9 @@ def bw_param_influence_by_topo(json_bandwidths, json_srmip_maxflow, output_path,
                     for t, b in sorted(param_exp[True]):
                         times.append(t)
                         bw.append(b)
-                        if unaggregated_bw.get(param, {}).get(topo) is not None:
-                            for t, b in sorted(
-                                    unaggregated_bw[param][topo][demands][
-                                        maxseg][True]):
-                                for conn in range(len(b)):
-                                    cdf_data[i - 1].setdefault(conn, []) \
-                                        .append(b[conn])
+                    if param_bw_by_conn.get(param, {}).get(topo) is not None:
+                        cdf_data[i-1] = param_bw_by_conn[param][topo][
+                            demands][maxseg][True]
                     subplot.step(times, bw, color=colors[i - 1],
                                  marker=markers[i - 1], linewidth=LINE_WIDTH,
                                  where="post", markersize=MARKER_SIZE,
@@ -396,12 +398,19 @@ def bw_param_influence_by_topo(json_bandwidths, json_srmip_maxflow, output_path,
                 if len(cdf_data[0]) == 0:
                     continue
 
+                if "path_step_3_access_3.asymetric.flows" in figure_name:
+                    print(cdf_data)
+
+                cdf_data = [[v for v in dic.values()] for dic in cdf_data]
+
+                if "path_step_3_access_3.asymetric.flows" in figure_name:
+                    print(cdf_data)
+
                 figure_name = "bw_fairness_{param_name}_{topo}_{demands}_" \
                               "{maxseg}" \
                     .format(param_name=param_name, topo=topo, demands=demands,
                             maxseg=maxseg)
-                fairness_cdf_plot(output_path,
-                                  [list(dic.values()) for dic in cdf_data],
+                fairness_cdf_plot(output_path, cdf_data,
                                   title="", legends=labels,
                                   colors=colors + ["#00B0F0"],
                                   markers=markers + ["s"],
@@ -528,12 +537,15 @@ def produce_param_diff_graphs(dirs, param_name="cc"):
     param_loaded_data = {}
     param_unaggregated_data = {}
     param_snap_data = {}
+    param_bw_by_conn = {}
     for i in range(0, len(dirs), 2):
-        bw_data, snaps, unaggregated_bw = explore_bw_json_files([dirs[i]])
+        bw_data, snaps, unaggregated_bw, bw_by_conn = \
+            explore_bw_json_files([dirs[i]])
         param_value = dirs[i + 1]
         param_loaded_data.setdefault(param_value, bw_data)
         param_snap_data.setdefault(param_value, snaps)
         param_unaggregated_data.setdefault(param_value, unaggregated_bw)
+        param_bw_by_conn.setdefault(param_value, bw_by_conn)
 
         # Add no ebpf data
         for topo, topo_exp in param_loaded_data[param_value].items():
@@ -551,6 +563,14 @@ def produce_param_diff_graphs(dirs, param_name="cc"):
                                 [maxseg][False] = unagg_bw_no_ebpf
                         else:
                             print("Cannot find unaggregated data")
+
+                        bw_by_conn_no_ebpf = bw_by_conn_main.get(topo, {}) \
+                            .get(demands, {}).get(maxseg, {}).get(False)
+                        if bw_by_conn_no_ebpf is not None:
+                            param_bw_by_conn[param_value][topo][demands] \
+                                [maxseg][False] = bw_by_conn_no_ebpf
+                        else:
+                            print("Cannot find bw by conn data in no eBPF")
                     else:
                         print("Cannot find solution without ebpf for topo"
                               " {topo} demand {demand}".format(topo=topo,
@@ -558,7 +578,8 @@ def produce_param_diff_graphs(dirs, param_name="cc"):
 
     bw_param_influence_by_topo(param_loaded_data, optim_bw_data,
                                args.out_dir, param_snap_data,
-                               param_unaggregated_data, param_name=param_name)
+                               param_unaggregated_data, param_bw_by_conn,
+                               param_name=param_name)
 
 
 if __name__ == "__main__":
@@ -566,25 +587,27 @@ if __name__ == "__main__":
     lg.setLogLevel(args.log)
     os.mkdir(args.out_dir)
 
-    bw_loaded_data, snap_data, unaggregated_loaded_bw = explore_bw_json_files(
-        args.src_dirs)
+    bw_loaded_data, snap_data, unaggregated_loaded_bw, bw_by_conn_main =  \
+        explore_bw_json_files(args.src_dirs)
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
     # Plot aggregates and comparison between ebpf topo or not
-    bw_ebpf_or_no_ebpf_by_topo(bw_loaded_data, optim_bw_data, args.out_dir,
-                               unaggregated_loaded_bw)
-    bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
+    #bw_ebpf_or_no_ebpf_by_topo(bw_loaded_data, optim_bw_data, args.out_dir,
+    #                           unaggregated_loaded_bw)
+    #bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
 
     # Parse gamma diffs
-    produce_param_diff_graphs(args.gamma_dirs, param_name="gamma")
+    #produce_param_diff_graphs(args.gamma_dirs, param_name="gamma")
 
     # Parse reward mult diffs
-    produce_param_diff_graphs(args.reward_mult_dirs, param_name="reward_mult")
+    #produce_param_diff_graphs(args.reward_mult_dirs, param_name="reward_mult")
 
     # Parse CC diffs
-    produce_param_diff_graphs(args.cc_dirs, param_name="cc")
+    #produce_param_diff_graphs(args.cc_dirs, param_name="cc")
 
     # Parse rand diffs
     produce_param_diff_graphs(args.rand_dirs, param_name="rand")
+    import sys
+    sys.exit(0)
 
     # Plot bw by topology
     for topo, topo_exp in bw_loaded_data.items():
