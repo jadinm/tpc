@@ -16,11 +16,9 @@ from reroutemininet.net import ReroutingNet
 from .bpf_stats import Snapshot, BPFPaths
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry
-from .utils import get_addr, MEASUREMENT_TIME
+from .utils import get_addr, MEASUREMENT_TIME, INTERVALS
 
 # LINK_BANDWIDTH = 100
-
-INTERVALS = 1
 
 
 def get_current_congestion_control():

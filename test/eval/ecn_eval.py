@@ -13,7 +13,6 @@ from sr6mininet.sr6net import SR6Net
 
 from .utils import run_in_cgroup, tcpdump
 
-INTERVALS = 1
 FONTSIZE = 12
 output_path = os.path.dirname(os.path.abspath(__file__))
 

@@ -21,4 +21,5 @@ def get_connection() -> Session:
 
 
 __all__ = ["IPerfResults", "IPerfResults", "IPerfConnections",
-           "IPerfBandwidthSample", "Snapshots", "get_connection"]
+           "IPerfBandwidthSample", "TCPeBPFExperiment", "SnapshotDBEntry",
+           "get_connection"]
