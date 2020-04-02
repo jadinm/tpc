@@ -290,53 +290,82 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                           figure_name=figure_name)
 
 
-def bw_ebpf_or_no_ebpf_aggregate(json_bandwidths, json_srmip_maxflow,
-                                 output_path):
-    color = "orangered"
-    marker = "o"
+def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
 
-    bw_diff = []
-    for topo, topo_exp in json_bandwidths.items():
-        for demands, demands_exp in topo_exp.items():
-            if "rand.1" not in demands:
-                # TODO Replace by plots by type of
-                #  demand files
+    colors = {
+        False: "#00B0F0",  # Blue
+        True: "orangered",
+        "srmip": "#009B55"  # Green
+    }
+    markers = {
+        False: "s",
+        True: "o"
+    }
+    labels = {
+        False: "No eBPF",
+        True: "eBPF"
+    }
+
+    bw_diff = {
+        True: [],
+        False: []
+    }
+    for topo, demands in topo_keys:
+        topo_base = os.path.basename(topo)
+        demands_base = os.path.basename(demands)
+
+        optim_bw = optim_bw_data.get(topo_base, {}) \
+            .get(demands_base, {}).get(6, None)  # TODO Change 6 by maxseg
+        if optim_bw is None:
+            continue
+
+        for ebpf in [False, True]:
+            topo_diffs = []
+            id = {
+                "valid": True, "failed": False, "topology": topo,
+                "demands": demands, "ebpf": ebpf, "congestion_control": "cubic",
+                "gamma_value": 0.5, "random_strategy": "exp3"
+            }
+            experiments = db.query(TCPeBPFExperiment).filter_by(
+                **id).order_by(TCPeBPFExperiment.timestamp.desc())
+            if experiments is None:
                 continue
-            for maxseg, maxseg_exp in demands_exp.items():
+            for i, experiment in enumerate(experiments):
+                if i >= max_history:
+                    break
+                topo_diffs.append(experiment.bw_mean_sum() / 10**6 / optim_bw)
 
-                if True not in maxseg_exp.keys() \
-                        or False not in maxseg_exp.keys():
-                    continue
-
-                ebpf_example = np.median([x for _, x in maxseg_exp[True]])
-                no_ebpf_example = np.median([x for _, x in maxseg_exp[False]])
-                bw_diff.append(float(ebpf_example - no_ebpf_example)
-                               / float(no_ebpf_example) * 100)
-
-    # Build CDF
-    bin_edges, cdf = cdf_data(bw_diff)
-    if bin_edges is None or cdf is None:
-        lg.error("bin_edges or cdf data are None... {bin_edges} - {cdf}\n"
-                 .format(bin_edges=bin_edges, cdf=cdf))
-        return
-    min_value = min(bin_edges[1:])
-    max_value = max(bin_edges[1:])
+            if len(topo_diffs) > 0:
+                bw_diff[ebpf].append(np.mean(topo_diffs))
+                # print(ebpf)
+                # TODO print("STD: %s" % np.std(topo_diffs))
 
     # Build graph
-    figure_name = "sr_effectiveness_real"
+    figure_name = "mean_network_usage.cdf"
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
-    subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
-                 color=color, marker=marker, linewidth=LINE_WIDTH,
-                 where="post", markersize=MARKER_SIZE)
+    min_value = np.inf
+    max_value = -np.inf
+    for zorder, ebpf in enumerate([False, True]):
+        bin_edges, cdf = cdf_data(bw_diff[ebpf])
+        if bin_edges is None or cdf is None:
+            lg.error("bin_edges or cdf data are None... {bin_edges} - {cdf}\n"
+                     .format(bin_edges=bin_edges, cdf=cdf))
+            return
+        min_value = min(bin_edges[1:] + [min_value])
+        max_value = max(bin_edges[1:] + [max_value])
 
-    subplot.set_xlabel("Maximum flow improvement (%)", fontsize=FONTSIZE)
+        subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
+                     color=colors[ebpf], marker=markers[ebpf],
+                     linewidth=LINE_WIDTH, where="post",
+                     markersize=MARKER_SIZE, zorder=zorder, label=labels[ebpf])
+
+    subplot.set_xlabel("Network usage (%)", fontsize=FONTSIZE)
     subplot.set_ylabel("CDF", fontsize=FONTSIZE)
+    subplot.legend(loc="best")
 
-    subplot.set_title("Maximum flow improvement by adding SRv6")
-
-    lg.info("Saving figure for SR effectiveness in reality to path {path}\n"
+    lg.info("Saving figure for cdf of network usage in reality to path {path}\n"
             .format(path=os.path.join(output_path, figure_name + ".pdf")))
 
     if max_value <= min_value:
@@ -381,4 +410,4 @@ if __name__ == "__main__":
     bw_param_influence_by_topo(keys, param_name="random_strategy")
 
     # Plot aggregates
-    # bw_ebpf_or_no_ebpf_aggregate(bw_loaded_data, optim_bw_data, args.out_dir)
+    bw_ebpf_or_no_ebpf_aggregate(keys, args.out_dir)

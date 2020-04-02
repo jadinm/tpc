@@ -3,6 +3,7 @@ from sqlalchemy.orm import relationship
 
 from eval.db.base import SQLBaseModel
 from eval.utils import INTERVALS
+import numpy
 
 
 class TCPeBPFExperiment(SQLBaseModel):
@@ -65,3 +66,13 @@ class TCPeBPFExperiment(SQLBaseModel):
             bw.append(b)
 
         return times, bw
+
+    def bw_mean_sum(self, start=4, end=-1):
+        """Compute the mean bandwidth of the network bandwidth used but
+        ignoring the first 4 samples and the last one"""
+        _, bw = self.bw_sum_through_time()
+        bw = bw[start:end]
+        if len(bw) > 0:
+            return numpy.mean(bw)
+        else:
+            return 0
