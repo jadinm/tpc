@@ -50,7 +50,7 @@ class TCPeBPFExperiment(SQLBaseModel):
 
         bw_operations = sorted(bw_operations, key=lambda x: x[0])
 
-        current_sum = bw_operations[0][1]
+        current_sum = 0
         for t, op in bw_operations:
             # Note that this already aggregates operations happening at the
             # same moment
