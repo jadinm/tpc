@@ -77,5 +77,8 @@ sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
 os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "bin") + os.pathsep +\
                      os.path.join(os.path.abspath(args.src_dir), "bin") + os.pathsep + os.environ["PATH"]
 
-for _ in range(int(args.number_tests)):
+args.number_tests = int(args.number_tests)
+for i in range(args.number_tests):
+    if args.number_tests > 1:
+        args.log_dir = args.log_dir + "-iter-%d" % i
     tests[args.test](mininet.log.lg, args, ovsschema)
