@@ -80,7 +80,8 @@ def bw_ebpf_or_no_ebpf_by_topo(topo_keys, output_path):
                      for conn in iperf.connections])
 
             times, bw = experiment.bw_sum_through_time()
-            subplot.step(times, bw, color=colors[ebpf],
+            subplot.step(times, [b / 10**6 for b in bw],
+                         color=colors[ebpf],
                          marker=markers[ebpf], linewidth=LINE_WIDTH,
                          where="post", markersize=MARKER_SIZE,
                          zorder=zorder, label=labels[ebpf])
@@ -132,7 +133,7 @@ def fairness_cdf_plot(output_path, data_vectors: List[List[float]],
     max_value = -np.inf
     for i, vector in enumerate(data_vectors):
         # Get mean of each connection, then cdf
-        mean_data = [np.mean(x[4:-1]) for x in vector]
+        mean_data = [np.mean(x[4:-1]) / 10**6 for x in vector]
         print("param: " + legends[i])
         if len(mean_data) != 0:
             print(jain_fairness(mean_data))
@@ -219,7 +220,7 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                      for conn in iperf.connections])
 
             times, bw = experiment.bw_sum_through_time()
-            subplot.step(times, bw, color=colors[i - 1],
+            subplot.step(times, [b / 10**6 for b in bw], color=colors[i - 1],
                          marker=markers[i - 1], linewidth=LINE_WIDTH,
                          where="post", markersize=MARKER_SIZE,
                          zorder=i,
@@ -238,10 +239,11 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                              for conn in iperf.connections])
 
                     times, bw = experiment.bw_sum_through_time()
-                    subplot.step(times, bw, color="#00B0F0",
-                                 marker="s", linewidth=LINE_WIDTH,
-                                 where="post", markersize=MARKER_SIZE,
-                                 zorder=i, label="No eBPF")
+                    subplot.step(times, [b / 10**6 for b in bw],
+                                 color="#00B0F0", marker="s",
+                                 linewidth=LINE_WIDTH, where="post",
+                                 markersize=MARKER_SIZE, zorder=i,
+                                 label="No eBPF")
                     labels[-1] = "ECMP"
 
         subplot.set_xlabel("Time (s)", fontsize=FONTSIZE)
