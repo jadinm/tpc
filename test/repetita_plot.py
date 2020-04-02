@@ -91,8 +91,8 @@ def bw_ebpf_or_no_ebpf_by_topo(topo_keys, output_path):
                           .format(topo=topo_base, demand=demands_base))
 
         # Add line for max value of maxflow if any
-        objective = optim_bw_data.get(topo, {})\
-            .get(demands, {}).get(6, None)  # TODO Change 6 by maxseg
+        objective = optim_bw_data.get(topo_base, {})\
+            .get(demands_base, {}).get(6, None)  # TODO Change 6 by maxseg
         if objective is not None:
             subplot.hlines(objective, 0, 100, colors=colors["srmip"],  # Objective values are in kbps
                            linestyles="solid", label="optimum")
