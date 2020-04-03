@@ -27,12 +27,6 @@ def parse_args():
     return parser.parse_args()
 
 
-def jain_fairness(bw_data):
-    # https://en.wikipedia.org/wiki/Fairness_measure
-    return sum(bw_data) * sum(bw_data) \
-           / (len(bw_data) * sum([b*b for b in bw_data]))
-
-
 def bw_ebpf_or_no_ebpf_by_topo(topo_keys, output_path):
 
     colors = {
@@ -74,10 +68,7 @@ def bw_ebpf_or_no_ebpf_by_topo(topo_keys, output_path):
                 **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
             if experiment is None:
                 continue
-            for iperf in experiment.iperfs:
-                cdf_data[ebpf].extend(
-                    [[sample.bw for sample in conn.bw_samples]
-                     for conn in iperf.connections])
+            cdf_data[ebpf].extend(experiment.bw_by_connection())
 
             times, bw = experiment.bw_sum_through_time()
             subplot.step(times, [b / 10**6 for b in bw],
@@ -133,11 +124,8 @@ def fairness_cdf_plot(output_path, data_vectors: List[List[float]],
     max_value = -np.inf
     for i, vector in enumerate(data_vectors):
         # Get mean of each connection, then cdf
-        mean_data = [np.mean(x[4:-1]) / 10**6 for x in vector]
-        print("param: " + legends[i])
-        if len(mean_data) != 0:
-            print(jain_fairness(mean_data))
-        else:
+        mean_data = [x / 10**6 for x in vector]
+        if len(mean_data) == 0:
             continue
         bin_edges, cdf = cdf_data(mean_data)
 
@@ -214,10 +202,7 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
             }
             experiment = db.query(TCPeBPFExperiment).filter_by(
                 **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
-            for iperf in experiment.iperfs:
-                cdf_data[i - 1].extend(
-                    [[sample.bw for sample in conn.bw_samples]
-                     for conn in iperf.connections])
+            cdf_data[i - 1].extend(experiment.bw_by_connection())
 
             times, bw = experiment.bw_sum_through_time()
             subplot.step(times, [b / 10**6 for b in bw], color=colors[i - 1],
@@ -233,10 +218,7 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                 experiment = db.query(TCPeBPFExperiment).filter_by(
                     **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
                 if experiment is not None:
-                    for iperf in experiment.iperfs:
-                        cdf_data[-1].extend(
-                            [[sample.bw for sample in conn.bw_samples]
-                             for conn in iperf.connections])
+                    cdf_data[-1].extend(experiment.bw_by_connection())
 
                     times, bw = experiment.bw_sum_through_time()
                     subplot.step(times, [b / 10**6 for b in bw],
@@ -290,7 +272,7 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                           figure_name=figure_name)
 
 
-def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
+def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
 
     colors = {
         False: "#00B0F0",  # Blue
@@ -306,10 +288,10 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
         True: "eBPF"
     }
 
-    bw_diff = {
-        True: [],
-        False: []
-    }
+    bw_diff = {True: [], False: []}
+    bw_diff_stdv = {True: [], False: []}
+    fairness = {True: [], False: []}
+    fairness_stdv = {True: [], False: []}
     for topo, demands in topo_keys:
         topo_base = os.path.basename(topo)
         demands_base = os.path.basename(demands)
@@ -319,8 +301,9 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
         if optim_bw is None:
             continue
 
+        topo_diffs = {False: [], True: []}
+        topo_fairness = {False: [], True: []}
         for ebpf in [False, True]:
-            topo_diffs = []
             id = {
                 "valid": True, "failed": False, "topology": topo,
                 "demands": demands, "ebpf": ebpf, "congestion_control": "cubic",
@@ -333,22 +316,53 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
             for i, experiment in enumerate(experiments):
                 if i >= max_history:
                     break
-                topo_diffs.append(experiment.bw_mean_sum() / 10**6 / optim_bw)
+                topo_diffs[ebpf].append(experiment.bw_mean_sum() / 10**6 /
+                                        optim_bw)
+                topo_fairness[ebpf].append(experiment.jain_fairness())
 
-            if len(topo_diffs) > 0:
-                bw_diff[ebpf].append(np.mean(topo_diffs))
-                # print(ebpf)
-                # TODO print("STD: %s" % np.std(topo_diffs))
+        if len(topo_diffs[True]) >= max_history \
+                and len(topo_diffs[False]) >= max_history:
+            # We only use the topology if all parameters were tested equally
+            bw_diff[True].append(np.mean(topo_diffs[True]))
+            bw_diff[False].append(np.mean(topo_diffs[False]))
+            bw_diff_stdv[True].append(np.std(topo_diffs[True]))
+            bw_diff_stdv[False].append(np.std(topo_diffs[False]))
+        else:
+            print(len(topo_diffs[True]))
+            print(len(topo_diffs[False]))
+        if len(topo_fairness[True]) >= max_history \
+                and len(topo_fairness[False]) >= max_history:
+            # We only use the topology if all parameters were tested equally
+            fairness[True].append(np.mean(topo_fairness[True]))
+            fairness[False].append(np.mean(topo_fairness[False]))
+            fairness_stdv[True].append(np.std(topo_fairness[True]))
+            fairness_stdv[False].append(np.std(topo_fairness[False]))
 
-    # Build graph
-    figure_name = "mean_network_usage.cdf"
+    # Build graph of mean bw_diff
+    plot_cdf(bw_diff, colors, markers, labels, "Network usage (%)",
+             "mean_network_usage.cdf", output_path)
+
+    # Build graph of std bw_diff
+    plot_cdf(bw_diff_stdv, colors, markers, labels, "Stdv Network usage (%)",
+             "stdv_network_usage.cdf", output_path)
+
+    # Build graph of mean fairness
+    plot_cdf(fairness, colors, markers, labels, "Mean Jain Fairness",
+             "mean_fairness.cdf", output_path)
+
+    # Build graph of std fairness
+    plot_cdf(fairness_stdv, colors, markers, labels, "Stdv Jain Fairness",
+             "stdv_fairness.cdf", output_path)
+
+
+def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
     min_value = np.inf
     max_value = -np.inf
-    for zorder, ebpf in enumerate([False, True]):
-        bin_edges, cdf = cdf_data(bw_diff[ebpf])
+    for zorder, key in enumerate(data.keys()):
+        bin_edges, cdf = cdf_data(data[key])
         if bin_edges is None or cdf is None:
             lg.error("bin_edges or cdf data are None... {bin_edges} - {cdf}\n"
                      .format(bin_edges=bin_edges, cdf=cdf))
@@ -357,11 +371,11 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=10):
         max_value = max(bin_edges[1:] + [max_value])
 
         subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
-                     color=colors[ebpf], marker=markers[ebpf],
+                     color=colors[key], marker=markers[key],
                      linewidth=LINE_WIDTH, where="post",
-                     markersize=MARKER_SIZE, zorder=zorder, label=labels[ebpf])
+                     markersize=MARKER_SIZE, zorder=zorder, label=labels[key])
 
-    subplot.set_xlabel("Network usage (%)", fontsize=FONTSIZE)
+    subplot.set_xlabel(xlabel, fontsize=FONTSIZE)
     subplot.set_ylabel("CDF", fontsize=FONTSIZE)
     subplot.legend(loc="best")
 

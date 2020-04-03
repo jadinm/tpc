@@ -1,3 +1,5 @@
+from typing import List
+
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float
 from sqlalchemy.orm import relationship
 
@@ -76,3 +78,20 @@ class TCPeBPFExperiment(SQLBaseModel):
             return numpy.mean(bw)
         else:
             return 0
+
+    def bw_by_connection(self, start=4, end=-1):
+        """Compute the mean bandwidth for each connection used but
+        ignoring the first 4 samples and the last one"""
+        bws = []
+        for iperf in self.iperfs:
+            bws.extend([numpy.mean([sample.bw
+                                    for sample in conn.bw_samples][start:end])
+                        for conn in iperf.connections])
+        return bws
+
+    def jain_fairness(self, start=4, end=-1):
+        bw_data = self.bw_by_connection(start=start, end=end)
+
+        # https://en.wikipedia.org/wiki/Fairness_measure
+        return sum(bw_data) * sum(bw_data) \
+               / (len(bw_data) * sum([b * b for b in bw_data]))
