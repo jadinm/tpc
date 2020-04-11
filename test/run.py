@@ -78,7 +78,8 @@ os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspat
                      os.path.join(os.path.abspath(args.src_dir), "bin") + os.pathsep + os.environ["PATH"]
 
 args.number_tests = int(args.number_tests)
+log_dir = args.log_dir
 for i in range(args.number_tests):
     if args.number_tests > 1:
-        args.log_dir = args.log_dir + "-iter-%d" % i
+        args.log_dir = log_dir + "-iter-%d" % i
     tests[args.test](mininet.log.lg, args, ovsschema)
