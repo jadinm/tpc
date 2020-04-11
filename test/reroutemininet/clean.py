@@ -8,7 +8,7 @@ from reroutemininet.config import SRLocalCtrl
 def cleanup(level='info'):
     ip_clean(level=level)
 
-    for p in ['"^sr-"', '"^named"', '"^ovsdb"', '^lighttpd', '^bpftool']:
+    for p in ['^sr-', '^named', '^ovsdb', '^lighttpd', '^bpftool']:
         try:
             subprocess.call(("pkill -f %s" % p).split(" "))
         except subprocess.CalledProcessError:
