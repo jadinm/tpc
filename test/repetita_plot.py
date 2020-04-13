@@ -68,9 +68,9 @@ def bw_ebpf_or_no_ebpf_by_topo(topo_keys, output_path):
                 **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
             if experiment is None:
                 continue
-            cdf_data[ebpf].extend(experiment.bw_by_connection())
+            cdf_data[ebpf].extend(experiment.bw_by_connection(db))
 
-            times, bw = experiment.bw_sum_through_time()
+            times, bw = experiment.bw_sum_through_time(db)
             subplot.step(times, [b / 10**6 for b in bw],
                          color=colors[ebpf],
                          marker=markers[ebpf], linewidth=LINE_WIDTH,
@@ -202,9 +202,9 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
             }
             experiment = db.query(TCPeBPFExperiment).filter_by(
                 **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
-            cdf_data[i - 1].extend(experiment.bw_by_connection())
+            cdf_data[i - 1].extend(experiment.bw_by_connection(db))
 
-            times, bw = experiment.bw_sum_through_time()
+            times, bw = experiment.bw_sum_through_time(db)
             subplot.step(times, [b / 10**6 for b in bw], color=colors[i - 1],
                          marker=markers[i - 1], linewidth=LINE_WIDTH,
                          where="post", markersize=MARKER_SIZE,
@@ -218,9 +218,9 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
                 experiment = db.query(TCPeBPFExperiment).filter_by(
                     **id).order_by(TCPeBPFExperiment.timestamp.desc()).first()
                 if experiment is not None:
-                    cdf_data[-1].extend(experiment.bw_by_connection())
+                    cdf_data[-1].extend(experiment.bw_by_connection(db))
 
-                    times, bw = experiment.bw_sum_through_time()
+                    times, bw = experiment.bw_sum_through_time(db)
                     subplot.step(times, [b / 10**6 for b in bw],
                                  color="#00B0F0", marker="s",
                                  linewidth=LINE_WIDTH, where="post",
@@ -273,7 +273,6 @@ def bw_param_influence_by_topo(topo_keys, param_name="congestion_control"):
 
 
 def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
-
     colors = {
         False: "#00B0F0",  # Blue
         True: "orangered",
@@ -292,9 +291,11 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
     bw_diff_stdv = {True: [], False: []}
     fairness = {True: [], False: []}
     fairness_stdv = {True: [], False: []}
+    print("HERE 2")
     for topo, demands in topo_keys:
         topo_base = os.path.basename(topo)
         demands_base = os.path.basename(demands)
+        print("HERE 2.1 %s@%s" % (topo_base, demands_base))
 
         optim_bw = optim_bw_data.get(topo_base, {}) \
             .get(demands_base, {}).get(6, None)  # TODO Change 6 by maxseg
@@ -304,6 +305,7 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
         topo_diffs = {False: [], True: []}
         topo_fairness = {False: [], True: []}
         for ebpf in [False, True]:
+            print("param %s" % ebpf)
             id = {
                 "valid": True, "failed": False, "topology": topo,
                 "demands": demands, "ebpf": ebpf, "congestion_control": "cubic",
@@ -316,12 +318,14 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
             for i, experiment in enumerate(experiments):
                 if i >= max_history:
                     break
-                topo_diffs[ebpf].append(experiment.bw_mean_sum() / 10**6 /
+                print("\t%s" % experiment.id)
+                topo_diffs[ebpf].append(experiment.bw_mean_sum(db) / 10**6 /
                                         optim_bw)
-                topo_fairness[ebpf].append(experiment.jain_fairness())
+                topo_fairness[ebpf].append(experiment.jain_fairness(db))
 
         if len(topo_diffs[True]) >= max_history \
                 and len(topo_diffs[False]) >= max_history:
+            print("HERE 2.2")
             # We only use the topology if all parameters were tested equally
             bw_diff[True].append(np.mean(topo_diffs[True]))
             bw_diff[False].append(np.mean(topo_diffs[False]))
@@ -353,6 +357,87 @@ def bw_ebpf_or_no_ebpf_aggregate(topo_keys, output_path, max_history=8):
     # Build graph of std fairness
     plot_cdf(fairness_stdv, colors, markers, labels, "Stdv Jain Fairness",
              "stdv_fairness.cdf", output_path)
+
+
+def bw_param_influence_aggregate(experiments, param_name, id, colors,
+                                 markers, labels, output_path, max_history=8):
+    bw_diff = {}
+    bw_diff_stdv = {}
+    fairness = {}
+    fairness_stdv = {}
+
+    # Get all param values
+    print("HERE 1")
+    param_experiments = {}
+    optim_data = {}
+    for exp in experiments:
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s" % (topo_base, demands_base)
+        optim_data[key] = optim_bw_data.get(topo_base, {}) \
+            .get(demands_base, {}).get(6, None)  # TODO Change 6 by maxseg
+        if optim_data[key] is None:
+            continue
+        if any([getattr(exp, key) != value for key, value in id.items()]):
+            continue
+
+        param_experiments.setdefault(key, {})
+        if exp.ebpf:
+            param_value = getattr(exp, param_name)
+            param_experiments[key].setdefault(param_value, [])
+            if len(param_experiments[key][param_value]) < max_history:
+                param_experiments[key][param_value].append(exp)
+        else:
+            param_experiments[key].setdefault("ECMP", [])
+            if len(param_experiments[key]["ECMP"]) < max_history:
+                param_experiments[key]["ECMP"].append(exp)
+
+    print("HERE 2")
+    for key, values in param_experiments.items():
+        print("HERE 2.1 %s" % key)
+        topo_diffs = {}
+        topo_fairness = {}
+        for param_value, exps in values.items():
+            print("param %s" % param_value)
+            for exp in exps:
+                print("\t%s" % exp.id)
+                topo_diffs.setdefault(param_value, []) \
+                    .append(exp.bw_mean_sum(db) / 10 ** 6 / optim_data[key])
+                topo_fairness.setdefault(param_value, []) \
+                    .append(exp.jain_fairness(db))
+
+        if all([len(topo_diffs[param_value]) == max_history
+                for param_value in values.keys()]):
+            print("HERE 2.2")
+            # We only use the topology if all parameters were tested equally
+            for param_value in values.keys():
+                bw_diff.setdefault(param_value, []) \
+                    .append(np.mean(topo_diffs[param_value]))
+                bw_diff_stdv.setdefault(param_value, []) \
+                    .append(np.std(topo_diffs[param_value]))
+                fairness.setdefault(param_value, []) \
+                    .append(np.mean(topo_fairness[param_value]))
+                fairness_stdv.setdefault(param_value, []) \
+                    .append(np.std(topo_fairness[param_value]))
+        else:
+            print("Not enough data for param %s in %s" % (param_name, key))
+    print("HERE 3")
+
+    # Build graph of mean bw_diff
+    plot_cdf(bw_diff, colors, markers, labels, "Network usage (%)",
+             "%s_mean_network_usage.cdf" % param_name, output_path)
+
+    # Build graph of std bw_diff
+    plot_cdf(bw_diff_stdv, colors, markers, labels, "Stdv Network usage (%)",
+             "%s_stdv_network_usage.cdf" % param_name, output_path)
+
+    # Build graph of mean fairness
+    plot_cdf(fairness, colors, markers, labels, "Mean Jain Fairness",
+             "%s_mean_fairness.cdf" % param_name, output_path)
+
+    # Build graph of std fairness
+    plot_cdf(fairness_stdv, colors, markers, labels, "Stdv Jain Fairness",
+             "%s_stdv_fairness.cdf" % param_name, output_path)
 
 
 def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
@@ -405,23 +490,106 @@ if __name__ == "__main__":
 
     db = get_connection()
 
-    keys = []
-    for row in db.query(TCPeBPFExperiment.topology, TCPeBPFExperiment.demands) \
-            .filter_by(valid=True, failed=False).distinct():
-        keys.append((row.topology, row.demands))
+    experiments = []
+    for row in db.query(TCPeBPFExperiment) \
+            .filter_by(valid=True, failed=False) \
+            .order_by(TCPeBPFExperiment.timestamp.desc()):
+        # Filter out
+        if "path_step_6_access_6" in row.topology \
+                or "pcc" in row.congestion_control:
+            continue
+        experiments.append(row)
 
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
     # Plot comparison between ebpf topo or not
-    bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
+    # bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
 
     # Parse gamma diffs
-    bw_param_influence_by_topo(keys, param_name="gamma_value")
+    # bw_param_influence_by_topo(keys, param_name="gamma_value")
+    colors = {
+        False: "#00B0F0",  # Blue
+        True: "orangered",
+        "srmip": "#009B55"  # Green
+    }
+    markers = {
+        False: "s",
+        True: "o"
+    }
+    labels = {
+        False: "No eBPF",
+        True: "eBPF"
+    }
+    bw_param_influence_aggregate(experiments, param_name="gamma_value",
+                                 id={"congestion_control": "cubic",
+                                     # "gamma_value": 0.5,
+                                     "random_strategy": "exp3"},
+                                 colors={0.1: "springgreen",
+                                         0.5: "orangered",
+                                         0.9: "violet",
+                                         "ECMP": "#00B0F0"},
+                                 markers={0.1: ".", 0.5: "o", 0.9: "^",
+                                          "ECMP": "s"},
+                                 labels={0.1: "TPC $\\Gamma = 0.1$",
+                                         0.5: "TPC $\\Gamma = 0.5$",
+                                         0.9: "TPC $\\Gamma = 0.9$",
+                                         "ECMP": "ECMP"},
+                                 output_path=args.out_dir)
+
+    bw_param_influence_aggregate(experiments, param_name="random_strategy",
+                                 id={"congestion_control": "cubic",
+                                     "gamma_value": 0.5,
+                                     # "random_strategy": "exp3"
+                                     },
+                                 colors={"uniform": "springgreen",
+                                         "exp3": "orangered",
+                                         "ECMP": "#00B0F0"},
+                                 markers={"uniform": ".",
+                                          "exp3": "o",
+                                          "ECMP": "s"},
+                                 labels={"uniform": "Uniformly random TPC",
+                                         "exp3": "TPC with Exp3",
+                                         "ECMP": "ECMP"},
+                                 output_path=args.out_dir)
+
+    bw_param_influence_aggregate(experiments, param_name="congestion_control",
+                                 id={#"congestion_control": "cubic",
+                                     "gamma_value": 0.5,
+                                     "random_strategy": "exp3"
+                                     },
+                                 colors={"cubic": "orangered",
+                                         "bbr": "springgreen",
+                                         "ECMP": "#00B0F0"},
+                                 markers={"cubic": "o",
+                                          "bbr": ".",
+                                          "ECMP": "s"},
+                                 labels={"cubic": "TPC cubic",
+                                         "bbr": "TPC bbr",
+                                         "ECMP": "ECMP cubic"},
+                                 output_path=args.out_dir)
+
+    bw_param_influence_aggregate(experiments, param_name="ebpf",
+                                 id={"congestion_control": "cubic",
+                                     "gamma_value": 0.5,
+                                     "random_strategy": "exp3"
+                                     },
+                                 colors={True: "orangered",
+                                         "ECMP": "#00B0F0"},
+                                 markers={True: "o",
+                                          "ECMP": "s"},
+                                 labels={True: "TPC",
+                                         "ECMP": "ECMP"},
+                                 output_path=args.out_dir)
 
     # Parse CC diffs
-    bw_param_influence_by_topo(keys, param_name="congestion_control")
+    # bw_param_influence_by_topo(keys, param_name="congestion_control")
 
     # Parse rand diffs
-    bw_param_influence_by_topo(keys, param_name="random_strategy")
+    # bw_param_influence_by_topo(keys, param_name="random_strategy")
 
     # Plot aggregates
-    bw_ebpf_or_no_ebpf_aggregate(keys, args.out_dir)
+    # keys = []
+    # for row in db.query(TCPeBPFExperiment.topology,
+    #  TCPeBPFExperiment.demands) \
+    #         .filter_by(valid=True, failed=False).distinct():
+    #     keys.append((row.topology, row.demands))
+    # bw_ebpf_or_no_ebpf_aggregate(keys, args.out_dir)

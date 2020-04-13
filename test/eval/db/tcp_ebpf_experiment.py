@@ -1,11 +1,14 @@
-from typing import List
-
+import numpy
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float
 from sqlalchemy.orm import relationship
 
+from eval.db import IPerfConnections, IPerfResults, IPerfBandwidthSample
 from eval.db.base import SQLBaseModel
 from eval.utils import INTERVALS
-import numpy
+
+# Cache (possible because we don't update these when we query them)
+bw_sum_through_time = {}
+bw_by_connection = {}
 
 
 class TCPeBPFExperiment(SQLBaseModel):
@@ -36,20 +39,27 @@ class TCPeBPFExperiment(SQLBaseModel):
     snapshots = relationship("SnapshotDBEntry", backref="experiment",
                              lazy='dynamic')
 
-    def bw_sum_through_time(self):
+    def bw_sum_through_time(self, db):
         times = []
         bw = []
         bw_sum = {}
 
+        if bw_sum_through_time.get(self.id) is not None:
+            return bw_sum_through_time[self.id]
+
         bw_operations = []
-        for iperf in self.iperfs:
-            for connection in iperf.connections:
-                for bw_sample in connection.bw_samples:
-                    start = connection.start_samples + bw_sample.time \
-                            - INTERVALS
-                    end = connection.start_samples + bw_sample.time
-                    bw_operations.append((start, bw_sample.bw))
-                    bw_operations.append((end, -bw_sample.bw))
+        for _, start_samples, time_sample, bw_sample in \
+                db.query(IPerfResults, IPerfConnections.start_samples,
+                         IPerfBandwidthSample.time, IPerfBandwidthSample.bw) \
+                        .filter(self.id == IPerfResults.experience_id) \
+                        .filter(IPerfResults.id == IPerfConnections.iperf_id) \
+                        .filter(IPerfConnections.id
+                                == IPerfBandwidthSample.connection_id) \
+                        .all():
+            start = start_samples + time_sample - INTERVALS
+            end = start_samples + time_sample
+            bw_operations.append((start, bw_sample))
+            bw_operations.append((end, -bw_sample))
 
         bw_operations = sorted(bw_operations, key=lambda x: x[0])
 
@@ -67,30 +77,55 @@ class TCPeBPFExperiment(SQLBaseModel):
             times.append(t - bw_sum[0][0])
             bw.append(b)
 
-        return times, bw
+        bw_sum_through_time[self.id] = times, bw
+        return bw_sum_through_time[self.id]
 
-    def bw_mean_sum(self, start=4, end=-1):
+    def bw_mean_sum(self, db, start=4, end=-1):
         """Compute the mean bandwidth of the network bandwidth used but
         ignoring the first 4 samples and the last one"""
-        _, bw = self.bw_sum_through_time()
+        _, bw = self.bw_sum_through_time(db)
         bw = bw[start:end]
         if len(bw) > 0:
             return numpy.mean(bw)
         else:
             return 0
 
-    def bw_by_connection(self, start=4, end=-1):
+    def bw_by_connection(self, db, start=4, end=-1):
         """Compute the mean bandwidth for each connection used but
         ignoring the first 4 samples and the last one"""
         bws = []
-        for iperf in self.iperfs:
-            bws.extend([numpy.mean([sample.bw
-                                    for sample in conn.bw_samples][start:end])
-                        for conn in iperf.connections])
-        return bws
+        if bw_by_connection.get(self.id) is not None:
+            return bw_by_connection[self.id]
+        numpy.seterr('raise')  # Raise error when warning encountered
+        for iperf in self.iperfs.all():
+            bws_tmp = {}
+            for conn_id, start_samples, bw_sample in \
+                    db.query(IPerfConnections.id, IPerfBandwidthSample.time,
+                             IPerfBandwidthSample.bw) \
+                            .filter(iperf.id == IPerfConnections.iperf_id) \
+                            .filter(IPerfConnections.id
+                                    == IPerfBandwidthSample.connection_id) \
+                            .all():
+                bws_tmp.setdefault(conn_id, []).append((start_samples,
+                                                        bw_sample))
+            for value in bws_tmp.values():
+                value.sort()
+            bws.extend([numpy.mean([sample[1] for sample in samples][start:end])
+                        for _, samples in bws_tmp.items()])
+        bw_by_connection[self.id] = bws
+        return bw_by_connection[self.id]
 
-    def jain_fairness(self, start=4, end=-1):
-        bw_data = self.bw_by_connection(start=start, end=end)
+    def jain_fairness(self, db, start=4, end=-1):
+        bw_data = self.bw_by_connection(db, start=start, end=end)
+
+        if self.random_strategy == "uniform":
+            if sum([b * b for b in bw_data]) == 0:
+                print(self.id)
+                print(self.topology)
+                print(self.demands)
+                print(self.valid)
+                print(self.failed)
+                print(bw_data)
 
         # https://en.wikipedia.org/wiki/Fairness_measure
         return sum(bw_data) * sum(bw_data) \
