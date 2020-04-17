@@ -2,6 +2,7 @@ import numpy
 from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float
 from sqlalchemy.orm import relationship
 
+from eval.bpf_stats import Snapshot
 from eval.db import IPerfConnections, IPerfResults, IPerfBandwidthSample
 from eval.db.base import SQLBaseModel
 from eval.utils import INTERVALS
@@ -30,6 +31,7 @@ class TCPeBPFExperiment(SQLBaseModel):
     congestion_control = Column(String, nullable=False)
     gamma_value = Column(Float, nullable=False)
     random_strategy = Column(String, nullable=False)
+    max_reward_factor = Column(Float, nullable=False)
 
     # results
 
@@ -130,3 +132,31 @@ class TCPeBPFExperiment(SQLBaseModel):
         # https://en.wikipedia.org/wiki/Fairness_measure
         return sum(bw_data) * sum(bw_data) \
                / (len(bw_data) * sum([b * b for b in bw_data]))
+
+    def stability_by_connection(self):
+        snapshots = [Snapshot.retrieve_from_hex(s.snapshot_hex)
+                     for s in self.snapshots.all()]
+
+        snapshot_by_connection = {}
+        for s in snapshots:
+            snapshot_by_connection.setdefault(s.conn_key(), []).append(s)
+
+        nbr_changes_by_conn = {}
+        exp3_last_prob_by_conn = {}  # To get how fast evolves the weights
+        for k, v in snapshot_by_connection.items():
+            v.sort()
+            nbr_changes = -1  # The first path does not count as "change"
+            last_idx = -1
+            for snap in v:
+                exp3_last_prob_by_conn.setdefault(k, [])\
+                    .append((snap.time, snap.exp3_last_prob))
+                if last_idx != snap.srh_id:
+                    last_idx = snap.srh_id
+                    nbr_changes += 1
+
+            # The number of times that EXP3 did not move
+            nbr_no_change = len(v) - nbr_changes
+
+            nbr_changes_by_conn[k] = nbr_changes, nbr_no_change
+
+        return nbr_changes_by_conn, exp3_last_prob_by_conn

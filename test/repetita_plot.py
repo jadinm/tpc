@@ -440,6 +440,28 @@ def bw_param_influence_aggregate(experiments, param_name, id, colors,
              "%s_stdv_fairness.cdf" % param_name, output_path)
 
 
+def plot_stability_by_connection(experiments, id):
+    keys = {}
+    for exp in experiments:
+        if not exp.ebpf:
+            continue
+        if any([getattr(exp, key) != value for key, value in id.items()]):
+            continue
+
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s" % (topo_base, demands_base)
+        if not keys.get(key, False):  # Only once by instance
+            keys[key] = True
+
+            nbr_changes_by_conn, exp3_last_prob_by_conn = \
+                exp.stability_by_connection()
+
+            plot_time(exp3_last_prob_by_conn, "Probability of current path",
+                      "last_prob_%s.time" % key, args.out_dir,
+                      ylim={"bottom": 0, "top": 1})
+
+
 def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
     fig = plt.figure()
     subplot = fig.add_subplot(111)
@@ -464,7 +486,7 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
     subplot.set_ylabel("CDF", fontsize=FONTSIZE)
     subplot.legend(loc="best")
 
-    lg.info("Saving figure for cdf of network usage in reality to path {path}\n"
+    lg.info("Saving figure for cdf to path {path}\n"
             .format(path=os.path.join(output_path, figure_name + ".pdf")))
 
     if max_value <= min_value:
@@ -477,6 +499,35 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
     if xlim_min != xlim_max:  # To avoid being too near of 0
         subplot.set_xlim(left=xlim_min, right=xlim_max)
     subplot.set_ylim(bottom=0, top=1)
+    fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
+                bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
+
+def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None):
+    fig = plt.figure()
+    subplot = fig.add_subplot(111)
+
+    for key, values in data.items():
+        times = []
+        data_y = []
+        for t, y in values:
+            times.append(t)
+            data_y.append(y)
+        subplot.step(times, data_y, marker=".", linewidth=LINE_WIDTH,
+                     where="post", markersize=MARKER_SIZE)
+
+    subplot.set_xlabel("time (s)", fontsize=FONTSIZE)
+    subplot.set_ylabel(ylabel, fontsize=FONTSIZE)
+    if labels is not None:
+        subplot.legend(loc="best")
+
+    lg.info("Saving figure for plot through time to path {path}\n"
+            .format(path=os.path.join(output_path, figure_name + ".pdf")))
+
+    if ylim is not None:
+        subplot.set_ylim(**ylim)
     fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                 bbox_inches='tight', pad_inches=0, markersize=9)
     fig.clf()
