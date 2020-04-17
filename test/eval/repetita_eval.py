@@ -18,6 +18,7 @@ from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry
 from .utils import get_addr, MEASUREMENT_TIME, INTERVALS
 
+
 # LINK_BANDWIDTH = 100
 
 
@@ -50,6 +51,10 @@ def get_current_rand_type():
 
 def get_current_max_reward_factor():
     return float(get_current_parameter("MAX_REWARD_FACTOR"))
+
+
+def get_wait_before_initial_move():
+    return int(get_current_parameter("WAIT_BEFORE_INITIAL_MOVE"))
 
 
 def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
@@ -202,6 +207,7 @@ def eval_repetita(lg, args, ovsschema):
     gamma = get_current_gamma()
     rand_type = get_current_rand_type()
     max_reward_factor = get_current_max_reward_factor()
+    wait_before_initial_move = get_wait_before_initial_move()
 
     i = 0
     for topo, demands_list in topos.items():
@@ -225,7 +231,8 @@ def eval_repetita(lg, args, ovsschema):
                                   demands=demands, congestion_control=cc,
                                   gamma_value=gamma, random_strategy=rand_type,
                                   ebpf=args.ebpf,
-                                  max_reward_factor=max_reward_factor)
+                                  max_reward_factor=max_reward_factor,
+                                  wait_before_initial_move=wait_before_initial_move)
             db.add(tcp_ebpf_experiment)
 
             with open(demands) as fileobj:

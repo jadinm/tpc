@@ -1,5 +1,6 @@
 import numpy
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float,\
+    BigInteger
 from sqlalchemy.orm import relationship
 
 from eval.bpf_stats import Snapshot
@@ -32,6 +33,8 @@ class TCPeBPFExperiment(SQLBaseModel):
     gamma_value = Column(Float, nullable=False)
     random_strategy = Column(String, nullable=False)
     max_reward_factor = Column(Float, nullable=False)
+    wait_before_initial_move = Column(BigInteger, nullable=False,
+                                      default=1000000000)
 
     # results
 
