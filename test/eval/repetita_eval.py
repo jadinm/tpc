@@ -48,6 +48,10 @@ def get_current_rand_type():
     return "exp3" if int(get_current_parameter("USE_EXP3")) == 1 else "uniform"
 
 
+def get_current_max_reward_factor():
+    return float(get_current_parameter("MAX_REWARD_FACTOR"))
+
+
 def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
                  ebpf=True):
     """
@@ -197,6 +201,7 @@ def eval_repetita(lg, args, ovsschema):
     cc = get_current_congestion_control()
     gamma = get_current_gamma()
     rand_type = get_current_rand_type()
+    max_reward_factor = get_current_max_reward_factor()
 
     i = 0
     for topo, demands_list in topos.items():
@@ -219,7 +224,8 @@ def eval_repetita(lg, args, ovsschema):
                 TCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
                                   demands=demands, congestion_control=cc,
                                   gamma_value=gamma, random_strategy=rand_type,
-                                  ebpf=args.ebpf)
+                                  ebpf=args.ebpf,
+                                  max_reward_factor=max_reward_factor)
             db.add(tcp_ebpf_experiment)
 
             with open(demands) as fileobj:

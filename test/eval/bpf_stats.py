@@ -38,6 +38,7 @@ BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 # 	__u32 exp3_last_number_actions;
 # 	__u32 exp3_curr_reward;
 #   __u32 exp3_start_snd_nxt;
+#   __u32 unstable;
 # 	floating exp3_last_probability;
 # 	floating exp3_weight[MAX_SRH_BY_DEST];
 # } __attribute__((packed));
@@ -63,13 +64,13 @@ class Snapshot:
             self.last_move_time, self.wait_backoff_max, self.wait_before_move, \
             self.rtt_count, self.ecn_count,  self.last_ecn_rtt, \
             self.exp3_last_number_actions, self.exp3_curr_reward, \
-            self.exp3_start_snd_nxt, \
+            self.exp3_start_snd_nxt, self.unstable, \
             exp3_last_probability_mantissa, exp3_last_probability_exponent = \
             struct.unpack("<IQ"  # Start of flow_snapshot
                           + "I4q2I"  # flow id
-                          + "I4QIQ3I"  # flow info (except floats)
+                          + "I4QIQ4I"  # flow info (except floats)
                           + "QI",  # Floats of flow info
-                          ebpf_map_entry[:128])
+                          ebpf_map_entry[:132])
         self.ebpf_map_entry = ebpf_map_entry
 
         # Parse addresses
