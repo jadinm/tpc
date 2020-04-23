@@ -1,4 +1,3 @@
-import os
 import shlex
 import subprocess
 
@@ -52,15 +51,17 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
             processes = []
             for h in h_list:
                 # Load eBPF program
-                cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}" \
-                      " type sockops"\
-                      .format(bpftool=SRLocalCtrl.BPFTOOL,
-                              ebpf_program=SRLocalCtrl.EBPF_PROGRAM,
-                              ebpf_load_path=SRLocalCtrl.ebpf_load_path(h))
-                print(h + " " + cmd)
-                processes.append(subprocess.Popen(shlex.split(cmd),
-                                                  stdout=subprocess.PIPE,
-                                                  stderr=subprocess.PIPE))
+                for program in [SRLocalCtrl.EBPF_PROGRAM,
+                                SRLocalCtrl.SHORT_EBPF_PROGRAM]:
+                    cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}"\
+                          " type sockops" \
+                        .format(bpftool=SRLocalCtrl.BPFTOOL,
+                                ebpf_program=program,
+                                ebpf_load_path=SRLocalCtrl.ebpf_load_path(h, program))
+                    print(h + " " + cmd)
+                    processes.append(subprocess.Popen(shlex.split(cmd),
+                                                      stdout=subprocess.PIPE,
+                                                      stderr=subprocess.PIPE))
 
             for p in processes:
                 stdout, stderr = p.communicate()

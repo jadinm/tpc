@@ -11,7 +11,6 @@ from ipmininet.utils import realIntfList
 from srnmininet.config.config import SRNDaemon, ZlogDaemon, srn_template_lookup
 from srnmininet.srnrouter import mkdir_p
 
-
 __TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates')
 srn_template_lookup.directories.append(__TEMPLATES_DIR)
 
@@ -23,41 +22,48 @@ class SRLocalCtrl(SRNDaemon):
     NAME = 'sr-localctrl'
     KILL_PATTERNS = (NAME,)
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
-    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_socks_ecn.o")
-    # TODO os.path.expanduser("~/ebpf_hhf/test_external_function.o")
-    # TODO Change
+    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
+    SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super(SRLocalCtrl, self).__init__(*args,
                                           template_lookup=template_lookup,
                                           **kwargs)
-        self.files.append(self.ebpf_load_path(self._node.name))
-        self.files.append(self.map_path("dest_map_fd"))
+        self.files.append(
+            self.ebpf_load_path(self._node.name, self.EBPF_PROGRAM))
+        self.files.append(self.map_path("dest_map_fd", self.EBPF_PROGRAM))
+        self.files.append(self.map_path("short_dest_map_fd",
+                                        self.SHORT_EBPF_PROGRAM))
         os.makedirs(self._node.cwd, exist_ok=True)
-        self.attached = False
+        self.attached = {self.SHORT_EBPF_PROGRAM: False,
+                         self.EBPF_PROGRAM: False}
         self.stat_map_id = -1
         self.dest_map_id = -1
+        self.short_dest_map_id = -1
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
         defaults.loglevel = self.DEBUG  # TODO Remove
         defaults.bpftool = self.BPFTOOL
         defaults.ebpf_program = self.EBPF_PROGRAM
+        defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
 
     @property
     def cgroup(self):
-        return "/sys/fs/cgroup/unified/{node}_{daemon}.slice/".format(node=self._node.name, daemon=self.NAME)
+        return "/sys/fs/cgroup/unified/{node}_{daemon}.slice/".format(
+            node=self._node.name, daemon=self.NAME)
 
     @classmethod
-    def ebpf_load_path(cls, node_name):
-        return "/sys/fs/bpf/{node}_{daemon}".format(node=node_name,
-                                                    daemon=cls.NAME)
+    def ebpf_load_path(cls, node_name, program):
+        return "/sys/fs/bpf/{node}_{daemon}_{program}" \
+            .format(node=node_name, daemon=cls.NAME,
+                    program=os.path.basename(program).split(".")[0])
 
-    def map_path(self, map_name):
-        return self.ebpf_load_path(self._node.name) + "_" + map_name
+    def map_path(self, map_name, program):
+        return self.ebpf_load_path(self._node.name, program) + "_" + map_name
 
-    def pin_maps(self):
-        ebpf_load_path = self.ebpf_load_path(self._node.name)
+    def get_map_id(self, program):
+        ebpf_load_path = self.ebpf_load_path(self._node.name, program)
         cmd = "{bpftool} prog -j show pinned {ebpf_load_path}" \
             .format(bpftool=self.options.bpftool,
                     ebpf_load_path=ebpf_load_path)
@@ -71,9 +77,15 @@ class SRLocalCtrl(SRNDaemon):
 
         if len(map_ids) == 0:
             raise ValueError("Cannot find the maps of %s" % ebpf_load_path)
+        return map_ids
+
+    def pin_maps(self):
+
+        map_ids = []
+        map_ids.extend(self.get_map_id(self.EBPF_PROGRAM))
+        map_ids.extend(self.get_map_id(self.SHORT_EBPF_PROGRAM))
 
         # Pin maps to fds
-
         for map_id in map_ids:
 
             cmd = "{bpftool} map -j show id {map_id}" \
@@ -83,7 +95,7 @@ class SRLocalCtrl(SRNDaemon):
             try:
                 map_name = json.loads(out)["name"]
             except (json.JSONDecodeError, KeyError) as e:
-                print("Cannot get the map ids of %s" % ebpf_load_path)
+                print("Cannot get the map ids")
                 raise e
 
             # If the map is the destination map, pin it
@@ -92,16 +104,31 @@ class SRLocalCtrl(SRNDaemon):
                 cmd = "{bpftool} map pin id {dest_map_id} {map_path}" \
                     .format(bpftool=self.options.bpftool,
                             dest_map_id=map_id,
-                            map_path=self.map_path("dest_map"))
+                            map_path=self.map_path("dest_map",
+                                                   self.EBPF_PROGRAM))
                 print(cmd)
                 subprocess.check_call(shlex.split(cmd))
                 self.dest_map_id = map_id
+            if map_name == "short_dest_map":
+                cmd = "{bpftool} map pin id {dest_map_id} {map_path}" \
+                    .format(bpftool=self.options.bpftool,
+                            dest_map_id=map_id,
+                            map_path=self.map_path("short_dest_map",
+                                                   self.SHORT_EBPF_PROGRAM))
+                print(cmd)
+                subprocess.check_call(shlex.split(cmd))
+                self.short_dest_map_id = map_id
             if map_name == "stat_map":
                 self.stat_map_id = map_id
         if self.dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
-                             % ebpf_load_path)
-        return self.dest_map_id
+                             % self.ebpf_load_path(self._node.name,
+                                                   self.EBPF_PROGRAM))
+        if self.short_dest_map_id == -1:
+            raise ValueError("Cannot pin the dest_map of program %s"
+                             % self.ebpf_load_path(self._node.name,
+                                                   self.SHORT_EBPF_PROGRAM))
+        return self.dest_map_id, self.short_dest_map_id
 
     def render(self, cfg, **kwargs):
 
@@ -109,38 +136,42 @@ class SRLocalCtrl(SRNDaemon):
 
         time.sleep(1)
 
-        dest_map_id = self.pin_maps()
-        ebpf_load_path = self.ebpf_load_path(self._node.name)
+        dest_map_id, short_dest_map_id = self.pin_maps()
 
         # Create cgroup
+        for program in [self.EBPF_PROGRAM, self.SHORT_EBPF_PROGRAM]:
+            mkdir_p(self.cgroup)
 
-        mkdir_p(self.cgroup)
+            ebpf_load_path = self.ebpf_load_path(self._node.name,
+                                                 program)
+            cmd = "{bpftool} cgroup attach {cgroup} sock_ops" \
+                  " pinned {ebpf_load_path} multi" \
+                .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
+                        ebpf_load_path=ebpf_load_path)
+            print(cmd)
+            subprocess.check_call(shlex.split(cmd))
 
-        cmd = "{bpftool} cgroup attach {cgroup} sock_ops" \
-              " pinned {ebpf_load_path} multi"\
-              .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
-                      ebpf_load_path=ebpf_load_path)
-        print(cmd)
-        subprocess.check_call(shlex.split(cmd))
-        self.attached = True
+            self.attached[program] = True
 
         # Fill config template
 
         cfg[self.NAME].dest_map_id = dest_map_id
+        cfg[self.NAME].short_dest_map_id = short_dest_map_id
         cfg_content = super(SRLocalCtrl, self).render(cfg, **kwargs)
 
         return cfg_content
 
     def cleanup(self):
-        if self.attached:
-            ebpf_load_path = self.ebpf_load_path(self._node.name)
-            cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
-                  " pinned {ebpf_load_path} multi"\
-                .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
-                        ebpf_load_path=ebpf_load_path)
-            print(cmd)
-            subprocess.check_call(shlex.split(cmd))
-            os.unlink(self.map_path("dest_map"))
+        detach_cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
+                     " pinned {ebpf_load_path} multi"
+        for program in [self.EBPF_PROGRAM, self.SHORT_EBPF_PROGRAM]:
+            if self.attached[program]:
+                ebpf_load_path = self.ebpf_load_path(self._node.name, program)
+                cmd = detach_cmd.format(bpftool=self.options.bpftool,
+                                        cgroup=self.cgroup,
+                                        ebpf_load_path=ebpf_load_path)
+                print(detach_cmd)
+                subprocess.check_call(shlex.split(cmd))
 
         super(SRLocalCtrl, self).cleanup()
 

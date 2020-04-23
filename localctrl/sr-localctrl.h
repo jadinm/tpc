@@ -22,10 +22,16 @@ struct srh_record {
 	struct in6_addr segments[MAX_SEGS_NBR];
 } __attribute__((packed));
 
+struct floating {
+	uint64_t mantissa;
+	uint32_t exponent;
+} __attribute__((packed));
+
 struct dest_infos {
 	struct in6_addr dest;
 	__u32 max_reward;
 	struct srh_record srhs[MAX_SRH_BY_DEST];
+	struct floating exp3_weights[MAX_SRH_BY_DEST];
 } __attribute__((packed));
 
 #define DEST_KEY_VALUE_SIZE sizeof(in6_addr)
@@ -46,7 +52,8 @@ struct config {
 
 	char *zlog_conf_file;
 
-	int dest_map_fd; // eBPF fd for the connection map
+	int dest_map_fd; // eBPF fd for the SRH map
+	int short_dest_map_fd; // eBPF fd for the short connections SRH map
 };
 
 extern struct config cfg;

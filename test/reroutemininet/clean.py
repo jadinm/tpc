@@ -14,7 +14,7 @@ def cleanup(level='info'):
         except subprocess.CalledProcessError:
             pass
 
-    path = SRLocalCtrl.ebpf_load_path("")
+    path = SRLocalCtrl.ebpf_load_path("", "")
     for root, dirs, files in os.walk(os.path.dirname(path)):
         for file_name in files:
             if os.path.basename(path) in file_name:

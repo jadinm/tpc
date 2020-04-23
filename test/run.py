@@ -69,8 +69,6 @@ with open(os.path.join(args.src_dir, "sr.ovsschema"), "r") as fileobj:
     ovsschema = json.load(fileobj)
 
 mininet.log.lg.setLogLevel(args.log)
-if args.log == 'debug':
-    ipmininet.DEBUG_FLAG = True
 sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
 
 # Add SR components to PATH

@@ -150,7 +150,11 @@ static int remove_segments(json_t *destination, json_t *segments, bool reverse_s
 
     /* Remove it in eBPF map (by updating the dest entry with an invalid srh record) */
     if (bpf_map_update_elem(cfg.dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
-        zlog_warn(zc, "SRH couldn't be removed !");
+        zlog_warn(zc, "SRH couldn't be removed in dst_map !");
+        err = -1;
+    }
+    if (bpf_map_update_elem(cfg.short_dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
+        zlog_warn(zc, "SRH couldn't be removed in short_dst_map !");
         err = -1;
     }
 
@@ -228,6 +232,10 @@ static int insert_segments(json_t *destination, json_t *segments, uint64_t bw, u
     if (id < MAX_SRH_BY_DEST) {
         if (bpf_map_update_elem(cfg.dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
             zlog_warn(zc, "Dest entry couldn't be inserted in eBPF map !");
+            return -1;
+        }
+        if (bpf_map_update_elem(cfg.short_dest_map_fd, &dest_ip, &hdest->info, BPF_ANY)) {
+            zlog_warn(zc, "Dest entry couldn't be inserted in short eBPF map !");
             return -1;
         }
         zlog_debug(zc, "SRH inserted in the eBPF map");

@@ -156,6 +156,20 @@ static int load_config(const char *config_file)
 		return -1;
 	}
 
+	int short_dest_map_id = -1;
+	if (load_int(root_cfg, &json_err, "short_dest_map_id",
+			&short_dest_map_id))
+		goto err;
+	cfg.short_dest_map_fd = bpf_map_get_fd_by_id(short_dest_map_id);
+	if (cfg.short_dest_map_fd < 0) {
+		fprintf(stderr, "Cannot retrieve short destination map with id %d\n", short_dest_map_id);
+		perror("");
+		if (root_cfg)
+			json_decref(root_cfg);
+		clean_config();
+		return -1;
+	}
+
 	json_decref(root_cfg);
 	return 0;
 err:
