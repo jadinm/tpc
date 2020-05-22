@@ -1,8 +1,27 @@
+from ipmininet.utils import realIntfList
 from mininet.log import lg
 from sr6mininet.sr6link import SR6TCIntf
 
 
 class RerouteIntf(SR6TCIntf):
+
+    def config(self, *args, **kwargs):
+        r = super().config(*args, **kwargs)
+        self.cmd("sysctl net.ipv4.conf.all.rp_filter=0")
+        self.cmd("sysctl net.ipv4.conf.default.rp_filter=0")
+        self.cmd("sysctl net.ipv4.conf.lo.rp_filter=0")
+        self.cmd("sysctl net.ipv4.conf.{}.rp_filter=0".format(self.name))
+        self.cmd("ethtool -K {} tso off".format(self.name))
+        self.cmd("ethtool -K {} gso off".format(self.name))
+        self.cmd("ethtool -K {} lro off".format(self.name))
+        self.cmd("ethtool -K {} gro off".format(self.name))
+        self.cmd("ethtool -K {} sg off".format(self.name))
+        self.cmd("ethtool -K {} rx off".format(self.name))
+        self.cmd("ethtool -K {} tx off".format(self.name))
+        self.cmd("ethtool -K {} rxhash off".format(self.name))
+        self.cmd("ethtool -K {} ntuple off".format(self.name))
+        # self.cmd("ip link set {} mtu 1280".format(self.name))
+        return r
 
     def bwCmds(self, bw=None, speedup=0, use_hfsc=False, use_tbf=False,
                latency_ms=None, enable_ecn=False, enable_red=False,

@@ -55,6 +55,7 @@ MAX_SEGMENTS_BY_SRH = 10
 
 
 class Snapshot:
+    map_name = "stat_map_id"
 
     def __init__(self, ebpf_map_entry):
         # TODO Make the weight extraction depend on the define for the number
@@ -130,16 +131,20 @@ class Snapshot:
             raise ValueError("Cannot find the id of the Stat eBPF map")
 
         cmd = "{bpftool} map -j dump id {map_id}"\
-            .format(bpftool=BPFTOOL, map_id=daemon.stat_map_id)
+            .format(bpftool=BPFTOOL, map_id=getattr(daemon, cls.map_name))
         out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
         snapshots_raw = json.loads(out)
 
         snapshots = []
         for snap_raw in snapshots_raw:
             hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
-            snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
-            if snap.seq > 0:  # Valid snapshot
-                snapshots.append(snap)
+            try:
+                snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
+                if snap.seq > 0:  # Valid snapshot
+                    snapshots.append(snap)
+            except OverflowError:  # Too high weights
+                print("HIGH WEIGHTS - skip snapshot")
+                pass
         snapshots.sort()
         return snapshots
 
@@ -161,6 +166,51 @@ class Snapshot:
     @classmethod
     def retrieve_from_hex(cls, ebpf_map_entry: str):
         return cls(bytes.fromhex(ebpf_map_entry))
+
+
+class ShortSnapshot(Snapshot):
+    map_name = "short_stat_map_id"
+
+    def __init__(self, ebpf_map_entry):
+        # TODO Make the weight extraction depend on the define for the number
+        #  of paths by destination
+        self.seq, self.time, self.last_srh_id_chosen, self.last_reward = \
+            struct.unpack("<IQII",  # Start of flow_snapshot
+                          ebpf_map_entry[:20])
+        self.ebpf_map_entry = ebpf_map_entry
+
+        # Parse addresses
+        idx_weight = 36
+        self.destination = ip_address(self.ebpf_map_entry[20:idx_weight])
+
+        # Parse exp3 weights
+        self.weights = []
+        for i in range(MAX_PATHS_BY_DEST):
+            mantissa, exponent = struct.unpack("<QI", ebpf_map_entry[
+                                                      idx_weight:idx_weight+12])
+            idx_weight += 12
+            self.weights.append(self.extract_floats([(mantissa, exponent)]))
+
+        # print(exp3_last_probability_mantissa)
+        # print(exp3_last_probability_exponent)
+
+        # Parse floats
+        #floatings = self.extract_floats([(exp3_last_probability_mantissa,
+        #                                  exp3_last_probability_exponent)])
+                                         #(exp3_weight_mantissa_0,
+                                         # exp3_weight_exponent_0),
+                                         #(exp3_weight_mantissa_1,
+                                         # exp3_weight_exponent_1),
+                                         #(exp3_weight_mantissa_2,
+                                         # exp3_weight_exponent_2),
+                                         #(exp3_weight_mantissa_3,
+                                         # exp3_weight_exponent_3)])
+
+    def __str__(self):
+        return "Snapshot<{seq}-{time}> for destination {destination}: " \
+               "weights {weights}" \
+            .format(seq=self.seq, time=self.time, destination=self.destination,
+                    weights=self.weights)
 
 
 # struct dst_infos {

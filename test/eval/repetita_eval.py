@@ -1,21 +1,25 @@
+import csv
 import json
 import os
 import signal
 import subprocess
 import time
 from datetime import datetime
-from multiprocessing import Value
-from shlex import split
+from shlex import split, shlex
+from typing import List
 
 from ipmininet.tests.utils import assert_connectivity
-from numpy.random import zipf, poisson
+from sr6mininet.cli import SR6CLI
 
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.net import ReroutingNet
-from .bpf_stats import Snapshot, BPFPaths
+from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
-    IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry
+    IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry, \
+    SnapshotShortDBEntry
+from .db.ab_results import ABLatencyCDF, ABResults
+from .db.short_tcp_ebpf_experiment import ShortTCPeBPFExperiment
 from .utils import get_addr, MEASUREMENT_TIME, INTERVALS
 
 
@@ -127,39 +131,6 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
     return pid_servers, pid_clients
 
 
-def cs_name(client, server, nbr_conn):
-    return "%s-%s.%d" % (client, server, nbr_conn)
-
-
-def send_interactive_traffic(queue, curl_cfg, ebpf, stop, client, server):
-
-    while stop.value == 0:
-        # Random sleep around 0.5 sec
-        time.sleep(poisson(0.5))
-
-        # Byte size
-        # From Figure 5 in "How Speedy is SPDY"
-        file_size = zipf(750000 + 10 * 20000)
-
-        # Query it
-        start_connection = time.time()
-        cmd = "curl '@{cfg}' -o /dev/null -r 0-{file_size} -s" \
-              " http://[{ip6}]/mock_file"\
-            .format(cfg=curl_cfg, ip6=server.ip6, file_size=file_size)
-        if ebpf:
-            curl = client.run_cgroup(cmd)
-        else:
-            curl = client.popen(split(cmd))
-
-        out, err = curl.communicate()
-        data = json.loads(out.decode("utf-8"))
-        data["http_client"] = client.name
-        data["http_server"] = server.name
-        queue.put(data)
-
-    return 0
-
-
 def parse_demands(json_demands):
     """Fuse demands with the same destination and source"""
 
@@ -175,7 +146,7 @@ def parse_demands(json_demands):
     return [x for x in merged_demands.values()]
 
 
-def eval_repetita(lg, args, ovsschema):
+def get_repetita_topos(args):
     topos = {}
     if args.repetita_topo is None and args.repetita_dir is None:
         return
@@ -185,8 +156,10 @@ def eval_repetita(lg, args, ovsschema):
                 if ".graph" in f:
                     # Identify related flow files
                     for flow_name in files:
-                        if ".flows" in flow_name and f.split(".")[0] in flow_name:
-                            topos.setdefault(os.path.join(root, f), []).append(os.path.join(root, flow_name))
+                        if ".flows" in flow_name and f.split(".")[0] \
+                            in flow_name:
+                            topos.setdefault(os.path.join(root, f), []).append(
+                                os.path.join(root, flow_name))
 
     if args.repetita_topo is not None:
         repetita_topo = os.path.abspath(args.repetita_topo)
@@ -197,17 +170,231 @@ def eval_repetita(lg, args, ovsschema):
                 if ".flows" in f and topo_name.split(".graph")[0] in f:
                     topos.setdefault(repetita_topo, []).append(
                         os.path.join(root, f))
+    return topos
 
+
+def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
+              ebpf=True) -> List[subprocess.Popen]:
+    try:
+        subprocess.check_call(split("pkill iperf3"))
+    except subprocess.CalledProcessError:
+        pass
+
+    # Wait for connectivity
+    assert_connectivity(net, v6=True)
+    time.sleep(1)
+    assert_connectivity(net, v6=True)
+
+    time.sleep(30)
+
+    pid_clients = []
+    for i, client in enumerate(clients):
+        cmd = "ab -v 0 -c {nbr_connections} -t {duration} -e {csv_file} " \
+              "http://[{server_ip}]:8080/mock_file" \
+            .format(server_ip=get_addr(net[servers[i]]), csv_file=csv_files[i],
+                    nbr_connections=nbr_flows[i], duration=MEASUREMENT_TIME)
+        db_entry[i].cmd_client = cmd
+        print(client)
+        print(cmd)
+        # Always run outside of the eBPF (use case where we only control
+        # servers)
+        pid_clients.append(net[client].popen(split(cmd)))
+
+    return pid_clients
+
+
+def parse_ab_output(csv_files, db_entry: List[ABResults]):
+    for i, cvs_file in enumerate(csv_files):
+        with open(cvs_file) as file_obj:
+            raw_data = file_obj.read()
+            db_entry[i].raw_csv = raw_data
+            for j, row in enumerate(csv.DictReader(raw_data.splitlines())):
+                if j == 0:  # Skip headline
+                    continue
+                print(row)
+                # Insert in database
+                db_entry[i].ab_latency_cdf.append(
+                    ABLatencyCDF(
+                        percentage_served=float(row["Percentage served"]),
+                        time=float(row["Time in ms"])))
+        # TODO Clean the file
+
+
+def get_xp_params():
+    return {
+        "congestion_control": get_current_congestion_control(),
+        "gamma_value": get_current_gamma(),
+        "random_strategy": get_current_rand_type(),
+        "max_reward_factor": get_current_max_reward_factor(),
+        "wait_before_initial_move": get_wait_before_initial_move()
+    }
+
+
+def short_flows(lg, args, ovsschema):
+    topos = get_repetita_topos(args)
+    os.mkdir(args.log_dir)
+
+    lg.info("******* %d Topologies to test *******\n" % len(topos))
+    db = get_connection()
+    params = get_xp_params()
+
+    i = 0
+    for topo, demands_list in topos.items():
+        i += 1
+        lg.info("******* [topo %d/%d] %d flow files to test in topo '%s' "
+                "*******\n"
+                % (i, len(topos), len(demands_list), os.path.basename(topo)))
+        for demands in demands_list:
+            cwd = os.path.join(args.log_dir, os.path.basename(demands))
+            try:
+                os.makedirs(cwd)
+            except OSError as e:
+                print("OSError %s" % e)
+            cleanup()
+            lg.info("******* Processing topo '%s' demands '%s' *******\n" % (
+                os.path.basename(topo),
+                os.path.basename(demands)))
+
+            tcp_ebpf_experiment = \
+                ShortTCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
+                                       demands=demands, ebpf=args.ebpf,
+                                       **params)
+            db.add(tcp_ebpf_experiment)
+
+            with open(demands) as fileobj:
+                json_demands = json.load(fileobj)
+            topo_args = {"schema_tables": ovsschema["tables"],
+                         "cwd": os.path.join(args.log_dir,
+                                             os.path.basename(demands)),
+                         "ebpf_program": os.path.expanduser(
+                             "~/ebpf_hhf/ebpf_socks_ecn.o"),
+                         "always_redirect": True,
+                         "maxseg": -1, "repetita_graph": topo,
+                         "ebpf": args.ebpf,
+                         "json_demands": json_demands}
+
+            net = ReroutingNet(topo=RepetitaTopo(**topo_args),
+                               static_routing=True)
+
+            subprocess.call("pkill -9 iperf".split(" "))
+            subprocess.call("pkill -9 curl".split(" "))
+            subprocess.call("pkill -9 ab".split(" "))
+            err = False
+            csv_files = []
+            tcpdumps = []
+            try:
+                net.start()
+
+                # Read flow file to retrieve the clients and servers
+                json_demands = parse_demands(json_demands)
+                print(json_demands)
+                clients = []
+                servers = []
+                nbr_flows = []
+                for d in json_demands:
+                    clients.append("h" + net.topo.getFromIndex(d["src"]))
+                    servers.append("h" + net.topo.getFromIndex(d["dest"]))
+                    nbr_flows.append(d["number"])
+                    csv_files.append("%s-%s" % (clients[-1], servers[-1]))
+                    tcp_ebpf_experiment.abs.append(
+                        ABResults(client=clients[-1], server=servers[-1],
+                                  timeout=MEASUREMENT_TIME))
+                print(clients)
+                print(servers)
+
+                # Launch tcpdump on client
+                if args.tcpdump:
+                    for n in clients + servers + [r.name for r in net.routers]:
+                        cmd = "tcpdump -w {}.pcapng ip6".format(n)
+                        tcpdumps.append(net[n].popen(cmd))
+
+                pid_abs = launch_ab(lg, net, clients, servers, nbr_flows,
+                                    db_entry=tcp_ebpf_experiment.abs,
+                                    csv_files=csv_files, ebpf=args.ebpf)
+                if len(pid_abs) == 0:
+                    return
+
+                SR6CLI(net)  # TODO Remove
+
+                # Measure load on each interface
+                t = 0
+                snapshots = {h: [] for h in clients + servers}
+                while t < MEASUREMENT_TIME:
+                    # Extract snapshot info from eBPF
+                    if args.ebpf:
+                        for h in snapshots.keys():
+                            snapshots[h].extend(
+                                ShortSnapshot.extract_info(net[h]))
+                            snapshots[h] = sorted(list(set(snapshots[h])))
+                    time.sleep(0.1)
+                    t += 0.1
+
+                # SR6CLI(net)  # TODO Remove
+                time.sleep(5)
+
+                for h, snaps in snapshots.items():
+                    for snap in snaps:
+                        tcp_ebpf_experiment.snapshots.append(
+                            SnapshotShortDBEntry(snapshot_hex=snap.export(),
+                                                 host=h)
+                        )
+
+                for i, pid in enumerate(pid_abs):
+                    if pid.poll() is None:
+                        lg.error("The ab (%s,%s) has not finish yet\n" % (
+                            clients[i], servers[i]))
+                        pid.send_signal(signal.SIGINT)
+                        pid.wait()
+                    if pid.poll() != 0:
+                        lg.error("The ab (%s,%s) returned with error code %d\n"
+                                 % (clients[i], servers[i], pid.poll()))
+                        err = True
+                    print("OUTPUT ab")
+                    print("HHHHHHHHHHHHHHHHHHHHHHhhhh out")
+                    for n in pid.stdout.readlines():
+                        print(n)
+                    print("HHHHHHHHHHHHHHHHHHHHHHhhhh errr")
+                    for n in pid.stderr.readlines():
+                        print(n)
+
+            finally:
+                for pid in tcpdumps:
+                    pid.kill()
+                net.stop()
+                cleanup()
+                subprocess.call("pkill -9 ab".split(" "))
+
+            db.commit()  # Commit even if catastrophic results
+
+            if not err:
+                # try:
+                lg.info("******* Saving results '%s' *******\n" %
+                        os.path.basename(topo))
+
+                # Parse and save csv file
+                parse_ab_output(csv_files, tcp_ebpf_experiment.abs)
+                tcp_ebpf_experiment.failed = False
+                tcp_ebpf_experiment.valid = True
+                db.commit()  # Commit
+
+                # except Exception as e:
+                #    lg.error("Exception %s in the graph generation...
+                #    Skipping...\n" % e)
+                #    lg.error(str(e))
+                #    continue
+            else:
+                lg.error("******* Error %s processing graphs '%s' *******\n" % (
+                    err, os.path.basename(topo)))
+
+
+def eval_repetita(lg, args, ovsschema):
+    topos = get_repetita_topos(args)
     os.mkdir(args.log_dir)
 
     lg.info("******* %d Topologies to test *******\n" % len(topos))
 
     db = get_connection()
-    cc = get_current_congestion_control()
-    gamma = get_current_gamma()
-    rand_type = get_current_rand_type()
-    max_reward_factor = get_current_max_reward_factor()
-    wait_before_initial_move = get_wait_before_initial_move()
+    params = get_xp_params()
 
     i = 0
     for topo, demands_list in topos.items():
@@ -228,11 +415,7 @@ def eval_repetita(lg, args, ovsschema):
 
             tcp_ebpf_experiment = \
                 TCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
-                                  demands=demands, congestion_control=cc,
-                                  gamma_value=gamma, random_strategy=rand_type,
-                                  ebpf=args.ebpf,
-                                  max_reward_factor=max_reward_factor,
-                                  wait_before_initial_move=wait_before_initial_move)
+                                  demands=demands, ebpf=args.ebpf, **params)
             db.add(tcp_ebpf_experiment)
 
             with open(demands) as fileobj:
@@ -253,12 +436,9 @@ def eval_repetita(lg, args, ovsschema):
             tcpdumps = []
 
             subprocess.call("pkill -9 iperf".split(" "))
-            subprocess.call("pkill -9 lighttpd".split(" "))
             subprocess.call("pkill -9 curl".split(" "))
+            subprocess.call("pkill -9 ab".split(" "))
             err = False
-            interactives = []
-            stop = Value("i")
-            stop.value = 0
             try:
                 net.start()
 
@@ -350,12 +530,6 @@ def eval_repetita(lg, args, ovsschema):
             finally:
                 for pid in tcpdumps:
                     pid.kill()
-                stop.value = 1
-                for process in interactives:
-                    process.join(timeout=30)
-                    if process.is_alive():
-                        process.kill()
-                        process.join()
 
                 # SR6CLI(net)  # TODO Remove
                 net.stop()

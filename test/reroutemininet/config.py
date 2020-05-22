@@ -21,6 +21,7 @@ class SRLocalCtrl(SRNDaemon):
 
     NAME = 'sr-localctrl'
     KILL_PATTERNS = (NAME,)
+    PRIO = 1  # If other daemons want to use it
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
     EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
     SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
@@ -40,6 +41,7 @@ class SRLocalCtrl(SRNDaemon):
         self.stat_map_id = -1
         self.dest_map_id = -1
         self.short_dest_map_id = -1
+        self.short_stat_map_id = -1
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
@@ -48,10 +50,13 @@ class SRLocalCtrl(SRNDaemon):
         defaults.ebpf_program = self.EBPF_PROGRAM
         defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
 
-    @property
-    def cgroup(self):
-        return "/sys/fs/cgroup/unified/{node}_{daemon}.slice/".format(
-            node=self._node.name, daemon=self.NAME)
+    def cgroup(self, program):
+        if "short" in program:
+            ext = "short"
+        else:
+            ext = ""
+        return "/sys/fs/cgroup/unified/{node}_{daemon}_{ext}.slice/".format(
+            node=self._node.name, daemon=self.NAME, ext=ext)
 
     @classmethod
     def ebpf_load_path(cls, node_name, program):
@@ -120,6 +125,8 @@ class SRLocalCtrl(SRNDaemon):
                 self.short_dest_map_id = map_id
             if map_name == "stat_map":
                 self.stat_map_id = map_id
+            if map_name == "short_stat_map":
+                self.short_stat_map_id = map_id
         if self.dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % self.ebpf_load_path(self._node.name,
@@ -140,13 +147,14 @@ class SRLocalCtrl(SRNDaemon):
 
         # Create cgroup
         for program in [self.EBPF_PROGRAM, self.SHORT_EBPF_PROGRAM]:
-            mkdir_p(self.cgroup)
+            mkdir_p(self.cgroup(program))
 
             ebpf_load_path = self.ebpf_load_path(self._node.name,
                                                  program)
             cmd = "{bpftool} cgroup attach {cgroup} sock_ops" \
                   " pinned {ebpf_load_path} multi" \
-                .format(bpftool=self.options.bpftool, cgroup=self.cgroup,
+                .format(bpftool=self.options.bpftool,
+                        cgroup=self.cgroup(program),
                         ebpf_load_path=ebpf_load_path)
             print(cmd)
             subprocess.check_call(shlex.split(cmd))
@@ -168,7 +176,7 @@ class SRLocalCtrl(SRNDaemon):
             if self.attached[program]:
                 ebpf_load_path = self.ebpf_load_path(self._node.name, program)
                 cmd = detach_cmd.format(bpftool=self.options.bpftool,
-                                        cgroup=self.cgroup,
+                                        cgroup=self.cgroup(program),
                                         ebpf_load_path=ebpf_load_path)
                 print(detach_cmd)
                 subprocess.check_call(shlex.split(cmd))
@@ -381,8 +389,14 @@ class Lighttpd(HostDaemon):
 
     @property
     def startup_line(self):
-        return "{name} -D -f {conf}".format(name=self.NAME,
-                                            conf=self.cfg_filename)
+        time.sleep(1)
+        s = "{ebpf} {program} {name} -D -f {conf}" \
+            .format(ebpf="ebpf" if self.options.ebpf else "", name=self.NAME,
+                    conf=self.cfg_filename,
+                    program=SRLocalCtrl.SHORT_EBPF_PROGRAM
+                    if self.options.ebpf else "")
+        print(s)
+        return s
 
     @property
     def dry_run(self):
@@ -412,16 +426,17 @@ class Lighttpd(HostDaemon):
         """
         :param port: The port on which the daemon listens for HTTP requests
         :param web_dir: The directory of files that can be queried
+        :param ebpf: ebpf program to get attached to
         """
         defaults.port = 8080
         defaults.web_dir = self._node.cwd
+        defaults.ebpf = SRLocalCtrl.SHORT_EBPF_PROGRAM
         super(Lighttpd, self).set_defaults(defaults)
 
     def has_started(self):
         # Try to connect to the server
         _, _, ret = self._node.pexec("nc -z ::1 {port}"
                                      .format(port=self.options.port))
-        print(ret)
         return ret == 0
 
 

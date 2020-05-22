@@ -7,9 +7,10 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mininet.log import LEVELS, lg
 
-from eval.db import get_connection, TCPeBPFExperiment
+from eval.bpf_stats import ShortSnapshot
+from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data, \
-    MEASUREMENT_TIME
+    AB_MEASUREMENT_TIME, MEASUREMENT_TIME
 from explore_data import explore_maxflow_json_files
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -450,12 +451,17 @@ def plot_stability_by_connection(experiments, id):
 
         topo_base = os.path.basename(exp.topology)
         demands_base = os.path.basename(exp.demands)
-        key = "%s@%s" % (topo_base, demands_base)
+        key = "%s@%s@%s" % (topo_base, demands_base, exp.gamma_value)
         if not keys.get(key, False):  # Only once by instance
             keys[key] = True
 
-            nbr_changes_by_conn, exp3_last_prob_by_conn = \
-                exp.stability_by_connection()
+            # Snapshot changed
+            try:
+                nbr_changes_by_conn, exp3_last_prob_by_conn = \
+                    exp.stability_by_connection()
+            except OverflowError:
+                print(exp.timestamp)
+                continue
 
             plot_time(exp3_last_prob_by_conn, "Probability of current path",
                       "last_prob_%s.time" % key, args.out_dir,
@@ -532,6 +538,73 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None):
                 bbox_inches='tight', pad_inches=0, markersize=9)
     fig.clf()
     plt.close()
+
+
+def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], output_path):
+    for exp in delay_experiments:
+        if "investigation" not in exp.topology:  # TODO Remove
+            continue  # TODO Remove
+
+        fig = plt.figure()
+        subplot = fig.add_subplot(111)
+
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s@%s" % (topo_base, demands_base, exp.random_strategy)
+        figure_name = "ab_completion_time_%s.cdf" % key
+        times_figure_name = "ab_completion_time_%s.times.reward" % key
+
+        for ab in exp.abs.all():
+            cdf = []
+            bins = []
+            for cdf_dot in ab.ab_latency_cdf.all():
+                bins.append(cdf_dot.time)
+                cdf.append(cdf_dot.percentage_served)
+
+            subplot.step(bins, cdf, marker=".", linewidth=LINE_WIDTH,
+                         where="post", markersize=MARKER_SIZE)
+
+        subplot.set_xlabel("completion time (ms)", fontsize=FONTSIZE)
+        subplot.set_ylabel("CDF", fontsize=FONTSIZE)
+        subplot.set_xlim(left=0)  # TODO Change right limit
+
+        lg.info("Saving figure for plot ab cdfs to path {path}\n"
+                .format(path=os.path.join(output_path, figure_name + ".pdf")))
+
+        fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
+                    bbox_inches='tight', pad_inches=0, markersize=9)
+        fig.clf()
+        plt.close()
+
+        srh_counts = {}
+        rewards = {}  # 50 - srtt / 1000
+        reward_over_time = {}
+        first_sequence = -1
+        start_time = 0
+        for db_snap in exp.snapshots.all():
+            snap = ShortSnapshot.retrieve_from_hex(db_snap.snapshot_hex)
+            if first_sequence == -1:
+                first_sequence = snap.seq
+                start_time = snap.time
+                print(first_sequence)
+            srh_counts.setdefault(snap.last_srh_id_chosen, 0)
+            srh_counts[snap.last_srh_id_chosen] += 1
+            rewards.setdefault(snap.last_srh_id_chosen, []).append(
+                snap.last_reward)
+            reward_over_time.setdefault(snap.last_srh_id_chosen, []).append(
+                (snap.time - start_time, snap.last_reward))
+        for id, count in srh_counts.items():
+            print("{} - {}".format(id, count))
+
+        plot_cdf(rewards, colors={0: "orangered", 1: "#00B0F0"},
+                 markers={0: "o", 1: "s"}, labels={0: "Path 0", 1: "Path 1"},
+                 xlabel="Path reward", figure_name=figure_name + ".reward",
+                 output_path=output_path)
+        plot_time(reward_over_time, labels={0: "Path 0", 1: "Path 1"},
+                  ylabel="Path reward", figure_name=times_figure_name,
+                  output_path=output_path)
+
+        break  # Only take the most recent experiment
 
 
 if __name__ == "__main__":

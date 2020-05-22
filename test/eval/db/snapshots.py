@@ -10,3 +10,12 @@ class SnapshotDBEntry(SQLBaseModel):
 
     host = Column(String, nullable=False)
     snapshot_hex = Column(Text, nullable=False)
+
+
+class SnapshotShortDBEntry(SQLBaseModel):
+    __tablename__ = 'snapshots_short'
+    id = Column(Integer, primary_key=True)
+    experience_id = Column(Integer, ForeignKey('short_tcp_ebpf_experiments.id'))
+
+    host = Column(String, nullable=False)
+    snapshot_hex = Column(Text, nullable=False)
