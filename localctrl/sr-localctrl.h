@@ -6,6 +6,7 @@
 #include <srdb.h>
 #include <sys/socket.h>
 #include <zlog.h>
+#include <linux/bpf.h>
 
 #define _unused __attribute__((unused))
 
@@ -22,16 +23,11 @@ struct srh_record {
 	struct in6_addr segments[MAX_SEGS_NBR];
 } __attribute__((packed));
 
-struct floating {
-	uint64_t mantissa;
-	uint32_t exponent;
-} __attribute__((packed));
-
 struct dest_infos {
 	struct in6_addr dest;
 	__u32 max_reward;
 	struct srh_record srhs[MAX_SRH_BY_DEST];
-	struct floating exp3_weights[MAX_SRH_BY_DEST];
+	floating exp3_weights[MAX_SRH_BY_DEST];
 } __attribute__((packed));
 
 #define DEST_KEY_VALUE_SIZE sizeof(in6_addr)

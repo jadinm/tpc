@@ -7,6 +7,75 @@
 
 static uint32_t counter;
 
+
+
+// floating part
+// XXX Sync with the kernel
+
+#define FLOATING_BIAS 1024
+#define FLOATING_LARGEST_BIT ((uint64_t) 1U) << 63U
+
+static uint64_t floating_u64_pow(uint64_t base, uint32_t exponent)
+{
+	uint32_t i;
+	uint64_t pow = 1;
+	for (i = 1; i <= 64; i++) { // -1024 is the maximum for an exponent in double
+        uint32_t xxx = i;
+		if (xxx <= exponent)
+			pow *= base;
+	}
+	return pow;
+}
+
+static uint32_t floating_decimal_to_binary(uint32_t decimal, uint32_t digits)
+{
+	// Encode the decimal as a sum of negative powers of 2
+	uint32_t i = 1;
+	uint64_t shift = 0;
+	uint64_t scale = floating_u64_pow(10, digits);
+	uint32_t sol = 0;
+	for (i = 1; i <= 32; i++) { // -1024 is the maximum for an exponent in double
+		sol = sol << 1U;
+		shift = ((uint64_t) decimal) << 1U;
+		decimal = decimal << 1U;
+		if (scale <= shift) {
+			sol = sol | 1U;
+			decimal -= scale;
+		}
+	}
+	return sol;
+}
+
+static void floating_normalize(floating *number)
+{
+	// Get the position of the first 1 in the binary of the mantissa
+	// and change the exponent
+	uint32_t i = 0;
+	uint32_t found = 0;
+
+	if (!number->mantissa) {
+		number->exponent = FLOATING_BIAS;
+		return;
+	}
+
+	for (i = 0; i <= 63; i++) {
+        if (!found && (number->mantissa & FLOATING_LARGEST_BIT) != 0) {
+            found = 1;
+        } else if (!found) {
+            number->exponent = number->exponent - 1;
+            number->mantissa = number->mantissa << 1U;
+        }
+	}
+}
+
+void to_floating(uint32_t integer, uint32_t decimal, uint32_t digits, floating *result)
+{
+	result->mantissa = (((uint64_t) integer) << 32U) | ((uint64_t) floating_decimal_to_binary(decimal, digits));
+	result->exponent = FLOATING_BIAS + 31;
+	// The first bit must be 1
+	floating_normalize(result);
+}
+
 /**
  * Returns true iff at least one prefix matches at least one of the endhost's global IPv6 addresses
  */
@@ -201,6 +270,10 @@ static int insert_segments(json_t *destination, json_t *segments, uint64_t bw, u
         }
         /* Setup destination hash entry and insert in the hashmap */
         memcpy(&hdest->info.dest, &dest_ip, sizeof(struct in6_addr));
+        /* Add weights equal to 1 */
+        for (int i = 0; i < MAX_SRH_BY_DEST; i++) {
+            to_floating(1, 0, 1, &hdest->info.exp3_weights[i]);
+        }
         HASH_ADD_KEYPTR(hh, cfg.dest_cache, &hdest->info.dest, sizeof(struct in6_addr), hdest);
     }
 
