@@ -1,0 +1,62 @@
+[
+    {
+        "label": "flow_0_Thunder_Bay->1_Chicago",
+        "src": 0,
+        "dest": 1,
+        "volume": 100000
+    },
+    {
+        "label": "flow_2_Regina->3_Winnipeg",
+        "src": 2,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_Ottawa->5_Montreal",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Windsor/Detroit->7_Toronto",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Fredericton->9_Charlottetown",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_11_Boston->15_New_York",
+        "src": 11,
+        "dest": 15,
+        "volume": 100000
+    },
+    {
+        "label": "flow_16_St_John's->17_Halifax",
+        "src": 16,
+        "dest": 17,
+        "volume": 100000
+    },
+    {
+        "label": "flow_22_Calgary->23_Saskatoon",
+        "src": 22,
+        "dest": 23,
+        "volume": 100000
+    },
+    {
+        "label": "flow_26_Edmonton->27_Kamloops",
+        "src": 26,
+        "dest": 27,
+        "volume": 100000
+    },
+    {
+        "label": "flow_29_Vancouver->30_Victoria",
+        "src": 29,
+        "dest": 30,
+        "volume": 100000
+    }
+]

@@ -1,0 +1,32 @@
+[
+    {
+        "label": "flow_0_New_York->3_Moncton",
+        "src": 0,
+        "dest": 3,
+        "volume": 100000
+    },
+    {
+        "label": "flow_4_None->5_Edmundston",
+        "src": 4,
+        "dest": 5,
+        "volume": 100000
+    },
+    {
+        "label": "flow_6_Quebec->7_Montreal",
+        "src": 6,
+        "dest": 7,
+        "volume": 100000
+    },
+    {
+        "label": "flow_8_Toronto->9_Buffalo",
+        "src": 8,
+        "dest": 9,
+        "volume": 100000
+    },
+    {
+        "label": "flow_10_Albany->11_Boston",
+        "src": 10,
+        "dest": 11,
+        "volume": 100000
+    }
+]

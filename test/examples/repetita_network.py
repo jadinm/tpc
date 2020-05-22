@@ -211,5 +211,5 @@ class RepetitaTopo(SRNTopo):
         if self.cwd is not None and "cwd" not in params:
             params["cwd"] = os.path.join(self.cwd, name)
         h = super(SRNTopo, self).addHost(name, config=ReroutingHostConfig, **params)
-        h.addDaemon(Lighttpd)  # Launch an HTTP server on each node
+        h.addDaemon(Lighttpd, ebpf=self.ebpf)  # Launch an HTTP server on each node
         return h
