@@ -61,8 +61,12 @@ def get_wait_before_initial_move():
     return int(get_current_parameter("WAIT_BEFORE_INITIAL_MOVE"))
 
 
-def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
-                 ebpf=True):
+def get_wait_unstable_rtt():
+    return int(get_current_parameter("WAIT_UNSTABLE_RTT"))
+
+
+def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, clamp,
+                 iperfs_db, ebpf=True):
     """
     :param net: The Network object
     :param clients: The list of client node names
@@ -82,12 +86,15 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
     pid_servers = []
     ports = [5201 + i for i in range(len(servers))]
     for i, server in enumerate(servers):
-        cmd = "iperf3 -J -s -p %d" % ports[i]
+        cmd = "iperf3 -s -J -p %d --one-off" % ports[i]
+                # 2>&1 > log_%s.log &"
         iperfs_db[i].cmd_server = cmd
+        print("%s %s" % (server, cmd))
         if ebpf:
-            pid_servers.append(net[server].run_cgroup(cmd, stdout=result_files[i]))
+            pid_servers.append(net[server].run_cgroup(cmd,
+                                                      stdout=result_files[i]))
         else:
-            pid_servers.append(net[server].popen(split(cmd), stdout=result_files[i]))
+            pid_servers.append(net[server].popen(cmd, stdout=result_files[i]))
     time.sleep(15)
 
     for pid in pid_servers:
@@ -105,17 +112,23 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
 
     pid_clients = []
     for i, client in enumerate(clients):
-        cmd = "iperf3 -J -P {nbr_connections} -c {server_ip} -t {duration} " \
-              "-B {client_ip} -i {intervals} -p {port}" \
+        cmd = "iperf3 -J -P {nbr_connections} -c {server_ip}" \
+              " -t {duration} " \
+              "-B {client_ip} -i {intervals} -p {port} -b {clamp}M" \
             .format(server_ip=get_addr(net[servers[i]]),
                     client_ip=get_addr(net[client]),
                     nbr_connections=nbr_flows[i], duration=MEASUREMENT_TIME,
-                    intervals=INTERVALS, port=ports[i])
+                    intervals=INTERVALS, port=ports[i], clamp=clamp[i])
+        print("%s %s" % (client, cmd))
         iperfs_db[i].cmd_client = cmd
         if ebpf:
-            pid_clients.append(net[client].run_cgroup(cmd))
+            pid_clients.append(
+                net[client].run_cgroup(cmd, stderr=subprocess.DEVNULL,
+                                       stdout=subprocess.DEVNULL))
         else:
-            pid_clients.append(net[client].popen(split(cmd)))
+            pid_clients.append(net[client].popen(split(cmd),
+                                                 stderr=subprocess.DEVNULL,
+                                                 stdout=subprocess.DEVNULL))
     time.sleep(5)
 
     for pid in pid_clients:
@@ -132,14 +145,14 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, iperfs_db,
 
 
 def parse_demands(json_demands):
-    """Fuse demands with the same destination and source"""
+    """Fuse demands with the same destination, source and volume"""
 
     merged_demands = {}
     for demand in json_demands:
-        demand["number"] = 1
-        str_key = "%s-%s" % (demand["src"], demand["dest"])
+        demand.setdefault("number", 1)
+        str_key = "%s-%s-%s" % (demand["src"], demand["dest"], demand["volume"])
         if str_key in merged_demands:
-            merged_demands[str_key]["number"] += 1
+            merged_demands[str_key]["number"] += demand["number"]
         else:
             merged_demands[str_key] = demand
 
@@ -177,6 +190,7 @@ def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
               ebpf=True) -> List[subprocess.Popen]:
     try:
         subprocess.check_call(split("pkill iperf3"))
+        subprocess.check_call(split("pkill ab"))
     except subprocess.CalledProcessError:
         pass
 
@@ -226,7 +240,8 @@ def get_xp_params():
         "gamma_value": get_current_gamma(),
         "random_strategy": get_current_rand_type(),
         "max_reward_factor": get_current_max_reward_factor(),
-        "wait_before_initial_move": get_wait_before_initial_move()
+        "wait_before_initial_move": get_wait_before_initial_move(),
+        "wait_unstable_rtt": get_wait_unstable_rtt()
     }
 
 
@@ -314,7 +329,7 @@ def short_flows(lg, args, ovsschema):
                 if len(pid_abs) == 0:
                     return
 
-                SR6CLI(net)  # TODO Remove
+                # SR6CLI(net)  # TODO Remove
 
                 # Measure load on each interface
                 t = 0
@@ -448,12 +463,15 @@ def eval_repetita(lg, args, ovsschema):
                 clients = []
                 servers = []
                 nbr_flows = []
+                clamp = []
                 for d in json_demands:
                     clients.append("h" + net.topo.getFromIndex(d["src"]))
                     servers.append("h" + net.topo.getFromIndex(d["dest"]))
                     nbr_flows.append(d["number"])
+                    clamp.append(d["volume"] // 1000)  # Mbps
 
-                    connections = [IPerfConnections(connection_id=conn)
+                    connections = [IPerfConnections(connection_id=conn,
+                                                    max_volume=clamp[-1])
                                    for conn in range(nbr_flows[-1])]
                     tcp_ebpf_experiment.iperfs.append(
                         IPerfResults(client=clients[-1], server=servers[-1],
@@ -464,7 +482,7 @@ def eval_repetita(lg, args, ovsschema):
                 # SR6CLI(net)  # TODO Remove
                 time.sleep(1)
                 # TODO Remove
-                time.sleep(30)
+                time.sleep(MEASUREMENT_TIME / 4)
                 # TODO Remove
 
                 # Recover eBPF maps
@@ -474,12 +492,18 @@ def eval_repetita(lg, args, ovsschema):
                         print(BPFPaths.extract_info(net, net[node]))
                         break
 
+                # Launch tcpdump on all clients, servers and routers
+                if args.tcpdump:
+                    for n in clients + servers + [r.name for r in net.routers]:
+                        cmd = "tcpdump -w {}.pcapng ip6".format(n)
+                        tcpdumps.append(net[n].popen(cmd))
+
                 result_files = [open("%d_results_%s_%s.json"
                                      % (i, clients[i], servers[i]), "w")
                                 for i in range(len(clients))]
                 pid_servers, pid_clients = \
                     launch_iperf(lg, net, clients, servers, result_files,
-                                 nbr_flows, tcp_ebpf_experiment.iperfs,
+                                 nbr_flows, clamp, tcp_ebpf_experiment.iperfs,
                                  ebpf=args.ebpf)
                 if len(pid_servers) == 0:
                     return
@@ -495,23 +519,37 @@ def eval_repetita(lg, args, ovsschema):
                         for h in snapshots.keys():
                             snapshots[h].extend(Snapshot.extract_info(net[h]))
                             snapshots[h] = sorted(list(set(snapshots[h])))
+                    #for pid in pid_servers:
+                    #    print("ANOTHER SERVER")
+                    #    print(pid.stdout.readlines())
                     time.sleep(1)
                     t += 1
 
                 # SR6CLI(net)  # TODO Remove
 
+                print("Check servers ending")
+                for i, pid in enumerate(pid_servers):
+                    if pid.poll() is None:
+                        lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
+                        print("ERROR 0")
+                        pid.send_signal(signal.SIGTERM)
+                        pid.wait()
+                        print("ERROR 1")
+                        for line in pid.stderr.readlines():
+                            print("\t%s" % line[:-1])
+                        pid.kill()
+
+                print("Check clients ending")
                 for i, pid in enumerate(pid_clients):
                     if pid.poll() is None:
                         lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
-                        pid.send_signal(signal.SIGINT)
-                        pid.wait()
-                    if pid.poll() != 0:
-                        lg.error("The iperf (%s,%s) returned with error code %d\n"
-                                 % (clients[i], servers[i], pid.poll()))
-                        err = True
-
-                for pid in pid_servers:
-                    pid.kill()
+                        print("OUTPUT")
+                        for line in pid.stdout.readlines():
+                            print("\t%s" % line[:-1])
+                        print("ERROR")
+                        for line in pid.stderr.readlines():
+                            print("\t%s" % line[:-1])
+                        pid.kill()
 
                 # Recover eBPF maps
                 if args.ebpf:

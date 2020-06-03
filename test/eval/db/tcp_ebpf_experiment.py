@@ -35,6 +35,7 @@ class TCPeBPFExperiment(SQLBaseModel):
     max_reward_factor = Column(Float, nullable=False)
     wait_before_initial_move = Column(BigInteger, nullable=False,
                                       default=1000000000)
+    wait_unstable_rtt = Column(BigInteger, nullable=False, default=16)
 
     # results
 

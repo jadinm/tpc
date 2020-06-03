@@ -32,6 +32,7 @@ class IPerfConnections(SQLBaseModel):
     bw_samples = relationship("IPerfBandwidthSample",
                               backref="iperf_connection",
                               lazy='dynamic')
+    max_volume = Column(Float)
 
 
 class IPerfBandwidthSample(SQLBaseModel):

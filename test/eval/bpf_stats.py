@@ -28,17 +28,13 @@ BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 # } __attribute__((packed));
 #
 # struct flow_infos {
-# 	__u32 srh_id;
-# 	__u64 last_move_time;
-# 	__u64 wait_backoff_max; // current max wating time
-# 	__u64 wait_before_move; // current waiting time
-# 	__u64 rtt_count; // Count the number of RTT in the connection, this is useful to know if congestion signals are consecutive or not
-# 	__u32 ecn_count; // Count the number of consecutive CWR sent (either from ECN or other causes)
-# 	__u64 last_ecn_rtt; // The index of the last RTT were we sent an CWR
-# 	__u32 exp3_last_number_actions;
-# 	__u32 exp3_curr_reward;
-#   __u32 exp3_start_snd_nxt;
-#   __u32 unstable;
+#   __u32 srh_id;
+#	__u64 last_move_time;
+#	__u64 rtt_count; // Count the number of RTT in the connection, this is useful to know if congestion signals are consecutive or not
+#	__u32 exp3_last_number_actions;
+#	__u32 exp3_curr_reward;
+#	__u32 unstable; // Whether the path is stable or not
+#	__u64 unstable_start_time;
 # 	floating exp3_last_probability;
 # 	floating exp3_weight[MAX_SRH_BY_DEST];
 # } __attribute__((packed));
@@ -62,16 +58,15 @@ class Snapshot:
         #  of paths by destination
         self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port,\
             self.dst_port, self.srh_id, \
-            self.last_move_time, self.wait_backoff_max, self.wait_before_move, \
-            self.rtt_count, self.ecn_count,  self.last_ecn_rtt, \
+            self.last_move_time, self.rtt_count, \
             self.exp3_last_number_actions, self.exp3_curr_reward, \
-            self.exp3_start_snd_nxt, self.unstable, \
+            self.unstable, self.last_unstable_rtt, \
             exp3_last_probability_mantissa, exp3_last_probability_exponent = \
             struct.unpack("<IQ"  # Start of flow_snapshot
                           + "I4q2I"  # flow id
-                          + "I4QIQ4I"  # flow info (except floats)
+                          + "I2Q3IQ"  # flow info (except floats)
                           + "QI",  # Floats of flow info
-                          ebpf_map_entry[:132])
+                          ebpf_map_entry[:108])
         self.ebpf_map_entry = ebpf_map_entry
 
         # Parse addresses
