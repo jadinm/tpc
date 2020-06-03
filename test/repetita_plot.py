@@ -457,14 +457,14 @@ def plot_stability_by_connection(experiments, id):
 
             # Snapshot changed
             try:
-                nbr_changes_by_conn, exp3_last_prob_by_conn = \
+                nbr_changes_by_conn, exp3_srh_id_by_conn = \
                     exp.stability_by_connection()
             except OverflowError:
                 print(exp.timestamp)
                 continue
 
-            plot_time(exp3_last_prob_by_conn, "Probability of current path",
-                      "last_prob_%s.time" % key, args.out_dir,
+            plot_time(exp3_srh_id_by_conn, "Current path",
+                      "chosen_path_%s.time" % key, args.out_dir,
                       ylim={"bottom": 0, "top": 1})
 
 
@@ -616,17 +616,30 @@ if __name__ == "__main__":
 
     experiments = []
     for row in db.query(TCPeBPFExperiment) \
-            .filter_by(valid=True, failed=False) \
-            .order_by(TCPeBPFExperiment.timestamp.desc()):
+        .filter_by(valid=True, failed=False) \
+        .order_by(TCPeBPFExperiment.timestamp.desc()):
         # Filter out
         if "path_step_6_access_6" in row.topology \
-                or "pcc" in row.congestion_control:
+            or "pcc" in row.congestion_control:
             continue
         experiments.append(row)
 
+    delay_experiments = []
+    for row in db.query(ShortTCPeBPFExperiment) \
+        .filter_by(valid=True, failed=False) \
+        .order_by(ShortTCPeBPFExperiment.timestamp.desc()):
+        delay_experiments.append(row)
+
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
+
+    plot_ab_cdfs(delay_experiments, output_path=args.out_dir)
     # Plot comparison between ebpf topo or not
     # bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
+
+    plot_stability_by_connection(delay_experiments[:1],
+                                 id={"congestion_control": "cubic",
+                                     # "gamma_value": 0.5,
+                                     "random_strategy": "exp3"})
 
     # Parse gamma diffs
     # bw_param_influence_by_topo(keys, param_name="gamma_value")

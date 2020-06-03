@@ -3,7 +3,7 @@ import os
 import shlex
 import struct
 import subprocess
-from ipaddress import ip_address, ip_interface, ip_network
+from ipaddress import ip_address, ip_network
 from typing import List, Dict
 
 from ipmininet.utils import L3Router
@@ -138,13 +138,9 @@ class Snapshot:
         snapshots = []
         for snap_raw in snapshots_raw:
             hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
-            try:
-                snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
-                if snap.seq > 0:  # Valid snapshot
-                    snapshots.append(snap)
-            except OverflowError:  # Too high weights
-                print("HIGH WEIGHTS - skip snapshot")
-                pass
+            snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
+            if snap.seq > 0:  # Valid snapshot
+                snapshots.append(snap)
         snapshots.sort()
         return snapshots
 
@@ -185,11 +181,15 @@ class ShortSnapshot(Snapshot):
 
         # Parse exp3 weights
         self.weights = []
-        for i in range(MAX_PATHS_BY_DEST):
-            mantissa, exponent = struct.unpack("<QI", ebpf_map_entry[
-                                                      idx_weight:idx_weight+12])
-            idx_weight += 12
-            self.weights.append(self.extract_floats([(mantissa, exponent)]))
+        try:
+            for i in range(MAX_PATHS_BY_DEST):
+                mantissa, exponent = \
+                    struct.unpack("<QI",
+                                  ebpf_map_entry[idx_weight:idx_weight+12])
+                idx_weight += 12
+                self.weights.append(self.extract_floats([(mantissa, exponent)]))
+        except OverflowError:  # Too high weights
+            pass
 
         # print(exp3_last_probability_mantissa)
         # print(exp3_last_probability_exponent)
