@@ -20,6 +20,10 @@ class RerouteIntf(SR6TCIntf):
         self.cmd("ethtool -K {} tx off".format(self.name))
         self.cmd("ethtool -K {} rxhash off".format(self.name))
         self.cmd("ethtool -K {} ntuple off".format(self.name))
+        # Prevent caching previous connection experience to set ssthresh & co
+        # https://fasterdata.es.net/host-tuning/linux/test-measurement-host-tuning/
+        # (useful to disable for apache benchmark measurements)
+        self.cmd("sysctl net.ipv4.tcp_no_metrics_save=1")
         # self.cmd("ip link set {} mtu 1280".format(self.name))
         return r
 
