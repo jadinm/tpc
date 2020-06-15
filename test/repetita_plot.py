@@ -1,6 +1,7 @@
 import argparse
 import datetime
 import os
+import re
 from typing import List
 
 import matplotlib.pyplot as plt
@@ -10,7 +11,7 @@ from mininet.log import LEVELS, lg
 from eval.bpf_stats import ShortSnapshot
 from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data, \
-    AB_MEASUREMENT_TIME, MEASUREMENT_TIME
+    MEASUREMENT_TIME
 from explore_data import explore_maxflow_json_files
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -511,7 +512,8 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
     plt.close()
 
 
-def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None):
+def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
+              colors=None):
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
@@ -522,7 +524,9 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None):
             times.append(t)
             data_y.append(y)
         subplot.step(times, data_y, marker=".", linewidth=LINE_WIDTH,
-                     where="post", markersize=MARKER_SIZE)
+                     where="post", markersize=MARKER_SIZE,
+                     label=labels.get(key) if labels else None,
+                     color=colors.get(key) if colors else None)
 
     subplot.set_xlabel("time (s)", fontsize=FONTSIZE)
     subplot.set_ylabel(ylabel, fontsize=FONTSIZE)
@@ -540,30 +544,104 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None):
     plt.close()
 
 
-def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], output_path):
-    for exp in delay_experiments:
-        if "investigation" not in exp.topology:  # TODO Remove
-            continue  # TODO Remove
+def retrieve_ab_related(single_path_exps: List[ShortTCPeBPFExperiment],
+                        ecmp_delay_experiments: List[ShortTCPeBPFExperiment]):
+    # Prepare single path experiments
+    single_paths = {}
+    for exp in single_path_exps:
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        match = re.search(r"(.+)\.path\.(\d+)\.graph", topo_base)
+        topo_full_paths = match.group(1) + ".graph"
+        path_idx = int(match.group(2))
+        key = "%s@%s" % (topo_full_paths, demands_base)
+        # We only want the last result
+        if path_idx not in single_paths.setdefault(key, {}):
+            single_paths.setdefault(key, {})[path_idx] = exp
 
-        fig = plt.figure()
-        subplot = fig.add_subplot(111)
+    ecmp = {}
+    for exp in ecmp_delay_experiments:
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s" % (topo_base, demands_base)
+        # We only want the last result
+        if key not in ecmp:
+            ecmp[key] = exp
+
+    return single_paths, ecmp
+
+
+def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
+                 single_path_exps: List[ShortTCPeBPFExperiment],
+                 ecmp_delay_experiments: List[ShortTCPeBPFExperiment],
+                 output_path):
+    colors = {
+        "TPC": "orange",
+        "ECMP": "#00B0F0",
+        0: "green",
+        1: "red"
+    }
+    single_paths, ecmp = retrieve_ab_related(single_path_exps,
+                                             ecmp_delay_experiments)
+
+    done_topos = {}
+    for exp in delay_experiments:
+        if "paths.delay" not in exp.topology:  # TODO Remove
+            continue  # TODO Remove
 
         topo_base = os.path.basename(exp.topology)
         demands_base = os.path.basename(exp.demands)
         key = "%s@%s@%s" % (topo_base, demands_base, exp.random_strategy)
+        if done_topos.get(key):  # Only take the most recent experiment
+            continue
+        done_topos[key] = True
+
+        fig = plt.figure()
+        subplot = fig.add_subplot(111)
+
+        single_path_key = "%s@%s" % (topo_base, demands_base)
+        ecmp_key = single_path_key
         figure_name = "ab_completion_time_%s.cdf" % key
         times_figure_name = "ab_completion_time_%s.times.reward" % key
+        latencies_figure_name = "ab_completion_time_%s.times.latencies" % key
 
-        for ab in exp.abs.all():
+        # Plot single path delays
+        for path_idx, single_path_exp in \
+            single_paths.get(single_path_key, {}).items():
             cdf = []
             bins = []
-            for cdf_dot in ab.ab_latency_cdf.all():
+            for cdf_dot in single_path_exp.abs.first().ab_latency_cdf.all():
                 bins.append(cdf_dot.time)
                 cdf.append(cdf_dot.percentage_served)
 
             subplot.step(bins, cdf, marker=".", linewidth=LINE_WIDTH,
-                         where="post", markersize=MARKER_SIZE)
+                         where="post", markersize=MARKER_SIZE,
+                         label="Path %d" % path_idx, color=colors.get(path_idx))
 
+        # Plot ECMP
+        if ecmp_key in ecmp:
+            cdf = []
+            bins = []
+            for cdf_dot in ecmp[ecmp_key].abs.first().ab_latency_cdf.all():
+                bins.append(cdf_dot.time)
+                cdf.append(cdf_dot.percentage_served)
+
+            subplot.step(bins, cdf, marker=".", linewidth=LINE_WIDTH,
+                         where="post", markersize=MARKER_SIZE, label="ECMP",
+                         color=colors["ECMP"])
+
+        # Plot TPC
+        cdf = []
+        bins = []
+        for cdf_dot in exp.abs.first().ab_latency_cdf.all():
+            bins.append(cdf_dot.time)
+            cdf.append(cdf_dot.percentage_served)
+
+        subplot.step(bins, cdf, marker=".", linewidth=LINE_WIDTH,
+                     where="post", markersize=MARKER_SIZE, label="TPC",
+                     color=colors["TPC"])
+
+        subplot.legend(loc="best")
         subplot.set_xlabel("completion time (ms)", fontsize=FONTSIZE)
         subplot.set_ylabel("CDF", fontsize=FONTSIZE)
         subplot.set_xlim(left=0)  # TODO Change right limit
@@ -586,7 +664,6 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], output_path):
             if first_sequence == -1:
                 first_sequence = snap.seq
                 start_time = snap.time
-                print(first_sequence)
             srh_counts.setdefault(snap.last_srh_id_chosen, 0)
             srh_counts[snap.last_srh_id_chosen] += 1
             rewards.setdefault(snap.last_srh_id_chosen, []).append(
@@ -604,7 +681,20 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], output_path):
                   ylabel="Path reward", figure_name=times_figure_name,
                   output_path=output_path)
 
-        break  # Only take the most recent experiment
+        duration_over_time = {"TPC": exp.abs.first().latency_over_time()}
+        labels = {"TPC": "TPC", "ECMP": "ECMP"}
+        if ecmp_key in ecmp:
+            duration_over_time["ECMP"] = \
+                ecmp[ecmp_key].abs.first().latency_over_time()
+        for path_idx, single_path_exp in \
+            single_paths.get(single_path_key, {}).items():
+            duration_over_time[path_idx] = \
+                single_path_exp.abs.first().latency_over_time()
+            labels[path_idx] = "Path %d" % path_idx
+
+        plot_time(duration_over_time, labels=labels,
+                  ylabel="Request completion (ms)", colors=colors,
+                  figure_name=latencies_figure_name, output_path=output_path)
 
 
 if __name__ == "__main__":
@@ -619,43 +709,41 @@ if __name__ == "__main__":
         .filter_by(valid=True, failed=False) \
         .order_by(TCPeBPFExperiment.timestamp.desc()):
         # Filter out
+        if "investigation/netflix_step_3_access_3" not in row.topology:  # TODO
+            continue  # TODO Remove
         if "path_step_6_access_6" in row.topology \
             or "pcc" in row.congestion_control:
             continue
         experiments.append(row)
 
     delay_experiments = []
+    single_path_delay_experiments = []
+    ecmp_delay_experiments = []
     for row in db.query(ShortTCPeBPFExperiment) \
         .filter_by(valid=True, failed=False) \
         .order_by(ShortTCPeBPFExperiment.timestamp.desc()):
-        delay_experiments.append(row)
+        if "single.path" in row.topology:
+            single_path_delay_experiments.append(row)
+        elif row.ebpf:
+            delay_experiments.append(row)
+        else:
+            ecmp_delay_experiments.append(row)
 
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
 
-    plot_ab_cdfs(delay_experiments, output_path=args.out_dir)
+    plot_ab_cdfs(delay_experiments, single_path_delay_experiments,
+                 ecmp_delay_experiments, output_path=args.out_dir)
     # Plot comparison between ebpf topo or not
     # bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
-
+    """
     plot_stability_by_connection(delay_experiments[:1],
                                  id={"congestion_control": "cubic",
                                      # "gamma_value": 0.5,
                                      "random_strategy": "exp3"})
-
+    """
     # Parse gamma diffs
     # bw_param_influence_by_topo(keys, param_name="gamma_value")
-    colors = {
-        False: "#00B0F0",  # Blue
-        True: "orangered",
-        "srmip": "#009B55"  # Green
-    }
-    markers = {
-        False: "s",
-        True: "o"
-    }
-    labels = {
-        False: "No eBPF",
-        True: "eBPF"
-    }
+    """
     bw_param_influence_aggregate(experiments, param_name="gamma_value",
                                  id={"congestion_control": "cubic",
                                      # "gamma_value": 0.5,
@@ -670,7 +758,8 @@ if __name__ == "__main__":
                                          0.5: "TPC $\\Gamma = 0.5$",
                                          0.9: "TPC $\\Gamma = 0.9$",
                                          "ECMP": "ECMP"},
-                                 output_path=args.out_dir)
+                                 # TODO remove max_history
+                                 output_path=args.out_dir, max_history=5)
 
     bw_param_influence_aggregate(experiments, param_name="random_strategy",
                                  id={"congestion_control": "cubic",
@@ -686,7 +775,8 @@ if __name__ == "__main__":
                                  labels={"uniform": "Uniformly random TPC",
                                          "exp3": "TPC with Exp3",
                                          "ECMP": "ECMP"},
-                                 output_path=args.out_dir)
+                                 # TODO remove max_history
+                                 output_path=args.out_dir, max_history=5)
 
     bw_param_influence_aggregate(experiments, param_name="congestion_control",
                                  id={#"congestion_control": "cubic",
@@ -716,7 +806,7 @@ if __name__ == "__main__":
                                  labels={True: "TPC",
                                          "ECMP": "ECMP"},
                                  output_path=args.out_dir)
-
+"""
     # Parse CC diffs
     # bw_param_influence_by_topo(keys, param_name="congestion_control")
 
