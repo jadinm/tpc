@@ -7,6 +7,7 @@ from shlex import split
 import numpy as np
 from ipmininet.utils import realIntfList
 
+TEST_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_CGROUP = "test.slice"
 FONTSIZE = 12
 LINE_WIDTH = 2.0

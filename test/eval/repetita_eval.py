@@ -1,3 +1,4 @@
+import copy
 import csv
 import json
 import os
@@ -13,14 +14,14 @@ from sr6mininet.cli import SR6CLI
 
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
+from reroutemininet.config import Lighttpd
 from reroutemininet.net import ReroutingNet
 from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry, \
-    SnapshotShortDBEntry
-from .db.ab_results import ABLatencyCDF, ABResults
-from .db.short_tcp_ebpf_experiment import ShortTCPeBPFExperiment
-from .utils import get_addr, MEASUREMENT_TIME, INTERVALS
+    SnapshotShortDBEntry, ABLatencyCDF, ABResults, ABLatency, \
+    ShortTCPeBPFExperiment
+from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR
 
 
 # LINK_BANDWIDTH = 100
@@ -217,11 +218,27 @@ def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
     return pid_clients
 
 
+def trace_analysis(db_entry: ABResults):
+    path = os.path.join(TEST_DIR, "report_throughput_latency/target/"
+                                  "debug/report_throughput_latency")
+    out = subprocess.check_output(split("{} {}.pcapng 0 0"
+                                        .format(path, db_entry.client)),
+                                  universal_newlines=True)
+    print("pcap analysis")
+    data = json.loads(out)["latency"]
+    print(data)
+    for conn_data in data:
+        db_entry.ab_latency.append(
+            ABLatency(timestamp=conn_data["time_micro"],
+                      latency=conn_data["request_duration_micro"]))
+
+
 def parse_ab_output(csv_files, db_entry: List[ABResults]):
     for i, cvs_file in enumerate(csv_files):
         with open(cvs_file) as file_obj:
             raw_data = file_obj.read()
             db_entry[i].raw_csv = raw_data
+
             for j, row in enumerate(csv.DictReader(raw_data.splitlines())):
                 if j == 0:  # Skip headline
                     continue
@@ -231,7 +248,7 @@ def parse_ab_output(csv_files, db_entry: List[ABResults]):
                     ABLatencyCDF(
                         percentage_served=float(row["Percentage served"]),
                         time=float(row["Time in ms"])))
-        # TODO Clean the file
+            trace_analysis(db_entry[i])
 
 
 def get_xp_params():
@@ -252,6 +269,9 @@ def short_flows(lg, args, ovsschema):
     lg.info("******* %d Topologies to test *******\n" % len(topos))
     db = get_connection()
     params = get_xp_params()
+    subprocess.check_call(split("cargo build"),
+                          cwd=os.path.join(TEST_DIR,
+                                           "report_throughput_latency"))
 
     i = 0
     for topo, demands_list in topos.items():
@@ -260,7 +280,8 @@ def short_flows(lg, args, ovsschema):
                 "*******\n"
                 % (i, len(topos), len(demands_list), os.path.basename(topo)))
         for demands in demands_list:
-            cwd = os.path.join(args.log_dir, os.path.basename(demands))
+            cwd = os.path.join(args.log_dir, os.path.basename(topo) + '_' +
+                               os.path.basename(demands))
             try:
                 os.makedirs(cwd)
             except OSError as e:
@@ -278,9 +299,7 @@ def short_flows(lg, args, ovsschema):
 
             with open(demands) as fileobj:
                 json_demands = json.load(fileobj)
-            topo_args = {"schema_tables": ovsschema["tables"],
-                         "cwd": os.path.join(args.log_dir,
-                                             os.path.basename(demands)),
+            topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
                          "ebpf_program": os.path.expanduser(
                              "~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
@@ -306,22 +325,37 @@ def short_flows(lg, args, ovsschema):
                 clients = []
                 servers = []
                 nbr_flows = []
+                flow_sizes = []
                 for d in json_demands:
                     clients.append("h" + net.topo.getFromIndex(d["src"]))
                     servers.append("h" + net.topo.getFromIndex(d["dest"]))
                     nbr_flows.append(d["number"])
                     csv_files.append("%s-%s" % (clients[-1], servers[-1]))
+                    flow_sizes.append(d["volume"])  # kB
                     tcp_ebpf_experiment.abs.append(
                         ABResults(client=clients[-1], server=servers[-1],
-                                  timeout=MEASUREMENT_TIME))
+                                  timeout=MEASUREMENT_TIME,
+                                  volume=flow_sizes[-1]))
+                    # Change size of served file
+                    path = os.path.join(
+                        net[servers[-1]].nconfig.daemon(
+                            Lighttpd).options.web_dir,
+                        "mock_file")
+                    with open(path, "w") as fileobj:
+                        fileobj.write("0" * (flow_sizes[-1] * 1000))
+                    print(path)
                 print(clients)
                 print(servers)
 
+                # SR6CLI(net)  # TODO Remove
+
                 # Launch tcpdump on client
+                tcpdump_hosts = copy.deepcopy(clients)
                 if args.tcpdump:
-                    for n in clients + servers + [r.name for r in net.routers]:
-                        cmd = "tcpdump -w {}.pcapng ip6".format(n)
-                        tcpdumps.append(net[n].popen(cmd))
+                    tcpdump_hosts += servers + [r.name for r in net.routers]
+                for n in tcpdump_hosts:
+                    cmd = "tshark -F pcapng -w {}.pcapng ip6".format(n)
+                    tcpdumps.append(net[n].popen(cmd))
 
                 pid_abs = launch_ab(lg, net, clients, servers, nbr_flows,
                                     db_entry=tcp_ebpf_experiment.abs,
@@ -418,7 +452,8 @@ def eval_repetita(lg, args, ovsschema):
                 "*******\n"
                 % (i, len(topos), len(demands_list), os.path.basename(topo)))
         for demands in demands_list:
-            cwd = os.path.join(args.log_dir, os.path.basename(demands))
+            cwd = os.path.join(args.log_dir, os.path.basename(topo) + '_' +
+                               os.path.basename(demands))
             try:
                 os.makedirs(cwd)
             except OSError as e:
@@ -435,9 +470,8 @@ def eval_repetita(lg, args, ovsschema):
 
             with open(demands) as fileobj:
                 json_demands = json.load(fileobj)
-            topo_args = {"schema_tables": ovsschema["tables"],
-                         "cwd": os.path.join(args.log_dir,
-                                             os.path.basename(demands)),
+            print("HHHHHHHHHHHHHHHHHHHH" + cwd)
+            topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
                          "ebpf_program": os.path.expanduser(
                              "~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
@@ -495,7 +529,7 @@ def eval_repetita(lg, args, ovsschema):
                 # Launch tcpdump on all clients, servers and routers
                 if args.tcpdump:
                     for n in clients + servers + [r.name for r in net.routers]:
-                        cmd = "tcpdump -w {}.pcapng ip6".format(n)
+                        cmd = "tshark -F pcapng -w {}.pcapng ip6".format(n)
                         tcpdumps.append(net[n].popen(cmd))
 
                 result_files = [open("%d_results_%s_%s.json"

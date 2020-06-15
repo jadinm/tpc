@@ -3,7 +3,7 @@ import os
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
 
-from eval.db.ab_results import ABResults, ABLatencyCDF
+from eval.db.ab_results import ABResults, ABLatencyCDF, ABLatency
 from eval.db.base import SQLBaseModel
 from eval.db.iperf_results import IPerfResults, IPerfConnections, \
     IPerfBandwidthSample
@@ -25,4 +25,4 @@ def get_connection() -> Session:
 __all__ = ["IPerfResults", "IPerfResults", "IPerfConnections",
            "IPerfBandwidthSample", "TCPeBPFExperiment", "SnapshotDBEntry",
            "get_connection", "ShortTCPeBPFExperiment", "ABLatencyCDF",
-           "ABResults", "SnapshotShortDBEntry"]
+           "ABResults", "SnapshotShortDBEntry", "ABLatency"]
