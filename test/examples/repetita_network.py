@@ -73,7 +73,7 @@ class RepetitaTopo(SRNTopo):
 
     def __init__(self, repetita_graph=None, schema_tables=None,
                  rerouting_enabled=True, bw=None, ebpf=True, json_demands=(),
-                 *args, **kwargs):
+                 localctrl_opts=None, *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
         self.rerouting_enabled = rerouting_enabled
@@ -82,6 +82,7 @@ class RepetitaTopo(SRNTopo):
         self.router_indices = []
         self.ebpf = ebpf
         self.json_demands = json_demands
+        self.localctrl_opts = localctrl_opts if localctrl_opts else {}
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -154,7 +155,9 @@ class RepetitaTopo(SRNTopo):
         if self.ebpf:
             self.addOverlay(SRReroutedCtrlDomain(access_routers=[router for router in access_routers],
                                                  sr_controller=controller, schema_tables=self.schema_tables,
-                                                 rerouting_routers=routers, hosts=self.hosts()))
+                                                 rerouting_routers=routers,
+                                                 hosts=self.hosts(),
+                                                 localctrl_opts=self.localctrl_opts))
 
         super(RepetitaTopo, self).build(*args, **kwargs)
 

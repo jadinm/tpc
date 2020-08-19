@@ -34,6 +34,8 @@ class ShortTCPeBPFExperiment(SQLBaseModel):
                                       default=1000000000)
     wait_unstable_rtt = Column(BigInteger, nullable=False, default=16)
 
+    completion_ebpf = Column(Boolean, default=False, nullable=False)
+
     # results
 
     abs = relationship("ABResults", backref="experiment", lazy='dynamic')

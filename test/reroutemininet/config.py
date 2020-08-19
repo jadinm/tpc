@@ -25,6 +25,8 @@ class SRLocalCtrl(SRNDaemon):
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
     EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
     SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
+    SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
+        "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super(SRLocalCtrl, self).__init__(*args,
@@ -34,14 +36,19 @@ class SRLocalCtrl(SRNDaemon):
             self.ebpf_load_path(self._node.name, self.EBPF_PROGRAM))
         self.files.append(self.map_path("dest_map_fd", self.EBPF_PROGRAM))
         self.files.append(self.map_path("short_dest_map_fd",
-                                        self.SHORT_EBPF_PROGRAM))
+                                        self.options.short_ebpf_program))
         os.makedirs(self._node.cwd, exist_ok=True)
-        self.attached = {self.SHORT_EBPF_PROGRAM: False,
+        self.attached = {self.options.short_ebpf_program: False,
                          self.EBPF_PROGRAM: False}
         self.stat_map_id = -1
         self.dest_map_id = -1
         self.short_dest_map_id = -1
         self.short_stat_map_id = -1
+
+    @classmethod
+    def all_programs(cls):
+        return [cls.EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM,
+                cls.SHORT_EBPF_PROGRAM_COMPLETION]
 
     def set_defaults(self, defaults):
         super(SRLocalCtrl, self).set_defaults(defaults)
@@ -88,7 +95,10 @@ class SRLocalCtrl(SRNDaemon):
 
         map_ids = []
         map_ids.extend(self.get_map_id(self.EBPF_PROGRAM))
-        map_ids.extend(self.get_map_id(self.SHORT_EBPF_PROGRAM))
+        print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        print(self.options.short_ebpf_program)
+        print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        map_ids.extend(self.get_map_id(self.options.short_ebpf_program))
 
         # Pin maps to fds
         for map_id in map_ids:
@@ -119,7 +129,7 @@ class SRLocalCtrl(SRNDaemon):
                     .format(bpftool=self.options.bpftool,
                             dest_map_id=map_id,
                             map_path=self.map_path("short_dest_map",
-                                                   self.SHORT_EBPF_PROGRAM))
+                                                   self.options.short_ebpf_program))
                 print(cmd)
                 subprocess.check_call(shlex.split(cmd))
                 self.short_dest_map_id = map_id
@@ -134,7 +144,7 @@ class SRLocalCtrl(SRNDaemon):
         if self.short_dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % self.ebpf_load_path(self._node.name,
-                                                   self.SHORT_EBPF_PROGRAM))
+                                                   self.options.short_ebpf_program))
         return self.dest_map_id, self.short_dest_map_id
 
     def render(self, cfg, **kwargs):
@@ -146,7 +156,7 @@ class SRLocalCtrl(SRNDaemon):
         dest_map_id, short_dest_map_id = self.pin_maps()
 
         # Create cgroup
-        for program in [self.EBPF_PROGRAM, self.SHORT_EBPF_PROGRAM]:
+        for program in [self.EBPF_PROGRAM, self.options.short_ebpf_program]:
             mkdir_p(self.cgroup(program))
 
             ebpf_load_path = self.ebpf_load_path(self._node.name,
@@ -172,7 +182,7 @@ class SRLocalCtrl(SRNDaemon):
     def cleanup(self):
         detach_cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
                      " pinned {ebpf_load_path} multi"
-        for program in [self.EBPF_PROGRAM, self.SHORT_EBPF_PROGRAM]:
+        for program in [self.EBPF_PROGRAM, self.options.short_ebpf_program]:
             if self.attached[program]:
                 ebpf_load_path = self.ebpf_load_path(self._node.name, program)
                 cmd = detach_cmd.format(bpftool=self.options.bpftool,
@@ -393,7 +403,7 @@ class Lighttpd(HostDaemon):
         s = "{ebpf} {program} {name} -D -f {conf}" \
             .format(ebpf="ebpf" if self.options.ebpf else "", name=self.NAME,
                     conf=self.cfg_filename,
-                    program=SRLocalCtrl.SHORT_EBPF_PROGRAM
+                    program=self.options.ebpf
                     if self.options.ebpf else "")
         print(s)
         return s
@@ -419,6 +429,11 @@ class Lighttpd(HostDaemon):
             with open(path, "w") as fileobj:
                 fileobj.write("0" * 10**7)
             self.files.append(path)
+        try:
+            ctrl = self._node.nconfig.daemon(SRLocalCtrl)
+        except KeyError:
+            ctrl = None
+        self.options.ebpf = ctrl.options.short_ebpf_program if ctrl else None
 
         return cfg_content
 
@@ -430,7 +445,6 @@ class Lighttpd(HostDaemon):
         """
         defaults.port = 8080
         defaults.web_dir = self._node.cwd
-        defaults.ebpf = SRLocalCtrl.SHORT_EBPF_PROGRAM
         super(Lighttpd, self).set_defaults(defaults)
 
     def has_started(self):

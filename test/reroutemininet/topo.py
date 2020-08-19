@@ -51,8 +51,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
             processes = []
             for h in h_list:
                 # Load eBPF program
-                for program in [SRLocalCtrl.EBPF_PROGRAM,
-                                SRLocalCtrl.SHORT_EBPF_PROGRAM]:
+                for program in SRLocalCtrl.all_programs():
                     cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}"\
                           " type sockops" \
                         .format(bpftool=SRLocalCtrl.BPFTOOL,

@@ -8,7 +8,8 @@ from mininet.log import LEVELS
 import mininet.log
 from sr6mininet.cli import SR6CLI
 
-from eval.repetita_eval import eval_repetita, short_flows
+from eval.repetita_eval import eval_repetita, short_flows, \
+    short_flows_completion
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
@@ -30,7 +31,8 @@ tests = {
     #  until scapy reaches 2.4.3 (still unstable)
     "unit": launch_all_tests,
     "eval-repetita": eval_repetita,
-    "short-flows": short_flows
+    "short-flows": short_flows,
+    "short-flows-completion": short_flows_completion
 }
 
 script_dir = os.path.dirname(os.path.abspath(__file__))

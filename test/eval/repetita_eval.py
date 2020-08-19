@@ -6,7 +6,7 @@ import signal
 import subprocess
 import time
 from datetime import datetime
-from shlex import split, shlex
+from shlex import split
 from typing import List
 
 from ipmininet.tests.utils import assert_connectivity
@@ -14,7 +14,7 @@ from sr6mininet.cli import SR6CLI
 
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
-from reroutemininet.config import Lighttpd
+from reroutemininet.config import Lighttpd, SRLocalCtrl
 from reroutemininet.net import ReroutingNet
 from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
@@ -262,7 +262,11 @@ def get_xp_params():
     }
 
 
-def short_flows(lg, args, ovsschema):
+def short_flows_completion(lg, args, ovsschema):
+    short_flows(lg, args, ovsschema, completion_ebpf=True)
+
+
+def short_flows(lg, args, ovsschema, completion_ebpf=False):
     topos = get_repetita_topos(args)
     os.mkdir(args.log_dir)
 
@@ -294,6 +298,7 @@ def short_flows(lg, args, ovsschema):
             tcp_ebpf_experiment = \
                 ShortTCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
                                        demands=demands, ebpf=args.ebpf,
+                                       completion_ebpf=completion_ebpf,
                                        **params)
             db.add(tcp_ebpf_experiment)
 
@@ -305,7 +310,13 @@ def short_flows(lg, args, ovsschema):
                          "always_redirect": True,
                          "maxseg": -1, "repetita_graph": topo,
                          "ebpf": args.ebpf,
-                         "json_demands": json_demands}
+                         "json_demands": json_demands,
+                         "localctrl_opts": {
+                             "short_ebpf_program":
+                                 SRLocalCtrl.SHORT_EBPF_PROGRAM_COMPLETION
+                                 if completion_ebpf
+                                 else SRLocalCtrl.SHORT_EBPF_PROGRAM
+                         }}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
                                static_routing=True)
