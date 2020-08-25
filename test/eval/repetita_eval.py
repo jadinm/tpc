@@ -266,6 +266,22 @@ def short_flows_completion(lg, args, ovsschema):
     short_flows(lg, args, ovsschema, completion_ebpf=True)
 
 
+def apply_changes(seconds_since_start: float, net: ReroutingNet):
+    applied_changes = []
+    for change in net.topo.pending_changes:
+        if change.time <= seconds_since_start:
+            change.apply(net)
+            print("CHAAAAANGE APPLIED: {}".format(change))
+            applied_changes.append(change)
+
+    net.topo.pending_changes = \
+        sorted(list(filter(lambda x: x not in applied_changes,
+                           net.topo.pending_changes)))
+
+    # if len(applied_changes) >= 1:
+    #     SR6CLI(net)  # TODO Remove
+
+
 def short_flows(lg, args, ovsschema, completion_ebpf=False):
     topos = get_repetita_topos(args)
     os.mkdir(args.log_dir)
@@ -377,17 +393,18 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 # SR6CLI(net)  # TODO Remove
 
                 # Measure load on each interface
-                t = 0
+                start_time = time.time()
                 snapshots = {h: [] for h in clients + servers}
-                while t < MEASUREMENT_TIME:
+                while time.time() - start_time < MEASUREMENT_TIME:
                     # Extract snapshot info from eBPF
                     if args.ebpf:
                         for h in snapshots.keys():
                             snapshots[h].extend(
                                 ShortSnapshot.extract_info(net[h]))
                             snapshots[h] = sorted(list(set(snapshots[h])))
+                    # Apply changes to the network if any
+                    apply_changes(time.time() - start_time, net)
                     time.sleep(0.1)
-                    t += 0.1
 
                 # SR6CLI(net)  # TODO Remove
                 time.sleep(5)
@@ -556,9 +573,9 @@ def eval_repetita(lg, args, ovsschema):
                 # SR6CLI(net)  # TODO Remove
 
                 # Measure load on each interface
-                t = 0
+                start_time = time.time()
                 snapshots = {h: [] for h in clients + servers}
-                while t < MEASUREMENT_TIME:
+                while time.time() - start_time < MEASUREMENT_TIME:
                     # Extract snapshot info from eBPF
                     if args.ebpf:
                         for h in snapshots.keys():
@@ -568,9 +585,9 @@ def eval_repetita(lg, args, ovsschema):
                     #    print("ANOTHER SERVER")
                     #    print(pid.stdout.readlines())
                     time.sleep(1)
-                    t += 1
 
                 # SR6CLI(net)  # TODO Remove
+                time.sleep(5)
 
                 print("Check servers ending")
                 for i, pid in enumerate(pid_servers):

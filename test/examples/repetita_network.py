@@ -1,8 +1,11 @@
 
 import os
 import string
+from shlex import split
+from typing import Union
 
 from srnmininet.srntopo import SRNTopo
+from reroutemininet.net import ReroutingNet
 
 from reroutemininet.config import Lighttpd
 from reroutemininet.host import ReroutingHostConfig
@@ -69,6 +72,54 @@ class RepetitaEdge:
                 self.weight_dst, self.bw_dst, self.delay_dst)
 
 
+class LinkChange:
+
+    def __init__(self, time: Union[int, str], src: str, switch: str, dest: str,
+                 weight: int, bw: float, delay: int):
+        self.time = int(time)
+        self.src = src
+        self.switch = switch
+        self.dest = dest
+        self.weight = int(weight)
+        self.bw = int(int(bw) / 10**3)  # Mbps
+        self.delay = int(delay)
+        self.applied_cmd = ""
+
+    def apply(self, net: ReroutingNet):
+        # Change netem
+        switch = net[self.switch]
+        dest = net[self.dest]
+        link = net.linksBetween(switch, dest)[0]
+        if link.intf1.node == switch:
+            intf = link.intf1
+        else:
+            intf = link.intf2
+
+        self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
+                           " netem delay {delay}ms".format(intf=intf.name,
+                                                           delay=self.delay)
+        print(self.applied_cmd)
+        out, err, code = switch.pexec(split(self.applied_cmd))
+        if code != 0:
+            raise Exception("Error {code} running tc cmd '{cmd}':"
+                            "\n[stdout]\n{stdout}\n[stderr]\n{stderr}"
+                            .format(code=code, cmd=self.applied_cmd,
+                                    stdout=out, stderr=err))
+
+    def __lt__(self, other):
+        return (self.time < other.time or
+                (self.time == other.time and
+                 (self.src < other.src or
+                  (self.src == other.src and self.dest < other.dest))))
+
+    def __eq__(self, other):
+        return (self.time == other.time and self.src == other.src and
+                self.dest == other.dest)
+
+    def __str__(self):
+        return "LinkChange<cmd='{}'>".format(self.applied_cmd)
+
+
 class RepetitaTopo(SRNTopo):
 
     def __init__(self, repetita_graph=None, schema_tables=None,
@@ -83,6 +134,8 @@ class RepetitaTopo(SRNTopo):
         self.ebpf = ebpf
         self.json_demands = json_demands
         self.localctrl_opts = localctrl_opts if localctrl_opts else {}
+        self.inter_switches = {}
+        self.pending_changes = []
         super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -138,6 +191,27 @@ class RepetitaTopo(SRNTopo):
 
             for edge in edge_dict.keys():
                 edge.add_to_topo(self, node_index)
+
+            try:
+                fileobj.readline()  # Empty line
+                # CHANGES XXX
+                nbr_changes = int(fileobj.readline().split(" ")[1])
+                fileobj.readline()  # time src dest weight bw delay
+                for i in range(nbr_changes):
+                    time, src, dest, weight, bw, delay = \
+                        fileobj.readline().split(" ")  # Change line
+                    src = int(src)
+                    dest = int(dest)
+                    intermediate_switch = self.inter_switches[
+                        node_index[src]][node_index[dest]]
+                    change = LinkChange(time, node_index[src],
+                                        intermediate_switch,
+                                        node_index[dest], weight, bw, delay)
+                    self.pending_changes.append(change)
+            except IOError:  # If the end of the file, there isn't any change
+                pass
+
+        self.pending_changes.sort()
 
         # We consider that access routers have minimum two links
         print(access_routers)
@@ -208,6 +282,8 @@ class RepetitaTopo(SRNTopo):
         self.switch_count += 1
         s = "s%d" % self.switch_count
         self.addSwitch(s)
+        self.inter_switches.setdefault(node1, {})[node2] = s
+        self.inter_switches.setdefault(node2, {})[node1] = s
         return super(SRNTopo, self).addLink(node1, s, **opts1), super(SRNTopo, self).addLink(s, node2, **opts2)
 
     def addHost(self, name, **params):
