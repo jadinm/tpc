@@ -8,7 +8,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from mininet.log import LEVELS, lg
 
-from eval.bpf_stats import ShortSnapshot
+from eval.bpf_stats import ShortSnapshot, MAX_PATHS_BY_DEST
 from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data, \
     MEASUREMENT_TIME
@@ -523,10 +523,9 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
         for t, y in values:
             times.append(t)
             data_y.append(y)
-        subplot.step(times, data_y, marker=".", linewidth=LINE_WIDTH,
-                     where="post", markersize=MARKER_SIZE,
-                     label=labels.get(key) if labels else None,
-                     color=colors.get(key) if colors else None)
+        subplot.scatter(times, data_y, marker=".", s=MARKER_SIZE,
+                        label=labels.get(key) if labels else key,
+                        color=colors.get(key) if colors else None)
 
     subplot.set_xlabel("time (s)", fontsize=FONTSIZE)
     subplot.set_ylabel(ylabel, fontsize=FONTSIZE)
@@ -602,7 +601,7 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
         single_path_key = "%s@%s" % (topo_base, demands_base)
         ecmp_key = single_path_key
         figure_name = "ab_completion_time_%s.cdf" % key
-        times_figure_name = "ab_completion_time_%s.times.reward" % key
+        times_figure_name = "ab_completion_time_%s.times" % key
         latencies_figure_name = "ab_completion_time_%s.times.latencies" % key
 
         # Plot single path delays
@@ -657,8 +656,10 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
         srh_counts = {}
         rewards = {}  # 50 - srtt / 1000
         reward_over_time = {}
+        weights = {}
         first_sequence = -1
         start_time = 0
+        srh_over_time = {}
         for db_snap in exp.snapshots.all():
             snap = ShortSnapshot.retrieve_from_hex(db_snap.snapshot_hex)
             if first_sequence == -1:
@@ -668,17 +669,38 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
             srh_counts[snap.last_srh_id_chosen] += 1
             rewards.setdefault(snap.last_srh_id_chosen, []).append(
                 snap.last_reward)
+
+            rel_time = snap.time - start_time
+            srh_over_time.setdefault(snap.last_srh_id_chosen, []).append(
+                (rel_time, snap.last_srh_id_chosen))
             reward_over_time.setdefault(snap.last_srh_id_chosen, []).append(
-                (snap.time - start_time, snap.last_reward))
+                (rel_time, snap.last_reward))
+
+            # Add the evolution of weights over time
+            for idx, weight in enumerate(snap.weights):
+                weights.setdefault(idx, []).append((rel_time, weight))
+
         for id, count in srh_counts.items():
             print("{} - {}".format(id, count))
 
         plot_cdf(rewards, colors={0: "orangered", 1: "#00B0F0"},
                  markers={0: "o", 1: "s"}, labels={0: "Path 0", 1: "Path 1"},
-                 xlabel="Path reward", figure_name=figure_name + ".reward",
+                 xlabel="Path reward", figure_name=figure_name + ".rewards",
                  output_path=output_path)
         plot_time(reward_over_time, labels={0: "Path 0", 1: "Path 1"},
-                  ylabel="Path reward", figure_name=times_figure_name,
+                  colors={0: "orangered", 1: "#00B0F0"},
+                  ylabel="Path reward",
+                  figure_name=times_figure_name + ".rewards",
+                  output_path=output_path)
+        plot_time(srh_over_time, labels={0: "Path 0", 1: "Path 1"},
+                  colors={0: "orangered", 1: "#00B0F0"},
+                  ylabel="Path selection",
+                  figure_name=times_figure_name + ".selections",
+                  output_path=output_path)
+        plot_time(weights, labels={MAX_PATHS_BY_DEST: "stable",
+                                   MAX_PATHS_BY_DEST + 1: "unstable"},
+                  ylabel="Expert weights",
+                  figure_name=times_figure_name + ".weights",
                   output_path=output_path)
 
         duration_over_time = {"TPC": exp.abs.first().latency_over_time()}
@@ -694,7 +716,8 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
 
         plot_time(duration_over_time, labels=labels,
                   ylabel="Request completion (ms)", colors=colors,
-                  figure_name=latencies_figure_name, output_path=output_path)
+                  figure_name=times_figure_name + ".latencies",
+                  output_path=output_path)
 
 
 if __name__ == "__main__":
