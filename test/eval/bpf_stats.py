@@ -47,6 +47,7 @@ BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
 # } __attribute__((packed));
 
 MAX_PATHS_BY_DEST = 8
+MAX_EXPERTS = MAX_PATHS_BY_DEST + 2
 MAX_SEGMENTS_BY_SRH = 10
 
 
@@ -166,7 +167,7 @@ class ShortSnapshot(Snapshot):
         # TODO Make the weight extraction depend on the define for the number
         #  of paths by destination
         self.seq, self.time, self.last_srh_id_chosen, self.last_reward = \
-            struct.unpack("<IQII",  # Start of flow_snapshot
+            struct.unpack("<IQIi",  # Start of flow_snapshot
                           ebpf_map_entry[:20])
         self.ebpf_map_entry = ebpf_map_entry
 
@@ -177,12 +178,12 @@ class ShortSnapshot(Snapshot):
         # Parse exp3 weights
         self.weights = []
         try:
-            for i in range(MAX_PATHS_BY_DEST):
+            for i in range(MAX_EXPERTS):
                 mantissa, exponent = \
                     struct.unpack("<QI",
                                   ebpf_map_entry[idx_weight:idx_weight+12])
                 idx_weight += 12
-                self.weights.append(self.extract_floats([(mantissa, exponent)]))
+                self.weights.extend(self.extract_floats([(mantissa, exponent)]))
         except OverflowError:  # Too high weights
             pass
 

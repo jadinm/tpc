@@ -271,8 +271,8 @@ static int insert_segments(json_t *destination, json_t *segments, uint64_t bw, u
         /* Setup destination hash entry and insert in the hashmap */
         memcpy(&hdest->info.dest, &dest_ip, sizeof(struct in6_addr));
         /* Add weights equal to 1 */
-        for (int i = 0; i < MAX_SRH_BY_DEST; i++) {
-            to_floating(1, 0, 1, &hdest->info.exp3_weights[i]);
+        for (int i = 0; i < MAX_EXPERTS; i++) {
+            to_floating(1, 0, 1, &hdest->info.exp4_weights[i]);
         }
         HASH_ADD_KEYPTR(hh, cfg.dest_cache, &hdest->info.dest, sizeof(struct in6_addr), hdest);
     }

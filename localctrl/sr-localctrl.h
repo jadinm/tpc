@@ -12,6 +12,7 @@
 
 #define MAX_SRH_BY_DEST 8
 #define MAX_SEGS_NBR 10
+#define MAX_EXPERTS MAX_SRH_BY_DEST + 2 // one expert telling 100% on a single path + one random expert + one expert always stable
 
 struct srh_record {
 	uint32_t srh_id;
@@ -27,7 +28,8 @@ struct dest_infos {
 	struct in6_addr dest;
 	__u32 max_reward;
 	struct srh_record srhs[MAX_SRH_BY_DEST];
-	floating exp3_weights[MAX_SRH_BY_DEST];
+	floating exp4_weights[MAX_EXPERTS];
+	__u32 last_srh_id;
 } __attribute__((packed));
 
 #define DEST_KEY_VALUE_SIZE sizeof(in6_addr)
