@@ -136,7 +136,7 @@ class RepetitaTopo(SRNTopo):
         self.localctrl_opts = localctrl_opts if localctrl_opts else {}
         self.inter_switches = {}
         self.pending_changes = []
-        super(RepetitaTopo, self).__init__("controller", *args, **kwargs)
+        super().__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
         """
@@ -233,7 +233,7 @@ class RepetitaTopo(SRNTopo):
                                                  hosts=self.hosts(),
                                                  localctrl_opts=self.localctrl_opts))
 
-        super(RepetitaTopo, self).build(*args, **kwargs)
+        super().build(*args, **kwargs)
 
     def __str__(self):
         return "RepetitaNetwork %s" % os.path.basename(self.repetita_graph)
@@ -289,6 +289,6 @@ class RepetitaTopo(SRNTopo):
     def addHost(self, name, **params):
         if self.cwd is not None and "cwd" not in params:
             params["cwd"] = os.path.join(self.cwd, name)
-        h = super(SRNTopo, self).addHost(name, config=ReroutingHostConfig, **params)
+        h = super().addHost(name, config=ReroutingHostConfig, **params)
         h.addDaemon(Lighttpd, ebpf=self.ebpf)  # Launch an HTTP server on each node
         return h

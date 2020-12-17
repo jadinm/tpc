@@ -13,7 +13,7 @@ from scapy.layers.inet import TCP, TCPerror
 from scapy.layers.inet6 import IPv6, IPv6ExtHdrSegmentRouting
 from scapy.packet import Raw
 from scipy.special import comb
-from sr6mininet.sr6host import SR6Host
+from srnmininet.srnhost import SRNHost
 
 from examples.albilene import Albilene
 from reroutemininet.net import ReroutingNet
@@ -542,7 +542,7 @@ class TestController(SRNMininetTest):
                 for itf in node.intfList():
                     for ip in itf.ip6s(exclude_lls=True):
                         if ip.ip.compressed != "::1" and \
-                                (itf.name == "lo" or isinstance(otherIntf(itf).node, SR6Host)):
+                                (itf.name == "lo" or isinstance(otherIntf(itf).node, SRNHost)):
                             prefix = {u"address": ip.network.network_address.compressed,
                                       u"prefixlen": ip.network.prefixlen}
                             self.assertIn(prefix, prefixes[i], msg="Prefix %s not found in the list of prefixes: %s"

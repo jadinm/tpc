@@ -1,11 +1,11 @@
+from ipmininet.router.config import RouterConfig
 from ipmininet.router.config.ospf6 import OSPF6RedistributedRoute
-from sr6mininet.sr6router import SR6Config
 from srnmininet.srnrouter import SRNRouter
 
 
-class ReroutingConfig(SR6Config):
+class ReroutingConfig(RouterConfig):
 
-    def __init__(self, node, additional_daemons=(), *args, **kwargs):
+    def __init__(self, node: 'ReroutingRouter', additional_daemons=(), *args, **kwargs):
         """A simple router made of at least an OSPF daemon
 
         :param additional_daemons: Other daemons that should be used"""
@@ -30,21 +30,20 @@ class ReroutingConfig(SR6Config):
             if node.access_router:
                 d.append(SRRouted)
         d.extend(additional_daemons)
-        super(SR6Config, self).__init__(node, daemons=d,
-                                        *args, **kwargs)
+        super().__init__(node, daemons=d, *args, **kwargs)
 
     def build(self):
         self.sysctl = "net.ipv4.tcp_ecn=1"
         self.sysctl = "net.ipv4.tcp_ecn_fallback=0"
         # Hash with port numbers as well
         self.sysctl = "fib_multipath_hash_policy=1"
-        super(ReroutingConfig, self).build()
+        super().build()
 
 
 class ReroutingRouter(SRNRouter):
 
     def __init__(self, name, config=ReroutingConfig, *args, **kwargs):
-        super(ReroutingRouter, self).__init__(name, config=config, *args, **kwargs)
+        super().__init__(name, config=config, *args, **kwargs)
 
     @property
     def maxseg(self):

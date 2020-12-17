@@ -1,9 +1,8 @@
-from ipmininet.utils import realIntfList
 from mininet.log import lg
-from sr6mininet.sr6link import SR6TCIntf
+from srnmininet.link import SRNIntf
 
 
-class RerouteIntf(SR6TCIntf):
+class RerouteIntf(SRNIntf):
 
     def config(self, *args, **kwargs):
         r = super().config(*args, **kwargs)
@@ -62,13 +61,13 @@ class RerouteIntf(SR6TCIntf):
                 lg.error('Cannot compute policing without bw info\n')
             else:
                 cmds.append("%s qdisc add dev %s handle ffff: ingress")
-                delay_pol = int(self.params["policing_delay"].split("ms")[0])\
+                delay_pol = int(self.params["policing_delay"].split("ms")[0]) \
                             / 1000 * 2 * 1000000
                 bw_pol = self.params["policing_bw"]
-                bw_pol_bytes = (bw_pol * 10**6) / 8
+                bw_pol_bytes = (bw_pol * 10 ** 6) / 8
                 # We set the burst to the BDP (Bandwidth Delay Product) in Bytes
                 cmd = "%s filter add dev %s parent ffff: u32 match u32 0" \
-                      " 0 police rate {bw}mbit burst {mqs} drop"\
+                      " 0 police rate {bw}mbit burst {mqs} drop" \
                     .format(bw=bw_pol, mqs=394365)
                 print(cmd % ("tc", self.name))
                 cmds.append(cmd)

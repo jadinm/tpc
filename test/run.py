@@ -3,26 +3,37 @@ import datetime
 import json
 import os
 
-import ipmininet
+from ipmininet.cli import IPCLI
 from mininet.log import LEVELS
-import mininet.log
-from sr6mininet.cli import SR6CLI
+from mininet.log import lg as log
 
 from eval.repetita_eval import eval_repetita, short_flows, \
     short_flows_completion
-from examples.albilene import Albilene
+from examples.repetita_network import RepetitaTopo
+from reroutemininet.clean import cleanup
+from reroutemininet.config import SRLocalCtrl
 from reroutemininet.net import ReroutingNet
 from test import launch_all_tests
 
+project_dir = os.path.dirname(os.path.abspath(__file__))
+
 
 def mininet_cli(lg, args, ovsschema):
-    topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir}
-    net = ReroutingNet(topo=Albilene(**topo_args), static_routing=True)
+    with open(os.path.join(project_dir, "examples/fake_albilene/FakeAlbilene.evensplit.flows")) as fileobj:
+        json_demands = json.load(fileobj)
+
+    cleanup()
+    topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
+                 "repetita_graph": os.path.join(project_dir, "examples/fake_albilene/FakeAlbilene.graph"),
+                 "ebpf": args.ebpf, "json_demands": json_demands,
+                 "localctrl_opts": {"short_ebpf_program": SRLocalCtrl.SHORT_EBPF_PROGRAM_COMPLETION}}
+    net = ReroutingNet(topo=RepetitaTopo(**topo_args), static_routing=True)
     try:
         net.start()
-        SR6CLI(net)
+        IPCLI(net)
     finally:
         net.stop()
+        cleanup()
 
 
 tests = {
@@ -71,11 +82,11 @@ args = parse_args()
 with open(os.path.join(args.src_dir, "sr.ovsschema"), "r") as fileobj:
     ovsschema = json.load(fileobj)
 
-mininet.log.lg.setLogLevel(args.log)
+log.setLogLevel(args.log)
 sr_testdns = os.path.join(os.path.abspath(args.src_dir), "bin", "sr-testdns")
 
 # Add SR components to PATH
-os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "bin") + os.pathsep +\
+os.environ["PATH"] = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "bin") + os.pathsep + \
                      os.path.join(os.path.abspath(args.src_dir), "bin") + os.pathsep + os.environ["PATH"]
 
 args.number_tests = int(args.number_tests)
@@ -83,4 +94,4 @@ log_dir = args.log_dir
 for i in range(args.number_tests):
     if args.number_tests > 1:
         args.log_dir = log_dir + "-iter-%d" % i
-    tests[args.test](mininet.log.lg, args, ovsschema)
+    tests[args.test](log, args, ovsschema)

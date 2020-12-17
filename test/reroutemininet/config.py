@@ -29,7 +29,7 @@ class SRLocalCtrl(SRNDaemon):
         "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
-        super(SRLocalCtrl, self).__init__(*args,
+        super().__init__(*args,
                                           template_lookup=template_lookup,
                                           **kwargs)
         self.files.append(
@@ -51,8 +51,8 @@ class SRLocalCtrl(SRNDaemon):
                 cls.SHORT_EBPF_PROGRAM_COMPLETION]
 
     def set_defaults(self, defaults):
-        super(SRLocalCtrl, self).set_defaults(defaults)
-        defaults.loglevel = self.DEBUG  # TODO Remove
+        super().set_defaults(defaults)
+        # defaults.loglevel = self.DEBUG  # TODO Remove
         defaults.bpftool = self.BPFTOOL
         defaults.ebpf_program = self.EBPF_PROGRAM
         defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
@@ -175,7 +175,7 @@ class SRLocalCtrl(SRNDaemon):
 
         cfg[self.NAME].dest_map_id = dest_map_id
         cfg[self.NAME].short_dest_map_id = short_dest_map_id
-        cfg_content = super(SRLocalCtrl, self).render(cfg, **kwargs)
+        cfg_content = super().render(cfg, **kwargs)
 
         return cfg_content
 
@@ -191,7 +191,7 @@ class SRLocalCtrl(SRNDaemon):
                 print(detach_cmd)
                 subprocess.check_call(shlex.split(cmd))
 
-        super(SRLocalCtrl, self).cleanup()
+        super().cleanup()
 
 
 class SRRerouted(SRNDaemon):
@@ -202,12 +202,12 @@ class SRRerouted(SRNDaemon):
     KILL_PATTERNS = (NAME,)
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
-        super(SRRerouted, self).__init__(*args,
+        super().__init__(*args,
                                          template_lookup=template_lookup,
                                          **kwargs)
 
     def build(self):
-        cfg = super(SRRerouted, self).build()
+        cfg = super().build()
         self._node.sysctl = "net.ipv4.tcp_ecn=1"
         self._node.sysctl = "tcp_ecn_fallback=0"
 
@@ -222,14 +222,14 @@ class SRRerouted(SRNDaemon):
     @property
     def dry_run(self):
         if self.options.rerouting_enabled:
-            return super(SRRerouted, self).dry_run
+            return super().dry_run
         else:
             return "echo 'Rerouting disabled on node %s'" % self._node.name
 
     @property
     def startup_line(self):
         if self.options.rerouting_enabled:
-            return super(SRRerouted, self).startup_line
+            return super().startup_line
         else:
             return "echo 'Rerouting disabled on node %s'" % self._node.name
 
@@ -251,8 +251,8 @@ class SRRerouted(SRNDaemon):
         defaults.red_max = 1/4.
         defaults.red_burst = self.red_burst
         defaults.rerouting_enabled = True
-        super(SRRerouted, self).set_defaults(defaults)
-        defaults.loglevel = self.DEBUG  # TODO Remove
+        super().set_defaults(defaults)
+        # defaults.loglevel = self.DEBUG  # TODO Remove
 
     @staticmethod
     def red_burst(itf_bw, red_limit, red_avpkt, red_probability, red_min, red_max):
@@ -275,10 +275,10 @@ class SRRerouted(SRNDaemon):
                 self._node._processes.call('kill -9 %d ' % pid)
         except (IOError, OSError):
             pass
-        super(SRRerouted, self).cleanup()
+        super().cleanup()
 
     def render(self, cfg, **kwargs):
-        cfg_content = super(SRRerouted, self).render(cfg, **kwargs)
+        cfg_content = super().render(cfg, **kwargs)
 
         # Firewall rule for netfilter queues
         cmd = 'ip6tables -A FORWARD -m ecn --ecn-ip-ect 3 -j NFQUEUE --queue-num 0'
@@ -298,7 +298,7 @@ class SREndhostd(ZlogDaemon):
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         self.cwd = kwargs.pop("cwd", os.curdir)
-        super(SREndhostd, self).__init__(*args,
+        super().__init__(*args,
                                          template_lookup=template_lookup,
                                          **kwargs)
 
@@ -315,7 +315,7 @@ class SREndhostd(ZlogDaemon):
                     cfg=self.cfg_filename)
 
     def build(self):
-        cfg = super(SREndhostd, self).build()
+        cfg = super().build()
 
         cfg.server_addr = "::1"
         server, server_itf = find_node(self._node, self.options.server, lambda x: 1)
@@ -337,8 +337,8 @@ class SREndhostd(ZlogDaemon):
         defaults.server = "server"
         defaults.server_port = 80
         defaults.routerid = 1
-        super(SREndhostd, self).set_defaults(defaults)
-        defaults.loglevel = self.DEBUG  # TODO Remove
+        super().set_defaults(defaults)
+        # defaults.loglevel = self.DEBUG  # TODO Remove
 
     def _filepath(self, f):
         return os.path.join(self.cwd, f)
@@ -350,7 +350,7 @@ class SRServerd(ZlogDaemon):
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         self.cwd = kwargs.pop("cwd", os.curdir)
-        super(SRServerd, self).__init__(*args,
+        super().__init__(*args,
                                         template_lookup=template_lookup,
                                         **kwargs)
 
@@ -367,7 +367,7 @@ class SRServerd(ZlogDaemon):
                     cfg=self.cfg_filename)
 
     def build(self):
-        cfg = super(SRServerd, self).build()
+        cfg = super().build()
         cfg.server_port = self.options.server_port
         cfg.evalfile = self.evalfile()
         return cfg
@@ -380,8 +380,8 @@ class SRServerd(ZlogDaemon):
         defaults.server_port = 80
         defaults.cwd = os.curdir
         defaults.routerid = 1
-        super(SRServerd, self).set_defaults(defaults)
-        defaults.loglevel = self.DEBUG  # TODO Remove
+        super().set_defaults(defaults)
+        # defaults.loglevel = self.DEBUG  # TODO Remove
 
     def _filepath(self, f):
         return os.path.join(self.cwd, f)
@@ -393,7 +393,7 @@ class Lighttpd(HostDaemon):
     KILL_PATTERNS = (NAME,)
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
-        super(Lighttpd, self).__init__(*args,
+        super().__init__(*args,
                                        template_lookup=template_lookup,
                                        **kwargs)
 
@@ -414,14 +414,14 @@ class Lighttpd(HostDaemon):
                                              conf=self.cfg_filename)
 
     def build(self):
-        cfg = super(Lighttpd, self).build()
+        cfg = super().build()
         cfg.web_dir = self.options.web_dir
         cfg.pid_file = self._file(suffix='pid')
         cfg.port = self.options.port
         return cfg
 
     def render(self, cfg, **kwargs):
-        cfg_content = super(Lighttpd, self).render(cfg, **kwargs)
+        cfg_content = super().render(cfg, **kwargs)
         # Create the big file
         path = os.path.join(self._node.cwd, "mock_file")
         os.makedirs(self._node.cwd, exist_ok=True)
@@ -445,7 +445,7 @@ class Lighttpd(HostDaemon):
         """
         defaults.port = 8080
         defaults.web_dir = self._node.cwd
-        super(Lighttpd, self).set_defaults(defaults)
+        super().set_defaults(defaults)
 
     def has_started(self):
         # Try to connect to the server

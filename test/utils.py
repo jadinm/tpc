@@ -19,7 +19,7 @@ class Sniffer(Thread):
     WAIT_TIMER = 10
 
     def __init__(self, filter_bpf, count, timeout):
-        super(Sniffer, self).__init__()
+        super().__init__()
         self.timeout = timeout
         self.filter = filter_bpf
         self.count = count
@@ -29,7 +29,7 @@ class Sniffer(Thread):
         self.packets = sniff(filter=self.filter, count=self.count, timeout=self.timeout)
 
     def start(self):
-        super(Sniffer, self).start()
+        super().start()
         time.sleep(Sniffer.WAIT_TIMER)  # Wait for sniffing to start
 
 

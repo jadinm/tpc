@@ -3,29 +3,17 @@ import subprocess
 
 from ipmininet.host.config import HostConfig
 from ipmininet.router import ProcessHelper
-from ipmininet.utils import realIntfList
-from sr6mininet.sr6host import SR6Host
+from srnmininet.srnhost import SRNHost
 
 from .config import SRLocalCtrl
 
 
-class SR6HostConfig(HostConfig):
-
-    def build(self):
-        self.sysctl = "net.ipv6.conf.all.seg6_enabled=1"
-        self.sysctl = "net.ipv6.conf.default.seg6_enabled=1"
-
-        for intf in self._node.intfList():
-            self.sysctl = "net.ipv6.conf.%s.seg6_enabled=1" % intf.name
-        super(SR6HostConfig, self).build()
-
-
-class ReroutingHostConfig(SR6HostConfig):
+class ReroutingHostConfig(HostConfig):
 
     def build(self):
         self.sysctl = "net.ipv4.tcp_ecn=1"
         self.sysctl = "net.ipv4.tcp_ecn_fallback=0"
-        super(ReroutingHostConfig, self).build()
+        super().build()
 
 
 class CGroupProcessHelper(ProcessHelper):
@@ -43,18 +31,18 @@ class CGroupProcessHelper(ProcessHelper):
         if args[0][0] == "ebpf":
             cgroup = self.node.nconfig.daemon(SRLocalCtrl).cgroup(args[0][1])
             print(cgroup)
-            self._processes[self._pid_gen] = self.node\
+            self._processes[self._pid_gen] = self.node \
                 .run_cgroup(args[0][2:], cgroup=cgroup, **kwargs)
 
         self._processes[self._pid_gen] = self.node.popen(*args, **kwargs)
         return self._pid_gen
 
 
-class ReroutingHost(SR6Host):
+class ReroutingHost(SRNHost):
 
     def __init__(self, name, *args, **kwargs):
 
-        super(ReroutingHost, self)\
+        super() \
             .__init__(name, process_manager=CGroupProcessHelper, *args,
                       **kwargs)
         os.makedirs(self.cwd, exist_ok=True)
@@ -74,7 +62,7 @@ class ReroutingHost(SR6Host):
         # time.sleep(1)
 
         if cgroup is None:
-            cgroup = self.nconfig.daemon(SRLocalCtrl)\
+            cgroup = self.nconfig.daemon(SRLocalCtrl) \
                 .cgroup(SRLocalCtrl.EBPF_PROGRAM)
         os.system('echo %d > %s/cgroup.procs' % (popen.pid, cgroup))
         # time.sleep(1)

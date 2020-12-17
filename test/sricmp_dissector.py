@@ -106,7 +106,7 @@ class SRICMPv6(ICMPv6Unknown):
             p = p[:4] + struct.pack("!H", l) + p[6:]
 
         # Checksum computation
-        p = super(SRICMPv6, self).post_build(p, pay)
+        p = super().post_build(p, pay)
         return p
 
     def guess_payload_class(self, p):

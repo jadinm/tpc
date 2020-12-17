@@ -10,7 +10,6 @@ from shlex import split
 from typing import List
 
 from ipmininet.tests.utils import assert_connectivity
-from sr6mininet.cli import SR6CLI
 
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
@@ -88,7 +87,7 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, clamp,
     ports = [5201 + i for i in range(len(servers))]
     for i, server in enumerate(servers):
         cmd = "iperf3 -s -J -p %d --one-off" % ports[i]
-                # 2>&1 > log_%s.log &"
+        # 2>&1 > log_%s.log &"
         iperfs_db[i].cmd_server = cmd
         print("%s %s" % (server, cmd))
         if ebpf:
@@ -171,7 +170,7 @@ def get_repetita_topos(args):
                     # Identify related flow files
                     for flow_name in files:
                         if ".flows" in flow_name and f.split(".")[0] \
-                            in flow_name:
+                                in flow_name:
                             topos.setdefault(os.path.join(root, f), []).append(
                                 os.path.join(root, flow_name))
 
@@ -279,7 +278,7 @@ def apply_changes(seconds_since_start: float, net: ReroutingNet):
                            net.topo.pending_changes)))
 
     # if len(applied_changes) >= 1:
-    #     SR6CLI(net)  # TODO Remove
+    #     IPCLI(net)  # TODO Remove
 
 
 def short_flows(lg, args, ovsschema, completion_ebpf=False):
@@ -374,7 +373,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 print(clients)
                 print(servers)
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
 
                 # Launch tcpdump on client
                 tcpdump_hosts = copy.deepcopy(clients)
@@ -390,7 +389,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 if len(pid_abs) == 0:
                     return
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
 
                 # Measure load on each interface
                 start_time = time.time()
@@ -406,7 +405,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                     apply_changes(time.time() - start_time, net)
                     time.sleep(0.1)
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
                 time.sleep(5)
 
                 for h, snaps in snapshots.items():
@@ -541,7 +540,7 @@ def eval_repetita(lg, args, ovsschema):
                 print(clients)
                 print(servers)
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
                 time.sleep(1)
                 # TODO Remove
                 time.sleep(MEASUREMENT_TIME / 4)
@@ -570,7 +569,7 @@ def eval_repetita(lg, args, ovsschema):
                 if len(pid_servers) == 0:
                     return
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
 
                 # Measure load on each interface
                 start_time = time.time()
@@ -581,12 +580,12 @@ def eval_repetita(lg, args, ovsschema):
                         for h in snapshots.keys():
                             snapshots[h].extend(Snapshot.extract_info(net[h]))
                             snapshots[h] = sorted(list(set(snapshots[h])))
-                    #for pid in pid_servers:
+                    # for pid in pid_servers:
                     #    print("ANOTHER SERVER")
                     #    print(pid.stdout.readlines())
                     time.sleep(1)
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
                 time.sleep(5)
 
                 print("Check servers ending")
@@ -622,7 +621,7 @@ def eval_repetita(lg, args, ovsschema):
 
                 for pid in tcpdumps:
                     pid.kill()
-            #except Exception as e:
+            # except Exception as e:
             #    lg.error("Exception %s in the topo emulation... Skipping...\n"
             #             % e)
             #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
@@ -631,7 +630,7 @@ def eval_repetita(lg, args, ovsschema):
                 for pid in tcpdumps:
                     pid.kill()
 
-                # SR6CLI(net)  # TODO Remove
+                # IPCLI(net)  # TODO Remove
                 net.stop()
                 cleanup()
                 for fileobj in result_files:

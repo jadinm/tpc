@@ -16,7 +16,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
 
     def __init__(self, access_routers, sr_controller, schema_tables, rerouting_routers, hosts,
                  rerouted_opts=None, maxseg=-1, localctrl_opts=None):
-        super(SRReroutedCtrlDomain, self).__init__(access_routers, sr_controller, schema_tables)
+        super().__init__(access_routers, sr_controller, schema_tables)
 
         self.nodes.extend(rerouting_routers)
         for n in rerouting_routers:
@@ -81,7 +81,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
 
     def apply(self, topo):
         """Apply the Overlay properties to the given topology"""
-        super(SRReroutedCtrlDomain, self).apply(topo)
+        super().apply(topo)
 
         for n in self.rerouting_routers:
             config = topo.nodeInfo(n).get("config", None)
