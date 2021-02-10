@@ -17,9 +17,8 @@ from reroutemininet.config import Lighttpd, SRLocalCtrl
 from reroutemininet.net import ReroutingNet
 from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
-    IPerfConnections, IPerfBandwidthSample, SnapshotDBEntry, \
-    SnapshotShortDBEntry, ABLatencyCDF, ABResults, ABLatency, \
-    ShortTCPeBPFExperiment
+    IPerfConnections, SnapshotShortDBEntry, ABLatencyCDF, ABResults, \
+    ABLatency, ShortTCPeBPFExperiment
 from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR
 
 
@@ -320,8 +319,6 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
             with open(demands) as fileobj:
                 json_demands = json.load(fileobj)
             topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
-                         "ebpf_program": os.path.expanduser(
-                             "~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
                          "maxseg": -1, "repetita_graph": topo,
                          "ebpf": args.ebpf,
@@ -463,7 +460,11 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                     err, os.path.basename(topo)))
 
 
-def eval_repetita(lg, args, ovsschema):
+def eval_flowbender(lg, args, ovsschema):
+    return eval_repetita(lg, args, ovsschema, flowbender=True)
+
+
+def eval_repetita(lg, args, ovsschema, flowbender=False):
     topos = get_repetita_topos(args)
     os.mkdir(args.log_dir)
 
@@ -499,12 +500,13 @@ def eval_repetita(lg, args, ovsschema):
                 json_demands = json.load(fileobj)
             print("HHHHHHHHHHHHHHHHHHHH" + cwd)
             topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
-                         "ebpf_program": os.path.expanduser(
-                             "~/ebpf_hhf/ebpf_socks_ecn.o"),
                          "always_redirect": True,
                          "maxseg": -1, "repetita_graph": topo,
                          "ebpf": args.ebpf,
-                         "json_demands": json_demands}
+                         "json_demands": json_demands,
+                         "localctrl_opts": {
+                             "long_ebpf_program": SRLocalCtrl.FLOW_BENDER_EBPF_PROGRAM if flowbender else SRLocalCtrl.EBPF_PROGRAM
+                         }}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
                                static_routing=True)
@@ -542,9 +544,6 @@ def eval_repetita(lg, args, ovsschema):
 
                 # IPCLI(net)  # TODO Remove
                 time.sleep(1)
-                # TODO Remove
-                time.sleep(MEASUREMENT_TIME / 4)
-                # TODO Remove
 
                 # Recover eBPF maps
                 if args.ebpf:
@@ -583,7 +582,8 @@ def eval_repetita(lg, args, ovsschema):
                     # for pid in pid_servers:
                     #    print("ANOTHER SERVER")
                     #    print(pid.stdout.readlines())
-                    time.sleep(1)
+                    apply_changes(time.time() - start_time, net)
+                    time.sleep(0.1)
 
                 # IPCLI(net)  # TODO Remove
                 time.sleep(5)
@@ -644,36 +644,6 @@ def eval_repetita(lg, args, ovsschema):
                 # try:
                 lg.info("******* Saving results '%s' *******\n" %
                         os.path.basename(topo))
-                # Extract JSON output
-                for i in range(len(clients)):
-                    with open("%d_results_%s_%s.json"
-                              % (i, clients[i], servers[i]), "r") \
-                            as fileobj:
-                        results = json.load(fileobj)
-                        iperf_db = tcp_ebpf_experiment.iperfs[i]
-                        iperf_db.raw_json = json.dumps(results, indent=4)
-                        for j in range(nbr_flows[i]):
-                            connection_db = iperf_db.connections[j]
-                            connection_db.start_samples = \
-                                results["start"]["timestamp"]["timesecs"]
-                            for t, interval in enumerate(results["intervals"]):
-                                connection_db.bw_samples.append(
-                                    IPerfBandwidthSample(
-                                        time=(t + 1) * INTERVALS,
-                                        bw=interval["streams"][j][
-                                            "bits_per_second"])
-                                )
-
-                for h, snaps in snapshots.items():
-                    for snap in snaps:
-                        tcp_ebpf_experiment.snapshots.append(
-                            SnapshotDBEntry(snapshot_hex=snap.export(), host=h)
-                        )
-
-                try:
-                    os.makedirs(cwd)
-                except OSError as e:
-                    print("OSError %s" % e)
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
                 db.commit()  # Commit even if catastrophic results

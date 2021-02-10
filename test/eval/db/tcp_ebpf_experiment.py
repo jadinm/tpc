@@ -31,7 +31,7 @@ class TCPeBPFExperiment(SQLBaseModel):
 
     congestion_control = Column(String, nullable=False)
     gamma_value = Column(Float, nullable=False)
-    random_strategy = Column(String, nullable=False)
+    random_strategy = Column(String, nullable=False)  # uniform, exp3, flowbender
     max_reward_factor = Column(Float, nullable=False)
     wait_before_initial_move = Column(BigInteger, nullable=False,
                                       default=1000000000)

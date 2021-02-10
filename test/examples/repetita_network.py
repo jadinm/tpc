@@ -86,7 +86,6 @@ class LinkChange:
         self.applied_cmd = ""
 
     def apply(self, net: ReroutingNet):
-        # Change netem
         switch = net[self.switch]
         dest = net[self.dest]
         link = net.linksBetween(switch, dest)[0]
@@ -95,10 +94,17 @@ class LinkChange:
         else:
             intf = link.intf2
 
-        self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
-                           " netem delay {delay}ms".format(intf=intf.name,
-                                                           delay=self.delay)
-        print(self.applied_cmd)
+        if self.bw == 0:  # Disable link if no bandwidth can pass # TODO Block ICMPs
+            intf.down()
+            self.applied_cmd = "ip link set {intf} down".format(intf=intf.name)
+            print(self.applied_cmd)
+        else:
+            intf.up()
+            # Change netem
+            self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
+                               " netem delay {delay}ms".format(intf=intf.name,
+                                                               delay=self.delay)
+            print(self.applied_cmd)
         out, err, code = switch.pexec(split(self.applied_cmd))
         if code != 0:
             raise Exception("Error {code} running tc cmd '{cmd}':"

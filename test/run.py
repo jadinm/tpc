@@ -8,7 +8,7 @@ from mininet.log import LEVELS
 from mininet.log import lg as log
 
 from eval.repetita_eval import eval_repetita, short_flows, \
-    short_flows_completion
+    short_flows_completion, eval_flowbender
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.config import SRLocalCtrl
@@ -42,6 +42,7 @@ tests = {
     #  until scapy reaches 2.4.3 (still unstable)
     "unit": launch_all_tests,
     "eval-repetita": eval_repetita,
+    "flowblender": eval_flowbender,
     "short-flows": short_flows,
     "short-flows-completion": short_flows_completion
 }

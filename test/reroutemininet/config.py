@@ -24,17 +24,16 @@ class SRLocalCtrl(SRNDaemon):
     PRIO = 1  # If other daemons want to use it
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
     EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
+    FLOW_BENDER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flowbender.o")
     SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
     SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
         "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
-        super().__init__(*args,
-                                          template_lookup=template_lookup,
-                                          **kwargs)
+        super().__init__(*args, template_lookup=template_lookup, **kwargs)
         self.files.append(
-            self.ebpf_load_path(self._node.name, self.EBPF_PROGRAM))
-        self.files.append(self.map_path("dest_map_fd", self.EBPF_PROGRAM))
+            self.ebpf_load_path(self._node.name, self.options.long_ebpf_program))
+        self.files.append(self.map_path("dest_map_fd", self.options.long_ebpf_program))
         self.files.append(self.map_path("short_dest_map_fd",
                                         self.options.short_ebpf_program))
         os.makedirs(self._node.cwd, exist_ok=True)
@@ -47,14 +46,14 @@ class SRLocalCtrl(SRNDaemon):
 
     @classmethod
     def all_programs(cls):
-        return [cls.EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM,
+        return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM,
                 cls.SHORT_EBPF_PROGRAM_COMPLETION]
 
     def set_defaults(self, defaults):
         super().set_defaults(defaults)
         # defaults.loglevel = self.DEBUG  # TODO Remove
         defaults.bpftool = self.BPFTOOL
-        defaults.ebpf_program = self.EBPF_PROGRAM
+        defaults.long_ebpf_program = self.EBPF_PROGRAM
         defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
 
     def cgroup(self, program):
@@ -94,8 +93,9 @@ class SRLocalCtrl(SRNDaemon):
     def pin_maps(self):
 
         map_ids = []
-        map_ids.extend(self.get_map_id(self.EBPF_PROGRAM))
+        map_ids.extend(self.get_map_id(self.options.long_ebpf_program))
         print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
+        print(self.options.long_ebpf_program)
         print(self.options.short_ebpf_program)
         print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         map_ids.extend(self.get_map_id(self.options.short_ebpf_program))
@@ -156,7 +156,7 @@ class SRLocalCtrl(SRNDaemon):
         dest_map_id, short_dest_map_id = self.pin_maps()
 
         # Create cgroup
-        for program in [self.EBPF_PROGRAM, self.options.short_ebpf_program]:
+        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program]:
             mkdir_p(self.cgroup(program))
 
             ebpf_load_path = self.ebpf_load_path(self._node.name,
@@ -182,7 +182,7 @@ class SRLocalCtrl(SRNDaemon):
     def cleanup(self):
         detach_cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
                      " pinned {ebpf_load_path} multi"
-        for program in [self.EBPF_PROGRAM, self.options.short_ebpf_program]:
+        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program]:
             if self.attached[program]:
                 ebpf_load_path = self.ebpf_load_path(self._node.name, program)
                 cmd = detach_cmd.format(bpftool=self.options.bpftool,
