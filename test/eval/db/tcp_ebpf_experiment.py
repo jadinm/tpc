@@ -3,7 +3,7 @@ from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float,\
     BigInteger
 from sqlalchemy.orm import relationship
 
-from eval.bpf_stats import Snapshot
+from eval.bpf_stats import Snapshot, FlowBenderSnapshot
 from eval.db import IPerfConnections, IPerfResults, IPerfBandwidthSample
 from eval.db.base import SQLBaseModel
 from eval.utils import INTERVALS
@@ -37,6 +37,10 @@ class TCPeBPFExperiment(SQLBaseModel):
                                       default=1000000000)
     wait_unstable_rtt = Column(BigInteger, nullable=False, default=16)
 
+    # tc changes
+    monotonic_realtime_delta = Column(Float)  # time.time() - time.monotonic() at the time of run
+    tc_changes = Column(String)  # json of the form [[sec_since_epoch, tc_command_1],...]
+
     # results
 
     iperfs = relationship("IPerfResults", backref="experiment",
@@ -44,6 +48,30 @@ class TCPeBPFExperiment(SQLBaseModel):
 
     snapshots = relationship("SnapshotDBEntry", backref="experiment",
                              lazy='dynamic')
+
+    def data_related_snapshots(self):
+        """Filter out snapshots caused by iperf control connections"""
+        snapclass = FlowBenderSnapshot if self.random_strategy == "flowbender" else Snapshot
+        filtered_snaps = []
+        for s in self.snapshots.all():
+            found = False
+            for i in self.iperfs.all():
+                for flow_tuple in i.flow_tuples():
+                    found = len(flow_tuple) == 0 or snapclass.retrieve_from_hex(s.snapshot_hex).is_from_connection(flow_tuple)
+                    if found:
+                        break
+                if found:
+                    filtered_snaps.append(s)
+                    break
+        return filtered_snaps
+
+    def snapshot_by_connection(self):
+        snapclass = FlowBenderSnapshot if self.random_strategy == "flowbender" else Snapshot
+        snapshots = [snapclass.retrieve_from_hex(s.snapshot_hex) for s in self.data_related_snapshots()]
+        snapshot_by_connection = {}
+        for s in snapshots:
+            snapshot_by_connection.setdefault(s.conn_key(), []).append(s)
+        return snapshot_by_connection
 
     def bw_sum_through_time(self, db):
         times = []
@@ -138,12 +166,7 @@ class TCPeBPFExperiment(SQLBaseModel):
                / (len(bw_data) * sum([b * b for b in bw_data]))
 
     def stability_by_connection(self):
-        snapshots = [Snapshot.retrieve_from_hex(s.snapshot_hex)
-                     for s in self.snapshots.all()]
-
-        snapshot_by_connection = {}
-        for s in snapshots:
-            snapshot_by_connection.setdefault(s.conn_key(), []).append(s)
+        snapshot_by_connection = self.snapshot_by_connection()
 
         nbr_changes_by_conn = {}
         exp3_last_prob_by_conn = {}  # To get how fast evolves the weights

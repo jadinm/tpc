@@ -57,12 +57,12 @@ class Snapshot:
     def __init__(self, ebpf_map_entry):
         # TODO Make the weight extraction depend on the define for the number
         #  of paths by destination
-        self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port,\
-            self.dst_port, self.srh_id, \
-            self.last_move_time, self.rtt_count, \
-            self.exp3_last_number_actions, self.exp3_curr_reward, \
-            self.unstable, self.last_unstable_rtt, \
-            exp3_last_probability_mantissa, exp3_last_probability_exponent = \
+        self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port, \
+        self.dst_port, self.srh_id, \
+        self.last_move_time, self.rtt_count, \
+        self.exp3_last_number_actions, self.exp3_curr_reward, \
+        self.unstable, self.last_unstable_rtt, \
+        exp3_last_probability_mantissa, exp3_last_probability_exponent = \
             struct.unpack("<IQ"  # Start of flow_snapshot
                           + "I4q2I"  # flow id
                           + "I2Q3IQ"  # flow info (except floats)
@@ -80,16 +80,19 @@ class Snapshot:
         # Parse floats
         floatings = self.extract_floats([(exp3_last_probability_mantissa,
                                           exp3_last_probability_exponent)])
-                                         #(exp3_weight_mantissa_0,
-                                         # exp3_weight_exponent_0),
-                                         #(exp3_weight_mantissa_1,
-                                         # exp3_weight_exponent_1),
-                                         #(exp3_weight_mantissa_2,
-                                         # exp3_weight_exponent_2),
-                                         #(exp3_weight_mantissa_3,
-                                         # exp3_weight_exponent_3)])
-        self.exp3_last_prob = floatings[0]
-        self.exp3_weights = floatings[1:]
+        # (exp3_weight_mantissa_0,
+        # exp3_weight_exponent_0),
+        # (exp3_weight_mantissa_1,
+        # exp3_weight_exponent_1),
+        # (exp3_weight_mantissa_2,
+        # exp3_weight_exponent_2),
+        # (exp3_weight_mantissa_3,
+        # exp3_weight_exponent_3)])
+        self.exp3_last_prob = 0
+        self.exp3_weights = []
+        if len(floatings) > 1:
+            self.exp3_last_prob = floatings[0]
+            self.exp3_weights = floatings[1:]
 
     def __eq__(self, other):
         return self.seq == other.seq
@@ -107,11 +110,14 @@ class Snapshot:
 
         i = 0
         for mantissa, exponent in list_pair_floats:
+            if mantissa == 0:  # If mantissa is null, the number was not initialized correctly
+                continue
+
             unbiased_exponent = exponent - 1024
             # The list of bits
             x = [(mantissa >> y) % 2 for y in range(64)]
             x.reverse()
-            z = [(y * 2.0)**(unbiased_exponent - i)
+            z = [(y * 2.0) ** (unbiased_exponent - i)
                  for i, y in enumerate(x) if y != 0]
             decimals.append(sum(z))
             i += 1
@@ -126,7 +132,7 @@ class Snapshot:
         if daemon.stat_map_id == -1:
             raise ValueError("Cannot find the id of the Stat eBPF map")
 
-        cmd = "{bpftool} map -j dump id {map_id}"\
+        cmd = "{bpftool} map -j dump id {map_id}" \
             .format(bpftool=BPFTOOL, map_id=getattr(daemon, cls.map_name))
         out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
         snapshots_raw = json.loads(out)
@@ -159,6 +165,68 @@ class Snapshot:
     def retrieve_from_hex(cls, ebpf_map_entry: str):
         return cls(bytes.fromhex(ebpf_map_entry))
 
+    def is_from_connection(self, flow_tuple):
+        """Returns true iff the snapshot is for the connection described by the flow tuple"""
+        return (self.src == ip_address(flow_tuple["local_host"])
+                and self.dst == ip_address(flow_tuple["remote_host"])
+                and self.src_port == int(flow_tuple["local_port"])
+                and self.dst_port == int(flow_tuple["remote_port"])) \
+               or (self.src == ip_address(flow_tuple["remote_host"])
+                   and self.dst == ip_address(flow_tuple["local_host"])
+                   and self.src_port == int(flow_tuple["remote_port"])
+                   and self.dst_port == int(flow_tuple["local_port"]))
+
+
+class FlowBenderSnapshot(Snapshot):
+
+    def __init__(self, ebpf_map_entry):
+        # TODO Make the weight extraction depend on the define for the number
+        #  of paths by destination
+        self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port, \
+        self.dst_port, self.srh_id, \
+        self.last_move_time, self.rtt_count, \
+        self.retrans_count, self.last_rcv_nxt, \
+        self.last_snd_una = \
+            struct.unpack("<IQ"  # Start of flow_snapshot
+                          + "I4q2I"  # flow id
+                          + "I2QI2Q",  # flow info
+                          ebpf_map_entry[:96])
+        self.ebpf_map_entry = ebpf_map_entry
+
+        # Parse addresses
+        self.src = ip_address(self.ebpf_map_entry[16:32])
+        self.dst = ip_address(self.ebpf_map_entry[32:48])
+
+    @classmethod
+    def extract_info(cls, node):
+        """Create the ordered list of valid snapshots taken a node"""
+
+        # Find the LocalCtrl object to get the map id
+        daemon = node.nconfig.daemon(SRLocalCtrl.NAME)
+        if daemon.stat_map_id == -1:
+            raise ValueError("Cannot find the id of the Stat eBPF map")
+
+        cmd = "{bpftool} map -j dump id {map_id}" \
+            .format(bpftool=BPFTOOL, map_id=getattr(daemon, cls.map_name))
+        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
+        snapshots_raw = json.loads(out)
+
+        snapshots = []
+        for snap_raw in snapshots_raw:
+            hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
+            snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
+            if snap.seq > 0:  # Valid snapshot
+                snapshots.append(snap)
+        snapshots.sort()
+        return snapshots
+
+    def __str__(self):
+        return "FlowBenderSnapshot<{seq}-{time}> for connection" \
+               " {src}:{src_port} -> {dst}:{dst_port}: {srh_id}" \
+            .format(seq=self.seq, time=self.time, src=self.src,
+                    src_port=self.src_port, dst=self.dst,
+                    dst_port=self.dst_port, srh_id=self.srh_id)
+
 
 class ShortSnapshot(Snapshot):
     map_name = "short_stat_map_id"
@@ -181,7 +249,7 @@ class ShortSnapshot(Snapshot):
             for i in range(MAX_EXPERTS):
                 mantissa, exponent = \
                     struct.unpack("<QI",
-                                  ebpf_map_entry[idx_weight:idx_weight+12])
+                                  ebpf_map_entry[idx_weight:idx_weight + 12])
                 idx_weight += 12
                 self.weights.extend(self.extract_floats([(mantissa, exponent)]))
         except OverflowError:  # Too high weights
@@ -191,16 +259,16 @@ class ShortSnapshot(Snapshot):
         # print(exp3_last_probability_exponent)
 
         # Parse floats
-        #floatings = self.extract_floats([(exp3_last_probability_mantissa,
+        # floatings = self.extract_floats([(exp3_last_probability_mantissa,
         #                                  exp3_last_probability_exponent)])
-                                         #(exp3_weight_mantissa_0,
-                                         # exp3_weight_exponent_0),
-                                         #(exp3_weight_mantissa_1,
-                                         # exp3_weight_exponent_1),
-                                         #(exp3_weight_mantissa_2,
-                                         # exp3_weight_exponent_2),
-                                         #(exp3_weight_mantissa_3,
-                                         # exp3_weight_exponent_3)])
+        # (exp3_weight_mantissa_0,
+        # exp3_weight_exponent_0),
+        # (exp3_weight_mantissa_1,
+        # exp3_weight_exponent_1),
+        # (exp3_weight_mantissa_2,
+        # exp3_weight_exponent_2),
+        # (exp3_weight_mantissa_3,
+        # exp3_weight_exponent_3)])
 
     def __str__(self):
         return "Snapshot<{seq}-{time}> for destination {destination}: " \
@@ -277,7 +345,7 @@ class BPFPaths:
                 path = []
                 for j in range(srh_len // 2):
                     segment_idx = 8 + j * 16
-                    segment_ip = ip_address(chain[segment_idx:segment_idx+16])
+                    segment_ip = ip_address(chain[segment_idx:segment_idx + 16])
                     if "::" == str(segment_ip):
                         segment_router = "::"
                     else:
@@ -309,7 +377,7 @@ class BPFPaths:
         if daemon.dest_map_id == -1:
             raise ValueError("Cannot find the id of the dest eBPF map")
 
-        cmd = "{bpftool} map -j dump id {map_id}"\
+        cmd = "{bpftool} map -j dump id {map_id}" \
             .format(bpftool=BPFTOOL, map_id=daemon.dest_map_id)
         out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
         ebpf_map_entries = json.loads(out)

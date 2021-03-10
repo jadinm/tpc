@@ -15,10 +15,10 @@ from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.config import Lighttpd, SRLocalCtrl
 from reroutemininet.net import ReroutingNet
-from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot
+from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot, FlowBenderSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, SnapshotShortDBEntry, ABLatencyCDF, ABResults, \
-    ABLatency, ShortTCPeBPFExperiment
+    ABLatency, ShortTCPeBPFExperiment, IPerfBandwidthSample, SnapshotDBEntry
 from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR
 
 
@@ -472,6 +472,8 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
 
     db = get_connection()
     params = get_xp_params()
+    if flowbender:
+        params["random_strategy"] = "flowbender"
 
     i = 0
     for topo, demands_list in topos.items():
@@ -512,6 +514,7 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                                static_routing=True)
             result_files = []
             tcpdumps = []
+            tc_monitor = None
 
             subprocess.call("pkill -9 iperf".split(" "))
             subprocess.call("pkill -9 curl".split(" "))
@@ -552,6 +555,13 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                         print(BPFPaths.extract_info(net, net[node]))
                         break
 
+                # Monitor the changes of tc
+                tc_monitor = subprocess.Popen(split("tc -t monitor"),
+                                              universal_newlines=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
+                time.sleep(1)
+                assert tc_monitor.poll() is None, \
+                    "Cannot start tc_monitor '{}' '{}'".format(tc_monitor.stdout.read(), tc_monitor.stderr.read())
+
                 # Launch tcpdump on all clients, servers and routers
                 if args.tcpdump:
                     for n in clients + servers + [r.name for r in net.routers]:
@@ -573,11 +583,12 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 # Measure load on each interface
                 start_time = time.time()
                 snapshots = {h: [] for h in clients + servers}
+                snap_class = FlowBenderSnapshot if flowbender else Snapshot
                 while time.time() - start_time < MEASUREMENT_TIME:
                     # Extract snapshot info from eBPF
                     if args.ebpf:
                         for h in snapshots.keys():
-                            snapshots[h].extend(Snapshot.extract_info(net[h]))
+                            snapshots[h].extend(snap_class.extract_info(net[h]))
                             snapshots[h] = sorted(list(set(snapshots[h])))
                     # for pid in pid_servers:
                     #    print("ANOTHER SERVER")
@@ -627,6 +638,10 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
             #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
             #    continue
             finally:
+                if tc_monitor is not None:
+                    tc_monitor.kill()
+                    tc_monitor.wait()
+
                 for pid in tcpdumps:
                     pid.kill()
 
@@ -644,9 +659,43 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 # try:
                 lg.info("******* Saving results '%s' *******\n" %
                         os.path.basename(topo))
+                for i in range(len(clients)):
+                    with open("%d_results_%s_%s.json" % (i, clients[i], servers[i]), "r") as fileobj:
+                        results = json.load(fileobj)
+                        iperf_db = tcp_ebpf_experiment.iperfs[i]
+                        iperf_db.raw_json = json.dumps(results, indent=4)
+                        for j in range(nbr_flows[i]):
+                            connection_db = iperf_db.connections[j]
+                            connection_db.start_samples = \
+                                results["start"]["timestamp"]["timesecs"]
+                        for t, interval in enumerate(results["intervals"]):
+                            connection_db.bw_samples.append(
+                                IPerfBandwidthSample(time=(t + 1) * INTERVALS,
+                                                     bw=interval["streams"][j]["bits_per_second"]))
+
+                for h, snaps in snapshots.items():
+                    for snap in snaps:
+                        tcp_ebpf_experiment.snapshots.append(
+                            SnapshotDBEntry(snapshot_hex=snap.export(), host=h)
+                        )
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
-                db.commit()  # Commit even if catastrophic results
+
+                # The delta is an approximation valid at 0.1 ms, so negligible for our use cases
+                tcp_ebpf_experiment.monotonic_realtime_delta = time.time() - time.monotonic()
+
+                tc_changes = []
+                lines = tc_monitor.stdout.readlines()
+                for i in range(len(lines) // 2):
+                    print(lines[i * 2][:-1])
+                    try:
+                        real_time = datetime.strptime(lines[i * 2][:-1], "Timestamp: %a %b  %d %H:%M:%S %Y %f usec")
+                    except ValueError:
+                        real_time = datetime.strptime(lines[i * 2][:-1], "Timestamp: %a %b %d %H:%M:%S %Y %f usec")
+                    tc_changes.append([real_time.timestamp(), lines[i * 2 + 1][:-1]])
+                tcp_ebpf_experiment.tc_changes = json.dumps(tc_changes)
+
+                db.commit()
                 # except Exception as e:
                 #    lg.error("Exception %s in the graph generation...
                 #    Skipping...\n" % e)

@@ -94,12 +94,11 @@ class LinkChange:
         else:
             intf = link.intf2
 
-        if self.bw == 0:  # Disable link if no bandwidth can pass # TODO Block ICMPs
-            intf.down()
-            self.applied_cmd = "ip link set {intf} down".format(intf=intf.name)
+        if self.bw == 0:  # Loss of 100% if no bandwidth can pass => also blocks ICMPs
+            self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
+                               " netem delay {delay}ms loss 100%".format(intf=intf.name, delay=self.delay)
             print(self.applied_cmd)
         else:
-            intf.up()
             # Change netem
             self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
                                " netem delay {delay}ms".format(intf=intf.name,

@@ -1,3 +1,5 @@
+import json
+
 from sqlalchemy import Column, Integer, String, Float, Text, ForeignKey
 from sqlalchemy.orm import relationship
 
@@ -20,6 +22,12 @@ class IPerfResults(SQLBaseModel):
     connections = relationship("IPerfConnections", backref="iperf",
                                lazy='dynamic')
 
+    def flow_tuples(self):
+        """Returns the flow tuple for each connection (useful to remove noise snapshots of control connections)"""
+        if self.raw_json is None:
+            return []
+        return json.loads(self.raw_json).get("start", {}).get("connected", [])
+
 
 class IPerfConnections(SQLBaseModel):
     __tablename__ = 'iperf_connections'
@@ -34,6 +42,15 @@ class IPerfConnections(SQLBaseModel):
                               lazy='dynamic')
     max_volume = Column(Float)
 
+    def throughput_over_time(self):
+        """in MB for the throughput, in seconds for the time and ordered"""
+        bws = []
+        start_sample = None
+        for sample in self.bw_samples.order_by(IPerfBandwidthSample.time.asc()):
+            if start_sample is None:
+                start_sample = sample.time
+            bws.append((sample.time - start_sample, sample.bw / 10 ** 3))
+        return bws
 
 class IPerfBandwidthSample(SQLBaseModel):
     __tablename__ = 'iperf_bandwidth_samples'

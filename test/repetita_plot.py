@@ -1,14 +1,16 @@
 import argparse
 import datetime
+import json
 import os
 import re
+from collections import OrderedDict
 from typing import List
 
 import matplotlib.pyplot as plt
 import numpy as np
 from mininet.log import LEVELS, lg
 
-from eval.bpf_stats import ShortSnapshot, MAX_PATHS_BY_DEST
+from eval.bpf_stats import ShortSnapshot, MAX_PATHS_BY_DEST, Snapshot, FlowBenderSnapshot
 from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.utils import FONTSIZE, LINE_WIDTH, MARKER_SIZE, cdf_data, \
     MEASUREMENT_TIME
@@ -485,13 +487,14 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path):
         max_value = max(bin_edges[1:] + [max_value])
 
         subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
-                     color=colors[key], marker=markers[key],
+                     color=colors.get(key), marker=markers.get(key),
                      linewidth=LINE_WIDTH, where="post",
-                     markersize=MARKER_SIZE, zorder=zorder, label=labels[key])
+                     markersize=MARKER_SIZE, zorder=zorder, label=labels.get(key))
 
     subplot.set_xlabel(xlabel, fontsize=FONTSIZE)
-    subplot.set_ylabel("CDF", fontsize=FONTSIZE)
-    subplot.legend(loc="best")
+    subplot.set_ylabel("CDF (%)", fontsize=FONTSIZE)
+    if len(labels) > 0:
+        subplot.legend(loc="best")
 
     lg.info("Saving figure for cdf to path {path}\n"
             .format(path=os.path.join(output_path, figure_name + ".pdf")))
@@ -537,6 +540,42 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
 
     if ylim is not None:
         subplot.set_ylim(**ylim)
+    fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
+                bbox_inches='tight', pad_inches=0, markersize=9)
+    fig.clf()
+    plt.close()
+
+
+def subplot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
+                 colors=None):
+    fig, axes = plt.subplots(len(data), sharex=True, sharey=True)
+    prop_cycle = plt.rcParams['axes.prop_cycle']
+    default_colors = prop_cycle.by_key()['color']
+
+    i = 0
+    for key, values in data.items():
+        i += 1
+        subplot = axes[i-1]
+        times = []
+        data_y = []
+        for t, y in values:
+            times.append(t)
+            data_y.append(y)
+        subplot.scatter(times, data_y, marker=".", s=MARKER_SIZE,
+                        color=colors.get(key) if colors else default_colors[i-1])
+
+        if len(data) == i:
+            subplot.set_xlabel("time (s)", fontsize=FONTSIZE)
+        elif i == 1:
+            subplot.set_title(ylabel, fontsize=FONTSIZE)
+        if labels and labels.get(key):
+            subplot.set_ylabel(labels.get(key), fontsize=FONTSIZE)
+
+        if ylim is not None:
+            subplot.set_ylim(**ylim)
+
+    lg.info("Saving figure for plot through time to path {path}\n"
+            .format(path=os.path.join(output_path, figure_name + ".pdf")))
     fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
                 bbox_inches='tight', pad_inches=0, markersize=9)
     fig.clf()
@@ -656,7 +695,7 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
         srh_counts = {}
         rewards = {}  # 50 - srtt / 1000
         reward_over_time = {}
-        weights = {}
+        weights = OrderedDict()
         first_sequence = -1
         start_time = 0
         srh_over_time = {}
@@ -670,7 +709,7 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
             rewards.setdefault(snap.last_srh_id_chosen, []).append(
                 snap.last_reward)
 
-            rel_time = snap.time - start_time
+            rel_time = (snap.time - start_time) / 10**9  # in seconds
             srh_over_time.setdefault(snap.last_srh_id_chosen, []).append(
                 (rel_time, snap.last_srh_id_chosen))
             reward_over_time.setdefault(snap.last_srh_id_chosen, []).append(
@@ -679,6 +718,11 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
             # Add the evolution of weights over time
             for idx, weight in enumerate(snap.weights):
                 weights.setdefault(idx, []).append((rel_time, weight))
+
+        # Remove not used weights, i.e., weights always set to 1
+        for idx in list(weights.keys()):
+            if all([1 - 10**-9 < w < 1 + 10**-9 for _, w in weights[idx]]):
+                del weights[idx]
 
         for id, count in srh_counts.items():
             print("{} - {}".format(id, count))
@@ -697,11 +741,11 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
                   ylabel="Path selection",
                   figure_name=times_figure_name + ".selections",
                   output_path=output_path)
-        plot_time(weights, labels={MAX_PATHS_BY_DEST: "stable",
-                                   MAX_PATHS_BY_DEST + 1: "unstable"},
-                  ylabel="Expert weights",
-                  figure_name=times_figure_name + ".weights",
-                  output_path=output_path)
+        subplot_time(weights, labels={0: "Path 0", 1: "Path 1", MAX_PATHS_BY_DEST: "stable",
+                                      MAX_PATHS_BY_DEST + 1: "unstable"},
+                     ylabel="Experts' weights",
+                     figure_name=times_figure_name + ".weights",
+                     output_path=output_path)
 
         duration_over_time = {"TPC": exp.abs.first().latency_over_time()}
         labels = {"TPC": "TPC", "ECMP": "ECMP"}
@@ -718,6 +762,120 @@ def plot_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment],
                   ylabel="Request completion (ms)", colors=colors,
                   figure_name=times_figure_name + ".latencies",
                   output_path=output_path)
+
+
+def plot_non_aggregated_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment], output_path):
+    colors = {
+        "TPC": "orangered",
+    }
+
+    done_topos = {}
+    for exp in flowbender_experiments:
+        if "paths.light" not in exp.topology:
+            continue  # XXX We only consider failure plots here
+
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s@%s" % (topo_base, demands_base, exp.random_strategy)
+        if done_topos.get(key):  # Only take the most recent experiment
+            continue
+        done_topos[key] = True
+
+        times_figure_name = "iperf_throughput_%s.times" % key
+
+        srh_counts = {}
+        first_sequence = -1
+        start_time = 0
+        srh_over_time = {}
+        for db_snap in exp.snapshots.all():
+            snap = FlowBenderSnapshot.retrieve_from_hex(db_snap.snapshot_hex)
+            if first_sequence == -1:
+                first_sequence = snap.seq
+                start_time = snap.time
+            srh_counts.setdefault(snap.srh_id, 0)
+            srh_counts[snap.srh_id] += 1
+
+            rel_time = (snap.time - start_time) / 10**9  # in seconds
+            srh_over_time.setdefault(snap.srh_id, []).append((rel_time, snap.srh_id))
+
+        for id, count in srh_counts.items():
+            print("{} - {}".format(id, count))
+
+        plot_time(srh_over_time, ylabel="Path selection",
+                  figure_name=times_figure_name + ".selections",
+                  output_path=output_path)
+
+        throughput = {"TPC": exp.iperfs.first().connections.first().throughput_over_time()}
+        print(throughput)
+        print(exp.iperfs.first().connections.first().max_volume)
+        print(exp.iperfs.first().connections.first().bw_samples.count())
+        plot_time(throughput, ylabel="Request completion (ms)", colors=colors,
+                  figure_name=times_figure_name + ".throughput",
+                  output_path=output_path)
+
+
+def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
+                            output_path):
+
+    counter = 100  # Only take the 100 most recent experiment
+
+    exp_by_key = {}
+    for exp in flowbender_experiments:
+        if "paths.light" not in exp.topology or exp.tc_changes is None:
+            continue  # XXX We only consider failure plots here
+
+        tc_changes = json.loads(exp.tc_changes)
+        if len(tc_changes) == 0:
+            continue  # We need something to be broken to make it work
+
+        topo_base = os.path.basename(exp.topology)
+        demands_base = os.path.basename(exp.demands)
+        key = "%s@%s@%s" % (topo_base, demands_base, exp.random_strategy)
+        if counter != 0:
+            counter -= 1
+            exp_by_key.setdefault(key, []).append(exp)
+        else:
+            continue
+
+    for key, exp_list in exp_by_key.items():
+        stable_reaction_times = []  # XXX Only tackle one failure
+        sender_reaction_times = []  # XXX Only tackle one failure
+        times_figure_name = "iperf_throughput_%s.cdf" % key
+
+        for exp in exp_list:  # Multiple runs of the same setup
+            failure_time = json.loads(exp.tc_changes)[0][0]  # seconds since epoch
+            failure_time_monotonic = int((failure_time - exp.monotonic_realtime_delta) * 10**9)  # in ns
+
+            times = []
+            for k, snaps in exp.snapshot_by_connection().items():
+                snaps.sort()
+                start_path = -1
+                stable_reaction_time = -1  # The last change made after the failure
+                for snap in snaps:
+                    if start_path == -1:
+                        start_path = snap.srh_id
+                    elif start_path != snap.srh_id and failure_time_monotonic < snap.time:  # Reaction after one failure
+                        # XXX Adapt for multiple failures in a single connection
+                        stable_reaction_time = snap.time - failure_time_monotonic
+                        print(f"One recover after {stable_reaction_time}")
+
+                if stable_reaction_time > 0:
+                    times.append(stable_reaction_time)
+
+            if len(times) > 0:
+                sender_reaction_times.append(times[0] // 10**6)
+            if len(times) > 1:
+                stable_reaction_times.append(times[1] // 10**6)
+
+        print(sender_reaction_times)
+        print(stable_reaction_times)
+        # Actual CDF plot of stable_reaction_times
+        plot_cdf({"Receiver recovery": stable_reaction_times, "Sender recovery": sender_reaction_times},
+                 {"Receiver recovery": "orangered", "Sender recovery": "#00B0F0"},
+                 {"Receiver recovery": ".", "Sender recovery": "s"},
+                 {"Receiver recovery": "Receiver recovery", "Sender recovery": "Sender recovery"},
+                 "Reaction time to failure (ms)",
+                 times_figure_name, output_path)
 
 
 if __name__ == "__main__":
