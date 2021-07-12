@@ -1,4 +1,5 @@
 import os
+import shutil
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session
@@ -15,8 +16,13 @@ db_path = os.path.join(os.path.abspath(os.environ["HOME"]),
                        "srv6-rerouting.sqlite")
 
 
-def get_connection() -> Session:
-    engine = create_engine('sqlite:///{}'.format(db_path), echo=False)
+def get_connection(readonly=False) -> Session:
+    if readonly:
+        ramdisk_path = os.path.join("/tmp", os.path.basename(db_path))
+        shutil.copy(db_path, ramdisk_path)
+        engine = create_engine('sqlite:///{}'.format(ramdisk_path), echo=False)
+    else:
+        engine = create_engine('sqlite:///{}'.format(db_path), echo=False)
     SQLBaseModel.metadata.create_all(engine)
     session = sessionmaker(bind=engine)()
     return session

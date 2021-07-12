@@ -44,12 +44,12 @@ class RerouteIntf(SRNIntf):
 
             cmds += ['%s qdisc add dev %s {parent} handle 5:0 htb default 1'.format(parent=parent),
                      '%s class add dev %s parent 5:0 classid 5:1 htb ' +
-                     'rate %dMbit burst %s' % (int(bw), 394365)]
+                     'rate %dMbit burst %s' % (int(bw), 15000)]
             parent = ' parent 5:1 '
 
             # FQCodel # TODO Parametrize
             if enable_ecn:
-                cmds += ['%s qdisc add dev %s {parent} handle 4: fq_codel '
+                cmds += ['%s qdisc add dev %s {parent} handle 4: codel '  # XXX or fq_codel
                          # 'interval 10ms target 5ms '  # limit 1000
                          'ecn'.format(parent=parent)]
                 parent = ' parent 4: '

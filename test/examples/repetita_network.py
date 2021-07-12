@@ -1,14 +1,20 @@
-
 import os
 import string
+import subprocess
+import time
 from shlex import split
-from typing import Union
+from typing import Union, Optional, Tuple, List
 
+from ipmininet.cli import IPCLI
+from ipmininet.router import IPNode
+from pyroute2 import IPRoute
 from srnmininet.srntopo import SRNTopo
-from reroutemininet.net import ReroutingNet
 
+from eval.utils import MEASUREMENT_TIME
 from reroutemininet.config import Lighttpd
 from reroutemininet.host import ReroutingHostConfig
+from reroutemininet.link import RerouteIntf
+from reroutemininet.net import ReroutingNet
 from reroutemininet.topo import SRReroutedCtrlDomain
 
 MAX_QUEUE = 1000000000
@@ -22,7 +28,7 @@ class RepetitaEdge:
         self.dest = int(dest)
 
         self.weight_src = int(weight)
-        self.bw_src = int(int(bw) / 10**3)  # Mbps
+        self.bw_src = int(int(bw) / 10 ** 3)  # Mbps
         self.delay_src = int(delay)
 
         self.weight_dst = -1
@@ -66,7 +72,7 @@ class RepetitaEdge:
                                      "igp_metric": self.weight_dst})
 
     def __str__(self):
-        return "<Edge %s (%s to %s) params_src (%s %s %s) params_dest (%s %s %s)>" %\
+        return "<Edge %s (%s to %s) params_src (%s %s %s) params_dest (%s %s %s)>" % \
                (self.label, self.src, self.dest,
                 self.weight_src, self.bw_src, self.delay_src,
                 self.weight_dst, self.bw_dst, self.delay_dst)
@@ -74,42 +80,107 @@ class RepetitaEdge:
 
 class LinkChange:
 
-    def __init__(self, time: Union[int, str], src: str, switch: str, dest: str,
-                 weight: int, bw: float, delay: int):
+    def __init__(self, topo: 'RepetitaTopo', time: Union[int, str], src: str, switch: str, dest: str,
+                 weight: int, bw: float, delay: int, ddos: Optional[str] = None):
         self.time = int(time)
         self.src = src
         self.switch = switch
         self.dest = dest
         self.weight = int(weight)
-        self.bw = int(int(bw) / 10**3)  # Mbps
+        self.bw = int(int(bw) / 10 ** 3)  # Mbps
         self.delay = int(delay)
         self.applied_cmd = ""
+        self.applied_time = -1  # The time right before applying the TC
+        self.ddos = ddos and bool(int(ddos))
+        self.pid_to_clean: List[subprocess.Popen] = []
+        self.file = open(f"test_{self.src}.json", "w")  # TODO remove
 
-    def apply(self, net: ReroutingNet):
+        if self.ddos:
+            if "h" + self.dest not in topo.hosts():
+                topo.addHost("h" + self.dest)
+                topo.addLink("h" + self.dest, self.dest)
+            if "h" + self.src not in topo.hosts():
+                topo.addHost("h" + self.src)
+                topo.addLink("h" + self.src, self.src)
+
+    def link_params(self, net: ReroutingNet) -> Tuple[IPNode, RerouteIntf, RerouteIntf]:
         switch = net[self.switch]
         dest = net[self.dest]
         link = net.linksBetween(switch, dest)[0]
         if link.intf1.node == switch:
             intf = link.intf1
+            dest_itf = link.intf2
         else:
             intf = link.intf2
+            dest_itf = link.intf1
+        return dest, intf, dest_itf
 
-        if self.bw == 0:  # Loss of 100% if no bandwidth can pass => also blocks ICMPs
-            self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
-                               " netem delay {delay}ms loss 100%".format(intf=intf.name, delay=self.delay)
-            print(self.applied_cmd)
+    def apply(self, net: ReroutingNet):
+
+        if self.ddos:  # Start a iperf3 in UDP to emulate a DDoS on the link
+            dest = net["h" + self.dest]
+            self.pid_to_clean.append(dest.popen("iperf3 -s --one-off", stdout=subprocess.PIPE, stderr=subprocess.PIPE,
+                                                universal_newlines=True))
+            time.sleep(0.5)
+            cmd = f"iperf3 -u -c {dest.intf().ip6} -t {MEASUREMENT_TIME} -b {self.bw}M"
+            self.pid_to_clean.append(net["h" + self.src].popen(cmd, stdout=self.file,
+                                                               stderr=subprocess.STDOUT, universal_newlines=True))
+            self.applied_time = time.monotonic()
+            print("UDDDDDDDDDDDDDDDDDDDPPPPPPPPPPPPPPPPPPPPPPPPP")
         else:
-            # Change netem
-            self.applied_cmd = "tc qdisc change dev {intf} root handle 10:" \
-                               " netem delay {delay}ms".format(intf=intf.name,
-                                                               delay=self.delay)
-            print(self.applied_cmd)
-        out, err, code = switch.pexec(split(self.applied_cmd))
-        if code != 0:
-            raise Exception("Error {code} running tc cmd '{cmd}':"
-                            "\n[stdout]\n{stdout}\n[stderr]\n{stderr}"
-                            .format(code=code, cmd=self.applied_cmd,
-                                    stdout=out, stderr=err))
+            dest, intf, dest_itf = self.link_params(net)
+            ipr = IPRoute()
+            if self.bw == 0:  # Loss of 100% if no bandwidth can pass => also blocks ICMPs
+                dev = ipr.link_lookup(ifname=intf.name)[0]
+                ipr.link("set", index=dev, state="down")  # TODO temporary
+                # ipr.tc("add", "netem", dev, parent="10:", handle="20:", delay=str(self.delay), loss=100, limit=1)
+                self.applied_time = time.monotonic()
+                print("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+                print(self.applied_time)
+                print("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK")
+            else:
+                # Change netem
+                dev = ipr.link_lookup(ifname=intf.name)[0]
+                ipr.tc("change", "netem", dev, handle="10:", delay=str(self.delay), loss=0, limit=MAX_QUEUE)  # TODO Too large queue
+                ipr.tc("delete", "netem", dev, parent="10:", handle="20:")  # TODO Will fail if no loss before...
+                self.applied_time = time.monotonic()
+
+    def revert(self, net: ReroutingNet):
+        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+        dest, intf, dest_itf = self.link_params(net)
+        if self.ddos:
+            self.clean()
+        else:
+            ipr = IPRoute()
+            dev = ipr.link_lookup(ifname=intf.name)[0]
+            if self.bw == 0:
+                ipr.link("set", index=dev, state="up")  # TODO temporary
+                # TODO print(ipr.tc("delete", "netem", dev, parent="10:", handle="20:"))
+            else:
+                print(ipr.tc("delete", "netem", dev, handle="10:"))
+        print("GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG")
+
+    def clean(self):
+        self.file.close()  # TODO remove
+        for pid in self.pid_to_clean:
+            if pid.poll() is None:
+                pid.kill()
+            print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+            print(pid.args)
+            # print(pid.stdout.readlines())
+            # print(pid.stderr.readlines())
+            print("ZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZZ")
+
+    def serialize(self):
+        return {
+            "time": self.time,
+            "src": self.src,
+            "dest": self.dest,
+            "weight": self.weight,
+            "bw": self.bw,
+            "delay": self.delay,
+            "applied_time": self.applied_time
+        }
 
     def __lt__(self, other):
         return (self.time < other.time or
@@ -122,14 +193,14 @@ class LinkChange:
                 self.dest == other.dest)
 
     def __str__(self):
-        return "LinkChange<cmd='{}'>".format(self.applied_cmd)
+        return "LinkChange<cmd='{}'>".format(self.serialize())
 
 
 class RepetitaTopo(SRNTopo):
 
     def __init__(self, repetita_graph=None, schema_tables=None,
                  rerouting_enabled=True, bw=None, ebpf=True, json_demands=(),
-                 localctrl_opts=None, *args, **kwargs):
+                 localctrl_opts=None, enable_ecn=True, *args, **kwargs):
         self.repetita_graph = repetita_graph
         self.schema_tables = schema_tables
         self.rerouting_enabled = rerouting_enabled
@@ -141,6 +212,8 @@ class RepetitaTopo(SRNTopo):
         self.localctrl_opts = localctrl_opts if localctrl_opts else {}
         self.inter_switches = {}
         self.pending_changes = []
+        self.applied_changes = []
+        self.enable_ecn = enable_ecn
         super().__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -169,7 +242,7 @@ class RepetitaTopo(SRNTopo):
         edge_dict = {}
         access_routers = []
         with open(self.repetita_graph) as fileobj:
-            nbr_nodes = int(fileobj.readline().split(" ")[1]) # NODES XXX
+            nbr_nodes = int(fileobj.readline().split(" ")[1])  # NODES XXX
             fileobj.readline()  # label x y
             for i in range(nbr_nodes):
                 label, _, _ = fileobj.readline().split(" ")  # Node line
@@ -203,16 +276,18 @@ class RepetitaTopo(SRNTopo):
                 nbr_changes = int(fileobj.readline().split(" ")[1])
                 fileobj.readline()  # time src dest weight bw delay
                 for i in range(nbr_changes):
-                    time, src, dest, weight, bw, delay = \
+                    time, src, dest, weight, bw, delay, *other = \
                         fileobj.readline().split(" ")  # Change line
                     src = int(src)
                     dest = int(dest)
                     intermediate_switch = self.inter_switches[
                         node_index[src]][node_index[dest]]
-                    change = LinkChange(time, node_index[src],
+                    change = LinkChange(self, time, node_index[src],
                                         intermediate_switch,
-                                        node_index[dest], weight, bw, delay)
+                                        node_index[dest], weight, bw, delay, *other)
                     self.pending_changes.append(change)
+            except IndexError:  # If the end of the file, there isn't any change
+                pass
             except IOError:  # If the end of the file, there isn't any change
                 pass
 
@@ -228,7 +303,7 @@ class RepetitaTopo(SRNTopo):
         routers = self.routers()
         controller = self.addRouter("controller")
         # Be sure that this is not the bottleneck link (i.e, 100Gbps, 1ms)
-        self.addLink(routers[0], controller, delay="1ms", bw=10**5)
+        self.addLink(routers[0], controller, delay="1ms", bw=10 ** 5)
 
         # Configure SRN with rerouting
         if self.ebpf:
@@ -267,13 +342,13 @@ class RepetitaTopo(SRNTopo):
             # we remove tc on these links
             # source: https://progmp.net/mininetPitfalls.html
             print(opts)
-            default_params1 = {"bw": bw, "enable_ecn": True}
+            default_params1 = {"bw": bw, "enable_ecn": self.enable_ecn}
             default_params1.update(opts.get("params1", {}))
             opts1["params1"] = default_params1
             # opts1["params1"]["delay"] = "5ms"
             # opts1["params1"]["max_queue_size"] = MAX_QUEUE
 
-            default_params2 = {"bw": bw, "enable_ecn": True}
+            default_params2 = {"bw": bw, "enable_ecn": self.enable_ecn}
             default_params2.update(opts.get("params2", {}))
             opts2["params2"] = default_params2
             # opts2["params2"]["delay"] = "5ms"

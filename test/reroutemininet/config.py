@@ -25,6 +25,7 @@ class SRLocalCtrl(SRNDaemon):
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
     EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
     FLOW_BENDER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flowbender.o")
+    FLOW_BENDER_TIMER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flowbender_timer.o")
     SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
     SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
         "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
@@ -46,8 +47,8 @@ class SRLocalCtrl(SRNDaemon):
 
     @classmethod
     def all_programs(cls):
-        return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM,
-                cls.SHORT_EBPF_PROGRAM_COMPLETION]
+        return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.FLOW_BENDER_TIMER_EBPF_PROGRAM,
+                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION]
 
     def set_defaults(self, defaults):
         super().set_defaults(defaults)

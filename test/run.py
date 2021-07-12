@@ -8,7 +8,7 @@ from mininet.log import LEVELS
 from mininet.log import lg as log
 
 from eval.repetita_eval import eval_repetita, short_flows, \
-    short_flows_completion, eval_flowbender
+    short_flows_completion, eval_flowbender, eval_flowbender_timer
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.config import SRLocalCtrl
@@ -43,6 +43,7 @@ tests = {
     "unit": launch_all_tests,
     "eval-repetita": eval_repetita,
     "flowblender": eval_flowbender,
+    "flowblender_timer": eval_flowbender_timer,
     "short-flows": short_flows,
     "short-flows-completion": short_flows_completion
 }
@@ -63,6 +64,8 @@ def parse_args():
     parser.add_argument('--test', help='Test name to perform', choices=tests,
                         default='mininet-cli')
     parser.add_argument('--repetita-topo', help='Gives the path to a Repetita topology (only for repetita tests)',
+                        default=None)
+    parser.add_argument('--repetita-demand', help='Gives the path to a Repetita demand (only for repetita tests)',
                         default=None)
     parser.add_argument('--repetita-dir', help='Gives the path to a Repetita directory (only for repetita tests)',
                         default=None)

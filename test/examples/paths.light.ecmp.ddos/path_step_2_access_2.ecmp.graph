@@ -33,6 +33,6 @@ Link_18 3 7 100 100000 1
 Link_19 7 3 100 100000 1
 
 CHANGES 2
-time src dest weight bw delay
-10 5 4 1 0 0
-10 4 5 1 0 0
+time src dest weight bw delay ddos
+10 5 4 1 700000 0 1
+10 4 5 1 700000 0 1

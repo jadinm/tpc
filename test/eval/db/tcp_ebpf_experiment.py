@@ -1,5 +1,5 @@
 import numpy
-from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float,\
+from sqlalchemy import Column, Integer, String, Boolean, DateTime, Float, \
     BigInteger
 from sqlalchemy.orm import relationship
 
@@ -49,15 +49,19 @@ class TCPeBPFExperiment(SQLBaseModel):
     snapshots = relationship("SnapshotDBEntry", backref="experiment",
                              lazy='dynamic')
 
+    def snap_class(self):
+        return FlowBenderSnapshot \
+            if self.random_strategy == "flowbender" or self.random_strategy == "flowbender_timer" else Snapshot
+
     def data_related_snapshots(self):
         """Filter out snapshots caused by iperf control connections"""
-        snapclass = FlowBenderSnapshot if self.random_strategy == "flowbender" else Snapshot
         filtered_snaps = []
         for s in self.snapshots.all():
             found = False
             for i in self.iperfs.all():
                 for flow_tuple in i.flow_tuples():
-                    found = len(flow_tuple) == 0 or snapclass.retrieve_from_hex(s.snapshot_hex).is_from_connection(flow_tuple)
+                    found = len(flow_tuple) == 0 \
+                            or self.snap_class().retrieve_from_hex(s.snapshot_hex).is_from_connection(flow_tuple)
                     if found:
                         break
                 if found:
@@ -66,8 +70,7 @@ class TCPeBPFExperiment(SQLBaseModel):
         return filtered_snaps
 
     def snapshot_by_connection(self):
-        snapclass = FlowBenderSnapshot if self.random_strategy == "flowbender" else Snapshot
-        snapshots = [snapclass.retrieve_from_hex(s.snapshot_hex) for s in self.data_related_snapshots()]
+        snapshots = [self.snap_class().retrieve_from_hex(s.snapshot_hex) for s in self.data_related_snapshots()]
         snapshot_by_connection = {}
         for s in snapshots:
             snapshot_by_connection.setdefault(s.conn_key(), []).append(s)
@@ -175,7 +178,7 @@ class TCPeBPFExperiment(SQLBaseModel):
             nbr_changes = -1  # The first path does not count as "change"
             last_idx = -1
             for snap in v:
-                exp3_last_prob_by_conn.setdefault(k, [])\
+                exp3_last_prob_by_conn.setdefault(k, []) \
                     .append((snap.time, snap.exp3_last_prob))
                 if last_idx != snap.srh_id:
                     last_idx = snap.srh_id

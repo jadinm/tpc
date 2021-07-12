@@ -9,6 +9,7 @@ from datetime import datetime
 from shlex import split
 from typing import List
 
+from ipmininet.cli import IPCLI
 from ipmininet.tests.utils import assert_connectivity
 
 from examples.repetita_network import RepetitaTopo
@@ -19,7 +20,7 @@ from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot, FlowBenderSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, SnapshotShortDBEntry, ABLatencyCDF, ABResults, \
     ABLatency, ShortTCPeBPFExperiment, IPerfBandwidthSample, SnapshotDBEntry
-from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR
+from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR, FLOWBENDER_MEASUREMENT_TIME
 
 
 # LINK_BANDWIDTH = 100
@@ -65,7 +66,7 @@ def get_wait_unstable_rtt():
 
 
 def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, clamp,
-                 iperfs_db, ebpf=True):
+                 iperfs_db, ebpf=True, measurement_time=MEASUREMENT_TIME):
     """
     :param net: The Network object
     :param clients: The list of client node names
@@ -116,7 +117,7 @@ def launch_iperf(lg, net, clients, servers, result_files, nbr_flows, clamp,
               "-B {client_ip} -i {intervals} -p {port} -b {clamp}M" \
             .format(server_ip=get_addr(net[servers[i]]),
                     client_ip=get_addr(net[client]),
-                    nbr_connections=nbr_flows[i], duration=MEASUREMENT_TIME,
+                    nbr_connections=nbr_flows[i], duration=measurement_time,
                     intervals=INTERVALS, port=ports[i], clamp=clamp[i])
         print("%s %s" % (client, cmd))
         iperfs_db[i].cmd_client = cmd
@@ -177,16 +178,21 @@ def get_repetita_topos(args):
         repetita_topo = os.path.abspath(args.repetita_topo)
         topo_name = os.path.basename(args.repetita_topo)
         print(args.repetita_topo)
-        for root, directories, files in os.walk(os.path.dirname(repetita_topo)):
-            for f in files:
-                if ".flows" in f and topo_name.split(".graph")[0] in f:
-                    topos.setdefault(repetita_topo, []).append(
-                        os.path.join(root, f))
+
+        if args.repetita_demand is None:
+            # Demands are to be derived from the topo name
+            for root, directories, files in os.walk(os.path.dirname(repetita_topo)):
+                for f in files:
+                    if ".flows" in f and topo_name.split(".graph")[0] in f:
+                        topos.setdefault(repetita_topo, []).append(os.path.join(root, f))
+        else:
+            # Allow to specify both topo AND demand
+            topos.setdefault(repetita_topo, []).append(args.repetita_demand)
     return topos
 
 
 def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
-              ebpf=True) -> List[subprocess.Popen]:
+              ebpf=True, measurement_time=MEASUREMENT_TIME) -> List[subprocess.Popen]:
     try:
         subprocess.check_call(split("pkill iperf3"))
         subprocess.check_call(split("pkill ab"))
@@ -205,7 +211,7 @@ def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
         cmd = "ab -v 0 -c {nbr_connections} -t {duration} -e {csv_file} " \
               "http://[{server_ip}]:8080/mock_file" \
             .format(server_ip=get_addr(net[servers[i]]), csv_file=csv_files[i],
-                    nbr_connections=nbr_flows[i], duration=MEASUREMENT_TIME)
+                    nbr_connections=nbr_flows[i], duration=measurement_time)
         db_entry[i].cmd_client = cmd
         print(client)
         print(cmd)
@@ -216,12 +222,12 @@ def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
     return pid_clients
 
 
-def trace_analysis(db_entry: ABResults):
+def trace_analysis(db_entry: ABResults, cwd: str):
     path = os.path.join(TEST_DIR, "report_throughput_latency/target/"
                                   "debug/report_throughput_latency")
     out = subprocess.check_output(split("{} {}.pcapng 0 0"
                                         .format(path, db_entry.client)),
-                                  universal_newlines=True)
+                                  universal_newlines=True, cwd=cwd)
     print("pcap analysis")
     data = json.loads(out)["latency"]
     print(data)
@@ -231,7 +237,7 @@ def trace_analysis(db_entry: ABResults):
                       latency=conn_data["request_duration_micro"]))
 
 
-def parse_ab_output(csv_files, db_entry: List[ABResults]):
+def parse_ab_output(csv_files, db_entry: List[ABResults], cwd: str):
     for i, cvs_file in enumerate(csv_files):
         with open(cvs_file) as file_obj:
             raw_data = file_obj.read()
@@ -246,7 +252,7 @@ def parse_ab_output(csv_files, db_entry: List[ABResults]):
                     ABLatencyCDF(
                         percentage_served=float(row["Percentage served"]),
                         time=float(row["Time in ms"])))
-            trace_analysis(db_entry[i])
+            trace_analysis(db_entry[i], cwd=cwd)
 
 
 def get_xp_params():
@@ -265,19 +271,26 @@ def short_flows_completion(lg, args, ovsschema):
 
 
 def apply_changes(seconds_since_start: float, net: ReroutingNet):
-    applied_changes = []
     for change in net.topo.pending_changes:
         if change.time <= seconds_since_start:
             change.apply(net)
-            print("CHAAAAANGE APPLIED: {}".format(change))
-            applied_changes.append(change)
+            print("CHANGE APPLIED: {}".format(change))
+            net.topo.applied_changes.append(change)
 
     net.topo.pending_changes = \
-        sorted(list(filter(lambda x: x not in applied_changes,
+        sorted(list(filter(lambda x: x not in net.topo.applied_changes,
                            net.topo.pending_changes)))
 
     # if len(applied_changes) >= 1:
     #     IPCLI(net)  # TODO Remove
+
+
+def revert_changes(net: ReroutingNet):
+    for change in net.topo.applied_changes:
+        change.revert(net)
+
+    if len(net.topo.applied_changes) > 0:
+        time.sleep(5)
 
 
 def short_flows(lg, args, ovsschema, completion_ebpf=False):
@@ -369,6 +382,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                     print(path)
                 print(clients)
                 print(servers)
+                print(nbr_flows)
 
                 # IPCLI(net)  # TODO Remove
 
@@ -377,12 +391,12 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 if args.tcpdump:
                     tcpdump_hosts += servers + [r.name for r in net.routers]
                 for n in tcpdump_hosts:
-                    cmd = "tshark -F pcapng -w {}.pcapng ip6".format(n)
+                    cmd = "tshark -F pcapng -w {}.pcapng ip6".format(os.path.join(cwd, n))
                     tcpdumps.append(net[n].popen(cmd))
 
                 pid_abs = launch_ab(lg, net, clients, servers, nbr_flows,
                                     db_entry=tcp_ebpf_experiment.abs,
-                                    csv_files=csv_files, ebpf=args.ebpf)
+                                    csv_files=csv_files, ebpf=args.ebpf, measurement_time=MEASUREMENT_TIME)
                 if len(pid_abs) == 0:
                     return
 
@@ -445,7 +459,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                         os.path.basename(topo))
 
                 # Parse and save csv file
-                parse_ab_output(csv_files, tcp_ebpf_experiment.abs)
+                parse_ab_output(csv_files, tcp_ebpf_experiment.abs, cwd)
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
                 db.commit()  # Commit
@@ -460,20 +474,34 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                     err, os.path.basename(topo)))
 
 
+def eval_flowbender_timer(lg, args, ovsschema):
+    return eval_repetita(lg, args, ovsschema, flowbender_timer=True)
+
+
 def eval_flowbender(lg, args, ovsschema):
     return eval_repetita(lg, args, ovsschema, flowbender=True)
 
 
-def eval_repetita(lg, args, ovsschema, flowbender=False):
+def eval_repetita(lg, args, ovsschema, flowbender=False, flowbender_timer=False):
     topos = get_repetita_topos(args)
     os.mkdir(args.log_dir)
 
     lg.info("******* %d Topologies to test *******\n" % len(topos))
 
+    measurement_time = MEASUREMENT_TIME
+
     db = get_connection()
     params = get_xp_params()
     if flowbender:
         params["random_strategy"] = "flowbender"
+        program = SRLocalCtrl.FLOW_BENDER_EBPF_PROGRAM
+        measurement_time = FLOWBENDER_MEASUREMENT_TIME
+    elif flowbender_timer:
+        params["random_strategy"] = "flowbender_timer"
+        program = SRLocalCtrl.FLOW_BENDER_TIMER_EBPF_PROGRAM
+        measurement_time = FLOWBENDER_MEASUREMENT_TIME
+    else:
+        program = SRLocalCtrl.EBPF_PROGRAM
 
     i = 0
     for topo, demands_list in topos.items():
@@ -502,19 +530,18 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 json_demands = json.load(fileobj)
             print("HHHHHHHHHHHHHHHHHHHH" + cwd)
             topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
-                         "always_redirect": True,
+                         "enable_ecn": not flowbender and not flowbender_timer,
                          "maxseg": -1, "repetita_graph": topo,
                          "ebpf": args.ebpf,
                          "json_demands": json_demands,
                          "localctrl_opts": {
-                             "long_ebpf_program": SRLocalCtrl.FLOW_BENDER_EBPF_PROGRAM if flowbender else SRLocalCtrl.EBPF_PROGRAM
+                             "long_ebpf_program": program
                          }}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
                                static_routing=True)
             result_files = []
             tcpdumps = []
-            tc_monitor = None
 
             subprocess.call("pkill -9 iperf".split(" "))
             subprocess.call("pkill -9 curl".split(" "))
@@ -555,26 +582,19 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                         print(BPFPaths.extract_info(net, net[node]))
                         break
 
-                # Monitor the changes of tc
-                tc_monitor = subprocess.Popen(split("tc -t monitor"),
-                                              universal_newlines=True, stderr=subprocess.PIPE, stdout=subprocess.PIPE)
-                time.sleep(1)
-                assert tc_monitor.poll() is None, \
-                    "Cannot start tc_monitor '{}' '{}'".format(tc_monitor.stdout.read(), tc_monitor.stderr.read())
-
                 # Launch tcpdump on all clients, servers and routers
                 if args.tcpdump:
                     for n in clients + servers + [r.name for r in net.routers]:
-                        cmd = "tshark -F pcapng -w {}.pcapng ip6".format(n)
+                        cmd = "tshark -F pcapng -w {}.pcapng ip6".format(os.path.join(cwd, n))
                         tcpdumps.append(net[n].popen(cmd))
 
-                result_files = [open("%d_results_%s_%s.json"
+                result_files = [open(os.path.join(cwd, "%d_results_%s_%s.json")
                                      % (i, clients[i], servers[i]), "w")
                                 for i in range(len(clients))]
                 pid_servers, pid_clients = \
                     launch_iperf(lg, net, clients, servers, result_files,
                                  nbr_flows, clamp, tcp_ebpf_experiment.iperfs,
-                                 ebpf=args.ebpf)
+                                 ebpf=args.ebpf, measurement_time=measurement_time)
                 if len(pid_servers) == 0:
                     return
 
@@ -583,8 +603,8 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 # Measure load on each interface
                 start_time = time.time()
                 snapshots = {h: [] for h in clients + servers}
-                snap_class = FlowBenderSnapshot if flowbender else Snapshot
-                while time.time() - start_time < MEASUREMENT_TIME:
+                snap_class = FlowBenderSnapshot if flowbender or flowbender_timer else Snapshot
+                while time.time() - start_time < measurement_time:
                     # Extract snapshot info from eBPF
                     if args.ebpf:
                         for h in snapshots.keys():
@@ -597,7 +617,11 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                     time.sleep(0.1)
 
                 # IPCLI(net)  # TODO Remove
-                time.sleep(5)
+
+                # Allow iperf control connection to recover fast
+                revert_changes(net)
+
+                # IPCLI(net)  # TODO Remove
 
                 print("Check servers ending")
                 for i, pid in enumerate(pid_servers):
@@ -605,22 +629,14 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                         lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
                         print("ERROR 0")
                         pid.send_signal(signal.SIGTERM)
-                        pid.wait()
+                        pid.wait(10)
                         print("ERROR 1")
-                        for line in pid.stderr.readlines():
-                            print("\t%s" % line[:-1])
                         pid.kill()
 
                 print("Check clients ending")
                 for i, pid in enumerate(pid_clients):
                     if pid.poll() is None:
                         lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
-                        print("OUTPUT")
-                        for line in pid.stdout.readlines():
-                            print("\t%s" % line[:-1])
-                        print("ERROR")
-                        for line in pid.stderr.readlines():
-                            print("\t%s" % line[:-1])
                         pid.kill()
 
                 # Recover eBPF maps
@@ -638,9 +654,6 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
             #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
             #    continue
             finally:
-                if tc_monitor is not None:
-                    tc_monitor.kill()
-                    tc_monitor.wait()
 
                 for pid in tcpdumps:
                     pid.kill()
@@ -660,7 +673,7 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 lg.info("******* Saving results '%s' *******\n" %
                         os.path.basename(topo))
                 for i in range(len(clients)):
-                    with open("%d_results_%s_%s.json" % (i, clients[i], servers[i]), "r") as fileobj:
+                    with open(os.path.join(cwd, "%d_results_%s_%s.json" % (i, clients[i], servers[i])), "r") as fileobj:
                         results = json.load(fileobj)
                         iperf_db = tcp_ebpf_experiment.iperfs[i]
                         iperf_db.raw_json = json.dumps(results, indent=4)
@@ -678,6 +691,13 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                         tcp_ebpf_experiment.snapshots.append(
                             SnapshotDBEntry(snapshot_hex=snap.export(), host=h)
                         )
+
+                print(len(list(tcp_ebpf_experiment.snapshots)))
+                print("JJJJJJJJJJJJJJJJJJJJJJJJ")
+                for snap_entry in tcp_ebpf_experiment.data_related_snapshots():
+                    snap = tcp_ebpf_experiment.snap_class().retrieve_from_hex(snap_entry.snapshot_hex)
+                    print(snap.time, snap.operation)
+                print("JJJJJJJJJJJJJJJJJJJJJJJJ")
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
 
@@ -685,14 +705,10 @@ def eval_repetita(lg, args, ovsschema, flowbender=False):
                 tcp_ebpf_experiment.monotonic_realtime_delta = time.time() - time.monotonic()
 
                 tc_changes = []
-                lines = tc_monitor.stdout.readlines()
-                for i in range(len(lines) // 2):
-                    print(lines[i * 2][:-1])
-                    try:
-                        real_time = datetime.strptime(lines[i * 2][:-1], "Timestamp: %a %b  %d %H:%M:%S %Y %f usec")
-                    except ValueError:
-                        real_time = datetime.strptime(lines[i * 2][:-1], "Timestamp: %a %b %d %H:%M:%S %Y %f usec")
-                    tc_changes.append([real_time.timestamp(), lines[i * 2 + 1][:-1]])
+                for change in net.topo.applied_changes:
+                    change.clean()
+                    if change.applied_time >= 0:
+                        tc_changes.append([change.applied_time, change.serialize()])
                 tcp_ebpf_experiment.tc_changes = json.dumps(tc_changes)
 
                 db.commit()

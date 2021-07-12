@@ -54,9 +54,13 @@ MAX_SEGMENTS_BY_SRH = 10
 class Snapshot:
     map_name = "stat_map_id"
 
-    def __init__(self, ebpf_map_entry):
+    RTO = 8
+    DUPACK = 17
+
+    def __init__(self, ebpf_map_entry, cpu=-1):
         # TODO Make the weight extraction depend on the define for the number
         #  of paths by destination
+        self.cpu = cpu
         self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port, \
         self.dst_port, self.srh_id, \
         self.last_move_time, self.rtt_count, \
@@ -95,14 +99,14 @@ class Snapshot:
             self.exp3_weights = floatings[1:]
 
     def __eq__(self, other):
-        return self.seq == other.seq
+        return self.seq == other.seq and self.cpu == other.cpu
 
     def conn_key(self):
         return str(self.src) + str(self.dst) + str(self.src_port) \
                + str(self.dst_port)
 
     def __lt__(self, other):
-        return self.seq < other.seq
+        return self.time < other.time or self.time == other.time and self.seq < other.seq
 
     @staticmethod
     def extract_floats(list_pair_floats) -> List[float]:
@@ -139,10 +143,13 @@ class Snapshot:
 
         snapshots = []
         for snap_raw in snapshots_raw:
-            hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
-            snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
-            if snap.seq > 0:  # Valid snapshot
-                snapshots.append(snap)
+            # "values" that contains a list of objets if a per-cpu info, the key "value" is present directly otherwise
+            values = snap_raw.get("values", [snap_raw])
+            for value_dict in values:
+                hex_str = "".join([byte_str[2:] for byte_str in value_dict["value"]])
+                snap = cls(ebpf_map_entry=bytes.fromhex(hex_str), cpu=value_dict.get("cpu", -1))
+                if snap.seq > 0:  # Valid snapshot
+                    snapshots.append(snap)
         snapshots.sort()
         return snapshots
 
@@ -179,9 +186,10 @@ class Snapshot:
 
 class FlowBenderSnapshot(Snapshot):
 
-    def __init__(self, ebpf_map_entry):
+    def __init__(self, ebpf_map_entry, cpu=-1):
         # TODO Make the weight extraction depend on the define for the number
         #  of paths by destination
+        self.cpu = cpu
         self.seq, self.time, _, src_1, src_2, dst_1, dst_2, self.src_port, \
         self.dst_port, self.srh_id, \
         self.last_move_time, self.rtt_count, \
@@ -197,28 +205,7 @@ class FlowBenderSnapshot(Snapshot):
         self.src = ip_address(self.ebpf_map_entry[16:32])
         self.dst = ip_address(self.ebpf_map_entry[32:48])
 
-    @classmethod
-    def extract_info(cls, node):
-        """Create the ordered list of valid snapshots taken a node"""
-
-        # Find the LocalCtrl object to get the map id
-        daemon = node.nconfig.daemon(SRLocalCtrl.NAME)
-        if daemon.stat_map_id == -1:
-            raise ValueError("Cannot find the id of the Stat eBPF map")
-
-        cmd = "{bpftool} map -j dump id {map_id}" \
-            .format(bpftool=BPFTOOL, map_id=getattr(daemon, cls.map_name))
-        out = subprocess.check_output(shlex.split(cmd)).decode("utf-8")
-        snapshots_raw = json.loads(out)
-
-        snapshots = []
-        for snap_raw in snapshots_raw:
-            hex_str = "".join([byte_str[2:] for byte_str in snap_raw["value"]])
-            snap = cls(ebpf_map_entry=bytes.fromhex(hex_str))
-            if snap.seq > 0:  # Valid snapshot
-                snapshots.append(snap)
-        snapshots.sort()
-        return snapshots
+        self.operation = struct.unpack("<I", ebpf_map_entry[96:100])[0] if len(ebpf_map_entry) > 96 else None
 
     def __str__(self):
         return "FlowBenderSnapshot<{seq}-{time}> for connection" \
@@ -231,9 +218,10 @@ class FlowBenderSnapshot(Snapshot):
 class ShortSnapshot(Snapshot):
     map_name = "short_stat_map_id"
 
-    def __init__(self, ebpf_map_entry):
+    def __init__(self, ebpf_map_entry, cpu=-1):
         # TODO Make the weight extraction depend on the define for the number
         #  of paths by destination
+        self.cpu = cpu
         self.seq, self.time, self.last_srh_id_chosen, self.last_reward = \
             struct.unpack("<IQIi",  # Start of flow_snapshot
                           ebpf_map_entry[:20])
