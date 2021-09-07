@@ -107,6 +107,11 @@ fn main() {
                 start_time = pkt_time;
             }
 
+            if start_time > pkt_time {
+                // Since we work with the system clock, it could have been updated while capturing traffic
+                start_time = pkt_time;
+            }
+
             if pkt_time.duration_since(start_time).unwrap() < start_offset {
                 continue
             }
