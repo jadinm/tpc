@@ -36,6 +36,9 @@ class ShortTCPeBPFExperiment(SQLBaseModel):
 
     completion_ebpf = Column(Boolean, default=False, nullable=False)
 
+    # tc changes
+    tc_changes = Column(String)  # json of the form [[sec_since_epoch, tc_command_1],...]
+
     # results
 
     abs = relationship("ABResults", backref="experiment", lazy='dynamic')

@@ -6,6 +6,7 @@ import subprocess
 from ipaddress import ip_address, ip_network
 from typing import List, Dict
 
+import numpy
 from ipmininet.utils import L3Router
 
 from reroutemininet.config import SRLocalCtrl
@@ -121,8 +122,13 @@ class Snapshot:
             # The list of bits
             x = [(mantissa >> y) % 2 for y in range(64)]
             x.reverse()
-            z = [(y * 2.0) ** (unbiased_exponent - i)
-                 for i, y in enumerate(x) if y != 0]
+            z = []
+            for i, y in enumerate(x):
+                if y != 0:
+                    try:
+                        z.append((y * 2.0) ** (unbiased_exponent - i))
+                    except OverflowError:
+                        z.append(numpy.inf)
             decimals.append(sum(z))
             i += 1
         return decimals
@@ -233,15 +239,16 @@ class ShortSnapshot(Snapshot):
 
         # Parse exp3 weights
         self.weights = []
-        try:
-            for i in range(MAX_EXPERTS):
-                mantissa, exponent = \
-                    struct.unpack("<QI",
-                                  ebpf_map_entry[idx_weight:idx_weight + 12])
-                idx_weight += 12
-                self.weights.extend(self.extract_floats([(mantissa, exponent)]))
-        except OverflowError:  # Too high weights
-            pass
+        for i in range(MAX_EXPERTS):
+            next_float = ebpf_map_entry[idx_weight:idx_weight + 12]
+            if i == MAX_PATHS_BY_DEST and len(next_float) == 0:
+                # EXP3 doesn't have experts
+                break
+            mantissa, exponent = \
+                struct.unpack("<QI",
+                              ebpf_map_entry[idx_weight:idx_weight + 12])
+            idx_weight += 12
+            self.weights.extend(self.extract_floats([(mantissa, exponent)]))
 
         # print(exp3_last_probability_mantissa)
         # print(exp3_last_probability_exponent)

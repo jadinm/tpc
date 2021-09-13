@@ -141,8 +141,9 @@ class LinkChange:
             else:
                 # Change netem
                 dev = ipr.link_lookup(ifname=intf.name)[0]
-                ipr.tc("change", "netem", dev, handle="10:", delay=str(self.delay), loss=0, limit=MAX_QUEUE)  # TODO Too large queue
-                ipr.tc("delete", "netem", dev, parent="10:", handle="20:")  # TODO Will fail if no loss before...
+                # TODO Too large queue
+                ipr.tc("change", "netem", dev, handle="10:", delay=str(self.delay * 1000), loss=0, limit=MAX_QUEUE)
+                print(f"DELAY CHANGED ON {intf.name} to {self.delay}")
                 self.applied_time = time.monotonic()
 
     def revert(self, net: ReroutingNet):
@@ -214,6 +215,7 @@ class RepetitaTopo(SRNTopo):
         self.pending_changes = []
         self.applied_changes = []
         self.enable_ecn = enable_ecn
+        self.stopping_time = -1
         super().__init__("controller", *args, **kwargs)
 
     def getFromIndex(self, idx):
@@ -286,6 +288,11 @@ class RepetitaTopo(SRNTopo):
                                         intermediate_switch,
                                         node_index[dest], weight, bw, delay, *other)
                     self.pending_changes.append(change)
+
+                # STOP XXX
+                fileobj.readline()  # Empty line
+                self.stopping_time = int(fileobj.readline().split(" ")[1])
+                print("KKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK ", self.stopping_time)
             except IndexError:  # If the end of the file, there isn't any change
                 pass
             except IOError:  # If the end of the file, there isn't any change

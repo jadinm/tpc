@@ -6,7 +6,7 @@ import shutil
 from mininet.log import LEVELS, lg
 
 from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
-from eval.plot.delay_exp3 import plot_ab_cdfs
+from eval.plot.delay_exp3 import plot_ab_cdfs, plot_aggregated_ab_cdfs
 from eval.plot.flowbender import plot_flowbender_failure
 from eval.utils import latexify
 from explore_data import explore_maxflow_json_files
@@ -51,10 +51,8 @@ if __name__ == "__main__":
             .order_by(ShortTCPeBPFExperiment.timestamp.desc()):
         if "single.path" in row.topology:
             single_path_delay_experiments.append(row)
-        elif row.ebpf:
-            delay_experiments.append(row)
         else:
-            ecmp_delay_experiments.append(row)
+            delay_experiments.append(row)
 
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
 
@@ -63,9 +61,10 @@ if __name__ == "__main__":
     # TODO plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=True)
     # TODO plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=False)
 
-    latexify(fig_height=1.9, columns=1)
-    plot_ab_cdfs(delay_experiments, single_path_delay_experiments,
-                 ecmp_delay_experiments, output_path=args.out_dir, hotnet_paper=True)
+    # latexify(fig_height=1.9, columns=1)
+    # plot_ab_cdfs(delay_experiments, single_path_delay_experiments,
+    #              ecmp_delay_experiments, output_path=args.out_dir, hotnet_paper=True)
+    plot_aggregated_ab_cdfs(delay_experiments, output_path=args.out_dir, hotnet_paper=False)
     # Plot comparison between ebpf topo or not
     # bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
     """

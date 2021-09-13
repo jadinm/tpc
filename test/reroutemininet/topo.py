@@ -52,17 +52,17 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
             for h in h_list:
                 # Load eBPF program
                 for program in SRLocalCtrl.all_programs():
-                    cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}"\
+                    cmd = "{bpftool} prog load {ebpf_program} {ebpf_load_path}" \
                           " type sockops" \
                         .format(bpftool=SRLocalCtrl.BPFTOOL,
                                 ebpf_program=program,
                                 ebpf_load_path=SRLocalCtrl.ebpf_load_path(h, program))
                     print(h + " " + cmd)
-                    processes.append(subprocess.Popen(shlex.split(cmd),
-                                                      stdout=subprocess.PIPE,
-                                                      stderr=subprocess.PIPE))
+                    processes.append((cmd, subprocess.Popen(shlex.split(cmd),
+                                                            stdout=subprocess.PIPE,
+                                                            stderr=subprocess.PIPE)))
 
-            for p in processes:
+            for cmd, p in processes:
                 stdout, stderr = p.communicate()
                 p.poll()
                 if stdout is not None:
@@ -70,7 +70,7 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
                 if stderr is not None:
                     print(stderr.decode("utf-8"))
                 if p.returncode != 0:
-                    print("ERROR %d while loading the eBPF program" % p.returncode)
+                    print("ERROR %d while loading the eBPF program ran with %s" % (p.returncode, cmd))
                     failed = True
                     break
             if failed:

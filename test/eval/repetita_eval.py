@@ -225,9 +225,11 @@ def launch_ab(lg, net, clients, servers, nbr_flows, db_entry, csv_files,
 def trace_analysis(db_entry: ABResults, cwd: str):
     path = os.path.join(TEST_DIR, "report_throughput_latency/target/"
                                   "debug/report_throughput_latency")
+    env = os.environ.copy()
+    env["RUST_BACKTRACE"] = "full"
     out = subprocess.check_output(split("{} {}.pcapng 0 0"
                                         .format(path, db_entry.client)),
-                                  universal_newlines=True, cwd=cwd)
+                                  universal_newlines=True, cwd=cwd, env=env)
     print("pcap analysis")
     data = json.loads(out)["latency"]
     print(data)
@@ -352,6 +354,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
             err = False
             csv_files = []
             tcpdumps = []
+            measurement_time = net.topo.stopping_time if net.topo.stopping_time > 0 else MEASUREMENT_TIME
             try:
                 net.start()
 
@@ -370,7 +373,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                     flow_sizes.append(d["volume"])  # kB
                     tcp_ebpf_experiment.abs.append(
                         ABResults(client=clients[-1], server=servers[-1],
-                                  timeout=MEASUREMENT_TIME,
+                                  timeout=measurement_time,
                                   volume=flow_sizes[-1]))
                     # Change size of served file
                     path = os.path.join(
@@ -388,15 +391,19 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
 
                 # Launch tcpdump on client
                 tcpdump_hosts = copy.deepcopy(clients)
+                pcap_files = []
                 if args.tcpdump:
                     tcpdump_hosts += servers + [r.name for r in net.routers]
                 for n in tcpdump_hosts:
-                    cmd = "tshark -F pcapng -w {}.pcapng ip6".format(os.path.join(cwd, n))
+                    pcap_file = os.path.join(cwd, n) + ".pcapng"
+                    cmd = "tshark -F pcapng -w {} ip6".format(pcap_file)
+                    pcap_files.append(pcap_file)
                     tcpdumps.append(net[n].popen(cmd))
 
                 pid_abs = launch_ab(lg, net, clients, servers, nbr_flows,
                                     db_entry=tcp_ebpf_experiment.abs,
-                                    csv_files=csv_files, ebpf=args.ebpf, measurement_time=MEASUREMENT_TIME)
+                                    csv_files=csv_files, ebpf=args.ebpf,
+                                    measurement_time=measurement_time)
                 if len(pid_abs) == 0:
                     return
 
@@ -405,7 +412,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 # Measure load on each interface
                 start_time = time.time()
                 snapshots = {h: [] for h in clients + servers}
-                while time.time() - start_time < MEASUREMENT_TIME:
+                while time.time() - start_time < measurement_time:
                     # Extract snapshot info from eBPF
                     if args.ebpf:
                         for h in snapshots.keys():
@@ -446,7 +453,11 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
 
             finally:
                 for pid in tcpdumps:
-                    pid.kill()
+                    pid.send_signal(signal.SIGINT)
+                    pid.wait()
+                    print("TCPDUMP")
+                    print(pid.stdout.read())
+                    print(pid.stderr.read())
                 net.stop()
                 cleanup()
                 subprocess.call("pkill -9 ab".split(" "))
@@ -462,6 +473,14 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 parse_ab_output(csv_files, tcp_ebpf_experiment.abs, cwd)
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
+
+                tc_changes = []
+                for change in net.topo.applied_changes:
+                    change.clean()
+                    if change.applied_time >= 0:
+                        tc_changes.append([change.applied_time, change.serialize()])
+                tcp_ebpf_experiment.tc_changes = json.dumps(tc_changes)
+
                 db.commit()  # Commit
 
                 # except Exception as e:
@@ -472,6 +491,10 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
             else:
                 lg.error("******* Error %s processing graphs '%s' *******\n" % (
                     err, os.path.basename(topo)))
+
+            for pcap in pcap_files:
+                if os.path.exists(pcap):
+                    os.unlink(pcap)
 
 
 def eval_flowbender_timer(lg, args, ovsschema):
