@@ -246,10 +246,10 @@ def plot_aggregated_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], out
             continue  # TODO
         # if not exp.ebpf:  # TODO Remove
         #     continue  # TODO Remove
-        # if "paths.delays.flap" not in exp.topology:  # TODO Remove
-        #     continue  # TODO
-        if "paths.symetric.delays.flap" not in exp.topology:  # TODO Remove
-            continue  # TODO
+        if "paths.delays.flap" not in exp.topology:
+            continue
+        # if "paths.symetric.delays.flap" not in exp.topology:  # TODO Remove
+        #    continue  # TODO
         if exp.max_reward_factor != 1:  # TODO
             continue  # TODO
         if exp.gamma_value not in [0.01, 0.1, 0.2]:  # TODO
@@ -283,6 +283,8 @@ def plot_aggregated_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], out
                                                         and "10000kB" in x,
         "gamma_var_conn_4_vol_100k_factor_var": lambda x: "4 queries in parallel" in x and "100kB" in x,
         "gamma_10_conn_4_vol_100k_factor_var": lambda x: "Γ=0.1" in x and "4 queries in parallel" in x and "100kB" in x,
+        "gamma_10_conn_4_vol_var_factor_10": lambda x: "Γ=0.1" in x and "10 times" in x
+                                                       and "4 queries in parallel" in x and "10000kB" not in x,
     }
     labels = {
         "gamma_var_4_conn": lambda x: x.split(", ")[0],
@@ -294,6 +296,7 @@ def plot_aggregated_ab_cdfs(delay_experiments: List[ShortTCPeBPFExperiment], out
         "gamma_var_conn_4_vol_10M_factor_10": lambda x: x.split(", ")[0] + ", " + x.split(", ")[2],
         "gamma_var_conn_4_vol_100k_factor_var": lambda x: x.split(", ")[0] + ", " + x.split(", ")[3],
         "gamma_10_conn_4_vol_100k_factor_var": lambda x: x.split(", ")[0] + ", " + x.split(", ")[3],
+        "gamma_10_conn_4_vol_var_factor_10": lambda x: x.split(", ")[0] + ", " + x.split(", ")[2],
     }
     figs = {g: plt.figure() for g in groups}
     figs_convergence = {g: plt.figure() for g in groups}
