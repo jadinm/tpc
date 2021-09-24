@@ -51,19 +51,19 @@ class ReroutingHost(SRNHost):
     def sr_controller(self):
         return self.get('sr_controller', None)
 
-    def run_cgroup(self, cmd, cgroup=None, **kwargs):
+    def run_cgroup(self, cmd, cgroup=None, program=None, **kwargs):
         """
         Run asynchronously the command cmd in a cgroup
         """
         if isinstance(cmd, list):
             cmd = " ".join(cmd)
+        program = SRLocalCtrl.EBPF_PROGRAM if program is None else program
         print("Running '%s' in eBPF" % cmd)
         popen = self.popen(["bash"], stdin=subprocess.PIPE, **kwargs)
         # time.sleep(1)
 
         if cgroup is None:
-            cgroup = self.nconfig.daemon(SRLocalCtrl) \
-                .cgroup(SRLocalCtrl.EBPF_PROGRAM)
+            cgroup = self.nconfig.daemon(SRLocalCtrl).cgroup(program)
         os.system('echo %d > %s/cgroup.procs' % (popen.pid, cgroup))
         # time.sleep(1)
 

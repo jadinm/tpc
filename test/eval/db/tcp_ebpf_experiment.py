@@ -50,8 +50,7 @@ class TCPeBPFExperiment(SQLBaseModel):
                              lazy='dynamic')
 
     def snap_class(self):
-        return FlowBenderSnapshot \
-            if self.random_strategy == "flowbender" or self.random_strategy == "flowbender_timer" else Snapshot
+        return FlowBenderSnapshot if "flowbender" in self.random_strategy else Snapshot
 
     def data_related_snapshots(self):
         """Filter out snapshots caused by iperf control connections"""

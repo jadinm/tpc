@@ -29,6 +29,7 @@ class SRLocalCtrl(SRNDaemon):
     SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
     SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
         "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
+    REVERSE_SRH_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_reverse_srh.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super().__init__(*args, template_lookup=template_lookup, **kwargs)
@@ -44,11 +45,12 @@ class SRLocalCtrl(SRNDaemon):
         self.dest_map_id = -1
         self.short_dest_map_id = -1
         self.short_stat_map_id = -1
+        self.reverse_stat_map_id = -1
 
     @classmethod
     def all_programs(cls):
         return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.FLOW_BENDER_TIMER_EBPF_PROGRAM,
-                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION]
+                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION, cls.REVERSE_SRH_PROGRAM]
 
     def set_defaults(self, defaults):
         super().set_defaults(defaults)
@@ -56,6 +58,7 @@ class SRLocalCtrl(SRNDaemon):
         defaults.bpftool = self.BPFTOOL
         defaults.long_ebpf_program = self.EBPF_PROGRAM
         defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
+        defaults.reverse_srh_ebpf_program = self.REVERSE_SRH_PROGRAM
 
     def cgroup(self, program):
         if "short" in program:
@@ -98,6 +101,7 @@ class SRLocalCtrl(SRNDaemon):
         print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         print(self.options.long_ebpf_program)
         print(self.options.short_ebpf_program)
+        print(self.options.reverse_srh_ebpf_program)
         print("HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH")
         map_ids.extend(self.get_map_id(self.options.short_ebpf_program))
 
@@ -138,6 +142,8 @@ class SRLocalCtrl(SRNDaemon):
                 self.stat_map_id = map_id
             if map_name == "short_stat_map":
                 self.short_stat_map_id = map_id
+            if map_name == "reverse_stat_map":
+                self.reverse_stat_map_id = map_id
         if self.dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % self.ebpf_load_path(self._node.name,
@@ -157,7 +163,8 @@ class SRLocalCtrl(SRNDaemon):
         dest_map_id, short_dest_map_id = self.pin_maps()
 
         # Create cgroup
-        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program]:
+        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program,
+                        self.options.reverse_srh_ebpf_program]:
             mkdir_p(self.cgroup(program))
 
             ebpf_load_path = self.ebpf_load_path(self._node.name,
@@ -183,7 +190,8 @@ class SRLocalCtrl(SRNDaemon):
     def cleanup(self):
         detach_cmd = "{bpftool} cgroup detach {cgroup} sock_ops" \
                      " pinned {ebpf_load_path} multi"
-        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program]:
+        for program in [self.options.long_ebpf_program, self.options.short_ebpf_program,
+                        self.options.reverse_srh_ebpf_program]:
             if self.attached[program]:
                 ebpf_load_path = self.ebpf_load_path(self._node.name, program)
                 cmd = detach_cmd.format(bpftool=self.options.bpftool,
