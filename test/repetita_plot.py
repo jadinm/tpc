@@ -9,7 +9,7 @@ from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.plot.delay_exp3 import plot_ab_cdfs, plot_aggregated_ab_cdfs
 from eval.plot.flowbender import plot_flowbender_failure
 from eval.utils import latexify
-from eval.plot.reverse_srh import bw_over_failure
+from eval.plot.reverse_srh import bw_over_failure, bw_over_load_balancer
 from explore_data import explore_maxflow_json_files
 
 script_dir = os.path.dirname(os.path.abspath(__file__))
@@ -59,6 +59,7 @@ if __name__ == "__main__":
 
     # Plot reverse SRH experiment results
     bw_over_failure(db, output_path=args.out_dir)
+    bw_over_load_balancer(db, output_path=args.out_dir)
 
     # Plot flow bender reaction to failure
     # plot_non_aggregated_flowbender_failure(experiments, output_path=args.out_dir)

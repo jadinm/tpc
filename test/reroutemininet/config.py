@@ -30,6 +30,7 @@ class SRLocalCtrl(SRNDaemon):
     SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
         "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
     REVERSE_SRH_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_reverse_srh.o")
+    USE_SECOND_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_use_second_path.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super().__init__(*args, template_lookup=template_lookup, **kwargs)
@@ -50,7 +51,8 @@ class SRLocalCtrl(SRNDaemon):
     @classmethod
     def all_programs(cls):
         return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.FLOW_BENDER_TIMER_EBPF_PROGRAM,
-                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION, cls.REVERSE_SRH_PROGRAM]
+                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION, cls.REVERSE_SRH_PROGRAM,
+                cls.USE_SECOND_PROGRAM]
 
     def set_defaults(self, defaults):
         super().set_defaults(defaults)

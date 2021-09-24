@@ -19,7 +19,8 @@ from .bpf_stats import Snapshot, BPFPaths, ShortSnapshot, FlowBenderSnapshot
 from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, SnapshotShortDBEntry, ABLatencyCDF, ABResults, \
     ABLatency, ShortTCPeBPFExperiment, IPerfBandwidthSample, SnapshotDBEntry
-from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR, FLOWBENDER_MEASUREMENT_TIME
+from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR, FLOWBENDER_MEASUREMENT_TIME, \
+    LOAD_BALANCER_MEASUREMENT_TIME
 
 
 # LINK_BANDWIDTH = 100
@@ -958,6 +959,220 @@ def reverse_srh_failure(lg, args, ovsschema, flowbender_timer=False):
                     snap = tcp_ebpf_experiment.snap_class().retrieve_from_hex(snap_entry.snapshot_hex)
                     print(snap.time, snap.operation)
                 print("JJJJJJJJJJJJJJJJJJJJJJJJ")
+                tcp_ebpf_experiment.failed = False
+                tcp_ebpf_experiment.valid = True
+
+                # The delta is an approximation valid at 0.1 ms, so negligible for our use cases
+                tcp_ebpf_experiment.monotonic_realtime_delta = time.time() - time.monotonic()
+
+                tc_changes = []
+                for change in net.topo.applied_changes:
+                    change.clean()
+                    if change.applied_time >= 0:
+                        tc_changes.append([change.applied_time, change.serialize()])
+                tcp_ebpf_experiment.tc_changes = json.dumps(tc_changes)
+
+                db.commit()
+                # except Exception as e:
+                #    lg.error("Exception %s in the graph generation...
+                #    Skipping...\n" % e)
+                #    lg.error(str(e))
+                #    continue
+            else:
+                lg.error("******* Error %s processing graphs '%s' *******\n" % (
+                    err, os.path.basename(topo)))
+                db.commit()  # Commit even if catastrophic results
+
+
+def reverse_srh_load_balancer(lg, args, ovsschema):
+    topos = get_repetita_topos(args)
+    os.mkdir(args.log_dir)
+
+    lg.info("******* %d Topologies to test *******\n" % len(topos))
+
+    db = get_connection()
+    params = get_xp_params()
+    params["random_strategy"] = "reverse_srh_load_balancer"
+    server_program = SRLocalCtrl.USE_SECOND_PROGRAM
+    client_program = SRLocalCtrl.REVERSE_SRH_PROGRAM
+    measurement_time = LOAD_BALANCER_MEASUREMENT_TIME
+
+    i = 0
+    for topo, demands_list in topos.items():
+        i += 1
+        lg.info("******* [topo %d/%d] %d flow files to test in topo '%s' "
+                "*******\n"
+                % (i, len(topos), len(demands_list), os.path.basename(topo)))
+        for demands in demands_list:
+            cwd = os.path.join(args.log_dir, os.path.basename(topo) + '_' +
+                               os.path.basename(demands))
+            try:
+                os.makedirs(cwd)
+            except OSError as e:
+                print("OSError %s" % e)
+            cleanup()
+            lg.info("******* Processing topo '%s' demands '%s' *******\n" % (
+                os.path.basename(topo),
+                os.path.basename(demands)))
+
+            tcp_ebpf_experiment = \
+                TCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
+                                  demands=demands, ebpf=args.ebpf, **params)
+            db.add(tcp_ebpf_experiment)
+
+            with open(demands) as fileobj:
+                json_demands = json.load(fileobj)
+            print("HHHHHHHHHHHHHHHHHHHH" + cwd)
+            topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
+                         "enable_ecn": False,
+                         "maxseg": -1, "repetita_graph": topo,
+                         "ebpf": args.ebpf,
+                         "json_demands": json_demands,
+                         "localctrl_opts": {
+                             "long_ebpf_program": server_program
+                         }}
+
+            net = ReroutingNet(topo=RepetitaTopo(**topo_args),
+                               static_routing=True)
+            result_files = []
+            tcpdumps = []
+
+            subprocess.call("pkill -9 iperf".split(" "))
+            subprocess.call("pkill -9 curl".split(" "))
+            subprocess.call("pkill -9 ab".split(" "))
+            err = False
+            try:
+                net.start()
+
+                # Read flow file to retrieve the clients and servers
+                json_demands = parse_demands(json_demands)
+                print(json_demands)
+                clients = []
+                servers = []
+                nbr_flows = []
+                clamp = []
+                for d in json_demands:
+                    clients.append("h" + net.topo.getFromIndex(d["src"]))
+                    servers.append("h" + net.topo.getFromIndex(d["dest"]))
+                    nbr_flows.append(d["number"])
+                    clamp.append(d["volume"] // 1000)  # Mbps
+
+                    connections = [IPerfConnections(connection_id=conn,
+                                                    max_volume=clamp[-1])
+                                   for conn in range(nbr_flows[-1])]
+                    tcp_ebpf_experiment.iperfs.append(
+                        IPerfResults(client=clients[-1], server=servers[-1],
+                                     connections=connections))
+                print(clients)
+                print(servers)
+
+                # IPCLI(net)  # TODO Remove
+                time.sleep(1)
+
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
+                # Launch tcpdump on all clients, servers and routers
+                if args.tcpdump:
+                    for n in clients + servers + [r.name for r in net.routers]:
+                        cmd = "tshark -F pcapng -w {}.pcapng ip6".format(os.path.join(cwd, n))
+                        tcpdumps.append(net[n].popen(cmd))
+
+                result_files = [open(os.path.join(cwd, "%d_results_%s_%s.json")
+                                     % (i, clients[i], servers[i]), "w")
+                                for i in range(len(clients))]
+                pid_servers, pid_clients = \
+                    launch_iperf(lg, net, clients, servers, result_files,
+                                 nbr_flows, clamp, tcp_ebpf_experiment.iperfs,
+                                 ebpf=args.ebpf, measurement_time=measurement_time,
+                                 client_program=client_program, server_program=server_program)
+                if len(pid_servers) == 0:
+                    return
+
+                # IPCLI(net)  # TODO Remove
+
+                # Measure load on each interface
+                start_time = time.time()
+                while time.time() - start_time < measurement_time:
+                    # for pid in pid_servers:
+                    #    print("ANOTHER SERVER")
+                    #    print(pid.stdout.readlines())
+                    apply_changes(time.time() - start_time, net)
+                    time.sleep(0.1)
+
+                # IPCLI(net)  # TODO Remove
+
+                # Allow iperf control connection to recover fast
+                revert_changes(net)
+
+                # IPCLI(net)  # TODO Remove
+
+                print("Check servers ending")
+                for i, pid in enumerate(pid_servers):
+                    if pid.poll() is None:
+                        lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
+                        print("ERROR 0")
+                        pid.send_signal(signal.SIGTERM)
+                        pid.wait(10)
+                        print("ERROR 1")
+                        pid.kill()
+
+                print("Check clients ending")
+                for i, pid in enumerate(pid_clients):
+                    if pid.poll() is None:
+                        lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
+                        pid.kill()
+
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
+                for pid in tcpdumps:
+                    pid.kill()
+            # except Exception as e:
+            #    lg.error("Exception %s in the topo emulation... Skipping...\n"
+            #             % e)
+            #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
+            #    continue
+            finally:
+
+                for pid in tcpdumps:
+                    pid.kill()
+
+                # IPCLI(net)  # TODO Remove
+                net.stop()
+                cleanup()
+                for fileobj in result_files:
+                    if fileobj is not None:
+                        fileobj.close()
+                subprocess.call("pkill -9 iperf".split(" "))
+
+            db.commit()  # Commit even if catastrophic results
+
+            if not err:
+                # try:
+                lg.info("******* Saving results '%s' *******\n" %
+                        os.path.basename(topo))
+                for i in range(len(clients)):
+                    with open(os.path.join(cwd, "%d_results_%s_%s.json" % (i, clients[i], servers[i])), "r") as fileobj:
+                        results = json.load(fileobj)
+                        iperf_db = tcp_ebpf_experiment.iperfs[i]
+                        iperf_db.raw_json = json.dumps(results, indent=4)
+                        for j in range(nbr_flows[i]):
+                            connection_db = iperf_db.connections[j]
+                            connection_db.start_samples = \
+                                results["start"]["timestamp"]["timesecs"]
+                        for t, interval in enumerate(results["intervals"]):
+                            connection_db.bw_samples.append(
+                                IPerfBandwidthSample(time=(t + 1) * INTERVALS,
+                                                     bw=interval["streams"][j]["bits_per_second"]))
                 tcp_ebpf_experiment.failed = False
                 tcp_ebpf_experiment.valid = True
 
