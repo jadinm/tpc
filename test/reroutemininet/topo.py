@@ -91,8 +91,6 @@ class SRReroutedCtrlDomain(SRCtrlDomain):
                 config[1]['additional_daemons'] = []
             if 'rerouting_enabled' not in self.rerouted_opts:
                 self.rerouted_opts['rerouting_enabled'] = getattr(topo, 'rerouting_enabled', True)
-            # config[1]['additional_daemons'].append((SRRerouted,
-            # self.rerouted_opts))
             topo.nodeInfo(n)["config"] = config
 
         # Load the program concurrently as many times as needed
