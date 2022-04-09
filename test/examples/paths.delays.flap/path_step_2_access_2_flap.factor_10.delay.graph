@@ -13,8 +13,8 @@ EDGES 20
 label src dest weight bw delay
 Link_0 4 5 1 100000 3
 Link_1 5 4 1 100000 3
-Link_2 6 7 1 100000 3
-Link_3 7 6 1 100000 93
+Link_2 6 7 2 100000 3
+Link_3 7 6 2 100000 93
 Link_4 0 4 100 100000 1
 Link_5 4 0 100 100000 1
 Link_6 2 5 100 100000 1
@@ -35,6 +35,6 @@ Link_19 7 3 100 100000 1
 CHANGES 2
 time src dest weight bw delay
 10 5 4 1 100000 93
-10 7 6 1 100000 3
+10 7 6 2 100000 3
 
 STOP 50
