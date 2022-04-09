@@ -9,9 +9,10 @@ from eval.db import TCPeBPFExperiment
 from eval.plot.utils import plot_time, plot_cdf
 
 
-def plot_non_aggregated_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment], output_path):
+def plot_non_aggregated_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment], output_path,
+                                           hotnet_paper=False):
     colors = {
-        "TPC": "orangered",
+        "TPC": "orange",
     }
 
     done_topos = {}
@@ -51,7 +52,8 @@ def plot_non_aggregated_flowbender_failure(flowbender_experiments: List[TCPeBPFE
 
         plot_time(srh_over_time, ylabel="Path selection",
                   figure_name=times_figure_name + ".selections",
-                  output_path=output_path)
+                  output_path=output_path, grid=True,
+                  hotnet_paper=hotnet_paper)
 
         throughput = {"TPC": exp.iperfs.first().connections.first().throughput_over_time()}
         print(throughput)
@@ -59,11 +61,13 @@ def plot_non_aggregated_flowbender_failure(flowbender_experiments: List[TCPeBPFE
         print(exp.iperfs.first().connections.first().bw_samples.count())
         plot_time(throughput, ylabel="Request completion (ms)", colors=colors,
                   figure_name=times_figure_name + ".throughput",
-                  output_path=output_path)
+                  output_path=output_path, grid=True,
+                  hotnet_paper=hotnet_paper)
 
 
 def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
-                            output_path: str, timer_based: bool = False):
+                            output_path: str, timer_based: bool = False,
+                            hotnet_paper=False):
     counter = 100  # Only take the 100 most recent experiment
 
     receiver_recovery = "Receiver recovery"
@@ -104,7 +108,8 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
         sender_reaction_times: List[float] = []  # XXX Only tackle one failure
 
         for exp in exp_list:  # Multiple runs of the same setup
-            failure_time = int(json.loads(exp.tc_changes)[0][0] * 10 ** 9)  # monotonic clock
+            changes = json.loads(exp.tc_changes)
+            failure_time = int(changes[0][0] * 10 ** 9)  # monotonic clock
             # print(failure_time)
 
             for k, snaps in exp.snapshot_by_connection().items():  # For each side of a connection
@@ -159,11 +164,13 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
                             % ("flowbender" if not timer_based else "flowbender_timer", base_experience_key)
         plot_cdf({sender_recovery: data_by_key[base_experience_key][sender_recovery],
                   receiver_recovery: data_by_key[base_experience_key][receiver_recovery]},
-                 {receiver_recovery: "orangered", sender_recovery: "#00B0F0"},
-                 {receiver_recovery: ".", sender_recovery: "s"},
+                 {receiver_recovery: "orange", sender_recovery: "#00B0F0"},
+                 {},
                  {receiver_recovery: receiver_recovery, sender_recovery: sender_recovery},
                  "Reaction time to failure (s)",
-                 times_figure_name, output_path)
+                 times_figure_name, output_path, grid=True,
+                 linestyles={receiver_recovery: "-", sender_recovery: "--"},
+                 hotnet_paper=hotnet_paper)
 
     # Different delay together
     delay_20_experience = "paths.light.ecmp.different.delay@path_step_2_access_2.ecmp.20.graph@" \
@@ -181,12 +188,14 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
             rtt_large: data_by_key[delay_40_experience][receiver_recovery],
         }
         times_figure_name = "iperf_reaction_%s_delays.cdf" % ("flowbender" if not timer_based else "flowbender_timer")
-        plot_cdf(filtered_data, {rtt_base: "orangered", rtt_medium: "#00B0F0", rtt_large: "green"},
-                 {rtt_base: ".", rtt_medium: "s", rtt_large: "o"},
+        plot_cdf(filtered_data, {rtt_base: "orange", rtt_medium: "#00B0F0", rtt_large: "green"},
+                 {},
                  {rtt_base: rtt_base, rtt_medium: rtt_medium, rtt_large: rtt_large},
                  "Reaction time to failure (s)",
                  times_figure_name, output_path,
-                 xlim_max=3)  # s (to remove outliers)
+                 xlim_max=3, grid=True,
+                 linestyles={rtt_base: "-", rtt_medium: "--", rtt_large: "-."},
+                 hotnet_paper=hotnet_paper)  # s (to remove outliers)
 
     # Asymmetrical together + difference with symmetric full
     sender_only_experience = "paths.light.ecmp.asymetrical@path_step_2_access_2.ecmp.sender.graph@" \
@@ -206,11 +215,13 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
         }
         times_figure_name = "iperf_reaction_%s_asymetrical.cdf" \
                             % ("flowbender" if not timer_based else "flowbender_timer")
-        plot_cdf(filtered_data, {symmetric: "orangered", sender_only: "#00B0F0", receiver_only: "green"},
-                 {symmetric: ".", sender_only: "s", receiver_only: "o"},
+        plot_cdf(filtered_data, {symmetric: "orange", sender_only: "#00B0F0", receiver_only: "green"},
+                 {},
                  {symmetric: symmetric, sender_only: sender_only, receiver_only: receiver_only},
                  "Reaction time to failure (s)",
-                 times_figure_name, output_path)
+                 times_figure_name, output_path, grid=True,
+                 linestyles={symmetric: "-", sender_only: "--", receiver_only: "-."},
+                 hotnet_paper=hotnet_paper)
 
     # More than one path
     three_paths_experience = "paths.light.ecmp.more.paths@path_step_3_access_3.ecmp.graph@" \
@@ -225,11 +236,13 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
         }
         times_figure_name = "iperf_reaction_%s_more_paths.cdf" \
                             % ("flowbender" if not timer_based else "flowbender_timer")
-        plot_cdf(filtered_data, {two_paths: "orangered", three_paths: "#00B0F0"},
-                 {two_paths: ".", three_paths: "s"},
+        plot_cdf(filtered_data, {two_paths: "orange", three_paths: "#00B0F0"},
+                 {},
                  {two_paths: two_paths, three_paths: three_paths},
                  "Reaction time to failure (s)",
-                 times_figure_name, output_path)
+                 times_figure_name, output_path, grid=True,
+                 linestyles={two_paths: "-", three_paths: "--"},
+                 hotnet_paper=hotnet_paper)
 
     # More than one connection
     five_connections_experience = "paths.light.ecmp.multiple.flows@path_step_2_access_2.ecmp.graph@" \
@@ -253,11 +266,13 @@ def plot_flowbender_failure(flowbender_experiments: List[TCPeBPFExperiment],
         }
         times_figure_name = "iperf_reaction_%s_multiple_connections.cdf" \
                             % ("flowbender" if not timer_based else "flowbender_timer")
-        plot_cdf(filtered_data, {one_conn: "orangered", five_conns: "#00B0F0", ten_conns: "green",
+        plot_cdf(filtered_data, {one_conn: "orange", five_conns: "#00B0F0", ten_conns: "green",
                                  twenty_conns: "purple"},
-                 {one_conn: ".", five_conns: "s", ten_conns: "o", twenty_conns: "^"},
+                 {},
                  {one_conn: one_conn, five_conns: five_conns, ten_conns: ten_conns, twenty_conns: twenty_conns},
                  "Reaction time to failure (s)",
-                 times_figure_name, output_path)
+                 times_figure_name, output_path, grid=True,
+                 linestyles={one_conn: "-", five_conns: "--", ten_conns: "-.", twenty_conns: ":"},
+                 hotnet_paper=hotnet_paper)
 
     print(list(data_by_key.keys()))

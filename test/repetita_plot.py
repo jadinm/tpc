@@ -1,9 +1,9 @@
 import argparse
 import datetime
 import os
-import shutil
 
 from mininet.log import LEVELS, lg
+from sqlalchemy import or_
 
 from eval.db import get_connection, TCPeBPFExperiment, ShortTCPeBPFExperiment
 from eval.plot.delay_exp3 import plot_ab_cdfs, plot_aggregated_ab_cdfs
@@ -37,6 +37,8 @@ if __name__ == "__main__":
     experiments = []
     for row in db.query(TCPeBPFExperiment) \
             .filter_by(valid=True, failed=False) \
+            .filter(or_(TCPeBPFExperiment.random_strategy == "flowbender",
+                        TCPeBPFExperiment.random_strategy == "flowbender_timer")) \
             .order_by(TCPeBPFExperiment.timestamp.desc()):
         # Filter out
         if "path_step_6_access_6" in row.topology \
@@ -48,12 +50,18 @@ if __name__ == "__main__":
     single_path_delay_experiments = []
     ecmp_delay_experiments = []
     for row in db.query(ShortTCPeBPFExperiment) \
-            .filter_by(valid=True, failed=False) \
+            .filter_by(valid=True, failed=False, max_reward_factor=1) \
+            .filter(ShortTCPeBPFExperiment.topology.contains("paths.delays.flap")) \
+            .filter(or_(ShortTCPeBPFExperiment.gamma_value == 0.01,
+                        ShortTCPeBPFExperiment.gamma_value == 0.1,
+                        ShortTCPeBPFExperiment.gamma_value == 0.2)) \
             .order_by(ShortTCPeBPFExperiment.timestamp.desc()):
         if "single.path" in row.topology:
             single_path_delay_experiments.append(row)
         else:
             delay_experiments.append(row)
+
+    latexify(columns=1)
 
     optim_bw_data = explore_maxflow_json_files(args.srmip_dir)
 
@@ -62,98 +70,7 @@ if __name__ == "__main__":
     bw_over_load_balancer(db, output_path=args.out_dir)
 
     # Plot flow bender reaction to failure
-    # plot_non_aggregated_flowbender_failure(experiments, output_path=args.out_dir)
-    # TODO plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=True)
-    # TODO plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=False)
+    plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=True, hotnet_paper=True)
+    plot_flowbender_failure(experiments, output_path=args.out_dir, timer_based=False, hotnet_paper=True)
 
-    # latexify(fig_height=1.9, columns=1)
-    # plot_ab_cdfs(delay_experiments, single_path_delay_experiments,
-    #              ecmp_delay_experiments, output_path=args.out_dir, hotnet_paper=True)
-    plot_aggregated_ab_cdfs(delay_experiments, output_path=args.out_dir, hotnet_paper=False)
-    # Plot comparison between ebpf topo or not
-    # bw_ebpf_or_no_ebpf_by_topo(keys, args.out_dir)
-    """
-    plot_stability_by_connection(delay_experiments[:1],
-                                 id={"congestion_control": "cubic",
-                                     # "gamma_value": 0.5,
-                                     "random_strategy": "exp3"})
-    """
-    # Parse gamma diffs
-    # bw_param_influence_by_topo(keys, param_name="gamma_value")
-    """
-    bw_param_influence_aggregate(experiments, param_name="gamma_value",
-                                 id={"congestion_control": "cubic",
-                                     # "gamma_value": 0.5,
-                                     "random_strategy": "exp3"},
-                                 colors={0.1: "springgreen",
-                                         0.5: "orangered",
-                                         0.9: "violet",
-                                         "ECMP": "#00B0F0"},
-                                 markers={0.1: ".", 0.5: "o", 0.9: "^",
-                                          "ECMP": "s"},
-                                 labels={0.1: "TPC $\\Gamma = 0.1$",
-                                         0.5: "TPC $\\Gamma = 0.5$",
-                                         0.9: "TPC $\\Gamma = 0.9$",
-                                         "ECMP": "ECMP"},
-                                 # TODO remove max_history
-                                 output_path=args.out_dir, max_history=5)
-
-    bw_param_influence_aggregate(experiments, param_name="random_strategy",
-                                 id={"congestion_control": "cubic",
-                                     "gamma_value": 0.5,
-                                     # "random_strategy": "exp3"
-                                     },
-                                 colors={"uniform": "springgreen",
-                                         "exp3": "orangered",
-                                         "ECMP": "#00B0F0"},
-                                 markers={"uniform": ".",
-                                          "exp3": "o",
-                                          "ECMP": "s"},
-                                 labels={"uniform": "Uniformly random TPC",
-                                         "exp3": "TPC with Exp3",
-                                         "ECMP": "ECMP"},
-                                 # TODO remove max_history
-                                 output_path=args.out_dir, max_history=5)
-
-    bw_param_influence_aggregate(experiments, param_name="congestion_control",
-                                 id={#"congestion_control": "cubic",
-                                     "gamma_value": 0.5,
-                                     "random_strategy": "exp3"
-                                     },
-                                 colors={"cubic": "orangered",
-                                         "bbr": "springgreen",
-                                         "ECMP": "#00B0F0"},
-                                 markers={"cubic": "o",
-                                          "bbr": ".",
-                                          "ECMP": "s"},
-                                 labels={"cubic": "TPC cubic",
-                                         "bbr": "TPC bbr",
-                                         "ECMP": "ECMP cubic"},
-                                 output_path=args.out_dir)
-
-    bw_param_influence_aggregate(experiments, param_name="ebpf",
-                                 id={"congestion_control": "cubic",
-                                     "gamma_value": 0.5,
-                                     "random_strategy": "exp3"
-                                     },
-                                 colors={True: "orangered",
-                                         "ECMP": "#00B0F0"},
-                                 markers={True: "o",
-                                          "ECMP": "s"},
-                                 labels={True: "TPC",
-                                         "ECMP": "ECMP"},
-                                 output_path=args.out_dir)
-    """
-    # Parse CC diffs
-    # bw_param_influence_by_topo(keys, param_name="congestion_control")
-
-    # Parse rand diffs
-    # bw_param_influence_by_topo(keys, param_name="random_strategy")
-
-    # Plot aggregates
-    # keys = []
-    # for row in db.query(TCPeBPFExperiment.topology,
-    #  TCPeBPFExperiment.demands) \
-    #         .filter_by(valid=True, failed=False).distinct():
-    #     keys.append((row.topology, row.demands))
-    # bw_ebpf_or_no_ebpf_aggregate(keys, args.out_dir)
+    plot_aggregated_ab_cdfs(delay_experiments, output_path=args.out_dir, hotnet_paper=True, use_cache=True)

@@ -7,7 +7,8 @@ from mininet.log import lg
 from eval.utils import MARKER_SIZE, FONTSIZE, LINE_WIDTH, cdf_data
 
 
-def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path, xlim_min=None, xlim_max=None, grid=False):
+def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path,
+             xlim_min=None, xlim_max=None, grid=False, linestyles=None, hotnet_paper=False):
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
@@ -25,10 +26,11 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path, xl
         subplot.step(bin_edges + [max_value * 10 ** 7], cdf + [cdf[-1]],
                      color=colors.get(key), marker=markers.get(key),
                      linewidth=LINE_WIDTH, where="post",
+                     linestyle=linestyles.get(key, "-") if linestyles else "-",
                      markersize=MARKER_SIZE, zorder=zorder, label=labels.get(key))
 
     subplot.set_xlabel(xlabel, fontsize=FONTSIZE)
-    subplot.set_ylabel("CDF (%)", fontsize=FONTSIZE)
+    subplot.set_ylabel("CDF", fontsize=FONTSIZE)
     if len(labels) > 0:
         subplot.legend(loc="best")
 
@@ -52,14 +54,18 @@ def plot_cdf(data, colors, markers, labels, xlabel, figure_name, output_path, xl
     subplot.set_ylim(bottom=0, top=1)
     if grid:
         subplot.grid()
-    fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
-                bbox_inches='tight', pad_inches=0, markersize=9)
+    params = {}
+    if not hotnet_paper:
+        params = {'bbox_inches': 'tight', 'pad_inches': 0, 'markersize': MARKER_SIZE}
+    else:
+        fig.tight_layout()
+    fig.savefig(os.path.join(output_path, figure_name + ".pdf"), **params)
     fig.clf()
     plt.close()
 
 
 def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
-              colors=None):
+              colors=None, grid=False, linestyles=None, hotnet_paper=False):
     fig = plt.figure()
     subplot = fig.add_subplot(111)
 
@@ -69,28 +75,36 @@ def plot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
         for t, y in values:
             times.append(t)
             data_y.append(y)
-        subplot.scatter(times, data_y, marker=".", s=MARKER_SIZE,
+        subplot.scatter(times, data_y,
                         label=labels.get(key) if labels else key,
-                        color=colors.get(key) if colors else None)
+                        color=colors.get(key) if colors else None,
+                        linestyle=linestyles.get(key, "-") if linestyles else "-")
 
     subplot.set_xlabel("time (s)", fontsize=FONTSIZE)
     subplot.set_ylabel(ylabel, fontsize=FONTSIZE)
     if labels is not None:
         subplot.legend(loc="best")
 
+    if grid:
+        subplot.grid()
+
     lg.info("Saving figure for plot through time to path {path}\n"
             .format(path=os.path.join(output_path, figure_name + ".pdf")))
 
     if ylim is not None:
         subplot.set_ylim(**ylim)
-    fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
-                bbox_inches='tight', pad_inches=0, markersize=9)
+    params = {}
+    if not hotnet_paper:
+        params = {'bbox_inches': 'tight', 'pad_inches': 0, 'markersize': MARKER_SIZE}
+    else:
+        fig.tight_layout()
+    fig.savefig(os.path.join(output_path, figure_name + ".pdf"), **params)
     fig.clf()
     plt.close()
 
 
 def subplot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
-                 colors=None):
+                 colors=None, hotnet_paper=False):
     fig, axes = plt.subplots(len(data), sharex=True, sharey=True)
     prop_cycle = plt.rcParams['axes.prop_cycle']
     default_colors = prop_cycle.by_key()['color']
@@ -119,7 +133,11 @@ def subplot_time(data, ylabel, figure_name, output_path, ylim=None, labels=None,
 
     lg.info("Saving figure for plot through time to path {path}\n"
             .format(path=os.path.join(output_path, figure_name + ".pdf")))
-    fig.savefig(os.path.join(output_path, figure_name + ".pdf"),
-                bbox_inches='tight', pad_inches=0, markersize=9)
+    params = {}
+    if not hotnet_paper:
+        params = {'bbox_inches': 'tight', 'pad_inches': 0, 'markersize': MARKER_SIZE}
+    else:
+        fig.tight_layout()
+    fig.savefig(os.path.join(output_path, figure_name + ".pdf"), **params)
     fig.clf()
     plt.close()

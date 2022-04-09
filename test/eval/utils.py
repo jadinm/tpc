@@ -9,7 +9,7 @@ from ipmininet.utils import realIntfList
 
 TEST_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DEFAULT_CGROUP = "test.slice"
-FONTSIZE = 12
+FONTSIZE = 10
 LINE_WIDTH = 2.0
 MARKER_SIZE = 5.0
 FLOWBENDER_MEASUREMENT_TIME = 40
@@ -145,7 +145,7 @@ def latexify(fig_width=None, fig_height=None, columns=2):
     assert(columns in [1,2])
 
     if fig_width is None:
-        fig_width_pt = 505.89                             # Get this from LaTeX using \the\textwidth
+        fig_width_pt = 516                             # Get this from LaTeX using \the\textwidth or \the\columnwidth (252 ?)
         inches_per_pt = 1.0 / 72.27                      # Convert pt to inch
         scale = 3.39 / 6.9 if columns == 1 else 1
         fig_width = fig_width_pt * inches_per_pt * scale # width in inches
