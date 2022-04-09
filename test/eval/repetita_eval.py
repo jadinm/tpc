@@ -244,13 +244,14 @@ def parse_ab_output(csv_files, db_entry: List[ABResults], cwd: str):
         with open(cvs_file) as file_obj:
             raw_data = file_obj.read()
             db_entry[i].raw_csv = raw_data
+            latency = db_entry[i].ab_latency_cdf
 
             for j, row in enumerate(csv.DictReader(raw_data.splitlines())):
                 if j == 0:  # Skip headline
                     continue
                 print(row)
                 # Insert in database
-                db_entry[i].ab_latency_cdf.append(
+                latency.append(
                     ABLatencyCDF(
                         percentage_served=float(row["Percentage served"]),
                         time=float(row["Time in ms"])))
@@ -462,8 +463,6 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 cleanup()
                 subprocess.call("pkill -9 ab".split(" "))
 
-            db.commit()  # Commit even if catastrophic results
-
             if not err:
                 # try:
                 lg.info("******* Saving results '%s' *******\n" %
@@ -489,6 +488,7 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                 #    lg.error(str(e))
                 #    continue
             else:
+                db.commit()  # Commit even if catastrophic results
                 lg.error("******* Error %s processing graphs '%s' *******\n" % (
                     err, os.path.basename(topo)))
 
@@ -1187,6 +1187,204 @@ def reverse_srh_load_balancer(lg, args, ovsschema):
                 tcp_ebpf_experiment.tc_changes = json.dumps(tc_changes)
 
                 db.commit()
+                # except Exception as e:
+                #    lg.error("Exception %s in the graph generation...
+                #    Skipping...\n" % e)
+                #    lg.error(str(e))
+                #    continue
+            else:
+                lg.error("******* Error %s processing graphs '%s' *******\n" % (
+                    err, os.path.basename(topo)))
+                db.commit()  # Commit even if catastrophic results
+
+
+def traceroute(lg, args, ovsschema):
+    topos = get_repetita_topos(args)
+    os.mkdir(args.log_dir)
+
+    lg.info("******* %d Topologies to test *******\n" % len(topos))
+
+    db = get_connection()
+    params = get_xp_params()
+    params["random_strategy"] = "traceroute"
+    server_program = SRLocalCtrl.TRACEROUTE
+    client_program = SRLocalCtrl.TRACEROUTE
+    measurement_time = TRACEROUTE_MEASUREMENT_TIME
+
+    i = 0
+    for topo, demands_list in topos.items():
+        i += 1
+        lg.info("******* [topo %d/%d] %d flow files to test in topo '%s' "
+                "*******\n"
+                % (i, len(topos), len(demands_list), os.path.basename(topo)))
+        for demands in demands_list:
+            cwd = os.path.join(args.log_dir, os.path.basename(topo) + '_' +
+                               os.path.basename(demands))
+            try:
+                os.makedirs(cwd)
+            except OSError as e:
+                print("OSError %s" % e)
+            cleanup()
+            lg.info("******* Processing topo '%s' demands '%s' *******\n" % (
+                os.path.basename(topo),
+                os.path.basename(demands)))
+
+            tcp_ebpf_experiment = \
+                TCPeBPFExperiment(timestamp=datetime.now(), topology=topo,
+                                  demands=demands, ebpf=args.ebpf, **params)
+            db.add(tcp_ebpf_experiment)
+
+            with open(demands) as fileobj:
+                json_demands = json.load(fileobj)
+            print("HHHHHHHHHHHHHHHHHHHH" + cwd)
+            topo_args = {"schema_tables": ovsschema["tables"], "cwd": cwd,
+                         "enable_ecn": False,
+                         "maxseg": -1, "repetita_graph": topo,
+                         "ebpf": args.ebpf,
+                         "json_demands": json_demands,
+                         "localctrl_opts": {
+                             "reverse_srh_ebpf_program": SRLocalCtrl.TRACEROUTE
+                         }}
+
+            net = ReroutingNet(topo=RepetitaTopo(**topo_args),
+                               static_routing=True)
+            result_files = []
+            tcpdumps = []
+
+            subprocess.call("pkill -9 iperf".split(" "))
+            subprocess.call("pkill -9 curl".split(" "))
+            subprocess.call("pkill -9 ab".split(" "))
+            err = False
+            try:
+                net.start()
+
+                # Read flow file to retrieve the clients and servers
+                json_demands = parse_demands(json_demands)
+                print(json_demands)
+                clients = []
+                servers = []
+                nbr_flows = []
+                clamp = []
+                for d in json_demands:
+                    clients.append("h" + net.topo.getFromIndex(d["src"]))
+                    servers.append("h" + net.topo.getFromIndex(d["dest"]))
+                    nbr_flows.append(d["number"])
+                    clamp.append(d["volume"] // 1000)  # Mbps
+
+                    connections = [IPerfConnections(connection_id=conn,
+                                                    max_volume=clamp[-1])
+                                   for conn in range(nbr_flows[-1])]
+                    tcp_ebpf_experiment.iperfs.append(
+                        IPerfResults(client=clients[-1], server=servers[-1],
+                                     connections=connections))
+                print(clients)
+                print(servers)
+
+                # IPCLI(net)  # TODO Remove
+                time.sleep(1)
+
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
+                # Launch tcpdump on all clients, servers and routers
+                if args.tcpdump:
+                    for n in clients + servers + [r.name for r in net.routers]:
+                        cmd = "tshark -F pcapng -w {}.pcapng ip6".format(os.path.join(cwd, n))
+                        tcpdumps.append(net[n].popen(cmd))
+
+                result_files = [open(os.path.join(cwd, "%d_results_%s_%s.json")
+                                     % (i, clients[i], servers[i]), "w")
+                                for i in range(len(clients))]
+                pid_servers, pid_clients = \
+                    launch_iperf(lg, net, clients, servers, result_files,
+                                 nbr_flows, clamp, tcp_ebpf_experiment.iperfs,
+                                 ebpf=args.ebpf, measurement_time=measurement_time,
+                                 client_program=client_program, server_program=server_program)
+                if len(pid_servers) == 0:
+                    return
+
+                time.sleep(measurement_time)
+
+                print("Check servers ending")
+                for i, pid in enumerate(pid_servers):
+                    if pid.poll() is None:
+                        lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
+                        print("ERROR 0")
+                        pid.send_signal(signal.SIGTERM)
+                        pid.wait(10)
+                        print("ERROR 1")
+                        pid.kill()
+
+                print("Check clients ending")
+                for i, pid in enumerate(pid_clients):
+                    if pid.poll() is None:
+                        lg.error("The iperf (%s,%s) has not finish yet\n" % (clients[i], servers[i]))
+                        pid.kill()
+
+                # Recover eBPF maps
+                if args.ebpf:
+                    for node in clients + servers:
+                        # TODO Do something with the info ?
+                        print(BPFPaths.extract_info(net, net[node]))
+                        break
+
+                for pid in tcpdumps:
+                    pid.kill()
+
+                for node in net.routers:
+                    print(node.name)
+                    for itf in node.intfList():
+                        for ip6 in itf.ip6s(exclude_lls=True):
+                            print(ip6.ip.compressed)
+            # except Exception as e:
+            #    lg.error("Exception %s in the topo emulation... Skipping...\n"
+            #             % e)
+            #    ipmininet.DEBUG_FLAG = True  # Do not clear daemon logs
+            #    continue
+            finally:
+
+                for pid in tcpdumps:
+                    pid.kill()
+
+                # IPCLI(net)  # TODO Remove
+                net.stop()
+                cleanup()
+                for fileobj in result_files:
+                    if fileobj is not None:
+                        fileobj.close()
+                subprocess.call("pkill -9 iperf".split(" "))
+
+            db.commit()  # Commit even if catastrophic results
+
+            if not err:
+                # try:
+                lg.info("******* Saving results '%s' *******\n" %
+                        os.path.basename(topo))
+                for i in range(len(clients)):
+                    with open(os.path.join(cwd, "%d_results_%s_%s.json" % (i, clients[i], servers[i])), "r") as fileobj:
+                        results = json.load(fileobj)
+                        iperf_db = tcp_ebpf_experiment.iperfs[i]
+                        iperf_db.raw_json = json.dumps(results, indent=4)
+                        for j in range(nbr_flows[i]):
+                            connection_db = iperf_db.connections[j]
+                            connection_db.start_samples = \
+                                results["start"]["timestamp"]["timesecs"]
+                        for t, interval in enumerate(results["intervals"]):
+                            connection_db.bw_samples.append(
+                                IPerfBandwidthSample(time=(t + 1) * INTERVALS,
+                                                     bw=interval["streams"][j]["bits_per_second"]))
+                tcp_ebpf_experiment.failed = False
+                tcp_ebpf_experiment.valid = True
+
+                # The delta is an approximation valid at 0.1 ms, so negligible for our use cases
+                tcp_ebpf_experiment.monotonic_realtime_delta = time.time() - time.monotonic()
+
+                db.commit()
+
                 # except Exception as e:
                 #    lg.error("Exception %s in the graph generation...
                 #    Skipping...\n" % e)

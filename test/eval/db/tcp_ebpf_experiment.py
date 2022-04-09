@@ -43,11 +43,9 @@ class TCPeBPFExperiment(SQLBaseModel):
 
     # results
 
-    iperfs = relationship("IPerfResults", backref="experiment",
-                          lazy='dynamic')
+    iperfs = relationship("IPerfResults", backref="experiment", lazy='selectin')
 
-    snapshots = relationship("SnapshotDBEntry", backref="experiment",
-                             lazy='dynamic')
+    snapshots = relationship("SnapshotDBEntry", backref="experiment", lazy='selectin')
 
     def snap_class(self):
         return FlowBenderSnapshot if "flowbender" in self.random_strategy else Snapshot
@@ -55,9 +53,9 @@ class TCPeBPFExperiment(SQLBaseModel):
     def data_related_snapshots(self):
         """Filter out snapshots caused by iperf control connections"""
         filtered_snaps = []
-        for s in self.snapshots.all():
+        for s in self.snapshots:
             found = False
-            for i in self.iperfs.all():
+            for i in self.iperfs:
                 for flow_tuple in i.flow_tuples():
                     found = len(flow_tuple) == 0 \
                             or self.snap_class().retrieve_from_hex(s.snapshot_hex).is_from_connection(flow_tuple)

@@ -8,7 +8,8 @@ from mininet.log import LEVELS
 from mininet.log import lg as log
 
 from eval.repetita_eval import eval_repetita, short_flows, \
-    short_flows_completion, eval_flowbender, eval_flowbender_timer, reverse_srh_failure, reverse_srh_load_balancer
+    short_flows_completion, eval_flowbender, eval_flowbender_timer, reverse_srh_failure, reverse_srh_load_balancer, \
+    traceroute
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.config import SRLocalCtrl
@@ -48,6 +49,7 @@ tests = {
     "short-flows-completion": short_flows_completion,
     "reverse_srh_failure": reverse_srh_failure,
     "reverse_srh_load_balancer": reverse_srh_load_balancer,
+    "traceroute": traceroute,
 }
 
 script_dir = os.path.dirname(os.path.abspath(__file__))

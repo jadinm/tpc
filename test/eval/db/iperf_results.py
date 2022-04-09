@@ -19,8 +19,7 @@ class IPerfResults(SQLBaseModel):
 
     raw_json = Column(Text)
 
-    connections = relationship("IPerfConnections", backref="iperf",
-                               lazy='dynamic')
+    connections = relationship("IPerfConnections", backref="iperf", lazy='selectin')
 
     def flow_tuples(self):
         """Returns the flow tuple for each connection (useful to remove noise snapshots of control connections)"""
@@ -37,9 +36,7 @@ class IPerfConnections(SQLBaseModel):
     connection_id = Column(Integer, nullable=False)
 
     start_samples = Column(Float)
-    bw_samples = relationship("IPerfBandwidthSample",
-                              backref="iperf_connection",
-                              lazy='dynamic')
+    bw_samples = relationship("IPerfBandwidthSample", backref="iperf_connection", lazy='selectin')
     max_volume = Column(Float)
 
     def throughput_over_time(self):

@@ -17,12 +17,12 @@ db_path = os.path.join(os.path.abspath(os.environ["HOME"]),
 
 
 def get_connection(readonly=False) -> Session:
-    if readonly:
-        ramdisk_path = os.path.join("/tmp", os.path.basename(db_path))
-        shutil.copy(db_path, ramdisk_path)
-        engine = create_engine('sqlite:///{}'.format(ramdisk_path), echo=False)
-    else:
-        engine = create_engine('sqlite:///{}'.format(db_path), echo=False)
+    # if readonly:
+    #     ramdisk_path = os.path.join("/tmp", os.path.basename(db_path))
+    #     shutil.copy(db_path, ramdisk_path)
+    #     engine = create_engine('sqlite:///{}'.format(ramdisk_path), echo=False)
+    # else:
+    engine = create_engine('sqlite:///{}'.format(db_path), echo=False)
     SQLBaseModel.metadata.create_all(engine)
     session = sessionmaker(bind=engine)()
     return session
