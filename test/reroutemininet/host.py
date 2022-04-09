@@ -57,7 +57,7 @@ class ReroutingHost(SRNHost):
         """
         if isinstance(cmd, list):
             cmd = " ".join(cmd)
-        program = SRLocalCtrl.EBPF_PROGRAM if program is None else program
+        program = SRLocalCtrl.N_RTO_CHANGER_EBPF_PROGRAM if program is None else program
         print("Running '%s' in eBPF" % cmd)
         popen = self.popen(["bash"], stdin=subprocess.PIPE, **kwargs)
         # time.sleep(1)

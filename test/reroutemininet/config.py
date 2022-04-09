@@ -23,14 +23,13 @@ class SRLocalCtrl(SRNDaemon):
     KILL_PATTERNS = (NAME,)
     PRIO = 1  # If other daemons want to use it
     BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
-    EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flows.o")
-    FLOW_BENDER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flowbender.o")
-    FLOW_BENDER_TIMER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_long_flowbender_timer.o")
-    SHORT_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_short_flows.o")
-    SHORT_EBPF_PROGRAM_COMPLETION = os.path.expanduser(
-        "~/ebpf_hhf/ebpf_short_flows_completion_exp4.o")
+    N_RTO_CHANGER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_n_rto_changer.o")
+    TIMEOUT_CHANGER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_timeout_changer.o")
+    EXP3_LOWEST_DELAY_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_exp3_lowest_delay.o")
+    EXP3_LOWEST_COMPLETION_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_exp3_lowest_completion.o")
     REVERSE_SRH_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_reverse_srh.o")
     USE_SECOND_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_use_second_path.o")
+    TRACEROUTE = os.path.expanduser("~/ebpf_hhf/ebpf_traceroute.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super().__init__(*args, template_lookup=template_lookup, **kwargs)
@@ -41,7 +40,7 @@ class SRLocalCtrl(SRNDaemon):
                                         self.options.short_ebpf_program))
         os.makedirs(self._node.cwd, exist_ok=True)
         self.attached = {self.options.short_ebpf_program: False,
-                         self.EBPF_PROGRAM: False}
+                         self.options.long_ebpf_program: False}
         self.stat_map_id = -1
         self.dest_map_id = -1
         self.short_dest_map_id = -1
@@ -50,23 +49,20 @@ class SRLocalCtrl(SRNDaemon):
 
     @classmethod
     def all_programs(cls):
-        return [cls.EBPF_PROGRAM, cls.FLOW_BENDER_EBPF_PROGRAM, cls.FLOW_BENDER_TIMER_EBPF_PROGRAM,
-                cls.SHORT_EBPF_PROGRAM, cls.SHORT_EBPF_PROGRAM_COMPLETION, cls.REVERSE_SRH_PROGRAM,
-                cls.USE_SECOND_PROGRAM]
+        return [cls.N_RTO_CHANGER_EBPF_PROGRAM, cls.TIMEOUT_CHANGER_EBPF_PROGRAM,
+                cls.EXP3_LOWEST_DELAY_EBPF_PROGRAM, cls.EXP3_LOWEST_COMPLETION_EBPF_PROGRAM, cls.REVERSE_SRH_PROGRAM,
+                cls.USE_SECOND_PROGRAM, cls.TRACEROUTE]
 
     def set_defaults(self, defaults):
         super().set_defaults(defaults)
         # defaults.loglevel = self.DEBUG  # TODO Remove
         defaults.bpftool = self.BPFTOOL
-        defaults.long_ebpf_program = self.EBPF_PROGRAM
-        defaults.short_ebpf_program = self.SHORT_EBPF_PROGRAM
+        defaults.long_ebpf_program = self.N_RTO_CHANGER_EBPF_PROGRAM
+        defaults.short_ebpf_program = self.EXP3_LOWEST_DELAY_EBPF_PROGRAM
         defaults.reverse_srh_ebpf_program = self.REVERSE_SRH_PROGRAM
 
     def cgroup(self, program):
-        if "short" in program:
-            ext = "short"
-        else:
-            ext = ""
+        ext = os.path.basename(program).replace(".o", "").replace("ebpf_", "")
         return "/sys/fs/cgroup/unified/{node}_{daemon}_{ext}.slice/".format(
             node=self._node.name, daemon=self.NAME, ext=ext)
 
@@ -127,7 +123,7 @@ class SRLocalCtrl(SRNDaemon):
                     .format(bpftool=self.options.bpftool,
                             dest_map_id=map_id,
                             map_path=self.map_path("dest_map",
-                                                   self.EBPF_PROGRAM))
+                                                   self.options.long_ebpf_program))
                 print(cmd)
                 subprocess.check_call(shlex.split(cmd))
                 self.dest_map_id = map_id
@@ -149,7 +145,7 @@ class SRLocalCtrl(SRNDaemon):
         if self.dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % self.ebpf_load_path(self._node.name,
-                                                   self.EBPF_PROGRAM))
+                                                   self.options.long_ebpf_program))
         if self.short_dest_map_id == -1:
             raise ValueError("Cannot pin the dest_map of program %s"
                              % self.ebpf_load_path(self._node.name,
@@ -213,9 +209,7 @@ class SRRerouted(SRNDaemon):
     KILL_PATTERNS = (NAME,)
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
-        super().__init__(*args,
-                                         template_lookup=template_lookup,
-                                         **kwargs)
+        super().__init__(*args, template_lookup=template_lookup, **kwargs)
 
     def build(self):
         cfg = super().build()

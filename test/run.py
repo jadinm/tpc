@@ -26,7 +26,7 @@ def mininet_cli(lg, args, ovsschema):
     topo_args = {"schema_tables": ovsschema["tables"], "cwd": args.log_dir,
                  "repetita_graph": os.path.join(project_dir, "examples/fake_albilene/FakeAlbilene.graph"),
                  "ebpf": args.ebpf, "json_demands": json_demands,
-                 "localctrl_opts": {"short_ebpf_program": SRLocalCtrl.SHORT_EBPF_PROGRAM_COMPLETION}}
+                 "localctrl_opts": {"short_ebpf_program": SRLocalCtrl.EXP3_LOWEST_DELAY_EBPF_PROGRAM}}
     net = ReroutingNet(topo=RepetitaTopo(**topo_args), static_routing=True)
     try:
         net.start()

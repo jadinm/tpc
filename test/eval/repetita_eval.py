@@ -20,7 +20,7 @@ from .db import get_connection, TCPeBPFExperiment, IPerfResults, \
     IPerfConnections, SnapshotShortDBEntry, ABLatencyCDF, ABResults, \
     ABLatency, ShortTCPeBPFExperiment, IPerfBandwidthSample, SnapshotDBEntry
 from .utils import get_addr, MEASUREMENT_TIME, INTERVALS, TEST_DIR, FLOWBENDER_MEASUREMENT_TIME, \
-    LOAD_BALANCER_MEASUREMENT_TIME
+    LOAD_BALANCER_MEASUREMENT_TIME, TRACEROUTE_MEASUREMENT_TIME
 
 
 # LINK_BANDWIDTH = 100
@@ -340,9 +340,9 @@ def short_flows(lg, args, ovsschema, completion_ebpf=False):
                          "json_demands": json_demands,
                          "localctrl_opts": {
                              "short_ebpf_program":
-                                 SRLocalCtrl.SHORT_EBPF_PROGRAM_COMPLETION
+                                 SRLocalCtrl.EXP3_LOWEST_COMPLETION_EBPF_PROGRAM
                                  if completion_ebpf
-                                 else SRLocalCtrl.SHORT_EBPF_PROGRAM
+                                 else SRLocalCtrl.EXP3_LOWEST_DELAY_EBPF_PROGRAM
                          }}
 
             net = ReroutingNet(topo=RepetitaTopo(**topo_args),
@@ -517,14 +517,14 @@ def eval_repetita(lg, args, ovsschema, flowbender=False, flowbender_timer=False)
     params = get_xp_params()
     if flowbender:
         params["random_strategy"] = "flowbender"
-        program = SRLocalCtrl.FLOW_BENDER_EBPF_PROGRAM
+        program = SRLocalCtrl.N_RTO_CHANGER_EBPF_PROGRAM
         measurement_time = FLOWBENDER_MEASUREMENT_TIME
     elif flowbender_timer:
         params["random_strategy"] = "flowbender_timer"
-        program = SRLocalCtrl.FLOW_BENDER_TIMER_EBPF_PROGRAM
+        program = SRLocalCtrl.TIMEOUT_CHANGER_EBPF_PROGRAM
         measurement_time = FLOWBENDER_MEASUREMENT_TIME
     else:
-        program = SRLocalCtrl.EBPF_PROGRAM
+        raise ValueError("Invalid combination of parameter")
 
     i = 0
     for topo, demands_list in topos.items():
@@ -756,11 +756,11 @@ def reverse_srh_failure(lg, args, ovsschema, flowbender_timer=False):
     params = get_xp_params()
     params["random_strategy"] = "reverse_srh_flowbender"
     server_program = SRLocalCtrl.REVERSE_SRH_PROGRAM
-    client_program = SRLocalCtrl.FLOW_BENDER_EBPF_PROGRAM
+    client_program = SRLocalCtrl.N_RTO_CHANGER_EBPF_PROGRAM
     measurement_time = FLOWBENDER_MEASUREMENT_TIME
     if flowbender_timer:
         params["random_strategy"] = "reverse_srh_flowbender_timer"
-        client_program = SRLocalCtrl.FLOW_BENDER_TIMER_EBPF_PROGRAM
+        client_program = SRLocalCtrl.TIMEOUT_CHANGER_EBPF_PROGRAM
         measurement_time = FLOWBENDER_MEASUREMENT_TIME
 
     i = 0
