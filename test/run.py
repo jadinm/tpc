@@ -39,14 +39,10 @@ def mininet_cli(lg, args, ovsschema):
 
 tests = {
     "mininet-cli": mininet_cli,
-    # TODO This requires the custom version of scapy on segment-routing organisation
-    #  until scapy reaches 2.4.3 (still unstable)
-    "unit": launch_all_tests,
-    "eval-repetita": eval_repetita,
-    "flowblender": eval_flowbender,
-    "flowblender_timer": eval_flowbender_timer,
-    "short-flows": short_flows,
-    "short-flows-completion": short_flows_completion,
+    "n_rto_changer": eval_flowbender,
+    "timeout_changer": eval_flowbender_timer,
+    "exp3_lowest_delay": short_flows,
+    "exp3_lowest_completion": short_flows_completion,
     "reverse_srh_failure": reverse_srh_failure,
     "reverse_srh_load_balancer": reverse_srh_load_balancer,
     "traceroute": traceroute,

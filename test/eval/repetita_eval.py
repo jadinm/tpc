@@ -35,7 +35,7 @@ def get_current_congestion_control():
 
 def get_current_parameter(parameter_name):
     param_value = None
-    with open(os.path.expanduser("~/ebpf_hhf/param.h")) as fileobj:
+    with open(os.path.join(os.environ["TPC_EBPF"], "param.h")) as fileobj:
         for line in fileobj.readlines():
             phrase = "#define {} ".format(parameter_name)
             if phrase == line[:len(phrase)]:  # Thus commented lines are removed

@@ -22,14 +22,14 @@ class SRLocalCtrl(SRNDaemon):
     NAME = 'sr-localctrl'
     KILL_PATTERNS = (NAME,)
     PRIO = 1  # If other daemons want to use it
-    BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
-    N_RTO_CHANGER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_n_rto_changer.o")
-    TIMEOUT_CHANGER_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_timeout_changer.o")
-    EXP3_LOWEST_DELAY_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_exp3_lowest_delay.o")
-    EXP3_LOWEST_COMPLETION_EBPF_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_exp3_lowest_completion.o")
-    REVERSE_SRH_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_reverse_srh.o")
-    USE_SECOND_PROGRAM = os.path.expanduser("~/ebpf_hhf/ebpf_use_second_path.o")
-    TRACEROUTE = os.path.expanduser("~/ebpf_hhf/ebpf_traceroute.o")
+    BPFTOOL = "bpftool"
+    N_RTO_CHANGER_EBPF_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_n_rto_changer.o")
+    TIMEOUT_CHANGER_EBPF_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_timeout_changer.o")
+    EXP3_LOWEST_DELAY_EBPF_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_exp3_lowest_delay.o")
+    EXP3_LOWEST_COMPLETION_EBPF_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_exp3_lowest_completion.o")
+    REVERSE_SRH_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_reverse_srh.o")
+    USE_SECOND_PROGRAM = os.path.join(os.environ["TPC_EBPF"], "ebpf_use_second_path.o")
+    TRACEROUTE = os.path.join(os.environ["TPC_EBPF"], "ebpf_traceroute.o")
 
     def __init__(self, *args, template_lookup=srn_template_lookup, **kwargs):
         super().__init__(*args, template_lookup=template_lookup, **kwargs)

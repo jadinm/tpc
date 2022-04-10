@@ -13,7 +13,7 @@ from reroutemininet.config import SRLocalCtrl
 from reroutemininet.host import ReroutingHost
 from reroutemininet.net import ReroutingNet
 
-BPFTOOL = os.path.expanduser("~/ebpf_hhf/bpftool")
+BPFTOOL = "bpftool"
 
 # struct floating_type {
 # 	__u64 mantissa;
