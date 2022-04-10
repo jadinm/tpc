@@ -1,5 +1,4 @@
-
-import heapq
+import json
 import json
 import os
 import shlex
@@ -7,8 +6,7 @@ import subprocess
 import time
 
 from ipmininet.host.config.base import HostDaemon
-from ipmininet.utils import realIntfList
-from srnmininet.config.config import SRNDaemon, ZlogDaemon, srn_template_lookup
+from srnmininet.config.config import SRNDaemon, srn_template_lookup
 from srnmininet.srnrouter import mkdir_p
 
 __TEMPLATES_DIR = os.path.join(os.path.dirname(__file__), 'templates')
@@ -239,7 +237,7 @@ class Lighttpd(HostDaemon):
         os.makedirs(self._node.cwd, exist_ok=True)
         if not os.path.exists(path):
             with open(path, "w") as fileobj:
-                fileobj.write("0" * 10**7)
+                fileobj.write("0" * 10 ** 7)
             self.files.append(path)
         try:
             ctrl = self._node.nconfig.daemon(SRLocalCtrl)

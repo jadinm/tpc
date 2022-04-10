@@ -7,14 +7,13 @@ from ipmininet.cli import IPCLI
 from mininet.log import LEVELS
 from mininet.log import lg as log
 
-from eval.repetita_eval import eval_repetita, short_flows, \
+from eval.repetita_eval import short_flows, \
     short_flows_completion, eval_flowbender, eval_flowbender_timer, reverse_srh_failure, reverse_srh_load_balancer, \
     traceroute
 from examples.repetita_network import RepetitaTopo
 from reroutemininet.clean import cleanup
 from reroutemininet.config import SRLocalCtrl
 from reroutemininet.net import ReroutingNet
-from test import launch_all_tests
 
 project_dir = os.path.dirname(os.path.abspath(__file__))
 
